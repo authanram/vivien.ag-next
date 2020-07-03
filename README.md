@@ -6,7 +6,7 @@ What you see on [vivien.ag](https://vivien.ag)
 
 Feel free to contribute or to use this code any way you want. There are no limitations from my side.
 
-Made with :heart: and [Laravel](https://laravel.com)
+Made with :heart:  and [Laravel](https://laravel.com)
 
 ## Warranty / Usage
 
