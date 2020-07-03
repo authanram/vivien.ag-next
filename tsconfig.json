@@ -1,0 +1,41 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "allowJs": true,
+        "baseUrl": ".",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "lib": [
+            "dom",
+            "es6"
+        ],
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "noImplicitAny": false,
+        "noImplicitReturns": true,
+        "paths": {
+            "@/*": [
+                "resources/js/*"
+            ]
+        },
+        "removeComments": true,
+        "sourceMap": false,
+        "strict": false,
+        "strictNullChecks": true,
+        "target": "es6",
+        "typeRoots": [
+            "./node_modules/@types",
+            "./resources/js/types"
+        ],
+        "types": [
+            "node"
+        ]
+    },
+    "include": [
+        "resources/js/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+}

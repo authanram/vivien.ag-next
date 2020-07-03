@@ -1,6 +1,9 @@
+/app/Systems
 /node_modules
 /public/hot
 /public/storage
+/public/storage/analytics
+/public/uploads
 /storage/*.key
 /vendor
 .env
@@ -10,3 +13,13 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+
+/public/js
+/public/vendor
+/storage/local-users.php
+public/css/*.css
+
+package-lock.json
+.phpstorm.meta.php
+_ide_helper.php
+_ide_helper_models.php

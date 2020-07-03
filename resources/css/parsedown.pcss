@@ -1,0 +1,53 @@
+.x-parsedown {
+    p:not(:last-child):not([class^="mb-"]) {
+        @apply mb-6;
+    }
+
+    p.mb-4:last-child {
+        margin-bottom: 0 !important;
+    }
+
+    p:last-of-type {
+        margin-bottom: 0 !important;
+    }
+
+    h1, h2, h3, h4, h5, h6, .headline {
+        @apply font-semibold leading-tight mb-4 tracking-tight;
+    }
+
+    h1, h2, h3, .headline {
+        @apply text-xl;
+
+        @screen md {
+            @apply text-2xl;
+        }
+    }
+
+    h4, h5, h6 {
+        @screen md {
+            @apply text-xl;
+        }
+    }
+
+    > ul {
+        @apply mt-3 px-5;
+
+        &:not(:last-child) {
+            @apply mb-6;
+        }
+
+        ul {
+            @apply px-5;
+        }
+    }
+
+    ul {
+        li {
+            @apply pt-2 list-disc;
+        }
+
+        li:not(:last-of-type):not(.pt-*) {
+            @apply pb-2;
+        }
+    }
+}

@@ -67,7 +67,13 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'CET',
+
+    'date_format' => 'd.m.Y, H:i',
+
+    'date_format_default' => 'Y-m-d H:i:s',
+
+    'date_format_full' => '%e %B %Y',
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +86,9 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'de',
+
+    'locales' => ['de', 'en'],
 
     /*
     |--------------------------------------------------------------------------
@@ -173,7 +181,9 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\NovaServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\TelescopeServiceProvider::class,
 
     ],
 
