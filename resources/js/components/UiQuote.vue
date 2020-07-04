@@ -44,10 +44,14 @@
 </template>
 
 <script lang="ts">
-    import { Author, Quote } from '@/state/models'
-    import { sleep } from '@/Helpers'
+    import {Author, Quote} from '@/state/models'
+    import {sleep} from '@/Helpers'
 
     export default {
+        components: {
+            'ui-placeholder': () => import('@/components/ui-placeholder/UiPlaceholder.vue'),
+        },
+
         computed: {
             body (): string[] {
                 return this.quote.body.split('%s')
@@ -58,7 +62,7 @@
             },
 
             authorName (): string {
-                return this.quote.author.id === 1 ? 'unbekannt' : this.quote.author.name
+                return this.quote.author.id===1 ? 'unbekannt':this.quote.author.name
             },
 
             quote (): Quote {

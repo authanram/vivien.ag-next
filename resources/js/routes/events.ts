@@ -1,5 +1,3 @@
-import ViewEvents from '@/views/Events.vue'
-
 export default [
-    { path: '/', component: ViewEvents, props: (route) => ({ query: route.query, }) },
+    { path: '/', component: () => import(/* webpackChunkName: "view-events" */'@/views/Events.vue'), props: (route) => ({ query: route.query, }) },
 ]

@@ -69,12 +69,19 @@
 
 <script lang="ts">
     import * as model from '@/state/models'
+    import {sleep} from '@/Helpers'
     import FiltersMixin from '@/components/ui-events/filters/FiltersMixin'
     import RouteMixin from '@/components/mixins/RouteMixin'
-    import { sleep } from '@/Helpers'
 
     export default {
         mixins: [FiltersMixin, RouteMixin],
+
+        components: {
+            'ui-event-filters-reset': () => import('@/components/ui-events/filters/UiEventFiltersReset.vue'),
+            'ui-event-filters-tags': () => import('@/components/ui-events/filters/UiEventFiltersTags.vue'),
+            'ui-event-filters-type': () => import('@/components/ui-events/filters/UiEventFiltersType.vue'),
+            'ui-events': () => import('@/components/ui-events/UiEvents.vue'),
+        },
 
         props: {
             accent: {
@@ -93,26 +100,26 @@
         },
 
         computed: {
-            dates(): string[] {
+            dates (): string[] {
                 return this.getFilteredDates.length
                     ? this.getFilteredDates
-                    : []
+                    :[]
             },
 
             events (): model.Event[] {
                 return this.getFilteredEvents.length
                     ? this.getFilteredEvents
-                    : model.Event
-                        .query()
-                        .with('event_location')
-                        .with('event_type')
-                        .with('event_type.color')
-                        .with('event_type.icon')
-                        .with('tags')
-                        .with('tags.color')
-                        .with('tags.icon')
-                        .orderBy('date_from')
-                        .get()
+                    :model.Event
+                          .query()
+                          .with('event_location')
+                          .with('event_type')
+                          .with('event_type.color')
+                          .with('event_type.icon')
+                          .with('tags')
+                          .with('tags.color')
+                          .with('tags.icon')
+                          .orderBy('date_from')
+                          .get()
             },
 
             loading (): boolean {
@@ -122,22 +129,22 @@
             tags (): model.Tag[] {
                 return this.getFilteredTags.length
                     ? this.getFilteredTags
-                    : model.Tag
-                        .query()
-                        .where('type', 'event')
-                        .with('color')
-                        .get()
+                    :model.Tag
+                          .query()
+                          .where('type', 'event')
+                          .with('color')
+                          .get()
             },
 
             types (): model.EventType[] {
                 return this.getFilteredTypes.length
                     ? this.getFilteredTypes
-                    : model.EventType
-                        .query()
-                        .with('color')
-                        .with('events')
-                        .orderBy('name')
-                        .get()
+                    :model.EventType
+                          .query()
+                          .with('color')
+                          .with('events')
+                          .orderBy('name')
+                          .get()
             },
         },
 
@@ -159,7 +166,9 @@
                 this.$event.$emit('overlay.destroy')
                 this.filter()
             })
+        },
 
+        mounted (): void {
             this.$event.$on('event.filters', (payload) => {
                 this.$event.$emit('overlay.load')
 

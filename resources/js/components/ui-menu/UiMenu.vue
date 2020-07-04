@@ -43,6 +43,10 @@
     import configuration from '@/config/ui-menu'
 
     export default {
+        components: {
+            'ui-menu-item': () => import('@/components/ui-menu/UiMenuItem.vue'),
+        },
+
         mixins: [Breakpoint],
 
         props: {

@@ -103,6 +103,19 @@
     import { Event } from '@/state/models'
 
     export default {
+        components: {
+            'ui-attendee-form': () => import('@/components/ui-attendee/UiAttendeeForm.vue'),
+            'ui-event-item-property-attendees': () => import('@/components/ui-events/UiEventItemPropertyAttendees.vue'),
+            'ui-event-item-property-catering': () => import('@/components/ui-events/UiEventItemPropertyCatering.vue'),
+            'ui-event-item-property-lead': () => import('@/components/ui-events/UiEventItemPropertyLead.vue'),
+            'ui-event-item-property-location': () => import('@/components/ui-events/UiEventItemPropertyLocation.vue'),
+            'ui-event-item-property-price': () => import('@/components/ui-events/UiEventItemPropertyPrice.vue'),
+            'ui-event-item-property-summary': () => import('@/components/ui-events/UiEventItemPropertySummary.vue'),
+            'ui-event-item-property-time': () => import('@/components/ui-events/UiEventItemPropertyTime.vue'),
+            'ui-event-item-tags': () => import('@/components/ui-events/UiEventItemTags.vue'),
+            'ui-event-placeholder': () => import('@/components/ui-events/UiEventPlaceholder.vue'),
+        },
+
         props: {
             item: {
                 required: true,

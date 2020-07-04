@@ -19,5 +19,5 @@ export const rejectEmptyProperties = (subject: object): object => {
 }
 
 export const sleep = (milliseconds: number): Promise<any> => {
-    return new Promise(resolve => setTimeout(resolve, milliseconds));
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
 }

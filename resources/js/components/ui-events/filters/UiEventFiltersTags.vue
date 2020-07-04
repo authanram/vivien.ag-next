@@ -37,6 +37,10 @@
     export default {
         mixins: [DefaultPropertiesMixin, RouteMixin],
 
+        components: {
+            'ui-event-item-tags': () => import('@/components/ui-events/UiEventItemTags.vue')
+        },
+
         computed: {
             tags (): Tag[] {
                 return this.items

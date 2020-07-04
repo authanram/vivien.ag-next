@@ -1,7 +1,7 @@
 import { Fields, Model, Response } from '@/state/models/Model'
 
 import {
-    Attachment,
+    //Attachment,
     Color,
     Event,
     Image,
@@ -19,7 +19,7 @@ export default class Tag extends Model {
 
     // relations
     public color: Color
-    public attachments: Attachment[]
+    //public attachments: Attachment[]
     public events: Event[]
     public images: Image[]
     public posts: Post[]
@@ -35,7 +35,7 @@ export default class Tag extends Model {
 
             // relations
             color: this.belongsTo(Color, 'color_id'),
-            attachments: this.morphedByMany(Attachment, Taggable, 'tag_id', 'taggable_id', 'taggable_type'),
+            //attachments: this.morphedByMany(Attachment, Taggable, 'tag_id', 'taggable_id', 'taggable_type'),
             events: this.morphedByMany(Event, Taggable, 'tag_id', 'taggable_id', 'taggable_type'),
             images: this.morphedByMany(Image, Taggable, 'tag_id', 'taggable_id', 'taggable_type'),
             posts: this.morphedByMany(Post, Taggable, 'tag_id', 'taggable_id', 'taggable_type'),

@@ -8,23 +8,22 @@
             label-submit="Anmelden"
             label-cancel="Verwerfen"
         >
-            <template
-                v-if="dismiss"
-                slot="dismiss"
-            >
-                <ui-modal-dismiss
-                    headline="Du bist dabei! 🎉"
-                    action-confirm="Zurück zu den Seminaren"
-                    @confirmed="$emit('canceled')"
-                    success
-                >
-                    <template slot="caption">
-                        Damit du unsere gemeinsamen Termine im<br>
-                        Blick hast, habe ich dir soeben eine E-Mail mit<br>
-                        allen notwenidgen Details zukommen lassen.<br>
-                        <span class="font-medium">Ich freue mich auf dich!</span>
-                    </template>
-                </ui-modal-dismiss>
+            <template slot="dismiss">
+                <template v-if="dismiss">
+                    <ui-modal-dismiss
+                        headline="Du bist dabei! 🎉"
+                        action-confirm="Zurück zu den Seminaren"
+                        @confirmed="$emit('canceled')"
+                        success
+                    >
+                        <template slot="caption">
+                            Damit du unsere gemeinsamen Termine im<br>
+                            Blick hast, habe ich dir soeben eine E-Mail mit<br>
+                            allen notwenidgen Details zukommen lassen.<br>
+                            <span class="font-medium">Ich freue mich auf dich!</span>
+                        </template>
+                    </ui-modal-dismiss>
+                </template>
             </template>
             <div v-if="event && event.event_type">
                 <div>
@@ -153,6 +152,15 @@
 
 <script lang="ts">
     export default {
+        components: {
+            'form-field-input': () => import('@/components/forms/FormFieldInput.vue'),
+            'form-field-radio': () => import('@/components/forms/FormFieldRadio.vue'),
+            'form-field-select': () => import('@/components/forms/FormFieldSelect.vue'),
+            'form-field-textarea': () => import('@/components/forms/FormFieldTextarea.vue'),
+            'form-group': () => import('@/components/forms/FormGroup.vue'),
+            'ui-attendee-form': () => import('@/components/ui-attendee/UiAttendeeForm.vue'),
+        },
+
         props: {
             event: {required: true, type: Object},
         },

@@ -37,9 +37,10 @@
                             </div>
 
                             <a
-                                class="bg-{{ accent() }}-600 focus:outline-none hover:bg-{{ accent() }}-500 inline-block px-5 py-2 rounded-md tracking-wide text-white"
+                                class="bg-{{ accent() }}-600 focus:outline-none hover:bg-{{ accent() }}-500 inline-block px-5 py-2 relative rounded-md tracking-wide text-white"
                                 href="{{ routeIfExists('blog') }}"
                             >
+                                <ripple contain></ripple>
                                 Zurück zum Blog
                             </a>
                         @else
@@ -50,9 +51,10 @@
 
                                 <div>
                                     <a
-                                        class="bg-{{ accent() }}-600 focus:outline-none hover:bg-{{ accent() }}-500 inline-block px-5 py-2 rounded-md tracking-wide text-white"
+                                        class="bg-{{ accent() }}-600 focus:outline-none hover:bg-{{ accent() }}-500 inline-block px-5 py-2 relative rounded-md tracking-wide text-white"
                                         href="{{ routeIfExists('blog', ['slug' => $post->slug]) }}"
                                     >
+                                        <ripple contain></ripple>
                                         Weiterlesen
                                     </a>
                                 </div>

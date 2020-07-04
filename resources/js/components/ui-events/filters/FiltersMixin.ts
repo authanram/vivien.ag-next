@@ -1,7 +1,6 @@
 import { Event, EventType, Tag } from '@/state/models'
 import RouteMixin from '@/components/mixins/RouteMixin'
 import { filters } from './plugins/plugins'
-import { ParametersInterface } from './plugins/ParametersInterface.js'
 
 export default {
     mixins: [RouteMixin],

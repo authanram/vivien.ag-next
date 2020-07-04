@@ -26,9 +26,11 @@ export default {
                 return body
             }
 
+            const action = '<span class="font-medium group-hover:underline">Weiterlesen</span>'
+
             return body.split(" ").splice(0, length).join(' ')
                 + (ending ? ` ${ending} ` : '')
-                + '<span class="text-gray-500 text-right text-sm">[<span class="group-hover:underline">Weiterlesen</span>]</span>'
+                + `<span class="text-gray-500 text-right text-sm">${action}</span>`
         },
     },
 }

@@ -53,9 +53,9 @@
         methods: {
             emit (name: string): void {
                 this.$event.$emit('overlay.create', {callbackOutsideClick: () => {
-                    console.log('dismiss')
                     this.$emit('dismiss')
                 }})
+
                 this.$emit(name)
             }
         },

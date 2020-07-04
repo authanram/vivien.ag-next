@@ -21,7 +21,7 @@
         },
 
         mounted (): void {
-            console.log('edit')
+            // console.log('edit')
         },
     }
 </script>

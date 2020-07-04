@@ -3,7 +3,6 @@ import '@/bootstrap'
 import VueContentPlaceholders from 'vue-content-placeholders/index'
 import { Breakpoint } from '@/Breakpoint'
 
-import PluginComponents from '@/plugins/components'
 import PluginIsTouch from '@/plugins/is-touch'
 import PluginVue from '@/plugins/vue'
 import PluginVuePortal from '@/plugins/vue-portal'
@@ -12,9 +11,9 @@ import PluginVuex from '@/plugins/vuex'
 
 import {router} from '@/router'
 import * as models from '@/state/models'
+import '@/components'
 
 Vue.use(VueContentPlaceholders)
-Vue.use(PluginComponents)
 Vue.use(PluginIsTouch)
 Vue.use(PluginVuePortal)
 Vue.use(PluginVue)

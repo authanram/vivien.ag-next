@@ -63,7 +63,6 @@
                 transition: true,
             }) => {
                 this.activate()
-                console.log(payload.callbackOutsideClick)
                 this.callbackOutsideClick = payload.callbackOutsideClick
                 this.transition = payload.transition
                 this.overlay.create()

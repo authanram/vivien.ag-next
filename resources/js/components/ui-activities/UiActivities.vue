@@ -22,6 +22,12 @@
     import {Activity, Event, Post} from '@/state/models'
 
     export default {
+        components: {
+            'ui-activity-placeholder': () => import('@/components/ui-activities/UiActivityPlaceholder.vue'),
+            'UiActivityEvents': () => import('@/components/ui-activities/UiActivityEvents.vue'),
+            'UiActivityPosts': () => import('@/components/ui-activities/UiActivityPosts.vue'),
+        },
+
         props: {
             accent: {
                 default: 'gray',

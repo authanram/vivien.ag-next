@@ -1,5 +1,5 @@
 import { Fields, Model } from '@/state/models/Model'
-import { User } from '@/state/models'
+//import { User } from '@/state/models'
 
 export default class Session extends Model {
     public static entity = 'sessions'
@@ -11,7 +11,7 @@ export default class Session extends Model {
     public lastActivity: string
 
     // relations
-    public user: User
+    //public user: User
 
     public static fields (): Fields {
         return {
@@ -23,7 +23,7 @@ export default class Session extends Model {
             last_activity: this.string(null),
 
             // relations
-            user: this.belongsTo(User, 'user_id')
+            //user: this.belongsTo(User, 'user_id')
         }
     }
 }

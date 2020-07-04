@@ -79,7 +79,7 @@ export default class Event extends Model {
         return this['date_to_object']
     }
 
-    public static fetch (parameters: string = ''): Promise<Response> {
+    public static fetch (): Promise<Response> {
         return Event.api().get(`/public-api/events/fetch`, {
             persistBy: 'insertOrUpdate',
             dataTransformer: ({ data, headers }) => {

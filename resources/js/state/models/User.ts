@@ -1,5 +1,5 @@
 import { Fields, Model } from '@/state/models/Model'
-import { Session } from '@/state/models'
+//import { Session } from '@/state/models'
 
 export default class User extends Model {
     public static entity = 'users'
@@ -8,7 +8,7 @@ export default class User extends Model {
     public name: string
 
     // relations
-    public sessions: Session[]
+    //public sessions: Session[]
 
     public static fields (): Fields {
         return {
@@ -17,7 +17,7 @@ export default class User extends Model {
             name: this.string(null),
 
             // relations
-            session: this.hasMany(Session, 'user_id', 'id')
+            //session: this.hasMany(Session, 'user_id', 'id')
         }
     }
 }

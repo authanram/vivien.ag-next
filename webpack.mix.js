@@ -3,10 +3,6 @@ const mix = require('laravel-mix')
 require('laravel-mix-tailwind')
 
 mix
-    .babelConfig({
-        plugins: ['@babel/plugin-syntax-dynamic-import'],
-    })
-
     .ts('resources/js/app.ts', 'public/js')
 
     .postCss('resources/css/app.pcss', 'public/css', [
@@ -33,7 +29,8 @@ mix
             alias: {
                 '@': path.resolve(__dirname, 'resources/js/'),
             },
-            extensions: ['*', '.js', '.jsx', '.vue', '.ts', '.tsx'],
+
+            extensions: ['.js', '.jsx', '.vue', '.ts', '.tsx'],
         }
 
     })
@@ -42,17 +39,4 @@ mix
 
     .extract()
 
-if (mix.inProduction()) {
-
-    const ASSET_URL = process.env.ASSET_URL + "/"
-
-    mix
-
-        .webpackConfig(webpack => ({
-            plugins: [new webpack.DefinePlugin({'process.env.ASSET_PATH': JSON.stringify(ASSET_URL)})],
-            output: { publicPath: ASSET_URL },
-        }))
-
-        .version()
-
-}
+    .version()

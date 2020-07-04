@@ -54,6 +54,11 @@
     export default {
         mixins: [DefaultPropertiesMixin],
 
+        components: {
+            'ui-event-item': () => import('@/components/ui-events/UiEventItem.vue'/* webpackChunkName: "ui-event-item" */),
+            'ui-event-timeline-item': () => import('@/components/ui-events/UiEventTimelineItem.vue'/* webpackChunkName: "ui-event-timeline-item" */),
+        },
+
         data: function (): object {
             return {
                 intersectedIndexes: [],

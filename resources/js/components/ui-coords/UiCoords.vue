@@ -42,6 +42,11 @@
     import {sleep} from '@/Helpers'
 
     export default {
+        components: {
+            'ui-coord-image': () => import('@/components/ui-coords/UiCoordImage.vue'),
+            'ui-gallery-image': () => import('@/components/UiGalleryImage.vue'),
+        },
+
         props: {
             auth: {required: true, type: Boolean},
         },
