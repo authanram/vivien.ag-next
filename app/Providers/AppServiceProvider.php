@@ -12,8 +12,6 @@ use App\Services\StateService;
 use App\Services\StaticAttributesService;
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
-use Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider as KrloveGeneratorsServiceProvider;
-use Laracasts\Generators\GeneratorsServiceProvider as LaracastsGeneratorsServiceProvider;
 use Systems\Seed\Providers\ServiceProvider as SeedServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -50,11 +48,16 @@ class AppServiceProvider extends ServiceProvider
     private function registerServiceProviders(): void
     {
         if ($this->app->environment('local')) {
-            if (config('env.GENERATOR_ENABLED')) {
-                $this->app->register(KrloveGeneratorsServiceProvider::class);
+            if (config('env.GENERATOR_ENABLED')
+                && \class_exists('\Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider')
+            ) {
+                $this->app->register(\Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class);
             }
 
-            $this->app->register(LaracastsGeneratorsServiceProvider::class);
+            if (\class_exists('\Laracasts\Generators\GeneratorsServiceProvider')) {
+                $this->app->register(\Laracasts\Generators\GeneratorsServiceProvider::class);
+            }
+
             $this->app->register(SeedServiceProvider::class);
         }
 
