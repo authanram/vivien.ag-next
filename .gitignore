@@ -12,12 +12,12 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 
-/app/service-account-credentials.json
+service-account-credentials.json
 /app/Systems
+/public/css/*.css
 /public/js
 /public/vendor
 /storage/local-users.php
-public/css/*.css
 
 package-lock.json
 .phpstorm.meta.php
