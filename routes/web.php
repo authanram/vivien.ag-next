@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 require __DIR__ . '/local.php';
 
 Route::get('/changelog', 'ChangelogController@index')
+
     ->name('changelog');
 
 try {
