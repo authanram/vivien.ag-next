@@ -36,13 +36,12 @@ trait HasMenus
                     $query->select([
                         'id',
                         'path',
-                        'route',
-                        'action',
                         'title',
                         'published',
                     ]);
                 },
-            ])->wherePublished(true)
+            ])
+                ->where('published', true)
                 ->get(['id', 'slug']);
 
         }
