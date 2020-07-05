@@ -1,18 +1,19 @@
 <template>
     <div
         v-show="overlay.active"
-        class="absolute h-full w-full z-40"
+        class="absolute h-full w-full z-10"
     >
         <div
             :class="[
                 { 'cursor-pointer': callbackOutsideClick },
-                overlay.loading ? 'bg-white bg-opacity-75' : 'bg-black bg-opacity-50',
+                $store.state.entities.overlays._loading ? 'bg-white bg-opacity-75' : 'bg-black bg-opacity-50',
             ]"
-            class="absolute h-full w-full z-50"
+            class="absolute h-full w-full z-20"
             @click="outsideClick()"
         />
+        <portal-target name="dismiss" />
         <portal-target name="overlay" />
-        <ui-modal :loading="true">
+        <ui-modal v-if="$store.state.entities.overlays._loading">
             <slot />
         </ui-modal>
     </div>
@@ -74,6 +75,11 @@
             this.$event.$on('overlay.load', () => {
                 this.activate()
                 this.overlay.load()
+            })
+
+            this.$event.$on('overlay.unload', () => {
+                this.activate()
+                this.overlay.loading = false
             })
         },
     }

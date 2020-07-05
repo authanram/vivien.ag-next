@@ -1,17 +1,19 @@
 <template>
     <portal to="overlay">
-        <div class="fixed z-50 h-full w-full">
-            <div class="h-full overflow-y-scroll">
+        <div class="fixed h-full w-full z-30">
+            <div class="relative h-full overflow-y-scroll">
                 <div class="h-full table w-full">
                     <div class="align-middle h-full table-cell w-full">
                         <div class="flex justify-center">
-                            <div :class="{ 'bg-white border border-gray-100 md:my-10 md:max-w-lg md:p-6 md:w-full pb-4 pt-5 px-4 rounded-lg shadow-lg': !loading }">
+                            <div
+                                v-if="!$store.state.entities.overlays._loading"
+                                class="bg-white border border-gray-100 md:my-10 md:max-w-lg md:p-6 md:w-full pb-4 pt-5 px-4 rounded-lg shadow-lg"
+                            >
                                 <div
                                     aria-labelledby="modal-headline"
                                     aria-modal="true"
                                     role="dialog"
                                 >
-                                    <slot name="dismiss" />
                                     <ui-modal-dismiss
                                         v-if="cancelConfirmation"
                                         action-cancel="Zurück"
@@ -21,7 +23,7 @@
                                     <div class="sm:flex sm:items-start">
                                         <div class="mt-3 sm:mt-0 sm:text-left">
                                             <span
-                                                v-if="this.$slots.headline"
+                                                v-if="$slots.headline"
                                                 class="font-medium leading-6 text-gray-900 text-lg"
                                             >
                                                 <slot name="headline" />
@@ -29,7 +31,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <slot />
+                                <slot v-show="!$slots.dismiss" />
                                 <template v-if="labelCancel || labelSubmit">
                                     <div
                                         :class="`text-${align}`"
@@ -38,7 +40,7 @@
                                         <form-button
                                             v-if="labelSubmit"
                                             :accent="accent"
-                                            :disabled="loading"
+                                            :disabled="processing"
                                             class="mr-2"
                                             @clicked="callbackSubmit()"
                                         >
@@ -46,7 +48,7 @@
                                         </form-button>
                                         <form-button
                                             v-if="labelCancel"
-                                            :disabled="loading"
+                                            :disabled="processing"
                                             secondary
                                             @clicked="cancelConfirmation = true"
                                         >
@@ -55,6 +57,9 @@
                                     </div>
                                 </template>
                             </div>
+                            <template v-else>
+                                <slot />
+                            </template>
                         </div>
                     </div>
                 </div>
@@ -72,13 +77,13 @@
             callbackSubmit: {default: () => {}, type: Function},
             labelCancel: {default: null, type: String},
             labelSubmit: {default: null, type: String},
-            loading: {default: false, type: Boolean},
+            processing: {default: false, type: Boolean},
         },
 
         data (): object {
             return {
-                delayed: true,
                 cancelConfirmation: false,
+                delayed: true,
             }
         },
 
