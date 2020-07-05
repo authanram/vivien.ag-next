@@ -16,6 +16,7 @@ service-account-credentials.json
 /app/Systems
 /public/css/*.css
 /public/js
+/public/mix-manifest.json
 /public/vendor
 /storage/local-users.php
 
