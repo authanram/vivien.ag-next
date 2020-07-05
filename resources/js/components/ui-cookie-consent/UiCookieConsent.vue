@@ -87,6 +87,10 @@
     import CookieConsentCookie from '@/state/models/CookieConsentCookie'
 
     export default {
+        components: {
+            'ui-cookie-consent-category': () => import('@/components/ui-cookie-consent/UiCookieConsentCategory.vue'/* webpackChunkName: "ui-cookie-consent-category" */)
+        },
+
         props: {
             cookieDomain: {
                 required: true,
