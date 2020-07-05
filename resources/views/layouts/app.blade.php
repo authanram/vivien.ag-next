@@ -7,10 +7,15 @@
 </head>
 <body>
 @include('layouts.partials.gtm-body')
-<div class="page">
-    <div class="min-h-full relative z-0">
-        @include('layouts.partials.background', ['dom' => true])
-        @yield('app')
+@include('cookieConsent::index')
+@include('layouts.partials.background', ['style' => true])
+<div id="app">
+    @include('layouts.partials.overlay')
+    <div class="page">
+        <div class="min-h-full relative z-0">
+            @include('layouts.partials.background', ['dom' => true])
+            @yield('app')
+        </div>
     </div>
 </div>
 @include('layouts.partials.script')

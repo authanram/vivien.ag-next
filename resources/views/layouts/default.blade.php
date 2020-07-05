@@ -1,64 +1,52 @@
 @extends('layouts.app')
 
-@section('head')
-    @include('layouts.partials.background', ['style' => true])
-@endsection
-
 @section('app')
 
-    <div id="app">
+    <div class="h-16 shadow-lg sticky top-0 w-full z-10"></div>
 
-        @include('cookieConsent::index')
+    <x-card class="-mt-16 md:mb-0 sticky top-0 z-40 reject:margin padding rounded-lg shadow-md">
 
-        @include('layouts.partials.overlay')
+        @component('components.menu', ['border' => true])
 
-        <div class="h-16 shadow-lg sticky top-0 w-full z-10"></div>
+            @include('layouts.partials.logo')
 
-        <x-card class="-mt-16 md:mb-0 sticky top-0 z-40 reject:margin padding rounded-lg shadow-md">
+        @endcomponent
 
-            @component('components.menu', ['border' => true])
+    </x-card>
 
-                @include('layouts.partials.logo')
+    <x-card
+        class="bg-opacity-95 md:border-b-2 md:border-gray-100 mb-5 md:mb-10 md:pb-1 pt-2 z-20 reject:bg-opacity-90 border border-gray-100 padding rounded-lg shadow-md"
+        even
+    >
 
-            @endcomponent
+        @includeWhen($title ?? null, 'layouts.partials.page-title')
 
-        </x-card>
+    </x-card>
 
-        <x-card
-            class="bg-opacity-95 md:border-b-2 md:border-gray-100 mb-5 md:mb-10 md:pb-1 pt-2 z-20 reject:bg-opacity-90 border border-gray-100 padding rounded-lg shadow-md"
-            even
-        >
+    <x-container>
 
-            @includeWhen($title ?? null, 'layouts.partials.page-title')
+        <div class="hidden md:block">
 
-        </x-card>
+            @include('layouts.partials.design-images')
 
-        <x-container>
+        </div>
 
-            <div class="hidden md:block">
+        <div class="relative">
 
-                @include('layouts.partials.design-images')
+            @include('layouts.partials.content')
 
-            </div>
+        </div>
 
-            <div class="relative">
+    </x-container>
 
-                @include('layouts.partials.content')
+    <x-container>
 
-            </div>
+        @include('layouts.partials.footer')
 
-        </x-container>
+    </x-container>
 
-        <x-container>
+    <div class="h-8"></div>
 
-            @include('layouts.partials.footer')
-
-        </x-container>
-
-        <div class="h-8"></div>
-
-        @include('layouts.partials.made-with-love')
-
-    </div>
+    @include('layouts.partials.made-with-love')
 
 @endsection
