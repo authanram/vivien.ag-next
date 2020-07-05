@@ -1,26 +1,24 @@
 <template>
-    <portal to="overlay">
-        <ui-modal>
-            <div class="flex justify-between mb-4">
-                <div class="mr-3 px-3 py-2 text-sm w-full">
-                    {{ getName }} #{{ image.id }}
-                </div>
-                <div
-                    class="bg-black bg-opacity-50 cursor-pointer hover:bg-opacity-75 px-3 py-2 rounded-md text-sm text-white"
-                    @click="dismiss()"
-                >
-                    Schließen
-                </div>
+    <ui-modal>
+        <div class="flex justify-between mb-4">
+            <div class="mr-3 px-3 py-2 text-sm w-full">
+                {{ getName }} #{{ image.id }}
             </div>
-            <div class="border p-2 rounded-md text-center">
-                <img
-                    :alt="getName"
-                    :src="srcAttribute"
-                    class="h-full w-full"
-                >
+            <div
+                class="bg-black bg-opacity-50 cursor-pointer hover:bg-opacity-75 px-3 py-2 rounded-md text-sm text-white"
+                @click="dismiss()"
+            >
+                Schließen
             </div>
-        </ui-modal>
-    </portal>
+        </div>
+        <div class="border p-2 rounded-md text-center">
+            <img
+                :alt="getName"
+                :src="srcAttribute"
+                class="h-full w-full"
+            >
+        </div>
+    </ui-modal>
 </template>
 
 <script lang="ts">

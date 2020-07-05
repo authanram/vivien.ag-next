@@ -1,9 +1,9 @@
 <template>
-    <portal to="overlay">
+    <ui-modal>
         <div class="bg-white border border-gray-100 p-4 rounded shadow-lg">
             edit: {{ coord }}
         </div>
-    </portal>
+    </ui-modal>
 </template>
 
 <script lang="ts">

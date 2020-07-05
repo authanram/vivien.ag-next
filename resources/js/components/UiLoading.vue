@@ -62,7 +62,7 @@
 </style>
 
 <template>
-    <div class="flex items-center h-screen justify-center relative w-screen">
+    <div class="relative">
         <div :class="`absolute border-t-${color}-700 loading`">
             <div :class="`absolute border-t-${color}-500 loading-before`"></div>
             <div :class="`absolute border-t-${color}-400 loading-after`"></div>

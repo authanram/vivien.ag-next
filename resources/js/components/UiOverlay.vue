@@ -11,12 +11,10 @@
             class="absolute h-full w-full z-50"
             @click="outsideClick()"
         />
-        <div
-            v-if="overlay.loading"
-            class="absolute h-full w-full z-20"
-        >
-            <slot name="loading" />
-        </div>
+        <portal-target name="overlay" />
+        <ui-modal :loading="true">
+            <slot />
+        </ui-modal>
     </div>
 </template>
 
