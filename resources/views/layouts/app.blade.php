@@ -7,7 +7,12 @@
 </head>
 <body>
 @include('layouts.partials.gtm-body')
-@yield('app')
+<div class="page">
+    <div class="min-h-full relative z-0">
+        @include('layouts.partials.background', ['dom' => true])
+        @yield('app')
+    </div>
+</div>
 @include('layouts.partials.script')
 </body>
 </html>

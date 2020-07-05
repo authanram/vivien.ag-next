@@ -1,21 +1,16 @@
 @extends('layouts.app')
 
+@section('head')
+    @include('layouts.partials.background', ['style' => true])
+@endsection
+
 @section('app')
 
     <div id="app">
 
         @include('cookieConsent::index')
 
-        @include('layouts.partials.background', ['style' => true])
-
         @include('layouts.partials.overlay')
-
-        <div class="page">
-            <div class="min-h-full relative z-0">
-                @include('layouts.partials.background', ['dom' => true])
-                @yield('app')
-            </div>
-        </div>
 
 
         <div class="h-16 shadow-lg sticky top-0 w-full z-10"></div>
