@@ -58,7 +58,7 @@
                 <button
                     v-if="hasSeats(event)"
                     :class="`active:bg-${color}-500 bg-${color}-500 hover:bg-${color}-600 text-white`"
-                    class="absolute active:outline-none bottom-0 flex focus:outline-none font-semibold h-15 items-center justify-center left-0 right-0 rounded-b-lg text-2xl w-full"
+                    class="absolute active:outline-none bottom-0 flex focus:outline-none font-medium h-15 items-center justify-center left-0 right-0 rounded-b-lg text-2xl w-full"
                     @click="form()"
                 >
                     <ripple contain />
