@@ -3,7 +3,7 @@ import { Response } from '@vuex-orm/plugin-axios'
 import config from '@/state/config'
 
 class Model extends BaseModel {
-    public id: number
+    public id: number | string
 
     public static fields (): Fields {
         return {}

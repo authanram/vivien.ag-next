@@ -8,11 +8,11 @@
                 <ui-coord-image
                     v-if="coord.image"
                     :key="`ui-coord-image-${index}`"
+                    :active="[detailsIndex, editIndex, removeIndex].includes(index)"
                     :auth="auth"
                     :image="coord.image"
                     :style="coord.coordsParsed"
                     class="absolute bg-white border group no-select rounded-lg shadow-md"
-                    @dismiss="actionDismiss()"
                     @details="actionDetails(index)"
                     @edit="actionEdit(index)"
                     @remove="actionRemove(index)"
@@ -23,7 +23,7 @@
             <ui-gallery-image
                 v-if="detailsValue"
                 :data-image="detailsValue"
-                @reset="actionDismiss()"
+                @reset="reset()"
             />
             <ui-coord-editor
                 v-if="editValue"
@@ -43,7 +43,9 @@
 
     export default {
         components: {
+            'ui-coord-editor': () => import('@/components/ui-coords/UiCoordEditor.vue'),
             'ui-coord-image': () => import('@/components/ui-coords/UiCoordImage.vue'),
+            'ui-coord-remove': () => import('@/components/ui-coords/UiCoordRemove.vue'),
             'ui-gallery-image': () => import('@/components/UiGalleryImage.vue'),
         },
 
@@ -106,15 +108,6 @@
 
             actionRemove (index: number): void {
                 this.removeIndex = index
-            },
-
-            actionDismiss (): void {
-                this.$event.$emit('overlay.destroy')
-                this.reset()
-            },
-
-            overlay (): void {
-                this.$event.$emit('overlay.create')
             },
 
             reset (): void {

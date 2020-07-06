@@ -177,5 +177,9 @@
                 sleep(250).then(() => this.$event.$emit('overlay.destroy'))
             })
         },
+
+        beforeDestroy (): void {
+            this.$event.$off('event.filters')
+        },
     }
 </script>

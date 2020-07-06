@@ -8,7 +8,7 @@
             :class="[classAttribute, {'opacity-50': disabled}]"
             :name="name || false"
             :disabled="disabled"
-            class="focus:outline-none px-5 rounded-md relative tracking-wide z-10"
+            class="border focus:outline-none px-5 rounded-md relative tracking-wide z-10"
             type="button"
             v-bind="$attrs"
             @click="$emit('clicked')"
@@ -36,8 +36,8 @@
         computed: {
             classAttribute (): string {
                 return !this.secondary
-                    ? `bg-${this.accent}-600 hover:bg-${this.accent}-500 text-white`
-                    : 'bg-white border border-gray-300 focus:border-gray-300 hover:bg-gray-100 hover:text-gray-500 text-gray-700'
+                    ? `active:border-${this.accent}-500 bg-${this.accent}-600 border-${this.accent}-600 hover:bg-${this.accent}-500 hover:border-${this.accent}-500 text-white`
+                    : 'bg-white border-gray-300 focus:border-gray-300 hover:bg-gray-100 hover:text-gray-500 text-gray-700'
             },
         },
 

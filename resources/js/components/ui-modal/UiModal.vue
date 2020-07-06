@@ -1,23 +1,23 @@
 <template>
     <portal to="overlay">
-        <div class="fixed h-full w-full z-30">
+        <div class="fixed h-full no-select pointer-events-none w-full z-30">
             <div class="relative h-full overflow-y-scroll">
                 <div class="h-full table w-full">
-                    <div class="align-middle h-full table-cell w-full">
+                    <div class="align-bottom h-full md:align-middle table-cell w-full">
                         <div class="flex justify-center">
                             <div
                                 v-if="!$store.state.entities.overlays._loading"
-                                class="bg-white border border-gray-100 md:my-10 md:max-w-lg md:p-6 md:w-full pb-4 pt-5 px-4 rounded-lg shadow-lg"
+                                class="bg-white border border-gray-100 md:my-10 md:max-w-lg md:p-6 md:w-full pb-4 pointer-events-auto pt-5 px-4 rounded-lg shadow-lg"
                             >
                                 <div
                                     aria-labelledby="modal-headline"
                                     aria-modal="true"
                                     role="dialog"
                                 >
-                                    <ui-modal-dismiss
+                                    <ui-modal-confirm
                                         v-if="cancelConfirmation"
-                                        action-cancel="Zurück"
-                                        @confirmed="callbackCancel()"
+                                        label-cancel="Zurück"
+                                        @confirmed="callbackCancel(true)"
                                         @dismissed="cancelConfirmation = false"
                                     />
                                     <div class="sm:flex sm:items-start">
@@ -33,15 +33,12 @@
                                 </div>
                                 <slot v-show="!$slots.dismiss" />
                                 <template v-if="labelCancel || labelSubmit">
-                                    <div
-                                        :class="`text-${align}`"
-                                        class="mt-6 sm:border-gray-200 sm:border-t sm:pt-6"
-                                    >
+                                    <div class="flex md:justify-start justify-end mt-6 sm:border-gray-200 sm:border-t sm:pt-6">
                                         <form-button
                                             v-if="labelSubmit"
                                             :accent="accent"
                                             :disabled="processing"
-                                            class="mr-2"
+                                            class="md:mr-2 md:order-first order-last"
                                             @clicked="callbackSubmit()"
                                         >
                                             {{ labelSubmit }}
@@ -49,8 +46,9 @@
                                         <form-button
                                             v-if="labelCancel"
                                             :disabled="processing"
+                                            class="mr-2 md:mr-0"
                                             secondary
-                                            @clicked="cancelConfirmation = true"
+                                            @clicked="callbackCancel()"
                                         >
                                             {{ labelCancel }}
                                         </form-button>
@@ -72,25 +70,34 @@
     export default {
         props: {
             accent: {default: 'teal', type: String},
-            align: {default: 'left', type: String},
-            callbackCancel: {default: () => {}, type: Function},
+            callbackCancel: {default: (force: boolean) => null, type: Function},
             callbackSubmit: {default: () => {}, type: Function},
             labelCancel: {default: null, type: String},
             labelSubmit: {default: null, type: String},
+            persistent: {default: false, type: Boolean},
             processing: {default: false, type: Boolean},
         },
 
         data (): object {
-            return {
-                cancelConfirmation: false,
-                delayed: true,
-            }
+            return {cancelConfirmation: false}
         },
 
-        mounted (): void {
-            this.$nextTick(() => {
-                this.delayed = false
+        created (): void {
+            this.$event.$on('overlay.dismiss', () => {
+                if (this.cancelConfirmation) {
+                    return
+                }
+
+                this.cancelConfirmation = true
+            })
+
+            this.$event.$emit('overlay.create', {
+                callbackCancel: this.callbackCancel,
             })
         },
+
+        beforeDestroy (): void {
+            this.$event.$off('overlay.dismiss')
+        }
     }
 </script>

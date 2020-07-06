@@ -94,7 +94,8 @@
         <ui-attendee-form
             v-if="hasAttendeeForm"
             :event="item"
-            @canceled="() => hasAttendeeForm = false"
+            @canceled="cancel()"
+            @confirmed="confirm()"
         />
     </div>
 </template>
@@ -147,6 +148,15 @@
         },
 
         methods: {
+            cancel (): void {
+                this.hasAttendeeForm = false
+                this.$event.$emit('overlay.destroy')
+            },
+
+            confirm (): void {
+                this.cancel()
+            },
+
             form (): void {
                 this.hasAttendeeForm = true
             },

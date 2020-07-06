@@ -1,6 +1,6 @@
 <template>
-    <portal to="dismiss">
-        <div class="fixed h-full w-full z-40">
+    <portal to="confirm">
+        <div class="fixed h-full no-select w-full z-40">
             <div class="absolute bg-opacity-75 bg-white bottom-0 left-0 right-0 top-0">
                 <div class="flex h-full items-center justify-center w-full">
                     <div class="flex-none my-10">
@@ -30,14 +30,14 @@
                                 class="mr-2"
                                 @clicked="$emit('confirmed')"
                             >
-                                {{ actionConfirm }}
+                                {{ labelConfirm }}
                             </form-button>
                             <form-button
-                                v-if="actionCancel"
+                                v-if="labelCancel"
                                 secondary
                                 @clicked="$emit('dismissed')"
                             >
-                                {{ actionCancel }}
+                                {{ labelCancel }}
                             </form-button>
                         </div>
                     </div>
@@ -52,8 +52,8 @@
         props: {
             headline: {default: 'Bist du sicher?', type: String},
             caption: {default: 'Alle Eingaben werden dabei verworfen.', type: String},
-            actionConfirm: {default: 'Eingaben verwerfen', type: String},
-            actionCancel: {default: null, type: String},
+            labelConfirm: {default: 'Eingaben verwerfen', type: String},
+            labelCancel: {default: null, type: String},
             danger: {default: false, type: Boolean},
             success: {default: false, type: Boolean},
         },
@@ -63,5 +63,46 @@
                 return this.success ? 'green' : 'red'
             },
         },
+
+        methods: {
+            registerKeyupEvents (): void {
+                document.addEventListener('keyup', this.handleEnter)
+                document.addEventListener('keyup', this.handleEscape)
+            },
+
+            unregisterKeyupEvents (): void {
+                document.removeEventListener('keyup', this.handleEnter)
+                document.removeEventListener('keyup', this.handleEscape)
+            },
+
+            handleEnter (e): void {
+                if (e.code !== 'Enter') {
+                    return
+                }
+
+                this.$emit('confirmed')
+            },
+
+            handleEscape (e): void {
+                if (e.code !== 'Escape') {
+                    return
+                }
+
+                if (this.success) {
+                    this.$emit('confirmed')
+                    return
+                }
+
+                this.$emit('dismissed')
+            },
+        },
+
+        mounted (): void {
+            this.registerKeyupEvents()
+        },
+
+        beforeDestroy (): void {
+            this.unregisterKeyupEvents()
+        }
     }
 </script>

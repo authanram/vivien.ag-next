@@ -1,9 +1,9 @@
 <template>
     <div>
         <ui-modal
-            v-if="!dismiss"
+            v-if="!confirm"
             :accent="accent"
-            :callback-cancel="() => $emit('canceled')"
+            :callback-cancel="callbackCancel"
             :callback-submit="submit"
             :processing="processing"
             label-submit="Anmelden"
@@ -33,7 +33,7 @@
                     <form-field-radio
                         :accent="accent"
                         :labels="['Frau', 'Herr']"
-                        :values="[0, 1]"
+                        :values="['0', '1']"
                         name="salutation"
                         v-bind:value="model.salutation"
                         v-on:input="model.salutation = $event"
@@ -102,13 +102,16 @@
                         name="attendees"
                         v-bind:value="model.attendance"
                         v-on:input="model.attendance = $event"
-                    /> {{ price * model.attendance }} &euro;
-                    <span
-                        v-if="price * model.attendance !== event.price"
-                        class="inline-block italic ml-1 text-gray-500 text-xs"
-                    >
-                        gesamt
-                    </span>
+                    />
+                    <div class="mb-1 md:mb-0 md:mt-2">
+                        {{ price * model.attendance }} &euro;
+                        <span
+                            v-if="price * model.attendance !== event.price"
+                            class="inline-block italic ml-1 text-gray-500 text-xs"
+                        >
+                            gesamt
+                        </span>
+                    </div>
                 </form-group>
                 <form-group
                     label="Nachricht"
@@ -132,10 +135,10 @@
             </div>
         </ui-modal>
         <template v-else>
-            <ui-modal-dismiss
+            <ui-modal-confirm
                 headline="Du bist dabei! 🎉"
-                action-confirm="Zurück zu den Seminaren"
-                @confirmed="$emit('canceled')"
+                label-confirm="Zurück zu den Seminaren"
+                @confirmed="$emit('confirmed')"
                 success
             >
                 <template slot="caption">
@@ -144,7 +147,7 @@
                     allen notwenidgen Details zukommen lassen.<br>
                     <span class="font-medium">Ich freue mich auf dich!</span>
                 </template>
-            </ui-modal-dismiss>
+            </ui-modal-confirm>
         </template>
     </div>
 </template>
@@ -164,6 +167,12 @@
             event: {required: true, type: Object},
         },
 
+        watch: {
+            model: {deep: true, handler: function () {
+                this.$event.$emit('overlay.update', {callbackCancel: this.callbackCancel})
+            }},
+        },
+
         computed: {
             accent (): string {
                 return this.event.event_type.color.color
@@ -177,31 +186,37 @@
 
         data (): object {
             return {
-                dismiss: false,
+                confirm: false,
                 errors: {},
-                price: this.event.price,
-                processing: false,
-                //
                 model: {
-                    salutation: 0,
+                    salutation: "0",
                     firstname: '',
                     surname: '',
                     phone: '',
                     email: '',
-                    attendance: 1,
+                    attendance: "1",
                     message: '',
-                }
+                },
+                modelOrigin: null,
+                price: this.event.price,
+                processing: false,
             }
         },
 
         methods: {
+            callbackCancel (force = false): Function | null {
+                return force || JSON.stringify(this.model) === this.modelOrigin
+                    ? this.$emit('canceled')
+                    : this.$event.$emit('overlay.dismiss')
+            },
+
             submit (): void {
                 this.processing = true
 
                 this.$axios
                     .post(`${this.$initial.routeAttendeeCreate}/${this.event.id}`, this.model)
                     .then(response => {
-                        this.dismiss = true
+                        this.confirm = true
                         this.processing = false
                     })
                     .catch(error => {
@@ -209,14 +224,31 @@
                         this.processing = false
                     })
             },
+
+            registerKeyupEvents (): void {
+                document.addEventListener('keyup', this.handleEscape)
+            },
+
+            unregisterKeyupEvents (): void {
+                document.removeEventListener('keyup', this.handleEscape)
+            },
+
+            handleEscape (e): void {
+                if (e.code !== 'Escape') {
+                    return
+                }
+
+                this.callbackCancel()
+            },
         },
 
-        mounted (): void {
-            this.$event.$emit('overlay.create')
+        created (): void {
+            this.modelOrigin = JSON.stringify(this.model)
+            this.registerKeyupEvents()
         },
 
         beforeDestroy (): void {
-            this.$event.$emit('overlay.destroy')
+            this.unregisterKeyupEvents()
         }
     }
 </script>

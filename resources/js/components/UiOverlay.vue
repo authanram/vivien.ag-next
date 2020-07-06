@@ -4,16 +4,13 @@
         class="absolute h-full w-full z-10"
     >
         <div
-            :class="[
-                { 'cursor-pointer': callbackOutsideClick },
-                $store.state.entities.overlays._loading ? 'bg-white bg-opacity-75' : 'bg-black bg-opacity-50',
-            ]"
+            :class="loading ? 'bg-white bg-opacity-75' : 'bg-black bg-opacity-50 cursor-pointer'"
             class="absolute h-full w-full z-20"
-            @click="outsideClick()"
+            @click="cancel()"
         />
-        <portal-target name="dismiss" />
+        <portal-target name="confirm" />
         <portal-target name="overlay" />
-        <ui-modal v-if="$store.state.entities.overlays._loading">
+        <ui-modal v-if="loading">
             <slot />
         </ui-modal>
     </div>
@@ -25,9 +22,15 @@
     export default {
         mixins: [Overlay],
 
+        computed: {
+            loading (): boolean {
+                return this.$store.state.entities.overlays._loading
+            },
+        },
+
         data () {
             return {
-                callbackOutsideClick: null,
+                callbackCancel: () => null,
                 transition: false,
             }
         },
@@ -40,6 +43,8 @@
                 body.style.overflowY = 'hidden'
                 page.style.overflowY = 'scroll'
                 page.classList.add('blur')
+
+                document.addEventListener('keyup', this.handleEscape)
             },
 
             deactivate (): void {
@@ -49,22 +54,51 @@
                 body.style.overflowY = 'scroll'
                 page.style.overflowY = 'hidden'
                 page.classList.remove('blur')
+
+                this.registerKeyupEscape()
             },
 
-            outsideClick (): void {
-                // console.log('xxx')
-            }
+            cancel (): void {
+                try {
+                    this.callbackCancel()()
+                } catch (e) {
+                    //
+                }
+            },
+
+            registerKeyupEscape (): void {
+                document.addEventListener('keyup', this.handleEscape)
+            },
+
+            unregisterKeyupEscape (): void {
+                document.removeEventListener('keyup', this.handleEscape)
+            },
+
+            handleEscape (e): void {
+                if (e.code !== 'Escape') {
+                    return
+                }
+
+                this.unregisterKeyupEscape()
+                this.cancel()
+            },
         },
 
         mounted (): void {
             this.$event.$on('overlay.create', (payload = {
-                callbackOutsideClick: null,
+                callbackCancel: null,
                 transition: true,
             }) => {
                 this.activate()
-                this.callbackOutsideClick = payload.callbackOutsideClick
+                this.callbackCancel = payload.callbackCancel
                 this.transition = payload.transition
                 this.overlay.create()
+            })
+
+            this.$event.$on('overlay.update', (payload: object) => {
+                Object.keys(payload).forEach((key: string) => {
+                    this[key] = payload[key]
+                })
             })
 
             this.$event.$on('overlay.destroy', () => {
@@ -76,11 +110,13 @@
                 this.activate()
                 this.overlay.load()
             })
+        },
 
-            this.$event.$on('overlay.unload', () => {
-                this.activate()
-                this.overlay.loading = false
-            })
+        beforeDestroy (): void {
+            this.$event.$off('overlay.create')
+            this.$event.$off('overlay.update')
+            this.$event.$off('overlay.destroy')
+            this.$event.$off('overlay.load')
         },
     }
 </script>
