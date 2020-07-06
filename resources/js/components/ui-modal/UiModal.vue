@@ -78,12 +78,18 @@
             processing: {default: false, type: Boolean},
         },
 
+        watch: {
+            cancelConfirmation (value: boolean) {
+                this.$emit('unconfirmed', value)
+            },
+        },
+
         data (): object {
             return {cancelConfirmation: false}
         },
 
         created (): void {
-            this.$event.$on('overlay.dismiss', () => {
+            this.$event.$on('overlay.confirm', () => {
                 if (this.cancelConfirmation) {
                     return
                 }
@@ -97,7 +103,7 @@
         },
 
         beforeDestroy (): void {
-            this.$event.$off('overlay.dismiss')
+            this.$event.$off('overlay.confirm')
         }
     }
 </script>

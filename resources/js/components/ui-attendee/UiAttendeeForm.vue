@@ -8,6 +8,7 @@
             :processing="processing"
             label-submit="Anmelden"
             label-cancel="Verwerfen"
+            @unconfirmed="(value) => unconfirmedCancellation = value"
         >
             <div v-if="event && event.event_type">
                 <div>
@@ -180,6 +181,10 @@
                 return this.event.event_type.color.color
             },
 
+            hasChanges (): boolean {
+                return JSON.stringify(this.model) !== this.modelOrigin
+            },
+
             maximumAttendees (): number[] {
                 const max = this.event.maximum_attendees - this.event.reserved_seats
                 return Array.from(Array(max || 1), (_, i) => i + 1)
@@ -202,14 +207,13 @@
                 modelOrigin: null,
                 price: this.event.price,
                 processing: false,
+                unconfirmedCancellation: false,
             }
         },
 
         methods: {
             callbackCancel (force = false): Function | null {
-                return force || JSON.stringify(this.model) === this.modelOrigin
-                    ? this.$emit('canceled')
-                    : this.$event.$emit('overlay.dismiss')
+                return force || !this.hasChanges ? this.$emit('canceled') : this.$event.$emit('overlay.confirm')
             },
 
             submit (): void {
@@ -238,7 +242,7 @@
             },
 
             handleEnter (e): void {
-                if (e.code !== 'Enter') {
+                if (e.code !== 'Enter' || !this.hasChanges || this.unconfirmedCancellation) {
                     return
                 }
 
