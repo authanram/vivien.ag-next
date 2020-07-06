@@ -11,7 +11,7 @@
             {{ label || '' }}
         </label>
         <div class="sm:col-span-2">
-            <div class="flex items-start max-w-lg rounded-md sm:max-w-xs">
+            <div class="max-w-lg flex items-start rounded-md sm:max-w-xs">
                 <slot />
             </div>
             <slot name="errors" />

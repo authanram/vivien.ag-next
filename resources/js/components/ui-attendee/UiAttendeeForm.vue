@@ -103,14 +103,16 @@
                         v-bind:value="model.attendance"
                         v-on:input="model.attendance = $event"
                     />
-                    <div class="mb-1 md:mb-0 md:mt-2">
-                        {{ price * model.attendance }} &euro;
-                        <span
-                            v-if="price * model.attendance !== event.price"
-                            class="inline-block italic ml-1 text-gray-500 text-xs"
-                        >
-                            gesamt
-                        </span>
+                    <div class="flex items-center self-stretch">
+                        <div>
+                            {{ price * model.attendance }} &euro;
+                            <span
+                                v-if="price * model.attendance !== event.price"
+                                class="inline-block italic ml-1 text-gray-500 text-xs"
+                            >
+                                gesamt
+                            </span>
+                        </div>
                     </div>
                 </form-group>
                 <form-group
@@ -226,11 +228,21 @@
             },
 
             registerKeyupEvents (): void {
+                document.addEventListener('keyup', this.handleEnter)
                 document.addEventListener('keyup', this.handleEscape)
             },
 
             unregisterKeyupEvents (): void {
+                document.removeEventListener('keyup', this.handleEnter)
                 document.removeEventListener('keyup', this.handleEscape)
+            },
+
+            handleEnter (e): void {
+                if (e.code !== 'Enter') {
+                    return
+                }
+
+                this.submit()
             },
 
             handleEscape (e): void {
