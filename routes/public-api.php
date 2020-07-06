@@ -8,7 +8,7 @@ Route::get('public-api/activities/recent', 'Api\\ActivitiesController@recent')
 Route::get('public-api/cookie-consent/fetch', 'Api\\CookieConsentController@fetch')
     ->name('cookie-consent.fetch');
 
-Route::get('public-api/events/fetch/{limit?}', 'Api\\EventsController@fetch')
+Route::get('public-api/events/fetch/{filter?}/{value?}', 'Api\\EventsController@fetch')
     ->name('events.fetch');
 
 Route::get('public-api/event-locations/fetch', 'Api\\EventLocationsController@fetch')

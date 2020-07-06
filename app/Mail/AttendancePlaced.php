@@ -20,25 +20,34 @@ class AttendancePlaced extends Mailable
 
     final public function build(): Mailable
     {
-        $origin = 'onlinepost@vivien.ag';
+        $sender = config('env.MAIL_SENDER_ADDRESS');
 
         $attendee = $this->attendee;
+
         $event = $this->attendee->event;
 
+        $accent = '#' . collect(['d61f69', '047481', '9061f9', '057a55', '1c64f2', 'd03801'])->random(1)->first();
+
         $name = $event->eventType->getAttribute('name');
+
         $dateFrom = $event->getAttribute('date_from')->format('d.m.Y, H:i');
+
         $dateTo = $event->getAttribute('date_to')->format('d.m.Y, H:i');
 
-        return $this->to('authanram+vivienonlinepost@gmail.com')
+        return $this->from($sender, config('env.MAIL_SENDER'))
 
-            ->from($origin)
+            ->to($attendee->email, "$attendee->firstname $attendee->surname")
 
-            ->replyTo($origin)
+            ->bcc(config('env.MAIL_RECIPIENT'))
+
+            ->bcc(config('env.MAIL_RECIPIENT_BCC'))
+
+            ->replyTo($sender)
 
             ->subject("Du bist dabei! 🎉 ... $name ($dateFrom Uhr)")
 
             ->markdown('emails.attendance-placed')
 
-            ->with(compact('name', 'dateFrom', 'dateTo', 'attendee', 'event'));
+            ->with(compact('accent', 'name', 'dateFrom', 'dateTo', 'attendee', 'event'));
     }
 }

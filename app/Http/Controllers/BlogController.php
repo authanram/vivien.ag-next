@@ -11,7 +11,7 @@ class BlogController extends Controller
     {
         $args = \func_get_args();
 
-        $routeId = $args[0];
+        $routeId = $args[0] ?? null;
 
         $slug = null;
 

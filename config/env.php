@@ -10,6 +10,11 @@ return [
 
     'HEAD_ROBOTS_CONTENT' => env('HEAD_ROBOTS_CONTENT', 'noindex'),
 
+    'MAIL_RECIPIENT' => env('MAIL_RECIPIENT'),
+    'MAIL_RECIPIENT_BCC' => env('MAIL_RECIPIENT_BCC'),
+    'MAIL_SENDER' => env('MAIL_SENDER'),
+    'MAIL_SENDER_ADDRESS' => env('MAIL_SENDER_ADDRESS'),
+
     'GTM_ID' => env('GTM_ID'),
     'ANALYTICS_VIEW_ID' => env('ANALYTICS_VIEW_ID'),
 

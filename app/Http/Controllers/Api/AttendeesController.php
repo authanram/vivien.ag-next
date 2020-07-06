@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Attendee;
 use App\Event;
 use App\Http\Requests\AttendeeCreateRequest;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class AttendeesController extends ApiController
@@ -17,7 +18,7 @@ class AttendeesController extends ApiController
                 $event->getAttribute('reserved_seats') + $request->input('attendance')
             )->save();
 
-            Attendee::create([
+            $attendee = Attendee::create([
                 'event_id' => $event->getAttribute('id'),
                 'uuid' => Str::uuid()->toString(),
                 'hash' => Str::uuid()->toString(),
@@ -31,6 +32,8 @@ class AttendeesController extends ApiController
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->userAgent(),
             ]);
+
+            Mail::send(new \App\Mail\AttendancePlaced($attendee));
 
             return true;
 

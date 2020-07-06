@@ -20,15 +20,15 @@ class Controller extends BaseController
         $stateService->merge(data()->getImageCoords());
     }
 
-    final public function defaultData(int $routeId): array
+    final public function defaultData(?int $routeId): array
     {
-        $route = static::findRoute($routeId);
+        $route = $routeId ? static::findRoute($routeId) : null;
 
         return [
 
-            'contents' => $route->getAttribute('contents'),
+            'contents' => optional($route)->getAttribute('contents'),
 
-            'title' => $route->getAttribute('title'),
+            'title' => optional($route)->getAttribute('title'),
 
         ];
     }

@@ -11,11 +11,15 @@ class EventsController extends ApiController
 {
     use GetsCollections;
 
-    final public function fetch(Request $request): array
+    final public function fetch(Request $request, string $filter = null, int $value = null): array
     {
         $compact = static::makeCompact($request);
 
-        $events = static::getUpcomingEvents($request->query('limit'));
+        $limit = $filter === 'limit' ? $value : null;
+
+        $id = $filter === 'id' ? $value : null;
+
+        $events = $id ? Event::where('id', $id)->get() : static::getUpcomingEvents($limit);
 
         $eventLocations = static::isCompact($compact, 'eventLocations')
             ? static::getEventLocationsByEvents($events)

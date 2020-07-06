@@ -18,7 +18,7 @@
                 <ui-tag
                     :key="`tag-${index}`"
                     :color="tag.color.color"
-                    :href="`/seminare/?filter[tags]=${encodeURIComponent(tag.name.de)}`"
+                    :href="`/seminare/#?tags=${encodeURIComponent(tag.name.de)}`"
                     :text="tag.name.de"
                     class="mb-2"
                 />
