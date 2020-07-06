@@ -7,7 +7,7 @@
                         <div class="flex justify-center">
                             <div
                                 v-if="!$store.state.entities.overlays._loading"
-                                class="bg-white border border-gray-100 md:my-10 md:max-w-lg md:p-6 md:w-full pb-4 pointer-events-auto pt-5 px-4 rounded-lg shadow-lg"
+                                class="bg-white border border-gray-100 md:my-10 md:max-w-lg md:p-6 md:pt-5 md:w-full pb-4 pointer-events-auto pt-2 px-4 rounded-lg shadow-lg"
                             >
                                 <div
                                     aria-labelledby="modal-headline"
