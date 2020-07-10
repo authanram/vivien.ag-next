@@ -145,7 +145,7 @@ class Event extends Model
 
     final public function getCreatedAtReadableAttribute(): string
     {
-        return carbon($this->attributes['created_at'])->format(dateFormat());
+        return carbon($this->created_at)->format(dateFormat());
     }
 
     final public function getDateFromObjectAttribute(): \stdClass
