@@ -45,8 +45,6 @@
 
     </x-container>
 
-    <div class="h-8"></div>
-
     @include('layouts.partials.made-with-love')
 
 @endsection

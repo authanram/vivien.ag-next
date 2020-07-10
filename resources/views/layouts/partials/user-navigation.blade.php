@@ -1,4 +1,3 @@
-
 @auth
     <a
         class="inline-block pr-1 text-{{ accent() }}-600 hover:text-{{ accent() }}-500 hover:underline"
