@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\DuplicateEvent;
 use App\Nova\Filters\EventsTimeFilter;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
@@ -16,7 +17,10 @@ use Spatie\TagsField\Tags;
 
 class Event extends Resource
 {
-    protected static array $orderBy = ['date_from' => 'asc'];
+    protected static array $orderBy = [
+        'published' => 'asc',
+        'date_from' => 'asc',
+    ];
 
     public static $group = 'Events';
 
@@ -41,7 +45,7 @@ class Event extends Resource
         'eventLocation',
     ];
 
-    final public function fields(Request $request): array
+    final public function fields(Request $request, bool $published = true): array
     {
         return [
             ID::make()->hideFromIndex()
@@ -104,7 +108,7 @@ class Event extends Resource
                 ->hideFromIndex()
             ,
             Boolean::make(__('Published'), 'published')
-                ->default(1)
+                ->default($published)
                 ->rules('boolean')
                 ->sortable()
                 ->trueValue(true)
@@ -131,5 +135,12 @@ class Event extends Resource
             ->getAttribute('eventType')
 
             ->getAttribute('name');
+    }
+
+    final public function actions(Request $request): array
+    {
+        return [
+            DuplicateEvent::make(),
+        ];
     }
 }
