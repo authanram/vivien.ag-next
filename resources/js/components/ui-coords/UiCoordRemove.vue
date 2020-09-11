@@ -1,8 +1,6 @@
 <template>
-    <ui-modal>
-        <div class="bg-white border border-gray-100 p-4 rounded shadow-lg">
-            remove
-        </div>
+    <ui-modal :callback-cancel="() => dismiss">
+        remove
     </ui-modal>
 </template>
 
@@ -12,8 +10,15 @@
             dataId: {required: true, type: Number},
         },
 
-        created (): void {
+        mounted (): void {
+            // console.log('remove')
+        },
 
+        methods: {
+            dismiss (): void {
+                this.$event.$emit('overlay.destroy')
+                this.$emit('dismissed')
+            },
         },
     }
 </script>

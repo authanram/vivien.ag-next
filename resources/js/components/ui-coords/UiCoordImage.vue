@@ -6,7 +6,7 @@
         >
             {{ image.name }} #{{ image.id }}
             <span
-                v-if="auth && false"
+                v-if="auth"
                 class="block mt-2 mb-1"
             >
                 <button

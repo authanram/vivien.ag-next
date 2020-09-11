@@ -9,6 +9,7 @@ import UiMenu from '@/components/ui-menu/UiMenu.vue'
 import UiPlaceholder from '@/components/ui-placeholder/UiPlaceholder.vue'
 import UiPlaceholderHeading from '@/components/ui-placeholder/UiPlaceholderHeading.vue'
 import UiPlaceholderTags from '@/components/ui-placeholder/UiPlaceholderTags.vue'
+import UiSlider from '@/components/UiSlider.vue'
 import UiTag from '@/components/UiTag.vue'
 import UiTooltip from '@/components/UiTooltip.vue'
 
@@ -21,6 +22,7 @@ Vue.component('ui-menu', UiMenu)
 Vue.component('ui-placeholder', UiPlaceholder)
 Vue.component('ui-placeholder-heading', UiPlaceholderHeading)
 Vue.component('ui-placeholder-tags', UiPlaceholderTags)
+Vue.component('ui-slider', UiSlider)
 Vue.component('ui-tag', UiTag)
 Vue.component('ui-tooltip', UiTooltip)
 

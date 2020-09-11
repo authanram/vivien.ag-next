@@ -26,12 +26,14 @@
                 @reset="reset()"
             />
             <ui-coord-editor
-                v-if="editValue"
+                v-if="editValue !== null"
                 :data-coord="editValue"
+                @dismissed="() => editIndex = null"
             />
             <ui-coord-remove
-                v-if="removeValue"
+                v-if="removeValue !== null"
                 :data-id="removeValue"
+                @dismissed="() => removeIndex = null"
             />
         </transition>
     </div>
