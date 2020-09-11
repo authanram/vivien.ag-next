@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 /**
  * App\Attendee
@@ -70,6 +71,12 @@ class Attendee extends Model
         'message',
         'ip_address',
         'user_agent',
+    ];
+
+    protected $attributes = [
+        'hash' => 'local',
+        'ip_address' => '127.0.0.1',
+        'user_agent' => 'local',
     ];
 
     final public function event(): BelongsTo
