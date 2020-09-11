@@ -1,4 +1,4 @@
-* Fix title padding in case of no caption
+* Fixed title padding in case of no caption
 <div class="lg:flex">
     <img src="/images/changelog/2020-07-03-fix-title-padding-1.png" alt="Fix title padding #1" class="mb-2 mr-2">
     <img src="/images/changelog/2020-07-03-fix-title-padding-2.png" alt="Fix title padding #2" class="mb-2 mr-2">

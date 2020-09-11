@@ -7,6 +7,6 @@
 * Changed the orientation of the modal window <small>to "align-bottom" for mobile devices.</small>
 * Changed the orientation of the modal actions <small>to "justify-end" for mobile devices.</small>
 * Changed the sequence of the modal actions <small>for mobile devices.</small>
-* Fix price position <small>for mobile devices.</small>
+* Fixed price position <small>for mobile devices.</small>
 ![Modal orientation](/images/changelog/2020-07-05-mobile-button-orientation.png)
 <small>(Mobile View)</small>
