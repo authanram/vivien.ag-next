@@ -8,3 +8,5 @@
 * Added ability to manage contents via markdown
 ![Markdown Content](/images/changelog/2020-09-11-markdown-contents.png)
 <small>(E.g. [**/lerntraining**](/lerntraining#/))</small>
+
+* Fixed active menu item not being marked as active

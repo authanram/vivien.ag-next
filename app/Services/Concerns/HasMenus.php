@@ -37,6 +37,7 @@ trait HasMenus
                         'id',
                         'path',
                         'title',
+                        'route',
                         'published',
                     ]);
                 },
