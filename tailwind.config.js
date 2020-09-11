@@ -2,6 +2,10 @@ let _ = require('lodash')
 let flattenColorPalette = require('tailwindcss/lib/util/flattenColorPalette').default
 
 module.exports = {
+    future: {
+        purgeLayersByDefault: true,
+        removeDeprecatedGapUtilities: true,
+    },
 
     purge: {
         content: [
