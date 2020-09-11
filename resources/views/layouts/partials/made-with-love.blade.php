@@ -32,7 +32,7 @@
                         <span
                             class="text-red-500"
                             style="font-size:.65rem"
-                        >❤</span>
+                        >❤</span>&nbsp;
 
                     </ui-tooltip>
 
