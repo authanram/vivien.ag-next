@@ -3,6 +3,7 @@
 <meta name="robots" content="{{ config('env.HEAD_ROBOTS_CONTENT') }}">
 <title>{{ ($title ?? null) ? "$title - " : '' }}{{ config('app.name') }}</title>
 @php($font = 'https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;900&display=swap')
+<link rel="preconnect" href="https://fonts.gstatic.com">
 <link rel="preload" href="{{ $font }}" as="style">
 <link rel="preload" href="{{ asset('/css/app.css') }}" as="style">
 <link rel="preload" href="{{ asset('/js/manifest.js') }}" as="script">
