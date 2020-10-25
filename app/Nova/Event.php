@@ -82,9 +82,9 @@ class Event extends Resource
                 ->min(1)
                 ->help('Maximum attendees, <strong>excluding staff</strong>.')
             ,
-            Number::make(__('Reserved'), 'reserved_seats')
+            Number::make(__('Reserved Seats'), 'reserved_seats')
                 ->withMeta(['value' => $this->model()->getAttribute('reserved_seats') ?? 0])
-                ->rules('required', 'numeric')
+                ->rules('required', 'numeric', 'min:0')
                 ->default(0)
                 ->sortable()
             ,
