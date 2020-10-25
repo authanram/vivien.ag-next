@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
+use App\Models\Post;
 use Illuminate\View\View;
 
 class BlogController extends Controller
@@ -33,6 +33,7 @@ class BlogController extends Controller
 
         }
 
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
         return view('blog', $this->defaultData($routeId), [
             'posts' => $builder->get(),
             'slug' => $slug,
@@ -43,6 +44,7 @@ class BlogController extends Controller
     {
         $posts = Post::orderBy('created_at', 'desc')->get();
 
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
         return view('blog', $this->defaultData($routeId), compact('posts'));
     }
 }

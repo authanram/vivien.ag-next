@@ -21,7 +21,7 @@ class StaticAttribute extends Resource
 
     public static $group = 'Contents';
 
-    public static $model = \App\StaticAttribute::class;
+    public static $model = \App\Models\StaticAttribute::class;
 
     public static $title = 'name';
 

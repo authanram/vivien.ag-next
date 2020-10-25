@@ -1,12 +1,12 @@
 <?php
 
-use App\User;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
 
 class UsersTableSeeder extends Seeder
 {
-    public function run()
+    final public function run(): void
     {
         $path = storage_path('local-users.php');
 
@@ -14,6 +14,10 @@ class UsersTableSeeder extends Seeder
             return;
         }
 
+        /**
+         * @noinspection PhpIncludeInspection
+         * @noinspection UsingInclusionReturnValueInspection
+         */
         $users = require($path);
 
         foreach ($users as $user) {

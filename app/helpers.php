@@ -1,6 +1,6 @@
 <?php
 
-use App\Content;
+use App\Models\Content;
 use App\Contracts\DataServiceContract;
 use App\Contracts\StaticAttributesServiceContract;
 use App\Resolvers\ClassAttributeResolver;
@@ -36,13 +36,15 @@ if (!function_exists('classAttribute')) {
 }
 
 if (!function_exists('content')) {
-    function content(string $uuid, bool $markdown = false, array $replaceMap = []): \stdClass {
+    function content(string $uuid, bool $markdown = false, array $replaceMap = []): stdClass {
         try {
+            /** @noinspection PhpStaticAsDynamicMethodCallInspection */
             $content = Content::where('uuid', $uuid)->firstOrFail();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             abort(500, $e->getMessage());
         }
 
+        /** @noinspection PhpUndefinedVariableInspection */
         $body = $content->getAttribute('body');
 
         if ($markdown) {
@@ -51,7 +53,7 @@ if (!function_exists('content')) {
             $replace = ['#accent#' => accent(), '#avatar#' => asset('images/sybille-seuffer.jpg')];
 
             foreach ($replace as $key => $value) {
-                $body = \str_replace($key, $value, $body);
+                $body = str_replace($key, $value, $body);
             }
         }
 
@@ -66,7 +68,7 @@ if (!function_exists('parsedown')) {
     function parsedown(string $text, array $replaceMap = []): string {
         try {
             $text = app()->make(ParsedownService::class)->parse($text);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             abort(505, $e->getMessage());
         }
 
@@ -91,7 +93,7 @@ if (!function_exists('parsedown')) {
         );
 
         foreach ($replace as $key => $value) {
-            $text = \str_replace($key, $value, $text);
+            $text = str_replace($key, $value, $text);
         }
 
         return '<div class="x-parsedown">'.$text.'</div>';
@@ -100,7 +102,7 @@ if (!function_exists('parsedown')) {
 
 if (!function_exists('readTime')) {
     function readTime(string $subject): string {
-        $readTime = round(\str_word_count($subject) / 200);
+        $readTime = round(str_word_count($subject)/200);
         return $readTime > 0 ? "$readTime Min. Lesedauer" : 'Lesedauer weniger 1 Min.';
     }
 }
@@ -119,14 +121,14 @@ if (!function_exists('truncateWords')) {
             return $subject;
         }
 
-        return implode(' ', \array_slice($words, 0, 50)) . " $ending ";
+        return implode(' ', array_slice($words, 0, 50)) . " $ending ";
     }
 }
 
 if (!function_exists('cookieConsent')) {
     function cookieConsent(string $key = null) {
         try {
-            $cookie = \json_decode(Cookie::get(config('cookie-consent.cookie_name')), true, 512, JSON_THROW_ON_ERROR);
+            $cookie = json_decode(Cookie::get(config('cookie-consent.cookie_name')), true, 512, JSON_THROW_ON_ERROR);
         } catch (JsonException $e) {
             Log::alert($e->getMessage());
             return $key ? false : [];

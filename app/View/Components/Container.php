@@ -13,6 +13,7 @@ class Container extends Component
 
     final public function render(): View
     {
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
         return view('components.container');
     }
 }

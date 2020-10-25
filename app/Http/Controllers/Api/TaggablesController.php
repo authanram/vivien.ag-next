@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Taggable;
+use App\Models\Taggable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;

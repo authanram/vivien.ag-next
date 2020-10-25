@@ -9,7 +9,7 @@ class Action extends ActionResource
 {
     public static $group = 'System';
 
-    public static function availableForNavigation(Request $request)
+    public static function availableForNavigation(Request $request): bool
     {
         return true;
     }

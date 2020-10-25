@@ -45,17 +45,12 @@ class AppServiceProvider extends ServiceProvider
         });
     }
 
+    /** @noinspection ClassConstantCanBeUsedInspection */
     private function registerServiceProviders(): void
     {
         if ($this->app->environment('local')) {
-            if (config('env.GENERATOR_ENABLED')
-                && \class_exists('\Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider')
-            ) {
-                $this->app->register(\Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class);
-            }
-
             if (\class_exists('\Laracasts\Generators\GeneratorsServiceProvider')) {
-                $this->app->register(\Laracasts\Generators\GeneratorsServiceProvider::class);
+                $this->app->register('\Laracasts\Generators\GeneratorsServiceProvider');
             }
 
             $this->app->register(SeedServiceProvider::class);

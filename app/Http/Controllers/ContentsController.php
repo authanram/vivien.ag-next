@@ -8,6 +8,7 @@ class ContentsController extends Controller
 {
     final public function index(int $routeId): View
     {
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
         return view('contents', $this->defaultData($routeId));
     }
 }

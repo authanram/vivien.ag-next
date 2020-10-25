@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Color;
-use App\User;
+use App\Models\Color;
+use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ColorPolicy

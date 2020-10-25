@@ -1,8 +1,8 @@
-<?php
+<?php /** @noinspection PhpStaticAsDynamicMethodCallInspection */
 
 namespace App\Http\Controllers;
 
-use App\Event;
+use App\Models\Event;
 use Illuminate\View\View;
 
 class WelcomeController extends Controller
@@ -19,6 +19,7 @@ class WelcomeController extends Controller
             ->orderBy('date_from')
             ->get();
 
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
         return view('welcome', $this->defaultData($routeId), compact('events'));
     }
 }

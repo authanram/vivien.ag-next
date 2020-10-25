@@ -10,7 +10,7 @@ use Laravel\Nova\Fields\Text;
 
 class Quote extends Resource
 {
-    public static $model = \App\Quote::class;
+    public static $model = \App\Models\Quote::class;
 
     public static $title = 'body';
 

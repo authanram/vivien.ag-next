@@ -8,6 +8,7 @@ class BooksController extends Controller
 {
     final public function index(int $routeId): View
     {
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
         return view('books', $this->defaultData($routeId));
     }
 }

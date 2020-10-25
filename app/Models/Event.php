@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Carbon\Carbon;
 use Carbon\CarbonInterface;
@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Tags\HasTags;
 
 /**
- * App\Event
+ * App\Models\Event
  *
  * @property int $id
  * @property int $creator_id
@@ -26,64 +26,62 @@ use Spatie\Tags\HasTags;
  * @property int|null $reserved_seats
  * @property int|null $price
  * @property string|null $price_note
- * @property string $catering
+ * @property string|null $catering
  * @property string|null $lead
  * @property bool $published
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property-read \App\Activity|null $activity
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Attendee[] $attendees
+ * @property-read \App\Models\Activity|null $activity
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Attendee[] $attendees
  * @property-read int|null $attendees_count
- * @property-read \App\EventLocation|null $eventLocation
- * @property-read \App\EventType|null $eventType
+ * @property-read \App\Models\EventLocation|null $eventLocation
+ * @property-read \App\Models\EventType|null $eventType
  * @property-read string $avatar_path
  * @property-read string $created_at_readable
  * @property-read string $date_duration
  * @property-read int $date_duration_days
  * @property-read \stdClass $date_from_object
+ * @property-read string $date_from_readable
  * @property-read \stdClass $date_to_object
+ * @property-read string $entity_type
  * @property \Illuminate\Database\Eloquent\Collection|\Spatie\Tags\Tag[] $tags
  * @property-read int|null $tags_count
- * @property-read \App\User $user
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event date($dates)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event newQuery()
- * @method static \Illuminate\Database\Query\Builder|\App\Event onlyTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event published()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event startsAfter(\Carbon\CarbonInterface $date = null)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event startsBefore(\Carbon\CarbonInterface $date)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event upcoming()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereCatering($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereCreatorId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereDateFrom($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereDateTo($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereEventLocationId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereEventTypeId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereLead($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereMaximumAttendees($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event wherePrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event wherePriceNote($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event wherePublished($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereReservedSeats($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event whereUuid($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event withAllTags($tags, $type = null)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event withAllTagsOfAnyType($tags)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event withAnyTags($tags, $type = null)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event withAnyTagsOfAnyType($tags)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event withCategories($categories)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Event withTags($tags)
- * @method static \Illuminate\Database\Query\Builder|\App\Event withTrashed()
- * @method static \Illuminate\Database\Query\Builder|\App\Event withoutTrashed()
+ * @property-read \App\Models\User $user
+ * @method static Builder|Event date($dates)
+ * @method static Builder|Event newModelQuery()
+ * @method static Builder|Event newQuery()
+ * @method static \Illuminate\Database\Query\Builder|Event onlyTrashed()
+ * @method static Builder|Event published()
+ * @method static Builder|Event query()
+ * @method static Builder|Event startsAfter(\Carbon\CarbonInterface $date = null)
+ * @method static Builder|Event startsBefore(\Carbon\CarbonInterface $date)
+ * @method static Builder|Event upcoming()
+ * @method static Builder|Event whereCatering($value)
+ * @method static Builder|Event whereCreatedAt($value)
+ * @method static Builder|Event whereCreatorId($value)
+ * @method static Builder|Event whereDateFrom($value)
+ * @method static Builder|Event whereDateTo($value)
+ * @method static Builder|Event whereDeletedAt($value)
+ * @method static Builder|Event whereDescription($value)
+ * @method static Builder|Event whereEventLocationId($value)
+ * @method static Builder|Event whereEventTypeId($value)
+ * @method static Builder|Event whereId($value)
+ * @method static Builder|Event whereLead($value)
+ * @method static Builder|Event whereMaximumAttendees($value)
+ * @method static Builder|Event wherePrice($value)
+ * @method static Builder|Event wherePriceNote($value)
+ * @method static Builder|Event wherePublished($value)
+ * @method static Builder|Event whereReservedSeats($value)
+ * @method static Builder|Event whereUpdatedAt($value)
+ * @method static Builder|Event whereUuid($value)
+ * @method static Builder|Event withAllTags($tags, $type = null)
+ * @method static Builder|Event withAllTagsOfAnyType($tags)
+ * @method static Builder|Event withAnyTags($tags, $type = null)
+ * @method static Builder|Event withAnyTagsOfAnyType($tags)
+ * @method static \Illuminate\Database\Query\Builder|Event withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Event withoutTrashed()
  * @mixin \Eloquent
- * @property-read string $date_from_readable
- * @property-read string $entity_type
  */
 class Event extends Model
 {

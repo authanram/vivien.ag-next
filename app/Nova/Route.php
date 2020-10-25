@@ -13,7 +13,7 @@ class Route extends Resource
 {
     public static $group = 'Routing';
 
-    public static $model = \App\Route::class;
+    public static $model = \App\Models\Route::class;
 
     public static $title = 'title';
 

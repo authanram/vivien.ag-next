@@ -24,7 +24,7 @@ class Event extends Resource
 
     public static $group = 'Events';
 
-    public static $model = \App\Event::class;
+    public static $model = \App\Models\Event::class;
 
     public static $search = [
         'id',

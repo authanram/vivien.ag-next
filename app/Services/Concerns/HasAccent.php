@@ -2,7 +2,7 @@
 
 namespace App\Services\Concerns;
 
-use App\Route;
+use App\Models\Route;
 use Illuminate\Http\Request;
 
 trait HasAccent

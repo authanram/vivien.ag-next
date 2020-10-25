@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Str;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -12,7 +11,7 @@ class RouteServiceProvider extends ServiceProvider
 
     public const HOME = '/home';
 
-    public function map(): void
+    final public function map(): void
     {
         $this->mapPublicApiRoutes();
 
@@ -21,14 +20,14 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapWebRoutes();
     }
 
-    protected function mapPublicApiRoutes(): void
+    final protected function mapPublicApiRoutes(): void
     {
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/public-api.php'));
     }
 
-    protected function mapApiRoutes(): void
+    final protected function mapApiRoutes(): void
     {
         Route::prefix('api')
             ->middleware('api')
@@ -36,7 +35,7 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/api.php'));
     }
 
-    protected function mapWebRoutes(): void
+    final protected function mapWebRoutes(): void
     {
         Route::middleware('web')
             ->namespace($this->namespace)

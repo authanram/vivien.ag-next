@@ -7,9 +7,10 @@ use Illuminate\Console\Command;
 class MakeSeeders extends Command
 {
     protected $signature = 'vivien:make:seeders';
+
     protected $description = 'Create table seeders';
 
-    public function handle()
+    final public function handle(): int
     {
         $this->line('');
         $this->line('Making Seeders...');
@@ -40,5 +41,7 @@ class MakeSeeders extends Command
         ]);
 
         $this->info(\Artisan::output());
+
+        return 0;
     }
 }

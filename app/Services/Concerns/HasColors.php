@@ -2,7 +2,7 @@
 
 namespace App\Services\Concerns;
 
-use App\Color;
+use App\Models\Color;
 use Illuminate\Database\Eloquent\Collection;
 
 trait HasColors
@@ -12,9 +12,7 @@ trait HasColors
     final public function getColors(array $with = []): Collection
     {
         if (!$this->colors) {
-            $this->colors = Color::with($with)
-
-                ->get(['id', 'color']);
+            $this->colors = Color::with($with)->get(['id', 'color']);
         }
 
         return $this->colors;

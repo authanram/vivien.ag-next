@@ -19,7 +19,7 @@ try {
 
 }
 
-/** @var \App\Route $route */
+/** @var \App\Models\Route $route */
 foreach ($routes as $route) {
 
     Route::get($route->getAttribute('path'), $route->getAttribute('action'))

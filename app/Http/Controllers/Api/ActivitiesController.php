@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Event;
-use App\Model;
-use App\Post;
+use App\Models\Event;
+use App\Models\Model;
+use App\Models\Post;
 use Carbon\Carbon;
 
 class ActivitiesController extends ApiController

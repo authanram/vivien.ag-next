@@ -21,7 +21,7 @@ class MenuItem extends Resource
 
     public static $group = 'Routing';
 
-    public static $model = \App\MenuItem::class;
+    public static $model = \App\Models\MenuItem::class;
 
     public static $title = 'label';
 

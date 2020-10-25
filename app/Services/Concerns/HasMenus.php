@@ -2,7 +2,7 @@
 
 namespace App\Services\Concerns;
 
-use App\Menu;
+use App\Models\Menu;
 use Illuminate\Database\Eloquent\Collection;
 
 trait HasMenus

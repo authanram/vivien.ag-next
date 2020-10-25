@@ -12,7 +12,7 @@ class Session extends Resource
 {
     public static $group = 'System';
 
-    public static $model = \App\Session::class;
+    public static $model = \App\Models\Session::class;
 
     public static $title = 'id';
 

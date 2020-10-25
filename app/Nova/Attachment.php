@@ -12,7 +12,7 @@ class Attachment extends Resource
 {
     public static $group = 'System';
 
-    public static $model = \App\Attachment::class;
+    public static $model = \App\Models\Attachment::class;
 
     public static $title = 'name';
 

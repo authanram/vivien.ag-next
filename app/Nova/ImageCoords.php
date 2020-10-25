@@ -15,7 +15,7 @@ class ImageCoords extends Resource
 
     public static $group = 'System';
 
-    public static $model = \App\ImageCoords::class;
+    public static $model = \App\Models\ImageCoords::class;
 
     public static $title = 'id';
 

@@ -19,7 +19,7 @@ class Tag extends Resource
 
     public static $group = 'Contents';
 
-    public static $model = \App\Tag::class;
+    public static $model = \App\Models\Tag::class;
 
     public static $title = 'name';
 

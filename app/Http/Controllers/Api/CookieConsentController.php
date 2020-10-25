@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\CookieConsentCookie;
-use App\CookieConsentSettings;
+use App\Models\CookieConsentCookie;
+use App\Models\CookieConsentSettings;
 use App\Http\Requests\CookieConsentUpdatePreferencesRequest;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
@@ -42,13 +42,15 @@ class CookieConsentController extends ApiController
 
             ]);
 
-            return true;
+        } catch (\Exception $exception) {
 
-        } catch (\Exception $e) {
+            \report($exception);
 
-            abort(500, $e->getMessage());
+            abort(500, $exception->getMessage());
 
         }
+
+        return true;
     }
 
     private static function getCookieColumns(): array

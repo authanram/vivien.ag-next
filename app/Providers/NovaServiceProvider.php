@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Policies\PermissionPolicy;
-use App\Policies\RolePolicy;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Nova;
@@ -22,7 +20,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 }
 
                 $collection
-                    ->add(static::makePermissionTool())
+                    ->add(\Vyuldashev\NovaPermission\NovaPermissionTool::make())
                     ->add(new \KABBOUCHI\LogsTool\LogsTool())
                     ->add(new \Sbine\RouteViewer\RouteViewer)
                     ->add(new \Spatie\BackupTool\BackupTool());
@@ -81,12 +79,5 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     final protected function dashboards(): array
     {
         return [];
-    }
-
-    private static function makePermissionTool(): \Vyuldashev\NovaPermission\NovaPermissionTool
-    {
-        return \Vyuldashev\NovaPermission\NovaPermissionTool::make()
-            ->rolePolicy(RolePolicy::class)
-            ->permissionPolicy(PermissionPolicy::class);
     }
 }

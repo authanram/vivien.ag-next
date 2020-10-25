@@ -19,7 +19,7 @@ class Image extends Resource
 
     public static $group = 'Contents';
 
-    public static $model = \App\Image::class;
+    public static $model = \App\Models\Image::class;
 
     public static $title = 'name';
 

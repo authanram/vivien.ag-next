@@ -17,9 +17,11 @@ class QuoteController extends ApiController
 
             return collect($quotes[$index]);
 
-        } catch (\Exception $e) {
+        } catch (\Exception $exception) {
 
-            abort(500, $e->getMessage());
+            \report($exception);
+
+            abort(500, $exception->getMessage());
 
         }
     }

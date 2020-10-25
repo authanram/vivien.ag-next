@@ -10,6 +10,7 @@ class ApiController extends Controller
 {
     protected DataServiceContract $dataService;
 
+    /** @noinspection MagicMethodsValidityInspection */
     public function __construct(DataServiceContract $dataService)
     {
         $this->dataService = $dataService;

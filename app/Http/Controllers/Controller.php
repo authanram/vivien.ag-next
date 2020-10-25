@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Route;
+use App\Models\Route;
 use App\Services\StateService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -33,6 +33,7 @@ class Controller extends BaseController
         ];
     }
 
+    /** @noinspection MissingReturnTypeInspection */
     final public static function findRoute(int $routeId)
     {
         return Route::with('contents')

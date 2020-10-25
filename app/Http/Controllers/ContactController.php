@@ -8,6 +8,7 @@ class ContactController extends Controller
 {
     final public function index(int $routeId): View
     {
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
         return view('contact', $this->defaultData($routeId));
     }
 }

@@ -1,8 +1,8 @@
-<?php
+<?php /** @noinspection MissingReturnTypeInspection */
 
 namespace App\Services;
 
-use App\StaticAttribute as Model;
+use App\Models\StaticAttribute as Model;
 use App\Contracts\StaticAttributesServiceContract;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -10,6 +10,7 @@ final class StaticAttributesService implements StaticAttributesServiceContract
 {
     protected Collection $attributes;
 
+    /** @noinspection MissingParameterTypeDeclarationInspection */
     public function attribute(string $slug, $default = null)
     {
         try {

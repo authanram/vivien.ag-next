@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Event;
+use App\Models\Event;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;

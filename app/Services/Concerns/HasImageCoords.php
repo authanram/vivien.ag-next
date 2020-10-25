@@ -2,7 +2,7 @@
 
 namespace App\Services\Concerns;
 
-use App\ImageCoords;
+use App\Models\ImageCoords;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -14,13 +14,19 @@ trait HasImageCoords
     {
         if (!$this->imageCoords) {
 
-            $fn = fn (BelongsTo $query) => $query->select(static::getImageColumns());
+            $this->imageCoords = ImageCoords::with([
 
-            $this->imageCoords = ImageCoords::with(['image' => $fn])
+                'image' => static fn (BelongsTo $query) => $query->select(static::getImageColumns()),
 
-                ->orderBy('order_column')
+            ])->orderBy('order_column')->get([
 
-                ->get(['id', 'coords', 'image_id']);
+                'id',
+
+                'coords',
+
+                'image_id',
+
+            ]);
 
         }
 

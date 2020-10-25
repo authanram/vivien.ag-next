@@ -14,7 +14,7 @@ class EventLocation extends Resource
 
     public static $group = 'Events';
 
-    public static $model = \App\EventLocation::class;
+    public static $model = \App\Models\EventLocation::class;
 
     public static $title = 'name';
 

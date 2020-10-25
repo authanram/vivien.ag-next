@@ -15,7 +15,7 @@ class Post extends Resource
 {
     protected static array $orderBy = ['created_at' => 'desc'];
 
-    public static $model = \App\Post::class;
+    public static $model = \App\Models\Post::class;
 
     public static $title = 'id';
 

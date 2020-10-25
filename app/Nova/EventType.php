@@ -15,7 +15,7 @@ class EventType extends Resource
 
     public static $group = 'Events';
 
-    public static $model = \App\EventType::class;
+    public static $model = \App\Models\EventType::class;
 
     public static $title = 'name';
 

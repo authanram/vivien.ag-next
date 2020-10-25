@@ -16,7 +16,7 @@ class Content extends Resource
 
     protected static array $orderBy = ['slug' => 'asc'];
 
-    public static $model = \App\Content::class;
+    public static $model = \App\Models\Content::class;
 
     public static $title = 'slug';
 

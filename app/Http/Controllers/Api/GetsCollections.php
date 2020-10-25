@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\EventLocation;
-use App\EventType;
-use App\Tag;
-use App\Taggable;
+use App\Models\EventLocation;
+use App\Models\EventType;
+use App\Models\Tag;
+use App\Models\Taggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;

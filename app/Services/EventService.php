@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Contracts\EventServiceContract;
-use App\Event;
+use App\Models\Event;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 

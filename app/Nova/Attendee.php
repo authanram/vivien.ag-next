@@ -12,7 +12,7 @@ class Attendee extends Resource
 {
     public static $group = 'Events';
 
-    public static $model = \App\Attendee::class;
+    public static $model = \App\Models\Attendee::class;
 
     public static $title = 'id';
 
