@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Policies\PermissionPolicy;
 use App\Policies\RolePolicy;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
@@ -12,24 +13,33 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 {
     final public function tools(): array
     {
-        $tools = [
-            static::makePermissionTool(),
-            new \KABBOUCHI\LogsTool\LogsTool(),
-            new \Sbine\RouteViewer\RouteViewer,
-            new \Spatie\BackupTool\BackupTool(),
-        ];
+        $isLocal = $this->app->environment('local');
 
-        if ($this->app->environment('local')) {
-            $tools = array_merge($tools, [
-                new \Spatie\TailTool\TailTool(),
-            ]);
+        return \collect()
+            ->pipe(static function (Collection $collection) use ($isLocal) {
+                if (\request()->user()->isAdministrator() === false) {
+                    return $collection;
+                }
 
-            if (config('env.GENERATOR_ENABLED')) {
-                $tools[] = new \Cloudstudio\ResourceGenerator\ResourceGenerator();
-            }
-        }
+                $collection
+                    ->add(static::makePermissionTool())
+                    ->add(new \KABBOUCHI\LogsTool\LogsTool())
+                    ->add(new \Sbine\RouteViewer\RouteViewer)
+                    ->add(new \Spatie\BackupTool\BackupTool());
 
-        return $tools;
+                if ($isLocal === false) {
+                    return $collection;
+                }
+
+                $collection->add(new \Spatie\TailTool\TailTool());
+
+                if (\config('env.GENERATOR_ENABLED')) {
+                    $collection->add(new \Cloudstudio\ResourceGenerator\ResourceGenerator());
+                }
+
+                return $collection;
+            })
+            ->toArray();
     }
 
     final public function register(): void
@@ -54,19 +64,24 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
     final protected function cards(): array
     {
-        return [
-            new \GijsG\SystemResources\SystemResources('ram'),
-            new \GijsG\SystemResources\SystemResources('cpu'),
+        return \collect([
             new \App\Nova\Cards\PageViewsMetric,
             new \App\Nova\Cards\VisitorsMetric,
             new \Tightenco\NovaGoogleAnalytics\MostVisitedPagesCard,
-        ];
+        ])->pipe(static function (Collection $collection) {
+            return \request()->user()->isAdministrator()
+                ? $collection
+                    ->prepend(new \GijsG\SystemResources\SystemResources('ram'))
+                    ->prepend(new \GijsG\SystemResources\SystemResources('cpu'))
+                : $collection;
+        })->toArray();
     }
 
-//    final protected function dashboards(): array
-//    {
-//        return [];
-//    }
+    /** @noinspection SenselessMethodDuplicationInspection */
+    final protected function dashboards(): array
+    {
+        return [];
+    }
 
     private static function makePermissionTool(): \Vyuldashev\NovaPermission\NovaPermissionTool
     {
