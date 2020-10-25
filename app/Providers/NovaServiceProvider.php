@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Policies\PermissionPolicy;
+use App\Policies\RolePolicy;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Nova;
@@ -13,14 +15,17 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         $isLocal = $this->app->environment('local');
 
-        return \collect()
+        return \collect([
+            \Vyuldashev\NovaPermission\NovaPermissionTool::make()
+                ->permissionPolicy(PermissionPolicy::class)
+                ->rolePolicy(RolePolicy::class)
+        ])
             ->pipe(static function (Collection $collection) use ($isLocal) {
                 if (\request()->user()->isAdministrator() === false) {
                     return $collection;
                 }
 
                 $collection
-                    ->add(\Vyuldashev\NovaPermission\NovaPermissionTool::make())
                     ->add(new \KABBOUCHI\LogsTool\LogsTool())
                     ->add(new \Sbine\RouteViewer\RouteViewer)
                     ->add(new \Spatie\BackupTool\BackupTool());

@@ -13,17 +13,16 @@ abstract class DuplicateResource extends Action
     use SerializesModels;
 
     public $attributes = [];
-    public $showOnDetail = true;
     public $showOnIndex = false;
     public $showOnTableRow = true;
     public $confirmButtonText = 'Duplicate Resource';
-    public $cancelButtonText = 'Cancel';
     public $confirmText = 'Are you sure you want to duplicate this resource?';
     public $withoutActionEvents = true;
 
     protected $keepRelations = [];
     protected $duplicateRelations = [];
 
+    /** @noinspection MissingReturnTypeInspection */
     final public function handle(ActionFields $fields, Collection $models)
     {
         if ($models->count() !== 1) {
@@ -36,12 +35,12 @@ abstract class DuplicateResource extends Action
 
         foreach ($fields->getAttributes() as $key => $value) {
             if(isset($value)){
-                $newModel->$key = $value;
+                $newModel->{$key} = $value;
             }
         }
 
         foreach (static::getAttributes() as $key => $value) {
-            $newModel->$key = $value;
+            $newModel->{$key} = $value;
         }
 
         $newModel->push();
@@ -74,6 +73,7 @@ abstract class DuplicateResource extends Action
         return Action::message($this->getSuccessMessage($model, $newModel, $fields));
     }
 
+    /** @noinspection PhpUnusedParameterInspection */
     final protected function getSuccessMessage(
         Model $originalModel,
         Model $newModel,
