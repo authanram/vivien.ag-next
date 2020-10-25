@@ -27,38 +27,38 @@ class User extends Resource
 
     final public function fields(Request $request): array
     {
-        $fields = [
-            ID::make()->sortable()
-            ,
-            Gravatar::make()->maxWidth(50)
-            ,
-            Text::make(__('Name'), 'name')
-                ->sortable()
-                ->rules('required', 'max:255')
-            ,
-            Text::make(__('Email'), 'email')
-                ->sortable()
-                ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}')
-            ,
-            Password::make(__('Password'), 'password')
-                ->onlyOnForms()
-                ->creationRules('required', 'string', 'min:8')
-                ->updateRules('nullable', 'string', 'min:8')
-            ,
-            HasMany::make(__('Sessions'), 'sessions')
-            ,
-            MorphToMany::make('Roles', 'roles', Acl\Role::class)
-            ,
-            MorphToMany::make('Permissions', 'permissions', Acl\Permission::class)
-            ,
-        ];
-
-        if ($request->user()->hasPermissionTo('impersonate')) {
-            $fields[] = \KABBOUCHI\NovaImpersonate\Impersonate::make($this);
-        }
-
-        return $fields;
+        return collect(
+            [
+                ID::make()->sortable()
+                ,
+                Gravatar::make()->maxWidth(50)
+                ,
+                Text::make(__('Name'), 'name')
+                    ->sortable()
+                    ->rules('required', 'max:255')
+                ,
+                Text::make(__('Email'), 'email')
+                    ->sortable()
+                    ->rules('required', 'email', 'max:254')
+                    ->creationRules('unique:users,email')
+                    ->updateRules('unique:users,email,{{resourceId}}')
+                ,
+                Password::make(__('Password'), 'password')
+                    ->onlyOnForms()
+                    ->creationRules('required', 'string', 'min:8')
+                    ->updateRules('nullable', 'string', 'min:8')
+                ,
+                HasMany::make(__('Sessions'), 'sessions')
+                ,
+                MorphToMany::make('Roles', 'roles', Acl\Role::class)
+                ,
+                MorphToMany::make('Permissions', 'permissions', Acl\Permission::class)
+                ,
+            ]
+        )->tap(function ($fields) use ($request) {
+            if ($request->user()->can('impersonate')) {
+                $fields->add(\KABBOUCHI\NovaImpersonate\Impersonate::make($this));
+            }
+        })->toArray();
     }
 }
