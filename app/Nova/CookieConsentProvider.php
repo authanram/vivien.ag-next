@@ -44,6 +44,11 @@ class CookieConsentProvider extends Resource
 
     final public static function label(): string
     {
-        return 'Providers';
+        return __('Providers');
+    }
+
+    final public static function singularLabel(): string
+    {
+        return __('Provider');
     }
 }

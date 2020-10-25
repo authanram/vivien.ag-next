@@ -13,8 +13,6 @@ use Vyuldashev\NovaPermission as Acl;
 
 class User extends Resource
 {
-    public static $group = 'System';
-
     public static $model = \App\Models\User::class;
 
     public static $title = 'name';
@@ -24,6 +22,13 @@ class User extends Resource
         'name',
         'email',
     ];
+
+    public static function group(): string
+    {
+        return \request()->user()->isAdministrator()
+            ? __('Acl')
+            : __('System');
+    }
 
     final public function fields(Request $request): array
     {
@@ -47,7 +52,7 @@ class User extends Resource
                 ->creationRules('required', 'string', 'min:8')
                 ->updateRules('nullable', 'string', 'min:8')
             ,
-            HasMany::make(__('Sessions'), 'sessions')
+            HasMany::make(__('Sessions'), 'sessions', Session::class)
             ,
             MorphToMany::make('Roles', 'roles', Acl\Role::class)
             ,
@@ -58,5 +63,15 @@ class User extends Resource
                 ? $collection->add(\KABBOUCHI\NovaImpersonate\Impersonate::make($this))
                 : $collection;
         })->toArray();
+    }
+
+    final public static function label(): string
+    {
+        return __('Users');
+    }
+
+    final public static function singularLabel(): string
+    {
+        return __('User');
     }
 }

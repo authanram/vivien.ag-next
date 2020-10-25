@@ -10,7 +10,7 @@ use Laravel\Nova\Fields\Number;
 
 class Session extends Resource
 {
-    public static $group = 'System';
+    public static $group = 'Acl';
 
     public static $model = \App\Models\Session::class;
 
@@ -32,7 +32,7 @@ class Session extends Resource
                 return $this->model()->getAttributes()['id'];
             })->sortable()
             ,
-            BelongsTo::make('User')
+            BelongsTo::make('User', 'user', User::class)
                 ->searchable()
                 ->sortable()
             ,
@@ -51,5 +51,15 @@ class Session extends Resource
                 ->sortable()
             ,
         ];
+    }
+
+    final public static function label(): string
+    {
+        return __('Sessions');
+    }
+
+    final public static function singularLabel(): string
+    {
+        return __('Session');
     }
 }

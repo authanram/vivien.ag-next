@@ -54,8 +54,18 @@ class Author extends Resource
             Boolean::make(__('Published'), 'published')
                 ->sortable()
             ,
-            HasMany::make(__('Quotes'), 'quotes')
+            HasMany::make(__('Quotes'), 'quotes', Quote::class)
             ,
         ];
+    }
+
+    final public static function label(): string
+    {
+        return __('Authors');
+    }
+
+    final public static function singularLabel(): string
+    {
+        return __('Author');
     }
 }

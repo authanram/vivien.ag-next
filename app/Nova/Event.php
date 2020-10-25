@@ -22,9 +22,12 @@ class Event extends Resource
         'date_from' => 'asc',
     ];
 
-    public static $group = 'Events';
-
     public static $model = \App\Models\Event::class;
+
+    public static function group(): string
+    {
+        return __('Events');
+    }
 
     public static $search = [
         'id',
@@ -53,12 +56,12 @@ class Event extends Resource
             Text::make(__('Uuid'), 'uuid')
                 ->onlyOnDetail()
             ,
-            BelongsTo::make(__('Event Type'), 'eventType')
+            BelongsTo::make(__('Event Type'), 'eventType', EventType::class)
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()
             ,
-            BelongsTo::make(__('Event Location'), 'eventLocation')
+            BelongsTo::make(__('Event Location'), 'eventLocation', EventLocation::class)
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()
@@ -114,7 +117,7 @@ class Event extends Resource
                 ->trueValue(true)
                 ->falseValue(false)
             ,
-            HasMany::make(__('Attendees'), 'attendees')
+            HasMany::make(__('Attendees'), 'attendees', Attendee::class)
             ,
         ];
     }
@@ -142,5 +145,15 @@ class Event extends Resource
         return [
             DuplicateEvent::make(),
         ];
+    }
+
+    final public static function label(): string
+    {
+        return __('Events');
+    }
+
+    final public static function singularLabel(): string
+    {
+        return __('Event');
     }
 }

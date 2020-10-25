@@ -16,8 +16,6 @@ abstract class Resource extends NovaResource
 
     protected static array $orderBy = ['id' => 'asc'];
 
-    public static $group = 'Contents';
-
     /**
      * Build an "index" query for the given resource.
      *
@@ -66,6 +64,11 @@ abstract class Resource extends NovaResource
     public static function relatableQuery(NovaRequest $request, $query)
     {
         return parent::relatableQuery($request, $query);
+    }
+
+    public static function group(): string
+    {
+        return static::$group !== 'Other' ? static::$group : __('Contents');
     }
 
     public static function availableForNavigation(Request $request): bool

@@ -7,6 +7,7 @@ use Drobee\NovaSluggable\SluggableText;
 use Epartment\NovaDependencyContainer\HasDependencies;
 use Epartment\NovaDependencyContainer\NovaDependencyContainer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Select;
@@ -18,8 +19,6 @@ class StaticAttribute extends Resource
     use HasDependencies;
 
     protected static array $orderBy = ['name' => 'asc'];
-
-    public static $group = 'Contents';
 
     public static $model = \App\Models\StaticAttribute::class;
 
@@ -52,7 +51,7 @@ class StaticAttribute extends Resource
                 ->updateRules("unique:$table,slug,{{resourceId}}")
                 ->sortable()
             ,
-            Select::make('Type', 'type')->options([
+            Select::make(__('Type'), 'type')->options([
                 0 => 'Simple (Text)',
                 1 => 'Complex (JSON)',
             ])->displayUsingLabels()
@@ -65,7 +64,7 @@ class StaticAttribute extends Resource
             ])->dependsOn('type', 0)
             ,
             NovaDependencyContainer::make([
-                Code::make(__('Data'), 'data')
+                Code::make(__('Value'), 'data')
                     ->json()
                     ->height('auto')
                     ->rules('json')
@@ -83,6 +82,11 @@ class StaticAttribute extends Resource
 
     final public static function label(): string
     {
-        return 'Attributes';
+        return __('Attributes');
+    }
+
+    final public static function singularLabel(): string
+    {
+        return __('Attribute');
     }
 }

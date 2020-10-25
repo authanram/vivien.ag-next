@@ -10,8 +10,6 @@ use Laravel\Nova\Fields\Number;
 
 class Attendee extends Resource
 {
-    public static $group = 'Events';
-
     public static $model = \App\Models\Attendee::class;
 
     public static $title = 'id';
@@ -24,6 +22,11 @@ class Attendee extends Resource
         'email'
     ];
 
+    public static function group(): string
+    {
+        return __('Events');
+    }
+
     final public function fields(Request $request): array
     {
         return [
@@ -32,7 +35,7 @@ class Attendee extends Resource
             Text::make(__('Uuid'), 'uuid')
                 ->onlyOnDetail()
             ,
-            BelongsTo::make(__('Event'), 'event')
+            BelongsTo::make(__('Event'), 'event', Event::class)
                 ->rules('required')
                 ->searchable()
                 ->withoutTrashed()
@@ -63,8 +66,7 @@ class Attendee extends Resource
                 ->sortable()
             ,
             Number::make(__('Attendance'), 'attendance')
-                ->rules('required')
-                ->min(1)
+                ->rules('required', 'numeric', 'min:1')
                 ->sortable()
             ,
             Text::make(__('Message'), 'message')
@@ -77,5 +79,15 @@ class Attendee extends Resource
                 ->onlyOnDetail()
             ,
         ];
+    }
+
+    final public static function label(): string
+    {
+        return __('Attendees');
+    }
+
+    final public static function singularLabel(): string
+    {
+        return __('Attendee');
     }
 }

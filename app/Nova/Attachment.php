@@ -43,4 +43,14 @@ class Attachment extends Resource
             ,
         ];
     }
+
+    final public static function label(): string
+    {
+        return __('Attachments');
+    }
+
+    final public static function singularLabel(): string
+    {
+        return __('Attachment');
+    }
 }

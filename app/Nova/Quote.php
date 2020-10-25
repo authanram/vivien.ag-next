@@ -47,4 +47,14 @@ class Quote extends Resource
             ,
         ];
     }
+
+    final public static function label(): string
+    {
+        return __('Quotes');
+    }
+
+    final public static function singularLabel(): string
+    {
+        return __('Quote');
+    }
 }

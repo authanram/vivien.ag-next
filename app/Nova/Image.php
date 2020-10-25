@@ -17,8 +17,6 @@ class Image extends Resource
 {
     use HasSortableRows;
 
-    public static $group = 'Contents';
-
     public static $model = \App\Models\Image::class;
 
     public static $title = 'name';
@@ -65,5 +63,15 @@ class Image extends Resource
             HasOne::make(__('Image Coords'), 'imageCoords', ImageCoords::class)
             ,
         ];
+    }
+
+    final public static function label(): string
+    {
+        return __('Images');
+    }
+
+    final public static function singularLabel(): string
+    {
+        return __('Image');
     }
 }

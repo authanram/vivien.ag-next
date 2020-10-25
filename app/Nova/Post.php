@@ -57,4 +57,14 @@ class Post extends Resource
             ,
         ];
     }
+
+    final public static function label(): string
+    {
+        return __('Posts');
+    }
+
+    final public static function singularLabel(): string
+    {
+        return __('Post');
+    }
 }

@@ -38,7 +38,7 @@ class ImageCoords extends Resource
             Text::make(__('Uuid'), 'uuid')
                 ->onlyOnDetail()
             ,
-            BelongsTo::make(__('Image'), 'image')
+            BelongsTo::make(__('Image'), 'image', Image::class)
             ,
             Code::make(__('Coords'), 'coords')
                 ->showOnIndex()
@@ -47,5 +47,15 @@ class ImageCoords extends Resource
                 ->height('auto')
             ,
         ];
+    }
+
+    final public static function label(): string
+    {
+        return __('Image Coords');
+    }
+
+    final public static function singularLabel(): string
+    {
+        return __('Image Coord');
     }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "50836efd275647886fb3959e8e71d858",
+    "content-hash": "6704a6681d7e2232e0624ee774a6aeb1",
     "packages": [
         {
             "name": "ajcastro/eager-load-pivot-relations",
@@ -364,6 +364,55 @@
                 "source": "https://github.com/cakephp/chronos"
             },
             "time": "2020-08-22T02:42:12+00:00"
+        },
+        {
+            "name": "coderello/laravel-nova-lang",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/coderello/laravel-nova-lang.git",
+                "reference": "fc642ab2ea11b14bae056b780596a94b360a8bd5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/coderello/laravel-nova-lang/zipball/fc642ab2ea11b14bae056b780596a94b360a8bd5",
+                "reference": "fc642ab2ea11b14bae056b780596a94b360a8bd5",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.5.*|5.6.*|5.7.*|5.8.*|^6.0|^7.0|^8.0",
+                "php": ">=7.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Coderello\\LaravelNovaLang\\Providers\\LaravelNovaLangServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Coderello\\LaravelNovaLang\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Language support for Laravel Nova.",
+            "keywords": [
+                "lang",
+                "language",
+                "laravel",
+                "nova",
+                "support"
+            ],
+            "support": {
+                "issues": "https://github.com/coderello/laravel-nova-lang/issues",
+                "source": "https://github.com/coderello/laravel-nova-lang/tree/1.0"
+            },
+            "time": "2020-09-07T18:23:39+00:00"
         },
         {
             "name": "doctrine/cache",

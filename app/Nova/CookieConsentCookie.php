@@ -68,6 +68,6 @@ class CookieConsentCookie extends Resource
 
     final public static function label(): string
     {
-        return 'Cookies';
+        return __('Cookies');
     }
 }

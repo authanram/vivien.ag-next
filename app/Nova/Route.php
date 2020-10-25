@@ -58,10 +58,20 @@ class Route extends Resource
                 ->rules('required')
                 ->sortable()
             ,
-            HasMany::make(__('Menu Items'), 'menuItems')
+            HasMany::make(__('Menu Items'), 'menuItems', MenuItem::class)
             ,
-            BelongsToMany::make(__('Contents'), 'contents')
+            BelongsToMany::make(__('Contents'), 'contents', Content::class)
             ,
         ];
+    }
+
+    final public static function label(): string
+    {
+        return __('Routes');
+    }
+
+    final public static function singularLabel(): string
+    {
+        return __('Route');
     }
 }

@@ -42,6 +42,11 @@ class CookieConsentSettings extends Resource
 
     final public static function label(): string
     {
-        return 'Consents';
+        return __('Consents');
+    }
+
+    final public static function singularLabel(): string
+    {
+        return __('Consent');
     }
 }

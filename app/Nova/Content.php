@@ -51,8 +51,18 @@ class Content extends Resource
                 ->stacked()
                 ->alwaysShow()
             ,
-            BelongsToMany::make(__('Routes'), 'routes')
+            BelongsToMany::make(__('Routes'), 'routes', Route::class)
             ,
         ];
+    }
+
+    final public static function label(): string
+    {
+        return __('Page Contents');
+    }
+
+    final public static function singularLabel(): string
+    {
+        return __('Page Content');
     }
 }

@@ -49,19 +49,19 @@ class MenuItem extends Resource
                 ->rules('required')
                 ->sortable()
             ,
-            BelongsTo::make(__('Menu'), 'Menu')
+            BelongsTo::make(__('Menu'), 'Menu', Menu::class)
                 ->required()
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()
             ,
-            BelongsTo::make(__('Route'), 'route')
+            BelongsTo::make(__('Route'), 'route', Route::class)
                 ->required()
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()
             ,
-            BelongsTo::make(__('Color'), 'color')
+            BelongsTo::make(__('Color'), 'color', Color::class)
                 ->required()
                 ->withoutTrashed()
                 ->showCreateRelationButton()
@@ -91,5 +91,15 @@ class MenuItem extends Resource
             'lg' => '>= 1024px (lg)',
             'xl' => '>= 1280px (xl)',
         ];
+    }
+
+    final public static function label(): string
+    {
+        return __('Menu Items');
+    }
+
+    final public static function singularLabel(): string
+    {
+        return __('Menu Item');
     }
 }

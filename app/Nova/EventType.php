@@ -13,8 +13,6 @@ class EventType extends Resource
 {
     protected static array $orderBy = ['name' => 'asc'];
 
-    public static $group = 'Events';
-
     public static $model = \App\Models\EventType::class;
 
     public static $title = 'name';
@@ -24,6 +22,11 @@ class EventType extends Resource
         'name',
         'description',
     ];
+
+    public static function group(): string
+    {
+        return __('Events');
+    }
 
     final public function fields(Request $request): array
     {
@@ -42,15 +45,20 @@ class EventType extends Resource
                 ->rows(2)
                 ->hideFromIndex()
             ,
-            BelongsTo::make(__('Color'), 'color')
+            BelongsTo::make(__('Color'), 'color', Color::class)
             ,
-            HasMany::make(__('Events'), 'events')
+            HasMany::make(__('Events'), 'events', Event::class)
             ,
         ];
     }
 
     final public static function label(): string
     {
-        return 'Types';
+        return __('Categories');
+    }
+
+    final public static function singularLabel(): string
+    {
+        return __('Category');
     }
 }

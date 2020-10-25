@@ -17,8 +17,6 @@ class Tag extends Resource
         'name->de' => 'asc',
     ];
 
-    public static $group = 'Contents';
-
     public static $model = \App\Models\Tag::class;
 
     public static $title = 'name';
@@ -52,7 +50,7 @@ class Tag extends Resource
                 ->required()
                 ->sortable()
             ,
-            BelongsTo::make(__('Color'), 'color')
+            BelongsTo::make(__('Color'), 'color', Color::class)
                 ->nullable()
                 ->withoutTrashed()
                 ->showCreateRelationButton()

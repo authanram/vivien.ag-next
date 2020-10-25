@@ -12,8 +12,6 @@ class EventLocation extends Resource
 {
     protected static array $orderBy = ['name' => 'asc'];
 
-    public static $group = 'Events';
-
     public static $model = \App\Models\EventLocation::class;
 
     public static $title = 'name';
@@ -25,6 +23,11 @@ class EventLocation extends Resource
         'address',
         'url',
     ];
+
+    public static function group(): string
+    {
+        return __('Events');
+    }
 
     final public function fields(Request $request): array
     {
@@ -51,13 +54,18 @@ class EventLocation extends Resource
                 ->sortable()
                 ->help('<strong>Location website</strong> or <strong>Google Maps Url</strong>.')
             ,
-            HasMany::make(__('Events'), 'events')
+            HasMany::make(__('Events'), 'events', Event::class)
             ,
         ];
     }
 
     final public static function label(): string
     {
-        return 'Locations';
+        return __('Locations');
+    }
+
+    final public static function singularLabel(): string
+    {
+        return __('Location');
     }
 }

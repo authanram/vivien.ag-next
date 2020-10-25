@@ -44,8 +44,18 @@ class Menu extends Resource
                 ->rules('required')
                 ->sortable()
             ,
-            HasMany::make(__('Menu Items'), 'menuItems')
+            HasMany::make(__('Menu Items'), 'menuItems', MenuItem::class)
             ,
         ];
+    }
+
+    final public static function label(): string
+    {
+        return __('Menus');
+    }
+
+    final public static function singularLabel(): string
+    {
+        return __('Menu');
     }
 }

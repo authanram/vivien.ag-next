@@ -37,11 +37,11 @@ class Color extends Resource
                 ->sortable()
                 ->help(static::getColorInputHelpText())
             ,
-            HasMany::make(__('Event Types'), 'eventTypes')
+            HasMany::make(__('Event Types'), 'eventTypes', EventType::class)
             ,
-            HasMany::make(__('Menu Items'), 'menuItems')
+            HasMany::make(__('Menu Items'), 'menuItems', MenuItem::class)
             ,
-            HasMany::make(__('Tags'), 'tags')
+            HasMany::make(__('Tags'), 'tags', Tag::class)
             ,
         ];
     }
@@ -54,5 +54,15 @@ class Color extends Resource
             'https://tailwindcss.com/docs/customizing-colors/#default-color-palette',
             'Color Palette'
         );
+    }
+
+    final public static function label(): string
+    {
+        return __('Colors');
+    }
+
+    final public static function singularLabel(): string
+    {
+        return __('Color');
     }
 }

@@ -12,6 +12,7 @@
         "ext-json": "*",
         "ajcastro/eager-load-pivot-relations": "0.2.2",
         "alfredo-ramos/parsedown-extra-laravel": "3.0.0",
+        "coderello/laravel-nova-lang": "^1.5",
         "drobee/nova-sluggable": "dev-master",
         "epartment/nova-dependency-container": "1.2.11",
         "erusev/parsedown-extra": "0.8.1",
