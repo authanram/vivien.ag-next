@@ -64,12 +64,12 @@ class User extends Authenticatable
 
     final public function isAdministrator(): bool
     {
-        return $this->hasPermissionTo('administer');
+        return $this->can('administer');
     }
 
     final public function isModerator(): bool
     {
-        return $this->hasPermissionTo('moderate');
+        return $this->can('moderate');
     }
 
     final public function sessions(): HasMany
