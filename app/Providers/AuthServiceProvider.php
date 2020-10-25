@@ -11,8 +11,8 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 class AuthServiceProvider extends ServiceProvider
 {
     protected $policies = [
-         Session::class => SessionPolicy::class,
-         User::class => UserPolicy::class,
+        Session::class => SessionPolicy::class,
+        User::class => UserPolicy::class,
     ];
 
     final public function boot(): void

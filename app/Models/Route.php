@@ -44,7 +44,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Route extends Model
 {
-    use HasUuid;
+    use Concerns\HasUuid;
     use SoftDeletes;
 
     protected $fillable = [

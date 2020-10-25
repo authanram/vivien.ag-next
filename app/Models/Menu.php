@@ -35,7 +35,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Menu extends Model
 {
-    use HasUuid;
+    use Concerns\HasUuid;
     use SoftDeletes;
 
     protected $fillable = [

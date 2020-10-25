@@ -33,7 +33,7 @@ use Spatie\EloquentSortable\SortableTrait;
  */
 class ImageCoords extends Model implements Sortable
 {
-    use HasUuid;
+    use Concerns\HasUuid;
     use SortableTrait;
 
     protected $fillable = [

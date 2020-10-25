@@ -2,7 +2,6 @@
 
 namespace App\Nova;
 
-use App\Nova\Concerns\HandlesNavigationAvailability;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
@@ -10,8 +9,6 @@ use Laravel\Nova\Fields\Text;
 
 class Color extends Resource
 {
-    use HandlesNavigationAvailability;
-
     protected static array $orderBy = ['color' => 'asc'];
 
     public static $group = 'System';

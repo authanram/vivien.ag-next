@@ -11,16 +11,20 @@ class ContentsTableSeeder extends Seeder
         
         \DB::table('contents')->insert([
 		    [
-		        'body' => 'Foo',
-		        'caption' => null,
-		        'created_at' => '2020-06-25 22:01:34',
-		        'deleted_at' => null,
 		        'id' => 1,
-		        'slug' => 'Impressum',
-		        'updated_at' => '2020-06-25 22:01:34',
 		        'uuid' => 'cd05b8ca-128a-478d-adf3-ff0c46c89c26',
+		        'slug' => 'Impressum',
+		        'caption' => null,
+		        'body' => 'Foo',
+		        'created_at' => '2020-06-25 22:01:34',
+		        'updated_at' => '2020-06-25 22:01:34',
+		        'deleted_at' => null,
 		    ],
 		    [
+		        'id' => 2,
+		        'uuid' => 'fa3091ad-431c-4b53-bd41-959de047fe11',
+		        'slug' => 'Vorträge / Themenangebote',
+		        'caption' => null,
 		        'body' => '## Themenangebote für'."\n"
 		            ."\n"
 		            .'* Frauenfrühstückstreffen'."\n"
@@ -31,15 +35,15 @@ class ContentsTableSeeder extends Seeder
 		            .'	* Elterngespräche - kompetent führen'."\n"
 		            .'	* Therapeutische Interventionen bei Kindern mit Problemverhalten'."\n"
 		            .'* Inhaltliche Gestaltung mit einem ausgewählten Büchertisch zum jeweiligen Thema!',
-		        'caption' => null,
 		        'created_at' => '2020-06-25 22:03:17',
-		        'deleted_at' => null,
-		        'id' => 2,
-		        'slug' => 'Vorträge / Themenangebote',
 		        'updated_at' => '2020-06-26 05:01:54',
-		        'uuid' => 'fa3091ad-431c-4b53-bd41-959de047fe11',
+		        'deleted_at' => null,
 		    ],
 		    [
+		        'id' => 3,
+		        'uuid' => 'ffe302dc-abdd-4742-906f-30a483c38fed',
+		        'slug' => 'Beratung',
+		        'caption' => '**Seit 20 Jahren arbeite ich als selbständige Therapeutin** mit Erwachsenen, Jugendlichen und Kindern. Ich bilde mich ständig weiter und nehme [Supervisionen](https://de.wikipedia.org/wiki/Supervision) in Anspruch.',
 		        'body' => '## Schwerpunkte'."\n"
 		            ."\n"
 		            .'* Systemische Familientherapie'."\n"
@@ -65,15 +69,15 @@ class ContentsTableSeeder extends Seeder
 		            .'* Maltherapie (Erwachsene und Kinder)'."\n"
 		            .'* Coaching'."\n"
 		            .'* Telefonberatung +49 (0) 7453 3264',
-		        'caption' => '**Seit 20 Jahren arbeite ich als selbständige Therapeutin** mit Erwachsenen, Jugendlichen und Kindern. Ich bilde mich ständig weiter und nehme [Supervisionen](https://de.wikipedia.org/wiki/Supervision) in Anspruch.',
 		        'created_at' => '2020-06-25 23:52:44',
-		        'deleted_at' => null,
-		        'id' => 3,
-		        'slug' => 'Beratung',
 		        'updated_at' => '2020-06-26 05:01:16',
-		        'uuid' => 'ffe302dc-abdd-4742-906f-30a483c38fed',
+		        'deleted_at' => null,
 		    ],
 		    [
+		        'id' => 4,
+		        'uuid' => '49cebda4-a9fb-4523-b0f5-8897bef8b982',
+		        'slug' => 'Vorträge / Vortragsthemen',
+		        'caption' => null,
 		        'body' => '### Vortragsthemen'."\n"
 		            ."\n"
 		            .'* Wenn Kinder trotzen'."\n"
@@ -95,69 +99,69 @@ class ContentsTableSeeder extends Seeder
 		            .'* Nein sagen ohne Schuldgefühle'."\n"
 		            .'* Keine Angst vor Krach und Streit'."\n"
 		            .'* "Anleitung zum Glücklichsein" - Was wir für ein gutes und gesundes Lebensgefühl erlernen können',
-		        'caption' => null,
 		        'created_at' => '2020-06-26 02:28:54',
-		        'deleted_at' => null,
-		        'id' => 4,
-		        'slug' => 'Vorträge / Vortragsthemen',
 		        'updated_at' => '2020-06-26 05:08:54',
-		        'uuid' => '49cebda4-a9fb-4523-b0f5-8897bef8b982',
+		        'deleted_at' => null,
 		    ],
 		    [
+		        'id' => 5,
+		        'uuid' => '9848c937-9788-4d08-8002-dc2a6df5e317',
+		        'slug' => 'Lerntraining / Wenn Du diese oder ähnliche...',
+		        'caption' => 'Lernen kann so einfach sein.',
 		        'body' => '## Wenn Du diese oder ähnliche Erfahrungen mit Schule oder dem Lernen machst, dann bist Du bei mir richtig'."\n"
 		            ."\n"
 		            .'* Hilfe bei mir bleibt alles nur im Kurzzeitgedächtnis.'."\n"
 		            .'* Ich wusste viel mehr und in der Klassenarbeit hatte ich einen Blackout.'."\n"
 		            .'* Hausaufgaben, ich hasse sie! Ich werde müde, wenn ich nur dran denke.'."\n"
 		            .'* Meine Konzentration lässt so schnell nach und meine Eltern nennen das Faulheit.',
-		        'caption' => 'Lernen kann so einfach sein.',
 		        'created_at' => '2020-06-26 03:18:25',
-		        'deleted_at' => null,
-		        'id' => 5,
-		        'slug' => 'Lerntraining / Wenn Du diese oder ähnliche...',
 		        'updated_at' => '2020-06-26 05:01:29',
-		        'uuid' => '9848c937-9788-4d08-8002-dc2a6df5e317',
+		        'deleted_at' => null,
 		    ],
 		    [
+		        'id' => 6,
+		        'uuid' => 'c51193cd-ddd0-46eb-b64a-0a9450947a0f',
+		        'slug' => 'Lerntraining / Wir gehen wie folgt vor',
+		        'caption' => null,
 		        'body' => '### Wir gehen wie folgt vor'."\n"
 		            ."\n"
 		            .'* Gemeinsam finden wir heraus, was Du für ein Lerntyp bist.'."\n"
 		            .'* Ich zeige Dir Strategien, wie das Gelernte im Langzeitgedächtnis ankommt.'."\n"
 		            .'* Und wie Du Hausaufgaben sinnvoll gliedern und lernen kannst.',
-		        'caption' => null,
 		        'created_at' => '2020-06-26 03:19:04',
-		        'deleted_at' => null,
-		        'id' => 6,
-		        'slug' => 'Lerntraining / Wir gehen wie folgt vor',
 		        'updated_at' => '2020-06-26 05:01:35',
-		        'uuid' => 'c51193cd-ddd0-46eb-b64a-0a9450947a0f',
+		        'deleted_at' => null,
 		    ],
 		    [
+		        'id' => 7,
+		        'uuid' => '029961ad-b68f-4fa6-a78c-6a126410ed5c',
+		        'slug' => 'Lerntraining / Folgendes kann ich Dir versichern',
+		        'caption' => null,
 		        'body' => '#### Folgendes kann ich Dir versichern {.headline}'."\n"
 		            ."\n"
 		            .'* Wenn Lernen zum Erfolg führt, kann es richtig Spaß machen. --1?'."\n"
 		            .'* In nur fünf Stunden Lerntraining, kannst Du einiges erreichen.'."\n"
 		            ."\n"
 		            .'*Also – Kopf hoch und locker bleiben! Es gibt Hilfe!*',
-		        'caption' => null,
 		        'created_at' => '2020-06-26 03:20:18',
-		        'deleted_at' => null,
-		        'id' => 7,
-		        'slug' => 'Lerntraining / Folgendes kann ich Dir versichern',
 		        'updated_at' => '2020-06-26 05:18:14',
-		        'uuid' => '029961ad-b68f-4fa6-a78c-6a126410ed5c',
-		    ],
-		    [
-		        'body' => 'Der Inhalt der Internetseiten wurde von budenkoller.de sorgfältig bearbeitet und geprüft. budenkoller.de übernimmt jedoch keine Gewähr für Richtigkeit, Vollständigkeit und Aktualität der bereitgestellten Informationen. Sofern durch "Links" auf fremde Internetseiten verwiesen wird, ist budenkoller.de für den Inhalt der Seiten nicht verantwortlich. Wir behalten uns das Recht vor, Aktualisierungen und Änderungen an den bereitgestellten Informationen ohne vorherige Ankündigung zu verändern, zu ergänzen und zu löschen.',
-		        'caption' => 'Verantwortlich für den Inhalt dieser Webseite',
-		        'created_at' => '2020-06-26 07:40:17',
 		        'deleted_at' => null,
-		        'id' => 8,
-		        'slug' => 'Impressum',
-		        'updated_at' => '2020-06-26 07:40:17',
-		        'uuid' => '8c98570a-9725-468c-80b9-fe5c25cceb7d',
 		    ],
 		    [
+		        'id' => 8,
+		        'uuid' => '8c98570a-9725-468c-80b9-fe5c25cceb7d',
+		        'slug' => 'Impressum',
+		        'caption' => 'Verantwortlich für den Inhalt dieser Webseite',
+		        'body' => 'Der Inhalt der Internetseiten wurde von budenkoller.de sorgfältig bearbeitet und geprüft. budenkoller.de übernimmt jedoch keine Gewähr für Richtigkeit, Vollständigkeit und Aktualität der bereitgestellten Informationen. Sofern durch "Links" auf fremde Internetseiten verwiesen wird, ist budenkoller.de für den Inhalt der Seiten nicht verantwortlich. Wir behalten uns das Recht vor, Aktualisierungen und Änderungen an den bereitgestellten Informationen ohne vorherige Ankündigung zu verändern, zu ergänzen und zu löschen.',
+		        'created_at' => '2020-06-26 07:40:17',
+		        'updated_at' => '2020-06-26 07:40:17',
+		        'deleted_at' => null,
+		    ],
+		    [
+		        'id' => 9,
+		        'uuid' => '170c9ddd-cb07-4fee-97f8-3b518563dab6',
+		        'slug' => 'Datenschutzerklärung',
+		        'caption' => null,
 		        'body' => '## Allgemeiner Hinweis und Pflichtinformationen'."\n"
 		            ."\n"
 		            .'Diese Website benutzt Google Analytics, einen Webanalysedienst der Google Inc. („Google“). Google Analytics verwendet sog. „Cookies“, Textdateien, die auf Ihrem Computer gespeichert werden und die eine Analyse der Benutzung der Website durch Sie ermöglichen. Die durch den Cookie erzeugten Informationen über Ihre Benutzung dieser Website werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert. Im Falle der Aktivierung der IP-Anonymisierung auf dieser Webseite, wird Ihre IP-Adresse von Google jedoch innerhalb von Mitgliedstaaten der Europäischen Union oder in anderen Vertragsstaaten des Abkommens über den Europäischen Wirtschaftsraum zuvor gekürzt.'."\n"
@@ -297,15 +301,15 @@ class ContentsTableSeeder extends Seeder
 		            .'Das Unternehmen Google ist für das us-europäische Datenschutzübereinkommen "Privacy Shield" zertifiziert. Dieses Datenschutzübereinkommen soll die Einhaltung des in der EU geltenden Datenschutzniveaus gewährleisten.'."\n"
 		            ."\n"
 		            .'Einzelheiten über Google Web Fonts finden Sie unter: [https://www.google.com/fonts#AboutPlace:about](https://www.google.com/fonts#AboutPlace:about) und weitere Informationen in den Datenschutzbestimmungen von Google: [https://policies.google.com/privacy/partners?hl=de](https://policies.google.com/privacy/partners?hl=de)',
-		        'caption' => null,
 		        'created_at' => '2020-06-26 07:41:15',
-		        'deleted_at' => null,
-		        'id' => 9,
-		        'slug' => 'Datenschutzerklärung',
 		        'updated_at' => '2020-06-27 02:02:02',
-		        'uuid' => '170c9ddd-cb07-4fee-97f8-3b518563dab6',
+		        'deleted_at' => null,
 		    ],
 		    [
+		        'id' => 10,
+		        'uuid' => 'ea4a4722-7a10-4f37-a800-9eda6e7f68d2',
+		        'slug' => 'Portrait / Über mich',
+		        'caption' => null,
 		        'body' => '{highlight}Ich liebe{/highlight}  '."\n"
 		            .'Kinder, italienisches Essen, Radfahren, Kunstausstellungen'."\n"
 		            ."\n"
@@ -329,15 +333,15 @@ class ContentsTableSeeder extends Seeder
 		            ."\n"
 		            .'{highlight}Motto (2020){/highlight}  '."\n"
 		            .'Die Ruhe selbst sein',
-		        'caption' => null,
 		        'created_at' => '2020-06-27 02:03:43',
-		        'deleted_at' => null,
-		        'id' => 10,
-		        'slug' => 'Portrait / Über mich',
 		        'updated_at' => '2020-06-29 06:34:18',
-		        'uuid' => 'ea4a4722-7a10-4f37-a800-9eda6e7f68d2',
+		        'deleted_at' => null,
 		    ],
 		    [
+		        'id' => 11,
+		        'uuid' => '900c0a50-5287-415d-b54e-cf40b02d957a',
+		        'slug' => 'Portrait / Leistungen',
+		        'caption' => null,
 		        'body' => '* Frauengruppen'."\n"
 		            .'* Paargruppen'."\n"
 		            .'* Seminare'."\n"
@@ -350,15 +354,15 @@ class ContentsTableSeeder extends Seeder
 		            .'* Lerntraining'."\n"
 		            .'* Telefonberatung'."\n"
 		            .'* Hypnotherapie',
-		        'caption' => null,
 		        'created_at' => '2020-06-27 02:44:43',
-		        'deleted_at' => null,
-		        'id' => 11,
-		        'slug' => 'Portrait / Leistungen',
 		        'updated_at' => '2020-06-28 22:18:11',
-		        'uuid' => '900c0a50-5287-415d-b54e-cf40b02d957a',
+		        'deleted_at' => null,
 		    ],
 		    [
+		        'id' => 12,
+		        'uuid' => '65110c3b-0373-4996-b875-ac1b763a311c',
+		        'slug' => 'Home',
+		        'caption' => null,
 		        'body' => '### Seminare 2019/2020'."\n"
 		            .'28.06.2020 / erstellt von Sybille Seuffer'."\n"
 		            ."\n"
@@ -368,15 +372,15 @@ class ContentsTableSeeder extends Seeder
 		            ."\n"
 		            .'**Herzliche Grüße**  '."\n"
 		            .'Sybille Seuffer',
-		        'caption' => null,
 		        'created_at' => '2020-06-28 01:11:57',
-		        'deleted_at' => null,
-		        'id' => 12,
-		        'slug' => 'Home',
 		        'updated_at' => '2020-06-28 23:25:18',
-		        'uuid' => '65110c3b-0373-4996-b875-ac1b763a311c',
+		        'deleted_at' => null,
 		    ],
 		    [
+		        'id' => 13,
+		        'uuid' => '18f0895f-bdce-4a1b-a59a-e0f0ff4daed9',
+		        'slug' => 'Kontakt',
+		        'caption' => null,
 		        'body' => '## Sybille Seuffer'."\n"
 		            .'Geißwiesen 24/1  '."\n"
 		            .'D-72227 Egenhausen'."\n"
@@ -384,30 +388,30 @@ class ContentsTableSeeder extends Seeder
 		            .'Telefon {highlight}[+49 (0)7453 3264](tel:004974533264){/highlight}  '."\n"
 		            .'E-Mail {highlight}[me@vivien.ag](mailto:me@vivien.ag){/highlight}  '."\n"
 		            .'oder via {highlight}[**Facebook**](https://www.facebook.com/sybille.seuffer){/highlight}',
-		        'caption' => null,
 		        'created_at' => '2020-06-28 01:32:31',
-		        'deleted_at' => null,
-		        'id' => 13,
-		        'slug' => 'Kontakt',
 		        'updated_at' => '2020-06-29 08:39:19',
-		        'uuid' => '18f0895f-bdce-4a1b-a59a-e0f0ff4daed9',
+		        'deleted_at' => null,
 		    ],
 		    [
+		        'id' => 14,
+		        'uuid' => 'c7d93aa2-601b-4a43-9d15-b669cdb674f9',
+		        'slug' => 'Portrait / Vorträge und Seminare',
+		        'caption' => null,
 		        'body' => 'Hier erfährst du mehr über die von mir angebotenen'."\n"
 		            ."\n"
 		            .'* [**Vortragsthemen**](/vortraege)'."\n"
 		            .'* [**Beratungsschwerpunkte**](/beratung)'."\n"
 		            .'* [**Lernstrategien**](/lerntraining)'."\n"
 		            .'* und [**Seminare**](/seminare)',
-		        'caption' => null,
 		        'created_at' => '2020-06-29 06:19:38',
-		        'deleted_at' => null,
-		        'id' => 14,
-		        'slug' => 'Portrait / Vorträge und Seminare',
 		        'updated_at' => '2020-06-29 06:23:45',
-		        'uuid' => 'c7d93aa2-601b-4a43-9d15-b669cdb674f9',
+		        'deleted_at' => null,
 		    ],
 		    [
+		        'id' => 15,
+		        'uuid' => 'c6a0904b-b3cc-42ca-b6ba-bf1438c27798',
+		        'slug' => 'Portrait / Kontakt',
+		        'caption' => null,
 		        'body' => '**Telefon** {highlight}[+49 (0)7453 3264](tel:004974533264){/highlight}  '."\n"
 		            .'**E-Mail** {highlight}[me@vivien.ag](mailto:me@vivien.ag){/highlight}  '."\n"
 		            .'oder via {highlight}[**Facebook**](https://www.facebook.com/sybille.seuffer){/highlight}'."\n"
@@ -417,13 +421,9 @@ class ContentsTableSeeder extends Seeder
 		            .'  	<br>'."\n"
 		            .'	D-72227 Egenhausen'."\n"
 		            .'</p>',
-		        'caption' => null,
 		        'created_at' => '2020-06-29 06:29:29',
-		        'deleted_at' => null,
-		        'id' => 15,
-		        'slug' => 'Portrait / Kontakt',
 		        'updated_at' => '2020-06-29 06:43:47',
-		        'uuid' => 'c6a0904b-b3cc-42ca-b6ba-bf1438c27798',
+		        'deleted_at' => null,
 		    ],
 		]);
         

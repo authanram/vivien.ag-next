@@ -86,7 +86,7 @@ use Spatie\Tags\HasTags;
 class Event extends Model
 {
     use HasTags;
-    use HasUuid;
+    use Concerns\HasUuid;
     use SoftDeletes;
 
     protected $fillable = [

@@ -57,7 +57,7 @@ use Spatie\Tags\HasTags;
 class Image extends Model implements Sortable
 {
     use HasTags;
-    use HasUuid;
+    use Concerns\HasUuid;
     use SoftDeletes;
     use SortableTrait;
 

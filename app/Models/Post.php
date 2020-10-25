@@ -48,7 +48,7 @@ use Spatie\Tags\HasTags;
 class Post extends Model
 {
     use HasTags;
-    use HasUuid;
+    use Concerns\HasUuid;
     use SoftDeletes;
 
     protected $fillable = [

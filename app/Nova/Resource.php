@@ -2,6 +2,8 @@
 
 namespace App\Nova;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Resource as NovaResource;
 use Titasgailius\SearchRelations\SearchesRelations;
@@ -64,5 +66,10 @@ abstract class Resource extends NovaResource
     public static function relatableQuery(NovaRequest $request, $query)
     {
         return parent::relatableQuery($request, $query);
+    }
+
+    public static function availableForNavigation(Request $request): bool
+    {
+        return $request->user()->can('novaBrowse', [static::$model]);
     }
 }

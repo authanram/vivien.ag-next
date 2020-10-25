@@ -39,7 +39,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class EventType extends Model
 {
-    use HasUuid;
+    use Concerns\HasUuid;
     use SoftDeletes;
 
     protected $table = 'event_types';

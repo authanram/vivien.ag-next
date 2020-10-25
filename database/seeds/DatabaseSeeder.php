@@ -37,5 +37,11 @@ class DatabaseSeeder extends Seeder
         $this->call(CookieConsentCookiesTableSeeder::class);
         $this->call(ContentsTableSeeder::class);
         $this->call(RouteContentTableSeeder::class);
+
+        $this->call(PermissionsTableSeeder::class);
+        $this->call(RolesTableSeeder::class);
+        $this->call(ModelHasPermissionsTableSeeder::class);
+        $this->call(ModelHasRolesTableSeeder::class);
+        $this->call(RoleHasPermissionsTableSeeder::class);
     }
 }

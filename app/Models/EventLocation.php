@@ -39,7 +39,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class EventLocation extends Model
 {
-    use HasUuid;
+    use Concerns\HasUuid;
     use SoftDeletes;
 
     protected $table = 'event_locations';

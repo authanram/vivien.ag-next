@@ -53,7 +53,7 @@ use Illuminate\Support\Str;
  */
 class Attendee extends Model
 {
-    use HasUuid;
+    use Concerns\HasUuid;
     use SoftDeletes;
 
     protected $fillable = [
