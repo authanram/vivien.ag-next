@@ -2,35 +2,35 @@
 
 namespace App\Policies;
 
+use App\Session;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use App\Session;
 
 class SessionPolicy
 {
     use HandlesAuthorization;
 
-    public function viewAny(): bool
+    final public function viewAny(User $user): bool
     {
-        return true;
+        return $user->isAdministrator();
     }
 
-    public function view(): bool
+    final public function view(User $user, Session $model): bool
     {
-        return true;
+        return $user->isAdministrator();
     }
 
-    public function create(): bool
-    {
-        return false;
-    }
-
-    public function update(User $user, Session $attribute): bool
+    final public function create(User $user): bool
     {
         return false;
     }
 
-    public function delete(User $user, Session $attribute): bool
+    final public function update(User $user, Session $model): bool
+    {
+        return false;
+    }
+
+    final public function delete(User $user, Session $model): bool
     {
         return false;
     }

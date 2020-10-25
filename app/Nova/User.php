@@ -3,12 +3,13 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use KABBOUCHI\NovaImpersonate\Impersonate;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\MorphToMany;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
+use Vyuldashev\NovaPermission as Acl;
 
 class User extends Resource
 {
@@ -26,7 +27,7 @@ class User extends Resource
 
     final public function fields(Request $request): array
     {
-        return [
+        $fields = [
             ID::make()->sortable()
             ,
             Gravatar::make()->maxWidth(50)
@@ -48,8 +49,16 @@ class User extends Resource
             ,
             HasMany::make(__('Sessions'), 'sessions')
             ,
-            Impersonate::make($this)
+            MorphToMany::make('Roles', 'roles', Acl\Role::class)
+            ,
+            MorphToMany::make('Permissions', 'permissions', Acl\Permission::class)
             ,
         ];
+
+        if ($request->user()->hasPermissionTo('impersonate')) {
+            $fields[] = \KABBOUCHI\NovaImpersonate\Impersonate::make($this);
+        }
+
+        return $fields;
     }
 }

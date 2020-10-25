@@ -9,43 +9,43 @@ class UserPolicy
 {
     use HandlesAuthorization;
 
-    public function viewAny(User $user)
+    final public function viewAny(User $user): bool
     {
-        return true;
+        return $user->isAdministrator() || $user->isModerator();
     }
 
-    public function view(User $user, User $model)
+    final public function view(User $user, User $model): bool
     {
-        return true;
+        return $user->isAdministrator() || $user->isModerator();
     }
 
-    public function create(User $user)
+    final public function create(User $user): bool
     {
-        return true;
+        return $user->isAdministrator() || $user->isModerator();
     }
 
-    public function update(User $user, User $model)
+    final public function update(User $user, User $model): bool
     {
-        return true;
+        return $user->isAdministrator() || ($user->isModerator() && $user->is($model));
     }
 
-    public function delete(User $user, User $model)
+    final public function delete(User $user, User $model): bool
     {
-        return true;
+        return $user->isAdministrator();
     }
 
-    public function restore(User $user, User $model)
+    final public function restore(User $user, User $model): bool
     {
-        return true;
+        return $user->isAdministrator();
     }
 
-    public function forceDelete(User $user, User $model)
+    final public function forceDelete(User $user, User $model): bool
     {
-        return true;
+        return $user->isAdministrator();
     }
 
-    public function uploadFiles(User $user)
+    final public function uploadFiles(User $user): bool
     {
-        return true;
+        return $user->isAdministrator() || $user->isModerator();
     }
 }

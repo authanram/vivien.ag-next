@@ -2,18 +2,21 @@
 
 namespace App\Providers;
 
+use App\Policies\PermissionPolicy;
+use App\Policies\RolePolicy;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
-    public function tools(): array
+    final public function tools(): array
     {
         $tools = [
-            new \Spatie\BackupTool\BackupTool(),
-            new \Sbine\RouteViewer\RouteViewer,
+            static::makePermissionTool(),
             new \KABBOUCHI\LogsTool\LogsTool(),
+            new \Sbine\RouteViewer\RouteViewer,
+            new \Spatie\BackupTool\BackupTool(),
         ];
 
         if ($this->app->environment('local')) {
@@ -29,12 +32,12 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         return $tools;
     }
 
-    public function register(): void
+    final public function register(): void
     {
         //
     }
 
-    protected function routes(): void
+    final protected function routes(): void
     {
         Nova::routes()
             ->withAuthenticationRoutes()
@@ -42,19 +45,14 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             ->register();
     }
 
-    protected function gate(): void
+    final protected function gate(): void
     {
         Gate::define('viewNova', static function ($user) {
             return \in_array($user->email, config('nova-settings.gates', []), true);
         });
     }
 
-    protected function resources(): void
-    {
-        Nova::resourcesIn(app_path('Nova'));
-    }
-
-    protected function cards(): array
+    final protected function cards(): array
     {
         return [
             new \GijsG\SystemResources\SystemResources('ram'),
@@ -65,8 +63,15 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         ];
     }
 
-    protected function dashboards(): array
+//    final protected function dashboards(): array
+//    {
+//        return [];
+//    }
+
+    private static function makePermissionTool(): \Vyuldashev\NovaPermission\NovaPermissionTool
     {
-        return [];
+        return \Vyuldashev\NovaPermission\NovaPermissionTool::make()
+            ->rolePolicy(RolePolicy::class)
+            ->permissionPolicy(PermissionPolicy::class);
     }
 }

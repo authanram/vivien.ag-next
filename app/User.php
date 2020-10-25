@@ -6,6 +6,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * App\User
@@ -37,6 +38,7 @@ use Illuminate\Notifications\Notifiable;
  */
 class User extends Authenticatable
 {
+    use HasRoles;
     use Notifiable;
 
     protected $fillable = [
@@ -53,6 +55,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    final public function isAdministrator(): bool
+    {
+        return $this->hasPermissionTo('administer');
+    }
+
+    final public function isModerator(): bool
+    {
+        return $this->hasPermissionTo('moderate');
+    }
 
     final public function sessions(): HasMany
     {
