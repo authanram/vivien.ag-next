@@ -59,6 +59,11 @@ final class EventService implements EventServiceContract
 
         return $this;
     }
+
+    public function hasUpcomingEvents(): bool
+    {
+        return $this->upcoming()->get()->count();
+    }
 }
 
 //$service = resolve(\App\Contracts\EventServiceContract::class);
