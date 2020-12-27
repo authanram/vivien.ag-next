@@ -15,6 +15,7 @@ class WelcomeController extends Controller
                 'eventType.color',
                 'eventLocation',
             ])
+            ->where('published', true)
             ->limit(3)
             ->orderBy('date_from')
             ->get();
