@@ -46,7 +46,7 @@
                         @else
                             @if(count(words($post->body)) > 50)
                                 <div class="mb-5">
-                                    {!! truncateWords(nl2br($post->body)) !!}
+                                    {!! nl2br(truncateWords($post->body)) !!}
                                 </div>
 
                                 <div>
@@ -59,7 +59,7 @@
                                     </a>
                                 </div>
                             @else
-                                {!! truncateWords(nl2br($post->body)) !!}
+                                {!! nl2br(truncateWords($post->body)) !!}
                             @endif
                         @endif
                     </div>
