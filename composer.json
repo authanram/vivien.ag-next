@@ -24,7 +24,6 @@
         "kabbouchi/nova-logs-tool": "0.*",
         "laravel/framework": "8.*",
         "laravel/nova": "3.*",
-        "laravel/telescope": "4.*",
         "laravel/ui": "3.*",
         "manogi/nova-tiptap": "2.*",
         "optimistdigital/nova-sortable": "2.*",
@@ -43,7 +42,9 @@
         "tightenco/nova-google-analytics": "0.*",
         "titasgailius/search-relations": "2.*",
         "vyuldashev/nova-money-field": "1.*",
-        "vyuldashev/nova-permission": "3.*"
+        "vyuldashev/nova-permission": "3.*",
+        "acme/duplicate-field": "*",
+        "acme/theme": "*"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "2.*",
@@ -53,8 +54,10 @@
         "laracasts/generators": "2.*",
         "laravel/tinker": "2.*",
         "mockery/mockery": "1.*",
+        "nunomaduro/collision": "^5.0",
         "nunomaduro/phpinsights": "2.*",
-        "phpunit/phpunit": "9.*"
+        "phpunit/phpunit": "9.*",
+        "spatie/laravel-ray": "1.29.*"
     },
     "config": {
         "optimize-autoloader": true,
@@ -114,6 +117,18 @@
         "drobee/nova-sluggable": {
             "type": "vcs",
             "url": "https://github.com/authanram/nova-sluggable.git"
+        },
+        "acme/duplicate-field": {
+            "type": "path",
+            "url": "./nova-components/DuplicateField"
+        },
+        "0": {
+            "type": "path",
+            "url": "./nova-components/Theme"
+        },
+        "1": {
+            "type": "path",
+            "url": "./nova-components/Theme"
         }
     }
 }

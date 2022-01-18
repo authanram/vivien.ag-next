@@ -10,7 +10,10 @@ class EventsTimeFilter extends Filter
 {
     public $component = 'select-filter';
 
-    public $name = 'Time region';
+    public function name(): string
+    {
+        return __('Time Region');
+    }
 
     public function apply(Request $request, $query, $value)
     {
@@ -28,9 +31,9 @@ class EventsTimeFilter extends Filter
     final public function options(Request $request): array
     {
         return [
-            'Upcoming' => 'upcoming',
-            'Past' => 'past',
-            'All' => 'all',
+            __('Upcoming') => 'upcoming',
+            __('Past') => 'past',
+            __('All') => 'all',
         ];
     }
 

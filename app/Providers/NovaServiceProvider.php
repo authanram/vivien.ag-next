@@ -11,6 +11,15 @@ use Laravel\Nova\NovaApplicationServiceProvider;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
+    final public function boot(): void
+    {
+        parent::boot();
+
+        Nova::serving(static function () {
+            Nova::translations(__DIR__.'/../../resources/lang/de.json');
+        });
+    }
+
     final public function tools(): array
     {
         $isLocal = $this->app->environment('local');

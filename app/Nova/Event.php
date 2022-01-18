@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use App\Nova\Actions\DuplicateEvent;
+use Acme\DuplicateField\Duplicate;
 use App\Nova\Filters\EventsTimeFilter;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
@@ -86,16 +86,16 @@ class Event extends Resource
                 ->rules('required', 'numeric', 'min:1', 'gte:reserved_seats')
                 ->sortable()
                 ->min(1)
-                ->help('Maximum attendees, <strong>excluding staff</strong>.')
-                ->showOnIndex()
+                ->help(__('Maximum attendees (excluding staff).'))
+                ->exceptOnForms()
             ,
             Number::make(__('Attendees'), 'maximum_attendees')
                 ->default(10)
                 ->rules('required', 'numeric', 'min:1', 'gte:reserved_seats')
                 ->sortable()
                 ->min(1)
-                ->help('Maximum attendees, <strong>excluding staff</strong>.')
-                ->hideFromIndex()
+                ->help(__('Maximum attendees (excluding staff).'))
+                ->onlyOnForms()
             ,
             Number::make(__('Reserved Seats'), 'reserved_seats')
                 ->withMeta(['value' => $this->model()?->getAttribute('reserved_seats') ?? 0])
@@ -106,7 +106,6 @@ class Event extends Resource
             ,
             Number::make(__('Price'), 'price')
                 ->rules('nullable', 'numeric')
-                ->sortable()
             ,
             Text::make(__('Price Note'), 'price_note')
                 ->hideFromIndex()
@@ -130,6 +129,21 @@ class Event extends Resource
                 ->trueValue(true)
                 ->falseValue(false)
             ,
+            Duplicate::make()
+                ->showOnIndex()
+                ->withMeta([
+                    'resource' => 'events',
+                    'model' => \App\Models\Event::class,
+                    'id' => $this->id,
+                    'relations' => ['tags'],
+                    'override' => [
+                        'date_from' => time(),
+                        'date_to' => time(),
+                        'reserved_seats' => null,
+                        'published' => false,
+                    ],
+                ])
+            ,
             HasMany::make(__('Attendees'), 'attendees', Attendee::class)
             ,
         ];
@@ -151,13 +165,6 @@ class Event extends Resource
             ?->getAttribute('eventType')
 
             ?->getAttribute('name');
-    }
-
-    final public function actions(Request $request): array
-    {
-        return [
-            DuplicateEvent::make()->text('Duplicate'),
-        ];
     }
 
     final public static function label(): string
