@@ -44,17 +44,31 @@ if (!function_exists('content')) {
             abort(500, $e->getMessage());
         }
 
-        /** @noinspection PhpUndefinedVariableInspection */
         $body = $content->getAttribute('body');
+
+        $year = date('Y');
+
+        $yearLast = ((int)date('Y'))-1;
 
         if ($markdown) {
             $body = parsedown($body, $replaceMap);
-        } else {
-            $replace = ['#accent#' => accent(), '#avatar#' => asset('images/sybille-seuffer.jpg')];
 
-            foreach ($replace as $key => $value) {
-                $body = str_replace($key, $value, $body);
-            }
+            $replace = [
+                '{year}' => $year,
+                '{year-last}' => $yearLast,
+            ];
+        } else {
+            $replace = [
+                '#accent#' => accent(),
+                '#avatar#' => asset('images/sybille-seuffer.jpg'),
+                '#year#' => $year,
+                '#year-last#' => $yearLast,
+            ];
+
+        }
+
+        foreach ($replace as $key => $value) {
+            $body = str_replace($key, $value, $body);
         }
 
         return (object) [
