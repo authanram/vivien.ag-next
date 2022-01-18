@@ -79,17 +79,30 @@ class Event extends Resource
                 ->sortable()
             ,
             Number::make(__('Attendees'), 'maximum_attendees')
+                ->resolveUsing(function () {
+                    return $this->reserved_seats.' / '.$this->maximum_attendees;
+                })
                 ->default(10)
                 ->rules('required', 'numeric', 'min:1', 'gte:reserved_seats')
                 ->sortable()
                 ->min(1)
                 ->help('Maximum attendees, <strong>excluding staff</strong>.')
+                ->showOnIndex()
+            ,
+            Number::make(__('Attendees'), 'maximum_attendees')
+                ->default(10)
+                ->rules('required', 'numeric', 'min:1', 'gte:reserved_seats')
+                ->sortable()
+                ->min(1)
+                ->help('Maximum attendees, <strong>excluding staff</strong>.')
+                ->hideFromIndex()
             ,
             Number::make(__('Reserved Seats'), 'reserved_seats')
-                ->withMeta(['value' => $this->model()->getAttribute('reserved_seats') ?? 0])
+                ->withMeta(['value' => $this->model()?->getAttribute('reserved_seats') ?? 0])
                 ->rules('required', 'numeric', 'min:0')
                 ->default(0)
                 ->sortable()
+                ->hideFromIndex()
             ,
             Number::make(__('Price'), 'price')
                 ->rules('nullable', 'numeric')
@@ -135,15 +148,15 @@ class Event extends Resource
 
             ->model()
 
-            ->getAttribute('eventType')
+            ?->getAttribute('eventType')
 
-            ->getAttribute('name');
+            ?->getAttribute('name');
     }
 
     final public function actions(Request $request): array
     {
         return [
-            DuplicateEvent::make(),
+            DuplicateEvent::make()->text('Duplicate'),
         ];
     }
 

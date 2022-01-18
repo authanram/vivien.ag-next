@@ -15,14 +15,17 @@ abstract class DuplicateResource extends Action
     public $attributes = [];
     public $showOnIndex = false;
     public $showOnTableRow = true;
-    public $confirmButtonText = 'Duplicate Resource';
+    public $confirmButtonText = 'Duplicate';
     public $confirmText = 'Are you sure you want to duplicate this resource?';
     public $withoutActionEvents = true;
 
     protected $keepRelations = [];
     protected $duplicateRelations = [];
 
-    /** @noinspection MissingReturnTypeInspection */
+    /**
+     * @noinspection PhpMissingReturnTypeInspection
+     * @noinspection ReturnTypeCanBeDeclaredInspection
+     */
     final public function handle(ActionFields $fields, Collection $models)
     {
         if ($models->count() !== 1) {
@@ -71,6 +74,13 @@ abstract class DuplicateResource extends Action
         $newModel->save();
 
         return Action::message($this->getSuccessMessage($model, $newModel, $fields));
+    }
+
+    public function text(string $text): static
+    {
+        $this->name = $text;
+
+        return $this;
     }
 
     /** @noinspection PhpUnusedParameterInspection */
