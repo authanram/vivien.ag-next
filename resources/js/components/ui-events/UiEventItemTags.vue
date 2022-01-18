@@ -1,5 +1,6 @@
 <template>
     <div>
+        <hr class="border-t-2 my-7" v-if="items.length" />
         <template v-for="(tag, index) in items">
             <ui-tag
                 :key="`tag-${index}`"

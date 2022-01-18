@@ -52,6 +52,9 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @method static Builder|Activity whereUpdatedAt($value)
  * @method static Builder|Activity whereUserId($value)
  * @mixin \Eloquent
+ * @method static Builder|Activity forBatch(string $batchUuid)
+ * @method static Builder|Activity forEvent(string $event)
+ * @method static Builder|Activity hasBatch()
  */
 class Activity extends \Spatie\Activitylog\Models\Activity
 {

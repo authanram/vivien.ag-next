@@ -2,7 +2,7 @@
 
     <div class="padding pt-9 pb-7">
 
-        @component('components.title', ['classAttributeText' => 'text-xl md:text-2xl'])
+        @component('components.title', ['classAttributeText' => 'text-xl md:text-2xl py-1'])
             Nächste Seminare
         @endcomponent
 
@@ -15,26 +15,26 @@
             @foreach($events as $event)
 
                 <a
-                    class="bg-gray-50 block border-gray-200 border-t hover:bg-{{ $event->eventType->color->color }}-50 leading-tight px-3 py-2 px-10 relative rounded lg:rounded-none"
+                    class="bg-gray-50 block border-gray-200 border-t hover:bg-{{ $event->eventType->color->color }}-50 leading-tight px-3 py-4 px-10 relative rounded lg:rounded-none"
                     href="{{ routeIfExists('events') }}/#/?types={{ $event->eventType->id }}"
                 >
                     <ripple contain dark></ripple>
 
-                    <span class="block font-medium text-{{ $event->eventType->color->color }}-600">
+                    <span class="font-medium text-{{ $event->eventType->color->color }}-600">
                         {{ $event->eventType->name }}
                     </span>
 
-                    <span class="block leading-relaxed text-sm">
-                        {{ $event->description }}
-                    </span>
-
-                    <span class="block leading-relaxed text-xs">
-                        <span class="font-normal inline-block mr-1">
+                    <span class="leading-relaxed text-xs ml-0.5">
+                        <span class="inline-block mr-0.5 font-medium">
                             {{ $event->dateFromReadable }}
                         </span>
                         <span>
                             ({{ $event->date_from->diffForHumans() }})
                         </span>
+                    </span>
+
+                    <span class="block text-sm">
+                        {{ $event->description }}
                     </span>
 
                 </a>

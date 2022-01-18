@@ -25,10 +25,11 @@
                             :icon="icon(type)"
                             class="mr-5"
                         />
-                        <span>
+                        <span class="truncate">
                             <span
                                 :class="`text-${type.color.color}-600`"
-                                class="font-medium inline-block mr-1"
+                                :title="`${type.getCountEvents} Seminare`"
+                                class="font-medium inline-block"
                             >
                                 {{ type.getName }}
                             </span>

@@ -23,7 +23,7 @@
         </svg>
 
         <span class="block text-xs -ml-2.5 -mt-1 leading-snug whitespace-no-wrap">
-            <small>{{ attribute('slogan') }}</small>
+            <small class="whitespace-nowrap">{{ attribute('slogan') }}</small>
         </span>
 
     </span>

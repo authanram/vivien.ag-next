@@ -25,15 +25,3 @@
         ></ui-icon>Login
     </a>
 @endif
-
-<a
-    class="inline-block px-1 text-{{ accent() }}-600 hover:text-{{ accent() }}-500 hover:underline"
-    href="{{ routeIfExists('changelog') }}"
->
-    <ui-icon
-        icon="lightBulb"
-        class="mr-1"
-        size="17"
-        nudge="3"
-    ></ui-icon>Changelog
-</a>

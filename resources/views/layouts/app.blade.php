@@ -7,7 +7,7 @@
 </head>
 <body>
 @include('layouts.partials.gtm-body')
-@include('cookieConsent::index')
+@include('cookie-consent::index')
 @include('layouts.partials.background', ['style' => true])
 <div id="app">
     @include('layouts.partials.overlay')

@@ -7,7 +7,7 @@
 </head>
 <body>
 @include('layouts.partials.gtm-body')
-@include('cookieConsent::index')
+@include('cookie-consent::index')
 <div id="app">
     <div class="container mx-auto">
         <div class="my-8">

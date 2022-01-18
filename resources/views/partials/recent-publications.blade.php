@@ -20,13 +20,11 @@
 
     </div>
 
-    <div class="border-gray-200 border-t-2 mt-10 pt-10">
+    <hr class="my-7" />
 
-        <ui-activities
-            :style="$breakpoint.ge('lg') ? 'min-height:338px' : false"
-            accent="{{ accent() }}"
-        ></ui-activities>
-
-    </div>
+    <ui-activities
+        :style="$breakpoint.ge('lg') ? 'min-height:338px' : false"
+        accent="{{ accent() }}"
+    ></ui-activities>
 
 </div>

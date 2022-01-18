@@ -14,8 +14,9 @@
                     </span>
                 </div>
                 <ui-event-item-tags
-                    class="px-6"
+                    :class="selected() ? 'mb-8' : ''"
                     :items="tags"
+                    class="px-6"
                     dense
                 />
             </div>
@@ -46,5 +47,19 @@
                 return this.items
             },
         },
+
+        methods: {
+            selected () {
+                const search = new URLSearchParams(window.location.hash)
+
+                const tags = search.get('tags')||''
+
+                if (tags.trim() === '') {
+                    return 0
+                }
+
+                return tags.split(',').length
+            },
+        }
     }
 </script>

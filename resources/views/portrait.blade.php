@@ -18,7 +18,7 @@
 
                 <img
                     alt="Sybille Seuffer"
-                    class="my-8 h-48 w-48 rounded-full"
+                    class="my-8 h-48 w-48 rounded-full shadow-md"
                     src="{{ asset('images/sybille-seuffer.jpg') }}"
                 >
 

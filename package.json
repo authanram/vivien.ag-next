@@ -2,17 +2,17 @@
     "private": true,
     "scripts": {
         "dev": "npm run development",
-        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch": "npm run development -- --watch",
         "watch-poll": "npm run watch -- --watch-poll",
         "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
         "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "dependencies": {
         "@vuex-orm/core": "0.36.4",
         "@vuex-orm/plugin-axios": "0.9.4",
-        "autoprefixer": "9.8.*",
+        "autoprefixer": "10.4.2",
         "axios": "0.24.0",
         "js-cookie": "2.2.1",
         "portal-vue": "2.1.7",
@@ -27,19 +27,18 @@
     "devDependencies": {
         "@babel/plugin-syntax-dynamic-import": "7.8.3",
         "@babel/preset-env": "7.16.8",
-        "@tailwindcss/ui": "0.7.2",
         "cross-env": "7.0.3",
         "laravel-mix": "6.0.39",
-        "laravel-mix-tailwind": "0.1.2",
         "lodash": "4.17.21",
         "postcss": "8.4.5",
         "postcss-import": "14.0.2",
         "postcss-loader": "6.2.1",
-        "postcss-nested": "5.0.6",
+        "postcss-nested": "4.2.3",
         "precss": "4.0.0",
         "resolve-url-loader": "5.0.0",
-        "tailwindcss": "1.9.6",
+        "tailwindcss": "3.0.15",
         "ts-loader": "9.2.6",
-        "typescript": "4.5.4"
+        "typescript": "4.5.4",
+        "vue-loader": "15.9.*"
     }
 }

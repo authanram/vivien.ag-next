@@ -4,7 +4,7 @@
             v-if="isMum || isMumAndDad"
             class="flex items-center"
         >
-            <div class="h-16 mr-5 overflow-hidden rounded-full w-16">
+            <div class="h-16 mr-5 overflow-hidden rounded-full w-16 shadow-md">
                 <img
                     :alt="isMumAndDad ? 'Sybille u. Robert Seuffer' : 'Sybille Seuffer'"
                     :src="`${item.avatar_path}/${isMumAndDad ? 'sybille-robert' : 'sybille'}-seuffer.jpg`"

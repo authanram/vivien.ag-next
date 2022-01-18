@@ -9,7 +9,7 @@ export default {
                 'md:border-b-4',
             ],
             active: [
-                'border-%s-500',
+                '!border-%s-500',
             ],
         },
 

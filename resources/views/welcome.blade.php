@@ -2,16 +2,22 @@
 
 @section('content')
 
-    <x-card>
+    <x-card class="welcome">
 
         <div class="text-gray-500">
 
             {!! content('65110c3b-0373-4996-b875-ac1b763a311c', true, [
 
-                '<p>' => '<p class="mb-4">',
+                '<p>' => '<p class="mb-5">',
 
             ])->body !!}
 
+        </div>
+
+        <div class="address text-sm">
+            {!! Str::of(content('18f0895f-bdce-4a1b-a59a-e0f0ff4daed9', true, [
+                '<p>' => '<p class="mb-4">',
+            ])->body)->replace('h2', 'p') !!}
         </div>
 
     </x-card>

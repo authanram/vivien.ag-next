@@ -12,12 +12,12 @@
                 <div class="md:mr-5">
 
                     <span class="cookie-consent__message font-medium md:block text-sm md:text-base">
-                        {{ trans('cookieConsent::texts.message') }}
+                        {{ trans('cookie-consent::texts.message') }}
                     </span>
 
                     <span class="text-xs">
-                        {{ trans('cookieConsent::texts.info') }}
-                        <a href="{{ routeIfExists('cookie-policy') }}" class="font-medium hover:underline">{{ lcfirst(trans('cookieConsent::texts.click_here')) }}</a>.
+                        {{ trans('cookie-consent::texts.info') }}
+                        <a href="{{ routeIfExists('cookie-policy') }}" class="font-medium hover:underline">{{ lcfirst(trans('cookie-consent::texts.click_here')) }}</a>.
                     </span>
 
                 </div>
@@ -26,14 +26,14 @@
                     class="js-cookie-consent-button bg-white focus:bg-opacity-100 font-light h-8 hover:bg-{{ accent() }}-600 hover:text-white px-2 md:mt-0 md:mr-1 mt-2 rounded text-{{ accent() }}-600 text-sm whitespace-no-wrap"
                     data-callback-params="{all:true}"
                 >
-                    {{ trans('cookieConsent::texts.agree') }}
+                    {{ trans('cookie-consent::texts.agree') }}
                 </button>
 
                 <a
                     class="font-light h-8 hover:underline px-2 md:h-auto md:mt-0 md:mr-1 mt-2 rounded text-xs whitespace-no-wrap"
                     href="{{ routeIfExists('cookie-policy') }}"
                 >
-                    {{ trans('cookieConsent::texts.settings') }}
+                    {{ trans('cookie-consent::texts.settings') }}
                 </a>
 
             </div>
