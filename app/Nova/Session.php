@@ -12,16 +12,14 @@ class Session extends Resource
 {
     public static $group = 'Acl';
 
-    public static $model = \App\Models\Session::class;
-
-    public static $title = 'id';
+    public static string $model = \App\Models\Session::class;
 
     public static $search = [
         'id',
         'user_id',
     ];
 
-    public static $searchRelations = [
+    public static array $searchRelations = [
         'user' => ['name'],
     ];
 

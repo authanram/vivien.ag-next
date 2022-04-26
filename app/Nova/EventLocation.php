@@ -12,7 +12,7 @@ class EventLocation extends Resource
 {
     protected static array $orderBy = ['name' => 'asc'];
 
-    public static $model = \App\Models\EventLocation::class;
+    public static string $model = \App\Models\EventLocation::class;
 
     public static $title = 'name';
 

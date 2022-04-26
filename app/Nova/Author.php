@@ -11,7 +11,7 @@ use Saumini\Count\RelationshipCount;
 
 class Author extends Resource
 {
-    public static $model = \App\Models\Author::class;
+    public static string $model = \App\Models\Author::class;
 
     public static $title = 'name';
 

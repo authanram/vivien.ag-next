@@ -14,7 +14,7 @@ class CookieConsentCookie extends Resource
 {
     public static $group = 'Cookie Consent';
 
-    public static $model = \App\Models\CookieConsentCookie::class;
+    public static string $model = \App\Models\CookieConsentCookie::class;
 
     public static $title = 'cookie_name';
 

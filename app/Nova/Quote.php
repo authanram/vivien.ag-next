@@ -10,7 +10,7 @@ use Laravel\Nova\Fields\Text;
 
 class Quote extends Resource
 {
-    public static $model = \App\Models\Quote::class;
+    public static string $model = \App\Models\Quote::class;
 
     public static $title = 'body';
 
@@ -19,7 +19,7 @@ class Quote extends Resource
         'body',
     ];
 
-    public static $searchRelations = [
+    public static array $searchRelations = [
         'author' => ['name'],
     ];
 

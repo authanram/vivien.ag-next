@@ -22,7 +22,7 @@ class Event extends Resource
         'date_from' => 'asc',
     ];
 
-    public static $model = \App\Models\Event::class;
+    public static string $model = \App\Models\Event::class;
 
     public static function group(): string
     {
@@ -37,7 +37,7 @@ class Event extends Resource
         'lead'
     ];
 
-    public static $searchRelations = [
+    public static array $searchRelations = [
         'eventLocation' => ['name'],
         'eventType' => ['name'],
     ];
@@ -79,9 +79,7 @@ class Event extends Resource
                 ->sortable()
             ,
             Number::make(__('Attendees'), 'maximum_attendees')
-                ->resolveUsing(function () {
-                    return $this->reserved_seats.' / '.$this->maximum_attendees;
-                })
+                ->resolveUsing(fn () => $this->reserved_seats.' / '.$this->maximum_attendees)
                 ->default(10)
                 ->rules('required', 'numeric', 'min:1', 'gte:reserved_seats')
                 ->sortable()

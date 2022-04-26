@@ -2,27 +2,25 @@
 
 namespace App\Nova\Filters;
 
-use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Laravel\Nova\Filters\Filter;
 
 class EventsTimeFilter extends Filter
 {
-    public $component = 'select-filter';
-
     public function name(): string
     {
         return __('Time Region');
     }
 
-    public function apply(Request $request, $query, $value)
+    public function apply(Request $request, $query, $value): Builder
     {
         if ($value === 'upcoming') {
-            return $query->where('date_to', '>', Carbon::now());
+            return $query->where('date_to', '>', now());
         }
 
         if ($value === 'past') {
-            return $query->where('date_to', '<', Carbon::now());
+            return $query->where('date_to', '<', now());
         }
 
         return $query;

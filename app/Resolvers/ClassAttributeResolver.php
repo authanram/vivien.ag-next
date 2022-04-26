@@ -18,13 +18,12 @@ class ClassAttributeResolver implements Htmlable
 
     private static function clean(string $value): string
     {
-        return \preg_replace('!\s+!', ' ', $value);
+        return preg_replace('!\s+!', ' ', $value);
     }
 
     public function __construct(string $item, bool $condition = true, string $default = null)
     {
         $this->values = collect();
-
         $this->when($condition, $item, $default);
     }
 
@@ -36,13 +35,9 @@ class ClassAttributeResolver implements Htmlable
     final public function when(bool $condition, string $item, string $default = null): self
     {
         if ($condition) {
-
             $this->values->add(trim($item));
-
         } elseif (!empty($default)) {
-
             $this->values->add(trim($default));
-
         }
 
         return $this;
@@ -61,15 +56,10 @@ class ClassAttributeResolver implements Htmlable
     private function get(): string
     {
         return static::clean(
-
             $this->values
-
                 ->filter()
-
                 ->sort()
-
                 ->implode(' ')
-
         );
     }
 }

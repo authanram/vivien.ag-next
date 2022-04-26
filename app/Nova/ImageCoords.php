@@ -15,9 +15,7 @@ class ImageCoords extends Resource
 
     public static $group = 'System';
 
-    public static $model = \App\Models\ImageCoords::class;
-
-    public static $title = 'id';
+    public static string $model = \App\Models\ImageCoords::class;
 
     public static $search = [
         'id',
@@ -25,7 +23,7 @@ class ImageCoords extends Resource
         'coords',
     ];
 
-    public static $searchRelations = [
+    public static array $searchRelations = [
         'image' => ['name'],
     ];
 

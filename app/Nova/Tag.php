@@ -17,7 +17,7 @@ class Tag extends Resource
         'name->de' => 'asc',
     ];
 
-    public static $model = \App\Models\Tag::class;
+    public static string $model = \App\Models\Tag::class;
 
     public static $title = 'name';
 

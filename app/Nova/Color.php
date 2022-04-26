@@ -13,7 +13,7 @@ class Color extends Resource
 
     public static $group = 'System';
 
-    public static $model = \App\Models\Color::class;
+    public static string $model = \App\Models\Color::class;
 
     public static $title = 'color';
 

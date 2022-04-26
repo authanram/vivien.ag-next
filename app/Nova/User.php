@@ -13,7 +13,7 @@ use Laravel\Nova\Fields\Text;
 
 class User extends Resource
 {
-    public static $model = \App\Models\User::class;
+    public static string $model = \App\Models\User::class;
 
     public static $title = 'name';
 

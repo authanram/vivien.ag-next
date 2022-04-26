@@ -13,7 +13,7 @@ class EventType extends Resource
 {
     protected static array $orderBy = ['name' => 'asc'];
 
-    public static $model = \App\Models\EventType::class;
+    public static string $model = \App\Models\EventType::class;
 
     public static $title = 'name';
 

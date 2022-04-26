@@ -21,7 +21,7 @@ class MenuItem extends Resource
 
     public static $group = 'Routing';
 
-    public static $model = \App\Models\MenuItem::class;
+    public static string $model = \App\Models\MenuItem::class;
 
     public static $title = 'label';
 
@@ -30,7 +30,7 @@ class MenuItem extends Resource
         'label',
     ];
 
-    public static $searchRelations = [
+    public static array $searchRelations = [
         'menu' => ['slug'],
         'route' => ['route'],
         'color' => ['color'],

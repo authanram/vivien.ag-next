@@ -12,7 +12,7 @@ class Menu extends Resource
 {
     public static $group = 'Routing';
 
-    public static $model = \App\Models\Menu::class;
+    public static string $model = \App\Models\Menu::class;
 
     public static $title = 'slug';
 

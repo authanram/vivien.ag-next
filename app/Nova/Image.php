@@ -17,7 +17,7 @@ class Image extends Resource
 {
     use HasSortableRows;
 
-    public static $model = \App\Models\Image::class;
+    public static string $model = \App\Models\Image::class;
 
     public static $title = 'name';
 

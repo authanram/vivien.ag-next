@@ -6,23 +6,21 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 trait RedirectsAfterPersist
 {
-    public static function redirectAfterCreate(NovaRequest $request, $resource)
+    public static function redirectAfterCreate(NovaRequest $request, $resource): string
     {
-        if ($request->viaResource) {
-            return "/resources/{$request->viaResource}/{$request->viaResourceId}";
+        if ($request->get('viaResource') && $request->get('viaResourceId')) {
+            return "/resources/{$request->get('viaResource')}/{$request->get('viaResourceId')}";
         }
 
-        //return "/resources/{$resource::uriKey()}";
         return parent::redirectAfterCreate($request, $resource);
     }
 
-    public static function redirectAfterUpdate(NovaRequest $request, $resource)
+    public static function redirectAfterUpdate(NovaRequest $request, $resource): string
     {
-        if ($request->viaResource) {
-            return "/resources/{$request->viaResource}/{$request->viaResourceId}";
+        if ($request->get('viaResource') && $request->get('viaResourceId')) {
+            return "/resources/{$request->get('viaResource')}/{$request->get('viaResourceId')}";
         }
 
         return "/resources/{$resource::uriKey()}";
-        //return parent::redirectAfterUpdate($request, $resource);
     }
 }

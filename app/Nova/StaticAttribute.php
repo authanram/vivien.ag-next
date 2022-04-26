@@ -20,7 +20,7 @@ class StaticAttribute extends Resource
 
     protected static array $orderBy = ['name' => 'asc'];
 
-    public static $model = \App\Models\StaticAttribute::class;
+    public static string $model = \App\Models\StaticAttribute::class;
 
     public static $title = 'name';
 
@@ -34,7 +34,7 @@ class StaticAttribute extends Resource
 
     final public function fields(Request $request): array
     {
-        $table = $this->model()->getTable();
+        $table = $this->model()?->getTable();
 
         return [
             ID::make()->hideFromIndex()

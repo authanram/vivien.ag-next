@@ -10,9 +10,7 @@ use Laravel\Nova\Fields\Number;
 
 class Attendee extends Resource
 {
-    public static $model = \App\Models\Attendee::class;
-
-    public static $title = 'id';
+    public static string $model = \App\Models\Attendee::class;
 
     public static $search = [
         'id',

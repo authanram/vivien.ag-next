@@ -7,7 +7,7 @@ class VaporFile extends \Laravel\Nova\Fields\VaporFile
     protected function prepareStorageCallback($storageCallback)
     {
         $this->storageCallback = $storageCallback ?? function ($request, $model, $attribute, $requestAttribute) {
-                if (! $request->$requestAttribute) {
+                if ($request->{$requestAttribute} === false) {
                     return $this->attribute = $model->{$attribute};
                 }
 
