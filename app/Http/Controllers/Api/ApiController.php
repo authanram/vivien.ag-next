@@ -6,11 +6,10 @@ use App\Contracts\DataServiceContract;
 use App\Http\Controllers\Controller;
 use Spatie\QueryBuilder\AllowedFilter;
 
-class ApiController extends Controller
+abstract class ApiController extends Controller
 {
     protected DataServiceContract $dataService;
 
-    /** @noinspection MagicMethodsValidityInspection */
     public function __construct(DataServiceContract $dataService)
     {
         $this->dataService = $dataService;
@@ -21,13 +20,11 @@ class ApiController extends Controller
         $exactFilters = [];
 
         foreach ($filters as $filter) {
-
-            if (! \in_array($filter, $ignored, true)) {
-
-                $exactFilters[] = AllowedFilter::exact($filter);
-
+            if (in_array($filter, $ignored, true)) {
+                continue;
             }
 
+            $exactFilters[] = AllowedFilter::exact($filter);
         }
 
         return $exactFilters;

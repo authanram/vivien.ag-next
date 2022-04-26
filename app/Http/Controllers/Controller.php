@@ -3,43 +3,39 @@
 namespace App\Http\Controllers;
 
 use App\Models\Route;
-use App\Services\StateService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\View\View;
 
-class Controller extends BaseController
+abstract class Controller extends BaseController
 {
+    protected const VIEW = 'welcome';
+
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function __construct(StateService $stateService)
+    public function index(int $routeId): View
     {
-        $stateService->merge(data()->getMenus());
-
-        $stateService->merge(data()->getImageCoords());
+        return view(static::VIEW, $this->data($routeId));
     }
 
-    final public function defaultData(?int $routeId): array
+    protected function data(?int $routeId): array
     {
-        $route = $routeId ? static::findRoute($routeId) : null;
+        $route = $routeId
+            ? static::findRoute($routeId)
+            : null;
 
         return [
-
             'contents' => optional($route)->getAttribute('contents'),
-
             'title' => optional($route)->getAttribute('title'),
-
         ];
     }
 
-    /** @noinspection MissingReturnTypeInspection */
-    final public static function findRoute(int $routeId)
+    protected static function findRoute(int $routeId)
     {
         return Route::with('contents')
-
             ->where('id', $routeId)
-
             ->firstOrFail();
     }
 }

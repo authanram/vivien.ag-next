@@ -2,27 +2,21 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
+use Exception;
 use Illuminate\Support\Collection;
 
-class QuoteController extends ApiController
+final class QuoteController extends ApiController
 {
-    final public function random(Request $request): Collection
+    public function random(): Collection
     {
         $quotes = $this->dataService->getQuotes()->toArray();
 
         try {
-
-            $index = \random_int(0, count($quotes) - 1);
-
+            $index = random_int(0, count($quotes) - 1);
             return collect($quotes[$index]);
-
-        } catch (\Exception $exception) {
-
-            \report($exception);
-
+        } catch (Exception $exception) {
+            report($exception);
             abort(500, $exception->getMessage());
-
         }
     }
 }

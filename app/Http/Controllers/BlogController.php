@@ -5,46 +5,34 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\View\View;
 
-class BlogController extends Controller
+final class BlogController extends Controller
 {
-    final public function index(): View
+    public function index(int $routeId = null): View
     {
-        $args = \func_get_args();
-
-        $routeId = $args[0] ?? null;
-
+        $args = func_get_args();
         $slug = null;
 
         if (count($args) > 2) {
-
             abort(404);
-
         } elseif (count($args) === 2) {
-
             [$slug, $routeId] = $args;
-
         }
 
         $builder = Post::orderBy('created_at', 'desc');
 
         if ($slug) {
-
             $builder->where('slug', $slug);
-
         }
 
-        /** @noinspection PhpIncompatibleReturnTypeInspection */
-        return view('blog', $this->defaultData($routeId), [
+        return view('blog', $this->data($routeId), [
             'posts' => $builder->get(),
             'slug' => $slug,
         ]);
     }
 
-    final public function indexWithSlug(int $routeId, string $slug = null): View
+    public function indexWithSlug(int $routeId): View
     {
         $posts = Post::orderBy('created_at', 'desc')->get();
-
-        /** @noinspection PhpIncompatibleReturnTypeInspection */
-        return view('blog', $this->defaultData($routeId), compact('posts'));
+        return view('blog', $this->data($routeId), compact('posts'));
     }
 }

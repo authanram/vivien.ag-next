@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Mail\AttendancePlaced;
 use App\Models\Attendee;
 use App\Models\Event;
 use App\Http\Requests\AttendeeCreateRequest;
+use Exception;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
-class AttendeesController extends ApiController
+final class AttendeesController extends ApiController
 {
-    final public function create(AttendeeCreateRequest $request, Event $event): bool
+    public function create(AttendeeCreateRequest $request, Event $event): bool
     {
         $event->setAttribute(
             'reserved_seats',
@@ -18,7 +20,6 @@ class AttendeesController extends ApiController
         )->save();
 
         try {
-
             $attendee = Attendee::create([
                 'event_id' => $event->getAttribute('id'),
                 'uuid' => Str::uuid()->toString(),
@@ -33,16 +34,12 @@ class AttendeesController extends ApiController
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->userAgent(),
             ]);
-
-        } catch (\Exception $exception) {
-
-            \report($exception);
-
+        } catch (Exception $exception) {
+            report($exception);
             return false;
-
         }
 
-        Mail::send(new \App\Mail\AttendancePlaced($attendee));
+        Mail::send(new AttendancePlaced($attendee));
 
         return true;
     }

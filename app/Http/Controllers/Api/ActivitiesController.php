@@ -7,49 +7,43 @@ use App\Models\Model;
 use App\Models\Post;
 use Carbon\Carbon;
 
-class ActivitiesController extends ApiController
+final class ActivitiesController extends ApiController
 {
     use GetsCollections;
 
-    final public function recent(): array
+    public function recent(): array
     {
         $eventNew = new Event;
 
         $events = Event::where([
             ['published', true],
             ['date_to', '>=', Carbon::now()],
+        ])->with([
+            'eventLocation:' . implode(',', self::getEventLocationColumns()),
+            'eventType:' . implode(',', self::getEventTypeColumns()),
         ])
-            ->with([
-                'eventLocation:' . implode(',', static::getEventLocationColumns()),
-                'eventType:' . implode(',', static::getEventTypeColumns()),
-            ])
-            ->limit(2)
-            ->orderByDesc('created_at')
-            ->get(\array_merge(['id', ...$eventNew->getFillable()]))
-            ->all();
+        ->limit(2)
+        ->orderByDesc('created_at')
+        ->get(array_merge(['id', ...$eventNew->getFillable()]))
+        ->all();
 
         $posts = Post::limit(3 - count($events))
             ->orderByDesc('created_at')
-            ->get(static::getPostColumns())
-            ->map(static function (Post $post) {
-                return $post;
-            })
+            ->get(self::getPostColumns())
+            ->map(static fn (Post $post) => $post)
             ->all();
 
-        $recentActivities = collect(\array_merge($events, $posts));
+        $recentActivities = collect(array_merge($events, $posts));
 
-        $taggables = static::getTaggablesByEntities($recentActivities);
+        $taggables = self::getTaggablesByEntities($recentActivities);
 
-        $tags = static::getTagsByTaggables($taggables);
+        $tags = self::getTagsByTaggables($taggables);
 
-        $activities = [];
 
-        $recentActivities->each(static function(Model $activity) use (&$activities) {
-            $activities[] = [
-                'id' => $activity->getAttribute('id'),
-                'entity' => $activity->getAttribute('entity_type'),
-            ];
-        });
+        $activities = $recentActivities->map(static fn (Model $activity) => [
+            'id' => $activity->getAttribute('id'),
+            'entity' => $activity->getAttribute('entity_type'),
+        ]);
 
         $eventLocations = $recentActivities->pluck('eventLocation');
 
@@ -71,9 +65,7 @@ class ActivitiesController extends ApiController
         $dates = $actionable->getDates();
 
         foreach ($dates as $date) {
-
-            $actionable = static::formatDate($actionable, $date, $date . '_readable');
-
+            $actionable = self::formatDate($actionable, $date, $date . '_readable');
         }
 
         return $actionable;
@@ -81,46 +73,29 @@ class ActivitiesController extends ApiController
 
     private static function formatDate(Model $actionable, string $sourceColumn, string $targetColumn): Model
     {
-        if (!\array_key_exists($sourceColumn, $actionable->getAttributes())
-            || !$actionable->getAttribute($sourceColumn)
+        if (array_key_exists($sourceColumn, $actionable->getAttributes()) === false
+            || $actionable->getAttribute($sourceColumn) === false
         ) {
             return $actionable;
         }
 
-        $date = $actionable->getAttribute($sourceColumn)->format(dateFormat());
+        $date = $actionable->getAttribute($sourceColumn);
 
         return $actionable->setAttribute($targetColumn, $date);
     }
 
     private static function getPostColumns(): array
     {
-        return [
-            'id',
-            'title',
-            'slug',
-            'body',
-            'published_at'
-        ];
+        return ['id', 'title', 'slug', 'body', 'published_at'];
     }
 
     private static function getEventLocationColumns(): array
     {
-        return [
-            'id',
-            'name',
-            'description',
-            'address',
-            'url',
-        ];
+        return ['id', 'name', 'description', 'address', 'url'];
     }
 
     private static function getEventTypeColumns(): array
     {
-        return [
-            'id',
-            'color_id',
-            'name',
-            'description',
-        ];
+        return ['id', 'color_id', 'name', 'description'];
     }
 }

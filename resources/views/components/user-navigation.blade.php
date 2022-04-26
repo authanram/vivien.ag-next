@@ -1,4 +1,4 @@
-@php($classList = 'flex items-center text-'.accent().'-600 hover:text-'.accent().'-500 hover:underline')
+@php($classList = 'flex items-center text-'.util()->accent().'-600 hover:text-'.util()->accent().'-500 hover:underline')
 
 @auth
     <a class="{{ $classList }}" href="/backend" target="_blank">

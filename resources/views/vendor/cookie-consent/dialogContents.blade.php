@@ -3,7 +3,7 @@
     style="margin-bottom:-1px"
 >
 
-    <div class="relative bg-{{ accent() }}-500 text-white z-10">
+    <div class="relative bg-{{ util()->accent() }}-500 text-white z-10">
 
         <div class="lg:max-w-5xl md:pl-5 mx-auto px-5 py-3 xl:max-w-screen-xl xl:px-10">
 
@@ -23,7 +23,7 @@
                 </div>
 
                 <button
-                    class="js-cookie-consent-button bg-white focus:bg-opacity-100 font-light h-8 hover:bg-{{ accent() }}-600 hover:text-white px-2 md:mt-0 md:mr-1 mt-2 rounded text-{{ accent() }}-600 text-sm whitespace-no-wrap"
+                    class="js-cookie-consent-button bg-white focus:bg-opacity-100 font-light h-8 hover:bg-{{ util()->accent() }}-600 hover:text-white px-2 md:mt-0 md:mr-1 mt-2 rounded text-{{ util()->accent() }}-600 text-sm whitespace-no-wrap"
                     data-callback-params="{all:true}"
                 >
                     {{ trans('cookie-consent::texts.agree') }}

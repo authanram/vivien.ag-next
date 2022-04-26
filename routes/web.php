@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 try {
-    $routes = data()->getRoutes();
+    $routes = util()->data()->getRoutes();
 } catch (Exception) {
     $routes = [];
 }

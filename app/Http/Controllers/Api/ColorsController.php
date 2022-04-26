@@ -4,16 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Color;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Request;
 
-class ColorsController extends ApiController
+final class ColorsController extends ApiController
 {
-    final public function fetch(Request $request): Collection
-    {
-        return static::get();
-    }
-
-    public static function get(): Collection
+    public function fetch(): Collection
     {
         return Color::all(['id', 'color']);
     }

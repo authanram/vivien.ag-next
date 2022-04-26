@@ -7,34 +7,35 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
 
-class EventsController extends ApiController
+final class EventsController extends ApiController
 {
     use GetsCollections;
 
-    final public function fetch(Request $request, string $filter = null, int $value = null): array
+    /** @noinspection PhpUnusedLocalVariableInspection */
+    public function fetch(Request $request, string $filter = null, int $value = null): array
     {
-        $compact = static::makeCompact($request);
+        $compact = self::makeCompact($request);
 
         $limit = $filter === 'limit' ? $value : null;
 
         $id = $filter === 'id' ? $value : null;
 
-        $events = $id ? Event::where('id', $id)->get() : static::getUpcomingEvents($limit);
+        $events = $id ? Event::where('id', $id)->get() : self::getUpcomingEvents($limit);
 
-        $eventLocations = static::isCompact($compact, 'eventLocations')
-            ? static::getEventLocationsByEvents($events)
+        $eventLocations = self::isCompact($compact, 'eventLocations')
+            ? self::getEventLocationsByEvents($events)
             : null;
 
-        $eventTypes = static::isCompact($compact, 'eventTypes')
-            ? static::getEventTypesByEvents($events)
+        $eventTypes = self::isCompact($compact, 'eventTypes')
+            ? self::getEventTypesByEvents($events)
             : null;
 
-        $taggables = static::isCompact($compact, 'taggables')
-            ? static::getTaggablesByEntities($events)
+        $taggables = self::isCompact($compact, 'taggables')
+            ? self::getTaggablesByEntities($events)
             : null;
 
-        $tags = static::isCompact($compact, 'tags') && $taggables
-            ? static::getTagsByTaggables($taggables)
+        $tags = self::isCompact($compact, 'tags') && $taggables
+            ? self::getTagsByTaggables($taggables)
             : null;
 
         return compact($compact);
@@ -42,7 +43,7 @@ class EventsController extends ApiController
 
     private static function isCompact(array $compact, string $isCompact): bool
     {
-        return \in_array($isCompact, $compact, true);
+        return in_array($isCompact, $compact, true);
     }
 
     private static function makeCompact(Request $request): array
@@ -50,13 +51,12 @@ class EventsController extends ApiController
         $compact = ['events', 'eventLocations', 'eventTypes', 'taggables', 'tags'];
 
         if ($request->input('xhr') && $request->input('filter')) {
-
             $compactXhr = explode(',', $request->input('xhr'));
 
-            $compact = !empty($compactXhr)
+            $filter = static fn (string $value) => in_array($value, $compact, true);
 
-                ? collect($compactXhr)->filter(fn (string $value) => \in_array($value, $compact, true))->toArray()
-
+            $compact = empty($compactXhr) === false
+                ? collect($compactXhr)->filter($filter)->toArray()
                 : $compact[0];
         }
 
@@ -68,12 +68,10 @@ class EventsController extends ApiController
         $collection = QueryBuilder::for(Event::class)->scopes('upcoming');
 
         if ($limit) {
-
-            $collection->limit($limit);
-
+            $collection::limit($limit);
         }
 
-        return $collection->get(static::getFields());
+        return $collection::get(self::getFields());
     }
 
     private static function getFields(): array

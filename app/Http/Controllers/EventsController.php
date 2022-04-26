@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\EventServiceContract;
 use Illuminate\View\View;
 
-class EventsController extends Controller
+final class EventsController extends Controller
 {
-    final public function index(int $routeId): View
+    public function index(int $routeId): View
     {
-        $hasEvents = app()->make(\App\Contracts\EventServiceContract::class)->hasUpcomingEvents();
+        $hasEvents = resolve(EventServiceContract::class)->hasUpcomingEvents();
 
-        /** @noinspection PhpIncompatibleReturnTypeInspection */
-        return view('events.events', array_merge(
-            $this->defaultData($routeId),
-            compact('hasEvents'))
+        $data = array_merge(
+            $this->data($routeId),
+            compact('hasEvents')
         );
+
+        return view('events.index', $data);
     }
 }

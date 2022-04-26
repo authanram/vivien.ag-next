@@ -5,7 +5,7 @@ use App\Util;
 return [
 
     'content' => [
-        'replace' => [
+        'replace' => static fn () => [
             '#accent#' => Util::accent(),
             '#avatar#' => asset('images/sybille-seuffer.jpg'),
             '#year#' => now()->year,
@@ -16,7 +16,7 @@ return [
     ],
 
     'parsedown' => [
-        'replace' => [
+        'replace' => static fn () => [
             '<strong>' => '<span class="font-medium">',
             '</strong>' => '</span>',
             '<a ' => '<a class="hover:underline text-accent-600" ',

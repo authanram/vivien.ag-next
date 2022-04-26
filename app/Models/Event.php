@@ -11,78 +11,6 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Tags\HasTags;
 
-/**
- * App\Models\Event
- *
- * @property int $id
- * @property int $creator_id
- * @property int|null $event_type_id
- * @property int|null $event_location_id
- * @property string $uuid
- * @property string|null $description
- * @property \Illuminate\Support\Carbon $date_from
- * @property \Illuminate\Support\Carbon $date_to
- * @property int $maximum_attendees
- * @property int|null $reserved_seats
- * @property int|null $price
- * @property string|null $price_note
- * @property string|null $catering
- * @property string|null $lead
- * @property bool $published
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property-read \App\Models\Activity|null $activity
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Attendee[] $attendees
- * @property-read int|null $attendees_count
- * @property-read \App\Models\EventLocation|null $eventLocation
- * @property-read \App\Models\EventType|null $eventType
- * @property-read string $avatar_path
- * @property-read string $created_at_readable
- * @property-read string $date_duration
- * @property-read int $date_duration_days
- * @property-read \stdClass $date_from_object
- * @property-read string $date_from_readable
- * @property-read \stdClass $date_to_object
- * @property-read string $entity_type
- * @property \Illuminate\Database\Eloquent\Collection|\Spatie\Tags\Tag[] $tags
- * @property-read int|null $tags_count
- * @property-read \App\Models\User $user
- * @method static Builder|Event date($dates)
- * @method static Builder|Event newModelQuery()
- * @method static Builder|Event newQuery()
- * @method static \Illuminate\Database\Query\Builder|Event onlyTrashed()
- * @method static Builder|Event published()
- * @method static Builder|Event query()
- * @method static Builder|Event startsAfter(\Carbon\CarbonInterface $date = null)
- * @method static Builder|Event startsBefore(\Carbon\CarbonInterface $date)
- * @method static Builder|Event upcoming()
- * @method static Builder|Event whereCatering($value)
- * @method static Builder|Event whereCreatedAt($value)
- * @method static Builder|Event whereCreatorId($value)
- * @method static Builder|Event whereDateFrom($value)
- * @method static Builder|Event whereDateTo($value)
- * @method static Builder|Event whereDeletedAt($value)
- * @method static Builder|Event whereDescription($value)
- * @method static Builder|Event whereEventLocationId($value)
- * @method static Builder|Event whereEventTypeId($value)
- * @method static Builder|Event whereId($value)
- * @method static Builder|Event whereLead($value)
- * @method static Builder|Event whereMaximumAttendees($value)
- * @method static Builder|Event wherePrice($value)
- * @method static Builder|Event wherePriceNote($value)
- * @method static Builder|Event wherePublished($value)
- * @method static Builder|Event whereReservedSeats($value)
- * @method static Builder|Event whereUpdatedAt($value)
- * @method static Builder|Event whereUuid($value)
- * @method static Builder|Event withAllTags($tags, $type = null)
- * @method static Builder|Event withAllTagsOfAnyType($tags)
- * @method static Builder|Event withAnyTags($tags, $type = null)
- * @method static Builder|Event withAnyTagsOfAnyType($tags)
- * @method static \Illuminate\Database\Query\Builder|Event withTrashed()
- * @method static \Illuminate\Database\Query\Builder|Event withoutTrashed()
- * @mixin \Eloquent
- */
 class Event extends Model
 {
     use HasTags;
@@ -231,7 +159,7 @@ class Event extends Model
 
     final public function scopeUpcoming(Builder $query): Builder
     {
-        return $this->scopeStartsAfter($query, carbon());
+        return $this->scopeStartsAfter($query, now());
     }
 
     // relations

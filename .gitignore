@@ -28,6 +28,5 @@ yarn-error.log
 /service-account-credentials.json
 /storage/local-users.php
 /tailwindcss
+/var
 
-# @todo remove
-/resources/views.bak

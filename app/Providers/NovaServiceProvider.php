@@ -2,31 +2,25 @@
 
 namespace App\Providers;
 
-use App\Policies\PermissionPolicy;
-use App\Policies\RolePolicy;
+use App\Nova\Cards\PageViewsMetric;
+use App\Nova\Cards\VisitorsMetric;
+use GijsG\SystemResources\SystemResources;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
+use Tightenco\NovaGoogleAnalytics\MostVisitedPagesCard;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
-    final public function boot(): void
-    {
-        parent::boot();
-
-        Nova::serving(static function () {
-            Nova::translations(__DIR__.'/../../resources/lang/de.json');
-        });
-    }
-
+    /** @noinspection PhpFullyQualifiedNameUsageInspection */
     final public function tools(): array
     {
         $isLocal = $this->app->environment('local');
 
-        return \collect([])
+        return collect()
             ->pipe(static function (Collection $collection) use ($isLocal) {
-                if (\request()->user()->isAdministrator() === false) {
+                if (request()->user()->isAdministrator() === false) {
                     return $collection;
                 }
 
@@ -41,18 +35,13 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
                 $collection->add(new \Spatie\TailTool\TailTool());
 
-                if (\config('env.GENERATOR_ENABLED')) {
+                if (config('env.GENERATOR_ENABLED')) {
                     $collection->add(new \Cloudstudio\ResourceGenerator\ResourceGenerator());
                 }
 
                 return $collection;
             })
             ->toArray();
-    }
-
-    final public function register(): void
-    {
-        //
     }
 
     final protected function routes(): void
@@ -66,28 +55,22 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     final protected function gate(): void
     {
         Gate::define('viewNova', static function ($user) {
-            return \in_array($user->email, config('nova-settings.gates', []), true);
+            return in_array($user->email, config('nova-settings.gates', []), true);
         });
     }
 
     final protected function cards(): array
     {
-        return \collect([
-            new \App\Nova\Cards\PageViewsMetric,
-            new \App\Nova\Cards\VisitorsMetric,
-            new \Tightenco\NovaGoogleAnalytics\MostVisitedPagesCard,
+        return collect([
+            new PageViewsMetric,
+            new VisitorsMetric,
+            new MostVisitedPagesCard,
         ])->pipe(static function (Collection $collection) {
-            return \request()->user()->isAdministrator()
+            return request()->user()->isAdministrator()
                 ? $collection
-                    ->prepend(new \GijsG\SystemResources\SystemResources('ram'))
-                    ->prepend(new \GijsG\SystemResources\SystemResources('cpu'))
+                    ->prepend(new SystemResources('ram'))
+                    ->prepend(new SystemResources('cpu'))
                 : $collection;
         })->toArray();
-    }
-
-    /** @noinspection SenselessMethodDuplicationInspection */
-    final protected function dashboards(): array
-    {
-        return [];
     }
 }

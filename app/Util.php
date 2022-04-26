@@ -4,6 +4,7 @@ namespace App;
 
 use App\Contracts\DataServiceContract;
 use App\Models\Content as Model;
+use App\Models\StaticAttribute;
 use App\Services\ParsedownService;
 use Carbon\Carbon;
 use Carbon\CarbonInterface;
@@ -17,18 +18,18 @@ use Route;
 
 final class Util
 {
-    public static function accent(Request $request = null): string
+    public function accent(Request $request = null): string
     {
-        return self::data()->getAccent($request ?? request());
+        return $this->data()->getAccent($request ?? request());
     }
 
-    public static function attributes(array $attributes = []): ComponentAttributeBag
+    public function attributes(array $attributes = []): ComponentAttributeBag
     {
         /** @noinspection PhpMethodParametersCountMismatchInspection */
         return new ComponentAttributeBag($attributes);
     }
 
-    public static function cookieConsent(string $key = null): mixed
+    public function cookieConsent(string $key = null): mixed
     {
         $cookie = Cookie::get(config('cookie-consent.cookie_name'));
 
@@ -43,7 +44,7 @@ final class Util
         return $key ? ($subject[$key] ?? false) : $subject;
     }
 
-    public static function content(string $slug, bool $markdown = false, array $replace = []): \stdClass
+    public function content(string $slug, bool $markdown = false, array $replace = []): \stdClass
     {
         try {
             /** @noinspection PhpStaticAsDynamicMethodCallInspection */
@@ -53,10 +54,10 @@ final class Util
         }
 
         $body = $markdown
-            ? self::markdown($content->body, $replace)
+            ? $this->markdown($content->body, $replace)
             : $content->body;
 
-        $map = config('project.content.replace');
+        $map = config('project.content.replace')();
 
         foreach ($map as $key => $value) {
             $body = str_replace($key, $value, $body);
@@ -68,12 +69,12 @@ final class Util
         ];
     }
 
-    public static function data(): DataServiceContract
+    public function data(): DataServiceContract
     {
         return resolve(DataServiceContract::class);
     }
 
-    public static function date(string $date = null): CarbonInterface|string
+    public function date(string $date = null): CarbonInterface|string
     {
         return $date
             ? Carbon::createFromFormat(config('app.date_format_default'), $date)
@@ -81,7 +82,7 @@ final class Util
 
     }
 
-    public static function markdown(string $markdown, array $replace = []): string
+    public function markdown(string $markdown, array $replace = []): string
     {
         try {
             $html = resolve(ParsedownService::class)->parse($markdown);
@@ -89,7 +90,7 @@ final class Util
             abort(505, $exception->getMessage());
         }
 
-        $replace = array_merge($replace, config('project.parsedown.replace'));
+        $replace = array_merge($replace, config('project.parsedown.replace'()));
 
         foreach ($replace as $key => $value) {
             $html = str_replace($key, $value, $html);
@@ -98,12 +99,17 @@ final class Util
         return '<div class="x-parsedown">'.$html.'</div>';
     }
 
-    public static function route(string $name, array $parameters = []): ?string
+    public function route(string $name, array $parameters = []): ?string
     {
         return Route::has($name) ? route($name, $parameters) : null;
     }
 
-    public static function timeToRead(string $text): string
+    public function staticAttribute(string $slug): ?string
+    {
+        return StaticAttribute::firstWhere('slug', $slug)?->value;
+    }
+
+    public function timeToRead(string $text): string
     {
         $minutes = round(str_word_count($text)/200);
 
@@ -112,7 +118,7 @@ final class Util
             : 'Lesedauer weniger 1 Min.';
     }
 
-    public static function truncate(string $text, int $length = 50, string $suffix = '...'): string
+    public function truncate(string $text, int $length = 50, string $suffix = '...'): string
     {
         $words = explode(' ', $text);
 

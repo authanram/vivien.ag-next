@@ -18,7 +18,7 @@ final class EventService implements EventServiceContract
 
     public function get(array $columns = ['*']): Collection
     {
-        return $this->builder->get($columns);
+        return $this->builder::get($columns);
     }
 
     public function with(array $with): self
@@ -30,14 +30,15 @@ final class EventService implements EventServiceContract
 
     public function dateRange(string $from, string $to): self
     {
-        $this->builder->startsAfter($from)->startsBefore($to);
+        /** @noinspection PhpParamsInspection */
+        $this->builder::startsAfter($from)->startsBefore($to);
 
         return $this;
     }
 
     public function limit(int $limit): self
     {
-        $this->builder->limit($limit);
+        $this->builder::limit($limit);
 
         return $this;
     }
@@ -55,7 +56,7 @@ final class EventService implements EventServiceContract
 
     public function upcoming(): self
     {
-        $this->builder->upcoming();
+        $this->builder::upcoming();
 
         return $this;
     }

@@ -4,28 +4,19 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Tag;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
 
-class TagsController extends ApiController
+final class TagsController extends ApiController
 {
-    final public function fetch(Request $request): Collection
+    public function fetch(): Collection
     {
-        return static::filter();
+        return self::filter();
     }
 
     public static function filter(array $filters = ['id', 'type']): Collection
     {
         return QueryBuilder::for(Tag::class)
-
-            ->allowedFilters(static::makeExactFilters($filters))
-
-            ->get([
-                'id',
-                'name',
-                'slug',
-                'type',
-                'color_id',
-            ]);
+            ->allowedFilters(self::makeExactFilters($filters))
+            ->get(['id', 'name', 'slug', 'type', 'color_id']);
     }
 }

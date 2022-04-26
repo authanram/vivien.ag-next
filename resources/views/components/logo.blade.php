@@ -13,7 +13,7 @@
             </g>
         </svg>
         <span class="block text-xs -ml-2.5 -mt-1 leading-snug whitespace-no-wrap">
-            <small class="whitespace-nowrap">{{ attribute('slogan') }}</small>
+            <small class="whitespace-nowrap">{{ util()->staticAttribute('slogan') }}</small>
         </span>
     </span>
 </span>
