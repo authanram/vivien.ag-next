@@ -1,29 +1,13 @@
+@php($classList = 'flex items-center text-'.accent().'-600 hover:text-'.accent().'-500 hover:underline')
+
 @auth
-    <a
-        class="inline-block pr-1 text-{{ accent() }}-600 hover:text-{{ accent() }}-500 hover:underline"
-        href="/backend"
-        target="_blank"
-    >
-{{--        <ui-icon--}}
-{{--            icon="lockOpen"--}}
-{{--            class="mr-1"--}}
-{{--            size="17"--}}
-{{--            nudge="3"--}}
-{{--        ></ui-icon>--}}
-        Backend (<span class="font-medium">{{ request()->user()->name }}</span>)
+    <a class="{{ $classList }}" href="/backend" target="_blank">
+        <x-icon-renderer class="h-4 w-4 mr-1" icon="user" />
+        <span>Backend (<span class="font-medium">{{ request()->user()->name }}</span>)</span>
     </a>
 @else
-    <a
-        class="inline-block px-1 text-{{ accent() }}-600 hover:text-{{ accent() }}-500 hover:underline"
-        href="/backend"
-        target="_blank"
-    >
-{{--        <ui-icon--}}
-{{--            icon="lockOpen"--}}
-{{--            class="mr-1"--}}
-{{--            size="17"--}}
-{{--            nudge="3"--}}
-{{--        ></ui-icon>--}}
-        Login
+    <a class="{{ $classList }}" href="/backend" target="_blank">
+        <x-icon-renderer class="h-4 w-4" icon="lock" />
+        <span>Login</span>
     </a>
 @endif

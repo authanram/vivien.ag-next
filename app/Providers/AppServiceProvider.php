@@ -4,13 +4,12 @@ namespace App\Providers;
 
 use App\Contracts\DataServiceContract;
 use App\Contracts\EventServiceContract;
-use App\Contracts\StaticAttributesServiceContract;
 use App\Services\DataService;
 use App\Services\EventService;
 use App\Services\ParsedownService;
-use App\Services\StateService;
-use App\Services\StaticAttributesService;
+use App\View\Components\IconRenderer;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Systems\Seed\Providers\ServiceProvider as SeedServiceProvider;
 
@@ -19,8 +18,12 @@ class AppServiceProvider extends ServiceProvider
     final public function boot(): void
     {
         date_default_timezone_set('Europe/Berlin');
+
         setlocale(LC_TIME, 'de_DE');
+
         Carbon::setLocale(config('app.locale'));
+
+        Blade::component('icon-renderer', IconRenderer::class);
     }
 
     final public function register(): void
@@ -32,16 +35,8 @@ class AppServiceProvider extends ServiceProvider
 
     private function registerSingletons(): void
     {
-        $this->app->singleton(StaticAttributesServiceContract::class, static function () {
-            return new StaticAttributesService;
-        });
-
         $this->app->singleton(DataServiceContract::class, static function () {
             return new DataService;
-        });
-
-        $this->app->singleton(StateService::class, static function () {
-            return new StateService;
         });
     }
 

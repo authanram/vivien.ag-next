@@ -1,5 +1,9 @@
-@php($font = 'https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;900&display=swap')
-@php($alpinejs = 'https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js')
+@php($assets = (object)[
+    'alpinejs' => 'https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js',
+    'font' => 'https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;900&display=swap',
+    'css' => tailwindcss('/css/app.css'),
+    'js' => mix('/dist/js/app.js'),
+])
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -9,24 +13,25 @@
     <title>{{ ($title ?? null) ? "$title - " : '' }}{{ config('app.name') }}</title>
     <x-favicon />
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preload" href="{{ $font }}" as="style">
-    <link rel="preload" href="{{ tailwindcss('/css/app.css') }}" as="style">
-    <link rel="preload" href="{{ $alpinejs }}" as="script">
-    <link rel="preload" href="{{ mix('/dist/js/app.js') }}" as="script">
-    <link rel="stylesheet" href="{{ $font }}">
-    <link rel="stylesheet" href="{{ tailwindcss('/css/app.css') }}">
+    <link rel="preload" href="{{ $assets->font }}" as="style">
+    <link rel="preload" href="{{ $assets->css }}" as="style">
+    <link rel="preload" href="{{ $assets->alpinejs }}" as="script">
+    <link rel="preload" href="{{ $assets->js }}" as="script">
+    <link rel="stylesheet" href="{{ $assets->font }}">
+    <link rel="stylesheet" href="{{ $assets->css }}">
     @livewireStyles
     @stack('styles')
     <x-google-tagmanager scripts />
-    <script defer src="{{ $alpinejs }}"></script>
-    <script defer src="{{ mix('/dist/js/app.js') }}"></script>
+    <script defer src="{{ $assets->alpinejs }}"></script>
+    <script defer src="{{ $assets->js }}"></script>
 </head>
-<body>
+<body class="h-screen">
     <x-google-tagmanager />
     @include('cookie-consent::index')
     <x-background styles />
     <div class="min-h-full relative z-0">
-        @stack('body')
+        <x-background />
+        @yield('body')
     </div>
     @livewireScripts
     @stack('scripts')

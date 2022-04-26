@@ -7,13 +7,8 @@ module.exports = {
     content: [
         './safelist.txt',
         './app/**/*.php',
-        './resources/**/*.html',
-        './resources/**/*.js',
-        './resources/**/*.jsx',
-        './resources/**/*.ts',
-        './resources/**/*.tsx',
-        './resources/**/*.php',
-        './resources/**/*.vue',
+        './resources/markdown/**/*.md',
+        './resources/views/**/*.blade.php',
         './storage/framework/views/**/*.php',
     ],
 

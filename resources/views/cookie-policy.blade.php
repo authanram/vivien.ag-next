@@ -1,5 +1,5 @@
 @extends('layouts.default')
 
 @push('content')
-    welcome123
+    cookie-policy
 @endpush

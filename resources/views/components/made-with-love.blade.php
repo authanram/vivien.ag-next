@@ -1,24 +1,22 @@
-<div>
-    Made with
-{{--    <ui-tooltip :nudge="0">--}}
-{{--        <span slot="tooltip">--}}
-{{--            For the world's--}}
-{{--            <span class="md:block">--}}
-{{--                <span class="font-medium">best mom</span>!!--}}
-{{--                <span--}}
-{{--                    class="text-red-500"--}}
-{{--                    style="font-size:.65rem"--}}
-{{--                >❤ ❤</span>--}}
-{{--            </span>--}}
-{{--        </span>--}}
-{{--        <span--}}
-{{--            class="text-red-500"--}}
-{{--            style="font-size:.65rem"--}}
-{{--        >❤</span>&nbsp;--}}
-{{--    </ui-tooltip>--}}
-    <span
-        class="text-red-500"
-        style="font-size:.65rem"
-    >❤</span>&nbsp;
-    and <a href="http://laravel.com" target="_blank" class="text-{{ accent() }}-600 hover:text-{{ accent() }}-500 hover:underline">Laravel</a>
+<div class="cursor-default flex items-center space-x-1">
+    <span>Made with</span>
+    <span class="-mt-0.5">
+        <x-tooltip delay="250" html>
+            <x-slot:tooltip>
+                For the world's
+                <span class="md:block">
+                <span class="font-bold">best mom</span>!!
+                <span class="text-red-500 text-[.65rem]">❤ ❤</span>
+            </span>
+            </x-slot:tooltip>
+            <span class="text-red-500 text-[.65rem]">❤</span>&nbsp;
+        </x-tooltip>
+    </span>
+    <span>and
+        <a
+            class="text-{{ accent() }}-600 hover:text-{{ accent() }}-500 hover:underline"
+            href="https://laravel.com"
+            title="Goto laravel.com"
+        >Laravel</a>
+    </span>
 </div>

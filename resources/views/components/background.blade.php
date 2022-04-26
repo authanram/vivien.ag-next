@@ -23,5 +23,4 @@
     <div class="absolute bottom-0 left-0 overflow-hidden right-0 top-0 z-0">
         <div class="background-image"></div>
     </div>
-    <div class="h-16 shadow-lg sticky top-0 w-full z-10"></div>
 @endif
