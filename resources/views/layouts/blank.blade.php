@@ -1,23 +1,34 @@
+@php($font = 'https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;900&display=swap')
+@php($alpinejs = 'https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    @include('layouts.partials.head')
-    @include('layouts.partials.gtm-head')
-    @yield('head')
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="{{ config('env.HEAD_ROBOTS_CONTENT') }}">
+    <title>{{ ($title ?? null) ? "$title - " : '' }}{{ config('app.name') }}</title>
+    <x-favicon />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="{{ $font }}" as="style">
+    <link rel="preload" href="{{ tailwindcss('/css/app.css') }}" as="style">
+    <link rel="preload" href="{{ $alpinejs }}" as="script">
+    <link rel="preload" href="{{ mix('/dist/js/app.js') }}" as="script">
+    <link rel="stylesheet" href="{{ $font }}">
+    <link rel="stylesheet" href="{{ tailwindcss('/css/app.css') }}">
+    @livewireStyles
+    @stack('styles')
+    <x-google-tagmanager scripts />
+    <script defer src="{{ $alpinejs }}"></script>
+    <script defer src="{{ mix('/dist/js/app.js') }}"></script>
 </head>
 <body>
-@include('layouts.partials.gtm-body')
-@include('cookie-consent::index')
-<div id="app">
-    <div class="container mx-auto">
-        <div class="my-8">
-            @yield('caption')
-        </div>
-        <div class="my-8">
-            @yield('content')
-        </div>
+    <x-google-tagmanager />
+    @include('cookie-consent::index')
+    <x-background styles />
+    <div class="min-h-full relative z-0">
+        @stack('body')
     </div>
-</div>
-@include('layouts.partials.script')
+    @livewireScripts
+    @stack('scripts')
 </body>
 </html>

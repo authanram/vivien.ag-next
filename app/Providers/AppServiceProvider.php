@@ -45,7 +45,6 @@ class AppServiceProvider extends ServiceProvider
         });
     }
 
-    /** @noinspection ClassConstantCanBeUsedInspection */
     private function registerServiceProviders(): void
     {
         if ($this->app->environment('local')) {
@@ -55,8 +54,6 @@ class AppServiceProvider extends ServiceProvider
 
             $this->app->register(SeedServiceProvider::class);
         }
-
-        $this->app->register(ViewServiceProvider::class);
 
         $this->app->bind(ParsedownService::class, static function () {
             return new ParsedownService();

@@ -11,15 +11,9 @@ trait HasRoutes
 
     final public function getRoutes(array $with = ['menuItems']): Collection
     {
-        if (!$this->routes) {
-
-            $this->routes = Route::with($with)
-
-                ->where('published', true)
-
-                ->get(['id', 'path', 'route', 'action', 'title']);
-
-        }
+        $this->routes ??= Route::with($with)
+            ->where('published', true)
+            ->get(['id', 'path', 'route', 'action', 'title']);
 
         return $this->routes;
     }

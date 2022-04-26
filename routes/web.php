@@ -1,27 +1,16 @@
 <?php
 
-use App\Contracts\DataServiceContract;
 use Illuminate\Support\Facades\Route;
 
-require __DIR__ . '/local.php';
-
 try {
-
-    $routes = resolve(DataServiceContract::class)->getRoutes();
-
-} catch (\Exception $e) {
-
+    $routes = data()->getRoutes();
+} catch (Exception) {
     $routes = [];
-
 }
 
 /** @var \App\Models\Route $route */
 foreach ($routes as $route) {
-
-    Route::get($route->getAttribute('path'), $route->getAttribute('action'))
-
-        ->defaults('routeId', $route->getAttribute('id'))
-
-        ->name($route->getAttribute('route'));
-
+    Route::get($route->path, $route->action)
+        ->defaults('routeId', $route->id)
+        ->name($route->route);
 }

@@ -1,7 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.default')
 
-@section('app')
-
-    ...
-
-@endsection
+@push('content')
+    wip
+@endpush

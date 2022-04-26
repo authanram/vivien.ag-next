@@ -14,10 +14,9 @@ class RouteServiceProvider extends ServiceProvider
     final public function map(): void
     {
         $this->mapPublicApiRoutes();
-
         $this->mapApiRoutes();
-
         $this->mapWebRoutes();
+        $this->mapWebRoutesLocal();
     }
 
     final protected function mapPublicApiRoutes(): void
@@ -40,5 +39,16 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/web.php'));
+    }
+
+    final protected function mapWebRoutesLocal(): void
+    {
+        if ($this->app->environment('local') === false) {
+            return;
+        }
+
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/local.php'));
     }
 }

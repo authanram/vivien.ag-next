@@ -1,21 +1,9 @@
-@php($hasSidebar = (bool)trim($__env->yieldContent('sidebar')))
-
-<div class="lg:flex">
-
-    <div {{ classAttribute('lg:flex lg:self-stretch')->when($hasSidebar, 'lg:w-1/2', 'w-full') }}>
-
-        @yield('content')
-
+<x-container>
+    <div class="hidden md:block">
+        <x-design-images/>
     </div>
-
-    @if ($hasSidebar)
-
-        <div class="lg:flex lg:self-stretch lg:pl-10 lg:w-1/2">
-
-            @yield('sidebar')
-
-        </div>
-
-    @endif
-
-</div>
+    <x-content>
+        @stack('content')
+        <x-slot:sidebar>@stack('sidebar')</x-slot:sidebar>
+    </x-content>
+</x-container>
