@@ -1,3 +1,4 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
 
 module.exports = {
@@ -23,7 +24,7 @@ module.exports = {
                 primary: colors.emerald,
             },
             fontFamily: {
-                sans: ['Poppins var', ...require('tailwindcss/defaultTheme').fontFamily.sans],
+                sans: ['Poppins var', ...defaultTheme.fontFamily.sans],
             },
             fontSize: {
                 'base': '17px',

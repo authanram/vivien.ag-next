@@ -1,24 +1,6 @@
-const path = require('path')
-const mix = require('laravel-mix')
+const mix = require('laravel-mix');
 
-mix.ts('resources/js/app.ts', 'public/js')
-    .postCss('resources/css/app.pcss', 'public/css', [
-        require('postcss-import'),
-        require('postcss-nested'),
-        require('tailwindcss'),
-    ])
-    .vue({ version: 2 })
-    .webpackConfig({
-        resolve: {
-            alias: {
-                '@': path.resolve(__dirname, 'resources/js/'),
-            },
-
-            extensions: ['.js', '.jsx', '.vue', '.ts', '.tsx'],
-        }
-
-    })
-    .extract();
+mix.js('resources/js/app.js', 'public/dist/js');
 
 if (mix.inProduction()) {
     mix.version();

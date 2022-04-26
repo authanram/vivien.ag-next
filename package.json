@@ -2,47 +2,18 @@
     "private": true,
     "scripts": {
         "dev": "npm run development",
-        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch": "npm run development -- --watch",
-        "watch-poll": "npm run watch -- --watch-poll",
-        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "development": "mix",
+        "watch": "concurrently \"mix watch\" \"php artisan tailwindcss:watch\"",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "build-duplicate": "cd nova-components/Duplicate && npm run dev",
-        "build-duplicate-prod": "cd nova-components/Duplicate && npm run prod",
-        "build-color-picker": "cd nova-components/ColorPicker && npm run dev",
-        "build-color-picker-prod": "cd nova-components/ColorPicker && npm run prod"
-    },
-    "dependencies": {
-        "@vuex-orm/core": "0.36.4",
-        "@vuex-orm/plugin-axios": "0.9.4",
-        "autoprefixer": "10.4.2",
-        "axios": "0.24.0",
-        "js-cookie": "2.2.1",
-        "portal-vue": "2.1.7",
-        "v-click-outside": "3.1.2",
-        "vue": "2.6.14",
-        "vue-content-placeholders": "0.2.1",
-        "vue-router": "3.5.3",
-        "vue-slider-component": "3.2.15",
-        "vue-template-compiler": "2.6.14",
-        "vuex": "3.6.2"
+        "production": "mix --production && php artisan tailwindcss:build --prod"
     },
     "devDependencies": {
-        "@babel/plugin-syntax-dynamic-import": "7.8.3",
-        "@babel/preset-env": "7.16.8",
-        "cross-env": "7.0.3",
-        "laravel-mix": "6.0.39",
-        "lodash": "4.17.21",
-        "postcss": "8.4.5",
-        "postcss-import": "14.0.2",
-        "postcss-loader": "6.2.1",
-        "postcss-nested": "4.2.3",
-        "precss": "4.0.0",
-        "resolve-url-loader": "5.0.0",
-        "tailwindcss": "3.0.15",
-        "ts-loader": "9.2.6",
-        "typescript": "4.5.4",
-        "vue-loader": "15.9.*"
+        "@tailwindcss/forms": "^0.5.0",
+        "@tailwindcss/typography": "^0.5.2",
+        "concurrently": "^7.1.0",
+        "laravel-mix": "^6.0.43",
+        "scroll-lock": "^2.1.5"
     }
 }
