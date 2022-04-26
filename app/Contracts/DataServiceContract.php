@@ -7,15 +7,10 @@ use Illuminate\Http\Request;
 
 interface DataServiceContract
 {
-    public function getImageCoords(): array;
-
-    public function getMenus(): array;
-
-    public function getAccent(Request $request): string;
-
-    public function getColors(array $with = []): Collection;
-
-    public function getRoutes(array $with = []): Collection;
-
-    public function getQuotes(array $with = []): Collection;
+    public function accent(Request $request): string;
+    public function colors(array $with = []): Collection;
+    public function imageCoords(): array;
+    public function menus(): array;
+    public function quotes(array $with = []): Collection;
+    public function routes(array $with = []): Collection;
 }

@@ -7,32 +7,29 @@ use Illuminate\Http\Request;
 
 trait HasAccent
 {
-    protected ?string $accent = null;
+    protected static string $accentDefault = 'teal';
 
-    public function getAccent(Request $request): string
+    protected string $accent = '';
+
+    public function accent(Request $request): string
     {
-        if (!$this->accent) {
-            $routeName = optional($request->route())->getName();
-
-            $fn = fn (Route $route) => $route->getAttribute('route') === $routeName;
-
-            $route = $this->getRoutes()->filter($fn)->first();
-
-            if (!$route) {
-
-                return 'teal';
-
-            }
-
-            $menuItem = $route->menuItems->first();
-
-            $colorId = $menuItem->getAttribute('color_id');
-
-            $color = $this->getColors()->filter(fn ($color) => $color->id === $colorId)->first();
-
-            $this->accent = $color->getAttribute('color');
+        if ($this->accent !== '') {
+            return $this->accent;
         }
 
-        return $this->accent;
+        $route = $this->routes()
+            ->filter(fn (Route $route) => $route->route === $request->route()?->getName())
+            ->first();
+
+        if (is_null($route)) {
+            return static::$accentDefault;
+        }
+
+        $this->accent = $this->colors()
+            ->filter(fn ($color) => $color->id === $route->menuItems->first()->color_id)
+            ->first()
+            ?->color;
+
+        return $this->accent ?? static::$accentDefault;
     }
 }

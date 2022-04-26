@@ -48,6 +48,7 @@
         "vyuldashev/nova-money-field": "^1.4.0"
     },
     "require-dev": {
+        "authanram/laravel-query-monitor": "^1.0",
         "barryvdh/laravel-ide-helper": "^2.12",
         "cloudstudio/resource-generator": "^1.5",
         "fakerphp/faker": "^1.9.1",

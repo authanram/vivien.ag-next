@@ -9,17 +9,15 @@ trait HasQuotes
 {
     protected ?Collection $quotes = null;
 
-    public function getQuotes(array $with = []): Collection
+    /** @noinspection PhpUndefinedMethodInspection */
+    public function quotes(array $with = []): Collection
     {
-        if (!$this->quotes) {
-
-            $this->quotes = Quote::with($with)
-
+        $this->quotes ??= $this->util->remember(
+            Quote::class.'@'.__METHOD__,
+            static fn () => Quote::with($with)
                 ->wherePublished(true)
-
-                ->get(['id', 'body', 'author_id']);
-
-        }
+                ->get(['id', 'body', 'author_id']),
+        );
 
         return $this->quotes;
     }

@@ -6,6 +6,7 @@ use App\Contracts\DataServiceContract;
 use App\Models\Content as Model;
 use App\Models\StaticAttribute;
 use App\Services\ParsedownService;
+use Cache;
 use Carbon\Carbon;
 use Carbon\CarbonInterface;
 use Exception;
@@ -15,12 +16,13 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\View\ComponentAttributeBag;
 use JsonException;
 use Route;
+use stdClass;
 
 final class Util
 {
     public function accent(Request $request = null): string
     {
-        return $this->data()->getAccent($request ?? request());
+        return $this->data()->accent($request ?? request());
     }
 
     public function attributes(array $attributes = []): ComponentAttributeBag
@@ -44,7 +46,7 @@ final class Util
         return $key ? ($subject[$key] ?? false) : $subject;
     }
 
-    public function content(string $slug, bool $markdown = false, array $replace = []): \stdClass
+    public function content(string $slug, bool $markdown = false, array $replace = []): stdClass
     {
         try {
             /** @noinspection PhpStaticAsDynamicMethodCallInspection */
@@ -79,7 +81,6 @@ final class Util
         return $date
             ? Carbon::createFromFormat(config('app.date_format_default'), $date)
             : now(config('app.date_format_default'));
-
     }
 
     public function markdown(string $markdown, array $replace = []): string
@@ -99,6 +100,15 @@ final class Util
         return '<div class="x-parsedown">'.$html.'</div>';
     }
 
+    public function remember(string $key, mixed $value): mixed
+    {
+        return Cache::get($key, static function () use ($key, $value) {
+            $value = is_callable($value) ? $value() : $value;
+            Cache::set($key, $value);
+            return $value;
+        });
+    }
+
     public function route(string $name, array $parameters = []): ?string
     {
         return Route::has($name) ? route($name, $parameters) : null;
@@ -106,7 +116,10 @@ final class Util
 
     public function staticAttribute(string $slug): ?string
     {
-        return StaticAttribute::firstWhere('slug', $slug)?->value;
+        return $this->remember(
+            StaticAttribute::class.'@'.$slug,
+            fn () => StaticAttribute::firstWhere('slug', $slug)?->value,
+        );
     }
 
     public function timeToRead(string $text): string

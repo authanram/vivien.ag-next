@@ -9,9 +9,7 @@ class ParsedownService extends Parsedown
     public function __construct()
     {
         $this->InlineTypes['{'][] = 'Span';
-
         $this->InlineTypes['{'][] = 'ColoredText';
-
         $this->inlineMarkerList .= '{';
     }
 

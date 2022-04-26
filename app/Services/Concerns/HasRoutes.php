@@ -9,11 +9,14 @@ trait HasRoutes
 {
     protected ?Collection $routes = null;
 
-    public function getRoutes(array $with = ['menuItems']): Collection
+    public function routes(array $with = ['menuItems']): Collection
     {
-        $this->routes ??= Route::with($with)
-            ->where('published', true)
-            ->get(['id', 'path', 'route', 'action', 'title']);
+        $this->routes ??= $this->util->remember(
+            Route::class.'@'.__METHOD__,
+            static fn () => Route::with($with)
+                ->where('published', true)
+                ->get(['id', 'path', 'route', 'action', 'title']),
+        );
 
         return $this->routes;
     }

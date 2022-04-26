@@ -2,10 +2,13 @@
 
 namespace App\Contracts;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 
 interface EventServiceContract
 {
+    public function builder(): Builder;
+
     public function get(array $columns = ['*']): Collection;
 
     public function with(array $with): self;

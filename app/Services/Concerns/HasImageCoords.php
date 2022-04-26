@@ -10,44 +10,25 @@ trait HasImageCoords
 {
     protected ?Collection $imageCoords = null;
 
-    public function getImageCoords(): array
+    public function imageCoords(): array
     {
-        if (!$this->imageCoords) {
-
-            $this->imageCoords = ImageCoords::with([
-
-                'image' => static fn (BelongsTo $query) => $query->select(static::getImageColumns()),
-
-            ])->orderBy('order_column')->get([
-
-                'id',
-
-                'coords',
-
-                'image_id',
-
-            ]);
-
-        }
+        $this->imageCoords ??= $this->util->remember(
+            ImageCoords::class.'@'.__METHOD__,
+            static fn () => static::fetchImageCoords(),
+        );
 
         $this->imageCoords->each(static function (ImageCoords $coord) {
-
-            $coord->setAttribute('coordsParsed', static::inlineStyleFloatingImage($coord));
-
+            $coord->setAttribute('coordsParsed', static::imageCoordsInlineStyleFloatingImage($coord));
             $coord->getAttribute('image')->setAttribute('path', $coord->image->path);
-
         });
 
         return [
-
-            'image' => $this->imageCoords->map(fn ($imageCoord) => $imageCoord->image),
-
+            'image' => $this->imageCoords->map(fn ($imageCoord) => $imageCoord->getAttribute('image')),
             'imageCoord' => $this->imageCoords,
-
         ];
     }
 
-    private static function inlineStyleFloatingImage(ImageCoords $imageCoords): string
+    private static function imageCoordsInlineStyleFloatingImage(ImageCoords $imageCoords): string
     {
         $coords = (object)$imageCoords->coords;
 
@@ -64,15 +45,21 @@ trait HasImageCoords
         );
     }
 
-    private static function getImageColumns(): array
+    private static function fetchImageCoords(): Collection
     {
-        return [
-            'id',
-            'file',
-            'name',
-            'description',
-            'price',
-            'order_column',
+        $with = [
+            'image' => static fn (BelongsTo $query) => $query->select([
+                'id',
+                'file',
+                'name',
+                'description',
+                'price',
+                'order_column',
+            ]),
         ];
+
+        return ImageCoords::with($with)
+            ->orderBy('order_column')
+            ->get(['id', 'coords', 'image_id']);
     }
 }

@@ -9,36 +9,38 @@ use Illuminate\Database\Eloquent\Collection;
 
 final class EventService implements EventServiceContract
 {
-    protected Builder $builder;
+    protected ?Builder $builder = null;
 
-    public function __construct()
+    public function builder(): Builder
     {
-        $this->builder = Event::published();
+        $this->builder ??= Event::published();
+
+        return $this->builder;
     }
 
     public function get(array $columns = ['*']): Collection
     {
-        return $this->builder::get($columns);
+        return $this->builder()::get($columns);
     }
 
     public function with(array $with): self
     {
-        $this->builder->with($with);
+        $this->builder()->with($with);
 
         return $this;
     }
 
     public function dateRange(string $from, string $to): self
     {
-        /** @noinspection PhpParamsInspection */
-        $this->builder::startsAfter($from)->startsBefore($to);
+        /** @noinspection PhpUndefinedMethodInspection */
+        $this->builder()::startsAfter($from)->startsBefore($to);
 
         return $this;
     }
 
     public function limit(int $limit): self
     {
-        $this->builder::limit($limit);
+        $this->builder()::limit($limit);
 
         return $this;
     }
@@ -46,9 +48,10 @@ final class EventService implements EventServiceContract
     public function tags(array $tags = null): self
     {
         if ($tags) {
-            $this->builder::withAnyTags($tags, 'event');
+            /** @noinspection PhpUndefinedMethodInspection */
+            $this->builder()::withAnyTags($tags, 'event');
         } else {
-            $this->builder->with('tags');
+            $this->builder()->with('tags');
         }
 
         return $this;
@@ -56,7 +59,8 @@ final class EventService implements EventServiceContract
 
     public function upcoming(): self
     {
-        $this->builder::upcoming();
+        /** @noinspection PhpUndefinedMethodInspection */
+        $this->builder()::upcoming();
 
         return $this;
     }

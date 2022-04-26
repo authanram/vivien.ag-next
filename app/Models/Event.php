@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Tags\HasTags;
+use stdClass;
 
 class Event extends Model
 {
@@ -71,44 +72,34 @@ class Event extends Model
 
     public function getCreatedAtReadableAttribute(): string
     {
-        return carbon($this->created_at)->format(dateFormat());
+        return (string)$this->created_at;
     }
 
-    public function getDateFromObjectAttribute(): \stdClass
+    public function getDateFromObjectAttribute(): stdClass
     {
-        $date = carbon($this->attributes['date_from']);
-
-        return static::makeDateObject($date);
+        return static::makeDateObject($this->date_from);
     }
 
     public function getDateFromReadableAttribute(): string
     {
-        return carbon($this->attributes['date_from'])->format(dateFormat());
+        return (string)$this->date_from;
     }
 
-    public function getDateToObjectAttribute(): \stdClass
+    public function getDateToObjectAttribute(): stdClass
     {
-        $date = carbon($this->attributes['date_to']);
-
-        return static::makeDateObject($date);
+        return static::makeDateObject($this->date_to);
     }
 
     public function getDateDurationAttribute(): string
     {
-        $start = carbon($this->attributes['date_from']);
-
-        $end = carbon($this->attributes['date_to']);
-
+        $start = $this->date_from;
+        $end = $this->date_to;
         $formatDays = '%d ' . trans_choice('project.time.day', $start->diff($end)->d);
-
         $formatHours = $start->diff($end)->h > 0 ? ' %h ' . __('project.time.abbr_hours') : '';
-
         $formatMinutes = $start->diff($end)->i > 0 ? ' %i ' . __('project.time.abbr_minutes') : '';
 
         $value = $start->diff($end)->d > 0
-
             ? $start->diff($end)->format($formatDays . $formatHours . $formatMinutes)
-
             : $start->diff($end)->format($formatHours . $formatMinutes);
 
         return trim($value);
@@ -116,11 +107,7 @@ class Event extends Model
 
     public function getDateDurationDaysAttribute(): int
     {
-        $start = carbon($this->attributes['date_from']);
-
-        $end = carbon($this->attributes['date_to']);
-
-        return (int)$start->diff($end)->d;
+        return $this->date_from->diff($this->date_to)->d;
     }
 
     // scopes
@@ -189,12 +176,12 @@ class Event extends Model
         return $this->hasMany(Attendee::class);
     }
 
-    private static function makeDateObject(CarbonInterface $date): \stdClass
+    private static function makeDateObject(CarbonInterface $date): stdClass
     {
         return (object) [
             'day' => $date->format('d'),
             'month' => $date->format('m'),
-            'month_full' => $date->formatLocalized('%B'),
+            'month_full' => $date->isoFormat('%B'),
             'year' => $date->format('Y'),
             'hours' => $date->format('H'),
             'minutes' => $date->format('i'),

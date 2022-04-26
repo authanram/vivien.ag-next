@@ -1,4 +1,5 @@
 @props(['sidebar' => null])
+
 @php($hasSidebar = ($sidebar && trim($sidebar) !== ''))
 
 <div class="relative">

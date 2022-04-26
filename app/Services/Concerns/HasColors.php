@@ -9,11 +9,12 @@ trait HasColors
 {
     protected ?Collection $colors = null;
 
-    public function getColors(array $with = []): Collection
+    public function colors(array $with = []): Collection
     {
-        if (!$this->colors) {
-            $this->colors = Color::with($with)->get(['id', 'color']);
-        }
+        $this->colors ??= $this->util->remember(
+            Color::class.'@'.__METHOD__,
+            static fn () => Color::with($with)->get(['id', 'color']),
+        );
 
         return $this->colors;
     }
