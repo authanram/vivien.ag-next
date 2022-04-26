@@ -1,4 +1,4 @@
-<x-container>
+<x-container class="relative z-10">
     <div class="hidden md:block">
         <x-design-images/>
     </div>

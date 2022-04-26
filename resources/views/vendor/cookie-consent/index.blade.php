@@ -19,7 +19,7 @@
                     secure: "{{ config('session.secure') ?: false }}",
                 });
 
-                window.axios.post('{{ routeIfExists('cookie-consent.update-preferences') }}', {
+                window.axios.post('{{ util()->route('cookie-consent.update-preferences') }}', {
                     value: JSON.parse(JSON.stringify(consentStringValue)),
                 });
             }

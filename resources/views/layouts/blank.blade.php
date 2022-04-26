@@ -27,9 +27,9 @@
 </head>
 <body class="h-screen">
     <x-google-tagmanager />
-    @include('cookie-consent::index')
     <x-background styles />
     <div class="min-h-full relative z-0">
+        @include('cookie-consent::index')
         <x-background />
         @yield('body')
     </div>

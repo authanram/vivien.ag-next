@@ -1,4 +1,4 @@
-<div class="cursor-default flex items-center space-x-1">
+<div {{ $attributes->merge(['class' => 'cursor-default flex items-center space-x-1 leading-none']) }}>
     <span>Made with</span>
     <span class="-mt-0.5">
         <x-tooltip delay="250" html>
@@ -16,7 +16,7 @@
         <a
             class="text-{{ util()->accent() }}-600 hover:text-{{ util()->accent() }}-500 hover:underline"
             href="https://laravel.com"
-            title="Goto laravel.com"
+            title="https://laravel.com"
         >Laravel</a>
     </span>
 </div>
