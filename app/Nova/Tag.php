@@ -27,7 +27,7 @@ class Tag extends Resource
         'slug',
     ];
 
-    final public function fields(Request $request): array
+    public function fields(Request $request): array
     {
         $fields = [
             ID::make(__('Id'), 'id')

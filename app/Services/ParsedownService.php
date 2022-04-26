@@ -6,7 +6,7 @@ use Parsedown;
 
 class ParsedownService extends Parsedown
 {
-    final public function __construct()
+    public function __construct()
     {
         $this->InlineTypes['{'][] = 'Span';
 
@@ -15,7 +15,7 @@ class ParsedownService extends Parsedown
         $this->inlineMarkerList .= '{';
     }
 
-    final public function inlineSpan(array $excerpt): ?array
+    public function inlineSpan(array $excerpt): ?array
     {
         return preg_match('/^{span (.*?)}(.*?){\/span}/', $excerpt['text'], $matches) ? [
             'extent' => strlen($matches[0]),
@@ -27,7 +27,7 @@ class ParsedownService extends Parsedown
         ] : null;
     }
 
-    final public function inlineColoredText(array $excerpt): ?array
+    public function inlineColoredText(array $excerpt): ?array
     {
         return preg_match('/^{c:([#\w]\w+)}(.*?){\/c}/', $excerpt['text'], $matches) ? [
             'extent' => strlen($matches[0]),

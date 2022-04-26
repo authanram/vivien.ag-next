@@ -11,7 +11,7 @@ class Model extends \Illuminate\Database\Eloquent\Model
         return static::class;
     }
 
-    final public function getEntityTypeAttribute(): string
+    public function getEntityTypeAttribute(): string
     {
         return Str::studly($this->table);
     }

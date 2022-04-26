@@ -24,7 +24,7 @@ class CookieConsentCookie extends Model
         'required' => 'boolean',
     ];
 
-    final public function cookieProvider(): BelongsTo
+    public function cookieProvider(): BelongsTo
     {
         return $this->belongsTo(CookieConsentProvider::class, 'cookie_consent_provider_id', 'id');
     }

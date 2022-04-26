@@ -32,7 +32,7 @@ class StaticAttribute extends Resource
         'data'
     ];
 
-    final public function fields(Request $request): array
+    public function fields(Request $request): array
     {
         $table = $this->model()?->getTable();
 
@@ -80,12 +80,12 @@ class StaticAttribute extends Resource
         ];
     }
 
-    final public static function label(): string
+    public static function label(): string
     {
         return __('Attributes');
     }
 
-    final public static function singularLabel(): string
+    public static function singularLabel(): string
     {
         return __('Attribute');
     }

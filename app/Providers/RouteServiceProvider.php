@@ -11,7 +11,7 @@ class RouteServiceProvider extends ServiceProvider
 
     public const HOME = '/home';
 
-    final public function map(): void
+    public function map(): void
     {
         $this->mapPublicApiRoutes();
         $this->mapApiRoutes();

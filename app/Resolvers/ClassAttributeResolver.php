@@ -27,12 +27,12 @@ class ClassAttributeResolver implements Htmlable
         $this->when($condition, $item, $default);
     }
 
-    final public function add(string $item): self
+    public function add(string $item): self
     {
         return $this->when(true, $item);
     }
 
-    final public function when(bool $condition, string $item, string $default = null): self
+    public function when(bool $condition, string $item, string $default = null): self
     {
         if ($condition) {
             $this->values->add(trim($item));
@@ -43,12 +43,12 @@ class ClassAttributeResolver implements Htmlable
         return $this;
     }
 
-    final public function toHtml(): string
+    public function toHtml(): string
     {
         return sprintf('class="%s"', e($this->get()));
     }
 
-    final public function __toString(): string
+    public function __toString(): string
     {
         return $this->get();
     }

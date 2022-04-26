@@ -6,12 +6,12 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class AttendeeCreateRequest extends FormRequest
 {
-    final public function authorize(): bool
+    public function authorize(): bool
     {
         return true;
     }
 
-    final public function rules(): array
+    public function rules(): array
     {
         return [
             'attendance' => 'required|numeric|max:10',
@@ -24,7 +24,7 @@ class AttendeeCreateRequest extends FormRequest
         ];
     }
 
-    final public function messages(): array
+    public function messages(): array
     {
         $email = 'Gültige E-Mailadresse erforderlich.';
         $max10 = 'Max 10 Reservierungen möglich.';

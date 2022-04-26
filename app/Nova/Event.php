@@ -48,7 +48,7 @@ class Event extends Resource
         'eventLocation',
     ];
 
-    final public function fields(Request $request, bool $published = true): array
+    public function fields(Request $request, bool $published = true): array
     {
         return [
             ID::make()->hideFromIndex()
@@ -147,14 +147,14 @@ class Event extends Resource
         ];
     }
 
-    final public function filters(Request $request): array
+    public function filters(Request $request): array
     {
         return [
             EventsTimeFilter::make(),
         ];
     }
 
-    final public function title(): string
+    public function title(): string
     {
         return $this
 
@@ -165,12 +165,12 @@ class Event extends Resource
             ?->getAttribute('name');
     }
 
-    final public static function label(): string
+    public static function label(): string
     {
         return __('Events');
     }
 
-    final public static function singularLabel(): string
+    public static function singularLabel(): string
     {
         return __('Event');
     }

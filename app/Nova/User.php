@@ -30,7 +30,7 @@ class User extends Resource
             : __('System');
     }
 
-    final public function fields(Request $request): array
+    public function fields(Request $request): array
     {
         return collect([
             ID::make()->sortable()
@@ -65,12 +65,12 @@ class User extends Resource
         })->toArray();
     }
 
-    final public static function label(): string
+    public static function label(): string
     {
         return __('Users');
     }
 
-    final public static function singularLabel(): string
+    public static function singularLabel(): string
     {
         return __('User');
     }

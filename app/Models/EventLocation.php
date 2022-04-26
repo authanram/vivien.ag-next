@@ -19,7 +19,7 @@ class EventLocation extends Model
         'url',
     ];
 
-    final public function events(): HasMany
+    public function events(): HasMany
     {
         return $this->hasMany(Event::class);
     }

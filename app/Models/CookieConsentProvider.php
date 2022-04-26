@@ -13,7 +13,7 @@ class CookieConsentProvider extends Model
         'url',
     ];
 
-    final public function cookies(): HasMany
+    public function cookies(): HasMany
     {
         return $this->hasMany(CookieConsentCookie::class, 'cookie_consent_provider_id', 'id');
     }

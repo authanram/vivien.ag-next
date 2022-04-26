@@ -36,7 +36,7 @@ class Post extends Model
 
     // accessors
 
-    final public function getPublishedAtReadableAttribute(): string
+    public function getPublishedAtReadableAttribute(): string
     {
         $date = $this->attributes['published_at'];
 
@@ -45,7 +45,7 @@ class Post extends Model
 
     // relations
 
-    final public function activity(): MorphOne
+    public function activity(): MorphOne
     {
         return $this->morphOne(Activity::class, 'actionable');
     }

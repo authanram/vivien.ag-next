@@ -22,12 +22,12 @@ class Content extends Model
 
     // relations
 
-    final public function activity(): MorphOne
+    public function activity(): MorphOne
     {
         return $this->morphOne(Activity::class, 'actionable');
     }
 
-    final public function routes(): BelongsToMany
+    public function routes(): BelongsToMany
     {
         return $this->belongsToMany(Route::class, 'route_content')
             ->using(RouteContent::class);

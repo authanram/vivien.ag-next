@@ -26,7 +26,7 @@ class EventsTimeFilter extends Filter
         return $query;
     }
 
-    final public function options(Request $request): array
+    public function options(Request $request): array
     {
         return [
             __('Upcoming') => 'upcoming',
@@ -35,7 +35,7 @@ class EventsTimeFilter extends Filter
         ];
     }
 
-    final public function default(): string
+    public function default(): string
     {
         return 'upcoming';
     }

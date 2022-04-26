@@ -22,7 +22,7 @@ class Activity extends \Spatie\Activitylog\Models\Activity
 
     // relations
 
-    final public function actionable(): MorphTo
+    public function actionable(): MorphTo
     {
         return $this->morphTo();
     }

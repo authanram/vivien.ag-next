@@ -15,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
         User::class => UserPolicy::class,
     ];
 
-    final public function boot(): void
+    public function boot(): void
     {
         $this->registerPolicies();
 

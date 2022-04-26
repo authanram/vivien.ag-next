@@ -23,7 +23,7 @@ class Session extends Resource
         'user' => ['name'],
     ];
 
-    final public function fields(Request $request): array
+    public function fields(Request $request): array
     {
         return [
             ID::make(__('Id'), 'id', function () {
@@ -51,12 +51,12 @@ class Session extends Resource
         ];
     }
 
-    final public static function label(): string
+    public static function label(): string
     {
         return __('Sessions');
     }
 
-    final public static function singularLabel(): string
+    public static function singularLabel(): string
     {
         return __('Session');
     }

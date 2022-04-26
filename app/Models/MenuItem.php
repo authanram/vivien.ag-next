@@ -32,17 +32,17 @@ class MenuItem extends Model implements Sortable
         'sort_on_has_many' => true,
     ];
 
-    final public function menu(): BelongsTo
+    public function menu(): BelongsTo
     {
         return $this->belongsTo(Menu::class);
     }
 
-    final public function route(): BelongsTo
+    public function route(): BelongsTo
     {
         return $this->belongsTo(Route::class);
     }
 
-    final public function color(): BelongsTo
+    public function color(): BelongsTo
     {
         return $this->belongsTo(Color::class);
     }

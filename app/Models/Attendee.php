@@ -31,7 +31,7 @@ class Attendee extends Model
         'user_agent' => 'local',
     ];
 
-    final public function event(): BelongsTo
+    public function event(): BelongsTo
     {
         return $this->belongsTo(Event::class);
     }

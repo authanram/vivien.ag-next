@@ -15,7 +15,7 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    final public function register(): void
+    public function register(): void
     {
         $this->registerServiceProviders();
 
@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(Util::class, Util::class);
     }
 
-    final public function boot(): void
+    public function boot(): void
     {
         date_default_timezone_set('Europe/Berlin');
         setlocale(LC_TIME, 'de_DE');

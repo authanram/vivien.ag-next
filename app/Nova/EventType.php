@@ -28,7 +28,7 @@ class EventType extends Resource
         return __('Events');
     }
 
-    final public function fields(Request $request): array
+    public function fields(Request $request): array
     {
         return [
             ID::make()
@@ -52,12 +52,12 @@ class EventType extends Resource
         ];
     }
 
-    final public static function label(): string
+    public static function label(): string
     {
         return __('Categories');
     }
 
-    final public static function singularLabel(): string
+    public static function singularLabel(): string
     {
         return __('Category');
     }

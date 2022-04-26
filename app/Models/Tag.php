@@ -19,32 +19,32 @@ class Tag extends \Spatie\Tags\Tag
         'slug' => 'array',
     ];
 
-    final public function setNameAttribute(string $value): void
+    public function setNameAttribute(string $value): void
     {
         $this->attributes['name'] = $value;
     }
 
-    final public function color(): BelongsTo
+    public function color(): BelongsTo
     {
         return $this->belongsTo(Color::class);
     }
 
-    final public function attachments(): MorphToMany
+    public function attachments(): MorphToMany
     {
         return $this->morphedByMany(Attachment::class, 'taggable');
     }
 
-    final public function events(): MorphToMany
+    public function events(): MorphToMany
     {
         return $this->morphedByMany(Event::class, 'taggable');
     }
 
-    final public function images(): MorphToMany
+    public function images(): MorphToMany
     {
         return $this->morphedByMany(Image::class, 'taggable');
     }
 
-    final public function posts(): MorphToMany
+    public function posts(): MorphToMany
     {
         return $this->morphedByMany(Post::class, 'taggable');
     }

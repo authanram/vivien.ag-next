@@ -35,12 +35,12 @@ class Image extends Model implements Sortable
         'sort_when_creating' => true,
     ];
 
-    final public function getPathAttribute(): string
+    public function getPathAttribute(): string
     {
         return "/storage/$this->file";
     }
 
-    final public function imageCoords(): HasOne
+    public function imageCoords(): HasOne
     {
         return $this->hasOne(ImageCoords::class);
     }

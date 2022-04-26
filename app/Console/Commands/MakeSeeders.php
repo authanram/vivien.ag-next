@@ -10,7 +10,7 @@ class MakeSeeders extends Command
 
     protected $description = 'Create table seeders';
 
-    final public function handle(): int
+    public function handle(): int
     {
         $this->line('');
         $this->line('Making Seeders...');

@@ -64,36 +64,36 @@ class Event extends Model
 
     // attributes
 
-    final public function getAvatarPathAttribute(): string
+    public function getAvatarPathAttribute(): string
     {
         return asset('images');
     }
 
-    final public function getCreatedAtReadableAttribute(): string
+    public function getCreatedAtReadableAttribute(): string
     {
         return carbon($this->created_at)->format(dateFormat());
     }
 
-    final public function getDateFromObjectAttribute(): \stdClass
+    public function getDateFromObjectAttribute(): \stdClass
     {
         $date = carbon($this->attributes['date_from']);
 
         return static::makeDateObject($date);
     }
 
-    final public function getDateFromReadableAttribute(): string
+    public function getDateFromReadableAttribute(): string
     {
         return carbon($this->attributes['date_from'])->format(dateFormat());
     }
 
-    final public function getDateToObjectAttribute(): \stdClass
+    public function getDateToObjectAttribute(): \stdClass
     {
         $date = carbon($this->attributes['date_to']);
 
         return static::makeDateObject($date);
     }
 
-    final public function getDateDurationAttribute(): string
+    public function getDateDurationAttribute(): string
     {
         $start = carbon($this->attributes['date_from']);
 
@@ -114,7 +114,7 @@ class Event extends Model
         return trim($value);
     }
 
-    final public function getDateDurationDaysAttribute(): int
+    public function getDateDurationDaysAttribute(): int
     {
         $start = carbon($this->attributes['date_from']);
 
@@ -125,22 +125,22 @@ class Event extends Model
 
     // scopes
 
-    final public function scopePublished(Builder $query): Builder
+    public function scopePublished(Builder $query): Builder
     {
         return $query->where('published', true);
     }
 
-    final public function scopeStartsBefore(Builder $query, CarbonInterface $date): Builder
+    public function scopeStartsBefore(Builder $query, CarbonInterface $date): Builder
     {
         return $query->where('date_from', '<=', $date);
     }
 
-    final public function scopeStartsAfter(Builder $query, CarbonInterface $date = null): Builder
+    public function scopeStartsAfter(Builder $query, CarbonInterface $date = null): Builder
     {
         return $query->where('date_to', '>=', $date);
     }
 
-    final public function scopeDate(Builder $query, ...$dates): Builder
+    public function scopeDate(Builder $query, ...$dates): Builder
     {
         foreach ($dates as $key => $date) {
             $method = $key === 0 ? 'whereBetween' : 'orWhereBetween';
@@ -157,34 +157,34 @@ class Event extends Model
         return $query;
     }
 
-    final public function scopeUpcoming(Builder $query): Builder
+    public function scopeUpcoming(Builder $query): Builder
     {
         return $this->scopeStartsAfter($query, now());
     }
 
     // relations
 
-    final public function eventType(): BelongsTo
+    public function eventType(): BelongsTo
     {
         return $this->belongsTo(EventType::class);
     }
 
-    final public function eventLocation(): BelongsTo
+    public function eventLocation(): BelongsTo
     {
         return $this->belongsTo(EventLocation::class);
     }
 
-    final public function user(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'creator_id');
     }
 
-    final public function activity(): MorphOne
+    public function activity(): MorphOne
     {
         return $this->morphOne(Activity::class, 'actionable');
     }
 
-    final public function attendees(): HasMany
+    public function attendees(): HasMany
     {
         return $this->hasMany(Attendee::class);
     }

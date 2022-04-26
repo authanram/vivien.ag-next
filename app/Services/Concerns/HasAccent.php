@@ -9,7 +9,7 @@ trait HasAccent
 {
     protected ?string $accent = null;
 
-    final public function getAccent(Request $request): string
+    public function getAccent(Request $request): string
     {
         if (!$this->accent) {
             $routeName = optional($request->route())->getName();

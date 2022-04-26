@@ -18,7 +18,7 @@ class Author extends Model
         'published',
     ];
 
-    final public function quotes(): HasMany
+    public function quotes(): HasMany
     {
         return $this->hasMany(Quote::class);
     }

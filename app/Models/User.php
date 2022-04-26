@@ -28,17 +28,17 @@ class User extends Authenticatable //MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    final public function isAdministrator(): bool
+    public function isAdministrator(): bool
     {
         return $this->hasRole('administrator');
     }
 
-    final public function isModerator(): bool
+    public function isModerator(): bool
     {
         return $this->hasRole('moderator');
     }
 
-    final public function sessions(): HasMany
+    public function sessions(): HasMany
     {
         return $this->hasMany(Session::class);
     }

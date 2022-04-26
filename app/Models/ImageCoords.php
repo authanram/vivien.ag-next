@@ -27,7 +27,7 @@ class ImageCoords extends Model implements Sortable
         'sort_when_creating' => true,
     ];
 
-    final public function image(): BelongsTo
+    public function image(): BelongsTo
     {
         return $this->belongsTo(Image::class);
     }

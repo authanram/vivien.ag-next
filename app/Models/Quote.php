@@ -19,7 +19,7 @@ class Quote extends Model
 
     protected $with = ['author'];
 
-    final public function author(): BelongsTo
+    public function author(): BelongsTo
     {
         return $this->belongsTo(Author::class);
     }

@@ -18,7 +18,7 @@ class RouteContent extends Pivot implements Sortable
         'sort_when_creating' => true,
     ];
 
-    final public function buildSortQuery(): Builder
+    public function buildSortQuery(): Builder
     {
         return static::query()->where('content_id', $this->content_id);
     }

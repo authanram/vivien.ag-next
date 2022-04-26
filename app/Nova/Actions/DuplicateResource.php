@@ -26,7 +26,7 @@ abstract class DuplicateResource extends Action
      * @noinspection PhpMissingReturnTypeInspection
      * @noinspection ReturnTypeCanBeDeclaredInspection
      */
-    final public function handle(ActionFields $fields, Collection $models)
+    public function handle(ActionFields $fields, Collection $models)
     {
         if ($models->count() !== 1) {
             return Action::danger('Cannot duplicate multiple models simultaneously.');

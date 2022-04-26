@@ -17,7 +17,7 @@ class Session extends Model
 
     protected $with = ['user'];
 
-    final public function user(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

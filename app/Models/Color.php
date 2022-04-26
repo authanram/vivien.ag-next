@@ -15,17 +15,17 @@ class Color extends Model
         'color',
     ];
 
-    final public function eventTypes(): HasMany
+    public function eventTypes(): HasMany
     {
         return $this->hasMany(EventType::class);
     }
 
-    final public function menuItems(): HasMany
+    public function menuItems(): HasMany
     {
         return $this->hasMany(MenuItem::class);
     }
 
-    final public function tags(): HasMany
+    public function tags(): HasMany
     {
         return $this->hasMany(Tag::class);
     }

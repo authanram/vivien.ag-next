@@ -20,13 +20,13 @@ class Route extends Model
         'published',
     ];
 
-    final public function contents(): BelongsToMany
+    public function contents(): BelongsToMany
     {
         return $this->belongsToMany(Content::class, 'route_content')
             ->using(RouteContent::class);
     }
 
-    final public function menuItems(): HasMany
+    public function menuItems(): HasMany
     {
         return $this->hasMany(MenuItem::class);
     }

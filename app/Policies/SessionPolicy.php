@@ -13,12 +13,12 @@ class SessionPolicy extends BasePolicy
         'viewAny',
     ];
 
-    final public function create(User $user): bool
+    public function create(User $user): bool
     {
         return false;
     }
 
-    final public function update(User $user, $model): bool
+    public function update(User $user, $model): bool
     {
         return false;
     }

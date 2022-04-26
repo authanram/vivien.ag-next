@@ -14,7 +14,7 @@ use Tightenco\NovaGoogleAnalytics\MostVisitedPagesCard;
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
     /** @noinspection PhpFullyQualifiedNameUsageInspection */
-    final public function tools(): array
+    public function tools(): array
     {
         $isLocal = $this->app->environment('local');
 

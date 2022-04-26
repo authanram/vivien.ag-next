@@ -9,7 +9,7 @@ trait HasQuotes
 {
     protected ?Collection $quotes = null;
 
-    final public function getQuotes(array $with = []): Collection
+    public function getQuotes(array $with = []): Collection
     {
         if (!$this->quotes) {
 

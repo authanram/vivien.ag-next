@@ -27,7 +27,7 @@ class Menu extends Resource
         'menuItems.route',
     ];
 
-    final public function fields(Request $request): array
+    public function fields(Request $request): array
     {
         return [
             ID::make(__('Id'), 'id')
@@ -49,12 +49,12 @@ class Menu extends Resource
         ];
     }
 
-    final public static function label(): string
+    public static function label(): string
     {
         return __('Menus');
     }
 
-    final public static function singularLabel(): string
+    public static function singularLabel(): string
     {
         return __('Menu');
     }

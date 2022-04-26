@@ -25,7 +25,7 @@ class Route extends Resource
         'title',
     ];
 
-    final public function fields(Request $request): array
+    public function fields(Request $request): array
     {
         return [
             ID::make(__('Id'), 'id')
@@ -65,12 +65,12 @@ class Route extends Resource
         ];
     }
 
-    final public static function label(): string
+    public static function label(): string
     {
         return __('Routes');
     }
 
-    final public static function singularLabel(): string
+    public static function singularLabel(): string
     {
         return __('Route');
     }

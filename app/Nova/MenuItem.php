@@ -36,7 +36,7 @@ class MenuItem extends Resource
         'color' => ['color'],
     ];
 
-    final public function fields(Request $request): array
+    public function fields(Request $request): array
     {
         return [
             ID::make(__('Id'), 'id')
@@ -93,12 +93,12 @@ class MenuItem extends Resource
         ];
     }
 
-    final public static function label(): string
+    public static function label(): string
     {
         return __('Menu Items');
     }
 
-    final public static function singularLabel(): string
+    public static function singularLabel(): string
     {
         return __('Menu Item');
     }

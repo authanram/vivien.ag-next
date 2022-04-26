@@ -20,12 +20,12 @@ class EventType extends Model
         'description',
     ];
 
-    final public function color(): BelongsTo
+    public function color(): BelongsTo
     {
         return $this->belongsTo(Color::class);
     }
 
-    final public function events(): HasMany
+    public function events(): HasMany
     {
         return $this->hasMany(Event::class);
     }

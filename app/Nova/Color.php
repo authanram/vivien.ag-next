@@ -22,7 +22,7 @@ class Color extends Resource
         'color'
     ];
 
-    final public function fields(Request $request): array
+    public function fields(Request $request): array
     {
         return [
             ID::make()->hideFromIndex()
@@ -56,12 +56,12 @@ class Color extends Resource
         );
     }
 
-    final public static function label(): string
+    public static function label(): string
     {
         return __('Colors');
     }
 
-    final public static function singularLabel(): string
+    public static function singularLabel(): string
     {
         return __('Color');
     }

@@ -29,7 +29,7 @@ class EventLocation extends Resource
         return __('Events');
     }
 
-    final public function fields(Request $request): array
+    public function fields(Request $request): array
     {
         return [
             ID::make()->hideFromIndex()
@@ -59,12 +59,12 @@ class EventLocation extends Resource
         ];
     }
 
-    final public static function label(): string
+    public static function label(): string
     {
         return __('Locations');
     }
 
-    final public static function singularLabel(): string
+    public static function singularLabel(): string
     {
         return __('Location');
     }

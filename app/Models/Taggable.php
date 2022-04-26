@@ -14,7 +14,7 @@ class Taggable extends \Spatie\Tags\Tag
         'taggable_id',
     ];
 
-    final public function tag(): BelongsTo
+    public function tag(): BelongsTo
     {
         return $this->belongsTo(Tag::class);
     }

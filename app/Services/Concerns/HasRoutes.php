@@ -9,7 +9,7 @@ trait HasRoutes
 {
     protected ?Collection $routes = null;
 
-    final public function getRoutes(array $with = ['menuItems']): Collection
+    public function getRoutes(array $with = ['menuItems']): Collection
     {
         $this->routes ??= Route::with($with)
             ->where('published', true)

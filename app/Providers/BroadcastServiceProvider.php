@@ -12,7 +12,7 @@ class BroadcastServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    final public function boot(): void
+    public function boot(): void
     {
         Broadcast::routes();
 

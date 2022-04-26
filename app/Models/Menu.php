@@ -16,7 +16,7 @@ class Menu extends Model
         'published',
     ];
 
-    final public function menuItems(): HasMany
+    public function menuItems(): HasMany
     {
         return $this->hasMany(MenuItem::class)->orderBy('sort_order');
     }

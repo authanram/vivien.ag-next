@@ -18,7 +18,7 @@ class MakePermissions extends Command
      * @return int
      * @throws \Exception
      */
-    final public function handle(): int
+    public function handle(): int
     {
         $this->newLine();
 

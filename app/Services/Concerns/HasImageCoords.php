@@ -10,7 +10,7 @@ trait HasImageCoords
 {
     protected ?Collection $imageCoords = null;
 
-    final public function getImageCoords(): array
+    public function getImageCoords(): array
     {
         if (!$this->imageCoords) {
 

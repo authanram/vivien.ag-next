@@ -9,7 +9,7 @@ trait HasMenus
 {
     protected ?Collection $menus = null;
 
-    final public function getMenus(): array
+    public function getMenus(): array
     {
         if (!$this->menus) {
 
