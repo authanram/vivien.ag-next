@@ -4,7 +4,7 @@ namespace App\Nova\Cards;
 
 class PageViewsMetric extends \Tightenco\NovaGoogleAnalytics\PageViewsMetric
 {
-    public function ranges()
+    public function ranges(): array
     {
         return [
             'MTD' => 'This month (to date)',

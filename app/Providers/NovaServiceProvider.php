@@ -24,11 +24,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         $isLocal = $this->app->environment('local');
 
-        return \collect([
-            \Vyuldashev\NovaPermission\NovaPermissionTool::make()
-                ->permissionPolicy(PermissionPolicy::class)
-                ->rolePolicy(RolePolicy::class)
-        ])
+        return \collect([])
             ->pipe(static function (Collection $collection) use ($isLocal) {
                 if (\request()->user()->isAdministrator() === false) {
                     return $collection;

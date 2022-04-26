@@ -4,7 +4,7 @@ namespace App\Nova\Cards;
 
 class VisitorsMetric extends \Tightenco\NovaGoogleAnalytics\VisitorsMetric
 {
-    public function ranges()
+    public function ranges(): array
     {
         return [
             'MTD' => 'This month (to date)',

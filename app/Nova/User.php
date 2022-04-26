@@ -2,14 +2,14 @@
 
 namespace App\Nova;
 
+//use Laravel\Nova\Fields\MorphToMany;
+//use Vyuldashev\NovaPermission as Acl;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\MorphToMany;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
-use Vyuldashev\NovaPermission as Acl;
 
 class User extends Resource
 {
@@ -54,10 +54,10 @@ class User extends Resource
             ,
             HasMany::make(__('Sessions'), 'sessions', Session::class)
             ,
-            MorphToMany::make('Roles', 'roles', Acl\Role::class)
-            ,
-            MorphToMany::make('Permissions', 'permissions', Acl\Permission::class)
-            ,
+//            MorphToMany::make('Roles', 'roles', Acl\Role::class)
+//            ,
+//            MorphToMany::make('Permissions', 'permissions', Acl\Permission::class)
+//            ,
         ])->pipe(function ($collection) use ($request) {
             return $request->user()->can('impersonate')
                 ? $collection->add(\KABBOUCHI\NovaImpersonate\Impersonate::make($this))
