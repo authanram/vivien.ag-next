@@ -47,6 +47,7 @@
                 <hr class="border-t-2 mb-7" />
                 <ui-event-item-property-lead
                     :item="event"
+                    class="mb-6"
                 />
                 <ui-event-item-tags
                     :class="{ 'mb-12': hasSeats(event) }"
