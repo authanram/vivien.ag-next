@@ -1,17 +1,146 @@
 @import "tailwindcss/base";
-@import "./base.pcss";
-
 @import "tailwindcss/components";
 
-@import "./theme.pcss";
-@import "./transitions.pcss";
+*:focus {
+    outline: none !important;
+}
 
-@import "./blur.pcss";
-@import "./forms.pcss";
-@import "./modal.pcss";
-@import "./no-select.pcss";
-@import "./parsedown.pcss";
-@import "./tags.pcss";
-@import "./welcome.pcss";
+body {
+    @apply font-light font-sans h-full overflow-x-hidden relative;
+}
+
+.font-sans {
+    font-family:
+        Poppins,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        Segoe UI,
+        Roboto,
+        Helvetica Neue,
+        Arial,
+        Noto Sans,
+        sans-serif,
+        Apple Color Emoji,
+        Segoe UI Emoji,
+        Segoe UI Symbol,
+        Noto Color Emoji
+    !important;
+}
+
+.blur {
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
+}
+
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .3s;
+}
+
+.margin {
+    @apply md:mb-10 mb-5;
+}
+
+.padding {
+    @apply md:p-10 p-5;
+}
+
+/* FORMS */
+
+input,
+textarea {
+    @apply !p-2 !rounded-md !ring-0;
+
+    &:not(:focus) {
+        @apply !border-gray-300;
+    }
+}
+
+select {
+    @apply !border-2 !px-2 !py-0.5 h-8 !rounded-md !ring-0;
+    &:not(:focus) {
+        @apply !border-gray-300;
+    }
+}
+
+/* CONTENTS */
+
+.welcome {
+    h3 {
+        @apply mb-0;
+    }
+
+    h4 {
+        @apply font-medium text-2xl mb-5;
+    }
+
+    .address p:first-of-type {
+        @apply font-medium text-xl mb-5 border-b pb-4;
+    }
+}
+
+/* PARSEDOWN */
+
+.x-parsedown {
+    p:not(:last-child):not([class^="mb-"]) {
+        @apply mb-6;
+    }
+
+    p[class*="mb-4"]:last-child {
+        @apply !mb-0;
+    }
+
+    p:last-of-type {
+        @apply !mb-0;
+    }
+
+    h1, h2, h3, h4, h5, h6, .headline {
+        @apply font-semibold leading-tight mb-4 tracking-tight;
+    }
+
+    h1, h2, h3, .headline {
+        @apply text-xl md:text-2xl;
+    }
+
+    h4, h5, h6 {
+        md:text-xl;
+    }
+
+    > ul {
+        @apply mt-3 px-5;
+
+        &:not(:last-child) {
+            @apply mb-6;
+        }
+        ul {
+            @apply px-5;
+        }
+    }
+
+    ul {
+        li {
+            @apply pt-2 list-disc;
+        }
+        li:not(:last-of-type):not(.pt-*) {
+            @apply pb-2;
+        }
+    }
+}
 
 @import "tailwindcss/utilities";

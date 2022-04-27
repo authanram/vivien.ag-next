@@ -25,11 +25,11 @@
     <script defer src="{{ $assets->alpinejs }}"></script>
     <script defer src="{{ $assets->js }}"></script>
 </head>
-<body class="h-screen">
+<body class="antialiased font-display h-screen text-base text-gray-900">
     <x-google-tagmanager />
     <x-background styles />
     <div class="min-h-full relative z-0">
-        @include('cookie-consent::index')
+        {{--@include('cookie-consent::index')--}}
         <x-background />
         @yield('body')
     </div>

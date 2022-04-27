@@ -1,5 +1,9 @@
 @extends('layouts.default')
 
 @push('content')
-    welcome
+    <x-card class="flex flex-col space-y-4 welcome">
+        <x-content class="text-gray-500" slug="Home" markdown />
+        <hr />
+        <x-content class="text-sm address" slug="Kontakt" :replace="['h2' => 'p']" markdown />
+    </x-card>
 @endpush

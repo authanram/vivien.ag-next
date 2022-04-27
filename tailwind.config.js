@@ -7,7 +7,6 @@ module.exports = {
     content: [
         './safelist.txt',
         './app/**/*.php',
-        './resources/markdown/**/*.md',
         './resources/views/**/*.blade.php',
         './storage/framework/views/**/*.php',
     ],
@@ -19,11 +18,16 @@ module.exports = {
                 primary: colors.emerald,
             },
             fontFamily: {
-                sans: ['Poppins var', ...defaultTheme.fontFamily.sans],
+                display: ['Poppins var', ...defaultTheme.fontFamily.sans],
             },
             fontSize: {
                 'base': '17px',
             },
         }
     },
+
+    plugins: [
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/typography'),
+    ],
 };

@@ -20,6 +20,11 @@ use stdClass;
 
 final class Util
 {
+    public static function make(): self
+    {
+        return new self();
+    }
+
     public function accent(Request $request = null): string
     {
         return $this->data()->accent($request ?? request());
@@ -91,7 +96,7 @@ final class Util
             abort(505, $exception->getMessage());
         }
 
-        $replace = array_merge($replace, config('project.parsedown.replace'()));
+        $replace = array_merge($replace, config('project.parsedown.replace')());
 
         foreach ($replace as $key => $value) {
             $html = str_replace($key, $value, $html);

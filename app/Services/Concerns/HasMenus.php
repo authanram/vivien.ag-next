@@ -9,21 +9,14 @@ trait HasMenus
 {
     protected ?Collection $menus = null;
 
-    public function menus(): array
+    public function menus(): Collection
     {
-        $this->imageCoords ??= $this->util->remember(
+        $this->menus ??= $this->util->remember(
             Menu::class.'@'.__METHOD__,
             static fn () => static::fetchMenus(),
         );
 
-        $menuItems = $this->menus->pluck('menuItems');
-
-        return [
-            'color' => $menuItems->pluck('color'),
-            'menu' => $this->menus,
-            'menuItem' => $menuItems,
-            'route' => $menuItems->pluck('route'),
-        ];
+        return $this->menus->mapWithKeys(fn ($menu) => [$menu->slug => $menu]);
     }
 
     private static function fetchMenus(): Collection
@@ -39,7 +32,7 @@ trait HasMenus
                     'dropdown_breakpoint',
                     'sort_order',
                     'published',
-                ]);
+                ])->where('published', true)->sortBy('sort_order');
             },
             'menuItems.color' => static function ($query) {
                 $query->select([
@@ -54,7 +47,7 @@ trait HasMenus
                     'title',
                     'route',
                     'published',
-                ]);
+                ])->where('published', true);
             },
         ])->where('published', true)->get(['id', 'slug']);
     }

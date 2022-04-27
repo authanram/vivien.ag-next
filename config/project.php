@@ -1,12 +1,10 @@
 <?php
 
-use App\Util;
-
 return [
 
     'content' => [
         'replace' => static fn () => [
-            '#accent#' => Util::accent(),
+            '#accent#' => util()->accent(),
             '#avatar#' => asset('images/sybille-seuffer.jpg'),
             '#year#' => now()->year,
             '#year-last#' => now()->subYear()->year,
@@ -30,7 +28,7 @@ return [
             '{highlight}' => '<span class="font-medium text-accent-600">',
             '{/highlight}' => '</span>',
             '-accent-' => '-{{accent}}-',
-            '{{accent}}' => Util::accent(),
+            '{{accent}}' => util()->accent(),
         ],
     ],
 
