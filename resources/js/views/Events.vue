@@ -41,10 +41,7 @@
             </ui-card>
 
             <div class="relative">
-                <ui-card
-                    :class="{ 'pb-16' : routeHasQueryParameter('tags') }"
-                    class="pb-6"
-                >
+                <ui-card :class="routeHasQueryParameter('tags') ? 'pb-16' : 'pb-6'">
                     <ui-event-filters-tags
                         :accent="accent"
                         :items="tags"
