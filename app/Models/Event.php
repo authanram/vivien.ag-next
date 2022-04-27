@@ -236,6 +236,11 @@ class Event extends Model
 
     // relations
 
+    final public function eventCatering(): BelongsTo
+    {
+        return $this->belongsTo(EventCatering::class);
+    }
+
     final public function eventType(): BelongsTo
     {
         return $this->belongsTo(EventType::class);

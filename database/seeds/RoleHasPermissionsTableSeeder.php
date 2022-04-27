@@ -6,12 +6,36 @@ class RoleHasPermissionsTableSeeder extends Seeder
 {
     public function run()
     {
-        
+
         \DB::table('role_has_permissions')->delete();
-        
+
         \DB::table('role_has_permissions')->insert([
 		    [
 		        'permission_id' => 1,
+		        'role_id' => 1,
+		    ],
+		    [
+		        'permission_id' => 186,
+		        'role_id' => 1,
+		    ],
+		    [
+		        'permission_id' => 187,
+		        'role_id' => 1,
+		    ],
+		    [
+		        'permission_id' => 188,
+		        'role_id' => 1,
+		    ],
+		    [
+		        'permission_id' => 189,
+		        'role_id' => 1,
+		    ],
+		    [
+		        'permission_id' => 190,
+		        'role_id' => 1,
+		    ],
+		    [
+		        'permission_id' => 191,
 		        'role_id' => 1,
 		    ],
 		    [
@@ -527,6 +551,10 @@ class RoleHasPermissionsTableSeeder extends Seeder
 		        'role_id' => 2,
 		    ],
 		    [
+		        'permission_id' => 186,
+		        'role_id' => 2,
+		    ],
+		    [
 		        'permission_id' => 187,
 		        'role_id' => 2,
 		    ],
@@ -590,7 +618,31 @@ class RoleHasPermissionsTableSeeder extends Seeder
 		        'permission_id' => 207,
 		        'role_id' => 2,
 		    ],
+            [
+                'permission_id' => 210,
+                'role_id' => 2,
+            ],
+            [
+                'permission_id' => 211,
+                'role_id' => 2,
+            ],
+            [
+                'permission_id' => 212,
+                'role_id' => 2,
+            ],
+            [
+                'permission_id' => 213,
+                'role_id' => 2,
+            ],
+            [
+                'permission_id' => 214,
+                'role_id' => 2,
+            ],
+            [
+                'permission_id' => 215,
+                'role_id' => 2,
+            ],
 		]);
-        
+
     }
 }

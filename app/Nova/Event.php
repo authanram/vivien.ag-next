@@ -38,11 +38,13 @@ class Event extends Resource
     ];
 
     public static $searchRelations = [
+        'eventCatering' => ['name'],
         'eventLocation' => ['name'],
         'eventType' => ['name'],
     ];
 
     public static $with = [
+        'eventCatering',
         'eventType',
         'eventType',
         'eventLocation',
@@ -110,7 +112,10 @@ class Event extends Resource
             Text::make(__('Price Note'), 'price_note')
                 ->hideFromIndex()
             ,
-            Text::make(__('Catering'), 'catering')
+            BelongsTo::make(__('Event Catering'), 'eventCatering', EventCatering::class)
+                ->withoutTrashed()
+                ->showCreateRelationButton()
+                ->sortable()
                 ->hideFromIndex()
             ,
             Text::make(__('Lead'), 'lead')
