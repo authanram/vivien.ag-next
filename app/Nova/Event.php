@@ -63,14 +63,14 @@ class Event extends Resource
                 ->showCreateRelationButton()
                 ->sortable()
             ,
+            Textarea::make(__('Description'), 'description')
+                ->rows(2)
+                ->hideFromIndex()
+            ,
             BelongsTo::make(__('Event Location'), 'eventLocation', EventLocation::class)
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()
-            ,
-            Textarea::make(__('Description'), 'description')
-                ->rows(2)
-                ->hideFromIndex()
             ,
             DateTime::make(__('Date From'), 'date_from')
                 ->rules('required')
@@ -118,8 +118,10 @@ class Event extends Resource
                 ->sortable()
                 ->hideFromIndex()
             ,
-            Text::make(__('Lead'), 'lead')
-                ->default('Sybille Seuffer')
+            BelongsTo::make(__('Lead'), 'staff', Staff::class)
+                ->withoutTrashed()
+                ->showCreateRelationButton()
+                ->sortable()
                 ->hideFromIndex()
             ,
             Tags::make('Tags')

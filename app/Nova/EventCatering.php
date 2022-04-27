@@ -11,13 +11,14 @@ class EventCatering extends Resource
 {
     protected static array $orderBy = ['name' => 'asc'];
 
-    public static string $model = \App\Models\EventCatering::class;
+    public static $model = \App\Models\EventCatering::class;
 
     public static $title = 'name';
 
     public static $search = [
         'id',
         'name',
+        'note',
     ];
 
     public static function group(): string
@@ -35,6 +36,9 @@ class EventCatering extends Resource
             ,
             Text::make(__('Name'), 'name')
                 ->rules('required')
+                ->sortable()
+            ,
+            Text::make(__('Note'), 'note')
                 ->sortable()
             ,
             HasMany::make(__('Events'), 'events', Event::class)

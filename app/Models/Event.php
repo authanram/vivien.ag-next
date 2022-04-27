@@ -251,6 +251,11 @@ class Event extends Model
         return $this->belongsTo(EventLocation::class);
     }
 
+    final public function staff(): BelongsTo
+    {
+        return $this->belongsTo(Staff::class);
+    }
+
     final public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'creator_id');

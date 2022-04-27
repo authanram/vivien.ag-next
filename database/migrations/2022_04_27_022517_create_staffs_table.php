@@ -3,15 +3,16 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEventCateringsTable extends Migration
+class CreateStaffsTable extends Migration
 {
     final public function up(): void
     {
-        Schema::create('event_caterings', static function (Blueprint $table) {
+        Schema::create('staffs', static function (Blueprint $table) {
             $table->unsignedBigInteger('id')->autoIncrement();
             $table->uuid('uuid');
             $table->string('name');
-            $table->string('note')->nullable();
+            $table->string('occupation')->nullable();
+            $table->string('image_url')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -19,6 +20,6 @@ class CreateEventCateringsTable extends Migration
 
     final public function down(): void
     {
-        Schema::dropIfExists('event_caterings');
+        Schema::dropIfExists('staffs');
     }
 }

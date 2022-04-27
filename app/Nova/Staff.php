@@ -3,24 +3,21 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Textarea;
 
-class EventType extends Resource
+class Staff extends Resource
 {
     protected static array $orderBy = ['name' => 'asc'];
 
-    public static $model = \App\Models\EventType::class;
+    public static $model = \App\Models\Staff::class;
 
     public static $title = 'name';
 
     public static $search = [
         'id',
         'name',
-        'description',
+        'occupation',
     ];
 
     public static function group(): string
@@ -31,35 +28,28 @@ class EventType extends Resource
     final public function fields(Request $request): array
     {
         return [
-            ID::make()
-                ->hideFromIndex()
+            ID::make()->hideFromIndex()
             ,
             Text::make(__('Uuid'), 'uuid')
                 ->onlyOnDetail()
             ,
             Text::make(__('Name'), 'name')
-                ->rules('required')
-                ->sortable()
+                ->required()
             ,
-            Textarea::make(__('Description'), 'description')
-                ->rows(2)
-                ->hideFromIndex()
+            Text::make(__('Occupation'), 'occupation')
             ,
-            BelongsTo::make(__('Color'), 'color', Color::class)
-                ->withoutTrashed()
-            ,
-            HasMany::make(__('Events'), 'events', Event::class)
+            Text::make(__('ImageUrl'), 'image_url')
             ,
         ];
     }
 
     final public static function label(): string
     {
-        return __('Categories');
+        return __('Staffs');
     }
 
     final public static function singularLabel(): string
     {
-        return __('Category');
+        return __('Staff');
     }
 }

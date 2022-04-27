@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class EventCatering extends Model
+class Staff extends Model
 {
     use Concerns\HasUuid;
     use SoftDeletes;
 
-    protected $table = 'event_caterings';
+    protected $table = 'staffs';
 
     protected $fillable = [
         'uuid',
         'name',
-        'note',
+        'occupation',
+        'image_url',
     ];
 
     final public function events(): HasMany
