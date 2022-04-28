@@ -2,11 +2,12 @@
 
 namespace App\Nova\Dashboards;
 
-//use Tightenco\NovaGoogleAnalytics\MostVisitedPagesCard;
-use App\Nova\Cards\PageViewsMetric;
-use App\Nova\Cards\VisitorsMetric;
-use App\Nova\Metrics\SystemResourcesCpu;
-use App\Nova\Metrics\SystemResourcesRam;
+//use App\Nova\Metrics\TrendSystemResourcesCpu;
+use App\Nova\Metrics\AnalyticsPageViews;
+use App\Nova\Metrics\AnalyticsVisitors;
+use App\Nova\Metrics\ProgressSystemResourcesCpu;
+use App\Nova\Metrics\ProgressSystemResourcesRam;
+use App\Nova\Metrics\ValueActiveSessions;
 use Laravel\Nova\Dashboards\Main as Dashboard;
 
 class Main extends Dashboard
@@ -23,11 +24,12 @@ class Main extends Dashboard
         }
 
         return [
-            (new SystemResourcesRam())->width('1/2'),
-            (new SystemResourcesCpu())->width('1/2'),
-            new PageViewsMetric(),
-            new VisitorsMetric(),
-            //new MostVisitedPagesCard(),
+            //(new TrendSystemResourcesCpu())->width('1/3'),
+            (new ProgressSystemResourcesRam())->width('1/2'),
+            (new ProgressSystemResourcesCpu())->width('1/2'),
+            new ValueActiveSessions(),
+            new AnalyticsVisitors(),
+            new AnalyticsPageViews(),
         ];
     }
 }

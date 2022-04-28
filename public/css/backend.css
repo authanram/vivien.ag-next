@@ -1,0 +1,3 @@
+div#nova > div:last-of-type > div:last-of-type > div:last-of-type {
+    display: none;
+}

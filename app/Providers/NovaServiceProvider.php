@@ -9,6 +9,21 @@ use Laravel\Nova\NovaApplicationServiceProvider;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
+    public function boot(): void
+    {
+        parent::boot();
+
+        if (config('nova-menu.main')) {
+            Nova::mainMenu(config('nova-menu.main'));
+        }
+
+        if (config('nova-menu.user')) {
+            Nova::userMenu(config('nova-menu.user'));
+        }
+
+        Nova::style('backend', public_path('css/backend.css'));
+    }
+
     final protected function routes(): void
     {
         Nova::routes()

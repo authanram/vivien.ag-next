@@ -6,15 +6,15 @@ use Laravel\Nova\Metrics\Progress;
 use GijsG\SystemResources\SystemResources;
 use Laravel\Nova\Metrics\ProgressResult;
 
-class SystemResourcesCpu extends Progress
+class ProgressSystemResourcesRam extends Progress
 {
     public function name(): string
     {
-        return 'CPU';
+        return 'Memory Usage';
     }
 
     public function calculate(): ProgressResult
     {
-        return $this->result((new SystemResources())->cpu(), 100)->avoid();
+        return $this->result((new SystemResources())->ram(), 100)->avoid();
     }
 }

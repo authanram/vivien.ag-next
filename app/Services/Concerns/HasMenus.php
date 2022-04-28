@@ -32,7 +32,7 @@ trait HasMenus
                     'dropdown_breakpoint',
                     'sort_order',
                     'published',
-                ])->where('published', true)->sortBy('sort_order');
+                ])->where('published', true)->query()->sortBy('sort_order');
             },
             'menuItems.color' => static function ($query) {
                 $query->select([
