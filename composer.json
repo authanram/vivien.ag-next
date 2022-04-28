@@ -102,18 +102,6 @@
         "laravel/nova": {
             "type": "composer",
             "url": "https://nova.laravel.com"
-        },
-        "acme/duplicate-field": {
-            "type": "path",
-            "url": "./nova-components/DuplicateField"
-        },
-        "0": {
-            "type": "path",
-            "url": "./nova-components/Theme"
-        },
-        "1": {
-            "type": "path",
-            "url": "./nova-components/Theme"
         }
     }
 }
