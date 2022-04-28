@@ -5,7 +5,8 @@ namespace App\Nova\Dashboards;
 //use Tightenco\NovaGoogleAnalytics\MostVisitedPagesCard;
 use App\Nova\Cards\PageViewsMetric;
 use App\Nova\Cards\VisitorsMetric;
-use GijsG\SystemResources\SystemResources;
+use App\Nova\Metrics\SystemResourcesCpu;
+use App\Nova\Metrics\SystemResourcesRam;
 use Laravel\Nova\Dashboards\Main as Dashboard;
 
 class Main extends Dashboard
@@ -22,10 +23,11 @@ class Main extends Dashboard
         }
 
         return [
-            new SystemResources('ram'),
-            new SystemResources('cpu'),
+            (new SystemResourcesRam())->width('1/2'),
+            (new SystemResourcesCpu())->width('1/2'),
             new PageViewsMetric(),
             new VisitorsMetric(),
+            //new MostVisitedPagesCard(),
         ];
     }
 }
