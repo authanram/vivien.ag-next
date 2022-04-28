@@ -2,11 +2,11 @@
 
 namespace App\Nova;
 
-//use Acme\DuplicateField\Duplicate;
 use App\Nova\Filters\EventsTimeFilter;
-use Laravel\Nova\Http\Requests\NovaRequest as Request;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\BooleanGroup;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
@@ -22,7 +22,7 @@ class Event extends Resource
         'date_from' => 'asc',
     ];
 
-    public static string $model = \App\Models\Event::class;
+    public static $model = \App\Models\Event::class;
 
     public static function group(): string
     {
@@ -37,18 +37,20 @@ class Event extends Resource
         'lead'
     ];
 
-    public static array $searchRelations = [
+    public static $searchRelations = [
+        'eventCatering' => ['name'],
         'eventLocation' => ['name'],
         'eventType' => ['name'],
     ];
 
     public static $with = [
+        'eventCatering',
         'eventType',
         'eventType',
         'eventLocation',
     ];
 
-    public function fields(Request $request, bool $published = true): array
+    final public function fields(Request $request, bool $published = true): array
     {
         return [
             ID::make()->hideFromIndex()
@@ -61,14 +63,14 @@ class Event extends Resource
                 ->showCreateRelationButton()
                 ->sortable()
             ,
+            Textarea::make(__('Description'), 'description')
+                ->rows(2)
+                ->hideFromIndex()
+            ,
             BelongsTo::make(__('Event Location'), 'eventLocation', EventLocation::class)
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()
-            ,
-            Textarea::make(__('Description'), 'description')
-                ->rows(2)
-                ->hideFromIndex()
             ,
             DateTime::make(__('Date From'), 'date_from')
                 ->rules('required')
@@ -79,7 +81,9 @@ class Event extends Resource
                 ->sortable()
             ,
             Number::make(__('Attendees'), 'maximum_attendees')
-                ->resolveUsing(fn () => $this->reserved_seats.' / '.$this->maximum_attendees)
+                ->resolveUsing(function () {
+                    return $this->reserved_seats.' / '.$this->maximum_attendees;
+                })
                 ->default(10)
                 ->rules('required', 'numeric', 'min:1', 'gte:reserved_seats')
                 ->sortable()
@@ -108,11 +112,16 @@ class Event extends Resource
             Text::make(__('Price Note'), 'price_note')
                 ->hideFromIndex()
             ,
-            Text::make(__('Catering'), 'catering')
+            BelongsTo::make(__('Event Catering'), 'eventCatering', EventCatering::class)
+                ->withoutTrashed()
+                ->showCreateRelationButton()
+                ->sortable()
                 ->hideFromIndex()
             ,
-            Text::make(__('Lead'), 'lead')
-                ->default('Sybille Seuffer')
+            BelongsTo::make(__('Lead'), 'staff', Staff::class)
+                ->withoutTrashed()
+                ->showCreateRelationButton()
+                ->sortable()
                 ->hideFromIndex()
             ,
             Tags::make('Tags')
@@ -120,6 +129,12 @@ class Event extends Resource
                 ->withLinkToTagResource()
                 ->hideFromIndex()
             ,
+//            BooleanGroup::make('Tags')->options([
+//                'create' => 'Create',
+//                'read' => 'Read',
+//                'update' => 'Update',
+//                'delete' => 'Delete',
+//            ])->hideFalseValues(),
             Boolean::make(__('Published'), 'published')
                 ->default($published)
                 ->rules('boolean')
@@ -127,34 +142,19 @@ class Event extends Resource
                 ->trueValue(true)
                 ->falseValue(false)
             ,
-//            Duplicate::make()
-//                ->showOnIndex()
-//                ->withMeta([
-//                    'resource' => 'events',
-//                    'model' => \App\Models\Event::class,
-//                    'id' => $this->id,
-//                    'relations' => ['tags'],
-//                    'override' => [
-//                        'date_from' => time(),
-//                        'date_to' => time(),
-//                        'reserved_seats' => null,
-//                        'published' => false,
-//                    ],
-//                ])
-//            ,
             HasMany::make(__('Attendees'), 'attendees', Attendee::class)
             ,
         ];
     }
 
-    public function filters(Request $request): array
+    final public function filters(Request $request): array
     {
         return [
             EventsTimeFilter::make(),
         ];
     }
 
-    public function title(): string
+    final public function title(): string
     {
         return $this
 
@@ -165,12 +165,12 @@ class Event extends Resource
             ?->getAttribute('name');
     }
 
-    public static function label(): string
+    final public static function label(): string
     {
         return __('Events');
     }
 
-    public static function singularLabel(): string
+    final public static function singularLabel(): string
     {
         return __('Event');
     }

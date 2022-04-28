@@ -24,20 +24,13 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 //                    return $collection;
 //                }
 
-//                $collection
-//                    ->add(new \KABBOUCHI\LogsTool\LogsTool())
-//                    ->add(new \Sbine\RouteViewer\RouteViewer)
-//                    ->add(new \Spatie\BackupTool\BackupTool());
-
 //                if ($isLocal === false) {
 //                    return $collection;
 //                }
 
-//                $collection->add(new \Spatie\TailTool\TailTool());
-
-//                if (config('env.GENERATOR_ENABLED')) {
-//                    $collection->add(new \Cloudstudio\ResourceGenerator\ResourceGenerator());
-//                }
+                if (config('env.GENERATOR_ENABLED')) {
+                    $collection->add(new \Cloudstudio\ResourceGenerator\ResourceGenerator());
+                }
 
                 return $collection;
             })
