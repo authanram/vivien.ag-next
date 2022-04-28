@@ -10,7 +10,6 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
-use Tightenco\NovaGoogleAnalytics\MostVisitedPagesCard;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -50,22 +49,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         Gate::define('viewNova', static function ($user) {
             return in_array($user->email, config('nova-settings.gates', []), true);
         });
-    }
-
-    final protected function cards(): array
-    {
-        return collect([
-            new PageViewsMetric,
-            new VisitorsMetric,
-            new MostVisitedPagesCard,
-        ])->pipe(static function (Collection $collection) {
-            return $collection;
-//            return request()->user()->isAdministrator()
-//                ? $collection
-//                    ->prepend(new SystemResources('ram'))
-//                    ->prepend(new SystemResources('cpu'))
-//                : $collection;
-        })->toArray();
     }
 
     protected function dashboards(): array
