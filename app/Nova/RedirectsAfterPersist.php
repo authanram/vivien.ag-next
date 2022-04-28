@@ -2,11 +2,11 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Http\Requests\NovaRequest as Request;
 
 trait RedirectsAfterPersist
 {
-    public static function redirectAfterCreate(NovaRequest $request, $resource): string
+    public static function redirectAfterCreate(Request $request, $resource): string
     {
         if ($request->get('viaResource') && $request->get('viaResourceId')) {
             return "/resources/{$request->get('viaResource')}/{$request->get('viaResourceId')}";
@@ -15,7 +15,7 @@ trait RedirectsAfterPersist
         return parent::redirectAfterCreate($request, $resource);
     }
 
-    public static function redirectAfterUpdate(NovaRequest $request, $resource): string
+    public static function redirectAfterUpdate(Request $request, $resource): string
     {
         if ($request->get('viaResource') && $request->get('viaResourceId')) {
             return "/resources/{$request->get('viaResource')}/{$request->get('viaResourceId')}";

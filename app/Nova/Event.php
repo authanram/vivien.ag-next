@@ -2,9 +2,9 @@
 
 namespace App\Nova;
 
-use Acme\DuplicateField\Duplicate;
+//use Acme\DuplicateField\Duplicate;
 use App\Nova\Filters\EventsTimeFilter;
-use Illuminate\Http\Request;
+use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
@@ -127,21 +127,21 @@ class Event extends Resource
                 ->trueValue(true)
                 ->falseValue(false)
             ,
-            Duplicate::make()
-                ->showOnIndex()
-                ->withMeta([
-                    'resource' => 'events',
-                    'model' => \App\Models\Event::class,
-                    'id' => $this->id,
-                    'relations' => ['tags'],
-                    'override' => [
-                        'date_from' => time(),
-                        'date_to' => time(),
-                        'reserved_seats' => null,
-                        'published' => false,
-                    ],
-                ])
-            ,
+//            Duplicate::make()
+//                ->showOnIndex()
+//                ->withMeta([
+//                    'resource' => 'events',
+//                    'model' => \App\Models\Event::class,
+//                    'id' => $this->id,
+//                    'relations' => ['tags'],
+//                    'override' => [
+//                        'date_from' => time(),
+//                        'date_to' => time(),
+//                        'reserved_seats' => null,
+//                        'published' => false,
+//                    ],
+//                ])
+//            ,
             HasMany::make(__('Attendees'), 'attendees', Attendee::class)
             ,
         ];

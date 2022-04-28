@@ -2,9 +2,8 @@
 
 namespace App\Nova;
 
-use Drobee\NovaSluggable\Slug;
-use Drobee\NovaSluggable\SluggableText;
-use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Slug;
+use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\DateTime;
@@ -31,11 +30,12 @@ class Post extends Resource
             Text::make(__('Uuid'), 'uuid')
                 ->onlyOnDetail()
             ,
-            SluggableText::make(__('Title'), 'title')
+            Text::make(__('Title'), 'title')
                 ->rules('required', 'min:3')
                 ->sortable()
             ,
             Slug::make(__('Slug'), 'slug')
+                ->from('title')
                 ->withMeta(['readonly' => 'true'])
                 ->rules('required')
                 ->sortable()
@@ -44,7 +44,7 @@ class Post extends Resource
                 ->rules('required')
             ,
             DateTime::make(__('Published At'), 'published_at', static function ($value) {
-                return $value ?? \Carbon\Carbon::now()->format('Y-m-d H:i:s');
+                return $value ?? now()->format('Y-m-d H:i:s');
             })
                 ->rules('required')
                 ->sortable()

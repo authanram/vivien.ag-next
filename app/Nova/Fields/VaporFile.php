@@ -4,16 +4,16 @@ namespace App\Nova\Fields;
 
 class VaporFile extends \Laravel\Nova\Fields\VaporFile
 {
-    protected function prepareStorageCallback($storageCallback)
+    protected function prepareStorageCallback($storageCallback): void
     {
         $this->storageCallback = $storageCallback ?? function ($request, $model, $attribute, $requestAttribute) {
-                if ($request->{$requestAttribute} === false) {
-                    return $this->attribute = $model->{$attribute};
-                }
+            if ($request->{$requestAttribute} === false) {
+                return $this->attribute = $model->{$attribute};
+            }
 
-                return $this->mergeExtraStorageColumns($request, [
-                    $this->attribute => $this->storeFile($request, $requestAttribute),
-                ]);
-            };
+            return $this->mergeExtraStorageColumns($request, [
+                $this->attribute => $this->storeFile($request, $requestAttribute),
+            ]);
+        };
     }
 }

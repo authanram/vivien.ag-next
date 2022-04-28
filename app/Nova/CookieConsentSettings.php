@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
+use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
 

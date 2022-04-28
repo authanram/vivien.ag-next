@@ -3,7 +3,7 @@
 namespace App\Nova;
 
 use App\Nova\Fields\VaporFile;
-use Illuminate\Http\Request;
+use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Spatie\TagsField\Tags;

@@ -2,16 +2,16 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
+use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use OptimistDigital\NovaSortable\Traits\HasSortableRows;
+//use OptimistDigital\NovaSortable\Traits\HasSortableRows;
 
 class ImageCoords extends Resource
 {
-    use HasSortableRows;
+//    use HasSortableRows;
 
     public static $group = 'System';
 

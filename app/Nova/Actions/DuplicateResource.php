@@ -12,19 +12,17 @@ abstract class DuplicateResource extends Action
 {
     use SerializesModels;
 
-    public $attributes = [];
-    public $showOnIndex = false;
-    public $showOnTableRow = true;
     public $confirmButtonText = 'Duplicate';
     public $confirmText = 'Are you sure you want to duplicate this resource?';
+    public $showOnIndex = false;
     public $withoutActionEvents = true;
+    public array $attributes = [];
 
-    protected $keepRelations = [];
-    protected $duplicateRelations = [];
+    protected array $keepRelations = [];
+    protected array $duplicateRelations = [];
 
     /**
      * @noinspection PhpMissingReturnTypeInspection
-     * @noinspection ReturnTypeCanBeDeclaredInspection
      */
     public function handle(ActionFields $fields, Collection $models)
     {

@@ -185,7 +185,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\NovaServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Acme\Theme\ThemeServiceProvider::class,
+        //Acme\Theme\ThemeServiceProvider::class,
 
     ],
 

@@ -3,7 +3,7 @@
 namespace App\Nova\Filters;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
+use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Filters\Filter;
 
 class EventsTimeFilter extends Filter

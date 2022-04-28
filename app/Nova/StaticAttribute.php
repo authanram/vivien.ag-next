@@ -2,13 +2,12 @@
 
 namespace App\Nova;
 
-use Drobee\NovaSluggable\Slug;
-use Drobee\NovaSluggable\SluggableText;
-use Epartment\NovaDependencyContainer\HasDependencies;
-use Epartment\NovaDependencyContainer\NovaDependencyContainer;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Laravel\Nova\Fields\Code;
+use Laravel\Nova\Fields\Slug;
+//use Drobee\NovaSluggable\SluggableText;
+//use Epartment\NovaDependencyContainer\HasDependencies;
+//use Epartment\NovaDependencyContainer\NovaDependencyContainer;
+use Laravel\Nova\Http\Requests\NovaRequest as Request;
+//use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
@@ -16,7 +15,7 @@ use Laravel\Nova\Fields\Boolean;
 
 class StaticAttribute extends Resource
 {
-    use HasDependencies;
+//    use HasDependencies;
 
     protected static array $orderBy = ['name' => 'asc'];
 
@@ -39,13 +38,14 @@ class StaticAttribute extends Resource
         return [
             ID::make()->hideFromIndex()
             ,
-            SluggableText::make(__('Name'), 'name')
+            Text::make(__('Name'), 'name')
                 ->rules('required')
                 ->creationRules("unique:$table,name")
                 ->updateRules("unique:$table,name,{{resourceId}}")
                 ->sortable()
             ,
             Slug::make(__('Slug'), 'slug')
+                ->from('name')
                 ->withMeta(['readonly' => 'true'])
                 ->creationRules("unique:$table,slug")
                 ->updateRules("unique:$table,slug,{{resourceId}}")
@@ -57,21 +57,21 @@ class StaticAttribute extends Resource
             ])->displayUsingLabels()
                 ->sortable()
             ,
-            NovaDependencyContainer::make([
-                Text::make(__('Value'), 'value')
-                    ->sortable()
-                ,
-            ])->dependsOn('type', 0)
-            ,
-            NovaDependencyContainer::make([
-                Code::make(__('Value'), 'data')
-                    ->json()
-                    ->height('auto')
-                    ->rules('json')
-                    ->hideFromIndex()
-                ,
-            ])->dependsOn('type', 1)
-            ,
+//            NovaDependencyContainer::make([
+//                Text::make(__('Value'), 'value')
+//                    ->sortable()
+//                ,
+//            ])->dependsOn('type', 0)
+//            ,
+//            NovaDependencyContainer::make([
+//                Code::make(__('Value'), 'data')
+//                    ->json()
+//                    ->height('auto')
+//                    ->rules('json')
+//                    ->hideFromIndex()
+//                ,
+//            ])->dependsOn('type', 1)
+//            ,
             Boolean::make(__('Locked'), 'locked')
                 ->sortable()
                 ->trueValue('1')

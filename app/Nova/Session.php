@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
+use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Text;
@@ -27,7 +27,7 @@ class Session extends Resource
     {
         return [
             ID::make(__('Id'), 'id', function () {
-                return $this->model()->getAttributes()['id'];
+                return $this->model()?->getAttributes()['id'];
             })->sortable()
             ,
             BelongsTo::make('User', 'user', User::class)

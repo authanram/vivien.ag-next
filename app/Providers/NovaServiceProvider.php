@@ -4,7 +4,8 @@ namespace App\Providers;
 
 use App\Nova\Cards\PageViewsMetric;
 use App\Nova\Cards\VisitorsMetric;
-use GijsG\SystemResources\SystemResources;
+use App\Nova\Dashboards\Main;
+//use GijsG\SystemResources\SystemResources;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Nova;
@@ -13,31 +14,30 @@ use Tightenco\NovaGoogleAnalytics\MostVisitedPagesCard;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
-    /** @noinspection PhpFullyQualifiedNameUsageInspection */
     public function tools(): array
     {
         $isLocal = $this->app->environment('local');
 
         return collect()
             ->pipe(static function (Collection $collection) use ($isLocal) {
-                if (request()->user()->isAdministrator() === false) {
-                    return $collection;
-                }
+//                if (request()->user()->isAdministrator() === false) {
+//                    return $collection;
+//                }
 
-                $collection
-                    ->add(new \KABBOUCHI\LogsTool\LogsTool())
-                    ->add(new \Sbine\RouteViewer\RouteViewer)
-                    ->add(new \Spatie\BackupTool\BackupTool());
+//                $collection
+//                    ->add(new \KABBOUCHI\LogsTool\LogsTool())
+//                    ->add(new \Sbine\RouteViewer\RouteViewer)
+//                    ->add(new \Spatie\BackupTool\BackupTool());
 
-                if ($isLocal === false) {
-                    return $collection;
-                }
+//                if ($isLocal === false) {
+//                    return $collection;
+//                }
 
-                $collection->add(new \Spatie\TailTool\TailTool());
+//                $collection->add(new \Spatie\TailTool\TailTool());
 
-                if (config('env.GENERATOR_ENABLED')) {
-                    $collection->add(new \Cloudstudio\ResourceGenerator\ResourceGenerator());
-                }
+//                if (config('env.GENERATOR_ENABLED')) {
+//                    $collection->add(new \Cloudstudio\ResourceGenerator\ResourceGenerator());
+//                }
 
                 return $collection;
             })
@@ -66,11 +66,19 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             new VisitorsMetric,
             new MostVisitedPagesCard,
         ])->pipe(static function (Collection $collection) {
-            return request()->user()->isAdministrator()
-                ? $collection
-                    ->prepend(new SystemResources('ram'))
-                    ->prepend(new SystemResources('cpu'))
-                : $collection;
+            return $collection;
+//            return request()->user()->isAdministrator()
+//                ? $collection
+//                    ->prepend(new SystemResources('ram'))
+//                    ->prepend(new SystemResources('cpu'))
+//                : $collection;
         })->toArray();
+    }
+
+    protected function dashboards(): array
+    {
+        return [
+            new Main(),
+        ];
     }
 }

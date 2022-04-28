@@ -2,17 +2,17 @@
 
 namespace App\Nova;
 
-use Drobee\NovaSluggable\Slug;
-use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Slug;
+use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Text;
-use OptimistDigital\NovaSortable\Traits\HasSortableManyToManyRows;
+//use OptimistDigital\NovaSortable\Traits\HasSortableManyToManyRows;
 
 class Content extends Resource
 {
-    use HasSortableManyToManyRows;
+    //use HasSortableManyToManyRows;
 
     protected static array $orderBy = ['slug' => 'asc'];
 
