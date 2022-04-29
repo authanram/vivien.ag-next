@@ -40,8 +40,6 @@ class AppServiceProvider extends ServiceProvider
             if (class_exists('\Laracasts\Generators\GeneratorsServiceProvider')) {
                 $this->app->register('\Laracasts\Generators\GeneratorsServiceProvider');
             }
-
-            $this->app->register(\Systems\Seed\Providers\ServiceProvider::class);
         }
     }
 }
