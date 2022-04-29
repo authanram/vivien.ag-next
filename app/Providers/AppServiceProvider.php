@@ -36,10 +36,12 @@ class AppServiceProvider extends ServiceProvider
 
     private function registerServiceProviders(): void
     {
-        if ($this->app->environment('local')) {
-            if (class_exists('\Laracasts\Generators\GeneratorsServiceProvider')) {
-                $this->app->register('\Laracasts\Generators\GeneratorsServiceProvider');
-            }
+        if ($this->app->environment('local') === false) {
+            return;
+        }
+
+        if (class_exists('\Laracasts\Generators\GeneratorsServiceProvider')) {
+            $this->app->register('\Laracasts\Generators\GeneratorsServiceProvider');
         }
     }
 }
