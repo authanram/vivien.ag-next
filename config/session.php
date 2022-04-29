@@ -183,7 +183,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Same-Site Cookies
+    | Same-SiteService Cookies
     |--------------------------------------------------------------------------
     |
     | This option determines how your cookies behave when cross-site requests

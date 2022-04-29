@@ -15,8 +15,9 @@
         "coderello/laravel-nova-lang": "^1.8",
         "erusev/parsedown-extra": "^0.8.1",
         "fruitcake/laravel-cors": "^3.0",
-        "gijsg/system-resources": "^1.0",
+        "gijsg/system-resources": "dev-fix-deprecation-warning",
         "guzzlehttp/guzzle": "^7.4",
+        "laracasts/presenter": "^0.2.5",
         "laravel/framework": "^9.9.0",
         "laravel/nova": "^4.2.7",
         "laravel/tinker": "^2.7",
@@ -101,6 +102,10 @@
         "laravel/nova": {
             "type": "composer",
             "url": "https://nova.laravel.com"
+        },
+        "gijsg/system-resources": {
+            "type": "git",
+            "url": "https://github.com/authanram/nova-system-resources"
         }
     }
 }

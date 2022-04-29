@@ -68,7 +68,7 @@ class CookieConsentCookiesTableSeeder extends Seeder
 		        'cookie_consent_provider_id' => 1,
 		        'cookie_lifetime' => 0,
 		        'cookie_name' => 'XSRF-TOKEN',
-		        'cookie_purpose' => 'Sicherheitsmaßnahme gegen Cross-Site-Request-Forgery (CSRF oder XSRF abgekürzt), deutsch etwa Website-übergreifende Anfragenfälschung.'."\n"
+		        'cookie_purpose' => 'Sicherheitsmaßnahme gegen Cross-SiteService-Request-Forgery (CSRF oder XSRF abgekürzt), deutsch etwa Website-übergreifende Anfragenfälschung.'."\n"
 		            .'<br>'."\n"
 		            .'<br>'."\n"
 		            .'Anhand des XSRF-Token wird sichergestellt, dass von dir übermittelten Daten auf ihrem Weg, zwischen Host (dein Gerät) und Server (meine Webseite), nicht von einem Hacker manipuliert werden.',

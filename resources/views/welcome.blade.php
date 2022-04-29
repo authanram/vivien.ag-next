@@ -1,3 +1,5 @@
+@ray(Site::menu()::first()->present()->foo())
+
 @extends('layouts.default')
 
 @push('content')

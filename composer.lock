@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "76827c6e8ac0f6e1aea214c702f2ee5e",
+    "content-hash": "d6616a3e0688504729ec36efeb0c84b9",
     "packages": [
         {
             "name": "ajcastro/eager-load-pivot-relations",
@@ -1471,17 +1471,11 @@
         },
         {
             "name": "gijsg/system-resources",
-            "version": "1.0.5",
+            "version": "dev-fix-deprecation-warning",
             "source": {
                 "type": "git",
-                "url": "https://github.com/GijsGoudzwaard/nova-system-resources.git",
-                "reference": "4ef6c581ee65b32db0e344785f6937a0eeb05d8e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/GijsGoudzwaard/nova-system-resources/zipball/4ef6c581ee65b32db0e344785f6937a0eeb05d8e",
-                "reference": "4ef6c581ee65b32db0e344785f6937a0eeb05d8e",
-                "shasum": ""
+                "url": "https://github.com/authanram/nova-system-resources",
+                "reference": "ececfe73f5006e9bc7a6401e84b7b28d30cb545f"
             },
             "require": {
                 "php": ">=7.1.0"
@@ -1499,7 +1493,6 @@
                     "GijsG\\SystemResources\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1508,11 +1501,7 @@
                 "laravel",
                 "nova"
             ],
-            "support": {
-                "issues": "https://github.com/GijsGoudzwaard/nova-system-resources/issues",
-                "source": "https://github.com/GijsGoudzwaard/nova-system-resources/tree/v1.0.5"
-            },
-            "time": "2020-05-18T16:23:41+00:00"
+            "time": "2022-04-29T18:08:27+00:00"
         },
         {
             "name": "google/apiclient",
@@ -2140,6 +2129,56 @@
                 }
             ],
             "time": "2022-01-18T10:59:08+00:00"
+        },
+        {
+            "name": "laracasts/presenter",
+            "version": "0.2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laracasts/Presenter.git",
+                "reference": "d9b9050abf0af1d75465284a62b537c3f4ac7d1f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laracasts/Presenter/zipball/d9b9050abf0af1d75465284a62b537c3f4ac7d1f",
+                "reference": "d9b9050abf0af1d75465284a62b537c3f4ac7d1f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0|~6.0|~7.0|~8.0|^9.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpspec/phpspec": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Laracasts\\Presenter": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeffrey Way",
+                    "email": "jeffrey@laracasts.com"
+                }
+            ],
+            "description": "Simple view presenters",
+            "keywords": [
+                "laravel",
+                "presenter",
+                "view"
+            ],
+            "support": {
+                "issues": "https://github.com/laracasts/Presenter/issues",
+                "source": "https://github.com/laracasts/Presenter/tree/0.2.5"
+            },
+            "time": "2022-04-12T18:22:42+00:00"
         },
         {
             "name": "laravel/framework",
@@ -12246,12 +12285,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "576d0458fe9635731c50be2ed74febec4edc08d8"
+                "reference": "edae251c7cc44c76637b5b55e3db52c6332c5a3a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/576d0458fe9635731c50be2ed74febec4edc08d8",
-                "reference": "576d0458fe9635731c50be2ed74febec4edc08d8",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/edae251c7cc44c76637b5b55e3db52c6332c5a3a",
+                "reference": "edae251c7cc44c76637b5b55e3db52c6332c5a3a",
                 "shasum": ""
             },
             "conflict": {
@@ -12311,6 +12350,7 @@
                 "croogo/croogo": "<3.0.7",
                 "cuyz/valinor": ">=0.5,<0.7",
                 "czproject/git-php": "<4.0.3",
+                "darylldoyle/safe-svg": "<1.9.10",
                 "datadog/dd-trace": ">=0.30,<0.30.2",
                 "david-garcia/phpwhois": "<=4.3.1",
                 "derhansen/sf_event_mgt": "<4.3.1|>=5,<5.1.1",
@@ -12343,11 +12383,11 @@
                 "ezsystems/ezplatform": "<=1.13.6|>=2,<=2.5.24",
                 "ezsystems/ezplatform-admin-ui": ">=1.3,<1.3.5|>=1.4,<1.4.6|>=1.5,<1.5.27",
                 "ezsystems/ezplatform-admin-ui-assets": ">=4,<4.2.1|>=5,<5.0.1|>=5.1,<5.1.1",
-                "ezsystems/ezplatform-kernel": "<=1.2.5|>=1.3,<1.3.12",
+                "ezsystems/ezplatform-kernel": "<=1.2.5|>=1.3,<1.3.17",
                 "ezsystems/ezplatform-rest": ">=1.2,<=1.2.2|>=1.3,<1.3.8",
                 "ezsystems/ezplatform-richtext": ">=2.3,<=2.3.7",
                 "ezsystems/ezplatform-user": ">=1,<1.0.1",
-                "ezsystems/ezpublish-kernel": "<=6.13.8.1|>=7,<7.5.26",
+                "ezsystems/ezpublish-kernel": "<=6.13.8.1|>=7,<7.5.28",
                 "ezsystems/ezpublish-legacy": "<=2017.12.7.3|>=2018.6,<=2019.3.5.1",
                 "ezsystems/platform-ui-assets-bundle": ">=4.2,<4.2.3",
                 "ezsystems/repository-forms": ">=2.3,<2.3.2.1",
@@ -12392,6 +12432,7 @@
                 "hjue/justwriting": "<=1",
                 "hov/jobfair": "<1.0.13|>=2,<2.0.2",
                 "hyn/multi-tenant": ">=5.6,<5.7.2",
+                "ibexa/core": ">=4,<4.0.5|>=4.1,<4.1.2",
                 "ibexa/post-install": "<=1.0.4",
                 "icecoder/icecoder": "<=8.1",
                 "illuminate/auth": ">=4,<4.0.99|>=4.1,<=4.1.31|>=4.2,<=4.2.22|>=5,<=5.0.35|>=5.1,<=5.1.46|>=5.2,<=5.2.45|>=5.3,<=5.3.31|>=5.4,<=5.4.36|>=5.5,<5.5.10",
@@ -12534,7 +12575,7 @@
                 "shopware/core": "<=6.4.9",
                 "shopware/platform": "<=6.4.9",
                 "shopware/production": "<=6.3.5.2",
-                "shopware/shopware": "<5.7.7",
+                "shopware/shopware": "<5.7.9",
                 "shopware/storefront": "<=6.4.8.1",
                 "showdoc/showdoc": "<2.10.4",
                 "silverstripe/admin": ">=1,<1.8.1",
@@ -12668,10 +12709,10 @@
                 "zendframework/zend-crypt": ">=2,<2.4.9|>=2.5,<2.5.2",
                 "zendframework/zend-db": ">=2,<2.0.99|>=2.1,<2.1.99|>=2.2,<2.2.10|>=2.3,<2.3.5",
                 "zendframework/zend-developer-tools": ">=1.2.2,<1.2.3",
-                "zendframework/zend-diactoros": ">=1,<1.8.4",
-                "zendframework/zend-feed": ">=1,<2.10.3",
+                "zendframework/zend-diactoros": "<1.8.4",
+                "zendframework/zend-feed": "<2.10.3",
                 "zendframework/zend-form": ">=2,<2.2.7|>=2.3,<2.3.1",
-                "zendframework/zend-http": ">=1,<2.8.1",
+                "zendframework/zend-http": "<2.8.1",
                 "zendframework/zend-json": ">=2.1,<2.1.6|>=2.2,<2.2.6",
                 "zendframework/zend-ldap": ">=2,<2.0.99|>=2.1,<2.1.99|>=2.2,<2.2.8|>=2.3,<2.3.3",
                 "zendframework/zend-mail": ">=2,<2.4.11|>=2.5,<2.7.2",
@@ -12723,7 +12764,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-27T21:04:28+00:00"
+            "time": "2022-04-29T17:12:40+00:00"
         },
         {
             "name": "ryangjchandler/blade-tabler-icons",
@@ -15246,6 +15287,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "gijsg/system-resources": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": true,
