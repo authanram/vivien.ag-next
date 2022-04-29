@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CookieConsentCookie extends Model
 {
-    protected $table = 'cookie_consent_cookies';
-
     protected $fillable = [
         'cookie_name',
         'cookie_consent_provider_id',

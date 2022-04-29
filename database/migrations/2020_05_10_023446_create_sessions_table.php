@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateSessionsTable extends Migration
 {
-    final public function up(): void
+    public function up(): void
     {
         Schema::create('sessions', static function (Blueprint $table) {
             $table->string('id')->unique();
@@ -18,7 +18,7 @@ class CreateSessionsTable extends Migration
         });
     }
 
-    final public function down(): void
+    public function down(): void
     {
         Schema::dropIfExists('sessions');
     }

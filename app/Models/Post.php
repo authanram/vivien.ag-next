@@ -15,8 +15,8 @@ class Post extends Model
 
     protected $fillable = [
         'uuid',
-        'title',
         'slug',
+        'title',
         'body',
         'published_at',
     ];

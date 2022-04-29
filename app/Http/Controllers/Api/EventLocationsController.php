@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\EventLocation;
+use App\Models\Location;
 use Illuminate\Database\Eloquent\Collection;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -15,7 +15,7 @@ final class EventLocationsController extends ApiController
 
     public static function filter(array $filters = ['id']): Collection
     {
-        return QueryBuilder::for(EventLocation::class)
+        return QueryBuilder::for(Location::class)
             ->allowedFilters(self::makeExactFilters($filters))
             ->get(['id', 'name', 'description', 'address', 'url']);
     }

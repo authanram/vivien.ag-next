@@ -12,8 +12,6 @@ use Laravel\Nova\Fields\Text;
 
 class CookieConsentCookie extends Resource
 {
-    public static $group = 'Cookie Consent';
-
     public static string $model = \App\Models\CookieConsentCookie::class;
 
     public static $title = 'cookie_name';

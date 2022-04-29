@@ -10,11 +10,10 @@ use Spatie\Tags\HasTags;
 class Content extends Model
 {
     use HasTags;
-    use Concerns\HasUuid;
     use SoftDeletes;
 
     protected $fillable = [
-        'uuid',
+        'title',
         'slug',
         'caption',
         'body',
@@ -29,7 +28,7 @@ class Content extends Model
 
     public function routes(): BelongsToMany
     {
-        return $this->belongsToMany(Route::class, 'route_content')
+        return $this->belongsToMany(Route::class, 'route_contents')
             ->using(RouteContent::class);
     }
 }

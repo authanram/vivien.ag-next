@@ -8,8 +8,6 @@ class StaticAttribute extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'static_attributes';
-
     protected $fillable = [
         'name',
         'slug',

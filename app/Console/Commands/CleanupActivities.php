@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Activity;
+use Exception;
 use Illuminate\Console\Command;
 
 class CleanupActivities extends Command
@@ -13,14 +14,14 @@ class CleanupActivities extends Command
 
     /**
      * @return int
-     * @throws \Exception
+     * @throws Exception
      */
     public function handle(): int
     {
         $this->newLine();
 
         /** @noinspection PhpStaticAsDynamicMethodCallInspection */
-        Activity::where('changes', null)
+        Activity::where('changes')
             ->orWhere('changes', '[]')
             ->delete();
 

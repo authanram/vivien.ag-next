@@ -12,7 +12,6 @@ class ImageCoords extends Model implements Sortable
     use SortableTrait;
 
     protected $fillable = [
-        'uuid',
         'image_id',
         'coords',
         'order_column',

@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateUsersTable extends Migration
 {
-    final public function up(): void
+    public function up(): void
     {
         Schema::create('users', static function (Blueprint $table) {
             $table->id();
@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
         });
     }
 
-    final public function down(): void
+    public function down(): void
     {
         Schema::dropIfExists('users');
     }

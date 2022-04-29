@@ -10,8 +10,6 @@ use Spatie\TagsField\Tags;
 
 class Attachment extends Resource
 {
-    public static $group = 'System';
-
     public static string $model = \App\Models\Attachment::class;
 
     public static $title = 'name';

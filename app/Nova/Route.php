@@ -11,8 +11,6 @@ use Laravel\Nova\Fields\Text;
 
 class Route extends Resource
 {
-    public static $group = 'Routing';
-
     public static string $model = \App\Models\Route::class;
 
     public static $title = 'title';

@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Artisan;
 use Illuminate\Console\Command;
 
 class MakeSeeders extends Command
@@ -16,35 +17,12 @@ class MakeSeeders extends Command
         $this->line('Making Seeders...');
         $this->line('');
 
-        \Artisan::call('seed', [
-            'tables'  => implode(',', [
-                'authors',
-                'colors',
-                'contents',
-                'events',
-                'event_locations',
-                'event_types',
-                'image_coords',
-                'images',
-                'menu_items',
-                'menus',
-                'posts',
-                'quotes',
-                'route_content',
-                'routes',
-                'static_attributes',
-                'taggables',
-                'tags',
-                'permissions',
-                'roles',
-                'model_has_permissions',
-                'model_has_roles',
-                'role_has_permissions',
-            ]),
+        Artisan::call('seed', [
+            'tables'  => implode(',', config('project-seeders')),
             '--force' => true,
         ]);
 
-        $this->info(\Artisan::output());
+        $this->info(Artisan::output());
 
         return 0;
     }

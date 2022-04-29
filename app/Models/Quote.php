@@ -7,11 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Quote extends Model
 {
-    use Concerns\HasUuid;
     use SoftDeletes;
 
     protected $fillable = [
-        'uuid',
         'body',
         'author_id',
         'published',

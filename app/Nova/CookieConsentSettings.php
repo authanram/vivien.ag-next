@@ -8,8 +8,6 @@ use Laravel\Nova\Fields\ID;
 
 class CookieConsentSettings extends Resource
 {
-    public static $group = 'Cookie Consent';
-
     public static string $model = \App\Models\CookieConsentSettings::class;
 
     public static $title = 'session_id';

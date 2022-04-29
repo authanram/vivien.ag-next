@@ -23,13 +23,6 @@ class User extends Resource
         'email',
     ];
 
-    public static function group(): string
-    {
-        return \request()->user()->isAdministrator()
-            ? __('Acl')
-            : __('System');
-    }
-
     public function fields(Request $request): array
     {
         return collect([

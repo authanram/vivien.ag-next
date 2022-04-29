@@ -1,30 +1,46 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\File;
 
 class UsersTableSeeder extends Seeder
 {
-    final public function run(): void
+    public function run()
     {
-        $path = storage_path('local-users.php');
-
-        if (!File::exists($path)) {
-            return;
-        }
-
-        /**
-         * @noinspection PhpIncludeInspection
-         * @noinspection UsingInclusionReturnValueInspection
-         */
-        $users = require($path);
-
-        foreach ($users as $user) {
-
-            User::firstOrCreate($user);
-
-        }
-
+        
+        \DB::table('users')->delete();
+        
+        \DB::table('users')->insert([
+		    [
+		        'created_at' => '2022-04-29 02:35:55',
+		        'email' => 'authanram@gmail.com',
+		        'email_verified_at' => null,
+		        'id' => 1,
+		        'name' => 'Daniel Seuffer',
+		        'password' => '$2y$10$kuv7EdXAKFBhn84jLrS5guTSP2EspJI0n6RyiiBCYCrXpPQUDnYCO',
+		        'remember_token' => null,
+		        'updated_at' => '2022-04-29 02:35:55',
+		    ],
+		    [
+		        'created_at' => '2022-04-29 02:35:55',
+		        'email' => 'me@vivien.ag',
+		        'email_verified_at' => null,
+		        'id' => 2,
+		        'name' => 'Sybille Seuffer',
+		        'password' => '$2y$10$GgegQYesNr7JTX8lDKs5Tuvw3KxHeYSJsGkWlUdpF0RcIIGGUL5Ke',
+		        'remember_token' => null,
+		        'updated_at' => '2022-04-29 02:35:55',
+		    ],
+		    [
+		        'created_at' => '2022-04-29 02:35:55',
+		        'email' => 'user@local.host',
+		        'email_verified_at' => null,
+		        'id' => 3,
+		        'name' => 'User Name',
+		        'password' => '$2y$10$GgegQYesNr7JTX8lDKs5Tuvw3KxHeYSJsGkWlUdpF0RcIIGGUL5Ke',
+		        'remember_token' => null,
+		        'updated_at' => '2022-04-29 02:35:55',
+		    ],
+		]);
+        
     }
 }

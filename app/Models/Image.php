@@ -11,12 +11,10 @@ use Spatie\Tags\HasTags;
 class Image extends Model implements Sortable
 {
     use HasTags;
-    use Concerns\HasUuid;
     use SoftDeletes;
     use SortableTrait;
 
     protected $fillable = [
-        'uuid',
         'file',
         'file_original',
         'name',
@@ -30,7 +28,7 @@ class Image extends Model implements Sortable
         'published' => 'bool',
     ];
 
-    public $sortable = [
+    public array $sortable = [
         'order_column_name' => 'order_column',
         'sort_when_creating' => true,
     ];

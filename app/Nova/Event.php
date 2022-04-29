@@ -2,11 +2,11 @@
 
 namespace App\Nova;
 
+//use Laravel\Nova\Fields\BooleanGroup;
 use App\Nova\Filters\EventsTimeFilter;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\BooleanGroup;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
@@ -22,7 +22,7 @@ class Event extends Resource
         'date_from' => 'asc',
     ];
 
-    public static $model = \App\Models\Event::class;
+    public static string $model = \App\Models\Event::class;
 
     public static function group(): string
     {
@@ -37,7 +37,7 @@ class Event extends Resource
         'lead'
     ];
 
-    public static $searchRelations = [
+    public static array $searchRelations = [
         'eventCatering' => ['name'],
         'eventLocation' => ['name'],
         'eventType' => ['name'],
@@ -50,7 +50,7 @@ class Event extends Resource
         'eventLocation',
     ];
 
-    final public function fields(Request $request, bool $published = true): array
+    public function fields(Request $request, bool $published = true): array
     {
         return [
             ID::make()->hideFromIndex()
@@ -58,7 +58,7 @@ class Event extends Resource
             Text::make(__('Uuid'), 'uuid')
                 ->onlyOnDetail()
             ,
-            BelongsTo::make(__('Event Type'), 'eventType', EventType::class)
+            BelongsTo::make(__('Event Category'), 'eventCategory', EventTemplate::class)
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()
@@ -67,7 +67,7 @@ class Event extends Resource
                 ->rows(2)
                 ->hideFromIndex()
             ,
-            BelongsTo::make(__('Event Location'), 'eventLocation', EventLocation::class)
+            BelongsTo::make(__('Event Location'), 'eventLocation', Location::class)
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()
@@ -112,7 +112,7 @@ class Event extends Resource
             Text::make(__('Price Note'), 'price_note')
                 ->hideFromIndex()
             ,
-            BelongsTo::make(__('Event Catering'), 'eventCatering', EventCatering::class)
+            BelongsTo::make(__('Event Catering'), 'eventCatering', Catering::class)
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()
@@ -142,19 +142,19 @@ class Event extends Resource
                 ->trueValue(true)
                 ->falseValue(false)
             ,
-            HasMany::make(__('Attendees'), 'attendees', Attendee::class)
+            HasMany::make(__('Attendees'), 'attendees', EventRegistration::class)
             ,
         ];
     }
 
-    final public function filters(Request $request): array
+    public function filters(Request $request): array
     {
         return [
             EventsTimeFilter::make(),
         ];
     }
 
-    final public function title(): string
+    public function title(): string
     {
         return $this
 
@@ -165,12 +165,12 @@ class Event extends Resource
             ?->getAttribute('name');
     }
 
-    final public static function label(): string
+    public static function label(): string
     {
         return __('Events');
     }
 
-    final public static function singularLabel(): string
+    public static function singularLabel(): string
     {
         return __('Event');
     }

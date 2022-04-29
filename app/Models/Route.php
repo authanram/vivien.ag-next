@@ -8,11 +8,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Route extends Model
 {
-    use Concerns\HasUuid;
     use SoftDeletes;
 
     protected $fillable = [
-        'uuid',
         'path',
         'route',
         'action',
@@ -22,7 +20,7 @@ class Route extends Model
 
     public function contents(): BelongsToMany
     {
-        return $this->belongsToMany(Content::class, 'route_content')
+        return $this->belongsToMany(Content::class, 'route_contents')
             ->using(RouteContent::class);
     }
 

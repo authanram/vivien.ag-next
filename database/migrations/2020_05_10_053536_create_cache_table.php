@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateCacheTable extends Migration
 {
-    final public function up(): void
+    public function up(): void
     {
         Schema::create('cache', static function (Blueprint $table) {
             $table->string('key')->unique();
@@ -15,7 +15,7 @@ class CreateCacheTable extends Migration
         });
     }
 
-    final public function down(): void
+    public function down(): void
     {
         Schema::dropIfExists('cache');
     }

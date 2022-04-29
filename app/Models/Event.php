@@ -21,17 +21,17 @@ class Event extends Model
     protected $fillable = [
         'uuid',
         'creator_id',
-        'event_type_id',
-        'event_location_id',
+        'event_template_id',
+        'location_id',
+        'catering_id',
+        'staff_id',
         'description',
         'date_from',
         'date_to',
-        'maximum_attendees',
-        'reserved_seats',
+        'registrations_maximum',
+        'registrations_reserved',
         'price',
         'price_note',
-        'catering',
-        'lead',
         'published',
     ];
 
@@ -59,42 +59,42 @@ class Event extends Model
         parent::boot();
 
         static::creating(static function (Model $subject): void {
-            $subject->attributes['creator_id'] = data_get(auth(), 'user.id', 1);
+            $subject->attributes['creator_id'] = auth()->user()->id;
         });
     }
 
     // attributes
 
-    final public function getAvatarPathAttribute(): string
+    public function getAvatarPathAttribute(): string
     {
         return asset('images');
     }
 
-    final public function getCreatedAtReadableAttribute(): string
+    public function getCreatedAtReadableAttribute(): string
     {
         return now($this->created_at);
     }
 
-    final public function getDateFromObjectAttribute(): stdClass
+    public function getDateFromObjectAttribute(): stdClass
     {
         $date = now($this->attributes['date_from']);
 
         return static::makeDateObject($date);
     }
 
-    final public function getDateFromReadableAttribute(): string
+    public function getDateFromReadableAttribute(): string
     {
         return now($this->attributes['date_from']);
     }
 
-    final public function getDateToObjectAttribute(): stdClass
+    public function getDateToObjectAttribute(): stdClass
     {
         $date = now($this->attributes['date_to']);
 
         return static::makeDateObject($date);
     }
 
-    final public function getDateDurationAttribute(): string
+    public function getDateDurationAttribute(): string
     {
         $start = now($this->attributes['date_from']);
 
@@ -115,7 +115,7 @@ class Event extends Model
         return trim($value);
     }
 
-    final public function getDateDurationDaysAttribute(): int
+    public function getDateDurationDaysAttribute(): int
     {
         $start = now($this->attributes['date_from']);
 
@@ -126,22 +126,22 @@ class Event extends Model
 
     // scopes
 
-    final public function scopePublished(Builder $query): Builder
+    public function scopePublished(Builder $query): Builder
     {
         return $query->where('published', true);
     }
 
-    final public function scopeStartsBefore(Builder $query, CarbonInterface $date): Builder
+    public function scopeStartsBefore(Builder $query, CarbonInterface $date): Builder
     {
         return $query->where('date_from', '<=', $date);
     }
 
-    final public function scopeStartsAfter(Builder $query, CarbonInterface $date = null): Builder
+    public function scopeStartsAfter(Builder $query, CarbonInterface $date = null): Builder
     {
         return $query->where('date_to', '>=', $date);
     }
 
-    final public function scopeDate(Builder $query, ...$dates): Builder
+    public function scopeDate(Builder $query, ...$dates): Builder
     {
         foreach ($dates as $key => $date) {
             $method = $key === 0 ? 'whereBetween' : 'orWhereBetween';
@@ -158,46 +158,46 @@ class Event extends Model
         return $query;
     }
 
-    final public function scopeUpcoming(Builder $query): Builder
+    public function scopeUpcoming(Builder $query): Builder
     {
         return $this->scopeStartsAfter($query, now());
     }
 
     // relations
 
-    final public function eventCatering(): BelongsTo
+    public function eventRegistrations(): HasMany
     {
-        return $this->belongsTo(EventCatering::class);
+        return $this->hasMany(EventRegistration::class);
     }
 
-    final public function eventType(): BelongsTo
+    public function eventTemplate(): BelongsTo
     {
-        return $this->belongsTo(EventType::class);
+        return $this->belongsTo(EventTemplate::class);
     }
 
-    final public function eventLocation(): BelongsTo
-    {
-        return $this->belongsTo(EventLocation::class);
-    }
-
-    final public function staff(): BelongsTo
-    {
-        return $this->belongsTo(Staff::class);
-    }
-
-    final public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'creator_id');
-    }
-
-    final public function activity(): MorphOne
+    public function activity(): MorphOne
     {
         return $this->morphOne(Activity::class, 'actionable');
     }
 
-    final public function attendees(): HasMany
+    public function catering(): BelongsTo
     {
-        return $this->hasMany(Attendee::class);
+        return $this->belongsTo(Catering::class);
+    }
+
+    public function location(): BelongsTo
+    {
+        return $this->belongsTo(Location::class);
+    }
+
+    public function staff(): BelongsTo
+    {
+        return $this->belongsTo(Staff::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'creator_id');
     }
 
     private static function makeDateObject(CarbonInterface $date): stdClass

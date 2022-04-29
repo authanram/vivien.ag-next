@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Mail\AttendancePlaced;
-use App\Models\Attendee;
+use App\Models\EventRegistration;
 use App\Models\Event;
 use App\Http\Requests\AttendeeCreateRequest;
 use Exception;
@@ -20,7 +20,7 @@ final class AttendeesController extends ApiController
         )->save();
 
         try {
-            $attendee = Attendee::create([
+            $attendee = EventRegistration::create([
                 'event_id' => $event->getAttribute('id'),
                 'uuid' => Str::uuid()->toString(),
                 'hash' => Str::uuid()->toString(),

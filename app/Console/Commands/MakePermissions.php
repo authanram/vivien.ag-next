@@ -2,11 +2,13 @@
 
 namespace App\Console\Commands;
 
+use Exception;
+use File;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
+use SplFileInfo;
 
 class MakePermissions extends Command
 {
@@ -16,7 +18,7 @@ class MakePermissions extends Command
 
     /**
      * @return int
-     * @throws \Exception
+     * @throws Exception
      */
     public function handle(): int
     {
@@ -56,7 +58,7 @@ class MakePermissions extends Command
 
     private static function getPermissionTypes(): Collection
     {
-        return \collect([
+        return collect([
             'novaBrowse',
             'create',
             'viewAny',
@@ -70,8 +72,8 @@ class MakePermissions extends Command
 
     private static function makePermissionSlugs(): Collection
     {
-        return \collect(\File::files(app_path('Models')))
-            ->map(static function (\SplFileInfo $fileInfo) {
+        return collect(File::files(app_path('Models')))
+            ->map(static function (SplFileInfo $fileInfo) {
                 return Str::of($fileInfo->getFilename())
                     ->before('.php')
                     ->kebab();

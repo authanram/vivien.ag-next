@@ -69,7 +69,7 @@ class Tag extends Resource
             'post' => MorphedByMany::make(__('Posts'), 'posts', Post::class),
         ];
 
-        $type = $this->model()->getAttribute('type');
+        $type = $this->model()?->type;
 
         if ($type && $morphedByMany[$type]) {
             $fields[] = $morphedByMany[$type];

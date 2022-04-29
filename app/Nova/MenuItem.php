@@ -19,8 +19,6 @@ class MenuItem extends Resource
         'sort_order' => 'asc',
     ];
 
-    public static $group = 'Routing';
-
     public static string $model = \App\Models\MenuItem::class;
 
     public static $title = 'label';

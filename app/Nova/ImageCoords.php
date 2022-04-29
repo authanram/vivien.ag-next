@@ -13,8 +13,6 @@ class ImageCoords extends Resource
 {
 //    use HasSortableRows;
 
-    public static $group = 'System';
-
     public static string $model = \App\Models\ImageCoords::class;
 
     public static $search = [

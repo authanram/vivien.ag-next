@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\EventLocation;
-use App\Models\EventType;
+use App\Models\Location;
+use App\Models\EventTemplate;
 use App\Models\Tag;
 use App\Models\Taggable;
 use Illuminate\Database\Eloquent\Model;
@@ -14,7 +14,7 @@ trait GetsCollections
 {
     private static function getEventTypesByEvents(Collection $events): Collection
     {
-        return EventType::find(
+        return EventTemplate::find(
             $events->pluck('event_type_id')->unique()->toArray(),
             ['id', 'color_id', 'name', 'description'],
         );
@@ -22,7 +22,7 @@ trait GetsCollections
 
     private static function getEventLocationsByEvents(Collection $events): Collection
     {
-        return EventLocation::find(
+        return Location::find(
             $events->pluck('event_location_id')->unique()->toArray(),
             ['id', 'name', 'description', 'address', 'url'],
         );

@@ -10,8 +10,6 @@ class MenuItem extends Model implements Sortable
 {
     use SortableTrait;
 
-    protected $table = 'menu_items';
-
     protected $fillable = [
         'menu_id',
         'route_id',
@@ -19,15 +17,15 @@ class MenuItem extends Model implements Sortable
         'label',
         'dropdown_breakpoint',
         'published',
-        'sort_order',
+        'order_column',
     ];
 
     protected $casts = [
         'published' => 'boolean',
     ];
 
-    public $sortable = [
-        'order_column_name' => 'sort_order',
+    public array $sortable = [
+        'order_column_name' => 'order_column',
         'sort_when_creating' => true,
         'sort_on_has_many' => true,
     ];

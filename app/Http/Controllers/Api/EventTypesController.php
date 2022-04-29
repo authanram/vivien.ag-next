@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\EventType;
+use App\Models\EventTemplate;
 use Illuminate\Database\Eloquent\Collection;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -15,7 +15,7 @@ final class EventTypesController extends ApiController
 
     public static function filter(array $filters = ['id']): Collection
     {
-        return QueryBuilder::for(EventType::class)
+        return QueryBuilder::for(EventTemplate::class)
             ->allowedFilters(self::makeExactFilters($filters))
             ->get(['id', 'color_id', 'name', 'description']);
     }

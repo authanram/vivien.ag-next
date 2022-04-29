@@ -14,26 +14,26 @@ return [
             ->icon('chart-bar'),
 
         MenuSection::make(__('Events'), [
-            MenuItem::resource(Resources\EventCatering::class),
-            MenuItem::resource(Resources\EventType::class),
-            MenuItem::resource(Resources\Staff::class),
-            MenuItem::resource(Resources\Event::class),
-            MenuItem::resource(Resources\EventLocation::class),
-            MenuItem::resource(Resources\Attendee::class),
+            MenuItem::resource(Resources\EventRegistration::class),
+            MenuItem::resource(Resources\Event::class)->name(__('Event Dates')),
+            MenuItem::resource(Resources\EventTemplate::class),
         ])->collapsable()->icon('calendar'),
+
+        MenuSection::make(__('Resources'), [
+            MenuItem::resource(Resources\StaticAttribute::class),
+            MenuItem::resource(Resources\Catering::class),
+            MenuItem::resource(Resources\Content::class),
+            MenuItem::resource(Resources\Image::class),
+            MenuItem::resource(Resources\Post::class),
+            MenuItem::resource(Resources\Tag::class),
+            MenuItem::resource(Resources\Staff::class),
+            MenuItem::resource(Resources\Location::class),
+        ])->collapsable()->icon('document-text'),
 
         MenuSection::make(__('Quotes'), [
             MenuItem::resource(Resources\Author::class),
             MenuItem::resource(Resources\Quote::class),
         ])->collapsable()->icon('chat-alt'),
-
-        MenuSection::make(__('Contents'), [
-            MenuItem::resource(Resources\StaticAttribute::class),
-            MenuItem::resource(Resources\Content::class),
-            MenuItem::resource(Resources\Image::class),
-            MenuItem::resource(Resources\Post::class),
-            MenuItem::resource(Resources\Tag::class),
-        ])->collapsable()->icon('document-text'),
 
         MenuSection::make(__('Access Control'), [
             MenuItem::resource(Resources\User::class),

@@ -7,17 +7,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Color extends Model
 {
-    use Concerns\HasUuid;
     use SoftDeletes;
 
     protected $fillable = [
-        'uuid',
         'color',
     ];
 
     public function eventTypes(): HasMany
     {
-        return $this->hasMany(EventType::class);
+        return $this->hasMany(EventTemplate::class);
     }
 
     public function menuItems(): HasMany

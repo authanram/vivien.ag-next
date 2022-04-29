@@ -11,8 +11,6 @@ class Color extends Resource
 {
     protected static array $orderBy = ['color' => 'asc'];
 
-    public static $group = 'System';
-
     public static string $model = \App\Models\Color::class;
 
     public static $title = 'color';
@@ -37,7 +35,7 @@ class Color extends Resource
                 ->sortable()
                 ->help(static::getColorInputHelpText())
             ,
-            HasMany::make(__('Event Types'), 'eventTypes', EventType::class)
+            HasMany::make(__('Event Types'), 'eventTypes', EventTemplate::class)
             ,
             HasMany::make(__('Menu Items'), 'menuItems', MenuItem::class)
             ,

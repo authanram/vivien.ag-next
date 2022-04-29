@@ -11,10 +11,8 @@ class RouteContent extends Pivot implements Sortable
 {
     use SortableTrait;
 
-    protected $table = 'route_content';
-
     public array $sortable = [
-        'order_column_name' => 'sort_order',
+        'order_column_name' => 'order_column',
         'sort_when_creating' => true,
     ];
 

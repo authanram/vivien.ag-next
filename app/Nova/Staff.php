@@ -10,7 +10,7 @@ class Staff extends Resource
 {
     protected static array $orderBy = ['name' => 'asc'];
 
-    public static $model = \App\Models\Staff::class;
+    public static string $model = \App\Models\Staff::class;
 
     public static $title = 'name';
 
@@ -20,12 +20,7 @@ class Staff extends Resource
         'occupation',
     ];
 
-    public static function group(): string
-    {
-        return __('Events');
-    }
-
-    final public function fields(Request $request): array
+    public function fields(Request $request): array
     {
         return [
             ID::make()->hideFromIndex()
@@ -43,12 +38,12 @@ class Staff extends Resource
         ];
     }
 
-    final public static function label(): string
+    public static function label(): string
     {
         return __('Staffs');
     }
 
-    final public static function singularLabel(): string
+    public static function singularLabel(): string
     {
         return __('Staff');
     }

@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\Models\Attendee;
+use App\Models\EventRegistration;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -11,9 +11,9 @@ final class AttendancePlaced extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected Attendee $attendee;
+    protected EventRegistration $attendee;
 
-    public function __construct(Attendee $attendee)
+    public function __construct(EventRegistration $attendee)
     {
         $this->attendee = $attendee;
     }

@@ -10,8 +10,6 @@ use Laravel\Nova\Fields\Text;
 
 class Menu extends Resource
 {
-    public static $group = 'Routing';
-
     public static string $model = \App\Models\Menu::class;
 
     public static $title = 'slug';
