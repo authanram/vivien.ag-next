@@ -14,30 +14,35 @@ class Content extends Resource
 {
     //use HasSortableManyToManyRows;
 
-    protected static array $orderBy = ['slug' => 'asc'];
-
     public static string $model = \App\Models\Content::class;
 
     public static $title = 'slug';
 
     public static $search = [
-        'id',
         'slug',
+        'title',
         'caption',
         'body',
     ];
 
+    protected static array $orderBy = ['slug' => 'asc'];
+
     public function fields(Request $request): array
     {
+        $table = $this->model()?->getTable();
+
         return [
-            ID::make(__('Id'), 'id')
-                ->onlyOnDetail()
+            ID::make(__('ID'), 'id')
             ,
-            Text::make(__('Uuid'), 'uuid')
-                ->onlyOnDetail()
+            Text::make(__('Title'), 'title')
+                ->rules('required')
+                ->sortable()
             ,
             Slug::make(__('Slug'), 'slug')
-                ->rules('required')
+                ->from('title')
+                ->creationRules("unique:$table,slug")
+                ->updateRules("unique:$table,slug,{{resourceId}}")
+                ->required()
                 ->sortable()
             ,
             Markdown::make(__('Caption'), 'caption')

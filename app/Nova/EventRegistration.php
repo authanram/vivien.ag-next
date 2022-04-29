@@ -2,8 +2,8 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
-use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Number;
@@ -13,7 +13,6 @@ class EventRegistration extends Resource
     public static string $model = \App\Models\EventRegistration::class;
 
     public static $search = [
-        'id',
         'firstname',
         'surname',
         'phone',
@@ -23,9 +22,7 @@ class EventRegistration extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make()->hideFromIndex()
-            ,
-            Text::make(__('Uuid'), 'uuid')
+            Text::make(__('ID'), 'id')
                 ->onlyOnDetail()
             ,
             BelongsTo::make(__('Event'), 'event', Event::class)
@@ -38,8 +35,15 @@ class EventRegistration extends Resource
                 ->onlyOnDetail()
                 ->sortable()
             ,
-            Number::make(__('Salutation'), 'salutation')
-                ->rules('required')
+            Select::make(__('Salutation'), 'salutation')
+                ->options([0 => 'Frau', 1 => 'Herr'])
+                ->onlyOnForms()
+                ->sortable()
+            ,
+            Text::make(__('Salutation'), 'salutation', static fn ($value) => $value === 0
+                ? __('Mrs')
+                : __('Mr')
+            )->exceptOnForms()
                 ->sortable()
             ,
             Text::make(__('Firstname'), 'firstname')
@@ -56,9 +60,18 @@ class EventRegistration extends Resource
             ,
             Text::make(__('Email'), 'email')
                 ->rules('required')
+                ->onlyOnForms()
                 ->sortable()
             ,
-            Number::make(__('Attendance'), 'attendance')
+            Text::make(__('Email'), 'email', static function ($value) {
+                return "<a href=\"mailto:".$value."\" class=\"link-default\">".$value."</a>";
+            })->rules('required')
+                ->asHtml()
+                ->exceptOnForms()
+                ->sortable()
+            ,
+            Number::make(__('Seats'), 'seats')
+                ->default(1)
                 ->rules('required', 'numeric', 'min:1')
                 ->sortable()
             ,

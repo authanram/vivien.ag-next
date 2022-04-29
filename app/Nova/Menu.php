@@ -15,7 +15,6 @@ class Menu extends Resource
     public static $title = 'slug';
 
     public static $search = [
-        'id',
         'slug',
     ];
 
@@ -27,15 +26,14 @@ class Menu extends Resource
 
     public function fields(Request $request): array
     {
+        $table = $this->model()?->getTable();
+
         return [
-            ID::make(__('Id'), 'id')
-                ->onlyOnDetail()
-            ,
-            Text::make(__('Uuid'), 'uuid')
-                ->onlyOnDetail()
+            ID::make(__('ID'), 'id')
             ,
             Text::make(__('Slug'), 'slug')
-                ->rules('required')
+                ->creationRules("unique:$table,slug")
+                ->updateRules("unique:$table,slug,{{resourceId}}")
                 ->sortable()
             ,
             Boolean::make(__('Published'), 'published')

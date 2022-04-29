@@ -6,11 +6,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Nova\Auth\Impersonatable;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable //MustVerifyEmail
 {
     use HasRoles;
+    use Impersonatable;
     use Notifiable;
 
     protected $fillable = [

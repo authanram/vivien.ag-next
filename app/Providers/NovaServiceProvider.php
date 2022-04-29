@@ -13,6 +13,12 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         parent::boot();
 
+        Nova::serving(static function () {
+            Nova::translations(base_path('lang/de.json'));
+        });
+
+        Nova::style('backend', public_path('css/backend.css'));
+
         if (config('nova-menu.main')) {
             Nova::mainMenu(config('nova-menu.main'));
         }
@@ -20,8 +26,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         if (config('nova-menu.user')) {
             Nova::userMenu(config('nova-menu.user'));
         }
-
-        Nova::style('backend', public_path('css/backend.css'));
     }
 
     final protected function routes(): void

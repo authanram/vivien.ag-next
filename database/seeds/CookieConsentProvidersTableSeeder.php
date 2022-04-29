@@ -4,12 +4,12 @@ use Illuminate\Database\Seeder;
 
 class CookieConsentProvidersTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        
-        \DB::table('cookie_consent_providers')->delete();
-        
-        \DB::table('cookie_consent_providers')->insert([
+
+        DB::table('cookie_consent_providers')->delete();
+
+        DB::table('cookie_consent_providers')->insert([
 		    [
 		        'created_at' => '2020-06-21 07:31:12',
 		        'id' => 1,
@@ -25,6 +25,6 @@ class CookieConsentProvidersTableSeeder extends Seeder
 		        'url' => 'https://policies.google.com/privacy',
 		    ],
 		]);
-        
+
     }
 }

@@ -4,12 +4,12 @@ use Illuminate\Database\Seeder;
 
 class ImageCoordsTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        
-        \DB::table('image_coords')->delete();
-        
-        \DB::table('image_coords')->insert([
+
+        DB::table('image_coords')->delete();
+
+        DB::table('image_coords')->insert([
 		    [
 		        'coords' => '{"top": 7, "left": -180, "active": true, "height": 277.7, "rotate": 0, "zindex": 1, "position": "left", "rotate_x": 7, "rotate_y": 15, "perspective": 500, "order_column": 1}',
 		        'id' => 1,
@@ -53,6 +53,6 @@ class ImageCoordsTableSeeder extends Seeder
 		        'order_column' => 7,
 		    ],
 		]);
-        
+
     }
 }

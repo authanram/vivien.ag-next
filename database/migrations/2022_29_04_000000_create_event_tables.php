@@ -10,7 +10,6 @@ class CreateEventTables extends Migration
         Schema::create('event_templates', static function (Blueprint $table) {
             $table->id();
             $table->foreignId('color_id')->nullable()->constrained('colors');
-            $table->uuid();
             $table->string('name');
             $table->text('description')->nullable();
             $table->timestamps();
@@ -39,7 +38,7 @@ class CreateEventTables extends Migration
         });
 
         Schema::create('event_registrations', static function (Blueprint $table) {
-            $table->uuid()->primary();
+            $table->uuid('id')->primary();
             $table->foreignId('event_id')->constrained('events');
             $table->string('hash', 64);
             $table->smallInteger('salutation');

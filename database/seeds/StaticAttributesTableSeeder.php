@@ -4,12 +4,12 @@ use Illuminate\Database\Seeder;
 
 class StaticAttributesTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        
-        \DB::table('static_attributes')->delete();
-        
-        \DB::table('static_attributes')->insert([
+
+        DB::table('static_attributes')->delete();
+
+        DB::table('static_attributes')->insert([
 		    [
 		        'created_at' => '2020-05-14 22:13:54',
 		        'data' => '{}',
@@ -44,6 +44,6 @@ class StaticAttributesTableSeeder extends Seeder
 		        'value' => 'Familientherapeutin, Pädagogin und Lerntrainerin',
 		    ],
 		]);
-        
+
     }
 }

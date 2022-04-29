@@ -4,12 +4,12 @@ use Illuminate\Database\Seeder;
 
 class RoutesTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        
-        \DB::table('routes')->delete();
-        
-        \DB::table('routes')->insert([
+
+        DB::table('routes')->delete();
+
+        DB::table('routes')->insert([
 		    [
 		        'action' => 'WelcomeController@index',
 		        'created_at' => '2020-05-15 03:20:33',
@@ -165,6 +165,6 @@ class RoutesTableSeeder extends Seeder
 		        'updated_at' => '2020-12-27 05:17:35',
 		    ],
 		]);
-        
+
     }
 }

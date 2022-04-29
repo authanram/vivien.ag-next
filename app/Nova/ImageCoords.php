@@ -16,8 +16,6 @@ class ImageCoords extends Resource
     public static string $model = \App\Models\ImageCoords::class;
 
     public static $search = [
-        'id',
-        'uuid',
         'coords',
     ];
 
@@ -28,11 +26,8 @@ class ImageCoords extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make(__('Id'), 'id')
+            ID::make(__('ID'), 'id')
                 ->hideFromIndex()
-            ,
-            Text::make(__('Uuid'), 'uuid')
-                ->onlyOnDetail()
             ,
             BelongsTo::make(__('Image'), 'image', Image::class)
             ,

@@ -2,14 +2,14 @@
 
 use Illuminate\Database\Seeder;
 
-class StaffsTableSeeder extends Seeder
+class StaffProfilesTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        
-        \DB::table('staffs')->delete();
-        
-        \DB::table('staffs')->insert([
+
+        DB::table('staff_profiles')->delete();
+
+        DB::table('staff_profiles')->insert([
 		    [
 		        'created_at' => '2022-04-29 00:31:45',
 		        'deleted_at' => null,
@@ -38,6 +38,6 @@ class StaffsTableSeeder extends Seeder
 		        'updated_at' => '2022-04-29 00:31:42',
 		    ],
 		]);
-        
+
     }
 }

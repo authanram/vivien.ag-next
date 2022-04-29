@@ -8,7 +8,6 @@ use Spatie\EloquentSortable\SortableTrait;
 
 class ImageCoords extends Model implements Sortable
 {
-    use Concerns\HasUuid;
     use SortableTrait;
 
     protected $fillable = [

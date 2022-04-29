@@ -16,7 +16,6 @@ class Route extends Resource
     public static $title = 'title';
 
     public static $search = [
-        'id',
         'path',
         'route',
         'action',
@@ -26,11 +25,7 @@ class Route extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make(__('Id'), 'id')
-                ->onlyOnDetail()
-            ,
-            Text::make(__('Uuid'), 'uuid')
-                ->onlyOnDetail()
+            ID::make(__('ID'), 'id')
             ,
             Text::make(__('Path'), 'path')
                 ->creationRules('unique:routes,path')

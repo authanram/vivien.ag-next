@@ -425,7 +425,7 @@
 
     "Attachment": "Anhang",
     "Attachments": "Anhänge",
-    "Registration": "Anmeldunge",
+    "Registration": "Anmeldung",
     "Registrations": "Anmeldungen",
     "Attribute": "Attribut",
     "Attributes": "Attribute",
@@ -468,8 +468,8 @@
     "Routes": "Routen",
     "Session": "Sitzung",
     "Sessions": "Sitzungen",
-    "Staff": "Personal",
-    "Staffs": "Personal",
+    "Staff Profile": "Mitarbeiterprofil",
+    "Staff Profiles": "Mitarbeiterprofile",
     "Template": "Vorlage",
     "Templates": "Vorlagen",
     "User": "Benutzer",
@@ -504,8 +504,8 @@
     "Title": "Titel",
     "Type": "Typ",
     "Url": "URL",
-    "Duplicate :resource?": ":resource duplizieren?",
-    "Duplicate": "Duplizieren",
+    "Replicate :resource?": ":resource duplizieren?",
+    "Replicate": "Duplizieren",
     "Time Region": "Zeitbasiert",
     "Upcoming": "Bevorstehende",
     "Past": "Vergangene",
@@ -513,6 +513,8 @@
     "Maximum registrations (excluding staff).": "Maximale Anmeldungen (exkl. Personal).",
     "Last Activity": "Zuletzt Online",
     "Impersonate": "Mit diesem Benutzerkonto anmelden",
+    "Mr": "Herr",
+    "Mrs": "Frau",
 
     "Add tag...": "Tag hinzufügen..."
 }

@@ -4,12 +4,12 @@ use Illuminate\Database\Seeder;
 
 class ModelHasRolesTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        
-        \DB::table('model_has_roles')->delete();
-        
-        \DB::table('model_has_roles')->insert([
+
+        DB::table('model_has_roles')->delete();
+
+        DB::table('model_has_roles')->insert([
 		    [
 		        'model_id' => 1,
 		        'model_type' => 'App\\Models\\User',
@@ -26,6 +26,6 @@ class ModelHasRolesTableSeeder extends Seeder
 		        'role_id' => 3,
 		    ],
 		]);
-        
+
     }
 }

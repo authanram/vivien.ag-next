@@ -13,7 +13,6 @@ class CookieConsentSettings extends Resource
     public static $title = 'session_id';
 
     public static $search = [
-        'id',
         'cookie_data',
         'session_data',
     ];
@@ -21,7 +20,7 @@ class CookieConsentSettings extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make(__('Id'), 'id')
+            ID::make(__('ID'), 'id')
                 ->exceptOnForms()
                 ->sortable()
             ,

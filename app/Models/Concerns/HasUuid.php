@@ -8,6 +8,8 @@ trait HasUuid
 {
     final protected function initializeHasUuid(): void
     {
-        $this->attributes['uuid'] = $this->attributes['uuid'] ?? Str::uuid();
+        $keyName = $this->getIncrementing() ? 'id' : 'uuid';
+
+        $this->attributes[$keyName] = $this->attributes[$keyName] ?? Str::orderedUuid()->toString();
     }
 }

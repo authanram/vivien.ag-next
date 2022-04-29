@@ -3,11 +3,11 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStaffTables extends Migration
+class CreateStaffProfileTables extends Migration
 {
     public function up(): void
     {
-        Schema::create('staffs', static function (Blueprint $table) {
+        Schema::create('staff_profiles', static function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
             $table->string('occupation')->nullable();
@@ -17,13 +17,14 @@ class CreateStaffTables extends Migration
         });
 
         Schema::create('staff_events', static function (Blueprint $table) {
-            $table->foreignId('staff_id')->constrained('staffs')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('staff_profile_id')->constrained('staff_profiles')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('event_id')->constrained('events')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('staffs');
+        Schema::dropIfExists('staff_events');
+        Schema::dropIfExists('staff_profiles');
     }
 }

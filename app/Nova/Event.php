@@ -6,6 +6,7 @@ namespace App\Nova;
 use App\Nova\Filters\EventsTimeFilter;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
@@ -17,20 +18,9 @@ use Spatie\TagsField\Tags;
 
 class Event extends Resource
 {
-    protected static array $orderBy = [
-        'published' => 'asc',
-        'date_from' => 'asc',
-    ];
-
     public static string $model = \App\Models\Event::class;
 
-    public static function group(): string
-    {
-        return __('Events');
-    }
-
     public static $search = [
-        'id',
         'description',
         'date_from',
         'date_to',
@@ -38,27 +28,31 @@ class Event extends Resource
     ];
 
     public static array $searchRelations = [
-        'eventCatering' => ['name'],
-        'eventLocation' => ['name'],
-        'eventType' => ['name'],
+        'eventTemplate' => ['name'],
+        'catering' => ['name'],
+        'location' => ['name'],
     ];
 
     public static $with = [
-        'eventCatering',
-        'eventType',
-        'eventType',
-        'eventLocation',
+        'eventTemplate',
+        'catering',
+        'location',
+    ];
+
+    protected static array $orderBy = [
+        'published' => 'asc',
+        'date_from' => 'asc',
     ];
 
     public function fields(Request $request, bool $published = true): array
     {
         return [
-            ID::make()->hideFromIndex()
+            ID::make()
             ,
-            Text::make(__('Uuid'), 'uuid')
+            Text::make(__('UUID'), 'uuid')
                 ->onlyOnDetail()
             ,
-            BelongsTo::make(__('Event Category'), 'eventCategory', EventTemplate::class)
+            BelongsTo::make(__('Event Template'), 'eventTemplate', EventTemplate::class)
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()
@@ -67,7 +61,7 @@ class Event extends Resource
                 ->rows(2)
                 ->hideFromIndex()
             ,
-            BelongsTo::make(__('Event Location'), 'eventLocation', Location::class)
+            BelongsTo::make(__('Location'), 'location', Location::class)
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()
@@ -80,27 +74,27 @@ class Event extends Resource
                 ->rules('required')
                 ->sortable()
             ,
-            Number::make(__('Attendees'), 'maximum_attendees')
+            Number::make(__('Registrations Limit'), 'registrations_limit')
                 ->resolveUsing(function () {
-                    return $this->reserved_seats.' / '.$this->maximum_attendees;
+                    return $this->registrations_reserved.' / '.$this->registrations_limit;
                 })
                 ->default(10)
-                ->rules('required', 'numeric', 'min:1', 'gte:reserved_seats')
+                ->rules('required', 'numeric', 'min:1', 'gte:registrations_reserved')
                 ->sortable()
                 ->min(1)
-                ->help(__('Maximum attendees (excluding staff).'))
+                ->help(__('Registrations Limit (excluding staff).'))
                 ->exceptOnForms()
             ,
-            Number::make(__('Attendees'), 'maximum_attendees')
+            Number::make(__('Registrations Limit'), 'registrations_limit')
                 ->default(10)
-                ->rules('required', 'numeric', 'min:1', 'gte:reserved_seats')
+                ->rules('required', 'numeric', 'min:1', 'gte:registrations_reserved')
                 ->sortable()
                 ->min(1)
-                ->help(__('Maximum attendees (excluding staff).'))
+                ->help(__('Registrations Limit (excluding staff).'))
                 ->onlyOnForms()
             ,
-            Number::make(__('Reserved Seats'), 'reserved_seats')
-                ->withMeta(['value' => $this->model()?->getAttribute('reserved_seats') ?? 0])
+            Number::make(__('Registrations Reserved'), 'registrations_reserved')
+                ->withMeta(['value' => $this->model()?->getAttribute('registrations_reserved') ?? 0])
                 ->rules('required', 'numeric', 'min:0')
                 ->default(0)
                 ->sortable()
@@ -112,13 +106,7 @@ class Event extends Resource
             Text::make(__('Price Note'), 'price_note')
                 ->hideFromIndex()
             ,
-            BelongsTo::make(__('Event Catering'), 'eventCatering', Catering::class)
-                ->withoutTrashed()
-                ->showCreateRelationButton()
-                ->sortable()
-                ->hideFromIndex()
-            ,
-            BelongsTo::make(__('Lead'), 'staff', Staff::class)
+            BelongsTo::make(__('Catering'), 'catering', Catering::class)
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()
@@ -142,7 +130,10 @@ class Event extends Resource
                 ->trueValue(true)
                 ->falseValue(false)
             ,
-            HasMany::make(__('Attendees'), 'attendees', EventRegistration::class)
+            BelongsToMany::make(__('Lead'), 'staffProfiles', StaffProfile::class)
+                ->hideFromIndex()
+            ,
+            HasMany::make(__('Registrations'), 'eventRegistrations', EventRegistration::class)
             ,
         ];
     }
@@ -157,11 +148,8 @@ class Event extends Resource
     public function title(): string
     {
         return $this
-
             ->model()
-
-            ?->getAttribute('eventType')
-
+            ?->getAttribute('eventTemplate')
             ?->getAttribute('name');
     }
 

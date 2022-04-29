@@ -10,8 +10,11 @@ class EventRegistration extends Model
     use Concerns\HasUuid;
     use SoftDeletes;
 
+    public $incrementing = false;
+
+    protected $keyType = 'string';
+
     protected $fillable = [
-        'uuid',
         'event_id',
         'hash',
         'salutation',
@@ -19,7 +22,7 @@ class EventRegistration extends Model
         'surname',
         'phone',
         'email',
-        'attendance',
+        'seats',
         'message',
         'ip_address',
         'user_agent',

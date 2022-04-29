@@ -4,12 +4,12 @@ use Illuminate\Database\Seeder;
 
 class ImagesTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        
-        \DB::table('images')->delete();
-        
-        \DB::table('images')->insert([
+
+        DB::table('images')->delete();
+
+        DB::table('images')->insert([
 		    [
 		        'created_at' => '2020-05-11 00:21:09',
 		        'deleted_at' => null,
@@ -193,6 +193,6 @@ class ImagesTableSeeder extends Seeder
 		        'updated_at' => '2020-09-14 10:37:59',
 		    ],
 		]);
-        
+
     }
 }

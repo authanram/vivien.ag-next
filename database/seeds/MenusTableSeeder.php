@@ -4,12 +4,12 @@ use Illuminate\Database\Seeder;
 
 class MenusTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        
-        \DB::table('menus')->delete();
-        
-        \DB::table('menus')->insert([
+
+        DB::table('menus')->delete();
+
+        DB::table('menus')->insert([
 		    [
 		        'created_at' => '2020-05-15 03:20:47',
 		        'deleted_at' => null,
@@ -27,6 +27,6 @@ class MenusTableSeeder extends Seeder
 		        'updated_at' => '2020-05-20 21:32:02',
 		    ],
 		]);
-        
+
     }
 }

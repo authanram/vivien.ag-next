@@ -4,16 +4,15 @@ use Illuminate\Database\Seeder;
 
 class MenuItemsTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        
-        \DB::table('menu_items')->delete();
-        
-        \DB::table('menu_items')->insert([
+
+        DB::table('menu_items')->delete();
+
+        DB::table('menu_items')->insert([
 		    [
 		        'color_id' => 1,
 		        'created_at' => '2020-05-20 21:33:17',
-		        'dropdown_breakpoint' => 'md',
 		        'id' => 1,
 		        'label' => 'Startseite',
 		        'menu_id' => 1,
@@ -25,7 +24,6 @@ class MenuItemsTableSeeder extends Seeder
 		    [
 		        'color_id' => 2,
 		        'created_at' => '2020-05-20 21:33:17',
-		        'dropdown_breakpoint' => 'md',
 		        'id' => 2,
 		        'label' => 'Seminare',
 		        'menu_id' => 1,
@@ -37,7 +35,6 @@ class MenuItemsTableSeeder extends Seeder
 		    [
 		        'color_id' => 3,
 		        'created_at' => '2020-05-20 21:33:17',
-		        'dropdown_breakpoint' => 'md',
 		        'id' => 3,
 		        'label' => 'Vorträge',
 		        'menu_id' => 1,
@@ -49,7 +46,6 @@ class MenuItemsTableSeeder extends Seeder
 		    [
 		        'color_id' => 4,
 		        'created_at' => '2020-05-20 21:33:17',
-		        'dropdown_breakpoint' => 'md',
 		        'id' => 4,
 		        'label' => 'Beratung',
 		        'menu_id' => 1,
@@ -61,7 +57,6 @@ class MenuItemsTableSeeder extends Seeder
 		    [
 		        'color_id' => 5,
 		        'created_at' => '2020-05-20 21:33:17',
-		        'dropdown_breakpoint' => 'md',
 		        'id' => 5,
 		        'label' => 'Lerntraining',
 		        'menu_id' => 1,
@@ -73,7 +68,6 @@ class MenuItemsTableSeeder extends Seeder
 		    [
 		        'color_id' => 6,
 		        'created_at' => '2020-05-20 21:33:17',
-		        'dropdown_breakpoint' => 'md',
 		        'id' => 6,
 		        'label' => 'Portrait',
 		        'menu_id' => 1,
@@ -85,7 +79,6 @@ class MenuItemsTableSeeder extends Seeder
 		    [
 		        'color_id' => 7,
 		        'created_at' => '2020-05-20 21:33:17',
-		        'dropdown_breakpoint' => 'xl',
 		        'id' => 7,
 		        'label' => 'Blog',
 		        'menu_id' => 1,
@@ -97,7 +90,6 @@ class MenuItemsTableSeeder extends Seeder
 		    [
 		        'color_id' => 8,
 		        'created_at' => '2020-05-20 21:33:17',
-		        'dropdown_breakpoint' => 'xl',
 		        'id' => 8,
 		        'label' => 'Buchtipps',
 		        'menu_id' => 1,
@@ -109,7 +101,6 @@ class MenuItemsTableSeeder extends Seeder
 		    [
 		        'color_id' => 9,
 		        'created_at' => '2020-05-20 21:33:17',
-		        'dropdown_breakpoint' => 'xl',
 		        'id' => 9,
 		        'label' => 'Kontakt',
 		        'menu_id' => 1,
@@ -121,7 +112,6 @@ class MenuItemsTableSeeder extends Seeder
 		    [
 		        'color_id' => 9,
 		        'created_at' => '2020-05-20 21:33:17',
-		        'dropdown_breakpoint' => null,
 		        'id' => 10,
 		        'label' => 'Kontakt',
 		        'menu_id' => 2,
@@ -133,7 +123,6 @@ class MenuItemsTableSeeder extends Seeder
 		    [
 		        'color_id' => 9,
 		        'created_at' => '2020-05-20 21:40:19',
-		        'dropdown_breakpoint' => null,
 		        'id' => 11,
 		        'label' => 'Impressum',
 		        'menu_id' => 2,
@@ -145,7 +134,6 @@ class MenuItemsTableSeeder extends Seeder
 		    [
 		        'color_id' => 9,
 		        'created_at' => '2020-05-20 21:40:47',
-		        'dropdown_breakpoint' => 'sm',
 		        'id' => 12,
 		        'label' => 'Datenschutzerklärung',
 		        'menu_id' => 2,
@@ -157,7 +145,6 @@ class MenuItemsTableSeeder extends Seeder
 		    [
 		        'color_id' => 9,
 		        'created_at' => '2020-05-20 21:41:05',
-		        'dropdown_breakpoint' => 'sm',
 		        'id' => 13,
 		        'label' => 'Cookie Vereinbarung',
 		        'menu_id' => 2,
@@ -169,7 +156,6 @@ class MenuItemsTableSeeder extends Seeder
 		    [
 		        'color_id' => 5,
 		        'created_at' => '2020-06-28 01:40:52',
-		        'dropdown_breakpoint' => 'xl',
 		        'id' => 14,
 		        'label' => 'Galerie',
 		        'menu_id' => 1,
@@ -179,6 +165,6 @@ class MenuItemsTableSeeder extends Seeder
 		        'updated_at' => '2020-06-28 01:40:52',
 		    ],
 		]);
-        
+
     }
 }

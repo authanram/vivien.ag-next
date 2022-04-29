@@ -4,12 +4,12 @@ use Illuminate\Database\Seeder;
 
 class RolesTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        
-        \DB::table('roles')->delete();
-        
-        \DB::table('roles')->insert([
+
+        DB::table('roles')->delete();
+
+        DB::table('roles')->insert([
 		    [
 		        'created_at' => '2020-10-25 10:36:24',
 		        'guard_name' => 'web',
@@ -32,6 +32,6 @@ class RolesTableSeeder extends Seeder
 		        'updated_at' => '2020-10-25 10:36:24',
 		    ],
 		]);
-        
+
     }
 }

@@ -15,7 +15,6 @@ class Quote extends Resource
     public static $title = 'body';
 
     public static $search = [
-        'id',
         'body',
     ];
 
@@ -26,11 +25,7 @@ class Quote extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make(__('Id'), 'id')
-                ->onlyOnDetail()
-            ,
-            Text::make(__('Uuid'), 'uuid')
-                ->onlyOnDetail()
+            ID::make(__('ID'), 'id')
             ,
             Text::make(__('Body'), 'body')
                 ->rules('required')

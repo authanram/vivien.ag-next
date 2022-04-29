@@ -10,12 +10,9 @@ use Laravel\Nova\Fields\Number;
 
 class Session extends Resource
 {
-    public static $group = 'Acl';
-
     public static string $model = \App\Models\Session::class;
 
     public static $search = [
-        'id',
         'user_id',
     ];
 

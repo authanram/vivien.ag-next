@@ -26,7 +26,7 @@ return [
             MenuItem::resource(Resources\Image::class),
             MenuItem::resource(Resources\Post::class),
             MenuItem::resource(Resources\Tag::class),
-            MenuItem::resource(Resources\Staff::class),
+            MenuItem::resource(Resources\StaffProfile::class),
             MenuItem::resource(Resources\Location::class),
         ])->collapsable()->icon('document-text'),
 

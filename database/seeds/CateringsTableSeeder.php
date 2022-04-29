@@ -4,12 +4,12 @@ use Illuminate\Database\Seeder;
 
 class CateringsTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        
-        \DB::table('caterings')->delete();
-        
-        \DB::table('caterings')->insert([
+
+        DB::table('caterings')->delete();
+
+        DB::table('caterings')->insert([
 		    [
 		        'created_at' => '2022-04-29 00:31:09',
 		        'deleted_at' => null,
@@ -19,6 +19,6 @@ class CateringsTableSeeder extends Seeder
 		        'updated_at' => '2022-04-29 00:31:09',
 		    ],
 		]);
-        
+
     }
 }

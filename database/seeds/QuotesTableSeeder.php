@@ -4,12 +4,12 @@ use Illuminate\Database\Seeder;
 
 class QuotesTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        
-        \DB::table('quotes')->delete();
-        
-        \DB::table('quotes')->insert([
+
+        DB::table('quotes')->delete();
+
+        DB::table('quotes')->insert([
 		    [
 		        'author_id' => 1,
 		        'body' => 'Liebe das Leben %s und es wird dich ebenso lieben.',
@@ -92,6 +92,6 @@ class QuotesTableSeeder extends Seeder
 		        'updated_at' => '2021-01-06 23:50:39',
 		    ],
 		]);
-        
+
     }
 }

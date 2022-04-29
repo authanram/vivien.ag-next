@@ -3,7 +3,6 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\Slug;
-//use Drobee\NovaSluggable\SluggableText;
 //use Epartment\NovaDependencyContainer\HasDependencies;
 //use Epartment\NovaDependencyContainer\NovaDependencyContainer;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
@@ -17,26 +16,25 @@ class StaticAttribute extends Resource
 {
 //    use HasDependencies;
 
-    protected static array $orderBy = ['name' => 'asc'];
-
     public static string $model = \App\Models\StaticAttribute::class;
 
     public static $title = 'name';
 
     public static $search = [
-        'id',
         'name',
         'slug',
         'value',
         'data'
     ];
 
+    protected static array $orderBy = ['name' => 'asc'];
+
     public function fields(Request $request): array
     {
         $table = $this->model()?->getTable();
 
         return [
-            ID::make()->hideFromIndex()
+            ID::make()
             ,
             Text::make(__('Name'), 'name')
                 ->rules('required')
@@ -45,10 +43,10 @@ class StaticAttribute extends Resource
                 ->sortable()
             ,
             Slug::make(__('Slug'), 'slug')
-                ->from('name')
-                ->withMeta(['readonly' => 'true'])
+                ->from('title')
                 ->creationRules("unique:$table,slug")
                 ->updateRules("unique:$table,slug,{{resourceId}}")
+                ->required()
                 ->sortable()
             ,
             Select::make(__('Type'), 'type')->options([
@@ -72,11 +70,6 @@ class StaticAttribute extends Resource
 //                ,
 //            ])->dependsOn('type', 1)
 //            ,
-            Boolean::make(__('Locked'), 'locked')
-                ->sortable()
-                ->trueValue('1')
-                ->falseValue('0')
-            ,
         ];
     }
 

@@ -22,7 +22,6 @@ class Image extends Resource
     public static $title = 'name';
 
     public static $search = [
-        'id',
         'name',
         'description',
     ];
@@ -30,10 +29,7 @@ class Image extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make(__('Id'), 'id')
-            ,
-            Text::make(__('Uuid'), 'uuid')
-                ->onlyOnDetail()
+            ID::make(__('ID'), 'id')
             ,
             FieldImage::make(__('File'), 'file')
                 ->disk('public')

@@ -25,7 +25,7 @@ return [
     'taggables',
     'caterings',
     'locations',
-    'staffs',
+    'staff_profiles',
     'event_templates',
     'events',
     'event_registrations',

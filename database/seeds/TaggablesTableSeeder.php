@@ -4,12 +4,12 @@ use Illuminate\Database\Seeder;
 
 class TaggablesTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        
-        \DB::table('taggables')->delete();
-        
-        \DB::table('taggables')->insert([
+
+        DB::table('taggables')->delete();
+
+        DB::table('taggables')->insert([
 		    [
 		        'tag_id' => 4,
 		        'taggable_id' => 1,
@@ -1676,6 +1676,6 @@ class TaggablesTableSeeder extends Seeder
 		        'taggable_type' => 'App\\Models\\Post',
 		    ],
 		]);
-        
+
     }
 }

@@ -4,12 +4,12 @@ use Illuminate\Database\Seeder;
 
 class RouteContentsTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        
-        \DB::table('route_contents')->delete();
-        
-        \DB::table('route_contents')->insert([
+
+        DB::table('route_contents')->delete();
+
+        DB::table('route_contents')->insert([
 		    [
 		        'content_id' => 2,
 		        'order_column' => 1,
@@ -51,6 +51,6 @@ class RouteContentsTableSeeder extends Seeder
 		        'route_id' => 11,
 		    ],
 		]);
-        
+
     }
 }

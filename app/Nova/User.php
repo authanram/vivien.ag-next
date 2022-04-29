@@ -2,8 +2,6 @@
 
 namespace App\Nova;
 
-//use Laravel\Nova\Fields\MorphToMany;
-//use Vyuldashev\NovaPermission as Acl;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\HasMany;
@@ -18,14 +16,13 @@ class User extends Resource
     public static $title = 'name';
 
     public static $search = [
-        'id',
         'name',
         'email',
     ];
 
     public function fields(Request $request): array
     {
-        return collect([
+        return [
             ID::make()->sortable()
             ,
             Gravatar::make()->maxWidth(50)
@@ -47,16 +44,7 @@ class User extends Resource
             ,
             HasMany::make(__('Sessions'), 'sessions', Session::class)
             ,
-//            MorphToMany::make('Roles', 'roles', Acl\Role::class)
-//            ,
-//            MorphToMany::make('Permissions', 'permissions', Acl\Permission::class)
-//            ,
-        ])->pipe(function ($collection) use ($request) {
-            return $collection;
-//            return $request->user()->can('impersonate')
-//                ? $collection->add(\KABBOUCHI\NovaImpersonate\Impersonate::make($this))
-//                : $collection;
-        })->toArray();
+        ];
     }
 
     public static function label(): string

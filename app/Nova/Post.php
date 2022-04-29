@@ -12,23 +12,21 @@ use Spatie\TagsField\Tags;
 
 class Post extends Resource
 {
-    protected static array $orderBy = ['created_at' => 'desc'];
-
     public static string $model = \App\Models\Post::class;
 
     public static $search = [
-        'id',
         'body',
     ];
 
+    protected static array $orderBy = ['created_at' => 'desc'];
+
     public function fields(Request $request): array
     {
+        $table = $this->model()?->getTable();
+
         return [
-            ID::make(__('Id'), 'id')
-                ->onlyOnDetail()
-            ,
-            Text::make(__('Uuid'), 'uuid')
-                ->onlyOnDetail()
+            ID::make(__('ID'), 'id')
+                ->hideFromIndex()
             ,
             Text::make(__('Title'), 'title')
                 ->rules('required', 'min:3')
@@ -36,8 +34,9 @@ class Post extends Resource
             ,
             Slug::make(__('Slug'), 'slug')
                 ->from('title')
-                ->withMeta(['readonly' => 'true'])
-                ->rules('required')
+                ->creationRules("unique:$table,slug")
+                ->updateRules("unique:$table,slug,{{resourceId}}")
+                ->required()
                 ->sortable()
             ,
             Textarea::make(__('Body'), 'body')

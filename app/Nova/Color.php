@@ -9,24 +9,20 @@ use Laravel\Nova\Fields\Text;
 
 class Color extends Resource
 {
-    protected static array $orderBy = ['color' => 'asc'];
-
     public static string $model = \App\Models\Color::class;
 
     public static $title = 'color';
 
     public static $search = [
-        'id',
         'color'
     ];
+
+    protected static array $orderBy = ['color' => 'asc'];
 
     public function fields(Request $request): array
     {
         return [
-            ID::make()->hideFromIndex()
-            ,
-            Text::make(__('Uuid'), 'uuid')
-                ->onlyOnDetail()
+            ID::make()
             ,
             Text::make(__('Color'), 'color')
                 ->rules('required')

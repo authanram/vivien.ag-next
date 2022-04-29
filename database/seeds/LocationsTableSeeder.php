@@ -4,12 +4,12 @@ use Illuminate\Database\Seeder;
 
 class LocationsTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        
-        \DB::table('locations')->delete();
-        
-        \DB::table('locations')->insert([
+
+        DB::table('locations')->delete();
+
+        DB::table('locations')->insert([
 		    [
 		        'address' => 'Geisswiesen 24/1, 72227 Egenhausen',
 		        'created_at' => '2020-05-26 04:35:05',
@@ -41,7 +41,7 @@ class LocationsTableSeeder extends Seeder
 		        'url' => 'https://goo.gl/maps/GQBhEMvpb7sHtHdc7',
 		    ],
 		    [
-		        'address' => '-',
+		        'address' => null,
 		        'created_at' => '2020-05-26 04:41:10',
 		        'deleted_at' => null,
 		        'description' => 'Im gemütlichen Eigenheim',
@@ -51,7 +51,7 @@ class LocationsTableSeeder extends Seeder
 		        'url' => null,
 		    ],
 		    [
-		        'address' => '-',
+		        'address' => null,
 		        'created_at' => '2020-05-26 04:42:43',
 		        'deleted_at' => null,
 		        'description' => 'Mit dem E-Bike auf Nebenstrecken',
@@ -61,7 +61,7 @@ class LocationsTableSeeder extends Seeder
 		        'url' => null,
 		    ],
 		    [
-		        'address' => '-',
+		        'address' => null,
 		        'created_at' => '2020-06-28 22:08:33',
 		        'deleted_at' => null,
 		        'description' => null,
@@ -71,7 +71,7 @@ class LocationsTableSeeder extends Seeder
 		        'url' => null,
 		    ],
 		    [
-		        'address' => '-',
+		        'address' => null,
 		        'created_at' => '2020-10-13 08:30:28',
 		        'deleted_at' => null,
 		        'description' => 'Reisen mit Frauen! Sei dabei und fühl dich frei!'."\n"
@@ -82,7 +82,7 @@ class LocationsTableSeeder extends Seeder
 		        'url' => null,
 		    ],
 		    [
-		        'address' => '-',
+		        'address' => null,
 		        'created_at' => '2020-10-14 03:51:24',
 		        'deleted_at' => null,
 		        'description' => null,
@@ -92,7 +92,7 @@ class LocationsTableSeeder extends Seeder
 		        'url' => null,
 		    ],
 		    [
-		        'address' => '-',
+		        'address' => null,
 		        'created_at' => '2020-10-14 03:51:42',
 		        'deleted_at' => null,
 		        'description' => null,
@@ -124,6 +124,6 @@ class LocationsTableSeeder extends Seeder
 		        'url' => null,
 		    ],
 		]);
-        
+
     }
 }

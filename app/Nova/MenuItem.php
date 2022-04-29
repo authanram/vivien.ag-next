@@ -6,7 +6,6 @@ use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 //use OptimistDigital\NovaSortable\Traits\HasSortableRows;
 
@@ -14,17 +13,11 @@ class MenuItem extends Resource
 {
 //    use HasSortableRows;
 
-    protected static array $orderBy = [
-        'menu_id' => 'asc',
-        'sort_order' => 'asc',
-    ];
-
     public static string $model = \App\Models\MenuItem::class;
 
     public static $title = 'label';
 
     public static $search = [
-        'id',
         'label',
     ];
 
@@ -34,14 +27,15 @@ class MenuItem extends Resource
         'color' => ['color'],
     ];
 
+    protected static array $orderBy = [
+        'menu_id' => 'asc',
+        'order_column' => 'asc',
+    ];
+
     public function fields(Request $request): array
     {
         return [
-            ID::make(__('Id'), 'id')
-                ->onlyOnDetail()
-            ,
-            Text::make(__('Uuid'), 'uuid')
-                ->onlyOnDetail()
+            ID::make(__('ID'), 'id')
             ,
             Text::make(__('Label'), 'label')
                 ->rules('required')
@@ -63,13 +57,6 @@ class MenuItem extends Resource
                 ->required()
                 ->withoutTrashed()
                 ->showCreateRelationButton()
-                ->sortable()
-            ,
-            Select::make(__('Breakpoint'), 'dropdown_breakpoint')
-                ->options(static::getVisibility())
-                ->rules('nullable', 'in:' . implode(',', array_keys(static::getVisibility())))
-                ->help('Item will only be visible at the horizontal menu, if the selected or any larger breakpoint has been hit.')
-                ->displayUsingLabels()
                 ->sortable()
             ,
             Boolean::make(__('Published'), 'published')

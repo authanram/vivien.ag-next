@@ -4,12 +4,12 @@ use Illuminate\Database\Seeder;
 
 class ColorsTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        
-        \DB::table('colors')->delete();
-        
-        \DB::table('colors')->insert([
+
+        DB::table('colors')->delete();
+
+        DB::table('colors')->insert([
 		    [
 		        'color' => 'teal',
 		        'created_at' => '2020-05-14 17:01:55',
@@ -74,6 +74,6 @@ class ColorsTableSeeder extends Seeder
 		        'updated_at' => '2020-05-14 17:07:18',
 		    ],
 		]);
-        
+
     }
 }

@@ -4,12 +4,12 @@ use Illuminate\Database\Seeder;
 
 class CookieConsentCookiesTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        
-        \DB::table('cookie_consent_cookies')->delete();
-        
-        \DB::table('cookie_consent_cookies')->insert([
+
+        DB::table('cookie_consent_cookies')->delete();
+
+        DB::table('cookie_consent_cookies')->insert([
 		    [
 		        'cookie_category' => 'Notwendig',
 		        'cookie_consent_provider_id' => 1,
@@ -119,6 +119,6 @@ class CookieConsentCookiesTableSeeder extends Seeder
 		        'updated_at' => '2020-06-21 14:06:22',
 		    ],
 		]);
-        
+
     }
 }

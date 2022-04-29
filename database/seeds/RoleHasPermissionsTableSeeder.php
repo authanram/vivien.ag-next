@@ -4,11 +4,11 @@ use Illuminate\Database\Seeder;
 
 class RoleHasPermissionsTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        
-        \DB::table('role_has_permissions')->delete();
-        
-        
+
+        DB::table('role_has_permissions')->delete();
+
+
     }
 }

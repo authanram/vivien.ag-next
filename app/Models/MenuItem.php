@@ -15,7 +15,6 @@ class MenuItem extends Model implements Sortable
         'route_id',
         'color_id',
         'label',
-        'dropdown_breakpoint',
         'published',
         'order_column',
     ];

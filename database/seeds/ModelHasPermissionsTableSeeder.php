@@ -4,11 +4,11 @@ use Illuminate\Database\Seeder;
 
 class ModelHasPermissionsTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        
-        \DB::table('model_has_permissions')->delete();
-        
-        
+
+        DB::table('model_has_permissions')->delete();
+
+
     }
 }

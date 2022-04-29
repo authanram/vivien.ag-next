@@ -11,26 +11,22 @@ use Laravel\Nova\Fields\Textarea;
 
 class EventTemplate extends Resource
 {
-    protected static array $orderBy = ['name' => 'asc'];
-
     public static string $model = \App\Models\EventTemplate::class;
 
     public static $title = 'name';
 
     public static $search = [
-        'id',
         'name',
         'description',
     ];
+
+    protected static array $orderBy = ['name' => 'asc'];
 
     public function fields(Request $request): array
     {
         return [
             ID::make()
                 ->hideFromIndex()
-            ,
-            Text::make(__('Uuid'), 'uuid')
-                ->onlyOnDetail()
             ,
             Text::make(__('Name'), 'name')
                 ->rules('required')

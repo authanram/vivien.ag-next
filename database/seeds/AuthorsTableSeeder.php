@@ -4,12 +4,12 @@ use Illuminate\Database\Seeder;
 
 class AuthorsTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        
-        \DB::table('authors')->delete();
-        
-        \DB::table('authors')->insert([
+
+        DB::table('authors')->delete();
+
+        DB::table('authors')->insert([
 		    [
 		        'created_at' => '2020-05-16 22:05:40',
 		        'deleted_at' => null,
@@ -91,6 +91,6 @@ class AuthorsTableSeeder extends Seeder
 		        'url' => 'https://de.wikipedia.org/wiki/Buddha#Etymologie',
 		    ],
 		]);
-        
+
     }
 }

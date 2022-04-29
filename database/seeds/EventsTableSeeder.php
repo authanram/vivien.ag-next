@@ -1,15 +1,16 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class EventsTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        
-        \DB::table('events')->delete();
-        
-        \DB::table('events')->insert([
+
+        DB::table('events')->delete();
+
+        DB::table('events')->insert([
 		    [
 		        'catering' => 'Snacks und Gertänke',
 		        'catering_id' => null,
@@ -29,7 +30,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 10,
 		        'registrations_reserved' => null,
 		        'updated_at' => '2020-06-28 01:55:50',
-		        'uuid' => '097f8c48-adef-4395-9980-59858752bbe2',
+		        'uuid' => Str::orderedUuid()->toString(), //'097f8c48-adef-4395-9980-59858752bbe2',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -50,7 +51,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 10,
 		        'registrations_reserved' => null,
 		        'updated_at' => '2020-06-28 01:55:50',
-		        'uuid' => '19f661d3-a545-4c4f-adff-deca23460566',
+		        'uuid' => Str::orderedUuid()->toString(), //'19f661d3-a545-4c4f-adff-deca23460566',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -71,7 +72,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 10,
 		        'registrations_reserved' => null,
 		        'updated_at' => '2020-06-28 01:55:50',
-		        'uuid' => '69000c6e-4aae-4404-824b-b9edc19b95a2',
+		        'uuid' => Str::orderedUuid()->toString(), //'69000c6e-4aae-4404-824b-b9edc19b95a2',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -92,7 +93,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 7,
 		        'registrations_reserved' => 1,
 		        'updated_at' => '2020-07-08 00:58:56',
-		        'uuid' => '5e1afec3-ec02-42dd-898b-29d6a6202f31',
+		        'uuid' => Str::orderedUuid()->toString(), //'5e1afec3-ec02-42dd-898b-29d6a6202f31',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -113,7 +114,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 7,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-07-13 07:47:29',
-		        'uuid' => 'dcf8fc2c-7ae2-4777-b4d4-a42aa35332dd',
+		        'uuid' => Str::orderedUuid()->toString(), //'dcf8fc2c-7ae2-4777-b4d4-a42aa35332dd',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -134,7 +135,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 7,
 		        'registrations_reserved' => 3,
 		        'updated_at' => '2020-08-14 15:15:11',
-		        'uuid' => 'aa68c45c-37a8-4ff3-81bc-36ca92591a29',
+		        'uuid' => Str::orderedUuid()->toString(), //'aa68c45c-37a8-4ff3-81bc-36ca92591a29',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -155,7 +156,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 7,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-07-08 01:01:44',
-		        'uuid' => '62da525e-5332-4cdb-973e-c38eb1b0f2b7',
+		        'uuid' => Str::orderedUuid()->toString(), //'62da525e-5332-4cdb-973e-c38eb1b0f2b7',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -176,7 +177,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 7,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-07-08 01:02:28',
-		        'uuid' => 'c055950f-2db6-4af9-8cd8-eb906f87e891',
+		        'uuid' => Str::orderedUuid()->toString(), //'c055950f-2db6-4af9-8cd8-eb906f87e891',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -197,7 +198,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 7,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-07-08 01:03:10',
-		        'uuid' => '941214d0-b616-401d-8872-5868906afd5f',
+		        'uuid' => Str::orderedUuid()->toString(), //'941214d0-b616-401d-8872-5868906afd5f',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -218,7 +219,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 7,
 		        'registrations_reserved' => 1,
 		        'updated_at' => '2020-07-08 01:05:05',
-		        'uuid' => 'adb9dfbc-d70c-4023-9a49-f5ae55ecdcd8',
+		        'uuid' => Str::orderedUuid()->toString(), //'adb9dfbc-d70c-4023-9a49-f5ae55ecdcd8',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -239,7 +240,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-10-21 09:56:11',
-		        'uuid' => '3c922033-b901-499d-8efe-3bdb052a81c5',
+		        'uuid' => Str::orderedUuid()->toString(), //'3c922033-b901-499d-8efe-3bdb052a81c5',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -260,7 +261,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-10-29 19:32:38',
-		        'uuid' => 'ccb9c219-b316-4679-9b3e-80f1a4b0506e',
+		        'uuid' => Str::orderedUuid()->toString(), //'ccb9c219-b316-4679-9b3e-80f1a4b0506e',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -281,7 +282,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-10-29 19:33:48',
-		        'uuid' => 'f05710e9-b602-4ff9-9d01-51bd82c3ba9c',
+		        'uuid' => Str::orderedUuid()->toString(), //'f05710e9-b602-4ff9-9d01-51bd82c3ba9c',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -302,7 +303,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-10-29 19:34:12',
-		        'uuid' => 'd4971022-5372-497a-b41a-2307c9ae9121',
+		        'uuid' => Str::orderedUuid()->toString(), //'d4971022-5372-497a-b41a-2307c9ae9121',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -323,7 +324,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-12-09 20:45:01',
-		        'uuid' => '5fa1e446-68d8-4c1f-ad67-d81ff73e0a49',
+		        'uuid' => Str::orderedUuid()->toString(), //'5fa1e446-68d8-4c1f-ad67-d81ff73e0a49',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -344,7 +345,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 10,
 		        'registrations_reserved' => null,
 		        'updated_at' => '2020-06-28 01:55:51',
-		        'uuid' => 'def5776c-8cfb-44f2-851d-8cf08eccfa87',
+		        'uuid' => Str::orderedUuid()->toString(), //'def5776c-8cfb-44f2-851d-8cf08eccfa87',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -365,7 +366,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 7,
 		        'registrations_reserved' => 4,
 		        'updated_at' => '2020-07-23 18:48:36',
-		        'uuid' => '74a9bf3b-6906-45ab-9613-7e6e7164bc9a',
+		        'uuid' => Str::orderedUuid()->toString(), //'74a9bf3b-6906-45ab-9613-7e6e7164bc9a',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -386,7 +387,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 7,
 		        'registrations_reserved' => 5,
 		        'updated_at' => '2020-08-19 20:17:13',
-		        'uuid' => '203442e9-f39c-49a4-b514-2e0cb28e687d',
+		        'uuid' => Str::orderedUuid()->toString(), //'203442e9-f39c-49a4-b514-2e0cb28e687d',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -407,7 +408,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 7,
 		        'registrations_reserved' => 1,
 		        'updated_at' => '2020-09-10 22:19:24',
-		        'uuid' => 'a5dd7c8b-3e7a-4da4-a46e-8cdd3039c8fc',
+		        'uuid' => Str::orderedUuid()->toString(), //'a5dd7c8b-3e7a-4da4-a46e-8cdd3039c8fc',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -428,7 +429,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 10,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-09-22 16:32:48',
-		        'uuid' => '0b9b6217-7b6a-48d4-9a41-1f2f2c42fd05',
+		        'uuid' => Str::orderedUuid()->toString(), //'0b9b6217-7b6a-48d4-9a41-1f2f2c42fd05',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -449,7 +450,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-10-29 19:33:12',
-		        'uuid' => '4c78fd75-cd9c-4de2-b053-aed1b556e630',
+		        'uuid' => Str::orderedUuid()->toString(), //'4c78fd75-cd9c-4de2-b053-aed1b556e630',
 		    ],
 		    [
 		        'catering' => 'Snacks und Getränke und Übernachtung',
@@ -470,7 +471,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 9,
 		        'registrations_reserved' => 9,
 		        'updated_at' => '2020-10-05 20:36:00',
-		        'uuid' => '653600c9-1c2a-41c5-aa28-987a0213e0fa',
+		        'uuid' => Str::orderedUuid()->toString(), //'653600c9-1c2a-41c5-aa28-987a0213e0fa',
 		    ],
 		    [
 		        'catering' => 'nein',
@@ -491,7 +492,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 10,
 		        'registrations_reserved' => null,
 		        'updated_at' => '2020-06-28 01:55:51',
-		        'uuid' => '21fca05e-9776-4c3f-9be0-dc50c2a31093',
+		        'uuid' => Str::orderedUuid()->toString(), //'21fca05e-9776-4c3f-9be0-dc50c2a31093',
 		    ],
 		    [
 		        'catering' => 'nein',
@@ -512,7 +513,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 10,
 		        'registrations_reserved' => null,
 		        'updated_at' => '2020-06-28 22:57:46',
-		        'uuid' => '6c84eb41-0f70-480d-a9f1-0da1910c6d18',
+		        'uuid' => Str::orderedUuid()->toString(), //'6c84eb41-0f70-480d-a9f1-0da1910c6d18',
 		    ],
 		    [
 		        'catering' => 'ja',
@@ -533,7 +534,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 7,
 		        'registrations_reserved' => 5,
 		        'updated_at' => '2020-07-08 00:51:37',
-		        'uuid' => '25aafebd-44b0-4d8e-99f0-e6d556025b95',
+		        'uuid' => Str::orderedUuid()->toString(), //'25aafebd-44b0-4d8e-99f0-e6d556025b95',
 		    ],
 		    [
 		        'catering' => 'nein',
@@ -554,7 +555,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 10,
 		        'registrations_reserved' => 3,
 		        'updated_at' => '2020-08-05 21:50:54',
-		        'uuid' => 'cb6a3d07-0400-4048-a18e-50fc27dfc3e5',
+		        'uuid' => Str::orderedUuid()->toString(), //'cb6a3d07-0400-4048-a18e-50fc27dfc3e5',
 		    ],
 		    [
 		        'catering' => 'nein',
@@ -575,7 +576,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 10,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-10-21 09:56:27',
-		        'uuid' => '6d670672-2b1c-4597-ba95-e0a7396b943b',
+		        'uuid' => Str::orderedUuid()->toString(), //'6d670672-2b1c-4597-ba95-e0a7396b943b',
 		    ],
 		    [
 		        'catering' => 'nein',
@@ -596,7 +597,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 10,
 		        'registrations_reserved' => 5,
 		        'updated_at' => '2020-10-25 11:50:06',
-		        'uuid' => 'c5a4cb56-d331-45f2-bf3e-e19ebbdfd9b2',
+		        'uuid' => Str::orderedUuid()->toString(), //'c5a4cb56-d331-45f2-bf3e-e19ebbdfd9b2',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -617,7 +618,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 10,
 		        'registrations_reserved' => null,
 		        'updated_at' => '2020-06-28 01:55:51',
-		        'uuid' => '29ae1e06-cff1-413c-a010-cdcdbc6f02ab',
+		        'uuid' => Str::orderedUuid()->toString(), //'29ae1e06-cff1-413c-a010-cdcdbc6f02ab',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -638,7 +639,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 4,
 		        'updated_at' => '2020-07-08 00:54:08',
-		        'uuid' => 'd53c148d-94e3-4fc9-bd1e-9597912e3b6c',
+		        'uuid' => Str::orderedUuid()->toString(), //'d53c148d-94e3-4fc9-bd1e-9597912e3b6c',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -659,7 +660,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 4,
 		        'updated_at' => '2020-08-02 11:08:55',
-		        'uuid' => '55522471-609d-43d4-9dd5-dde146127c88',
+		        'uuid' => Str::orderedUuid()->toString(), //'55522471-609d-43d4-9dd5-dde146127c88',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -680,7 +681,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 2,
 		        'updated_at' => '2020-08-08 23:29:06',
-		        'uuid' => 'df368e15-e412-4537-a228-57256790a452',
+		        'uuid' => Str::orderedUuid()->toString(), //'df368e15-e412-4537-a228-57256790a452',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -701,7 +702,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-07-08 01:10:20',
-		        'uuid' => 'c35ce423-c0f8-4492-acbe-89e0dfd6e7f2',
+		        'uuid' => Str::orderedUuid()->toString(), //'c35ce423-c0f8-4492-acbe-89e0dfd6e7f2',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -722,7 +723,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 5,
 		        'registrations_reserved' => 2,
 		        'updated_at' => '2020-10-29 19:32:10',
-		        'uuid' => 'ee144698-bb46-4282-bd2b-3bf69d8bafd2',
+		        'uuid' => Str::orderedUuid()->toString(), //'ee144698-bb46-4282-bd2b-3bf69d8bafd2',
 		    ],
 		    [
 		        'catering' => 'Einkehren, Abends',
@@ -743,7 +744,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 10,
 		        'registrations_reserved' => null,
 		        'updated_at' => '2020-06-28 01:55:53',
-		        'uuid' => '6b245cb7-6a2c-4d9b-8378-4dfff82c5d36',
+		        'uuid' => Str::orderedUuid()->toString(), //'6b245cb7-6a2c-4d9b-8378-4dfff82c5d36',
 		    ],
 		    [
 		        'catering' => 'Einkehren, Abends',
@@ -764,7 +765,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 3,
 		        'registrations_reserved' => 3,
 		        'updated_at' => '2020-08-14 15:14:42',
-		        'uuid' => '63f7be74-7ca2-48aa-af6e-0ee5b2befefe',
+		        'uuid' => Str::orderedUuid()->toString(), //'63f7be74-7ca2-48aa-af6e-0ee5b2befefe',
 		    ],
 		    [
 		        'catering' => 'Einkehren, Abends',
@@ -785,7 +786,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 5,
 		        'registrations_reserved' => 1,
 		        'updated_at' => '2020-09-22 16:25:15',
-		        'uuid' => 'b021a1b8-cf91-45a7-b368-ca079efd78ba',
+		        'uuid' => Str::orderedUuid()->toString(), //'b021a1b8-cf91-45a7-b368-ca079efd78ba',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -806,7 +807,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 7,
 		        'registrations_reserved' => 5,
 		        'updated_at' => '2020-07-08 00:50:05',
-		        'uuid' => '77a22aca-4c2f-4b77-91a8-716cd96d7bfe',
+		        'uuid' => Str::orderedUuid()->toString(), //'77a22aca-4c2f-4b77-91a8-716cd96d7bfe',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -827,7 +828,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 7,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-08-20 23:38:47',
-		        'uuid' => '39d22b38-d4dc-4a84-9eed-5bd9c9648a20',
+		        'uuid' => Str::orderedUuid()->toString(), //'39d22b38-d4dc-4a84-9eed-5bd9c9648a20',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -848,7 +849,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-07-07 22:37:25',
-		        'uuid' => '9346b48f-98aa-4fd7-bb7d-2c82a3ccc516',
+		        'uuid' => Str::orderedUuid()->toString(), //'9346b48f-98aa-4fd7-bb7d-2c82a3ccc516',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -869,7 +870,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-09-11 07:38:12',
-		        'uuid' => '510beaf8-e328-4e83-a290-6cc9f273728d',
+		        'uuid' => Str::orderedUuid()->toString(), //'510beaf8-e328-4e83-a290-6cc9f273728d',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -890,7 +891,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 10,
 		        'registrations_reserved' => null,
 		        'updated_at' => '2020-06-28 01:55:53',
-		        'uuid' => '2768787a-2194-430f-b94d-b32b2dd810b3',
+		        'uuid' => Str::orderedUuid()->toString(), //'2768787a-2194-430f-b94d-b32b2dd810b3',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -911,7 +912,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-07-10 08:07:07',
-		        'uuid' => '43d948b6-3c88-4b78-8095-4bed1359fd4f',
+		        'uuid' => Str::orderedUuid()->toString(), //'43d948b6-3c88-4b78-8095-4bed1359fd4f',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -932,7 +933,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-07-08 01:01:20',
-		        'uuid' => '6f141482-a0f6-4603-b2ef-9e2b189442d9',
+		        'uuid' => Str::orderedUuid()->toString(), //'6f141482-a0f6-4603-b2ef-9e2b189442d9',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -953,7 +954,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-07-08 01:02:45',
-		        'uuid' => '4ce17749-7d2e-4479-ade0-dac8fefb1a64',
+		        'uuid' => Str::orderedUuid()->toString(), //'4ce17749-7d2e-4479-ade0-dac8fefb1a64',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -974,7 +975,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-10-14 08:17:16',
-		        'uuid' => 'b4967354-09d7-40de-92d2-f4a5f9ef50d3',
+		        'uuid' => Str::orderedUuid()->toString(), //'b4967354-09d7-40de-92d2-f4a5f9ef50d3',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -995,7 +996,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-10-29 19:31:07',
-		        'uuid' => '262e1076-0aa6-44ab-b2ca-3ab34d1dcbfa',
+		        'uuid' => Str::orderedUuid()->toString(), //'262e1076-0aa6-44ab-b2ca-3ab34d1dcbfa',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -1016,7 +1017,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-10-29 19:34:46',
-		        'uuid' => '90c6a89a-53d9-4219-99f7-455c58dbdfda',
+		        'uuid' => Str::orderedUuid()->toString(), //'90c6a89a-53d9-4219-99f7-455c58dbdfda',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -1037,7 +1038,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 10,
 		        'registrations_reserved' => null,
 		        'updated_at' => '2020-06-28 01:55:53',
-		        'uuid' => '7c681983-6187-4f80-9091-7e91f4c5ff6e',
+		        'uuid' => Str::orderedUuid()->toString(), //'7c681983-6187-4f80-9091-7e91f4c5ff6e',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -1058,7 +1059,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 10,
 		        'registrations_reserved' => null,
 		        'updated_at' => '2020-06-28 22:43:46',
-		        'uuid' => 'f4e3768a-4430-4188-9356-9987e213fd68',
+		        'uuid' => Str::orderedUuid()->toString(), //'f4e3768a-4430-4188-9356-9987e213fd68',
 		    ],
 		    [
 		        'catering' => 'ja',
@@ -1079,7 +1080,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-07-10 11:10:48',
-		        'uuid' => '8438aae2-6314-4180-b42b-82367e687466',
+		        'uuid' => Str::orderedUuid()->toString(), //'8438aae2-6314-4180-b42b-82367e687466',
 		    ],
 		    [
 		        'catering' => 'Snacks und Gertänke',
@@ -1100,7 +1101,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 1,
 		        'updated_at' => '2020-10-16 15:09:01',
-		        'uuid' => '510beaf8-e328-4e83-a290-6cc9f273728d',
+		        'uuid' => Str::orderedUuid()->toString(), //'510beaf8-e328-4e83-a290-6cc9f273728d',
 		    ],
 		    [
 		        'catering' => 'Wir kochen selbst und wir lassen kochen',
@@ -1122,7 +1123,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 2,
 		        'updated_at' => '2020-10-21 09:54:55',
-		        'uuid' => '1206e500-ed0e-4c92-a700-dbc2ba09fca8',
+		        'uuid' => Str::orderedUuid()->toString(), //'1206e500-ed0e-4c92-a700-dbc2ba09fca8',
 		    ],
 		    [
 		        'catering' => 'Wir kochen selbst und lassen kochen',
@@ -1145,7 +1146,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-10-21 09:54:37',
-		        'uuid' => 'c4d2c3f1-b96b-49d9-908f-b134f7042a24',
+		        'uuid' => Str::orderedUuid()->toString(), //'c4d2c3f1-b96b-49d9-908f-b134f7042a24',
 		    ],
 		    [
 		        'catering' => 'Wir kochen selbst und lassen kochen',
@@ -1166,7 +1167,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-10-21 09:54:31',
-		        'uuid' => '7b03046a-813e-4b45-b659-d03918134126',
+		        'uuid' => Str::orderedUuid()->toString(), //'7b03046a-813e-4b45-b659-d03918134126',
 		    ],
 		    [
 		        'catering' => 'nein',
@@ -1187,7 +1188,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 10,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2020-12-27 05:22:26',
-		        'uuid' => '21fca05e-9776-4c3f-9be0-dc50c2a31093',
+		        'uuid' => Str::orderedUuid()->toString(), //'21fca05e-9776-4c3f-9be0-dc50c2a31093',
 		    ],
 		    [
 		        'catering' => 'dafür sorgt Frau und Mann selbst',
@@ -1208,7 +1209,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 12,
 		        'registrations_reserved' => 1,
 		        'updated_at' => '2021-01-03 17:57:56',
-		        'uuid' => '9438c495-a59a-4e08-a2a0-6075e4bbf019',
+		        'uuid' => Str::orderedUuid()->toString(), //'9438c495-a59a-4e08-a2a0-6075e4bbf019',
 		    ],
 		    [
 		        'catering' => 'Dafür sorgen Frau und Mann selbst',
@@ -1229,7 +1230,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 20,
 		        'registrations_reserved' => 4,
 		        'updated_at' => '2021-02-01 15:56:49',
-		        'uuid' => 'f52ae970-d410-4722-86bc-6725e854995f',
+		        'uuid' => Str::orderedUuid()->toString(), //'f52ae970-d410-4722-86bc-6725e854995f',
 		    ],
 		    [
 		        'catering' => 'Frau und Mann bewirten sich selbst',
@@ -1250,7 +1251,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 2,
 		        'updated_at' => '2021-01-03 18:51:10',
-		        'uuid' => '862a9d3b-04fa-4bae-84e7-2d935bd67d35',
+		        'uuid' => Str::orderedUuid()->toString(), //'862a9d3b-04fa-4bae-84e7-2d935bd67d35',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -1271,7 +1272,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 1,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-01-05 17:21:25',
-		        'uuid' => '5c01def0-8a98-464a-8e69-934d844fc11e',
+		        'uuid' => Str::orderedUuid()->toString(), //'5c01def0-8a98-464a-8e69-934d844fc11e',
 		    ],
 		    [
 		        'catering' => 'Du versorgst dich selbst',
@@ -1293,7 +1294,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 12,
 		        'registrations_reserved' => 2,
 		        'updated_at' => '2021-02-28 16:12:01',
-		        'uuid' => '17af400e-343d-4a04-b56c-cc9d72fc92e9',
+		        'uuid' => Str::orderedUuid()->toString(), //'17af400e-343d-4a04-b56c-cc9d72fc92e9',
 		    ],
 		    [
 		        'catering' => 'Du versorgst dich selbst',
@@ -1317,7 +1318,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 30,
 		        'registrations_reserved' => 8,
 		        'updated_at' => '2021-05-17 21:13:58',
-		        'uuid' => 'f4aa7597-198c-42a5-a99d-2cdb5204fa58',
+		        'uuid' => Str::orderedUuid()->toString(), //'f4aa7597-198c-42a5-a99d-2cdb5204fa58',
 		    ],
 		    [
 		        'catering' => 'Annik\'s Göttliche Kuchen zum Kaffee ..... Abends Büffet',
@@ -1338,7 +1339,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 10,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-03-02 00:59:52',
-		        'uuid' => 'bdc5b036-19f0-4aa5-8776-d6347db18b1b',
+		        'uuid' => Str::orderedUuid()->toString(), //'bdc5b036-19f0-4aa5-8776-d6347db18b1b',
 		    ],
 		    [
 		        'catering' => 'Vesper mitbringen abends kehren wir ein bei Jack in der Kohlsägemühle',
@@ -1359,7 +1360,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 5,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-03-02 01:07:52',
-		        'uuid' => 'c7d4f4e6-711f-4a40-962e-b7b5db3863b9',
+		        'uuid' => Str::orderedUuid()->toString(), //'c7d4f4e6-711f-4a40-962e-b7b5db3863b9',
 		    ],
 		    [
 		        'catering' => 'Selbstversorgung',
@@ -1382,7 +1383,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 10,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-05-17 21:18:23',
-		        'uuid' => '63492771-c386-4243-9d0c-f73fb5abb8ae',
+		        'uuid' => Str::orderedUuid()->toString(), //'63492771-c386-4243-9d0c-f73fb5abb8ae',
 		    ],
 		    [
 		        'catering' => 'Selbstversorgung',
@@ -1405,7 +1406,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 8,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-03-19 11:31:08',
-		        'uuid' => '8f7b3cbd-76bb-4401-bde4-5d7fddbe65dc',
+		        'uuid' => Str::orderedUuid()->toString(), //'8f7b3cbd-76bb-4401-bde4-5d7fddbe65dc',
 		    ],
 		    [
 		        'catering' => null,
@@ -1427,7 +1428,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 25,
 		        'registrations_reserved' => 4,
 		        'updated_at' => '2021-05-17 21:18:10',
-		        'uuid' => '060c268d-55d1-477f-b9cf-8247ba4a7c3e',
+		        'uuid' => Str::orderedUuid()->toString(), //'060c268d-55d1-477f-b9cf-8247ba4a7c3e',
 		    ],
 		    [
 		        'catering' => 'Selbstverpflegung abends dann bei Jack',
@@ -1448,7 +1449,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 4,
 		        'updated_at' => '2021-07-02 05:58:21',
-		        'uuid' => '85fac3d5-5642-4ce7-9411-aaf18f38c3d6',
+		        'uuid' => Str::orderedUuid()->toString(), //'85fac3d5-5642-4ce7-9411-aaf18f38c3d6',
 		    ],
 		    [
 		        'catering' => 'Es gibt immer einen Imbiss und Getränke',
@@ -1469,7 +1470,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-07-02 06:02:29',
-		        'uuid' => '4e4d0dcf-c939-4016-84d2-7e5b8429e347',
+		        'uuid' => Str::orderedUuid()->toString(), //'4e4d0dcf-c939-4016-84d2-7e5b8429e347',
 		    ],
 		    [
 		        'catering' => 'Es gibt immer einen Imbiss und Getränke',
@@ -1490,7 +1491,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-07-02 06:04:54',
-		        'uuid' => 'de4d2571-1f84-4329-9978-530f908dec8c',
+		        'uuid' => Str::orderedUuid()->toString(), //'de4d2571-1f84-4329-9978-530f908dec8c',
 		    ],
 		    [
 		        'catering' => 'Es gibt immer einen Imbiss und Getränke',
@@ -1511,7 +1512,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 4,
 		        'updated_at' => '2021-07-02 06:09:38',
-		        'uuid' => '2d04124d-3a95-463b-9290-0510855405f9',
+		        'uuid' => Str::orderedUuid()->toString(), //'2d04124d-3a95-463b-9290-0510855405f9',
 		    ],
 		    [
 		        'catering' => 'Es gibt immer einen Imbiss und Getränke',
@@ -1532,7 +1533,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 4,
 		        'updated_at' => '2021-07-02 06:12:11',
-		        'uuid' => 'ee8bef4c-dbf8-43d6-8302-8f320eafc95b',
+		        'uuid' => Str::orderedUuid()->toString(), //'ee8bef4c-dbf8-43d6-8302-8f320eafc95b',
 		    ],
 		    [
 		        'catering' => 'Mit Büffet',
@@ -1553,7 +1554,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 8,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-07-02 06:30:55',
-		        'uuid' => '498c1f36-74c0-4211-95de-89976f7dc68f',
+		        'uuid' => Str::orderedUuid()->toString(), //'498c1f36-74c0-4211-95de-89976f7dc68f',
 		    ],
 		    [
 		        'catering' => 'Es gibt immer einen Imbiss und Getränke',
@@ -1574,7 +1575,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-07-02 06:24:29',
-		        'uuid' => '3453c86f-4f48-4a16-97fc-6e59301958dd',
+		        'uuid' => Str::orderedUuid()->toString(), //'3453c86f-4f48-4a16-97fc-6e59301958dd',
 		    ],
 		    [
 		        'catering' => 'Es gibt immer leckeres Essen und Getränke',
@@ -1595,7 +1596,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-07-02 06:27:02',
-		        'uuid' => 'b208005e-5ca8-47a0-b38f-0a0eb232e20b',
+		        'uuid' => Str::orderedUuid()->toString(), //'b208005e-5ca8-47a0-b38f-0a0eb232e20b',
 		    ],
 		    [
 		        'catering' => 'Es gibt immer einen Imbiss und Getränke',
@@ -1616,7 +1617,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-07-02 06:29:33',
-		        'uuid' => '6edec8d2-4721-471c-8a9a-c81a31eb4264',
+		        'uuid' => Str::orderedUuid()->toString(), //'6edec8d2-4721-471c-8a9a-c81a31eb4264',
 		    ],
 		    [
 		        'catering' => 'Es gibt immer etwas leckeres mit Getränken',
@@ -1637,7 +1638,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-07-04 10:18:45',
-		        'uuid' => '349ebb12-4161-4796-a1d3-0dfdd278bd9a',
+		        'uuid' => Str::orderedUuid()->toString(), //'349ebb12-4161-4796-a1d3-0dfdd278bd9a',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -1658,7 +1659,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-08-12 10:12:01',
-		        'uuid' => '8de7b1de-0522-41e3-b285-8201e5b82da1',
+		        'uuid' => Str::orderedUuid()->toString(), //'8de7b1de-0522-41e3-b285-8201e5b82da1',
 		    ],
 		    [
 		        'catering' => 'Getränke kleines Buffet',
@@ -1679,7 +1680,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 7,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-08-12 09:29:40',
-		        'uuid' => 'b2ec480c-d50e-40fd-ba08-df7054ec87ff',
+		        'uuid' => Str::orderedUuid()->toString(), //'b2ec480c-d50e-40fd-ba08-df7054ec87ff',
 		    ],
 		    [
 		        'catering' => 'Getränke kleines Buffet',
@@ -1700,7 +1701,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 7,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-08-12 10:23:49',
-		        'uuid' => '6469e959-0c2b-435c-8478-6ad84cae03ef',
+		        'uuid' => Str::orderedUuid()->toString(), //'6469e959-0c2b-435c-8478-6ad84cae03ef',
 		    ],
 		    [
 		        'catering' => 'Getränke kleines Buffet',
@@ -1721,7 +1722,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 7,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-08-12 09:33:07',
-		        'uuid' => '4f02357e-8277-473d-b5d6-b410fc46ee3e',
+		        'uuid' => Str::orderedUuid()->toString(), //'4f02357e-8277-473d-b5d6-b410fc46ee3e',
 		    ],
 		    [
 		        'catering' => 'Getränke kleines Buffet',
@@ -1742,7 +1743,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 7,
 		        'registrations_reserved' => 1,
 		        'updated_at' => '2021-11-20 15:02:31',
-		        'uuid' => '1bbb1812-7fa8-436c-9651-1cefeec4f358',
+		        'uuid' => Str::orderedUuid()->toString(), //'1bbb1812-7fa8-436c-9651-1cefeec4f358',
 		    ],
 		    [
 		        'catering' => 'Getränke Imbiss',
@@ -1763,7 +1764,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 7,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-08-12 09:36:59',
-		        'uuid' => '705958e7-9a96-4f33-b90d-7599d10805c1',
+		        'uuid' => Str::orderedUuid()->toString(), //'705958e7-9a96-4f33-b90d-7599d10805c1',
 		    ],
 		    [
 		        'catering' => 'Getränke kleines Buffet',
@@ -1784,7 +1785,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 7,
 		        'registrations_reserved' => 2,
 		        'updated_at' => '2021-09-12 16:28:37',
-		        'uuid' => '9b006f74-15fd-456b-8fff-9415a0a20467',
+		        'uuid' => Str::orderedUuid()->toString(), //'9b006f74-15fd-456b-8fff-9415a0a20467',
 		    ],
 		    [
 		        'catering' => 'Getränke kleines Buffet',
@@ -1805,7 +1806,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 10,
 		        'registrations_reserved' => 2,
 		        'updated_at' => '2021-10-19 20:28:50',
-		        'uuid' => 'f6c4fec9-0350-46b0-96f6-4e719f119e65',
+		        'uuid' => Str::orderedUuid()->toString(), //'f6c4fec9-0350-46b0-96f6-4e719f119e65',
 		    ],
 		    [
 		        'catering' => 'Getränke kleines Buffet',
@@ -1826,7 +1827,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 3,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-08-12 09:41:44',
-		        'uuid' => 'f994cfc5-056d-4fe1-90d6-5c4ea23f1adb',
+		        'uuid' => Str::orderedUuid()->toString(), //'f994cfc5-056d-4fe1-90d6-5c4ea23f1adb',
 		    ],
 		    [
 		        'catering' => 'Getränke kleines Buffet',
@@ -1847,7 +1848,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 10,
 		        'registrations_reserved' => 1,
 		        'updated_at' => '2021-12-15 20:42:47',
-		        'uuid' => '9a56fa1f-5a8d-49cd-a612-5f25a157f2a6',
+		        'uuid' => Str::orderedUuid()->toString(), //'9a56fa1f-5a8d-49cd-a612-5f25a157f2a6',
 		    ],
 		    [
 		        'catering' => 'Getränke Verpflegung',
@@ -1868,7 +1869,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-08-12 09:47:16',
-		        'uuid' => 'c79ef959-047d-4945-ac1a-c2ec7e01b3e6',
+		        'uuid' => Str::orderedUuid()->toString(), //'c79ef959-047d-4945-ac1a-c2ec7e01b3e6',
 		    ],
 		    [
 		        'catering' => 'Getränke und Verpflegung',
@@ -1889,7 +1890,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-08-12 09:51:22',
-		        'uuid' => 'c6c28bd3-0d0c-4274-84bd-f6e7940d7562',
+		        'uuid' => Str::orderedUuid()->toString(), //'c6c28bd3-0d0c-4274-84bd-f6e7940d7562',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -1910,7 +1911,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-10-17 21:56:27',
-		        'uuid' => 'eb7bf8ad-7e69-488b-a3af-790a66dd9889',
+		        'uuid' => Str::orderedUuid()->toString(), //'eb7bf8ad-7e69-488b-a3af-790a66dd9889',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -1931,7 +1932,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-08-12 09:54:29',
-		        'uuid' => '49d3ae00-8926-4b45-aec1-364d2564e6a3',
+		        'uuid' => Str::orderedUuid()->toString(), //'49d3ae00-8926-4b45-aec1-364d2564e6a3',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -1952,7 +1953,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-08-12 09:56:17',
-		        'uuid' => '9f026bad-523c-47d9-9daa-bdac51bad78b',
+		        'uuid' => Str::orderedUuid()->toString(), //'9f026bad-523c-47d9-9daa-bdac51bad78b',
 		    ],
 		    [
 		        'catering' => 'Abends bei Jack',
@@ -1973,7 +1974,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 5,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-08-12 09:59:45',
-		        'uuid' => '5a6d7554-69c0-4bce-a8c7-49804fbd0795',
+		        'uuid' => Str::orderedUuid()->toString(), //'5a6d7554-69c0-4bce-a8c7-49804fbd0795',
 		    ],
 		    [
 		        'catering' => 'Abends bei Jack',
@@ -1994,7 +1995,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 5,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-10-01 00:52:11',
-		        'uuid' => '026658d1-8add-4c45-9cc5-3ee1411d8447',
+		        'uuid' => Str::orderedUuid()->toString(), //'026658d1-8add-4c45-9cc5-3ee1411d8447',
 		    ],
 		    [
 		        'catering' => null,
@@ -2015,7 +2016,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 7,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-10-04 08:15:36',
-		        'uuid' => '18237e51-2c7c-4448-83ec-ef8ea30b1a4b',
+		        'uuid' => Str::orderedUuid()->toString(), //'18237e51-2c7c-4448-83ec-ef8ea30b1a4b',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2036,7 +2037,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 7,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-10-22 07:36:17',
-		        'uuid' => 'faa03f99-e08d-4203-b9b6-03fa57877caf',
+		        'uuid' => Str::orderedUuid()->toString(), //'faa03f99-e08d-4203-b9b6-03fa57877caf',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2057,7 +2058,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 7,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-08-12 10:09:40',
-		        'uuid' => '5f465b08-0e0b-4d4e-9243-353671925b6c',
+		        'uuid' => Str::orderedUuid()->toString(), //'5f465b08-0e0b-4d4e-9243-353671925b6c',
 		    ],
 		    [
 		        'catering' => 'all inclusive',
@@ -2080,7 +2081,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 10,
 		        'registrations_reserved' => 1,
 		        'updated_at' => '2022-01-12 22:36:58',
-		        'uuid' => 'bd7dc020-6d48-4d6f-9629-3c8b20cbfd12',
+		        'uuid' => Str::orderedUuid()->toString(), //'bd7dc020-6d48-4d6f-9629-3c8b20cbfd12',
 		    ],
 		    [
 		        'catering' => 'keine',
@@ -2102,7 +2103,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 10,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-12-11 00:20:02',
-		        'uuid' => '5d70218f-f318-4472-8b23-8502b45f20f1',
+		        'uuid' => Str::orderedUuid()->toString(), //'5d70218f-f318-4472-8b23-8502b45f20f1',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2123,7 +2124,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-12-27 18:28:12',
-		        'uuid' => 'b71077ec-d54b-457e-8adc-b4565c99df3b',
+		        'uuid' => Str::orderedUuid()->toString(), //'b71077ec-d54b-457e-8adc-b4565c99df3b',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2144,7 +2145,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-12-27 19:03:18',
-		        'uuid' => 'e13a1cee-c97e-4407-a011-85ab2de4c2df',
+		        'uuid' => Str::orderedUuid()->toString(), //'e13a1cee-c97e-4407-a011-85ab2de4c2df',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2165,7 +2166,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 1,
 		        'updated_at' => '2022-02-25 15:09:37',
-		        'uuid' => '36c1512e-3e64-4277-9ae5-ed75f0182073',
+		        'uuid' => Str::orderedUuid()->toString(), //'36c1512e-3e64-4277-9ae5-ed75f0182073',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2186,7 +2187,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 1,
 		        'updated_at' => '2022-03-29 11:19:56',
-		        'uuid' => '7108d0b6-8942-459c-bd22-7e7c67b021e2',
+		        'uuid' => Str::orderedUuid()->toString(), //'7108d0b6-8942-459c-bd22-7e7c67b021e2',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2207,7 +2208,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 3,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-04-26 11:50:03',
-		        'uuid' => 'b33dc873-9427-4e25-bf1c-cc3162370660',
+		        'uuid' => Str::orderedUuid()->toString(), //'b33dc873-9427-4e25-bf1c-cc3162370660',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2228,7 +2229,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-04-26 11:51:36',
-		        'uuid' => '1d790745-16a9-4c9e-af41-d7e4bd8ecd92',
+		        'uuid' => Str::orderedUuid()->toString(), //'1d790745-16a9-4c9e-af41-d7e4bd8ecd92',
 		    ],
 		    [
 		        'catering' => 'Selbstversorgung',
@@ -2250,7 +2251,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 5,
 		        'registrations_reserved' => 1,
 		        'updated_at' => '2022-01-04 22:02:02',
-		        'uuid' => 'e414c1d0-d2c1-42c0-90c5-3e18c55c9fb8',
+		        'uuid' => Str::orderedUuid()->toString(), //'e414c1d0-d2c1-42c0-90c5-3e18c55c9fb8',
 		    ],
 		    [
 		        'catering' => 'Selbstversorger',
@@ -2272,7 +2273,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 5,
 		        'registrations_reserved' => 1,
 		        'updated_at' => '2022-02-09 22:16:32',
-		        'uuid' => 'ce938cce-40a4-4398-bfad-d216cead4548',
+		        'uuid' => Str::orderedUuid()->toString(), //'ce938cce-40a4-4398-bfad-d216cead4548',
 		    ],
 		    [
 		        'catering' => 'Selbstversorgung',
@@ -2295,7 +2296,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-03-07 14:58:09',
-		        'uuid' => 'f01474eb-4bd7-4378-aef1-21ac3248b3b8',
+		        'uuid' => Str::orderedUuid()->toString(), //'f01474eb-4bd7-4378-aef1-21ac3248b3b8',
 		    ],
 		    [
 		        'catering' => 'Selbstversorgung',
@@ -2317,7 +2318,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 5,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-04-14 21:32:52',
-		        'uuid' => '8ae82907-4b82-4a06-9211-40290edc6185',
+		        'uuid' => Str::orderedUuid()->toString(), //'8ae82907-4b82-4a06-9211-40290edc6185',
 		    ],
 		    [
 		        'catering' => null,
@@ -2339,7 +2340,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 5,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-04-27 06:34:22',
-		        'uuid' => '697ba400-ba38-4aff-9ee9-252847fcbaa6',
+		        'uuid' => Str::orderedUuid()->toString(), //'697ba400-ba38-4aff-9ee9-252847fcbaa6',
 		    ],
 		    [
 		        'catering' => null,
@@ -2361,7 +2362,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 5,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-04-27 06:46:12',
-		        'uuid' => 'd3aa9915-b2c2-44fd-b5c6-76f9877721a8',
+		        'uuid' => Str::orderedUuid()->toString(), //'d3aa9915-b2c2-44fd-b5c6-76f9877721a8',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2383,7 +2384,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 3,
 		        'updated_at' => '2022-01-14 10:19:22',
-		        'uuid' => 'bd140b0b-fb56-49e3-ac1a-0a7ce04c1c13',
+		        'uuid' => Str::orderedUuid()->toString(), //'bd140b0b-fb56-49e3-ac1a-0a7ce04c1c13',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2405,7 +2406,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 1,
 		        'updated_at' => '2022-02-01 13:54:35',
-		        'uuid' => 'b204c3eb-d4b7-4bde-bfb4-bfcd83d37093',
+		        'uuid' => Str::orderedUuid()->toString(), //'b204c3eb-d4b7-4bde-bfb4-bfcd83d37093',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2427,7 +2428,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-04-14 21:34:13',
-		        'uuid' => '37da7275-4d12-4276-86de-9d93c390cf95',
+		        'uuid' => Str::orderedUuid()->toString(), //'37da7275-4d12-4276-86de-9d93c390cf95',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2449,7 +2450,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-04-26 11:50:52',
-		        'uuid' => 'f7e5bdc4-3fba-41fe-bdba-b488192f2046',
+		        'uuid' => Str::orderedUuid()->toString(), //'f7e5bdc4-3fba-41fe-bdba-b488192f2046',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2471,7 +2472,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-04-26 11:53:06',
-		        'uuid' => 'f5ecd305-1511-40e6-b29e-8b5113195378',
+		        'uuid' => Str::orderedUuid()->toString(), //'f5ecd305-1511-40e6-b29e-8b5113195378',
 		    ],
 		    [
 		        'catering' => 'Getränke',
@@ -2493,7 +2494,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 1,
 		        'updated_at' => '2022-01-17 23:17:20',
-		        'uuid' => 'bd784522-aa0a-4e04-b7ef-e43ad84a0b7d',
+		        'uuid' => Str::orderedUuid()->toString(), //'bd784522-aa0a-4e04-b7ef-e43ad84a0b7d',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2514,7 +2515,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-12-27 20:03:31',
-		        'uuid' => 'f24138b9-67a7-48d9-abc6-cc112945d31b',
+		        'uuid' => Str::orderedUuid()->toString(), //'f24138b9-67a7-48d9-abc6-cc112945d31b',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2535,7 +2536,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-12-27 20:08:40',
-		        'uuid' => '65b18b95-6fe8-4180-b4de-cc5b060e3407',
+		        'uuid' => Str::orderedUuid()->toString(), //'65b18b95-6fe8-4180-b4de-cc5b060e3407',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2556,7 +2557,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-12-27 20:52:16',
-		        'uuid' => 'a008f29a-b7e2-4ef4-910b-5b21c84b80fa',
+		        'uuid' => Str::orderedUuid()->toString(), //'a008f29a-b7e2-4ef4-910b-5b21c84b80fa',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2577,7 +2578,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-04-14 21:34:51',
-		        'uuid' => '6b2615e4-80f8-48c8-abb8-d2f9fa45c0e3',
+		        'uuid' => Str::orderedUuid()->toString(), //'6b2615e4-80f8-48c8-abb8-d2f9fa45c0e3',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2598,7 +2599,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-04-26 11:52:02',
-		        'uuid' => '1af7defd-7c94-40fb-a0a8-77ba8af572be',
+		        'uuid' => Str::orderedUuid()->toString(), //'1af7defd-7c94-40fb-a0a8-77ba8af572be',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2619,7 +2620,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-04-26 11:52:51',
-		        'uuid' => 'd5e26b16-7a86-4061-99cf-069024f9c9e0',
+		        'uuid' => Str::orderedUuid()->toString(), //'d5e26b16-7a86-4061-99cf-069024f9c9e0',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2641,7 +2642,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-12-27 20:43:40',
-		        'uuid' => '310a9c43-3f24-422a-9ed8-41d85110d6f5',
+		        'uuid' => Str::orderedUuid()->toString(), //'310a9c43-3f24-422a-9ed8-41d85110d6f5',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2663,7 +2664,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-01-17 23:20:42',
-		        'uuid' => '49f3eaef-ae40-4fa2-9345-b79c9a792379',
+		        'uuid' => Str::orderedUuid()->toString(), //'49f3eaef-ae40-4fa2-9345-b79c9a792379',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2685,7 +2686,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-12-27 21:13:17',
-		        'uuid' => '2b6c0d95-e985-4afb-aed3-f196efc1795f',
+		        'uuid' => Str::orderedUuid()->toString(), //'2b6c0d95-e985-4afb-aed3-f196efc1795f',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2707,7 +2708,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-04-26 11:51:26',
-		        'uuid' => '6c73d8a6-a865-45e6-ba04-5464750091a4',
+		        'uuid' => Str::orderedUuid()->toString(), //'6c73d8a6-a865-45e6-ba04-5464750091a4',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2729,7 +2730,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-12-27 20:26:03',
-		        'uuid' => 'c1feea19-f03a-4b60-8023-5edbca5c6d20',
+		        'uuid' => Str::orderedUuid()->toString(), //'c1feea19-f03a-4b60-8023-5edbca5c6d20',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2752,7 +2753,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 5,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-01-17 23:15:30',
-		        'uuid' => 'c873bdd2-9556-4bcf-a0ef-8a389fa290d9',
+		        'uuid' => Str::orderedUuid()->toString(), //'c873bdd2-9556-4bcf-a0ef-8a389fa290d9',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2775,7 +2776,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 5,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-12-27 20:34:24',
-		        'uuid' => 'bb486a8a-bb18-4177-a8f9-299db8940f26',
+		        'uuid' => Str::orderedUuid()->toString(), //'bb486a8a-bb18-4177-a8f9-299db8940f26',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2798,7 +2799,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 5,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-03-08 06:58:38',
-		        'uuid' => '04401dbb-e2b8-42c6-a980-e25554448379',
+		        'uuid' => Str::orderedUuid()->toString(), //'04401dbb-e2b8-42c6-a980-e25554448379',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2821,7 +2822,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 5,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-04-26 11:51:53',
-		        'uuid' => 'f8bea0cb-3fe8-4a64-b270-92d5565cf97f',
+		        'uuid' => Str::orderedUuid()->toString(), //'f8bea0cb-3fe8-4a64-b270-92d5565cf97f',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2844,7 +2845,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 5,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-04-26 11:52:44',
-		        'uuid' => '78ae45b0-c31e-453f-b3a1-25fac533ec89',
+		        'uuid' => Str::orderedUuid()->toString(), //'78ae45b0-c31e-453f-b3a1-25fac533ec89',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2865,7 +2866,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-12-27 20:55:45',
-		        'uuid' => '5ad7db55-91f5-477d-89e5-43a4036fcdb3',
+		        'uuid' => Str::orderedUuid()->toString(), //'5ad7db55-91f5-477d-89e5-43a4036fcdb3',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2886,7 +2887,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 1,
 		        'updated_at' => '2022-02-09 22:17:47',
-		        'uuid' => 'd9b68e42-17c9-4459-aacf-32081c9957c2',
+		        'uuid' => Str::orderedUuid()->toString(), //'d9b68e42-17c9-4459-aacf-32081c9957c2',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2907,7 +2908,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 3,
 		        'updated_at' => '2022-03-08 06:57:48',
-		        'uuid' => '85372934-6e7b-4206-b5fa-60c8f7bf1df4',
+		        'uuid' => Str::orderedUuid()->toString(), //'85372934-6e7b-4206-b5fa-60c8f7bf1df4',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2928,7 +2929,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-04-14 21:33:48',
-		        'uuid' => '023c40ec-6a50-4296-a04b-c126c06f40aa',
+		        'uuid' => Str::orderedUuid()->toString(), //'023c40ec-6a50-4296-a04b-c126c06f40aa',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2949,7 +2950,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-04-26 11:51:44',
-		        'uuid' => '78a3e399-b5f7-4903-97f3-3f5bdec4bffd',
+		        'uuid' => Str::orderedUuid()->toString(), //'78a3e399-b5f7-4903-97f3-3f5bdec4bffd',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2970,7 +2971,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-04-26 11:52:35',
-		        'uuid' => 'd58edde2-cdc2-439d-b8d5-7c00e3d58c3d',
+		        'uuid' => Str::orderedUuid()->toString(), //'d58edde2-cdc2-439d-b8d5-7c00e3d58c3d',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -2991,7 +2992,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 5,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2021-12-27 21:05:15',
-		        'uuid' => 'b5eabb83-ae72-4efb-9341-6b9c2f9ce758',
+		        'uuid' => Str::orderedUuid()->toString(), //'b5eabb83-ae72-4efb-9341-6b9c2f9ce758',
 		    ],
 		    [
 		        'catering' => 'Robi\'s Catering',
@@ -3012,7 +3013,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-04-26 11:50:35',
-		        'uuid' => '9f64ae2d-ec94-4e72-ac59-4b101745493c',
+		        'uuid' => Str::orderedUuid()->toString(), //'9f64ae2d-ec94-4e72-ac59-4b101745493c',
 		    ],
 		    [
 		        'catering' => 'Getränke',
@@ -3034,7 +3035,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 5,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-01-28 02:43:25',
-		        'uuid' => '636fad9e-14cd-48c1-871f-3740dcc62331',
+		        'uuid' => Str::orderedUuid()->toString(), //'636fad9e-14cd-48c1-871f-3740dcc62331',
 		    ],
 		    [
 		        'catering' => 'Selbstversorger',
@@ -3056,7 +3057,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 10,
 		        'registrations_reserved' => 1,
 		        'updated_at' => '2022-02-09 22:17:19',
-		        'uuid' => 'cb7cce3c-88fd-4933-8f63-d507cb104e2a',
+		        'uuid' => Str::orderedUuid()->toString(), //'cb7cce3c-88fd-4933-8f63-d507cb104e2a',
 		    ],
 		    [
 		        'catering' => 'Getränke',
@@ -3077,7 +3078,7 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 6,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-03-10 22:43:00',
-		        'uuid' => '2bb99284-c285-490d-8040-a1d3a09eb80d',
+		        'uuid' => Str::orderedUuid()->toString(), //'2bb99284-c285-490d-8040-a1d3a09eb80d',
 		    ],
 		    [
 		        'catering' => 'Getränke und Imbiss',
@@ -3099,9 +3100,9 @@ class EventsTableSeeder extends Seeder
 		        'registrations_limit' => 4,
 		        'registrations_reserved' => 0,
 		        'updated_at' => '2022-04-14 21:13:26',
-		        'uuid' => '7627e184-0603-40a9-a8eb-d05fe1d0ed58',
+		        'uuid' => Str::orderedUuid()->toString(), //'7627e184-0603-40a9-a8eb-d05fe1d0ed58',
 		    ],
 		]);
-        
+
     }
 }

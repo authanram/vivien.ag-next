@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
@@ -12,31 +13,34 @@ use Laravel\Nova\Fields\Number;
 
 class Tag extends Resource
 {
-    protected static array $orderBy = [
-        'type' => 'asc',
-        'name->de' => 'asc',
-    ];
-
     public static string $model = \App\Models\Tag::class;
 
     public static $title = 'name';
 
     public static $search = [
-        'id',
         'name',
         'slug',
     ];
 
+    protected static array $orderBy = [
+        'type' => 'asc',
+        'name->de' => 'asc',
+    ];
+
     public function fields(Request $request): array
     {
+        $table = $this->model()?->getTable();
+
         $fields = [
-            ID::make(__('Id'), 'id')
-                ->onlyOnDetail()
+            ID::make(__('ID'), 'id')
             ,
             Text::make(__('Name'), 'name')
                 ->sortable()
             ,
-            Text::make(__('Slug'), 'slug')
+            Slug::make(__('Slug'), 'slug')
+                ->from('name')
+                ->creationRules("unique:$table,slug")
+                ->updateRules("unique:$table,slug,{{resourceId}}")
                 ->sortable()
                 ->exceptOnForms()
             ,

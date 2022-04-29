@@ -15,17 +15,13 @@ class Attachment extends Resource
     public static $title = 'name';
 
     public static $search = [
-        'id',
         'name',
     ];
 
     public function fields(Request $request): array
     {
         return [
-            ID::make()->hideFromIndex()
-            ,
-            Text::make(__('Uuid'), 'uuid')
-                ->exceptOnForms()
+            ID::make()
             ,
             VaporFile::make(__('File'), 'file')
                 ->rules('required')

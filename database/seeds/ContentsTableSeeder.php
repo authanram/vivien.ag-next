@@ -4,12 +4,12 @@ use Illuminate\Database\Seeder;
 
 class ContentsTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        
-        \DB::table('contents')->delete();
-        
-        \DB::table('contents')->insert([
+
+        DB::table('contents')->delete();
+
+        DB::table('contents')->insert([
 		    [
 		        'body' => '## Themenangebote für'."\n"
 		            ."\n"
@@ -426,6 +426,6 @@ class ContentsTableSeeder extends Seeder
 		        'updated_at' => '2020-12-09 22:53:51',
 		    ],
 		]);
-        
+
     }
 }

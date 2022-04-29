@@ -3,19 +3,17 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 
-class Staff extends Resource
+class StaffProfile extends Resource
 {
-    protected static array $orderBy = ['name' => 'asc'];
-
-    public static string $model = \App\Models\Staff::class;
+    public static string $model = \App\Models\StaffProfile::class;
 
     public static $title = 'name';
 
     public static $search = [
-        'id',
         'name',
         'occupation',
     ];
@@ -23,10 +21,7 @@ class Staff extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make()->hideFromIndex()
-            ,
-            Text::make(__('Uuid'), 'uuid')
-                ->onlyOnDetail()
+            ID::make()
             ,
             Text::make(__('Name'), 'name')
                 ->required()
@@ -35,16 +30,19 @@ class Staff extends Resource
             ,
             Text::make(__('ImageUrl'), 'image_url')
             ,
+            BelongsToMany::make(__('Events'), 'events', Event::class)
+                ->hideFromIndex()
+            ,
         ];
     }
 
     public static function label(): string
     {
-        return __('Staffs');
+        return __('Staff Profiles');
     }
 
     public static function singularLabel(): string
     {
-        return __('Staff');
+        return __('Staff Profile');
     }
 }

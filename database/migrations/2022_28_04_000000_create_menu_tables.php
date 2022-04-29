@@ -21,7 +21,6 @@ class CreateMenuTables extends Migration
             $table->foreignId('route_id')->constrained('routes')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('color_id')->nullable()->constrained('colors');
             $table->string('label');
-            $table->string('dropdown_breakpoint')->nullable();
             $table->smallInteger('order_column');
             $table->boolean('published');
             $table->timestamps();

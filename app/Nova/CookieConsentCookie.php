@@ -17,7 +17,6 @@ class CookieConsentCookie extends Resource
     public static $title = 'cookie_name';
 
     public static $search = [
-        'id',
         'cookie_name',
         'cookie_purpose',
         'cookie_type',
@@ -26,8 +25,7 @@ class CookieConsentCookie extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make(__('Id'), 'id')
-                ->onlyOnDetail()
+            ID::make(__('ID'), 'id')
             ,
             Text::make(__('Cookie Name'), 'cookie_name')
                 ->rules('required')

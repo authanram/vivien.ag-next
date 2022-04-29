@@ -10,27 +10,23 @@ use Laravel\Nova\Fields\Textarea;
 
 class Location extends Resource
 {
-    protected static array $orderBy = ['name' => 'asc'];
-
     public static string $model = \App\Models\Location::class;
 
     public static $title = 'name';
 
     public static $search = [
-        'id',
         'name',
         'description',
         'address',
         'url',
     ];
 
+    protected static array $orderBy = ['name' => 'asc'];
+
     public function fields(Request $request): array
     {
         return [
-            ID::make()->hideFromIndex()
-            ,
-            Text::make(__('Uuid'), 'uuid')
-                ->onlyOnDetail()
+            ID::make()
             ,
             Text::make(__('Name'), 'name')
                 ->rules('required')

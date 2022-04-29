@@ -13,7 +13,6 @@ class StaticAttribute extends Model
         'slug',
         'value',
         'data',
-        'locked',
     ];
 
     protected $attributes = [

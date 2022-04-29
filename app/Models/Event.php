@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -24,7 +25,7 @@ class Event extends Model
         'event_template_id',
         'location_id',
         'catering_id',
-        'staff_id',
+        'staff_profile_id',
         'description',
         'date_from',
         'date_to',
@@ -190,9 +191,9 @@ class Event extends Model
         return $this->belongsTo(Location::class);
     }
 
-    public function staff(): BelongsTo
+    public function staffProfiles(): BelongsToMany
     {
-        return $this->belongsTo(Staff::class);
+        return $this->belongsToMany(StaffProfile::class, 'staff_events');
     }
 
     public function user(): BelongsTo

@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Staff extends Model
+class StaffProfile extends Model
 {
     use SoftDeletes;
 
@@ -15,8 +15,8 @@ class Staff extends Model
         'image_url',
     ];
 
-    public function events(): HasMany
+    public function events(): BelongsToMany
     {
-        return $this->hasMany(Event::class);
+        return $this->belongsToMany(Event::class);
     }
 }

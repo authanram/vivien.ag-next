@@ -4,12 +4,12 @@ use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        
-        \DB::table('users')->delete();
-        
-        \DB::table('users')->insert([
+
+        DB::table('users')->delete();
+
+        DB::table('users')->insert([
 		    [
 		        'created_at' => '2022-04-29 02:35:55',
 		        'email' => 'authanram@gmail.com',
@@ -41,6 +41,6 @@ class UsersTableSeeder extends Seeder
 		        'updated_at' => '2022-04-29 02:35:55',
 		    ],
 		]);
-        
+
     }
 }

@@ -9,25 +9,21 @@ use Laravel\Nova\Fields\Text;
 
 class Catering extends Resource
 {
-    protected static array $orderBy = ['name' => 'asc'];
-
-    public static $model = \App\Models\Catering::class;
+    public static string $model = \App\Models\Catering::class;
 
     public static $title = 'name';
 
     public static $search = [
-        'id',
         'name',
         'note',
     ];
 
+    protected static array $orderBy = ['name' => 'asc'];
+
     public function fields(Request $request): array
     {
         return [
-            ID::make()->hideFromIndex()
-            ,
-            Text::make(__('Uuid'), 'uuid')
-                ->onlyOnDetail()
+            ID::make()
             ,
             Text::make(__('Name'), 'name')
                 ->rules('required')
