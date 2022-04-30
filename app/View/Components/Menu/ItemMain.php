@@ -4,7 +4,7 @@ namespace App\View\Components\Menu;
 
 class ItemMain extends MenuItem
 {
-    protected static string $view = 'components.menu.main.item';
+    protected static string $alias = 'components.menu.main.item';
 
     protected static function classList(): array
     {

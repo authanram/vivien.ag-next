@@ -4,7 +4,7 @@ namespace App\View\Components\Menu;
 
 final class ItemFooter extends MenuItem
 {
-    protected static string $view = 'components.menu.footer.item';
+    protected static string $alias = 'components.menu.footer.item';
 
     protected static function classList(): array
     {
