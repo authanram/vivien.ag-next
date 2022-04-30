@@ -17,13 +17,25 @@ abstract class MenuItem extends Component
     abstract protected static function classListActive(): array;
     abstract protected static function classListNotActive(): array;
 
+    protected bool $isActive;
+    protected string $color;
+
+    public function __construct(Model $model, bool $active = null, ?string $color = null)
+    {
+        $this->isActive = $active ?? $model->presenter()->isActive();
+
+        $this->color = $color ?? $model->presenter()->color();
+
+        parent::__construct($model);
+    }
+
     protected function getExtraAttributes(): array
     {
         return [
             'x-init' => "\$nextTick(() => \$refs.root.classList.remove('transition-none'));",
             'x-ref' => 'root',
             'class' => $this->classAttribute(),
-            'href' => $this->presenter()->href() ?? '#',
+            'href' => $this->presenter()->href(),
         ];
     }
 
@@ -43,7 +55,7 @@ abstract class MenuItem extends Component
 
     protected function classAttribute(): string
     {
-        $merge = $this->presenter()->isActive()
+        $merge = $this->isActive
             ? static::classListActive()
             : static::classListNotActive();
 
@@ -51,7 +63,7 @@ abstract class MenuItem extends Component
 
         $classListString = implode(' ', $classList);
 
-        return str_replace('COLOR', $this->presenter()->color(), $classListString);
+        return str_replace('COLOR', $this->color, $classListString);
     }
 
     protected function presenter(): Optional|MenuItemPresenter

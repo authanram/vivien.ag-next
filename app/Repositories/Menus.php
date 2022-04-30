@@ -53,7 +53,10 @@ final class Menus extends Repository
         $callback = static fn (Model $menu) => $menu
             ->menuItems
             ->sortBy('order_column')
-            ->values();
+            ->values()
+            ->mapWithKeys(fn (MenuItem $menuItem, $key) => [
+                $menuItem->route?->route ?? $key => $menuItem,
+            ]);
 
         $menu = $this->builder()
             ->where('slug', $slug)

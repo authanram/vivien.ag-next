@@ -10,10 +10,7 @@ use App\Services\EventService;
 use App\Services\ParsedownService;
 use App\Services\SiteService;
 use App\Util;
-use App\View\Components\IconRenderer;
-use App\View\Components\Menu;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -35,11 +32,6 @@ class AppServiceProvider extends ServiceProvider
         date_default_timezone_set('Europe/Berlin');
         setlocale(LC_TIME, 'de_DE');
         Carbon::setLocale(config('app.locale'));
-
-        Blade::component('icon-renderer', IconRenderer::class);
-        Blade::component('menu-item-brand', Menu\ItemBrand::class);
-        Blade::component('menu-item-footer', Menu\ItemFooter::class);
-        Blade::component('menu-item-main', Menu\ItemMain::class);
     }
 
     private function registerServiceProviders(): void

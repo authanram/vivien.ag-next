@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 
+/**
+ * @method Presenter presenter()
+ */
 class MenuItem extends Model implements Sortable
 {
     use SortableTrait;

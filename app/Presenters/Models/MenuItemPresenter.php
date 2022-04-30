@@ -10,14 +10,14 @@ use App\Presenters\Presenter;
  */
 class MenuItemPresenter extends Presenter
 {
-    public function href(): string
-    {
-        return $this->route() ? route($this->route()) : '#';
-    }
-
     public function isActive(): bool
     {
         return request()->route()?->getName() === $this->route();
+    }
+
+    public function href(): string
+    {
+        return $this->route() ? route($this->route()) : '#';
     }
 
     public function color(): ?string
@@ -25,7 +25,7 @@ class MenuItemPresenter extends Presenter
         return $this->entity->color?->color;
     }
 
-    public function route(): ?string
+    protected function route(): ?string
     {
         return $this->entity->route?->route;
     }

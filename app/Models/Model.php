@@ -20,7 +20,7 @@ class Model extends \Illuminate\Database\Eloquent\Model
     public function presenter(): Optional|Presenter
     {
         try {
-            return parent::present();
+            return $this->present();
         } catch (PresenterException) {
             return optional();
         }
