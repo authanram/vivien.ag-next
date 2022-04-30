@@ -15,7 +15,7 @@ return [
 
         MenuSection::make(__('Events'), [
             MenuItem::resource(Resources\EventRegistration::class),
-            MenuItem::resource(Resources\Event::class)->name(__('Event Dates')),
+            MenuItem::resource(Resources\Event::class)->name(__('Events Dates')),
             MenuItem::resource(Resources\EventTemplate::class),
         ])->collapsable()->icon('calendar'),
 
@@ -56,7 +56,7 @@ return [
             MenuItem::resource(Resources\Attachment::class),
             MenuItem::resource(Resources\ImageCoords::class),
             MenuItem::resource(Resources\Color::class),
-            #MenuItem::externalLink('External Link', '#'),
+            #ItemFooter::externalLink('External Link', '#'),
         ])->collapsable()->icon('collection'),
     ],
 

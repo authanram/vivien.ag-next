@@ -52,7 +52,7 @@ class Event extends Resource
             Text::make(__('UUID'), 'uuid')
                 ->onlyOnDetail()
             ,
-            BelongsTo::make(__('Event Template'), 'eventTemplate', EventTemplate::class)
+            BelongsTo::make(__('Events Template'), 'eventTemplate', EventTemplate::class)
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()
@@ -160,6 +160,6 @@ class Event extends Resource
 
     public static function singularLabel(): string
     {
-        return __('Event');
+        return __('Events');
     }
 }

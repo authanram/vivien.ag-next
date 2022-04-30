@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Presenters\Models\MenuItemPresenter as Presenter;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
@@ -9,6 +10,8 @@ use Spatie\EloquentSortable\SortableTrait;
 class MenuItem extends Model implements Sortable
 {
     use SortableTrait;
+
+    protected string $presenter = Presenter::class;
 
     protected $fillable = [
         'menu_id',
@@ -29,6 +32,11 @@ class MenuItem extends Model implements Sortable
         'sort_on_has_many' => true,
     ];
 
+    public function color(): BelongsTo
+    {
+        return $this->belongsTo(Color::class);
+    }
+
     public function menu(): BelongsTo
     {
         return $this->belongsTo(Menu::class);
@@ -37,10 +45,5 @@ class MenuItem extends Model implements Sortable
     public function route(): BelongsTo
     {
         return $this->belongsTo(Route::class);
-    }
-
-    public function color(): BelongsTo
-    {
-        return $this->belongsTo(Color::class);
     }
 }

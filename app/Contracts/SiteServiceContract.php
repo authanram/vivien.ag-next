@@ -2,9 +2,12 @@
 
 namespace App\Contracts;
 
-use App\Models\Menu;
+use App\Menus;
+use App\Repositories;
 
 interface SiteServiceContract
 {
-    public static function menu(): Menu|string;
+    public function menus(): Menus;
+
+    public function repositories(): Repositories;
 }

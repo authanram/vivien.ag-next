@@ -51,7 +51,7 @@ class Route extends Resource
                 ->rules('required')
                 ->sortable()
             ,
-            HasMany::make(__('Menu Items'), 'menuItems', MenuItem::class)
+            HasMany::make(__('Menus Items'), 'menuItems', MenuItem::class)
             ,
             BelongsToMany::make(__('Contents'), 'contents', Content::class)
             ,

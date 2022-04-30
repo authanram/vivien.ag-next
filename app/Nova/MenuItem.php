@@ -41,7 +41,7 @@ class MenuItem extends Resource
                 ->rules('required')
                 ->sortable()
             ,
-            BelongsTo::make(__('Menu'), 'Menu', Menu::class)
+            BelongsTo::make(__('Menus'), 'Menus', Menu::class)
                 ->required()
                 ->withoutTrashed()
                 ->showCreateRelationButton()
@@ -80,11 +80,11 @@ class MenuItem extends Resource
 
     public static function label(): string
     {
-        return __('Menu Items');
+        return __('Menus Items');
     }
 
     public static function singularLabel(): string
     {
-        return __('Menu Item');
+        return __('Menus ItemFooter');
     }
 }

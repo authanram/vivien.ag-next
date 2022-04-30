@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Presenters\Models\EventPresenter as Presenter;
 use Carbon\Carbon;
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Builder;
@@ -15,9 +16,11 @@ use stdClass;
 
 class Event extends Model
 {
-    use HasTags;
     use Concerns\HasUuid;
+    use HasTags;
     use SoftDeletes;
+
+    protected string $presenter = Presenter::class;
 
     protected $fillable = [
         'uuid',
