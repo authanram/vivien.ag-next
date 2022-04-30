@@ -4,7 +4,6 @@ namespace App\Presenters\Models;
 
 use App\Models\MenuItem;
 use App\Presenters\Presenter;
-use Illuminate\Http\Request;
 
 /**
  * @property MenuItem $entity
@@ -16,9 +15,9 @@ class MenuItemPresenter extends Presenter
         return $this->route() ? route($this->route()) : '#';
     }
 
-    public function isActive(Request $request): bool
+    public function isActive(): bool
     {
-        return $request->route()?->getName() === $this->route();
+        return request()->route()?->getName() === $this->route();
     }
 
     public function color(): ?string

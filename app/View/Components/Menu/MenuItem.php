@@ -5,7 +5,6 @@ namespace App\View\Components\Menu;
 use App\Models\MenuItem as Model;
 use App\Presenters\Models\MenuItemPresenter;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 use Illuminate\Support\Optional;
 use Illuminate\View\Component;
 use InvalidArgumentException;
@@ -13,8 +12,6 @@ use InvalidArgumentException;
 abstract class MenuItem extends Component
 {
     protected static string $view;
-
-    protected Request $request;
 
     abstract protected static function classList(): array;
     abstract protected static function classListActive(): array;
@@ -25,16 +22,9 @@ abstract class MenuItem extends Component
         return static::$view ?? null;
     }
 
-    public function __construct(protected Model $model)
+    public function __construct(public Model $model)
     {
         $this->attributes = $this->newAttributeBag();
-    }
-
-    public function setRequest(Request $request): static
-    {
-        $this->request = $request;
-
-        return $this;
     }
 
     public function href(): string
@@ -60,7 +50,7 @@ abstract class MenuItem extends Component
 
     protected function classAttribute(): string
     {
-        $merge = $this->presenter()->isActive($this->request)
+        $merge = $this->presenter()->isActive()
             ? static::classListActive()
             : static::classListNotActive();
 

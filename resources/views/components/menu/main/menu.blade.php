@@ -5,8 +5,8 @@
     <x-container class="flex h-16 items-center relative z-20">
         <nav class="flex grow h-full items-center">
             {{--<x-menu-item-brand :model="Site::repositories()->menuItems()->where()" />--}}
-            @foreach (Site::menus()->main() as $item)
-                {{ $item->render() }}
+            @foreach (Site::menus()->main() as $menuItem)
+                <x-menu-item-main :model="$menuItem" />
             @endforeach
         </nav>
     </x-container>
