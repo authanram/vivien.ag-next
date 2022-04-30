@@ -1,4 +1,4 @@
-@props(['data' => [], 'tag' => 'div'])
+@props(['data' => [], 'as' => 'div'])
 
 @php($xData = collect()
     ->add($attributes->get('x-data'))
@@ -7,6 +7,6 @@
     ->filter()
     ->implode(', ...'))
 
-<{{ $tag }} {{ $attributes->except(['x-data', 'x-component'])->merge([
+<{{ $as }} {{ $attributes->except(['x-data', 'x-component'])->merge([
     'x-data' => $xData !== '[]' ? '{...'.$xData.'}' : '{}',
-]) }}>{{ $slot }}</{{ $tag }}>{{--$nextTick(() => $refs.root.classList.remove('transition-none'));--}}
+]) }}>{{ $slot }}</{{ $as }}>{{--$nextTick(() => $refs.root.classList.remove('transition-none'));--}}

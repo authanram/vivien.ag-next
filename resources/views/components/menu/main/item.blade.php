@@ -1,3 +1,3 @@
-<x-alpinejs {{ $attributes->merge(['class' => $classAttribute]) }}>
+<x-alpinejs {{ $attributes->merge($extraAttributes->toArray()) }} as="a">
     {{ $text }}
 </x-alpinejs>
