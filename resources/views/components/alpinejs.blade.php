@@ -9,4 +9,4 @@
 
 <{{ $as }} {{ $attributes->except(['x-data', 'x-component'])->merge([
     'x-data' => $xData !== '[]' ? '{...'.$xData.'}' : '{}',
-]) }}>{{ $slot }}</{{ $as }}>{{--$nextTick(() => $refs.root.classList.remove('transition-none'));--}}
+]) }}>{{ $slot }}</{{ $as }}>

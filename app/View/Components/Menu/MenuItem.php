@@ -20,6 +20,8 @@ abstract class MenuItem extends Component
     protected function getExtraAttributes(): array
     {
         return [
+            'x-init' => "\$nextTick(() => \$refs.root.classList.remove('transition-none'));",
+            'x-ref' => 'root',
             'class' => $this->classAttribute(),
             'href' => $this->presenter()->href() ?? '#',
         ];
