@@ -15,7 +15,7 @@ return [
 
         MenuSection::make(__('Events'), [
             MenuItem::resource(Resources\EventRegistration::class),
-            MenuItem::resource(Resources\Event::class)->name(__('Events Dates')),
+            MenuItem::resource(Resources\Event::class),
             MenuItem::resource(Resources\EventTemplate::class),
         ])->collapsable()->icon('calendar'),
 

@@ -56,23 +56,28 @@ class Event extends Resource
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()
+                ->showOnPreview()
             ,
             Textarea::make(__('Description'), 'description')
                 ->rows(2)
                 ->hideFromIndex()
+                ->showOnPreview()
             ,
             BelongsTo::make(__('Location'), 'location', Location::class)
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()
+                ->showOnPreview()
             ,
             DateTime::make(__('Date From'), 'date_from')
                 ->rules('required')
                 ->sortable()
+                ->showOnPreview()
             ,
             DateTime::make(__('Date To'), 'date_to')
                 ->rules('required')
                 ->sortable()
+                ->showOnPreview()
             ,
             Number::make(__('Registrations Limit'), 'registrations_limit')
                 ->resolveUsing(function () {
@@ -84,6 +89,7 @@ class Event extends Resource
                 ->min(1)
                 ->help(__('Registrations Limit (excluding staff).'))
                 ->exceptOnForms()
+                ->showOnPreview()
             ,
             Number::make(__('Registrations Limit'), 'registrations_limit')
                 ->default(10)
@@ -92,6 +98,7 @@ class Event extends Resource
                 ->min(1)
                 ->help(__('Registrations Limit (excluding staff).'))
                 ->onlyOnForms()
+                ->showOnPreview()
             ,
             Number::make(__('Registrations Reserved'), 'registrations_reserved')
                 ->withMeta(['value' => $this->model()?->getAttribute('registrations_reserved') ?? 0])
@@ -99,23 +106,28 @@ class Event extends Resource
                 ->default(0)
                 ->sortable()
                 ->hideFromIndex()
+                ->showOnPreview()
             ,
             Number::make(__('Price'), 'price')
                 ->rules('nullable', 'numeric')
+                ->showOnPreview()
             ,
             Text::make(__('Price Note'), 'price_note')
                 ->hideFromIndex()
+                ->showOnPreview()
             ,
             BelongsTo::make(__('Catering'), 'catering', Catering::class)
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()
                 ->hideFromIndex()
+                ->showOnPreview()
             ,
             Tags::make('Tags')
                 ->type('event')
                 ->withLinkToTagResource()
                 ->hideFromIndex()
+                ->showOnPreview()
             ,
 //            BooleanGroup::make('Tags')->options([
 //                'create' => 'Create',
@@ -129,11 +141,14 @@ class Event extends Resource
                 ->sortable()
                 ->trueValue(true)
                 ->falseValue(false)
+                ->showOnPreview()
             ,
             BelongsToMany::make(__('Lead'), 'staffProfiles', StaffProfile::class)
                 ->hideFromIndex()
+                ->showOnPreview()
             ,
             HasMany::make(__('Registrations'), 'eventRegistrations', EventRegistration::class)
+                ->showOnPreview()
             ,
         ];
     }

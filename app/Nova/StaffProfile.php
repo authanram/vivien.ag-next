@@ -38,11 +38,11 @@ class StaffProfile extends Resource
 
     public static function label(): string
     {
-        return __('Staff Profiles');
+        return __('Staff');
     }
 
     public static function singularLabel(): string
     {
-        return __('Staff Profile');
+        return __('Staff');
     }
 }
