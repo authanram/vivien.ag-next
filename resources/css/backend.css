@@ -1,0 +1,16 @@
+div#nova > div:last-of-type > div:last-of-type > div:last-of-type {
+    display: none;
+}
+
+a.no-underline:hover,
+.link-default:hover {
+    text-decoration: underline;
+}
+
+.v-popper--has-tooltip > svg {
+    pointer-events: none !important;
+}
+
+.v-popper__arrow-container {
+    display: none !important;
+}

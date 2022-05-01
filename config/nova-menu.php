@@ -14,9 +14,9 @@ return [
             ->icon('chart-bar'),
 
         MenuSection::make(__('Events'), [
-            MenuItem::resource(Resources\EventRegistration::class),
             MenuItem::resource(Resources\Event::class),
             MenuItem::resource(Resources\EventTemplate::class),
+            MenuItem::resource(Resources\EventRegistration::class),
         ])->collapsable()->icon('calendar'),
 
         MenuSection::make(__('Resources'), [

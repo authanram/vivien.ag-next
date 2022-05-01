@@ -28,7 +28,7 @@ class CreateEventTables extends Migration
             $table->text('description')->nullable();
             $table->timestamp('date_from')->nullable();
             $table->timestamp('date_to')->nullable();
-            $table->smallInteger('registrations_limit')->default(10);
+            $table->smallInteger('registration_limit')->default(10);
             $table->smallInteger('registrations_reserved')->nullable();
             $table->float('price')->nullable();
             $table->string('price_note')->nullable();

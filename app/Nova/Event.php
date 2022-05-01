@@ -8,10 +8,13 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Line;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Stack;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Spatie\TagsField\Tags;
@@ -52,7 +55,7 @@ class Event extends Resource
             Text::make(__('UUID'), 'uuid')
                 ->onlyOnDetail()
             ,
-            BelongsTo::make(__('Events Template'), 'eventTemplate', EventTemplate::class)
+            BelongsTo::make(__('Template'), 'eventTemplate', EventTemplate::class)
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()
@@ -72,31 +75,33 @@ class Event extends Resource
             DateTime::make(__('Date From'), 'date_from')
                 ->rules('required')
                 ->sortable()
+                ->onlyOnForms()
                 ->showOnPreview()
             ,
             DateTime::make(__('Date To'), 'date_to')
                 ->rules('required')
                 ->sortable()
+                ->onlyOnForms()
                 ->showOnPreview()
             ,
-            Number::make(__('Registrations Limit'), 'registrations_limit')
-                ->resolveUsing(function () {
-                    return $this->registrations_reserved.' / '.$this->registrations_limit;
-                })
+            Stack::make(__('Date From/To'), [
+                Line::make(null, static function ($model) {
+                    return $model->presenter()->dateFrom();
+                })->extraClasses('font-bold text-sm'),
+                Line::make(null, static function ($model) {
+                    return $model->presenter()->dateTo();
+                })->asSmall(),
+            ]),
+            Line::make(__('Registrations'), static function ($model) {
+                return $model->registrations_reserved.' / '.$model->registration_limit;
+            })->exceptOnForms()->showOnPreview()->extraClasses('text-sm')
+            ,
+            Number::make(__('Registration Limit'), 'registration_limit')
                 ->default(10)
                 ->rules('required', 'numeric', 'min:1', 'gte:registrations_reserved')
                 ->sortable()
                 ->min(1)
-                ->help(__('Registrations Limit (excluding staff).'))
-                ->exceptOnForms()
-                ->showOnPreview()
-            ,
-            Number::make(__('Registrations Limit'), 'registrations_limit')
-                ->default(10)
-                ->rules('required', 'numeric', 'min:1', 'gte:registrations_reserved')
-                ->sortable()
-                ->min(1)
-                ->help(__('Registrations Limit (excluding staff).'))
+                ->help(__('Registration Limit (excluding staff).'))
                 ->onlyOnForms()
                 ->showOnPreview()
             ,
@@ -108,7 +113,8 @@ class Event extends Resource
                 ->hideFromIndex()
                 ->showOnPreview()
             ,
-            Number::make(__('Price'), 'price')
+            Currency::make(__('Price'), 'price')
+                ->currency('EUR')
                 ->rules('nullable', 'numeric')
                 ->showOnPreview()
             ,

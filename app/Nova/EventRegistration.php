@@ -89,11 +89,11 @@ class EventRegistration extends Resource
 
     public static function label(): string
     {
-        return __('Registrations');
+        return __('Attendee');
     }
 
     public static function singularLabel(): string
     {
-        return __('Registration');
+        return __('Attendees');
     }
 }

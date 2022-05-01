@@ -32,7 +32,7 @@ class Event extends Model
         'description',
         'date_from',
         'date_to',
-        'registrations_maximum',
+        'registration_limit',
         'registrations_reserved',
         'price',
         'price_note',
@@ -46,6 +46,7 @@ class Event extends Model
         'date_duration_days',
         'date_from_object',
         'date_from_readable',
+        'date_to_readable',
         'date_to_object',
     ];
 
@@ -76,33 +77,38 @@ class Event extends Model
 
     public function getCreatedAtReadableAttribute(): string
     {
-        return now($this->created_at);
+        return $this->attributes['created_at'];
     }
 
     public function getDateFromObjectAttribute(): stdClass
     {
-        $date = now($this->attributes['date_from']);
+        $date = $this->attributes['date_from'];
 
         return static::makeDateObject($date);
     }
 
     public function getDateFromReadableAttribute(): string
     {
-        return now($this->attributes['date_from']);
+        return $this->dateFormat('date_from');
+    }
+
+    public function getDateToReadableAttribute(): string
+    {
+        return $this->dateFormat('date_to');
     }
 
     public function getDateToObjectAttribute(): stdClass
     {
-        $date = now($this->attributes['date_to']);
+        $date = $this->attributes['date_to'];
 
         return static::makeDateObject($date);
     }
 
     public function getDateDurationAttribute(): string
     {
-        $start = now($this->attributes['date_from']);
+        $start = $this->attributes['date_from'];
 
-        $end = now($this->attributes['date_to']);
+        $end = $this->attributes['date_to'];
 
         $formatDays = '%d ' . trans_choice('project.time.day', $start->diff($end)->d);
 
@@ -121,9 +127,9 @@ class Event extends Model
 
     public function getDateDurationDaysAttribute(): int
     {
-        $start = now($this->attributes['date_from']);
+        $start = $this->attributes['date_from'];
 
-        $end = now($this->attributes['date_to']);
+        $end = $this->attributes['date_to'];
 
         return $start->diff($end)->d;
     }
