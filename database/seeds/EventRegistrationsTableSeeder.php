@@ -25,7 +25,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Maulbetsch',
 		        'updated_at' => '2021-05-17 18:52:37',
 		        'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36',
-		        'id' => '003955a5-1bb2-4c8c-9aa3-21052eb0a029',
+		        'uuid' => '003955a5-1bb2-4c8c-9aa3-21052eb0a029',
 		    ],
 		    [
 		        'created_at' => '2022-01-13 20:53:01',
@@ -42,7 +42,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Schneider',
 		        'updated_at' => '2022-01-13 20:53:01',
 		        'user_agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:95.0) Gecko/20100101 Firefox/95.0',
-		        'id' => '11839af1-585d-44f7-b761-de8af89d4eb7',
+		        'uuid' => '11839af1-585d-44f7-b761-de8af89d4eb7',
 		    ],
 		    [
 		        'created_at' => '2022-02-09 22:17:47',
@@ -59,7 +59,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Kolenko',
 		        'updated_at' => '2022-02-09 22:17:47',
 		        'user_agent' => 'Mozilla/5.0 (Android 12; Mobile; rv:96.0) Gecko/96.0 Firefox/96.0',
-		        'id' => '1382627d-9472-4fe6-9c59-7fcfbf8c9f90',
+		        'uuid' => '1382627d-9472-4fe6-9c59-7fcfbf8c9f90',
 		    ],
 		    [
 		        'created_at' => '2021-03-28 20:54:13',
@@ -76,7 +76,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Thomas',
 		        'updated_at' => '2021-03-28 20:54:13',
 		        'user_agent' => 'Mozilla/5.0 (Linux; Android 10; SAMSUNG SM-A217F) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/13.2 Chrome/83.0.4103.106 Mobile Safari/537.36',
-		        'id' => '13b06618-ed28-4826-947b-adcf4a3f20ad',
+		        'uuid' => '13b06618-ed28-4826-947b-adcf4a3f20ad',
 		    ],
 		    [
 		        'created_at' => '2022-02-01 13:54:35',
@@ -93,7 +93,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Göpfert',
 		        'updated_at' => '2022-02-01 13:54:35',
 		        'user_agent' => 'Mozilla/5.0 (iPad; CPU OS 12_5_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.2 Mobile/15E148 Safari/604.1',
-		        'id' => '17382267-84c3-40df-9911-8a75d27a1988',
+		        'uuid' => '17382267-84c3-40df-9911-8a75d27a1988',
 		    ],
 		    [
 		        'created_at' => '2022-01-04 22:03:30',
@@ -110,7 +110,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Kolenko',
 		        'updated_at' => '2022-01-04 22:03:30',
 		        'user_agent' => 'Mozilla/5.0 (Android 11; Mobile; rv:95.0) Gecko/95.0 Firefox/95.0',
-		        'id' => '1dbb8419-c731-4b59-8f59-988433385b0a',
+		        'uuid' => '1dbb8419-c731-4b59-8f59-988433385b0a',
 		    ],
 		    [
 		        'created_at' => '2021-02-21 11:30:00',
@@ -127,7 +127,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Bartoloni',
 		        'updated_at' => '2021-02-21 11:30:00',
 		        'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:85.0) Gecko/20100101 Firefox/85.0',
-		        'id' => '20113dbb-a832-4b5e-b29c-00c1c82c9a30',
+		        'uuid' => '20113dbb-a832-4b5e-b29c-00c1c82c9a30',
 		    ],
 		    [
 		        'created_at' => '2021-03-20 10:45:15',
@@ -144,7 +144,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Kanne-Hettler',
 		        'updated_at' => '2021-03-20 10:45:15',
 		        'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36',
-		        'id' => '24770441-e767-40a5-814b-be63fd944c32',
+		        'uuid' => '24770441-e767-40a5-814b-be63fd944c32',
 		    ],
 		    [
 		        'created_at' => '2022-02-09 22:16:32',
@@ -161,7 +161,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Kolenko',
 		        'updated_at' => '2022-02-09 22:16:32',
 		        'user_agent' => 'Mozilla/5.0 (Android 12; Mobile; rv:96.0) Gecko/96.0 Firefox/96.0',
-		        'id' => '2ed9583d-67ba-4d4c-97f3-76bbb1f56437',
+		        'uuid' => '2ed9583d-67ba-4d4c-97f3-76bbb1f56437',
 		    ],
 		    [
 		        'created_at' => '2021-01-11 13:06:18',
@@ -178,7 +178,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Jacobs',
 		        'updated_at' => '2021-01-11 13:06:18',
 		        'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:84.0) Gecko/20100101 Firefox/84.0',
-		        'id' => '31b33cdf-ba88-4fcc-ae70-f65529cde9ea',
+		        'uuid' => '31b33cdf-ba88-4fcc-ae70-f65529cde9ea',
 		    ],
 		    [
 		        'created_at' => '2020-07-06 07:00:14',
@@ -195,7 +195,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Schultz',
 		        'updated_at' => '2020-07-06 07:00:14',
 		        'user_agent' => 'Mozilla/5.0 (Linux; Android 8.0.0; LDN-L21) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36',
-		        'id' => '38a8e63f-5fc8-40df-951d-242c8e32d537',
+		        'uuid' => '38a8e63f-5fc8-40df-951d-242c8e32d537',
 		    ],
 		    [
 		        'created_at' => '2020-08-14 22:05:59',
@@ -213,7 +213,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Köhl',
 		        'updated_at' => '2020-08-14 22:05:59',
 		        'user_agent' => 'Mozilla/5.0 (Linux; Android 5.1.1; SAMSUNG SM-J320F) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/11.2 Chrome/75.0.3770.143 Mobile Safari/537.36',
-		        'id' => '454b3a2d-2064-43b8-87e0-14c1ff48cb67',
+		        'uuid' => '454b3a2d-2064-43b8-87e0-14c1ff48cb67',
 		    ],
 		    [
 		        'created_at' => '2021-11-20 15:02:31',
@@ -230,7 +230,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Göpfert',
 		        'updated_at' => '2021-11-20 15:02:31',
 		        'user_agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_8_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1',
-		        'id' => '493ba971-9d52-441a-9a9c-aaa2819524bf',
+		        'uuid' => '493ba971-9d52-441a-9a9c-aaa2819524bf',
 		    ],
 		    [
 		        'created_at' => '2021-11-21 19:45:11',
@@ -247,7 +247,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Kolenko',
 		        'updated_at' => '2021-11-21 19:45:11',
 		        'user_agent' => 'Mozilla/5.0 (Android 11; Mobile; rv:94.0) Gecko/94.0 Firefox/94.0',
-		        'id' => '5337fff1-431f-48e1-8ba9-ee11dc4688d5',
+		        'uuid' => '5337fff1-431f-48e1-8ba9-ee11dc4688d5',
 		    ],
 		    [
 		        'created_at' => '2021-05-16 12:07:16',
@@ -264,7 +264,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Thomas',
 		        'updated_at' => '2021-05-16 12:07:16',
 		        'user_agent' => 'Mozilla/5.0 (Linux; Android 11; SAMSUNG SM-A217F) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/14.0 Chrome/87.0.4280.141 Mobile Safari/537.36',
-		        'id' => '560d9e23-54b2-4206-bdd1-e8ab3346acaa',
+		        'uuid' => '560d9e23-54b2-4206-bdd1-e8ab3346acaa',
 		    ],
 		    [
 		        'created_at' => '2020-08-19 20:17:13',
@@ -281,7 +281,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Schneider',
 		        'updated_at' => '2020-08-19 20:17:13',
 		        'user_agent' => 'Mozilla/5.0 (Linux; Android 10; SM-J600FN) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Mobile Safari/537.36',
-		        'id' => '5c42ad5d-cd78-4a98-9d86-faf64b8afac5',
+		        'uuid' => '5c42ad5d-cd78-4a98-9d86-faf64b8afac5',
 		    ],
 		    [
 		        'created_at' => '2020-09-10 22:19:24',
@@ -298,7 +298,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Kolenko',
 		        'updated_at' => '2020-09-10 22:19:24',
 		        'user_agent' => 'Mozilla/5.0 (Android 10; Mobile; rv:80.0) Gecko/80.0 Firefox/80.0',
-		        'id' => '5d2b488c-a7dd-42d1-a0b6-4043fc660f04',
+		        'uuid' => '5d2b488c-a7dd-42d1-a0b6-4043fc660f04',
 		    ],
 		    [
 		        'created_at' => '2020-07-06 07:01:28',
@@ -315,7 +315,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Schultz',
 		        'updated_at' => '2020-07-06 07:01:28',
 		        'user_agent' => 'Mozilla/5.0 (Linux; Android 8.0.0; LDN-L21) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36',
-		        'id' => '67d68336-9779-4a5f-9ad2-c5ed7519c41c',
+		        'uuid' => '67d68336-9779-4a5f-9ad2-c5ed7519c41c',
 		    ],
 		    [
 		        'created_at' => '2021-10-19 20:28:50',
@@ -332,7 +332,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Schneider',
 		        'updated_at' => '2021-10-19 20:28:50',
 		        'user_agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0',
-		        'id' => '6f932176-32b6-41eb-bdbd-8f8ca49f29b2',
+		        'uuid' => '6f932176-32b6-41eb-bdbd-8f8ca49f29b2',
 		    ],
 		    [
 		        'created_at' => '2022-02-25 15:09:37',
@@ -349,7 +349,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Göpfert',
 		        'updated_at' => '2022-02-25 15:09:37',
 		        'user_agent' => 'Mozilla/5.0 (iPad; CPU OS 12_5_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.2 Mobile/15E148 Safari/604.1',
-		        'id' => '734d8d33-4836-4040-9b8e-21105a6c90e5',
+		        'uuid' => '734d8d33-4836-4040-9b8e-21105a6c90e5',
 		    ],
 		    [
 		        'created_at' => '2021-12-15 20:42:47',
@@ -366,7 +366,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Schneider',
 		        'updated_at' => '2021-12-15 20:42:47',
 		        'user_agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:95.0) Gecko/20100101 Firefox/95.0',
-		        'id' => '75669d04-16e4-4965-a2b6-05eed4e8300d',
+		        'uuid' => '75669d04-16e4-4965-a2b6-05eed4e8300d',
 		    ],
 		    [
 		        'created_at' => '2021-05-17 18:52:37',
@@ -383,7 +383,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Maulbetsch',
 		        'updated_at' => '2021-05-17 18:52:37',
 		        'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36',
-		        'id' => '7d81c563-4c17-4fcf-bb63-5344c52eb3e3',
+		        'uuid' => '7d81c563-4c17-4fcf-bb63-5344c52eb3e3',
 		    ],
 		    [
 		        'created_at' => '2020-07-06 06:58:41',
@@ -400,7 +400,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Schultz',
 		        'updated_at' => '2020-07-06 06:58:41',
 		        'user_agent' => 'Mozilla/5.0 (Linux; Android 8.0.0; LDN-L21) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36',
-		        'id' => '7f47ed36-d07b-4d8c-96c0-918884c8ede6',
+		        'uuid' => '7f47ed36-d07b-4d8c-96c0-918884c8ede6',
 		    ],
 		    [
 		        'created_at' => '2020-07-01 21:11:28',
@@ -417,7 +417,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Schmidhuber-Geulen',
 		        'updated_at' => '2020-07-01 21:11:28',
 		        'user_agent' => 'Mozilla/5.0 (Linux; Android 10; Redmi Note 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36',
-		        'id' => '84944a05-af9e-4754-af72-d0913c9ae4dc',
+		        'uuid' => '84944a05-af9e-4754-af72-d0913c9ae4dc',
 		    ],
 		    [
 		        'created_at' => '2021-05-17 18:52:37',
@@ -434,7 +434,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Maulbetsch',
 		        'updated_at' => '2021-05-17 18:52:37',
 		        'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36',
-		        'id' => '9a8bfcc5-7ca6-4ece-9d7d-6bd08be23805',
+		        'uuid' => '9a8bfcc5-7ca6-4ece-9d7d-6bd08be23805',
 		    ],
 		    [
 		        'created_at' => '2022-01-14 10:19:22',
@@ -451,7 +451,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Seuffer',
 		        'updated_at' => '2022-01-14 10:22:10',
 		        'user_agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36',
-		        'id' => 'a28875ff-ef5a-4bad-9f32-c53fd063f4ec',
+		        'uuid' => 'a28875ff-ef5a-4bad-9f32-c53fd063f4ec',
 		    ],
 		    [
 		        'created_at' => '2021-05-17 18:52:37',
@@ -468,7 +468,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Maulbetsch',
 		        'updated_at' => '2021-05-17 18:52:37',
 		        'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36',
-		        'id' => 'a61e6437-09a9-4d03-a285-ea26c99e5dd8',
+		        'uuid' => 'a61e6437-09a9-4d03-a285-ea26c99e5dd8',
 		    ],
 		    [
 		        'created_at' => '2021-02-01 15:56:49',
@@ -485,7 +485,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Gohr',
 		        'updated_at' => '2021-02-01 15:56:49',
 		        'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36 Edg/88.0.705.56',
-		        'id' => 'a6c77177-ff31-495c-82f4-ab6ceb5adba2',
+		        'uuid' => 'a6c77177-ff31-495c-82f4-ab6ceb5adba2',
 		    ],
 		    [
 		        'created_at' => '2020-10-07 20:40:50',
@@ -502,7 +502,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Seuffer',
 		        'updated_at' => '2020-10-07 20:40:50',
 		        'user_agent' => 'Mozilla/5.0 (iPad; CPU OS 14_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/85.0.4183.109 Mobile/15E148 Safari/604.1',
-		        'id' => 'a9d08f50-76d9-4c02-8680-ebd92b42d8d6',
+		        'uuid' => 'a9d08f50-76d9-4c02-8680-ebd92b42d8d6',
 		    ],
 		    [
 		        'created_at' => '2022-01-04 22:02:02',
@@ -519,7 +519,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Kolenko',
 		        'updated_at' => '2022-01-04 22:02:02',
 		        'user_agent' => 'Mozilla/5.0 (Android 11; Mobile; rv:95.0) Gecko/95.0 Firefox/95.0',
-		        'id' => 'b03615de-4721-4fa2-8c60-fd5ef5705f70',
+		        'uuid' => 'b03615de-4721-4fa2-8c60-fd5ef5705f70',
 		    ],
 		    [
 		        'created_at' => '2021-01-06 19:52:57',
@@ -536,7 +536,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Matz',
 		        'updated_at' => '2021-01-06 19:52:57',
 		        'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 Edg/87.0.664.66',
-		        'id' => 'b6e8bcec-3b6f-45ec-bd1f-6dcaddbb6419',
+		        'uuid' => 'b6e8bcec-3b6f-45ec-bd1f-6dcaddbb6419',
 		    ],
 		    [
 		        'created_at' => '2021-05-17 11:01:37',
@@ -553,7 +553,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Kromer',
 		        'updated_at' => '2021-05-17 11:01:37',
 		        'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36 Edg/90.0.818.62',
-		        'id' => 'bc860687-ee89-4395-8add-71d39a734c68',
+		        'uuid' => 'bc860687-ee89-4395-8add-71d39a734c68',
 		    ],
 		    [
 		        'created_at' => '2020-07-06 07:02:31',
@@ -570,7 +570,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Schultz',
 		        'updated_at' => '2020-07-06 07:02:31',
 		        'user_agent' => 'Mozilla/5.0 (Linux; Android 8.0.0; LDN-L21) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36',
-		        'id' => 'be93f56a-4875-4a88-bb64-f960c5104fd4',
+		        'uuid' => 'be93f56a-4875-4a88-bb64-f960c5104fd4',
 		    ],
 		    [
 		        'created_at' => '2020-07-15 14:11:32',
@@ -587,7 +587,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Kolenko',
 		        'updated_at' => '2020-07-15 14:11:32',
 		        'user_agent' => 'Mozilla/5.0 (Android 10; Mobile; rv:68.0) Gecko/68.0 Firefox/68.0',
-		        'id' => 'bed60467-9e4b-4511-8664-6a1a1b7dde8d',
+		        'uuid' => 'bed60467-9e4b-4511-8664-6a1a1b7dde8d',
 		    ],
 		    [
 		        'created_at' => '2020-07-15 14:12:18',
@@ -604,7 +604,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Kolenko',
 		        'updated_at' => '2020-07-15 14:12:18',
 		        'user_agent' => 'Mozilla/5.0 (Android 10; Mobile; rv:68.0) Gecko/68.0 Firefox/68.0',
-		        'id' => 'd6b241e9-432d-451d-a7a0-b8a5fcaa34aa',
+		        'uuid' => 'd6b241e9-432d-451d-a7a0-b8a5fcaa34aa',
 		    ],
 		    [
 		        'created_at' => '2021-08-19 20:39:11',
@@ -621,7 +621,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Köhl',
 		        'updated_at' => '2021-08-19 20:39:11',
 		        'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36 Edg/92.0.902.73',
-		        'id' => 'dbcaef5d-fb69-4a1d-a8a6-844d9e5db020',
+		        'uuid' => 'dbcaef5d-fb69-4a1d-a8a6-844d9e5db020',
 		    ],
 		    [
 		        'created_at' => '2021-05-17 18:52:36',
@@ -638,7 +638,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Maulbetsch',
 		        'updated_at' => '2021-05-17 18:52:36',
 		        'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36',
-		        'id' => 'e2eb3743-ecc8-40c4-a247-f965428d484a',
+		        'uuid' => 'e2eb3743-ecc8-40c4-a247-f965428d484a',
 		    ],
 		    [
 		        'created_at' => '2021-03-28 17:25:47',
@@ -655,7 +655,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Schneider',
 		        'updated_at' => '2021-03-28 17:25:47',
 		        'user_agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:87.0) Gecko/20100101 Firefox/87.0',
-		        'id' => 'e4a184a9-951c-4913-863e-819f6e4a08bd',
+		        'uuid' => 'e4a184a9-951c-4913-863e-819f6e4a08bd',
 		    ],
 		    [
 		        'created_at' => '2021-05-17 18:52:36',
@@ -672,7 +672,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Maulbetsch',
 		        'updated_at' => '2021-05-17 18:52:36',
 		        'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36',
-		        'id' => 'e56d7636-0fa3-4d20-b232-f604a705b76d',
+		        'uuid' => 'e56d7636-0fa3-4d20-b232-f604a705b76d',
 		    ],
 		    [
 		        'created_at' => '2022-03-29 11:19:56',
@@ -689,7 +689,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Göpfert',
 		        'updated_at' => '2022-03-29 11:19:56',
 		        'user_agent' => 'Mozilla/5.0 (iPad; CPU OS 12_5_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.2 Mobile/15E148 Safari/604.1',
-		        'id' => 'e5f498b8-5f2f-469e-b7d1-a7944a84904b',
+		        'uuid' => 'e5f498b8-5f2f-469e-b7d1-a7944a84904b',
 		    ],
 		    [
 		        'created_at' => '2022-02-09 22:17:19',
@@ -706,7 +706,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Kolenko',
 		        'updated_at' => '2022-02-09 22:17:19',
 		        'user_agent' => 'Mozilla/5.0 (Android 12; Mobile; rv:96.0) Gecko/96.0 Firefox/96.0',
-		        'id' => 'e78f10ca-5e46-4577-a7f8-9ccba4180420',
+		        'uuid' => 'e78f10ca-5e46-4577-a7f8-9ccba4180420',
 		    ],
 		    [
 		        'created_at' => '2021-10-15 11:18:17',
@@ -723,7 +723,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Köhl',
 		        'updated_at' => '2021-10-15 11:18:17',
 		        'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36 Edg/94.0.992.47',
-		        'id' => 'e986173e-4d58-4af0-9433-b5a5968f990e',
+		        'uuid' => 'e986173e-4d58-4af0-9433-b5a5968f990e',
 		    ],
 		    [
 		        'created_at' => '2021-09-12 16:28:37',
@@ -740,7 +740,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Schneider',
 		        'updated_at' => '2021-09-12 16:28:37',
 		        'user_agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:92.0) Gecko/20100101 Firefox/92.0',
-		        'id' => 'f03cd9a1-dd5d-459f-b948-e50548d849ac',
+		        'uuid' => 'f03cd9a1-dd5d-459f-b948-e50548d849ac',
 		    ],
 		    [
 		        'created_at' => '2020-08-04 08:05:38',
@@ -757,7 +757,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Bösch',
 		        'updated_at' => '2020-08-04 08:05:38',
 		        'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36 Edg/84.0.522.52',
-		        'id' => 'f352c069-f7e3-4296-a9b6-b79ccba71b47',
+		        'uuid' => 'f352c069-f7e3-4296-a9b6-b79ccba71b47',
 		    ],
 		    [
 		        'created_at' => '2020-07-23 18:48:36',
@@ -774,7 +774,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Schneider',
 		        'updated_at' => '2020-07-23 18:48:36',
 		        'user_agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:78.0) Gecko/20100101 Firefox/78.0',
-		        'id' => 'f4c0fea8-e3dd-4965-a17f-9e692ad07e6c',
+		        'uuid' => 'f4c0fea8-e3dd-4965-a17f-9e692ad07e6c',
 		    ],
 		    [
 		        'created_at' => '2021-05-17 18:52:37',
@@ -791,7 +791,7 @@ class EventRegistrationsTableSeeder extends Seeder
 		        'surname' => 'Maulbetsch',
 		        'updated_at' => '2021-05-17 18:52:37',
 		        'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36',
-		        'id' => 'faa042ee-ddd3-4bd7-a96e-4c617b75315c',
+		        'uuid' => 'faa042ee-ddd3-4bd7-a96e-4c617b75315c',
 		    ],
 		]);
 

@@ -7,12 +7,9 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-//use OptimistDigital\NovaSortable\Traits\HasSortableRows;
 
 class MenuItem extends Resource
 {
-//    use HasSortableRows;
-
     public static string $model = \App\Models\MenuItem::class;
 
     public static $title = 'label';
@@ -41,7 +38,7 @@ class MenuItem extends Resource
                 ->rules('required')
                 ->sortable()
             ,
-            BelongsTo::make(__('Menus'), 'Menus', Menu::class)
+            BelongsTo::make(__('Menus'), 'menu', Menu::class)
                 ->required()
                 ->withoutTrashed()
                 ->showCreateRelationButton()
@@ -80,11 +77,11 @@ class MenuItem extends Resource
 
     public static function label(): string
     {
-        return __('Menus Items');
+        return __('Menu Items');
     }
 
     public static function singularLabel(): string
     {
-        return __('Menus ItemFooter');
+        return __('Menu Item');
     }
 }

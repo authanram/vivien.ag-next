@@ -45,11 +45,11 @@ class EventTemplate extends Resource
 
     public static function label(): string
     {
-        return __('Templates');
+        return __('Event Templates');
     }
 
     public static function singularLabel(): string
     {
-        return __('Template');
+        return __('Event Template');
     }
 }

@@ -2,21 +2,18 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image as FieldImage;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
-//use OptimistDigital\NovaSortable\Traits\HasSortableRows;
+use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Spatie\TagsField\Tags;
-use Vyuldashev\NovaMoneyField\Money;
 
 class Image extends Resource
 {
-    //use HasSortableRows;
-
     public static string $model = \App\Models\Image::class;
 
     public static $title = 'name';
@@ -45,8 +42,8 @@ class Image extends Resource
             Textarea::make(__('Description'), 'description')
                 ->rows(2)
             ,
-            Money::make(__('Price'), 'EUR', 'price')
-                ->storedInMinorUnits()
+            Currency::make(__('Price'), 'price')
+                ->currency('EUR')
                 ->sortable()
             ,
             Boolean::make(__('Published'), 'published')

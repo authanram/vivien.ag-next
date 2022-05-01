@@ -32,7 +32,7 @@ class Event extends Model
         'description',
         'date_from',
         'date_to',
-        'registration_limit',
+        'registrations_max',
         'registrations_reserved',
         'price',
         'price_note',

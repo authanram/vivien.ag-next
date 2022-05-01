@@ -25,6 +25,9 @@ class EventRegistration extends Resource
             Text::make(__('ID'), 'id')
                 ->onlyOnDetail()
             ,
+            Text::make(__('UUID'), 'uuid')
+                ->onlyOnDetail()
+            ,
             BelongsTo::make(__('Events'), 'event', Event::class)
                 ->rules('required')
                 ->searchable()

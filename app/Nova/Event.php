@@ -55,7 +55,7 @@ class Event extends Resource
             Text::make(__('UUID'), 'uuid')
                 ->onlyOnDetail()
             ,
-            BelongsTo::make(__('Template'), 'eventTemplate', EventTemplate::class)
+            BelongsTo::make(__('Event Template'), 'eventTemplate', EventTemplate::class)
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()
@@ -93,19 +93,19 @@ class Event extends Resource
                 })->asSmall(),
             ]),
             Line::make(__('Registrations'), static function ($model) {
-                return $model->registrations_reserved.' / '.$model->registration_limit;
+                return $model->registrations_reserved.' / '.$model->registrations_max;
             })->exceptOnForms()->showOnPreview()->extraClasses('text-sm')
             ,
-            Number::make(__('Registration Limit'), 'registration_limit')
+            Number::make(__('Maximum Registrations'), 'registrations_max')
                 ->default(10)
                 ->rules('required', 'numeric', 'min:1', 'gte:registrations_reserved')
                 ->sortable()
                 ->min(1)
-                ->help(__('Registration Limit (excluding staff).'))
+                ->help(__('Maximum Registrations (excluding staff).'))
                 ->onlyOnForms()
                 ->showOnPreview()
             ,
-            Number::make(__('Registrations Reserved'), 'registrations_reserved')
+            Number::make(__('Reserved Registrations'), 'registrations_reserved')
                 ->withMeta(['value' => $this->model()?->getAttribute('registrations_reserved') ?? 0])
                 ->rules('required', 'numeric', 'min:0')
                 ->default(0)

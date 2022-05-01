@@ -9,7 +9,7 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', static function (Blueprint $table) {
             $table->id();
-            $table->uuid();
+            $table->uuid()->index();
             $table->string('slug')->unique();
             $table->string('title');
             $table->text('body');

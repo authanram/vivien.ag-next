@@ -22,11 +22,11 @@ return [
         MenuSection::make(__('Resources'), [
             MenuItem::resource(Resources\StaticAttribute::class),
             MenuItem::resource(Resources\Catering::class),
-            MenuItem::resource(Resources\Content::class),
             MenuItem::resource(Resources\Image::class),
             MenuItem::resource(Resources\Post::class),
-            MenuItem::resource(Resources\Tag::class),
             MenuItem::resource(Resources\StaffProfile::class),
+            MenuItem::resource(Resources\Tag::class),
+            MenuItem::resource(Resources\Content::class),
             MenuItem::resource(Resources\Location::class),
         ])->collapsable()->icon('document-text'),
 

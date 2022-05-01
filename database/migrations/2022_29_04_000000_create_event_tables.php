@@ -28,7 +28,7 @@ class CreateEventTables extends Migration
             $table->text('description')->nullable();
             $table->timestamp('date_from')->nullable();
             $table->timestamp('date_to')->nullable();
-            $table->smallInteger('registration_limit')->default(10);
+            $table->smallInteger('registrations_limit')->default(10);
             $table->smallInteger('registrations_reserved')->nullable();
             $table->float('price')->nullable();
             $table->string('price_note')->nullable();
@@ -38,7 +38,8 @@ class CreateEventTables extends Migration
         });
 
         Schema::create('event_registrations', static function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
+            $table->uuid()->index();
             $table->foreignId('event_id')->constrained('events');
             $table->string('hash', 64);
             $table->smallInteger('salutation');

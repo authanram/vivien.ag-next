@@ -31,7 +31,7 @@ class Tag extends Resource
     {
         $table = $this->model()?->getTable();
 
-        $fields = [
+        return [
             ID::make(__('ID'), 'id')
             ,
             Text::make(__('Name'), 'name')
@@ -64,21 +64,10 @@ class Tag extends Resource
                 ->showOnCreating(false)
                 ->sortable()
             ,
+            MorphedByMany::make(__('Attachments'), 'attachments', Attachment::class),
+            MorphedByMany::make(__('Events'), 'events', Event::class),
+            MorphedByMany::make(__('Images'), 'images', Image::class),
+            MorphedByMany::make(__('Posts'), 'posts', Post::class),
         ];
-
-        $morphedByMany = [
-            'attachment' => MorphedByMany::make(__('Attachments'), 'attachments', Attachment::class),
-            'event' => MorphedByMany::make(__('Events'), 'events', Event::class),
-            'image' => MorphedByMany::make(__('Images'), 'images', Image::class),
-            'post' => MorphedByMany::make(__('Posts'), 'posts', Post::class),
-        ];
-
-        $type = $this->model()?->type;
-
-        if ($type && $morphedByMany[$type]) {
-            $fields[] = $morphedByMany[$type];
-        }
-
-        return $fields;
     }
 }

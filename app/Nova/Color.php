@@ -31,9 +31,9 @@ class Color extends Resource
                 ->sortable()
                 ->help(static::getColorInputHelpText())
             ,
-            HasMany::make(__('Events Types'), 'eventTypes', EventTemplate::class)
+            HasMany::make(__('Event Templates'), 'eventTemplates', EventTemplate::class)
             ,
-            HasMany::make(__('Menus Items'), 'menuItems', MenuItem::class)
+            HasMany::make(__('Menu Items'), 'menuItems', MenuItem::class)
             ,
             HasMany::make(__('Tags'), 'tags', Tag::class)
             ,

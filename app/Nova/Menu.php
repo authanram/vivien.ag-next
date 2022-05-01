@@ -40,7 +40,7 @@ class Menu extends Resource
                 ->rules('required')
                 ->sortable()
             ,
-            HasMany::make(__('Menus Items'), 'menuItems', MenuItem::class)
+            HasMany::make(__('Menu Items'), 'menuItems', MenuItem::class)
             ,
         ];
     }
