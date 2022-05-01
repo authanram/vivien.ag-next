@@ -23,8 +23,10 @@ class CreateImagesTable extends Migration
         Schema::create('image_coords', static function (Blueprint $table) {
             $table->id();
             $table->foreignId('image_id')->nullable()->constrained('images')->cascadeOnUpdate();
-            $table->json('coords');
+            $table->json('coords')->nullable();
             $table->smallInteger('order_column');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

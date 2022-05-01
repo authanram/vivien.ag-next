@@ -2,12 +2,12 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Line;
 use Laravel\Nova\Fields\Text;
-use Saumini\Count\RelationshipCount;
+use Laravel\Nova\Http\Requests\NovaRequest as Request;
 
 class Author extends Resource
 {
@@ -44,7 +44,7 @@ class Author extends Resource
                 ->help('Must be unique.')
                 ->sortable()
             ,
-            RelationshipCount::make(__('Quotes'), 'quotes')
+            Line::make(__('Quotes'), fn () => $this->resource->load('quotes')->quotes->count())
             ,
             Boolean::make(__('Published'), 'published')
                 ->sortable()

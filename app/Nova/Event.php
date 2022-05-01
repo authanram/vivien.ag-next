@@ -91,12 +91,16 @@ class Event extends Resource
                 Line::make(null, static function ($model) {
                     return $model->presenter()->dateTo();
                 })->asSmall(),
-            ]),
-            Line::make(__('Registrations'), static function ($model) {
-                return $model->registrations_reserved.' / '.$model->registrations_max;
-            })->exceptOnForms()->showOnPreview()->extraClasses('text-sm')
+            ])->exceptOnForms()
             ,
-            Number::make(__('Maximum Registrations'), 'registrations_max')
+            Line::make(__('Registrations'), static function ($model) {
+                return $model->registrations_reserved.' / '.$model->registrations_maximum;
+            })->exceptOnForms()
+                ->showOnPreview()
+                ->extraClasses('text-sm')
+                ->exceptOnForms()
+            ,
+            Number::make(__('Maximum Registrations'), 'registrations_maximum')
                 ->default(10)
                 ->rules('required', 'numeric', 'min:1', 'gte:registrations_reserved')
                 ->sortable()
@@ -153,7 +157,7 @@ class Event extends Resource
                 ->hideFromIndex()
                 ->showOnPreview()
             ,
-            HasMany::make(__('Registrations'), 'eventRegistrations', EventRegistration::class)
+            HasMany::make(__('Event Registrations'), 'eventRegistrations', EventRegistration::class)
                 ->showOnPreview()
             ,
         ];

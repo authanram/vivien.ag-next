@@ -2,11 +2,11 @@
 
 namespace App\Nova;
 
-use App\Nova\Fields\VaporFile;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Spatie\TagsField\Tags;
+use Laravel\Nova\Fields\Image;
 
 class Attachment extends Resource
 {
@@ -23,7 +23,7 @@ class Attachment extends Resource
         return [
             ID::make()
             ,
-            VaporFile::make(__('File'), 'file')
+            Image::make(__('File'), 'file')
                 ->rules('required')
             ,
             Text::make(__('Name'), 'name')

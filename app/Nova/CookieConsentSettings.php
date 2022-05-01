@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\Line;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
@@ -34,6 +35,19 @@ class CookieConsentSettings extends Resource
                 ->json()
                 ->height('auto')
             ,
+            Line::make(__('Cookies'), function () {
+                return implode(', ', array_keys($this->resource->cookie_data));
+            }),
+            Line::make(__('Token'), function () {
+                return $this->resource->session_data['_token'];
+            }),
+            Line::make(__('Referer'), function () {
+                $url = $this->resource->session_data['_previous']['url'];
+                return "<a href=\"$url\" class=\"link-default\">$url</a>";
+            })->asHtml(),
+            Line::make(__('Date of Consent'), function () {
+                return (string)$this->resource->created_at;
+            }),
         ];
     }
 

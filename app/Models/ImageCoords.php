@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 
 class ImageCoords extends Model implements Sortable
 {
+    use SoftDeletes;
     use SortableTrait;
 
     protected $fillable = [
@@ -18,6 +20,10 @@ class ImageCoords extends Model implements Sortable
 
     protected $casts = [
         'coords' => 'array',
+    ];
+
+    protected $attributes = [
+        'coords' => '{}',
     ];
 
     public array $sortable = [

@@ -2,17 +2,14 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\Line;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Text;
-//use OptimistDigital\NovaSortable\Traits\HasSortableRows;
 
 class ImageCoords extends Resource
 {
-//    use HasSortableRows;
-
     public static string $model = \App\Models\ImageCoords::class;
 
     public static $search = [
@@ -27,16 +24,17 @@ class ImageCoords extends Resource
     {
         return [
             ID::make(__('ID'), 'id')
-                ->hideFromIndex()
             ,
             BelongsTo::make(__('Image'), 'image', Image::class)
             ,
             Code::make(__('Coords'), 'coords')
                 ->showOnIndex()
-                ->default('{}')
                 ->json()
                 ->height('auto')
             ,
+            Line::make(__('Created At'), function () {
+                return (string)$this->resource->created_at;
+            }),
         ];
     }
 

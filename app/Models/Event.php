@@ -32,7 +32,7 @@ class Event extends Model
         'description',
         'date_from',
         'date_to',
-        'registrations_max',
+        'registrations_maximum',
         'registrations_reserved',
         'price',
         'price_note',
@@ -77,14 +77,12 @@ class Event extends Model
 
     public function getCreatedAtReadableAttribute(): string
     {
-        return $this->attributes['created_at'];
+        return $this->dateFormat('created_at');
     }
 
     public function getDateFromObjectAttribute(): stdClass
     {
-        $date = $this->attributes['date_from'];
-
-        return static::makeDateObject($date);
+        return static::makeDateObject($this->date_from);
     }
 
     public function getDateFromReadableAttribute(): string
@@ -99,16 +97,14 @@ class Event extends Model
 
     public function getDateToObjectAttribute(): stdClass
     {
-        $date = $this->attributes['date_to'];
-
-        return static::makeDateObject($date);
+        return static::makeDateObject($this->date_to);
     }
 
     public function getDateDurationAttribute(): string
     {
-        $start = $this->attributes['date_from'];
+        $start = $this->date_from;
 
-        $end = $this->attributes['date_to'];
+        $end = $this->date_to;
 
         $formatDays = '%d ' . trans_choice('project.time.day', $start->diff($end)->d);
 
@@ -127,11 +123,7 @@ class Event extends Model
 
     public function getDateDurationDaysAttribute(): int
     {
-        $start = $this->attributes['date_from'];
-
-        $end = $this->attributes['date_to'];
-
-        return $start->diff($end)->d;
+        return $this->date_from->diff($this->date_to)->d;
     }
 
     // scopes
