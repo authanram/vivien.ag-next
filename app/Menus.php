@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 
 final class Menus
 {
-    public function __construct(protected Request $request, protected Repository $menus)
+    public function __construct(protected Request $request, protected Repository $repository)
     {
     }
 
@@ -19,7 +19,7 @@ final class Menus
      */
     public function footer(): Collection
     {
-        return $this->menus->footer();
+        return $this->repository->footer();
     }
 
     /**
@@ -28,6 +28,6 @@ final class Menus
      */
     public function main(): Collection
     {
-        return $this->menus->main();
+        return $this->repository->main();
     }
 }

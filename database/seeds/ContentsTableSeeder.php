@@ -10,59 +10,25 @@ class ContentsTableSeeder extends Seeder
         DB::table('contents')->delete();
 
         DB::table('contents')->insert([
-		    [
-		        'body' => '## Themenangebote für'."\n"
-		            ."\n"
-		            .'* Frauenfrühstückstreffen'."\n"
-		            .'* Kindergartenelternabend'."\n"
-		            .'* Erwachsenenbildung'."\n"
-		            .'* Fortbildung für Erzieherinnen:'."\n"
-		            .'	* Was macht ein gutes Team aus?'."\n"
-		            .'	* Elterngespräche - kompetent führen'."\n"
-		            .'	* Therapeutische Interventionen bei Kindern mit Problemverhalten'."\n"
-		            .'* Inhaltliche Gestaltung mit einem ausgewählten Büchertisch zum jeweiligen Thema!',
-		        'caption' => null,
-		        'created_at' => '2020-06-25 22:03:17',
-		        'deleted_at' => null,
-		        'id' => 1,
-		        'slug' => 'speech:targets',
-		        'title' => 'Vorträge / Themenangebote',
-		        'updated_at' => '2020-06-26 05:01:54',
-		    ],
-		    [
-		        'body' => '## Schwerpunkte'."\n"
-		            ."\n"
-		            .'* Systemische Familientherapie'."\n"
-		            .'* Genogrammarbeit/Familienskulptur'."\n"
-		            .'* Gesprächstherapie'."\n"
-		            .'* Krisenintervention'."\n"
-		            .'* Aufsuchende Familientherapie'."\n"
-		            .'* Paartherapie'."\n"
-		            .'* Begleiteter Umgang'."\n"
-		            .'* Erziehungsberatung'."\n"
-		            .'* Trennungsbegleitung/Beratung von Patchworkfamilien'."\n"
-		            .'* Suchtproblematik bei Jugendlichen'."\n"
-		            .'* Angststörungen'."\n"
-		            .'* Emotionale Stressreduzierung'."\n"
-		            .'* Lernen lernen'."\n"
-		            .'* Lernblockaden/Lerntraining'."\n"
-		            .'* Psychosomatische Störungen bei Kindern'."\n"
-		            .'* Fit für die Schule (Vorschulkinder)'."\n"
-		            .'* Elternkurse'."\n"
-		            .'* Pädagogische Rundbriefe'."\n"
-		            .'* Gesprächsgruppen'."\n"
-		            .'* Selbstbewusstseinstraining'."\n"
-		            .'* Maltherapie (Erwachsene und Kinder)'."\n"
-		            .'* Coaching'."\n"
-		            .'* Telefonberatung +49 (0) 7453 3264',
-		        'caption' => '**Seit 20 Jahren arbeite ich als selbständige Therapeutin** mit Erwachsenen, Jugendlichen und Kindern. Ich bilde mich ständig weiter und nehme [Supervisionen](https://de.wikipedia.org/wiki/Supervision) in Anspruch.',
-		        'created_at' => '2020-06-25 23:52:44',
-		        'deleted_at' => null,
-		        'id' => 2,
-		        'slug' => 'consulting',
-		        'title' => 'Beratung',
-		        'updated_at' => '2020-06-26 05:01:16',
-		    ],
+            [
+                'body' => '## Themenangebote für'."\n"
+                    ."\n"
+                    .'* Frauenfrühstückstreffen'."\n"
+                    .'* Kindergartenelternabend'."\n"
+                    .'* Erwachsenenbildung'."\n"
+                    .'* Fortbildung für Erzieherinnen:'."\n"
+                    .'	* Was macht ein gutes Team aus?'."\n"
+                    .'	* Elterngespräche - kompetent führen'."\n"
+                    .'	* Therapeutische Interventionen bei Kindern mit Problemverhalten'."\n"
+                    .'* Inhaltliche Gestaltung mit einem ausgewählten Büchertisch zum jeweiligen Thema!',
+                'caption' => null,
+                'created_at' => '2020-06-25 22:03:17',
+                'deleted_at' => null,
+                'id' => 1,
+                'slug' => 'speech:targets',
+                'title' => 'Themenangebote',
+                'updated_at' => '2020-06-26 05:01:54',
+            ],
 		    [
 		        'body' => '### Vortragsthemen'."\n"
 		            ."\n"
@@ -88,11 +54,45 @@ class ContentsTableSeeder extends Seeder
 		        'caption' => null,
 		        'created_at' => '2020-06-26 02:28:54',
 		        'deleted_at' => null,
-		        'id' => 3,
+		        'id' => 2,
 		        'slug' => 'speech:topics',
-		        'title' => 'Vorträge / Vortragsthemen',
+		        'title' => 'Vortragsthemen',
 		        'updated_at' => '2020-06-26 05:08:54',
 		    ],
+            [
+                'body' => '## Schwerpunkte'."\n"
+                    ."\n"
+                    .'* Systemische Familientherapie'."\n"
+                    .'* Genogrammarbeit/Familienskulptur'."\n"
+                    .'* Gesprächstherapie'."\n"
+                    .'* Krisenintervention'."\n"
+                    .'* Aufsuchende Familientherapie'."\n"
+                    .'* Paartherapie'."\n"
+                    .'* Begleiteter Umgang'."\n"
+                    .'* Erziehungsberatung'."\n"
+                    .'* Trennungsbegleitung/Beratung von Patchworkfamilien'."\n"
+                    .'* Suchtproblematik bei Jugendlichen'."\n"
+                    .'* Angststörungen'."\n"
+                    .'* Emotionale Stressreduzierung'."\n"
+                    .'* Lernen lernen'."\n"
+                    .'* Lernblockaden/Lerntraining'."\n"
+                    .'* Psychosomatische Störungen bei Kindern'."\n"
+                    .'* Fit für die Schule (Vorschulkinder)'."\n"
+                    .'* Elternkurse'."\n"
+                    .'* Pädagogische Rundbriefe'."\n"
+                    .'* Gesprächsgruppen'."\n"
+                    .'* Selbstbewusstseinstraining'."\n"
+                    .'* Maltherapie (Erwachsene und Kinder)'."\n"
+                    .'* Coaching'."\n"
+                    .'* Telefonberatung +49 (0) 7453 3264',
+                'caption' => '**Seit 20 Jahren arbeite ich als selbständige Therapeutin** mit Erwachsenen, Jugendlichen und Kindern. Ich bilde mich ständig weiter und nehme [Supervisionen](https://de.wikipedia.org/wiki/Supervision) in Anspruch.',
+                'created_at' => '2020-06-25 23:52:44',
+                'deleted_at' => null,
+                'id' => 3,
+                'slug' => 'consulting',
+                'title' => 'Beratung',
+                'updated_at' => '2020-06-26 05:01:16',
+            ],
 		    [
 		        'body' => '## Wenn Du diese oder ähnliche Erfahrungen mit Schule oder dem Lernen machst, dann bist Du bei mir richtig'."\n"
 		            ."\n"
@@ -105,7 +105,7 @@ class ContentsTableSeeder extends Seeder
 		        'deleted_at' => null,
 		        'id' => 4,
 		        'slug' => 'learning',
-		        'title' => 'Lerntraining / Wenn Du diese oder ähnliche...',
+		        'title' => 'Wenn Du diese oder ähnliche...',
 		        'updated_at' => '2020-06-26 05:01:29',
 		    ],
 		    [
@@ -119,7 +119,7 @@ class ContentsTableSeeder extends Seeder
 		        'deleted_at' => null,
 		        'id' => 5,
 		        'slug' => 'learning:goals',
-		        'title' => 'Lerntraining / Wir gehen wie folgt vor',
+		        'title' => 'Wir gehen wie folgt vor',
 		        'updated_at' => '2020-06-26 05:01:35',
 		    ],
 		    [
@@ -134,7 +134,7 @@ class ContentsTableSeeder extends Seeder
 		        'deleted_at' => null,
 		        'id' => 6,
 		        'slug' => 'learning:promises',
-		        'title' => 'Lerntraining / Folgendes kann ich Dir versichern',
+		        'title' => 'Folgendes kann ich Dir versichern',
 		        'updated_at' => '2020-09-11 04:41:51',
 		    ],
 		    [
@@ -324,7 +324,7 @@ class ContentsTableSeeder extends Seeder
 		        'deleted_at' => null,
 		        'id' => 9,
 		        'slug' => 'portrait',
-		        'title' => 'Portrait / Über mich',
+		        'title' => 'Über mich',
 		        'updated_at' => '2022-01-18 04:49:43',
 		    ],
 		    [
@@ -344,7 +344,7 @@ class ContentsTableSeeder extends Seeder
 		        'deleted_at' => null,
 		        'id' => 10,
 		        'slug' => 'portrait:services',
-		        'title' => 'Portrait / Leistungen',
+		        'title' => 'Leistungen',
 		        'updated_at' => '2020-07-08 17:41:04',
 		    ],
 		    [
@@ -358,29 +358,41 @@ class ContentsTableSeeder extends Seeder
 		        'created_at' => '2020-06-28 01:11:57',
 		        'deleted_at' => null,
 		        'id' => 11,
-		        'slug' => 'home:updates',
-		        'title' => 'Home',
+		        'slug' => 'welcome:updates',
+		        'title' => 'Updates',
 		        'updated_at' => '2022-01-18 04:49:24',
 		    ],
+            [
+                'body' => '**Leider können aktuell aufgrund der Corona-Verordnung keine Seminare stattfinden.** &nbsp;😷 😒'."\n"
+                    ."\n\n"
+                    .'Gerne berate ich dich in der Zwischenzeit telefonisch: <span class="whitespace-no-wrap">**+49 (0)7453 3264**</span>'."\n"
+                    ."\n\n"
+                    .'<small>Ich hoffe wir sehen uns bald wieder. Bleib gesund und steck den Kopf nicht in den Sand.</small>',
+                'caption' => '...',
+                'created_at' => '2020-12-09 20:48:52',
+                'deleted_at' => null,
+                'id' => 12,
+                'slug' => 'welcome:no-events',
+                'title' => 'Events',
+                'updated_at' => '2020-12-09 22:53:51',
+            ],
 		    [
 		        'body' => '## Sybille Seuffer'."\n"
 		            .'Geißwiesen 24/1  '."\n"
-		            .'D-72227 Egenhausen'."\n"
-		            ."\n"
+		            .'D-72227 Egenhausen  '."\n"
 		            .'Telefon {highlight}[+49 (0)7453 3264](tel:004974533264){/highlight}  '."\n"
 		            .'E-Mail {highlight}[me@vivien.ag](mailto:me@vivien.ag){/highlight}  '."\n"
 		            .'oder via {highlight}[**Facebook**](https://www.facebook.com/sybille.seuffer){/highlight}',
 		        'caption' => null,
 		        'created_at' => '2020-06-28 01:32:31',
 		        'deleted_at' => null,
-		        'id' => 12,
+		        'id' => 13,
 		        'slug' => 'contact',
 		        'title' => 'Kontakt',
 		        'updated_at' => '2020-06-29 08:39:19',
 		    ],
 		    [
-		        'body' => 'Hier erfährst du mehr über die von mir angebotenen'."\n"
-		            ."\n"
+		        'body' => 'Hier erfährst du mehr über die von mir angebotenen  '."\n"
 		            .'* [**Vortragsthemen**](/vortraege)'."\n"
 		            .'* [**Beratungsschwerpunkte**](/beratung)'."\n"
 		            .'* [**Lernstrategien**](/lerntraining)'."\n"
@@ -388,42 +400,26 @@ class ContentsTableSeeder extends Seeder
 		        'caption' => null,
 		        'created_at' => '2020-06-29 06:19:38',
 		        'deleted_at' => null,
-		        'id' => 13,
+		        'id' => 14,
 		        'slug' => 'portrait:links',
-		        'title' => 'Portrait / Vorträge und Seminare',
+		        'title' => 'Vorträge und Seminare',
 		        'updated_at' => '2020-06-29 06:23:45',
 		    ],
 		    [
 		        'body' => '**Telefon** {highlight}[+49 (0)7453 3264](tel:004974533264){/highlight}  '."\n"
 		            .'**E-Mail** {highlight}[me@vivien.ag](mailto:me@vivien.ag){/highlight}  '."\n"
-		            .'oder via {highlight}[**Facebook**](https://www.facebook.com/sybille.seuffer){/highlight}'."\n"
-		            ."\n"
-		            .'<p class="mt-2 text-sm text-gray-500">'."\n"
-		            .'	Geißwiesen 24/1'."\n"
-		            .'  	<br>'."\n"
-		            .'	D-72227 Egenhausen'."\n"
+		            .'oder via {highlight}[**Facebook**](https://www.facebook.com/sybille.seuffer){/highlight}'."\n\n"
+		            .'<p class="mt-2 text-gray-500 text-sm">  '."\n"
+		            .'Geißwiesen 24/1  '."\n"
+		            .'D-72227 Egenhausen  '."\n"
 		            .'</p>',
 		        'caption' => null,
 		        'created_at' => '2020-06-29 06:29:29',
 		        'deleted_at' => null,
-		        'id' => 14,
+		        'id' => 18,
 		        'slug' => 'portrait:contact',
-		        'title' => 'Portrait / Kontakt',
+		        'title' => 'Kontakt',
 		        'updated_at' => '2020-06-29 06:43:47',
-		    ],
-		    [
-		        'body' => '**Leider können aktuell aufgrund der Corona-Verordnung keine Seminare stattfinden.** &nbsp;😷 😒'."\n"
-		            ."\n\n"
-		            .'Gerne berate ich dich in der Zwischenzeit telefonisch: <span class="whitespace-no-wrap">**+49 (0)7453 3264**</span>'."\n"
-		            ."\n\n"
-		            .'<small>Ich hoffe wir sehen uns bald wieder. Bleib gesund und steck den Kopf nicht in den Sand.</small>',
-		        'caption' => '...',
-		        'created_at' => '2020-12-09 20:48:52',
-		        'deleted_at' => null,
-		        'id' => 15,
-		        'slug' => 'home:no-events',
-		        'title' => 'Seminare',
-		        'updated_at' => '2020-12-09 22:53:51',
 		    ],
 		]);
 

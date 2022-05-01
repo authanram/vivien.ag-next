@@ -9,8 +9,8 @@ class CreateContentTables extends Migration
     {
         Schema::create('contents', static function (Blueprint $table) {
             $table->id();
-            $table->string('title')->unique();
             $table->string('slug')->unique();
+            $table->string('title');
             $table->string('caption')->nullable();
             $table->text('body');
             $table->timestamps();

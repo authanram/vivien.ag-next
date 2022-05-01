@@ -2,13 +2,10 @@
 
 namespace App\Providers;
 
-use App\Contracts\DataServiceContract;
-use App\Contracts\EventServiceContract;
-use App\Contracts\SiteServiceContract;
-use App\Services\DataService;
-use App\Services\EventService;
-use App\Services\ParsedownService;
-use App\Services\SiteService;
+use App\Contracts;
+use App\Parsers;
+use App\Renderers;
+use App\Services;
 use App\Util;
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
@@ -19,11 +16,13 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->registerServiceProviders();
 
-        $this->app->bind(SiteServiceContract::class, SiteService::class);
+        $this->app->bind(Contracts\ContentRendererContract::class, Renderers\ContentRenderer::class);
+        $this->app->bind(Contracts\IconRendererContract::class, Renderers\IconRenderer::class);
+        $this->app->bind(Contracts\MarkdownParserContract::class, Parsers\MarkdownParser::class);
+        $this->app->bind(Contracts\SiteServiceContract::class, Services\SiteService::class);
 
-        $this->app->bind(EventServiceContract::class, EventService::class);
-        $this->app->bind(ParsedownService::class, ParsedownService::class);
-        $this->app->singleton(DataServiceContract::class, DataService::class);
+        $this->app->bind(Contracts\EventServiceContract::class, Services\EventService::class);
+        $this->app->singleton(Contracts\DataServiceContract::class, Services\DataService::class);
         $this->app->singleton(Util::class, Util::class);
     }
 

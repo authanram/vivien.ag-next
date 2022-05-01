@@ -57,7 +57,7 @@ select {
 
 /* CONTENTS */
 
-.welcome {
+[data-content="welcome"] {
     h3 {
         @apply mb-0;
     }
@@ -66,7 +66,7 @@ select {
         @apply font-medium text-2xl mb-5;
     }
 
-    .address p:first-of-type {
+    [data-content="address"] p:first-of-type {
         @apply font-medium text-xl mb-5 border-b pb-4;
     }
 }

@@ -20,7 +20,7 @@ final class EventService implements EventServiceContract
 
     public function get(array $columns = ['*']): Collection
     {
-        return $this->builder()::get($columns);
+        return $this->builder()->get($columns);
     }
 
     public function with(array $with): self
@@ -59,8 +59,7 @@ final class EventService implements EventServiceContract
 
     public function upcoming(): self
     {
-        /** @noinspection PhpUndefinedMethodInspection */
-        $this->builder()::upcoming();
+        //$this->builder()::upcoming();
 
         return $this;
     }

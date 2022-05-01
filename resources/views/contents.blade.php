@@ -4,11 +4,15 @@
 @foreach($contents as $content)
     @if(!empty(trim($content->getAttribute('caption'))))
         @push('title')
-            {!! parsedown(trim($content->getAttribute('caption'))) !!}
+            {{ trim($content->getAttribute('caption')) }}
         @endpush
         @push('content')
             @foreach($contents as $content)
-                <x-card>{!! parsedown($content->getAttribute('body')) !!}</x-card>
+                <x-card>
+                    <x-markdown>
+                        {{ $content->getAttribute('body') }}
+                    </x-markdown>
+                </x-card>
             @endforeach
         @endpush
     @endif

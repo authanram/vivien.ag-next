@@ -36,7 +36,7 @@ final class Menus extends Repository
      */
     public function footer(): Collection
     {
-        return $this->queryBySlug('footer') ?? collect();
+        return $this->findBySlug('footer') ?? collect();
     }
 
     /**
@@ -45,10 +45,10 @@ final class Menus extends Repository
      */
     public function main(): Collection
     {
-        return $this->queryBySlug('main') ?? collect();
+        return $this->findBySlug('main') ?? collect();
     }
 
-    protected function queryBySlug(string $slug): ?Collection
+    protected function findBySlug(string $slug): ?Collection
     {
         $callback = static fn (Model $menu) => $menu
             ->menuItems

@@ -34,15 +34,15 @@ class Content extends Resource
         return [
             ID::make(__('ID'), 'id')
             ,
-            Text::make(__('Title'), 'title')
-                ->rules('required')
-                ->sortable()
-            ,
             Slug::make(__('Slug'), 'slug')
                 ->from('title')
                 ->creationRules("unique:$table,slug")
                 ->updateRules("unique:$table,slug,{{resourceId}}")
                 ->required()
+                ->sortable()
+            ,
+            Text::make(__('Title'), 'title')
+                ->rules('required')
                 ->sortable()
             ,
             Markdown::make(__('Caption'), 'caption')

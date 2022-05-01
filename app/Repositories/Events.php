@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 final class Events extends Repository
 {
-    public function model(): Builder|string
+    public static function model(): Builder|string
     {
         return Model::class;
     }

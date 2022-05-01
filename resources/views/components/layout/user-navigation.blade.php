@@ -2,10 +2,10 @@
 
 <a {{ $attributes->merge(['class' => $classList]) }} href="/backend" target="_blank">
     @auth
-        <x-renderer:icon class="-mt-0.5 h-4 w-4 mr-1" icon="user" />
+        <x-icon class="-mt-0.5 h-4 w-4 mr-1" icon="user" />
         <span>Backend (<span class="font-medium">{{ request()->user()->name }}</span>)</span>
     @else
-        <x-renderer:icon class="-mt-0.5 h-4 w-4 mr-1" icon="lock" />
+        <x-icon class="-mt-0.5 h-4 w-4 mr-1" icon="lock" />
         <span>Login</span>
     @endif
 </a>

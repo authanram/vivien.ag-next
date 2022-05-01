@@ -60,9 +60,11 @@ final class Util
             abort(500, $e->getMessage());
         }
 
-        $body = $markdown
-            ? $this->markdown($content->body, $replace)
-            : $content->body;
+//        $body = $markdown
+//            ? $this->markdown($content->body, $replace)
+//            : $content->body;
+
+        $body = $content->body;
 
         $map = config('project.content.replace')();
 
@@ -86,23 +88,6 @@ final class Util
         return $date
             ? Carbon::createFromFormat(config('app.date_format_default'), $date)
             : now(config('app.date_format_default'));
-    }
-
-    public function markdown(string $markdown, array $replace = []): string
-    {
-        try {
-            $html = resolve(ParsedownService::class)->parse($markdown);
-        } catch (Exception $exception) {
-            abort(505, $exception->getMessage());
-        }
-
-        $replace = array_merge($replace, config('project.parsedown.replace')());
-
-        foreach ($replace as $key => $value) {
-            $html = str_replace($key, $value, $html);
-        }
-
-        return '<div class="x-parsedown">'.$html.'</div>';
     }
 
     public function remember(string $key, mixed $value): mixed
