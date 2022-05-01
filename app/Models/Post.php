@@ -13,10 +13,6 @@ class Post extends Model
     use Concerns\HasUuid;
     use SoftDeletes;
 
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
     protected $fillable = [
         'slug',
         'title',
