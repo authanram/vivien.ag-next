@@ -5,7 +5,7 @@
             <x-slot:tooltip>
                 For the world's
                 <span class="md:block">
-                <span class="font-bold">best mom</span>!!
+                <span class="font-semibold">best mom</span>!!
                 <span class="text-red-500 text-[.65rem]">❤ ❤</span>
             </span>
             </x-slot:tooltip>

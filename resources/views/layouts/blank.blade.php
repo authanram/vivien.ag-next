@@ -1,7 +1,6 @@
 @php($assets = (object)[
     'alpinejs' => 'https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js',
-    'fontDisplay' => 'https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,800,900&display=swap',
-    'fontSans' => 'https://fonts.googleapis.com/css?family=Poppins:300,600,900&display=swap',
+    'font' => 'https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,900&display=swap',
     'css' => tailwindcss('/css/app.css'),
     'js' => mix('/dist/js/app.js'),
 ])
@@ -14,13 +13,11 @@
     <title>{{ ($title ?? null) ? "$title - " : '' }}{{ config('app.name') }}</title>
     <x-favicon />
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preload" href="{{ $assets->fontDisplay }}" as="style">
-    <link rel="preload" href="{{ $assets->fontSans }}" as="style">
+    <link rel="preload" href="{{ $assets->font }}" as="style">
     <link rel="preload" href="{{ $assets->css }}" as="style">
     <link rel="preload" href="{{ $assets->alpinejs }}" as="script">
     <link rel="preload" href="{{ $assets->js }}" as="script">
-    <link rel="stylesheet" href="{{ $assets->fontDisplay }}">
-    <link rel="stylesheet" href="{{ $assets->fontSans }}">
+    <link rel="stylesheet" href="{{ $assets->font }}">
     <link rel="stylesheet" href="{{ $assets->css }}">
     @livewireStyles
     @stack('styles')
@@ -28,7 +25,7 @@
     <script defer src="{{ $assets->alpinejs }}"></script>
     <script defer src="{{ $assets->js }}"></script>
 </head>
-<body>
+<body class="font-display font-light h-screen overflow-x-hidden relative text-base text-gray-700">
     <x-google-tagmanager class="leading-7 mt-3 sm:mt-4 text-gray-500 text-xl" />
     <x-background styles />
     <div class="min-h-full relative z-0">

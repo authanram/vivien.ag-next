@@ -5,10 +5,6 @@
     outline: none !important;
 }
 
-body {
-    @apply font-display font-light h-screen overflow-x-hidden relative text-base text-gray-900;
-}
-
 .blur {
     -webkit-filter: blur(2px);
     -moz-filter: blur(2px);
@@ -34,12 +30,11 @@ body {
     transition: opacity .3s;
 }
 
-.margin {
-    @apply md:mb-10 mb-5;
-}
+/* MAIN */
 
-.padding {
-    @apply md:p-10 p-5;
+main .text-sm,
+main .text-xs {
+    @apply tracking-wide;
 }
 
 /* FORMS */
@@ -100,7 +95,7 @@ select {
     }
 
     h4, h5, h6 {
-        md:text-xl;
+        @apply md:text-xl;
     }
 
     > ul {

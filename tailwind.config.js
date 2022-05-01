@@ -14,9 +14,9 @@ module.exports = {
     theme: {
         extend: {
             colors: {
+                blue: colors.sky,
                 gray: colors.slate,
                 green: colors.emerald,
-                primary: colors.pink,
             },
             fontFamily: {
                 display: ['Poppins', ...defaultTheme.fontFamily.sans],
