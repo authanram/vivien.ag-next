@@ -1,7 +1,7 @@
 @extends('layouts.blank')
 
 @section('body')
-    <x-menu:main />
+    @include('layouts.partials.main.menu')
     @stack('title')
     @include('layouts.partials.content')
     @include('layouts.partials.footer')

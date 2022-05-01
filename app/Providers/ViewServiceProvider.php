@@ -11,9 +11,9 @@ class ViewServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        Blade::component('menu:footer:item', Menu\ItemFooter::class);
-        Blade::component('menu:main', Menu\Menu::class);
-        Blade::component('menu:main:item', Menu\ItemMain::class);
+        Blade::component('footer:menu-item', Menu\MenuItemFooter::class);
+        Blade::component('main:menu-item', Menu\MenuItemMain::class);
+        Blade::component('menu', Menu\Menu::class);
 
         Blade::component('renderer:icon', IconRenderer::class);
     }

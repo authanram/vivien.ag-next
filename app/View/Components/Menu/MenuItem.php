@@ -19,14 +19,17 @@ abstract class MenuItem extends Component
 
     protected bool $isActive;
     protected string $color;
+    protected string $href;
 
-    public function __construct(Model $model, bool $active = null, ?string $color = null)
-    {
-        $this->isActive = $active ?? $model->presenter()->isActive();
-
-        $this->color = $color ?? $model->presenter()->color();
-
-        parent::__construct($model);
+    public function __construct(
+        protected Model $model,
+        bool $active = null,
+        string $color = null,
+        string $href = null,
+    ) {
+        $this->isActive = $active ?? $this->model->presenter()->isActive() ?? 'false';
+        $this->color = $color ?? $this->model->presenter()->color() ?? 'pink';
+        $this->href = $href ?? $this->presenter()->href() ?? '#';
     }
 
     protected function getExtraAttributes(): array
@@ -35,7 +38,7 @@ abstract class MenuItem extends Component
             'x-init' => "\$nextTick(() => \$refs.root.classList.remove('transition-none'));",
             'x-ref' => 'root',
             'class' => $this->classAttribute(),
-            'href' => $this->presenter()->href(),
+            'href' => $this->href,
         ];
     }
 

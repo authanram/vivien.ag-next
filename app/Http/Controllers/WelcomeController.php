@@ -21,7 +21,7 @@ final class WelcomeController extends Controller
     protected static function cacheEvents(): Collection
     {
         $events = Event::upcoming()
-            ->with(['eventType', 'eventType.color', 'eventLocation'])
+            ->with(['eventTemplate', 'eventTemplate.color', 'location'])
             ->where('published', true)
             ->limit(3)
             ->orderBy('date_from')

@@ -2,7 +2,7 @@
 
 namespace App\View\Components\Menu;
 
-final class ItemFooter extends MenuItem
+final class MenuItemFooter extends MenuItem
 {
     protected static string $alias = 'components.menu.item';
 

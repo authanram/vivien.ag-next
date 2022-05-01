@@ -23,7 +23,6 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4.5",
         "livewire/livewire": "^2.10",
-        "prettus/l5-repository": "^2.8",
         "saumini/count": "^1.0",
         "spatie/laravel-activitylog": "^4.5.2",
         "spatie/laravel-backup": "^8.1.2",

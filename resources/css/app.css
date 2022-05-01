@@ -6,26 +6,7 @@
 }
 
 body {
-    @apply font-light font-sans h-full overflow-x-hidden relative;
-}
-
-.font-sans {
-    font-family:
-        Poppins,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        Segoe UI,
-        Roboto,
-        Helvetica Neue,
-        Arial,
-        Noto Sans,
-        sans-serif,
-        Apple Color Emoji,
-        Segoe UI Emoji,
-        Segoe UI Symbol,
-        Noto Color Emoji
-    !important;
+    @apply font-display font-light h-screen overflow-x-hidden relative text-base text-gray-900;
 }
 
 .blur {

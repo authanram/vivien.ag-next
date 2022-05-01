@@ -15,10 +15,11 @@ module.exports = {
         extend: {
             colors: {
                 gray: colors.slate,
-                primary: colors.emerald,
+                green: colors.emerald,
+                primary: colors.pink,
             },
             fontFamily: {
-                display: ['Poppins var', ...defaultTheme.fontFamily.sans],
+                display: ['Poppins', ...defaultTheme.fontFamily.sans],
             },
             fontSize: {
                 'base': '17px',

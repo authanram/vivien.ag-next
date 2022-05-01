@@ -13,7 +13,7 @@ class Color extends Model
         'color',
     ];
 
-    public function eventTypes(): HasMany
+    public function eventTemplates(): HasMany
     {
         return $this->hasMany(EventTemplate::class);
     }

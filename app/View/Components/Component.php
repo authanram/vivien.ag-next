@@ -2,7 +2,6 @@
 
 namespace App\View\Components;
 
-use App\Models\Model;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
 use Illuminate\View\Component as BaseComponent;
@@ -12,11 +11,17 @@ abstract class Component extends BaseComponent
 {
     protected static string $alias = '';
 
-    public Collection $extraAttributes;
+    protected Collection $extraAttributes;
 
-    public function __construct(public ?Model $model = null)
+    public function extraAttributes(): Collection
     {
-        $this->extraAttributes = collect($this->getExtraAttributes());
+        $this->extraAttributes ??= collect(
+            method_exists($this, 'getExtraAttributes')
+                ? $this->getExtraAttributes()
+                : [],
+        );
+
+        return $this->extraAttributes;
     }
 
     public function render(): View
@@ -25,11 +30,10 @@ abstract class Component extends BaseComponent
             throw new InvalidArgumentException(static::class.'::$view must not be empty.');
         }
 
-        return view(static::$alias);
-    }
+        $this->extraAttributes = collect(
 
-    protected function getExtraAttributes(): array
-    {
-        return [];
+        );
+
+        return view(static::$alias);
     }
 }
