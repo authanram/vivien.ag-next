@@ -524,5 +524,10 @@
     "Upcoming": "Bevorstehende",
     "Url": "URL",
 
+    "Days": "Tage",
+    "Day": "Tag",
+    "Hrs": "Std",
+    "Min": "Min",
+
     "Add tag...": "Tag hinzufügen..."
 }

@@ -35,7 +35,7 @@ class Model extends \Illuminate\Database\Eloquent\Model
             return $this->presenterInstance;
         }
 
-        if (class_exists($this->presenter)) {
+        if (class_exists(static::$presenter) === false) {
             throw new PresenterException(static::class.'::$presenter is undefined.');
         }
 
