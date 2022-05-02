@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-class ContentField extends BasePolicy
+class ContentViewPolicy extends BasePolicy
 {
     //
 }

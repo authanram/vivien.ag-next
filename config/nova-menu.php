@@ -26,7 +26,7 @@ return [
             MenuItem::resource(Resources\Post::class),
             MenuItem::resource(Resources\StaffProfile::class),
             MenuItem::resource(Resources\Tag::class),
-            MenuItem::resource(Resources\Content::class),
+            //MenuItem::resource(Resources\Content::class),
             MenuItem::resource(Resources\Location::class),
         ])->collapsable()->icon('document-text'),
 
@@ -53,11 +53,11 @@ return [
         ])->collapsable()->icon('switch-horizontal'),
 
         MenuSection::make(__('Contents'), [
-            MenuItem::resource(Resources\ContentBlock::class),
-            MenuItem::resource(Resources\ContentField::class),
-            MenuItem::resource(Resources\ContentLayout::class),
-            MenuItem::resource(Resources\ContentView::class),
-        ])->collapsable()->icon('layout-board'),
+            MenuItem::resource(Resources\ContentBlock::class)->name('Blocks'),
+            MenuItem::resource(Resources\ContentField::class)->name('Field'),
+            MenuItem::resource(Resources\ContentLayout::class)->name('Layout'),
+            MenuItem::resource(Resources\ContentView::class)->name('Views'),
+        ])->collapsable()->icon('template'),
 
         MenuSection::make(__('Misc'), [
             MenuItem::resource(Resources\Attachment::class),
