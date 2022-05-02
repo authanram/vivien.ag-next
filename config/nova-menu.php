@@ -53,10 +53,10 @@ return [
         ])->collapsable()->icon('switch-horizontal'),
 
         MenuSection::make(__('Contents'), [
-            MenuItem::resource(Resources\ContentBlock::class)->name('Blocks'),
-            MenuItem::resource(Resources\ContentField::class)->name('Field'),
-            MenuItem::resource(Resources\ContentLayout::class)->name('Layout'),
-            MenuItem::resource(Resources\ContentView::class)->name('Views'),
+            MenuItem::resource(Resources\ContentBlock::class),
+            MenuItem::resource(Resources\ContentField::class),
+            MenuItem::resource(Resources\ContentLayout::class),
+            MenuItem::resource(Resources\ContentView::class),
         ])->collapsable()->icon('template'),
 
         MenuSection::make(__('Misc'), [

@@ -10,6 +10,13 @@ return [
     'image_coords',
     'authors',
     'quotes',
+
+    'content_fields',
+    'content_layouts',
+    'content_blocks',
+    'content_views',
+    'content_relations',
+
     'routes',
     'route_contents',
     'menus',
@@ -29,10 +36,4 @@ return [
     'event_templates',
     'events',
     'event_registrations',
-    //
-    'content_fields',
-    'content_layouts',
-    'content_blocks',
-    'content_views',
-    'content_relations',
 ];
