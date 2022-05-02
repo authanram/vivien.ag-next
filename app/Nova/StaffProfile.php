@@ -4,7 +4,9 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Line;
 use Laravel\Nova\Fields\Text;
 
 class StaffProfile extends Resource
@@ -29,6 +31,11 @@ class StaffProfile extends Resource
             Text::make(__('Occupation'), 'occupation')
             ,
             Text::make(__('ImageUrl'), 'image_url')
+            ,
+            DateTime::make(__('Disabled At'), 'disabled_at')
+                ->onlyOnForms()
+            ,
+            Line::make(__('Disabled At'), fn () => $this->resource->present()->disabledAt())
             ,
             BelongsToMany::make(__('Events'), 'events', Event::class)
                 ->hideFromIndex()

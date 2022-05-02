@@ -8,13 +8,14 @@ use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 
 /**
- * @method Presenter presenter()
+ * @property Presenter $presenter
+ * @method Presenter present()
  */
 class MenuItem extends Model implements Sortable
 {
     use SortableTrait;
 
-    protected string $presenter = Presenter::class;
+    public static string $presenter = Presenter::class;
 
     protected $fillable = [
         'menu_id',

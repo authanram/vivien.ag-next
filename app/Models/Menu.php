@@ -10,7 +10,7 @@ class Menu extends Model
 {
     use SoftDeletes;
 
-    protected string $presenter = Presenter::class;
+    public static string $presenter = Presenter::class;
 
     protected $fillable = [
         'slug',

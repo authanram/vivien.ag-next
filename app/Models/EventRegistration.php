@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class EventRegistration extends Model
 {
-    use Concerns\HasUuid;
     use SoftDeletes;
 
     protected $fillable = [
+        'uuid',
         'event_id',
         'hash',
         'salutation',

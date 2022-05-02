@@ -10,10 +10,10 @@ use Spatie\Tags\HasTags;
 class Post extends Model
 {
     use HasTags;
-    use Concerns\HasUuid;
     use SoftDeletes;
 
     protected $fillable = [
+        'uuid',
         'slug',
         'title',
         'body',

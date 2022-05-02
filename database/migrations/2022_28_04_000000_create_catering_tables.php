@@ -11,6 +11,7 @@ class CreateCateringTables extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('note')->nullable();
+            $table->boolean('is_selected')->unique()->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

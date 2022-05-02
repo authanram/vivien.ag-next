@@ -2,29 +2,46 @@
 
 namespace App\Models;
 
+use App\Exceptions\PresenterException;
 use App\Presenters\Presenter;
-use Carbon\CarbonInterface;
-use Illuminate\Support\Optional;
 use Illuminate\Support\Str;
-use Laracasts\Presenter\Exceptions\PresenterException;
-use Laracasts\Presenter\PresentableTrait;
 
 class Model extends \Illuminate\Database\Eloquent\Model
 {
-    use PresentableTrait;
+    protected ?Presenter $presenterInstance = null;
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        if (in_array('uuid', $this->fillable)) {
+            return;
+        }
+
+        $this->attributes['uuid'] ??= Str::orderedUuid()->toString();
+    }
 
     public static function getTagClassName(): string
     {
         return static::class;
     }
 
-    public function presenter(): Optional|Presenter
+    /**
+     * @throws PresenterException
+     */
+    public function present(): Presenter
     {
-        try {
-            return $this->present();
-        } catch (PresenterException) {
-            return optional();
+        if (is_null($this->presenterInstance) === false) {
+            return $this->presenterInstance;
         }
+
+        if (class_exists($this->presenter)) {
+            throw new PresenterException(static::class.'::$presenter is undefined.');
+        }
+
+        $this->presenterInstance = new static::$presenter($this);
+
+        return $this->presenterInstance;
     }
 
     public function getEntityTypeAttribute(): string
@@ -34,6 +51,6 @@ class Model extends \Illuminate\Database\Eloquent\Model
 
     public function dateFormat(string $attribute): string
     {
-        return $this->{$attribute}->format(config('app.date_format'));
+        return ($this->{$attribute} ?? now())->format(config('app.date_format'));
     }
 }

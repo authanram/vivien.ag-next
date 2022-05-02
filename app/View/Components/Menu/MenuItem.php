@@ -27,9 +27,9 @@ abstract class MenuItem extends Component
         string $color = null,
         string $href = null,
     ) {
-        $this->isActive = $active ?? $this->model->presenter()->isActive() ?? 'false';
-        $this->color = $color ?? $this->model->presenter()->color() ?? util()->accent();
-        $this->href = $href ?? $this->presenter()->href() ?? '#';
+        $this->isActive = $active ?? $this->model->present()->isActive() ?? 'false';
+        $this->color = $color ?? $this->model->present()->color() ?? util()->accent();
+        $this->href = $href ?? $this->present()->href() ?? '#';
     }
 
     protected function getExtraAttributes(): array
@@ -69,7 +69,7 @@ abstract class MenuItem extends Component
         return str_replace('COLOR', $this->color, $classListString);
     }
 
-    protected function presenter(): Optional|MenuItemPresenter
+    protected function present(): Optional|MenuItemPresenter
     {
         /** @noinspection PhpUnhandledExceptionInspection */
         return $this->model->present();

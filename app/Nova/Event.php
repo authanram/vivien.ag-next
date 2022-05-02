@@ -2,12 +2,17 @@
 
 namespace App\Nova;
 
-//use Laravel\Nova\Fields\BooleanGroup;
+//use App\Nova\Metrics\PartitionEventTemplate;
+use App\Models\Catering as CateringModel;
+use App\Models\StaffProfile as StaffProfileModel;
 use App\Nova\Filters\EventsTimeFilter;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use JsonException;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\BooleanGroup;
 use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
@@ -17,6 +22,7 @@ use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Stack;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Http\Requests\NovaRequest;
 use Spatie\TagsField\Tags;
 
 class Event extends Resource
@@ -24,16 +30,11 @@ class Event extends Resource
     public static string $model = \App\Models\Event::class;
 
     public static $search = [
-        'description',
         'date_from',
         'date_to',
-        'lead'
-    ];
-
-    public static array $searchRelations = [
-        'eventTemplate' => ['name'],
-        'catering' => ['name'],
-        'location' => ['name'],
+        'eventTemplate.name',
+        'catering.name',
+        'location.name',
     ];
 
     public static $with = [
@@ -46,6 +47,53 @@ class Event extends Resource
         'published' => 'asc',
         'date_from' => 'asc',
     ];
+
+    /**
+     * @throws JsonException
+     */
+    protected static function afterValidation(NovaRequest $request, $validator): void
+    {
+        if (in_array(true, json_decode($request->get('staff'), true, 512, JSON_THROW_ON_ERROR), true) === false) {
+            $validator->errors()->add('staff', __('validation.required', ['attribute' => __('Lead')]));
+        }
+    }
+
+    public static function afterCreate(NovaRequest $request, Model $model): void
+    {
+        static::syncStaffEvents($request->get('staff'), $model);
+    }
+
+    public static function afterUpdate(NovaRequest $request, Model $model): void
+    {
+        static::syncStaffEvents($request->get('staff'), $model);
+    }
+
+    /**
+     * @param self $model
+     * @noinspection PhpDocSignatureInspection
+     */
+    protected static function syncStaffEvents(string $staff, Model $model): void
+    {
+        /** @noinspection JsonEncodingApiUsageInspection */
+        $names = collect(json_decode($staff, true))
+            ->filter(fn ($value) => $value === true)
+            ->keys()
+            ->toArray();
+
+        $ids = StaffProfileModel::whereIn('name', $names)->pluck('id')->toArray();
+
+        $model->staffProfiles()->sync($ids);
+    }
+
+    public static function label(): string
+    {
+        return __('Events');
+    }
+
+    public static function singularLabel(): string
+    {
+        return __('Events');
+    }
 
     public function fields(Request $request, bool $published = true): array
     {
@@ -85,21 +133,23 @@ class Event extends Resource
                 ->showOnPreview()
             ,
             Stack::make(__('Date From/To'), [
-                Line::make(null, static function ($model) {
-                    return $model->presenter()->dateFrom();
-                })->extraClasses('font-bold text-sm'),
-                Line::make(null, static function ($model) {
-                    return $model->presenter()->dateTo();
-                })->asSmall(),
+                Line::make(null, fn () => $this->resource->present()->dateFrom())
+                    ->extraClasses('font-bold text-sm')
+                ,
+                Line::make(null, fn () => $this->resource->present()->dateTo())
+                    ->asSmall(),
             ])->exceptOnForms()
             ,
-            Line::make(__('Registrations'), static function ($model) {
-                return $model->registrations_reserved.' / '.$model->registrations_maximum;
-            })->exceptOnForms()
-                ->showOnPreview()
-                ->extraClasses('text-sm')
-                ->exceptOnForms()
-            ,
+            Stack::make(__('Event Registrations'), [
+                Line::make(null, fn () => $this->resource->present()->registrationsCurrent())
+                    ->showOnPreview()
+                    ->extraClasses('font-bold text-sm')
+                    ->exceptOnForms()
+                ,
+                Line::make(null, fn () => $this->resource->present()->registrationsPreview())
+                    ->asSmall()
+                ,
+            ]),
             Number::make(__('Maximum Registrations'), 'registrations_maximum')
                 ->default(10)
                 ->rules('required', 'numeric', 'min:1', 'gte:registrations_reserved')
@@ -110,7 +160,7 @@ class Event extends Resource
                 ->showOnPreview()
             ,
             Number::make(__('Reserved Registrations'), 'registrations_reserved')
-                ->withMeta(['value' => $this->model()?->getAttribute('registrations_reserved') ?? 0])
+                ->withMeta(['value' => $this->resource->registrations_reserved ?? 0])
                 ->rules('required', 'numeric', 'min:0')
                 ->default(0)
                 ->sortable()
@@ -121,12 +171,22 @@ class Event extends Resource
                 ->currency('EUR')
                 ->rules('nullable', 'numeric')
                 ->showOnPreview()
+                ->onlyOnForms()
             ,
+            Stack::make(__('Price'), [
+                Line::make(null, fn () => $this->resource->price.' €')
+                    ->extraClasses('font-bold text-sm')
+                ,
+                Line::make(null, fn () => $this->resource->present()->profitPreview())
+                    ->asSmall()
+                ,
+            ]),
             Text::make(__('Price Note'), 'price_note')
                 ->hideFromIndex()
                 ->showOnPreview()
             ,
             BelongsTo::make(__('Catering'), 'catering', Catering::class)
+                ->default(fn () => CateringModel::$presenter::default()?->id)
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()
@@ -139,12 +199,11 @@ class Event extends Resource
                 ->hideFromIndex()
                 ->showOnPreview()
             ,
-//            BooleanGroup::make('Tags')->options([
-//                'create' => 'Create',
-//                'read' => 'Read',
-//                'update' => 'Update',
-//                'delete' => 'Delete',
-//            ])->hideFalseValues(),
+            BooleanGroup::make(__('Lead'), 'staff', function () {
+                return StaffProfileModel::$presenter::toOptionArrayValues($this->resource->staffProfiles);
+            })->options(StaffProfileModel::$presenter::toOptionArrayOptions())
+                ->hideFromIndex()
+            ,
             Boolean::make(__('Published'), 'published')
                 ->default($published)
                 ->rules('boolean')
@@ -178,13 +237,10 @@ class Event extends Resource
             ?->getAttribute('name');
     }
 
-    public static function label(): string
+    public function cards(NovaRequest $request): array
     {
-        return __('Events');
-    }
-
-    public static function singularLabel(): string
-    {
-        return __('Events');
+        return [
+            //new PartitionEventTemplate(),
+        ];
     }
 }

@@ -3,11 +3,37 @@
 namespace App\Presenters;
 
 use App\Models\Model;
-use Laracasts\Presenter\Presenter as BasePresenter;
 
 /**
  * @property Model $entity
  */
-abstract class Presenter extends BasePresenter
+abstract class Presenter
 {
+    protected array $cached = [];
+
+    public function __construct(protected Model $entity)
+    {
+    }
+
+    /** @noinspection MagicMethodsValidityInspection */
+    public function __get($property)
+    {
+        if (method_exists($this, $property)) {
+            return $this->{$property}();
+        }
+
+        return $this->entity->{$property};
+    }
+
+    protected function get(string $key): mixed
+    {
+        $this->cached[$key] ??= data_get($this->entity, $key);
+
+        return $this->cached[$key];
+    }
+
+    protected function dateFormat(string $attribute): ?string
+    {
+        return $this->entity->{$attribute}?->format(config('app.date_format'));
+    }
 }
