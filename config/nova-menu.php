@@ -52,6 +52,13 @@ return [
             MenuItem::resource(Resources\Route::class),
         ])->collapsable()->icon('switch-horizontal'),
 
+        MenuSection::make(__('Contents'), [
+            MenuItem::resource(Resources\ContentBlock::class),
+            MenuItem::resource(Resources\ContentField::class),
+            MenuItem::resource(Resources\ContentLayout::class),
+            MenuItem::resource(Resources\ContentView::class),
+        ])->collapsable()->icon('layout-board'),
+
         MenuSection::make(__('Misc'), [
             MenuItem::resource(Resources\Attachment::class),
             MenuItem::resource(Resources\ImageCoords::class),

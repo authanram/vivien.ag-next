@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d69757825cba50f43a1822f2eadbc939",
+    "content-hash": "62dd564c78b3539756a9a7de1c376f32",
     "packages": [
         {
             "name": "ajcastro/eager-load-pivot-relations",
@@ -1576,16 +1576,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.246.0",
+            "version": "v0.247.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "33aef1ccce34799a1124c39951fed8ad0b16aced"
+                "reference": "1fc6eab7512b4e2dd4b6c96b2697f9b6bfbaddc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/33aef1ccce34799a1124c39951fed8ad0b16aced",
-                "reference": "33aef1ccce34799a1124c39951fed8ad0b16aced",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/1fc6eab7512b4e2dd4b6c96b2697f9b6bfbaddc2",
+                "reference": "1fc6eab7512b4e2dd4b6c96b2697f9b6bfbaddc2",
                 "shasum": ""
             },
             "require": {
@@ -1614,9 +1614,9 @@
             ],
             "support": {
                 "issues": "https://github.com/googleapis/google-api-php-client-services/issues",
-                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.246.0"
+                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.247.0"
             },
-            "time": "2022-04-24T00:58:37+00:00"
+            "time": "2022-05-02T01:12:12+00:00"
         },
         {
             "name": "google/auth",
@@ -4525,51 +4525,6 @@
                 "source": "https://github.com/rap2hpoutre/fast-excel/tree/v3.2.0"
             },
             "time": "2022-02-09T16:04:44+00:00"
-        },
-        {
-            "name": "saumini/count",
-            "version": "v1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nsaumini/nova-field-count.git",
-                "reference": "55db5d804cf5489ccb077b0cef3e2d4202b1acda"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nsaumini/nova-field-count/zipball/55db5d804cf5489ccb077b0cef3e2d4202b1acda",
-                "reference": "55db5d804cf5489ccb077b0cef3e2d4202b1acda",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Saumini\\Count\\FieldServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Saumini\\Count\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "A Laravel Nova field.",
-            "keywords": [
-                "laravel",
-                "nova"
-            ],
-            "support": {
-                "issues": "https://github.com/nsaumini/nova-field-count/issues",
-                "source": "https://github.com/nsaumini/nova-field-count/tree/master"
-            },
-            "time": "2018-11-16T16:28:19+00:00"
         },
         {
             "name": "spatie/db-dumper",
@@ -8251,16 +8206,16 @@
         },
         {
             "name": "tonysm/tailwindcss-laravel",
-            "version": "0.4.0",
+            "version": "0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tonysm/tailwindcss-laravel.git",
-                "reference": "b60fea7d9cd33afee5b65d4b172fd6531e86f203"
+                "reference": "5741fa16c04ffbb3ca58298731828a40c5bb812c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tonysm/tailwindcss-laravel/zipball/b60fea7d9cd33afee5b65d4b172fd6531e86f203",
-                "reference": "b60fea7d9cd33afee5b65d4b172fd6531e86f203",
+                "url": "https://api.github.com/repos/tonysm/tailwindcss-laravel/zipball/5741fa16c04ffbb3ca58298731828a40c5bb812c",
+                "reference": "5741fa16c04ffbb3ca58298731828a40c5bb812c",
                 "shasum": ""
             },
             "require": {
@@ -8315,7 +8270,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tonysm/tailwindcss-laravel/issues",
-                "source": "https://github.com/tonysm/tailwindcss-laravel/tree/0.4.0"
+                "source": "https://github.com/tonysm/tailwindcss-laravel/tree/0.4.1"
             },
             "funding": [
                 {
@@ -8323,7 +8278,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-04-12T22:06:39+00:00"
+            "time": "2022-05-01T20:27:41+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

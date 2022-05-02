@@ -1,4 +1,4 @@
-<?php /** @noinspection MethodShouldBeFinalInspection, MissingParameterTypeDeclarationInspection */
+<?php
 
 namespace App\Policies;
 
@@ -58,15 +58,15 @@ class BasePolicy
     private static function authorize(User $user, string $function, $model = null): bool
     {
         return isset(static::$authorizeBefore)
-        && \is_array(static::$authorizeBefore)
-        && \in_array($function, static::$authorizeBefore, true)
+        && is_array(static::$authorizeBefore)
+        && in_array($function, static::$authorizeBefore, true)
             ? $user->isAdministrator()
             : $user->can($function.':'.static::makeSlug($model));
     }
 
     private static function makeSlug($model = null): string
     {
-        $subjectBasename = \class_basename($model ? \get_class($model) : static::class);
+        $subjectBasename = class_basename($model ? get_class($model) : static::class);
 
         $basename = Str::before($subjectBasename, 'Policy');
 

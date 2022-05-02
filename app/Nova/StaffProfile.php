@@ -38,7 +38,6 @@ class StaffProfile extends Resource
             Line::make(__('Disabled At'), fn () => $this->resource->present()->disabledAt())
             ,
             BelongsToMany::make(__('Events'), 'events', Event::class)
-                ->hideFromIndex()
             ,
         ];
     }
