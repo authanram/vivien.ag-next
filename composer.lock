@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "62dd564c78b3539756a9a7de1c376f32",
+    "content-hash": "4d9bcbb09ed1099ca2eb0cc313b88378",
     "packages": [
         {
             "name": "ajcastro/eager-load-pivot-relations",
@@ -2469,6 +2469,50 @@
             "time": "2022-05-03T19:49:50+00:00"
         },
         {
+            "name": "laravel/nova-log-viewer",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/nova-log-viewer.git",
+                "reference": "57230b47a8da4da68d08a45d5694e8769767c935"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/nova-log-viewer/zipball/57230b47a8da4da68d08a45d5694e8769767c935",
+                "reference": "57230b47a8da4da68d08a45d5694e8769767c935",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Nova\\LogViewer\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Nova\\LogViewer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova tool for viewing your application logs.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "source": "https://github.com/laravel/nova-log-viewer/tree/v0.1.1"
+            },
+            "time": "2022-05-02T17:28:40+00:00"
+        },
+        {
             "name": "laravel/serializable-closure",
             "version": "v1.1.1",
             "source": {
@@ -2846,16 +2890,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "3.0.18",
+            "version": "3.0.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "c8e137e594948240b03372e012344b07c61b9193"
+                "reference": "670df21225d68d165a8df38587ac3f41caf608f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/c8e137e594948240b03372e012344b07c61b9193",
-                "reference": "c8e137e594948240b03372e012344b07c61b9193",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/670df21225d68d165a8df38587ac3f41caf608f8",
+                "reference": "670df21225d68d165a8df38587ac3f41caf608f8",
                 "shasum": ""
             },
             "require": {
@@ -2916,7 +2960,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/3.0.18"
+                "source": "https://github.com/thephpleague/flysystem/tree/3.0.19"
             },
             "funding": [
                 {
@@ -2932,7 +2976,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-25T18:55:04+00:00"
+            "time": "2022-05-03T21:19:02+00:00"
         },
         {
             "name": "league/mime-type-detection",
@@ -8836,71 +8880,6 @@
             "time": "2022-02-28T21:03:33+00:00"
         },
         {
-            "name": "cloudstudio/resource-generator",
-            "version": "1.5.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cloudstudio/resource-generator.git",
-                "reference": "800271b97971799d8ee827f1f796a511de989216"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cloudstudio/resource-generator/zipball/800271b97971799d8ee827f1f796a511de989216",
-                "reference": "800271b97971799d8ee827f1f796a511de989216",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/dbal": "^2.8|^3.0",
-                "laravel/nova": "*",
-                "php": ">=7.1.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^3.6",
-                "phpunit/phpunit": "7.1"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Cloudstudio\\ResourceGenerator\\ResourceGeneratorServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Cloudstudio\\ResourceGenerator\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Toni Soriano",
-                    "email": "hello@cloudstudio.es",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Eric Lagarda",
-                    "email": "eric@infinety.es",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Resource Generator for Laravel Nova",
-            "keywords": [
-                "generator",
-                "laravel",
-                "nova",
-                "resource"
-            ],
-            "support": {
-                "issues": "https://github.com/cloudstudio/resource-generator/issues",
-                "source": "https://github.com/cloudstudio/resource-generator/tree/1.5.2"
-            },
-            "time": "2022-03-12T18:30:27+00:00"
-        },
-        {
             "name": "composer/pcre",
             "version": "3.0.0",
             "source": {
@@ -10701,16 +10680,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.4.5",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "129a63b3bc7caeb593c224c41f420675e63cfefc"
+                "reference": "6cafed9212aa56aaa3aaf3b67c0fd1e5de53f50c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/129a63b3bc7caeb593c224c41f420675e63cfefc",
-                "reference": "129a63b3bc7caeb593c224c41f420675e63cfefc",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/6cafed9212aa56aaa3aaf3b67c0fd1e5de53f50c",
+                "reference": "6cafed9212aa56aaa3aaf3b67c0fd1e5de53f50c",
                 "shasum": ""
             },
             "require": {
@@ -10739,9 +10718,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.4.5"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.5.0"
             },
-            "time": "2022-04-22T11:11:01+00:00"
+            "time": "2022-05-04T07:46:54+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -11782,12 +11761,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "0e5a0abdd695cd45870e442647ef03a70f2ec1e5"
+                "reference": "54c08f02765d00fd520897873f163703b08f68f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/0e5a0abdd695cd45870e442647ef03a70f2ec1e5",
-                "reference": "0e5a0abdd695cd45870e442647ef03a70f2ec1e5",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/54c08f02765d00fd520897873f163703b08f68f2",
+                "reference": "54c08f02765d00fd520897873f163703b08f68f2",
                 "shasum": ""
             },
             "conflict": {
@@ -11974,6 +11953,7 @@
                 "livewire/livewire": ">2.2.4,<2.2.6",
                 "lms/routes": "<2.1.1",
                 "localizationteam/l10nmgr": "<7.4|>=8,<8.7|>=9,<9.2",
+                "luyadev/yii-helpers": "<1.2.1",
                 "magento/community-edition": ">=2,<2.2.10|>=2.3,<2.3.3",
                 "magento/magento1ce": "<1.9.4.3",
                 "magento/magento1ee": ">=1,<1.14.4.3",
@@ -12059,7 +12039,7 @@
                 "pusher/pusher-php-server": "<2.2.1",
                 "pwweb/laravel-core": "<=0.3.6-beta",
                 "rainlab/debugbar-plugin": "<3.1",
-                "remdex/livehelperchat": "<3.96",
+                "remdex/livehelperchat": "<3.99",
                 "rmccue/requests": ">=1.6,<1.8",
                 "robrichards/xmlseclibs": "<3.0.4",
                 "rudloff/alltube": "<3.0.3",
@@ -12261,7 +12241,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-29T21:04:00+00:00"
+            "time": "2022-05-04T03:31:04+00:00"
         },
         {
             "name": "ryangjchandler/blade-tabler-icons",

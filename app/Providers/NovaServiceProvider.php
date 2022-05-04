@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Nova\Dashboards\Main;
 use Illuminate\Support\Facades\Gate;
+use Laravel\Nova\LogViewer\LogViewer;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
 
@@ -49,5 +50,12 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         return [
             new Main(),
         ];
+    }
+
+    public function tools(): array
+    {
+        return array_merge(parent::tools(), [
+            new LogViewer(),
+        ]);
     }
 }

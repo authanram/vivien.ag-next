@@ -20,6 +20,7 @@
         "laracasts/presenter": "^0.2.5",
         "laravel/framework": "^9.9.0",
         "laravel/nova": "^4.2.7",
+        "laravel/nova-log-viewer": "^0.1.1",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4.5",
         "livewire/livewire": "^2.10",
@@ -38,7 +39,6 @@
     "require-dev": {
         "authanram/laravel-query-monitor": "^1.0",
         "barryvdh/laravel-ide-helper": "^2.12",
-        "cloudstudio/resource-generator": "^1.5",
         "fakerphp/faker": "^1.9.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",

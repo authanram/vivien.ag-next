@@ -61,7 +61,7 @@ return [
             MenuItem::resource(Resources\Attachment::class),
             MenuItem::resource(Resources\ImageCoords::class),
             MenuItem::resource(Resources\Color::class),
-            #ItemFooter::externalLink('External Link', '#'),
+            MenuItem::link(__('Logs'), '/logs'),
         ])->collapsable()->icon('collection'),
     ],
 
