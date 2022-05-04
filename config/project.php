@@ -20,12 +20,10 @@ return [
 
     'content' => [
         'replace' => static fn () => [
-            '#accent#' => util()->accent(),
-            '#avatar#' => asset('images/sybille-seuffer.jpg'),
-            '#year#' => now()->year,
-            '#year-last#' => now()->subYear()->year,
-            '{year}' => now()->year,
-            '{year-last}' => now()->subYear()->year,
+            '%accent%' => util()->accent(),
+            '%avatar%' => asset('images/sybille-seuffer.jpg'),
+            '%year%' => now()->year,
+            '%year-last%' => now()->subYear()->year,
         ],
     ],
 

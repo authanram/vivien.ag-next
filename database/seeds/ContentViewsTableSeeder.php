@@ -13,7 +13,7 @@ class ContentViewsTableSeeder extends Seeder
             [
                 'id' => 1,
                 'slug' => 'View 1',
-                'body' => '<div class="flex">
+                'body' => '<div class="card flex view">
     <div>%block:block1%</div>
     <div>%block:2%</div>
 </div>',
