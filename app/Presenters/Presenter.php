@@ -9,8 +9,6 @@ use App\Models\Model;
  */
 abstract class Presenter
 {
-    protected array $cached = [];
-
     public function __construct(protected Model $entity)
     {
     }
@@ -27,9 +25,7 @@ abstract class Presenter
 
     protected function get(string $key): mixed
     {
-        $this->cached[$key] ??= data_get($this->entity, $key);
-
-        return $this->cached[$key];
+        return data_get($this->entity, $key);
     }
 
     protected function dateFormat(string $attribute): ?string

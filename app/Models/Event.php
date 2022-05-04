@@ -49,6 +49,8 @@ class Event extends Model
         'published' => 'boolean',
     ];
 
+    protected $with = ['eventTemplate'];
+
     protected static function boot(): void
     {
         parent::boot();
