@@ -13,7 +13,7 @@ class ContentBlocksTableSeeder extends Seeder
             [
                 'id' => 1,
                 'slug' => 'block1',
-                'body' => 'i\'m block 1',
+                'body' => 'i\'m block 1 %year%',
                 'created_at' => '2020-05-14 17:48:08',
                 'updated_at' => '2020-05-16 20:32:53',
             ],
