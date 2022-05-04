@@ -8,6 +8,7 @@ use App\Models\StaffProfile as StaffProfileModel;
 use App\Nova\Filters\EventsTimeFilter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use JsonException;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
@@ -38,9 +39,11 @@ class Event extends Resource
     ];
 
     public static $with = [
-        'eventTemplate',
         'catering',
+        'eventRegistrations',
+        'eventTemplate',
         'location',
+        'staffProfiles',
     ];
 
     protected static array $orderBy = [
@@ -199,9 +202,8 @@ class Event extends Resource
                 ->hideFromIndex()
                 ->showOnPreview()
             ,
-            BooleanGroup::make(__('Lead'), 'staff', function () {
-                return StaffProfileModel::$presenter::toOptionArrayValues($this->resource->staffProfiles);
-            })->options(StaffProfileModel::$presenter::toOptionArrayOptions())
+            BooleanGroup::make(__('Lead'), 'staff', static fn () => $this->staffProfiles()->values)
+                ->options($this->staffProfiles()->options)
                 ->hideFromIndex()
             ,
             Boolean::make(__('Published'), 'published')
@@ -242,5 +244,15 @@ class Event extends Resource
         return [
             //new PartitionEventTemplate(),
         ];
+    }
+
+    protected function staffProfiles(): object
+    {
+        return Cache::remember(__CLASS__.':staffProfiles', null, function () {
+            return (object)[
+                'values' => StaffProfileModel::$presenter::toOptionArrayValues($this->resource->staffProfiles),
+                'options' => StaffProfileModel::$presenter::toOptionArrayOptions(),
+            ];
+        });
     }
 }

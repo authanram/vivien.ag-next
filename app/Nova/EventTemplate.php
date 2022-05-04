@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\Line;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
@@ -14,6 +15,8 @@ class EventTemplate extends Resource
     public static string $model = \App\Models\EventTemplate::class;
 
     public static $title = 'name';
+
+    public static $with = ['color', 'events'];
 
     public static $search = [
         'name',
@@ -40,6 +43,7 @@ class EventTemplate extends Resource
             ,
             HasMany::make(__('Events'), 'events', Event::class)
             ,
+            Line::make(__('Events'), fn () => $this->resource->events->count()),
         ];
     }
 
