@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
@@ -57,6 +58,10 @@ class Route extends Resource
             BelongsToMany::make(__('Content Views'), 'contentViews', ContentView::class)
                 ->fields(function () {
                     return [
+                        Select::make(__('Section'), 'section')->options([
+                            'title' => 'title',
+                            'body' => 'body',
+                        ]),
                         Number::make(__('Order Column'), 'order_column'),
                         Boolean::make(__('Published'), 'published'),
                     ];

@@ -45,6 +45,7 @@ class CreateContentTables extends Migration
             $table->id();
             $table->foreignId('route_id')->constrained('routes')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('content_view_id')->constrained('content_views')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->string('section');
             $table->boolean('published');
             $table->smallInteger('order_column');
         });
