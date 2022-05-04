@@ -19,6 +19,11 @@ class EventRegistration extends Resource
         'email'
     ];
 
+    public static $with = [
+        'event',
+        'event.eventTemplate',
+    ];
+
     public function fields(Request $request): array
     {
         return [

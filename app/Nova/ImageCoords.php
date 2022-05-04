@@ -20,6 +20,8 @@ class ImageCoords extends Resource
         'image' => ['name'],
     ];
 
+    public static $with = ['image'];
+
     public function fields(Request $request): array
     {
         return [

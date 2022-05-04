@@ -18,12 +18,6 @@ class Menu extends Resource
         'slug',
     ];
 
-    public static $with = [
-        'menuItems',
-        'menuItems.menu',
-        'menuItems.route',
-    ];
-
     public function fields(Request $request): array
     {
         $table = $this->model()?->getTable();

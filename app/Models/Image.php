@@ -6,11 +6,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
-use Spatie\Tags\HasTags;
 
 class Image extends Model implements Sortable
 {
-    use HasTags;
     use SoftDeletes;
     use SortableTrait;
 

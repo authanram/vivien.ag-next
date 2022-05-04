@@ -27,6 +27,10 @@ class Tag extends Resource
         'name->de' => 'asc',
     ];
 
+    public static $with = [
+        'color',
+    ];
+
     public function fields(Request $request): array
     {
         $table = $this->model()?->getTable();

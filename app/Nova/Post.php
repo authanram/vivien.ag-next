@@ -20,6 +20,10 @@ class Post extends Resource
 
     protected static array $orderBy = ['created_at' => 'desc'];
 
+    public static $with = [
+        'tags',
+    ];
+
     public function fields(Request $request): array
     {
         $table = $this->model()?->getTable();
@@ -44,13 +48,10 @@ class Post extends Resource
             ,
             DateTime::make(__('Published At'), 'published_at', static function ($value) {
                 return $value ?? now()->format('Y-m-d H:i:s');
-            })
-                ->rules('required')
-                ->sortable()
+            })->rules('required')->sortable()
             ,
             Tags::make('Tags')
                 ->type('post')
-                ->withLinkToTagResource()
             ,
         ];
     }

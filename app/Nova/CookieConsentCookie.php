@@ -22,6 +22,8 @@ class CookieConsentCookie extends Resource
         'cookie_type',
     ];
 
+    public static $with = ['cookieProvider'];
+
     public function fields(Request $request): array
     {
         return [

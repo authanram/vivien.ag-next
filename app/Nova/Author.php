@@ -21,6 +21,8 @@ class Author extends Resource
         'url',
     ];
 
+    public static $with = ['quotes'];
+
     public function fields(Request $request): array
     {
         return [
@@ -44,7 +46,7 @@ class Author extends Resource
                 ->help('Must be unique.')
                 ->sortable()
             ,
-            Line::make(__('Quotes'), fn () => $this->resource->load('quotes')->quotes->count())
+            Line::make(__('Quotes'), fn () => $this->resource->quotes->count())
             ,
             Boolean::make(__('Published'), 'published')
                 ->sortable()

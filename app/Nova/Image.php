@@ -10,7 +10,6 @@ use Laravel\Nova\Fields\Image as FieldImage;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
-use Spatie\TagsField\Tags;
 
 class Image extends Resource
 {
@@ -48,10 +47,6 @@ class Image extends Resource
             ,
             Boolean::make(__('Published'), 'published')
                 ->sortable()
-            ,
-            Tags::make('Tags')
-                ->type('image')
-                ->withLinkToTagResource()
             ,
             HasOne::make(__('Image Coords'), 'imageCoords', ImageCoords::class)
             ,

@@ -29,6 +29,12 @@ class MenuItem extends Resource
         'order_column' => 'asc',
     ];
 
+    public static $with = [
+        'color',
+        'menu',
+        'route',
+    ];
+
     public function fields(Request $request): array
     {
         return [
