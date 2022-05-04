@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Presenters\Models\ContentBlockPresenter as Presenter;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -10,23 +10,14 @@ class ContentBlock extends Model
 {
     use SoftDeletes;
 
+    public static string $presenter = Presenter::class;
+
     protected $fillable = [
         'slug',
+        'body',
     ];
 
-    protected $with = ['fields'];
-
-    public function layout(): BelongsTo
-    {
-        return $this->belongsTo(ContentLayout::class, 'content_layout_id');
-    }
-
-    public function fields(): BelongsToMany
-    {
-        return $this->belongsToMany(ContentField::class, 'content_block_fields');
-    }
-
-    public function views(): BelongsToMany
+    public function contentViews(): BelongsToMany
     {
         return $this->belongsToMany(ContentView::class, 'content_view_blocks');
     }

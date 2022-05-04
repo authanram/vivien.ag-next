@@ -26,7 +26,7 @@ return [
             MenuItem::resource(Resources\Post::class),
             MenuItem::resource(Resources\StaffProfile::class),
             MenuItem::resource(Resources\Tag::class),
-            //MenuItem::resource(Resources\Content::class),
+            MenuItem::resource(Resources\Content::class),
             MenuItem::resource(Resources\Location::class),
         ])->collapsable()->icon('document-text'),
 
@@ -54,8 +54,6 @@ return [
 
         MenuSection::make(__('Contents'), [
             MenuItem::resource(Resources\ContentBlock::class),
-            MenuItem::resource(Resources\ContentField::class),
-            MenuItem::resource(Resources\ContentLayout::class),
             MenuItem::resource(Resources\ContentView::class),
         ])->collapsable()->icon('template'),
 

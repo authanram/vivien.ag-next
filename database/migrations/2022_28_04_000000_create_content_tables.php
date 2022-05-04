@@ -7,40 +7,18 @@ class CreateContentTables extends Migration
 {
     public function up(): void
     {
-        Schema::create('content_fields', static function (Blueprint $table) {
-            $table->id();
-            $table->string('slug');
-            $table->string('type');
-            $table->timestamps();
-            $table->softDeletes();
-        });
-
-        Schema::create('content_layouts', static function (Blueprint $table) {
-            $table->id();
-            $table->string('slug');
-            $table->text('value');
-            $table->timestamps();
-            $table->softDeletes();
-        });
-
         Schema::create('content_blocks', static function (Blueprint $table) {
             $table->id();
-            $table->foreignId('content_layout_id')->constrained('content_layouts')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('slug');
+            $table->text('body')->nullable();
             $table->timestamps();
             $table->softDeletes();
-        });
-
-        Schema::create('content_block_fields', static function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('content_block_id')->index()->constrained('content_blocks')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('content_field_id')->index()->constrained('content_fields')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->smallInteger('order_column')->nullable();
         });
 
         Schema::create('content_views', static function (Blueprint $table) {
             $table->id();
             $table->string('slug');
+            $table->text('body')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -62,6 +40,13 @@ class CreateContentTables extends Migration
             $table->softDeletes();
         });
 
+        Schema::create('route_content_views', static function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('route_id')->constrained('routes')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('content_view_id')->constrained('content_views')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->smallInteger('order_column');
+        });
+
         Schema::create('route_contents', static function (Blueprint $table) {
             $table->id();
             $table->foreignId('route_id')->constrained('routes')->cascadeOnUpdate()->cascadeOnDelete();
@@ -76,9 +61,6 @@ class CreateContentTables extends Migration
         Schema::dropIfExists('contents');
         Schema::dropIfExists('content_view_blocks');
         Schema::dropIfExists('content_views');
-        Schema::dropIfExists('content_block_fields');
         Schema::dropIfExists('content_blocks');
-        Schema::dropIfExists('content_layouts');
-        Schema::dropIfExists('content_fields');
     }
 }

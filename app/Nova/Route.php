@@ -53,6 +53,8 @@ class Route extends Resource
             ,
             HasMany::make(__('Menu Items'), 'menuItems', MenuItem::class)
             ,
+            BelongsToMany::make(__('Content Views'), 'contentViews', ContentView::class)
+            ,
             BelongsToMany::make(__('Contents'), 'contents', Content::class)
             ,
         ];

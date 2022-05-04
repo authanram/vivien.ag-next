@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 
@@ -38,7 +39,13 @@ class ContentView extends Resource
                 ->rules('required')
                 ->sortable()
             ,
-            BelongsToMany::make(__('Blocks'), 'blocks', ContentBlock::class)
+            Code::make(__('Body'), 'body')
+                ->required()
+                ->language('xml')
+                ->autoHeight()
+                ->hideFromIndex()
+            ,
+            BelongsToMany::make(__('Content Blocks'), 'contentBlocks', ContentBlock::class)
             ,
         ];
     }

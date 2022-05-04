@@ -18,6 +18,13 @@ class Route extends Model
         'published',
     ];
 
+    protected $with = ['contentViews'];
+
+    public function contentViews(): BelongsToMany
+    {
+        return $this->belongsToMany(ContentView::class, 'route_content_views');
+    }
+
     public function contents(): BelongsToMany
     {
         return $this->belongsToMany(Content::class, 'route_contents')

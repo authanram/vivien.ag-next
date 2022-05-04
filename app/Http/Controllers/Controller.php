@@ -23,14 +23,19 @@ abstract class Controller extends BaseController
 
     protected function data(?int $routeId): array
     {
-        $route = $routeId
-            ? Cache::get(self::cacheKey($routeId), static fn () => static::cacheRoute($routeId))
-            : null;
+        $route = $this->route($routeId);
 
         return [
             'contents' => $route?->getAttribute('contents'),
             'title' => $route?->getAttribute('title'),
         ];
+    }
+
+    protected function route(?int $routeId): mixed
+    {
+        return $routeId
+            ? Cache::get(self::cacheKey($routeId), static fn() => static::cacheRoute($routeId))
+            : null;
     }
 
     protected static function cacheRoute(int $routeId)

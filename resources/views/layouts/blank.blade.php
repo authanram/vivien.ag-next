@@ -25,7 +25,7 @@
     <script defer src="{{ $assets->alpinejs }}"></script>
     <script defer src="{{ $assets->js }}"></script>
 </head>
-<body class="font-display font-light h-screen overflow-x-hidden relative text-base text-gray-700">
+<body class="font-display font-light h-screen overflow-y-scroll relative text-base text-gray-700">
     <x-layout.google-tagmanager class="leading-7 mt-3 sm:mt-4 text-gray-500 text-xl" />
     <x-layout.background styles />
     <div class="min-h-full relative z-0">

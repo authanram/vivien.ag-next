@@ -12,22 +12,22 @@ class ContentBlocksTableSeeder extends Seeder
         DB::table('content_blocks')->insert([
             [
                 'id' => 1,
-                'content_layout_id' => 1,
-                'slug' => 'slot1',
+                'slug' => 'block1',
+                'body' => 'i\'m block 1',
                 'created_at' => '2020-05-14 17:48:08',
                 'updated_at' => '2020-05-16 20:32:53',
             ],
             [
                 'id' => 2,
-                'content_layout_id' => 2,
-                'slug' => 'slot1',
+                'slug' => 'block2',
+                'body' => 'i\'m block 2',
                 'created_at' => '2020-05-14 17:48:08',
                 'updated_at' => '2020-05-16 20:32:53',
             ],
             [
                 'id' => 3,
-                'content_layout_id' => 2,
-                'slug' => 'slot2',
+                'slug' => 'block3',
+                'body' => 'i\'m block 3',
                 'created_at' => '2020-05-14 17:48:08',
                 'updated_at' => '2020-05-16 20:32:53',
             ],

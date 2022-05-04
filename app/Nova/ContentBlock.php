@@ -3,9 +3,9 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Text;
 
 class ContentBlock extends Resource
@@ -39,11 +39,11 @@ class ContentBlock extends Resource
                 ->rules('required')
                 ->sortable()
             ,
-            BelongsTo::make(__('Layout'), 'layout', ContentLayout::class)
+            Markdown::make(__('Body'), 'body')
+                ->required()
+                ->hideFromIndex()
             ,
-            BelongsToMany::make(__('Fields'), 'fields', ContentField::class)
-            ,
-            BelongsToMany::make(__('Views'), 'views', ContentView::class)
+            BelongsToMany::make(__('Content Views'), 'contentViews', ContentView::class)
             ,
         ];
     }

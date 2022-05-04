@@ -12,7 +12,6 @@ class RoutesTableSeeder extends Seeder
         DB::table('routes')->insert([
 		    [
 		        'action' => 'WelcomeController@index',
-                'content_view_id' => 1,
 		        'created_at' => '2020-05-15 03:20:33',
 		        'deleted_at' => null,
 		        'id' => 1,
@@ -24,7 +23,6 @@ class RoutesTableSeeder extends Seeder
 		    ],
 		    [
 		        'action' => 'EventsController@index',
-                'content_view_id' => null,
 		        'created_at' => '2020-05-15 03:23:40',
 		        'deleted_at' => null,
 		        'id' => 2,
@@ -36,7 +34,6 @@ class RoutesTableSeeder extends Seeder
 		    ],
 		    [
 		        'action' => 'ContentsController@index',
-                'content_view_id' => null,
 		        'created_at' => '2020-05-15 03:24:05',
 		        'deleted_at' => null,
 		        'id' => 3,
@@ -47,8 +44,7 @@ class RoutesTableSeeder extends Seeder
 		        'updated_at' => '2020-05-15 03:24:05',
 		    ],
 		    [
-		        'action' => 'ContentsController@index',
-                'content_view_id' => null,
+		        'action' => 'ViewController@index',
 		        'created_at' => '2020-05-15 03:24:34',
 		        'deleted_at' => null,
 		        'id' => 4,
@@ -59,8 +55,7 @@ class RoutesTableSeeder extends Seeder
 		        'updated_at' => '2020-05-15 03:24:34',
 		    ],
 		    [
-		        'action' => 'ContentsController@index',
-                'content_view_id' => null,
+		        'action' => 'ViewController@index',
 		        'created_at' => '2020-05-15 03:25:03',
 		        'deleted_at' => null,
 		        'id' => 5,
@@ -71,8 +66,7 @@ class RoutesTableSeeder extends Seeder
 		        'updated_at' => '2020-06-26 03:21:29',
 		    ],
 		    [
-		        'action' => 'PortraitController@index',
-                'content_view_id' => null,
+		        'action' => 'ViewController@index',
 		        'created_at' => '2020-05-15 03:25:24',
 		        'deleted_at' => null,
 		        'id' => 6,
@@ -84,7 +78,6 @@ class RoutesTableSeeder extends Seeder
 		    ],
 		    [
 		        'action' => 'BlogController@index',
-                'content_view_id' => null,
 		        'created_at' => '2020-05-15 03:25:36',
 		        'deleted_at' => null,
 		        'id' => 7,
@@ -96,7 +89,6 @@ class RoutesTableSeeder extends Seeder
 		    ],
 		    [
 		        'action' => 'BooksController@index',
-                'content_view_id' => null,
 		        'created_at' => '2020-05-15 03:25:55',
 		        'deleted_at' => null,
 		        'id' => 8,
@@ -108,7 +100,6 @@ class RoutesTableSeeder extends Seeder
 		    ],
 		    [
 		        'action' => 'ContactController@index',
-                'content_view_id' => null,
 		        'created_at' => '2020-05-15 03:26:40',
 		        'deleted_at' => null,
 		        'id' => 9,
@@ -120,7 +111,6 @@ class RoutesTableSeeder extends Seeder
 		    ],
 		    [
 		        'action' => 'ContentsController@index',
-                'content_view_id' => null,
 		        'created_at' => '2020-05-20 21:38:09',
 		        'deleted_at' => null,
 		        'id' => 10,
@@ -132,7 +122,6 @@ class RoutesTableSeeder extends Seeder
 		    ],
 		    [
 		        'action' => 'ContentsController@index',
-                'content_view_id' => null,
 		        'created_at' => '2020-05-20 21:38:48',
 		        'deleted_at' => null,
 		        'id' => 11,
@@ -144,7 +133,6 @@ class RoutesTableSeeder extends Seeder
 		    ],
 		    [
 		        'action' => 'CookiePolicyController@index',
-                'content_view_id' => null,
 		        'created_at' => '2020-05-20 21:39:12',
 		        'deleted_at' => null,
 		        'id' => 12,
@@ -156,7 +144,6 @@ class RoutesTableSeeder extends Seeder
 		    ],
 		    [
 		        'action' => 'GalleryController@index',
-                'content_view_id' => null,
 		        'created_at' => '2020-06-28 01:39:38',
 		        'deleted_at' => null,
 		        'id' => 13,
@@ -168,7 +155,6 @@ class RoutesTableSeeder extends Seeder
 		    ],
 		    [
 		        'action' => 'ContentsController@index',
-                'content_view_id' => null,
 		        'created_at' => '2020-12-09 20:50:58',
 		        'deleted_at' => '2020-12-27 05:17:35',
 		        'id' => 14,

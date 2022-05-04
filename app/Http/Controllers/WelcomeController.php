@@ -13,7 +13,9 @@ final class WelcomeController extends Controller
 
     public function index(int $routeId): View
     {
-        $events = Cache::get(self::CACHE_KEY, static fn () => self::cacheEvents());
+        //$events = Cache::get(self::CACHE_KEY, static fn () => self::cacheEvents());
+
+        $events = [];
 
         return view('welcome', $this->data($routeId), compact('events'));
     }

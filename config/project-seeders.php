@@ -11,14 +11,13 @@ return [
     'authors',
     'quotes',
 
-    'content_fields',
-    'content_layouts',
+    'routes',
+    'route_contents',
+
     'content_blocks',
     'content_views',
     'content_relations',
 
-    'routes',
-    'route_contents',
     'menus',
     'menu_items',
     'permissions',
