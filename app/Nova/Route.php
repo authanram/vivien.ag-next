@@ -60,7 +60,7 @@ class Route extends Resource
                     return [
                         Select::make(__('Section'), 'section')->options([
                             'title' => 'title',
-                            'body' => 'body',
+                            'content' => 'content',
                         ]),
                         Number::make(__('Order Column'), 'order_column'),
                         Boolean::make(__('Published'), 'published'),

@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Route;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
 abstract class Controller extends BaseController
@@ -26,32 +26,15 @@ abstract class Controller extends BaseController
         $route = $this->route($routeId);
 
         return [
-            'contents' => $route?->getAttribute('contents'),
-            'title' => $route?->getAttribute('title'),
+            'contents' => $route->getAttribute('contents'),
+            'title' => $route->getAttribute('title'),
         ];
     }
 
-    protected function route(?int $routeId): mixed
+    protected function route(?int $routeId): Builder|Route
     {
-        return $routeId
-            ? Cache::get(self::cacheKey($routeId), static fn() => static::cacheRoute($routeId))
-            : null;
-    }
-
-    protected static function cacheRoute(int $routeId)
-    {
-        $route = Route::with('contents')
+        return Route::with('contents')
             ->where('id', $routeId)
             ->firstOrFail();
-
-        /** @noinspection PhpUnhandledExceptionInspection */
-        Cache::set(self::cacheKey($routeId), $route);
-
-        return $route;
-    }
-
-    private static function cacheKey(string $suffix): string
-    {
-        return Route::class.'@'.__CLASS__.":$suffix";
     }
 }

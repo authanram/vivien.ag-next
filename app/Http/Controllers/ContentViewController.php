@@ -17,11 +17,11 @@ final class ContentViewController extends Controller
             ->map(fn ($item) => $item->present()->render())
             ->implode('');
 
-        $view = $collection
-            ->filter($filter('body'))
+        $content = $collection
+            ->filter($filter('content'))
             ->map(fn ($item) => $item->present()->render())
             ->implode('');
 
-        return view('view', compact('title', 'view'));
+        return view('content-view', compact('routeId', 'title', 'content'));
     }
 }
