@@ -27,6 +27,7 @@ class CreateContentTables extends Migration
             $table->id();
             $table->foreignId('content_view_id')->index()->constrained('content_views')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('content_block_id')->index()->constrained('content_blocks')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->string('slug');
             $table->smallInteger('order_column')->nullable();
         });
 
@@ -44,6 +45,7 @@ class CreateContentTables extends Migration
             $table->id();
             $table->foreignId('route_id')->constrained('routes')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('content_view_id')->constrained('content_views')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->boolean('published');
             $table->smallInteger('order_column');
         });
 

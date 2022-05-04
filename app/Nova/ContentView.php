@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 
 class ContentView extends Resource
@@ -46,6 +47,12 @@ class ContentView extends Resource
                 ->hideFromIndex()
             ,
             BelongsToMany::make(__('Content Blocks'), 'contentBlocks', ContentBlock::class)
+                ->fields(function () {
+                    return [
+                        Text::make(__('Slug'), 'slug'),
+                        Number::make(__('Order Column'), 'order_column'),
+                    ];
+                })
             ,
         ];
     }

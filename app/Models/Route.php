@@ -22,7 +22,8 @@ class Route extends Model
 
     public function contentViews(): BelongsToMany
     {
-        return $this->belongsToMany(ContentView::class, 'route_content_views');
+        return $this->belongsToMany(ContentView::class, 'route_content_views')
+            ->withPivot('published', 'order_column');
     }
 
     public function contents(): BelongsToMany

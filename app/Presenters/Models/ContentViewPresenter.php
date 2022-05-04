@@ -12,11 +12,11 @@ class ContentViewPresenter extends Presenter
 {
     public function render(): string
     {
-        $body = $this->entity->body;
+        $body = $this->get('body');
 
-        foreach ($this->entity->contentBlocks as $block) {
+        foreach ($this->get('contentBlocks') as $block) {
             $body = str_replace(
-                ['%block:' . $block->slug . '%', '%block:' . $block->id . '%'],
+                ['%block:' . $block->pivot->slug . '%', '%block:' . $block->pivot->id . '%'],
                 [$block->body, $block->body],
                 $body,
             );

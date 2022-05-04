@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
@@ -54,6 +55,12 @@ class Route extends Resource
             HasMany::make(__('Menu Items'), 'menuItems', MenuItem::class)
             ,
             BelongsToMany::make(__('Content Views'), 'contentViews', ContentView::class)
+                ->fields(function () {
+                    return [
+                        Number::make(__('Order Column'), 'order_column'),
+                        Boolean::make(__('Published'), 'published'),
+                    ];
+                })
             ,
             BelongsToMany::make(__('Contents'), 'contents', Content::class)
             ,

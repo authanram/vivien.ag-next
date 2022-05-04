@@ -44,7 +44,7 @@ class RoutesTableSeeder extends Seeder
 		        'updated_at' => '2020-05-15 03:24:05',
 		    ],
 		    [
-		        'action' => 'ViewController@index',
+		        'action' => 'ContentViewController@index',
 		        'created_at' => '2020-05-15 03:24:34',
 		        'deleted_at' => null,
 		        'id' => 4,
@@ -55,7 +55,7 @@ class RoutesTableSeeder extends Seeder
 		        'updated_at' => '2020-05-15 03:24:34',
 		    ],
 		    [
-		        'action' => 'ViewController@index',
+		        'action' => 'ContentViewController@index',
 		        'created_at' => '2020-05-15 03:25:03',
 		        'deleted_at' => null,
 		        'id' => 5,
@@ -66,7 +66,7 @@ class RoutesTableSeeder extends Seeder
 		        'updated_at' => '2020-06-26 03:21:29',
 		    ],
 		    [
-		        'action' => 'ViewController@index',
+		        'action' => 'ContentViewController@index',
 		        'created_at' => '2020-05-15 03:25:24',
 		        'deleted_at' => null,
 		        'id' => 6,

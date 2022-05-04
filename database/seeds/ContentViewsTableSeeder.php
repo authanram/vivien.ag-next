@@ -14,8 +14,8 @@ class ContentViewsTableSeeder extends Seeder
                 'id' => 1,
                 'slug' => 'View 1',
                 'body' => '<div class="card flex view">
-    <div>%block:block1%</div>
-    <div>%block:2%</div>
+    <div>%block:view-block-1%</div>
+    <div>%block:view-block-2%</div>
 </div>',
                 'created_at' => '2020-05-14 17:48:08',
                 'updated_at' => '2020-05-16 20:32:53',
@@ -23,7 +23,7 @@ class ContentViewsTableSeeder extends Seeder
             [
                 'id' => 2,
                 'slug' => 'View 2',
-                'body' => '<div>%block:block2%</div>',
+                'body' => '<div>%block:view-block-2%</div>',
                 'created_at' => '2020-05-14 17:48:08',
                 'updated_at' => '2020-05-16 20:32:53',
             ],

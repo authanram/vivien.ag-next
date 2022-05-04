@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\View\View;
 
-final class ViewController extends Controller
+final class ContentViewController extends Controller
 {
     public function index(int $routeId): View
     {
