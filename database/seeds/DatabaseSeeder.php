@@ -7,10 +7,12 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        $seeders = config('project-seeders');
+        foreach (config('project-seeders') as $table) {
+            DB::table($table)->delete();
 
-        foreach ($seeders as $seeder) {
-            $this->call(Str::of($seeder)->studly()->append('TableSeeder')->toString());
+            $filename = Str::of($table)->studly()->append('TableSeeder.php')->toString();
+
+            DB::table($table)->insert(require __DIR__.'/raw/'.$filename);
         }
     }
 }
