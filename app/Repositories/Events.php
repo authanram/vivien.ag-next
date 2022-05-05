@@ -33,7 +33,7 @@ final class Events extends Repository
 
     public function upcomingTags(): \Illuminate\Support\Collection
     {
-        return $this->collections->get('upcoming')->pluck('tags');
+        return $this->collections->get('upcoming')->load('tags')->pluck('tags');
     }
 
     public function queryBuilder(Builder $builder = null): Builder|Collection
