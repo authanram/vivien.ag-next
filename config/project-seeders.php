@@ -18,6 +18,7 @@ return [
     'content_views',
     'content_views',
     'content_view_blocks',
+    'route_content_views',
 
     'menus',
     'menu_items',
