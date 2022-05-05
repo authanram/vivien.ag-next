@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\MenuItem as Model;
-use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Builder;
 
 final class MenuItems extends Repository
 {
@@ -14,15 +14,7 @@ final class MenuItems extends Repository
         'route_id',
     ];
 
-    public function where(string $key, mixed $value): ?Model
-    {
-        /** @var Model|null $model */
-        $model = self::model()->where($key, $value)->first();
-
-        return $model;
-    }
-
-    protected static function model(): Builder
+    protected static function model(): Builder|Model
     {
         return Model::with(['color:id,color', 'route'])
             ->select(self::$columns)

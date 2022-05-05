@@ -2,25 +2,36 @@
 
 namespace App\Repositories;
 
-use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
 abstract class Repository
 {
-    private Builder $builder;
+    protected Builder|Model $builder;
 
-    abstract protected static function model(): Builder|string;
+    abstract protected static function model(): Builder|Model;
 
-    protected function builder(): Builder
+    public function __construct()
     {
-        $this->builder ??= is_object(static::model()) ? static::model() : new (static::model());
+        $this->builder = static::model();
+    }
 
+    public function getBuilder(): Builder|Model
+    {
         return $this->builder;
+    }
+
+    public function setBuilder(Builder $builder = null): self
+    {
+        $this->builder = $builder;
+
+        return $this;
     }
 
     protected function with(array $with): static
     {
-        $this->builder()->with($with);
+        $this->getBuilder()->with($with);
 
         return $this;
     }

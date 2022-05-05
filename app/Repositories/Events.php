@@ -10,16 +10,23 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 final class Events extends Repository
 {
-    public function upcoming(): Builder
+    protected static function model(): Builder|Model
     {
-        return self::model()::with(['eventTemplate'])
-            ->where('date_to', '>', now())
-            ->where('published', true);
+        return new Model();
     }
 
-    public function queryBuilder(): Builder|Collection
+    public function upcoming(): self
     {
-        return QueryBuilder::for($this->upcoming())
+        $this->builder = self::model()::with(['eventTemplate'])
+            ->where('date_to', '>', now())
+            ->where('published', true);
+
+        return $this;
+    }
+
+    public function queryBuilder(Builder $builder = null): Builder|Collection
+    {
+        return QueryBuilder::for($builder ?? $this->getBuilder())
             ->allowedFilters([
                 AllowedFilter::exact('categories', 'eventTemplate.id'),
             ])
@@ -27,8 +34,8 @@ final class Events extends Repository
             ->get();
     }
 
-    protected static function model(): Builder|string
+    public function eventTemplates(): \Illuminate\Support\Collection
     {
-        return Model::class;
+        return $this->upcoming()->get()->pluck('eventTemplate');
     }
 }

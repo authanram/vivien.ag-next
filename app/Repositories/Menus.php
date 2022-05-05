@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Menu as Model;
 use App\Models\MenuItem;
-use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 
 final class Menus extends Repository
@@ -18,7 +18,7 @@ final class Menus extends Repository
         'route_id',
     ];
 
-    protected static function model(): Builder|string
+    protected static function model(): Builder|Model
     {
         return Model::with([
             'menuItems' => fn ($query) => $query
@@ -58,7 +58,7 @@ final class Menus extends Repository
                 $menuItem->route?->route ?? $key => $menuItem,
             ]);
 
-        $menu = $this->builder()
+        $menu = $this->getBuilder()
             ->where('slug', $slug)
             ->first();
 

@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Builder;
 
 final class Contents extends Repository
 {
-    public static function model(): Builder|string
+    public static function model(): Builder|Model
     {
         return Model::query();
     }
 
     public function findBySlug(string $slug): ?string
     {
-        return $this->builder()->firstWhere('slug', $slug)?->body;
+        return $this->getBuilder()->firstWhere('slug', $slug)?->body;
     }
 }
