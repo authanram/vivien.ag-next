@@ -29,7 +29,6 @@ class EventTemplate extends Resource
     {
         return [
             ID::make()
-                ->hideFromIndex()
             ,
             Text::make(__('Name'), 'name')
                 ->rules('required')
