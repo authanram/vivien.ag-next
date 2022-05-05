@@ -10,7 +10,7 @@ class CreateEventTables extends Migration
         Schema::create('event_templates', static function (Blueprint $table) {
             $table->id();
             $table->foreignId('color_id')->nullable()->constrained('colors');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();

@@ -8,7 +8,7 @@ use Illuminate\Console\Command;
 
 class EventsReattach extends Command
 {
-    protected $signature = 'vivien:events:reattach {fromEventTemplateId} {toEventTemplateId} {--delete}';
+    protected $signature = 'vivien:events:reattach {fromEventTemplateId} {toEventTemplateId?} {--delete}';
 
     protected $description = 'Reattach events';
 
@@ -16,7 +16,7 @@ class EventsReattach extends Command
     {
         $from = $this->argument('fromEventTemplateId');
 
-        $to = $this->argument('toEventTemplateId');
+        $to = $this->argument('toEventTemplateId') ?? $from;
 
         Event::where('event_template_id', $from)
             ->get()
