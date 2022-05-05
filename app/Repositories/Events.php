@@ -21,7 +21,7 @@ final class Events extends Repository
     {
         return QueryBuilder::for($this->upcoming())
             ->allowedFilters([
-                AllowedFilter::exact('category', 'eventTemplate.id'),
+                AllowedFilter::exact('categories', 'eventTemplate.id'),
             ])
             ->where('date_to', '>', now())
             ->get();

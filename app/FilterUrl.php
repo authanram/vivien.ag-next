@@ -3,45 +3,43 @@
 namespace App;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
 
 final class FilterUrl
 {
     protected string $url = '';
 
-    public static function make(Request|array $request, array $params): self
+    public static function make(string $path, mixed $value = null, Request $request = null): self
     {
-        $requestParams = is_array($request) ? $request : $request->all();
-
-        return new self($requestParams, $params);
+        return new self($path, $value, $request ?? request());
     }
 
-    public function __construct(array $requestParams, array $params)
+    public function __construct(string $path, mixed $value, Request $request)
     {
-        $params = self::filters($requestParams, $params);
+        $params = [];
 
-        $this->url = urldecode(http_build_query($params));
+        $value = (string)$value;
+
+        $requestParams = $request->all();
+
+        if ($value !== data_get($requestParams, $path)) {
+            $values = explode(',', data_get($requestParams, $path));
+
+            $value = in_array($value, $values, true)
+                ? array_filter($values, static fn ($subject) => $subject !== $value)
+                : array_merge($values, [$value]);
+
+            $value = implode(',', $value);
+
+            data_set($params, $path, trim($value, ','));
+        }
+
+        $this->url = filled($params)
+            ? '?'.urldecode(http_build_query($params))
+            : $request->url();
     }
 
     public function __toString(): string
     {
         return $this->url;
-    }
-
-    protected static function filters(array $requestParams, array $params): array
-    {
-        return collect($params)->keys()->mapWithKeys(fn (string $key) => [
-            "filter[$key]" => self::diff($params[$key], $requestParams[$key])->implode(','),
-        ])->toArray();
-    }
-
-    protected static function diff(mixed $valueA, mixed $valueB): Collection
-    {
-        return collect(self::valueToArray($valueA))->diff(self::valueToArray($valueB));
-    }
-
-    protected static function valueToArray(mixed $value): array
-    {
-        return is_array($value) === false ? [$value] : $value;
     }
 }

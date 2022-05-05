@@ -1,7 +1,7 @@
 @foreach ($eventTemplates as $eventTemplateName)
     <div>
         <a
-            href="{{ query()->filter('category', (string)$eventTemplateName->id) }}"
+            href="{{ \App\FilterUrl::make('filter.categories', $eventTemplateName->id) }}"
             class="hover:underline"
         >{{ $eventTemplateName->name }}</a>
     </div>
