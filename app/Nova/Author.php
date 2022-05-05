@@ -19,6 +19,7 @@ class Author extends Resource
         'name',
         'occupation',
         'url',
+        'quotes.body',
     ];
 
     public static $with = ['quotes'];

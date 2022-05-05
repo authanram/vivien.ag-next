@@ -16,10 +16,7 @@ class Quote extends Resource
 
     public static $search = [
         'body',
-    ];
-
-    public static array $searchRelations = [
-        'author' => ['name'],
+        'author.name',
     ];
 
     public function fields(Request $request): array
