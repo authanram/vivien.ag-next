@@ -6,9 +6,9 @@ use App\Models\Activity;
 use Exception;
 use Illuminate\Console\Command;
 
-class CleanupActivities extends Command
+class ActivitiesCleanup extends Command
 {
-    protected $signature = 'vivien:cleanup:activities';
+    protected $signature = 'vivien:activities:cleanup';
 
     protected $description = 'Cleanup activities table';
 
@@ -29,6 +29,6 @@ class CleanupActivities extends Command
 
         $this->newLine();
 
-        return 0;
+        return static::SUCCESS;
     }
 }

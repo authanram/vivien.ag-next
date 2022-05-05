@@ -10,9 +10,9 @@ use Illuminate\Support\Str;
 use Spatie\Permission\Models\Permission;
 use SplFileInfo;
 
-class MakePermissions extends Command
+class PermissionsMake extends Command
 {
-    protected $signature = 'vivien:make:permissions';
+    protected $signature = 'vivien:permissions:make';
 
     protected $description = 'Create or update permissions based on existing models';
 
@@ -53,7 +53,7 @@ class MakePermissions extends Command
 
         $this->newLine();
 
-        return 0;
+        return static::SUCCESS;
     }
 
     private static function getPermissionTypes(): Collection

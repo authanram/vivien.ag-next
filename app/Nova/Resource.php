@@ -5,11 +5,9 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Resource as NovaResource;
-//use Titasgailius\SearchRelations\SearchesRelations;
 
 abstract class Resource extends NovaResource
 {
-    //use SearchesRelations;
     use ApplyOrderings;
     use RedirectsAfterPersist;
 

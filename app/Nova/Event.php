@@ -3,15 +3,14 @@
 namespace App\Nova;
 
 //use App\Nova\Metrics\PartitionEventTemplate;
+//use Laravel\Nova\Fields\BelongsToMany;
 use App\Models\Catering as CateringModel;
 use App\Models\StaffProfile as StaffProfileModel;
 use App\Nova\Filters\EventsTimeFilter;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use JsonException;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\BooleanGroup;
 use Laravel\Nova\Fields\Currency;
@@ -98,7 +97,7 @@ class Event extends Resource
         return __('Events');
     }
 
-    public function fields(Request $request, bool $published = true): array
+    public function fields(NovaRequest $request, bool $published = true): array
     {
         return [
             ID::make()
@@ -202,7 +201,7 @@ class Event extends Resource
                 ->hideFromIndex()
                 ->showOnPreview()
             ,
-            BooleanGroup::make(__('Lead'), 'staff', static fn () => $this->staffProfiles()->values)
+            BooleanGroup::make(__('Lead'), 'staff', fn () => $this->staffProfiles()->values)
                 ->options($this->staffProfiles()->options)
                 ->hideFromIndex()
             ,
@@ -214,21 +213,21 @@ class Event extends Resource
                 ->falseValue(false)
                 ->showOnPreview()
             ,
-            BelongsToMany::make(__('Lead'), 'staffProfiles', StaffProfile::class)
+            /*BelongsToMany::make(__('Lead'), 'staffProfiles', StaffProfile::class)
                 ->hideFromIndex()
                 ->showOnPreview()
-            ,
+            ,*/
             HasMany::make(__('Event Registrations'), 'eventRegistrations', EventRegistration::class)
                 ->showOnPreview()
             ,
         ];
     }
 
-    public function filters(Request $request): array
+    public function filters(NovaRequest $request): array
     {
-        return [
-            EventsTimeFilter::make(),
-        ];
+        return $request->viaRelationship() === false
+            ? [EventsTimeFilter::make()]
+            : [];
     }
 
     public function title(): string
@@ -248,7 +247,7 @@ class Event extends Resource
 
     protected function staffProfiles(): object
     {
-        return Cache::remember(__CLASS__.':staffProfiles', null, function () {
+        return Cache::remember(__FUNCTION__, null, function () {
             return (object)[
                 'values' => StaffProfileModel::$presenter::toOptionArrayValues($this->resource->staffProfiles),
                 'options' => StaffProfileModel::$presenter::toOptionArrayOptions(),
