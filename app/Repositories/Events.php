@@ -21,7 +21,19 @@ final class Events extends Repository
             ->where('date_to', '>', now())
             ->where('published', true);
 
+        $this->collections->put(__FUNCTION__, $this->builder->get());
+
         return $this;
+    }
+
+    public function upcomingEventTemplates(): \Illuminate\Support\Collection
+    {
+        return $this->collections->get('upcoming')->pluck('eventTemplate');
+    }
+
+    public function upcomingTags(): \Illuminate\Support\Collection
+    {
+        return $this->collections->get('upcoming')->pluck('tags');
     }
 
     public function queryBuilder(Builder $builder = null): Builder|Collection
@@ -32,10 +44,5 @@ final class Events extends Repository
             ])
             ->where('date_to', '>', now())
             ->get();
-    }
-
-    public function eventTemplates(): \Illuminate\Support\Collection
-    {
-        return $this->upcoming()->get()->pluck('eventTemplate');
     }
 }

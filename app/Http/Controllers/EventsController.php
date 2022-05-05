@@ -13,8 +13,8 @@ final class EventsController extends Controller
 
         return view('events.index', [
             'events' => Site::repositories()->events()->upcoming()->queryBuilder(),
-            'eventTemplates' => $eventRepository->eventTemplates()->unique(),
-            'tags' => [],
+            'eventTemplates' => $eventRepository->upcomingEventTemplates()->unique(),
+            'tags' => [],//$eventRepository->upcomingTags()->unique(),
         ]);
     }
 }

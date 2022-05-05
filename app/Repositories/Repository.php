@@ -8,12 +8,16 @@ use Illuminate\Support\Collection;
 
 abstract class Repository
 {
+    protected Collection $collections;
+
     protected Builder|Model $builder;
 
     abstract protected static function model(): Builder|Model;
 
     public function __construct()
     {
+        $this->collections = collect();
+
         $this->builder = static::model();
     }
 
