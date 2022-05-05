@@ -17,7 +17,6 @@
         "fruitcake/laravel-cors": "^3.0",
         "gijsg/system-resources": "dev-fix-deprecation-warning",
         "guzzlehttp/guzzle": "^7.4",
-        "laracasts/presenter": "^0.2.5",
         "laravel/framework": "^9.9.0",
         "laravel/nova": "^4.2.7",
         "laravel/nova-log-viewer": "^0.1.1",
@@ -32,9 +31,6 @@
         "spatie/laravel-query-builder": "^5.0",
         "spatie/laravel-tags": "^4.3.1",
         "spatie/nova-tags-field": "^4.0",
-        "spatie/once": "^3.1",
-        "spatie/query-string": "^1.0",
-        "symfony/var-exporter": "^6.0.7",
         "tightenco/nova-google-analytics": "^2.0",
         "titasgailius/search-relations": "^2.0",
         "tonysm/tailwindcss-laravel": "^0.4.0"
