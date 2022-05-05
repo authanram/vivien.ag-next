@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
+use App\Contracts\SiteServiceContract;
 use Illuminate\View\View;
-use App\QueryBuilders\EventQueryBuilder;
 
 final class EventsController extends Controller
 {
+    public function __construct(protected SiteServiceContract $siteService)
+    {
+    }
+
     public function index(int $routeId): View
     {
-        $events = EventQueryBuilder::build();
+        $repository = $this->siteService->repositories()->events();
 
-        $eventTemplates = Event::where('date_to', '>', now())->get()->pluck('eventTemplate');
+        $events = $repository->queryBuilder();
+
+        $eventTemplates = $repository->upcoming()->get()->pluck('eventTemplate');
 
         return view('events.index', compact('events', 'eventTemplates'));
     }

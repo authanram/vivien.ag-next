@@ -1,18 +1,6 @@
 <?php
 
-use App\View\Components;
-
 return [
-
-    'components' => [
-        'content' => Components\Content::class,
-        'icon' => Components\Icon::class,
-        'markdown' => Components\Markdown::class,
-        // Menus
-        'footer:menu-item' => Components\Menu\MenuItemFooter::class,
-        'main:menu-item' => Components\Menu\MenuItemMain::class,
-        'menu' => Components\Menu\Menu::class,
-    ],
 
     'paths' => [
         'icons' => '/vendor/icons',

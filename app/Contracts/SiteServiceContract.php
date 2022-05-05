@@ -4,6 +4,7 @@ namespace App\Contracts;
 
 use App\Menus;
 use App\Renderers;
+use App\Repositories;
 
 interface SiteServiceContract
 {
@@ -12,6 +13,8 @@ interface SiteServiceContract
     public function menus(): Menus;
 
     public function renderers(): Renderers;
+
+    public function repositories(): Repositories;
 
     public function url(string $route): mixed;
 }

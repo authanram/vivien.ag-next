@@ -38,6 +38,11 @@ final class SiteService implements SiteServiceContract
         return $this->renderers;
     }
 
+    public function repositories(): Repositories
+    {
+        return $this->repositories;
+    }
+
     public function url(string $route, mixed $default = '#'): mixed
     {
         return Route::has($route) ? route($route) : $default;
