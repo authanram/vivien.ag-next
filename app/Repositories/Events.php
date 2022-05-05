@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Models\Event;
 use App\Models\Event as Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -13,7 +12,7 @@ final class Events extends Repository
 {
     public function upcoming(): Builder
     {
-        return Event::with(['eventTemplate'])
+        return self::model()::with(['eventTemplate'])
             ->where('date_to', '>', now())
             ->where('published', true);
     }
@@ -22,7 +21,7 @@ final class Events extends Repository
     {
         return QueryBuilder::for($this->upcoming())
             ->allowedFilters([
-                AllowedFilter::exact('category', 'eventTemplate.name'),
+                AllowedFilter::exact('category', 'eventTemplate.id'),
             ])
             ->where('date_to', '>', now())
             ->get();

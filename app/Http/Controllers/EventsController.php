@@ -13,11 +13,13 @@ final class EventsController extends Controller
 
     public function index(int $routeId): View
     {
-        $repository = $this->siteService->repositories()->events();
+        $eventRepository = $this->siteService->repositories()->events();
 
-        $events = $repository->queryBuilder();
+        $events = $eventRepository->queryBuilder();
 
-        $eventTemplates = $repository->upcoming()->get()->pluck('eventTemplate');
+        $eventTemplatesRepository = $this->siteService->repositories()->eventsTemplates();
+
+        $eventTemplates = $eventTemplatesRepository->whereInEvents($eventRepository->upcoming()->get());
 
         return view('events.index', compact('events', 'eventTemplates'));
     }

@@ -33,6 +33,7 @@
         "spatie/laravel-tags": "^4.3.1",
         "spatie/nova-tags-field": "^4.0",
         "spatie/once": "^3.1",
+        "spatie/query-string": "^1.0",
         "symfony/var-exporter": "^6.0.7",
         "tightenco/nova-google-analytics": "^2.0",
         "titasgailius/search-relations": "^2.0",

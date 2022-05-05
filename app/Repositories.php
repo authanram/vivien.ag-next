@@ -4,17 +4,16 @@ namespace App;
 
 use App\Repositories\Contents;
 use App\Repositories\Events;
+use App\Repositories\EventTemplates;
 use App\Repositories\MenuItems;
 use App\Repositories\Menus;
 
 final class Repositories
 {
     protected Contents $contents;
-
     protected Events $event;
-
+    protected EventTemplates $eventTemplates;
     protected MenuItems $menuItems;
-
     protected Menus $menu;
 
     public function contents(): Contents
@@ -29,6 +28,13 @@ final class Repositories
         $this->event ??= new Events();
 
         return $this->event;
+    }
+
+    public function eventsTemplates(): EventTemplates
+    {
+        $this->eventTemplates ??= new EventTemplates();
+
+        return $this->eventTemplates;
     }
 
     public function menuItems(): MenuItems

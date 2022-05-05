@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b1b1382dda8726c4af3ce20070844f80",
+    "content-hash": "152e8f9c32bc0b75232b5727ac8efa4a",
     "packages": [
         {
             "name": "ajcastro/eager-load-pivot-relations",
@@ -2361,17 +2361,17 @@
         },
         {
             "name": "laravel/nova",
-            "version": "4.3.3",
+            "version": "4.3.4",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel/nova.git",
-                "reference": "b16bc528d7ac49a67d1c81de53629d6932372a69"
+                "reference": "8c04530cd0a23eba8f56cedf9ddd939a67fb3f90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-b16bc528d7ac49a67d1c81de53629d6932372a69-zip-74bd5a.zip",
-                "reference": "b16bc528d7ac49a67d1c81de53629d6932372a69",
-                "shasum": "5676138df16b7b9bf998d66df7c052f5b3881b96"
+                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-8c04530cd0a23eba8f56cedf9ddd939a67fb3f90-zip-2fcd39.zip",
+                "reference": "8c04530cd0a23eba8f56cedf9ddd939a67fb3f90",
+                "shasum": "cf43b2ccc5fd2da59436a832ed6698412981e597"
             },
             "require": {
                 "brick/money": "^0.5.0",
@@ -2464,9 +2464,9 @@
                 "laravel"
             ],
             "support": {
-                "source": "https://github.com/laravel/nova/tree/v4.3.3"
+                "source": "https://github.com/laravel/nova/tree/v4.3.4"
             },
-            "time": "2022-05-03T19:49:50+00:00"
+            "time": "2022-05-04T17:06:23+00:00"
         },
         {
             "name": "laravel/nova-log-viewer",
@@ -4218,16 +4218,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.11.2",
+            "version": "v0.11.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "7f7da640d68b9c9fec819caae7c744a213df6514"
+                "reference": "6833626ee48ef9bcc8aca8f9f166760441c12573"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/7f7da640d68b9c9fec819caae7c744a213df6514",
-                "reference": "7f7da640d68b9c9fec819caae7c744a213df6514",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/6833626ee48ef9bcc8aca8f9f166760441c12573",
+                "reference": "6833626ee48ef9bcc8aca8f9f166760441c12573",
                 "shasum": ""
             },
             "require": {
@@ -4242,15 +4242,13 @@
                 "symfony/console": "4.4.37 || 5.3.14 || 5.3.15 || 5.4.3 || 5.4.4 || 6.0.3 || 6.0.4"
             },
             "require-dev": {
-                "bamarni/composer-bin-plugin": "^1.2",
-                "hoa/console": "3.17.05.02"
+                "bamarni/composer-bin-plugin": "^1.2"
             },
             "suggest": {
                 "ext-pcntl": "Enabling the PCNTL extension makes PsySH a lot happier :)",
                 "ext-pdo-sqlite": "The doc command requires SQLite to work.",
                 "ext-posix": "If you have PCNTL, you'll want the POSIX extension as well.",
-                "ext-readline": "Enables support for arrow-key history navigation, and showing and manipulating command history.",
-                "hoa/console": "A pure PHP readline implementation. You'll want this if your PHP install doesn't already support readline or libedit."
+                "ext-readline": "Enables support for arrow-key history navigation, and showing and manipulating command history."
             },
             "bin": [
                 "bin/psysh"
@@ -4290,9 +4288,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.11.2"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.11.3"
             },
-            "time": "2022-02-28T15:28:54+00:00"
+            "time": "2022-05-05T02:19:43+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -5688,6 +5686,62 @@
                 }
             ],
             "time": "2022-04-21T12:23:20+00:00"
+        },
+        {
+            "name": "spatie/query-string",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/query-string.git",
+                "reference": "7e2fb850625adf706259e9e569be931653a6bd0d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/query-string/zipball/7e2fb850625adf706259e9e569be931653a6bd0d",
+                "reference": "7e2fb850625adf706259e9e569be931653a6bd0d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\QueryString\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brent Roose",
+                    "email": "brent@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Manipulate query strings",
+            "homepage": "https://github.com/spatie/query-string",
+            "keywords": [
+                "query-string",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/query-string/issues",
+                "source": "https://github.com/spatie/query-string/tree/1.0.3"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                }
+            ],
+            "time": "2020-11-30T16:09:27+00:00"
         },
         {
             "name": "spatie/temporary-directory",

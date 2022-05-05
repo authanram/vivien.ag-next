@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Http\Livewire\Events;
 use App\View\Components;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Livewire;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -18,5 +20,7 @@ class ViewServiceProvider extends ServiceProvider
         Blade::component('footer:menu-item', Components\Menu\MenuItemFooter::class);
         Blade::component('main:menu-item', Components\Menu\MenuItemMain::class);
         Blade::component('menu', Components\Menu\Menu::class);
+
+        Livewire::component('events', Events::class);
     }
 }
