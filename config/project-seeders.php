@@ -16,8 +16,8 @@ return [
 
     'content_blocks',
     'content_views',
-    'content_view_blocks',
     'content_views',
+    'content_view_blocks',
 
     'menus',
     'menu_items',
