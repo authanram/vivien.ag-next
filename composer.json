@@ -17,6 +17,7 @@
         "fruitcake/laravel-cors": "^3.0",
         "gijsg/system-resources": "dev-fix-deprecation-warning",
         "guzzlehttp/guzzle": "^7.4",
+        "kiritokatklian/nova-permission": "^4.0",
         "laravel/framework": "^9.9.0",
         "laravel/nova": "^4.2.7",
         "laravel/nova-log-viewer": "^0.1.1",

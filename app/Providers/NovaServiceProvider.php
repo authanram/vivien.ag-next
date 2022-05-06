@@ -3,10 +3,13 @@
 namespace App\Providers;
 
 use App\Nova\Dashboards\Main;
+use App\Policies\PermissionPolicy;
+use App\Policies\RolePolicy;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\LogViewer\LogViewer;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
+use Vyuldashev\NovaPermission\NovaPermissionTool;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -55,6 +58,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function tools(): array
     {
         return array_merge(parent::tools(), [
+            NovaPermissionTool::make()
+                ->rolePolicy(RolePolicy::class)
+                ->permissionPolicy(PermissionPolicy::class),
             new LogViewer(),
         ]);
     }
