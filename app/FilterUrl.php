@@ -6,40 +6,51 @@ use Illuminate\Http\Request;
 
 final class FilterUrl
 {
-    protected string $url = '';
-
-    public static function make(string $path, mixed $value = null, Request $request = null): self
+    public function __construct(protected Request $request, protected array $filters)
     {
-        return new self($path, $value, $request ?? request());
     }
 
-    public function __construct(string $path, mixed $value, Request $request)
+    public function with(mixed $filterValue, string $filterName): string
     {
-        $params = [];
+        $filters = $this->filters();
 
-        $value = (string)$value;
+        $delimited = implode(',', $this->value($filterName, (string)$filterValue));
 
-        $requestParams = $request->all();
+        $parametersNew = data_set($filters, $filterName, $delimited);
 
-        if ($value !== data_get($requestParams, $path)) {
-            $values = explode(',', data_get($requestParams, $path));
+        $parameters = array_merge($this->request->all(), [
+            'filter' => $parametersNew,
+        ]);
 
-            $value = in_array($value, $values, true)
-                ? array_filter($values, static fn ($subject) => $subject !== $value)
-                : array_merge($values, [$value]);
+        $url = $parametersNew[$filterName] === ''
+            ? urldecode($this->request->fullUrl())
+            : $this->request->fullUrlWithQuery($parameters);
 
-            $value = implode(',', $value);
+        return urldecode($url);
+    }
 
-            data_set($params, $path, trim($value, ','));
+    protected function value(string $filterName, mixed $filterValue): array
+    {
+        $filters = $this->filters();
+
+        if (isset($filters[$filterName]) === false) {
+            return [];
         }
 
-        $this->url = filled($params)
-            ? '?'.urldecode(http_build_query($params))
-            : $request->url();
+        $values = explode(',', $filters[$filterName]);
+
+        if (in_array($filterValue, $values, true) === false) {
+            $values[] = $filterValue;
+            return $values;
+        }
+
+        return array_filter($values, static function ($value) use ($filterValue) {
+            return (string)$value !== $filterValue;
+        });
     }
 
-    public function __toString(): string
+    protected function filters(): array
     {
-        return $this->url;
+        return $this->request->get('filter', []);
     }
 }

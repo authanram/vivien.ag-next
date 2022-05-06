@@ -1,8 +1,9 @@
-@foreach ($eventTemplates as $eventTemplateName)
+@php /** @var \App\FilterUrl $filterUrl */ @endphp
+
+@foreach ($eventTemplates as $eventTemplate)
     <div>
-        <a
-            href="{{ \App\FilterUrl::make('filter.categories', $eventTemplateName->id) }}"
-            class="hover:underline"
-        >{{ $eventTemplateName->name }}</a>
+        <a href="{{ $filterUrl->with($eventTemplate->id, 'category') }}" class="hover:underline">
+            {{ $eventTemplate->name }}
+        </a>
     </div>
 @endforeach

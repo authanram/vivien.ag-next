@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 final class BlogController extends Controller
 {
-    public function index(int $routeId = null): View
+    public function index(Request $request, int $routeId = null): View
     {
         $args = func_get_args();
         $slug = null;

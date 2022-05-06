@@ -1,9 +1,17 @@
 <?php
 
+use App\Models\EventTemplate;
+use App\Models\Tag;
+
 return [
 
     'paths' => [
         'icons' => '/vendor/icons',
+    ],
+
+    'filterable' => [
+        EventTemplate::class,
+        Tag::class,
     ],
 
     'content' => [

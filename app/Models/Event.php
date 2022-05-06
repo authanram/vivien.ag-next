@@ -2,24 +2,34 @@
 
 namespace App\Models;
 
+use App\Contracts\Filterable;
 use App\Presenters\Models\EventPresenter as Presenter;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\Tags\HasTags;
 
 /**
  * @property Presenter $presenter
  * @method Presenter present()
  */
-class Event extends Model
+class Event extends Model implements Filterable
 {
     use HasTags;
     use SoftDeletes;
 
     public static string $presenter = Presenter::class;
+
+    public static function filters(): array
+    {
+        return [
+            AllowedFilter::exact('category', 'eventTemplate.id'),
+            AllowedFilter::exact('tag', 'tags.id'),
+        ];
+    }
 
     public array $staff;
 
@@ -48,6 +58,13 @@ class Event extends Model
     protected $casts = [
         'published' => 'boolean',
     ];
+
+    public static function queryFilters(): array
+    {
+        return [
+            AllowedFilter::exact('tags', 'tags.id'),
+        ];
+    }
 
     protected static function boot(): void
     {

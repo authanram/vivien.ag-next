@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 final class ContentViewController extends Controller
 {
-    public function index(int $routeId): View
+    public function index(Request $request, int $routeId): View
     {
         $filter = static fn ($section) => static fn ($item) => $item->pivot->section === $section;
 

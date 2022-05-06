@@ -5,7 +5,6 @@ namespace App\Repositories;
 use App\Models\Event as Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 final class Events extends Repository
@@ -33,15 +32,17 @@ final class Events extends Repository
 
     public function upcomingTags(): \Illuminate\Support\Collection
     {
-        return $this->collections->get('upcoming')->load('tags')->pluck('tags');
+        return $this->collections->get('upcoming')
+            ->load('tags')->pluck('tags')
+            ->flatten()
+            ->unique('id')
+            ->values();
     }
 
-    public function queryBuilder(Builder $builder = null): Builder|Collection
+    public function queryBuilder(array $filters): Builder|Collection
     {
-        return QueryBuilder::for($builder ?? $this->getBuilder())
-            ->allowedFilters([
-                AllowedFilter::exact('categories', 'eventTemplate.id'),
-            ])
+        return QueryBuilder::for($this->getBuilder())
+            ->allowedFilters($filters)
             ->where('date_to', '>', now())
             ->get();
     }

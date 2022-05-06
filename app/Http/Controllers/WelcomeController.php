@@ -11,7 +11,7 @@ final class WelcomeController extends Controller
 {
     private const CACHE_KEY = Event::class.'@'.__CLASS__;
 
-    public function index(int $routeId): View
+    public function index(Request $request, int $routeId): View
     {
         //$events = Cache::get(self::CACHE_KEY, static fn () => self::cacheEvents());
 

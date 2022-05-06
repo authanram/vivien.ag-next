@@ -7,68 +7,62 @@ use App\Repositories\Events;
 use App\Repositories\EventTemplates;
 use App\Repositories\MenuItems;
 use App\Repositories\Menus;
+use App\Repositories\Repository;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Collection;
 
 final class Repositories
 {
-    protected Contents $contents;
-    protected Events $event;
-    protected EventTemplates $eventTemplates;
-    protected MenuItems $menuItems;
-    protected Menus $menu;
+    protected Collection $repositories;
 
-    public function contents(Builder $builder = null): Contents
+    public function __construct()
     {
-        $this->contents ??= new Contents();
-
-        if ($builder) {
-            $this->contents->setBuilder($builder);
-        }
-
-        return $this->contents;
+        $this->repositories = collect([
+            Contents::class => new Contents(),
+            Events::class => new Events(),
+            EventTemplates::class => new EventTemplates(),
+            MenuItems::class => new MenuItems(),
+            Menus::class => new Menus(),
+        ]);
     }
 
-    public function events(Builder $builder = null): Events
+    public function all(): Collection
     {
-        $this->event ??= new Events();
-
-        if ($builder) {
-            $this->event->setBuilder($builder);
-        }
-
-        return $this->event;
+        return $this->repositories;
     }
 
-    public function eventsTemplates(Builder $builder = null): EventTemplates
+    public function contents(Builder $builder = null): Repository|Contents
     {
-        $this->eventTemplates ??= new EventTemplates();
+        $repository = $this->repositories->get(Contents::class);
 
-        if ($builder) {
-            $this->eventTemplates->setBuilder($builder);
-        }
-
-        return $this->eventTemplates;
+        return $builder ? $repository->setBuilder($builder) : $repository;
     }
 
-    public function menuItems(Builder $builder = null): MenuItems
+    public function events(Builder $builder = null): Repository|Events
     {
-        $this->menuItems ??= new MenuItems();
+        $repository = $this->repositories->get(Events::class);
 
-        if ($builder) {
-            $this->menuItems->setBuilder($builder);
-        }
-
-        return $this->menuItems;
+        return $builder ? $repository->setBuilder($builder) : $repository;
     }
 
-    public function menus(Builder $builder = null): Menus
+    public function eventsTemplates(Builder $builder = null): Repository|EventTemplates
     {
-        $this->menu ??= new Menus();
+        $repository = $this->repositories->get(EventTemplates::class);
 
-        if ($builder) {
-            $this->menu->setBuilder($builder);
-        }
+        return $builder ? $repository->setBuilder($builder) : $repository;
+    }
 
-        return $this->menu;
+    public function menuItems(Builder $builder = null): Repository|MenuItems
+    {
+        $repository = $this->repositories->get(MenuItems::class);
+
+        return $builder ? $repository->setBuilder($builder) : $repository;
+    }
+
+    public function menus(Builder $builder = null): Repository|Menus
+    {
+        $repository = $this->repositories->get(Menus::class);
+
+        return $builder ? $repository->setBuilder($builder) : $repository;
     }
 }
