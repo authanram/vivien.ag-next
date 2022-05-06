@@ -29,11 +29,6 @@ final class Repositories
         return $this->withBuilder(Colors::class, $builder);
     }
 
-    public function contents(Builder $builder = null): Repository|Contents
-    {
-        return $this->withBuilder(Contents::class, $builder);
-    }
-
     public function events(Builder $builder = null): Repository|Events
     {
         return $this->withBuilder(Events::class, $builder);

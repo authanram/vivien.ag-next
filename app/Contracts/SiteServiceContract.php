@@ -15,8 +15,6 @@ interface SiteServiceContract
 {
     public function cookieConsent(): CookieConsent;
 
-    public function content(string $slug): ?string;
-
     public function imageCoords(): ImageCoords;
 
     public function parsers(): Parsers;

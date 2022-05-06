@@ -33,11 +33,6 @@ final class SiteService implements SiteServiceContract
         return new CookieConsent();
     }
 
-    public function content(string $slug): ?string
-    {
-        return $this->repositories->contents()->findBySlug($slug);
-    }
-
     public function imageCoords(): ImageCoords
     {
         return new ImageCoords($this->repositories->imageCoords());

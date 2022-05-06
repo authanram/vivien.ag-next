@@ -27,14 +27,14 @@ abstract class Controller extends BaseController
         $route = $this->route($routeId);
 
         return [
-            'contents' => $route->getAttribute('contents'),
+            'views' => $route->getAttribute('contentViews'),
             'title' => $route->getAttribute('title'),
         ];
     }
 
     protected function route(?int $routeId): Builder|Route
     {
-        return Route::with('contents')
+        return Route::with('contentViews')
             ->where('id', $routeId)
             ->firstOrFail();
     }
