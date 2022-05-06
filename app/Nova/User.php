@@ -23,19 +23,25 @@ class User extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make()->sortable()
+            ID::make()
+                ->sortable()
+                ->showOnPreview()
             ,
-            Gravatar::make()->maxWidth(50)
+            Gravatar::make()
+                ->maxWidth(50)
+                ->showOnPreview()
             ,
             Text::make(__('Name'), 'name')
                 ->sortable()
                 ->rules('required', 'max:255')
+                ->showOnPreview()
             ,
             Text::make(__('Email'), 'email')
                 ->sortable()
                 ->rules('required', 'email', 'max:254')
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}')
+                ->showOnPreview()
             ,
             Password::make(__('Password'), 'password')
                 ->onlyOnForms()

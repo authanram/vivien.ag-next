@@ -25,7 +25,9 @@ class Session extends Resource
         return [
             ID::make(__('Id'), 'id', function () {
                 return $this->model()?->getAttributes()['id'];
-            })->sortable()
+            })
+                ->sortable()
+                ->showOnPreview()
             ,
             BelongsTo::make('User', 'user', User::class)
                 ->searchable()
@@ -33,17 +35,21 @@ class Session extends Resource
             ,
             Text::make(__('Ip Address'), 'ip_address')
                 ->sortable()
+                ->showOnPreview()
             ,
             Text::make(__('User Agent'), 'user_agent')
                 ->onlyOnDetail()
                 ->sortable()
+                ->showOnPreview()
             ,
             Text::make(__('Payload'), 'payload')
                 ->sortable()
                 ->onlyOnDetail()
+                ->showOnPreview()
             ,
             Number::make(__('Last Activity'), 'last_activity')
                 ->sortable()
+                ->showOnPreview()
             ,
         ];
     }

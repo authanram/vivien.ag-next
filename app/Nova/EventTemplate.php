@@ -29,20 +29,25 @@ class EventTemplate extends Resource
     {
         return [
             ID::make()
+                ->showOnPreview()
             ,
             Text::make(__('Name'), 'name')
                 ->rules('required')
                 ->sortable()
+                ->showOnPreview()
             ,
             Textarea::make(__('Description'), 'description')
                 ->rows(2)
                 ->hideFromIndex()
+                ->showOnPreview()
             ,
             BelongsTo::make(__('Color'), 'color', Color::class)
             ,
             HasMany::make(__('Events'), 'events', Event::class)
             ,
-            Line::make(__('Events'), fn () => $this->resource->events->count()),
+            Line::make(__('Events'), fn () => $this->resource->events->count())
+                ->showOnPreview()
+            ,
         ];
     }
 

@@ -24,15 +24,18 @@ class Menu extends Resource
 
         return [
             ID::make(__('ID'), 'id')
+                ->showOnPreview()
             ,
             Text::make(__('Slug'), 'slug')
                 ->creationRules("unique:$table,slug")
                 ->updateRules("unique:$table,slug,{{resourceId}}")
                 ->sortable()
+                ->showOnPreview()
             ,
             Boolean::make(__('Published'), 'published')
                 ->rules('required')
                 ->sortable()
+                ->showOnPreview()
             ,
             HasMany::make(__('Menu Items'), 'menuItems', MenuItem::class)
             ,

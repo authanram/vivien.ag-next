@@ -35,12 +35,14 @@ class StaticAttribute extends Resource
 
         return [
             ID::make()
+                ->showOnPreview()
             ,
             Text::make(__('Name'), 'name')
                 ->rules('required')
                 ->creationRules("unique:$table,name")
                 ->updateRules("unique:$table,name,{{resourceId}}")
                 ->sortable()
+                ->showOnPreview()
             ,
             Slug::make(__('Slug'), 'slug')
                 ->from('title')
@@ -48,12 +50,14 @@ class StaticAttribute extends Resource
                 ->updateRules("unique:$table,slug,{{resourceId}}")
                 ->required()
                 ->sortable()
+                ->showOnPreview()
             ,
             Select::make(__('Type'), 'type')->options([
                 0 => 'Simple (Text)',
                 1 => 'Complex (JSON)',
             ])->displayUsingLabels()
                 ->sortable()
+                ->showOnPreview()
             ,
 //            NovaDependencyContainer::make([
 //                Text::make(__('Value'), 'value')

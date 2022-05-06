@@ -5,7 +5,6 @@ namespace App\Nova;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Spatie\TagsField\Tags;
 use Laravel\Nova\Fields\Image;
 
 class Attachment extends Resource
@@ -22,18 +21,20 @@ class Attachment extends Resource
     {
         return [
             ID::make()
+                ->showOnPreview()
+            ,
+            Text::make(__('UUID'), 'uuid')
+                ->exceptOnForms()
+                ->showOnPreview()
             ,
             Image::make(__('File'), 'file')
                 ->rules('required')
+                ->showOnPreview()
             ,
             Text::make(__('Name'), 'name')
                 ->rules('required')
                 ->sortable()
-            ,
-            Tags::make('Tags')
-                ->type('attachment')
-                ->withLinkToTagResource()
-                ->hideFromIndex()
+                ->showOnPreview()
             ,
         ];
     }

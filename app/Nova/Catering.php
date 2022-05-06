@@ -24,13 +24,16 @@ class Catering extends Resource
     {
         return [
             ID::make()
+                ->showOnPreview()
             ,
             Text::make(__('Name'), 'name')
                 ->rules('required')
                 ->sortable()
+                ->showOnPreview()
             ,
             Text::make(__('Note'), 'note')
                 ->sortable()
+                ->showOnPreview()
             ,
             HasMany::make(__('Events'), 'events', Event::class)
             ,

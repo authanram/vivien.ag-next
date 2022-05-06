@@ -33,6 +33,7 @@ class Content extends Resource
 
         return [
             ID::make(__('ID'), 'id')
+                ->showOnPreview()
             ,
             Slug::make(__('Slug'), 'slug')
                 ->from('title')
@@ -40,21 +41,25 @@ class Content extends Resource
                 ->updateRules("unique:$table,slug,{{resourceId}}")
                 ->required()
                 ->sortable()
+                ->showOnPreview()
             ,
             Text::make(__('Title'), 'title')
                 ->rules('required')
                 ->sortable()
+                ->showOnPreview()
             ,
             Markdown::make(__('Caption'), 'caption')
                 ->default('')
                 ->stacked()
                 ->alwaysShow()
+                ->showOnPreview()
             ,
             Markdown::make(__('Body'), 'body')
                 ->default('')
                 ->rules('required')
                 ->stacked()
                 ->alwaysShow()
+                ->showOnPreview()
             ,
             BelongsToMany::make(__('Routes'), 'routes', Route::class)
             ,

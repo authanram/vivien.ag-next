@@ -26,6 +26,7 @@ class ImageCoords extends Resource
     {
         return [
             ID::make(__('ID'), 'id')
+                ->showOnPreview()
             ,
             BelongsTo::make(__('Image'), 'image', Image::class)
             ,
@@ -33,10 +34,11 @@ class ImageCoords extends Resource
                 ->showOnIndex()
                 ->json()
                 ->height('auto')
+                ->showOnPreview()
             ,
             Line::make(__('Created At'), function () {
                 return (string)$this->resource->created_at;
-            }),
+            })->showOnPreview(),
         ];
     }
 

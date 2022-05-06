@@ -39,10 +39,12 @@ class MenuItem extends Resource
     {
         return [
             ID::make(__('ID'), 'id')
+                ->showOnPreview()
             ,
             Text::make(__('Label'), 'label')
                 ->rules('required')
                 ->sortable()
+                ->showOnPreview()
             ,
             BelongsTo::make(__('Menus'), 'menu', Menu::class)
                 ->required()
@@ -65,6 +67,7 @@ class MenuItem extends Resource
             Boolean::make(__('Published'), 'published')
                 ->rules('required')
                 ->sortable()
+                ->showOnPreview()
             ,
         ];
     }

@@ -37,9 +37,11 @@ class Tag extends Resource
 
         return [
             ID::make(__('ID'), 'id')
+                ->showOnPreview()
             ,
             Text::make(__('Name'), 'name')
                 ->sortable()
+                ->showOnPreview()
             ,
             Slug::make(__('Slug'), 'slug')
                 ->from('name')
@@ -47,6 +49,7 @@ class Tag extends Resource
                 ->updateRules("unique:$table,slug,{{resourceId}}")
                 ->sortable()
                 ->exceptOnForms()
+                ->showOnPreview()
             ,
             Select::make(__('Type'), 'type')
                 ->options([
@@ -57,6 +60,7 @@ class Tag extends Resource
                 ])
                 ->required()
                 ->sortable()
+                ->showOnPreview()
             ,
             BelongsTo::make(__('Color'), 'color', Color::class)
                 ->nullable()
@@ -67,6 +71,7 @@ class Tag extends Resource
                 ->min(1)
                 ->showOnCreating(false)
                 ->sortable()
+                ->showOnPreview()
             ,
             MorphedByMany::make(__('Attachments'), 'attachments', Attachment::class),
             MorphedByMany::make(__('Events'), 'events', Event::class),

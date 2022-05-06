@@ -30,11 +30,12 @@ class Post extends Resource
 
         return [
             ID::make(__('ID'), 'id')
-                ->hideFromIndex()
+                ->showOnPreview()
             ,
             Text::make(__('Title'), 'title')
                 ->rules('required', 'min:3')
                 ->sortable()
+                ->showOnPreview()
             ,
             Slug::make(__('Slug'), 'slug')
                 ->from('title')
@@ -42,16 +43,21 @@ class Post extends Resource
                 ->updateRules("unique:$table,slug,{{resourceId}}")
                 ->required()
                 ->sortable()
+                ->showOnPreview()
             ,
             Textarea::make(__('Body'), 'body')
                 ->rules('required')
+                ->showOnPreview()
             ,
             DateTime::make(__('Published At'), 'published_at', static function ($value) {
                 return $value ?? now()->format('Y-m-d H:i:s');
-            })->rules('required')->sortable()
+            })->rules('required')
+                ->sortable()
+                ->showOnPreview()
             ,
             Tags::make('Tags')
                 ->type('post')
+                ->showOnPreview()
             ,
         ];
     }

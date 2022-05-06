@@ -34,14 +34,17 @@ class ContentBlock extends Resource
     {
         return [
             ID::make()
+                ->showOnPreview()
             ,
             Text::make(__('Slug'), 'slug')
                 ->rules('required')
                 ->sortable()
+                ->showOnPreview()
             ,
             Markdown::make(__('Body'), 'body')
                 ->required()
                 ->hideFromIndex()
+                ->showOnPreview()
             ,
             BelongsToMany::make(__('Content Views'), 'contentViews', ContentView::class)
             ,

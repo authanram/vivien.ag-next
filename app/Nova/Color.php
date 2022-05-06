@@ -23,6 +23,7 @@ class Color extends Resource
     {
         return [
             ID::make()
+                ->showOnPreview()
             ,
             Text::make(__('Color'), 'color')
                 ->rules('required')
@@ -30,6 +31,7 @@ class Color extends Resource
                 ->updateRules('unique:colors,color,{{resourceId}}')
                 ->sortable()
                 ->help(static::getColorInputHelpText())
+                ->showOnPreview()
             ,
             HasMany::make(__('Event Templates'), 'eventTemplates', EventTemplate::class)
             ,

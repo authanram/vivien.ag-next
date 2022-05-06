@@ -24,30 +24,37 @@ class CookieConsentSettings extends Resource
             ID::make(__('ID'), 'id')
                 ->exceptOnForms()
                 ->sortable()
+                ->showOnPreview()
             ,
             Code::make(__('Cookie Data'), 'cookie_data')
                 ->default('{}')
                 ->json()
                 ->height('auto')
+                ->showOnPreview()
             ,
             Code::make(__('Session Data'), 'session_data')
                 ->default('{}')
                 ->json()
                 ->height('auto')
+                ->showOnPreview()
             ,
             Line::make(__('Cookies'), function () {
                 return implode(', ', array_keys($this->resource->cookie_data));
-            }),
+            })->showOnPreview()
+            ,
             Line::make(__('Token'), function () {
                 return $this->resource->session_data['_token'];
-            }),
+            })->showOnPreview()
+            ,
             Line::make(__('Referer'), function () {
                 $url = $this->resource->session_data['_previous']['url'];
                 return "<a href=\"$url\" class=\"link-default\">$url</a>";
-            })->asHtml(),
+            })->asHtml()->showOnPreview()
+            ,
             Line::make(__('Date of Consent'), function () {
                 return (string)$this->resource->created_at;
-            }),
+            })->showOnPreview()
+            ,
         ];
     }
 

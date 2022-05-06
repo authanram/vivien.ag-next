@@ -28,6 +28,7 @@ class Author extends Resource
     {
         return [
             ID::make(__('ID'), 'id')
+                ->showOnPreview()
             ,
             Text::make(__('Name'), 'name')
                 ->rules('required')
@@ -35,10 +36,12 @@ class Author extends Resource
                 ->updateRules('unique:authors,name,{{resourceId}}')
                 ->help('Must be unique.')
                 ->sortable()
+                ->showOnPreview()
             ,
             Text::make(__('Occupation'), 'occupation')
                 ->rules('nullable', 'min:3')
                 ->sortable()
+                ->showOnPreview()
             ,
             Text::make(__('Url'), 'url')
                 ->rules('nullable', 'url')
@@ -46,11 +49,14 @@ class Author extends Resource
                 ->updateRules('unique:authors,url,{{resourceId}}')
                 ->help('Must be unique.')
                 ->sortable()
+                ->showOnPreview()
             ,
             Line::make(__('Quotes'), fn () => $this->resource->quotes->count())
+                ->showOnPreview()
             ,
             Boolean::make(__('Published'), 'published')
                 ->sortable()
+                ->showOnPreview()
             ,
             HasMany::make(__('Quotes'), 'quotes', Quote::class)
             ,

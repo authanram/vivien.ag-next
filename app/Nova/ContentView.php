@@ -35,16 +35,19 @@ class ContentView extends Resource
     {
         return [
             ID::make()
+                ->showOnPreview()
             ,
             Text::make(__('Slug'), 'slug')
                 ->rules('required')
                 ->sortable()
+                ->showOnPreview()
             ,
             Code::make(__('Body'), 'body')
                 ->required()
                 ->language('xml')
                 ->autoHeight()
                 ->hideFromIndex()
+                ->showOnPreview()
             ,
             BelongsToMany::make(__('Content Blocks'), 'contentBlocks', ContentBlock::class)
                 ->fields(function () {

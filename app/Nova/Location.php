@@ -27,23 +27,28 @@ class Location extends Resource
     {
         return [
             ID::make()
+                ->showOnPreview()
             ,
             Text::make(__('Name'), 'name')
                 ->rules('required')
                 ->sortable()
+                ->showOnPreview()
             ,
             Text::make(__('Address'), 'address')
                 ->sortable()
                 ->help('Postal address.')
+                ->showOnPreview()
             ,
             Textarea::make(__('Description'), 'description')
                 ->rows(2)
                 ->hideFromIndex()
+                ->showOnPreview()
             ,
             Text::make(__('Url'), 'url')
                 ->rules('nullable', 'url')
                 ->sortable()
                 ->help('<strong>Location website</strong> or <strong>Google Maps Url</strong>.')
+                ->showOnPreview()
             ,
             HasMany::make(__('Events'), 'events', Event::class)
             ,

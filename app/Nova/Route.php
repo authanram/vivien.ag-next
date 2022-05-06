@@ -28,30 +28,36 @@ class Route extends Resource
     {
         return [
             ID::make(__('ID'), 'id')
+                ->showOnPreview()
             ,
             Text::make(__('Path'), 'path')
                 ->creationRules('unique:routes,path')
                 ->updateRules('unique:routes,path,{{resourceId}}')
                 ->rules('required')
                 ->sortable()
+                ->showOnPreview()
             ,
             Text::make(__('Route'), 'route')
                 ->creationRules('unique:routes,route')
                 ->updateRules('unique:routes,route,{{resourceId}}')
                 ->rules('required')
                 ->sortable()
+                ->showOnPreview()
             ,
             Text::make(__('Action'), 'action')
                 ->rules('required')
                 ->sortable()
+                ->showOnPreview()
             ,
             Text::make(__('Title'), 'title')
                 ->rules('required')
                 ->sortable()
+                ->showOnPreview()
             ,
             Boolean::make(__('Published'), 'published')
                 ->rules('required')
                 ->sortable()
+                ->showOnPreview()
             ,
             HasMany::make(__('Menu Items'), 'menuItems', MenuItem::class)
             ,

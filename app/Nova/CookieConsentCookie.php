@@ -28,6 +28,7 @@ class CookieConsentCookie extends Resource
     {
         return [
             ID::make(__('ID'), 'id')
+                ->showOnPreview()
             ,
             Text::make(__('Cookie Name'), 'cookie_name')
                 ->rules('required')
@@ -35,6 +36,7 @@ class CookieConsentCookie extends Resource
                 ->updateRules('unique:cookie_consent_cookies,cookie_name,{{resourceId}}')
                 ->help('Must be unique.')
                 ->sortable()
+                ->showOnPreview()
             ,
             BelongsTo::make(__('Cookie Provider'), 'cookieProvider', CookieConsentProvider::class)
                 ->required()
@@ -44,22 +46,28 @@ class CookieConsentCookie extends Resource
                 ->required()
                 ->height('auto')
                 ->hideFromIndex()
+                ->showOnPreview()
             ,
             Text::make(__('Cookie Category'), 'cookie_category')
                 ->required()
+                ->showOnPreview()
             ,
             Text::make(__('Cookie Type'), 'cookie_type')
                 ->required()
+                ->showOnPreview()
             ,
             Number::make(__('Cookie Lifetime'), 'cookie_lifetime')
                 ->required()
                 ->help('In days.')
+                ->showOnPreview()
             ,
             Boolean::make(__('Encrypted'), 'encrypted')
                 ->sortable()
+                ->showOnPreview()
             ,
             Boolean::make(__('Required'), 'required')
                 ->sortable()
+                ->showOnPreview()
             ,
         ];
     }

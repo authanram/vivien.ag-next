@@ -23,11 +23,13 @@ class Quote extends Resource
     {
         return [
             ID::make(__('ID'), 'id')
+                ->showOnPreview()
             ,
             Text::make(__('Body'), 'body')
                 ->rules('required')
                 ->sortable()
                 ->help('Use <strong>%s</strong> as line break.')
+                ->showOnPreview()
             ,
             BelongsTo::make(__('Author'), 'author', Author::class)
                 ->showCreateRelationButton()
@@ -36,6 +38,7 @@ class Quote extends Resource
             ,
             Boolean::make(__('Published'), 'published')
                 ->sortable()
+                ->showOnPreview()
             ,
         ];
     }

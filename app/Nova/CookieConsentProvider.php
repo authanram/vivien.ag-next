@@ -22,6 +22,7 @@ class CookieConsentProvider extends Resource
     {
         return [
             ID::make(__('ID'), 'id')
+                ->showOnPreview()
             ,
             Text::make(__('Name'), 'name')
                 ->rules('required')
@@ -29,9 +30,11 @@ class CookieConsentProvider extends Resource
                 ->updateRules('unique:cookie_consent_providers,name,{{resourceId}}')
                 ->help('Must be unique.')
                 ->sortable()
+                ->showOnPreview()
             ,
             Text::make(__('Url'), 'url')
                 ->rules('required', 'url')
+                ->showOnPreview()
             ,
             HasMany::make(__('Cookies'), 'cookies', CookieConsentCookie::class)
             ,
