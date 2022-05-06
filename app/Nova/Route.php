@@ -63,12 +63,6 @@ class Route extends Resource
             BelongsToMany::make(__('Content Views'), 'contentViews', ContentView::class)
                 ->fields(function () {
                     return [
-                        Select::make(__('Section'), 'section')
-                            ->options([
-                                'title' => 'title',
-                                'content' => 'content',
-                            ])->required()
-                        ,
                         Number::make(__('Order Column'), 'order_column')
                             ->required()
                         ,
