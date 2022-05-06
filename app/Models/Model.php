@@ -14,7 +14,7 @@ class Model extends \Illuminate\Database\Eloquent\Model
     {
         parent::__construct($attributes);
 
-        if (in_array('uuid', $this->fillable)) {
+        if (in_array('uuid', $this->fillable) === false) {
             return;
         }
 

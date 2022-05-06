@@ -2,13 +2,13 @@
 
 namespace App\View\Components;
 
-use App\Contracts\MarkdownParserContract as MarkdownParser;
+use App\Contracts\SiteServiceContract;
 use Exception;
 use Illuminate\View\Component;
 
 class Markdown extends Component
 {
-    public function __construct(protected MarkdownParser $markdownParser, protected array $replace = [])
+    public function __construct(protected SiteServiceContract $siteService, protected array $replace = [])
     {
     }
 
@@ -34,7 +34,7 @@ class Markdown extends Component
     protected function parse(string $subject): string
     {
         try {
-            return $this->markdownParser->parseAndReplace(request(), $subject, $this->replace);
+            return $this->siteService->parsers()::markdownParser()->parse($subject);
         } catch (Exception $exception) {
             abort(505, $exception->getMessage());
         }

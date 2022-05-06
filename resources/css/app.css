@@ -57,56 +57,54 @@ select {
 
 /* VIEWS */
 
-.view.card {
+.view .card {
     @apply bg-white border border-gray-100 mb-5 md:mb-10 md:p-10 mx-auto p-5 relative rounded-lg self-stretch shadow-md w-full;
 }
 
 /* PARSEDOWN */
 
-.x-parsedown {
-    p:not(:last-child):not([class^="mb-"]) {
-        @apply mb-6;
-    }
+.x-parsedown p:not(:last-child):not([class^="mb-"]) {
+    @apply mb-6;
+}
 
-    p[class*="mb-4"]:last-child {
-        @apply !mb-0;
-    }
+.x-parsedown p[class*="mb-4"]:last-child {
+    @apply !mb-0;
+}
 
-    p:last-of-type {
-        @apply !mb-0;
-    }
+.x-parsedown p:last-of-type {
+    @apply !mb-0;
+}
 
-    h1, h2, h3, h4, h5, h6, .headline {
-        @apply font-semibold leading-tight mb-4 tracking-tight;
-    }
+.x-parsedown h1, h2, h3, h4, h5, h6, .headline {
+    @apply font-semibold leading-tight mb-4 tracking-tight;
+}
 
-    h1, h2, h3, .headline {
-        @apply text-xl md:text-2xl;
-    }
+.x-parsedown h1, h2, h3, .headline {
+    @apply text-xl md:text-2xl;
+}
 
-    h4, h5, h6 {
-        @apply md:text-xl;
-    }
+.x-parsedown h4, h5, h6 {
+    @apply md:text-xl;
+}
 
-    > ul {
-        @apply mt-3 px-5;
+.x-parsedown ul {
+    @apply mt-3 px-5;
+}
 
-        &:not(:last-child) {
-            @apply mb-6;
-        }
-        ul {
-            @apply px-5;
-        }
-    }
+.x-parsedown:not(:last-child) {
+    @apply mb-6;
+}
 
-    ul {
-        li {
-            @apply pt-2 list-disc;
-        }
-        li:not(:last-of-type):not(.pt-*) {
-            @apply pb-2;
-        }
-    }
+.x-parsedown:not(:last-child) ul {
+    @apply px-5;
+}
+
+.x-parsedown ul li {
+    @apply pt-2 list-disc;
+}
+
+.x-parsedown ul li:not(:last-of-type):not(.pt-*) {
+    @apply pb-2;
 }
 
 @import "tailwindcss/utilities";

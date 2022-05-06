@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Contracts\SiteServiceContract;
 use App\CookieConsent;
 use App\ImageCoords;
+use App\Parsers;
 use App\Renderers;
 use App\Repositories;
 use App\Text;
@@ -14,11 +15,14 @@ use Illuminate\Http\Request;
 
 final class SiteService implements SiteServiceContract
 {
+    protected Parsers $parsers;
     protected Repositories $repositories;
     protected Renderers $renderers;
 
     public function __construct(protected Request $request)
     {
+        $this->parsers = new Parsers();
+
         $this->repositories = new Repositories();
 
         $this->renderers = new Renderers();
@@ -37,6 +41,11 @@ final class SiteService implements SiteServiceContract
     public function imageCoords(): ImageCoords
     {
         return new ImageCoords($this->repositories->imageCoords());
+    }
+
+    public function parsers(): Parsers
+    {
+        return $this->parsers;
     }
 
     public function renderers(): Renderers

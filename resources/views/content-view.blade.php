@@ -2,12 +2,16 @@
 
 @push('title')
     @cache("route:$routeId:title")
-        {!! $title !!}
+        <div class="x-parsedown view">
+            {!! $title !!}
+        </div>
     @endcache
 @endpush
 
 @push('content')
     @cache("route:$routeId:content")
-        {!! $content !!}
+        <div class="x-parsedown view">
+            {!! $content !!}
+        </div>
     @endcache
 @endpush

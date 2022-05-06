@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2d85188a203524b8707310896232f18f",
+    "content-hash": "0a09132cd1d0fd5f71f676e000f10560",
     "packages": [
         {
             "name": "ajcastro/eager-load-pivot-relations",
@@ -140,6 +140,46 @@
                 }
             ],
             "time": "2022-02-09T14:25:47+00:00"
+        },
+        {
+            "name": "authanram/markdown",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/authanram/markdown",
+                "reference": "5683fd49efd8aa68c98aa426bef5592b886ac4bb"
+            },
+            "require": {
+                "illuminate/support": "^9.0",
+                "league/commonmark": "^2.0",
+                "php": "^8.0",
+                "symfony/yaml": "^5.3",
+                "webmozart/assert": "^1.10"
+            },
+            "require-dev": {
+                "fakerphp/faker": "^1.17",
+                "nunomaduro/phpinsights": "^2.1",
+                "pestphp/pest": "^1.21",
+                "pestphp/pest-plugin-mock": "^1.0",
+                "pestphp/pest-plugin-watch": "1.x-dev",
+                "spatie/ray": "^1.33"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "Authanram\\Markdown\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Authanram\\Markdown\\Tests\\": "tests/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "...",
+            "time": "2022-02-11T18:16:48+00:00"
         },
         {
             "name": "box/spout",
@@ -8163,6 +8203,81 @@
             "time": "2022-04-26T13:22:23+00:00"
         },
         {
+            "name": "symfony/yaml",
+            "version": "v5.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "e80f87d2c9495966768310fc531b487ce64237a2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/e80f87d2c9495966768310fc531b487ce64237a2",
+                "reference": "e80f87d2c9495966768310fc531b487ce64237a2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/deprecation-contracts": "^2.1|^3",
+                "symfony/polyfill-ctype": "^1.8"
+            },
+            "conflict": {
+                "symfony/console": "<5.3"
+            },
+            "require-dev": {
+                "symfony/console": "^5.3|^6.0"
+            },
+            "suggest": {
+                "symfony/console": "For validating YAML files using the lint command"
+            },
+            "bin": [
+                "Resources/bin/yaml-lint"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Yaml\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Loads and dumps YAML files",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/yaml/tree/v5.4.3"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-01-26T16:32:32+00:00"
+        },
+        {
             "name": "tightenco/nova-google-analytics",
             "version": "v2.0.0",
             "source": {
@@ -14702,6 +14817,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "authanram/markdown": 20,
         "gijsg/system-resources": 20,
         "roave/security-advisories": 20
     },

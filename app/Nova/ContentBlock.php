@@ -43,6 +43,7 @@ class ContentBlock extends Resource
             ,
             Markdown::make(__('Body'), 'body')
                 ->required()
+                ->alwaysShow()
                 ->hideFromIndex()
                 ->showOnPreview()
             ,

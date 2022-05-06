@@ -36,11 +36,10 @@ return [
             '<h4>' => '<h4 class="text-accent-600">',
             '<h5>' => '<h5 class="text-accent-600">',
             '<h6>' => '<h6 class="text-accent-600">',
-            'class="headline' => 'class="headline text-accent-600',
+            'class="heading' => 'class="headline text-accent-600',
             '{highlight}' => '<span class="font-medium text-accent-600">',
             '{/highlight}' => '</span>',
-            '-accent-' => '-{{accent}}-',
-            '{{accent}}' => Site::theme()->accent($request),
+            '-accent-' => '-'.Site::theme()->accent($request).'-',
         ],
     ],
 

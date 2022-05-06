@@ -3,53 +3,32 @@
 namespace App\Parsers;
 
 use App\Contracts\MarkdownParserContract;
+use App\Facades\Site;
+use Authanram\Markdown\Converter;
 use Illuminate\Http\Request;
-use Parsedown;
 
-final class MarkdownParser extends Parsedown implements MarkdownParserContract
+final class MarkdownParser implements MarkdownParserContract
 {
-    protected static function replace(Request $request, string $subject, array $replace): string
+    public function parse(string $text, Request $request = null): string
     {
-        $replace = array_merge(config('project.markdown.replace')($request), $replace);
+        $request ??= request();
 
-        return str_replace(array_keys($replace), array_values($replace), $subject);
-    }
+        $searchAndReplace = array_merge(
+            config('project.content.replace')($request),
+            config('project.markdown.replace')($request),
+        );
 
-    public function __construct()
-    {
-        $this->InlineTypes['{'][] = 'Span';
-        $this->InlineTypes['{'][] = 'ColoredText';
-        $this->inlineMarkerList .= '{';
-    }
+        $text = (new Converter(['base_url' => config('app.url')]))
+            ->withMarkdown($text)
+            ->toHtml();
 
-    public function parseAndReplace(Request $request, string $text, array $replace = []): string
-    {
-        $text = $this->parse($text);
+        $text = Site::renderers()::contentRenderer()
+            ->render($request, $text);
 
-        return self::replace($request, $text, $replace);
-    }
-
-    public function inlineSpan(array $excerpt): ?array
-    {
-        return preg_match('/^{span (.*?)}(.*?){\/span}/', $excerpt['text'], $matches) ? [
-            'extent' => strlen($matches[0]),
-            'element' => [
-                'name' => 'span',
-                'text' => $matches[2],
-                'attributes' => ['class' => $matches[1]],
-            ],
-        ] : null;
-    }
-
-    public function inlineColoredText(array $excerpt): ?array
-    {
-        return preg_match('/^{c:([#\w]\w+)}(.*?){\/c}/', $excerpt['text'], $matches) ? [
-            'extent' => strlen($matches[0]),
-            'element' => [
-                'name' => 'span',
-                'text' => $matches[2],
-                'attributes' => ['style' => 'color:' . $matches[1]],
-            ],
-        ] : null;
+        return str_replace(
+            array_keys($searchAndReplace),
+            array_values($searchAndReplace),
+            $text,
+        );
     }
 }

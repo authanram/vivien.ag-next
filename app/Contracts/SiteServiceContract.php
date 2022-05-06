@@ -4,6 +4,7 @@ namespace App\Contracts;
 
 use App\CookieConsent;
 use App\ImageCoords;
+use App\Parsers;
 use App\Renderers;
 use App\Repositories;
 use App\Text;
@@ -17,6 +18,8 @@ interface SiteServiceContract
     public function content(string $slug): ?string;
 
     public function imageCoords(): ImageCoords;
+
+    public function parsers(): Parsers;
 
     public function renderers(): Renderers;
 

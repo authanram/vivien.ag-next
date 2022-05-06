@@ -6,51 +6,59 @@ use Illuminate\Http\Request;
 
 final class FilterUrlGenerator
 {
+    protected string $filterValue;
+    protected string $filterName;
+
     public function __construct(protected Request $request, protected array $filters)
     {
     }
 
     public function with(mixed $filterValue, string $filterName): string
     {
-        $filters = $this->filters();
+        $this->filterValue = (string)$filterValue;
 
-        $delimited = implode(',', $this->value($filterName, (string)$filterValue));
+        $this->filterName = $filterName;
 
-        $parametersNew = data_set($filters, $filterName, $delimited);
-
-        $parameters = array_merge($this->request->all(), [
-            'filter' => $parametersNew,
-        ]);
-
-        $url = $parametersNew[$filterName] === ''
-            ? urldecode($this->request->fullUrl())
-            : $this->request->fullUrlWithQuery($parameters);
-
-        return urldecode($url);
+        return $this->url();
     }
 
-    protected function value(string $filterName, mixed $filterValue): array
+    protected function url(): string
     {
-        $filters = $this->filters();
+        $parameters = $this->parameters();
 
-        if (isset($filters[$filterName]) === false) {
-            return [];
-        }
+        $query = http_build_query($parameters);
 
-        $values = explode(',', $filters[$filterName]);
-
-        if (in_array($filterValue, $values, true) === false) {
-            $values[] = $filterValue;
-            return $values;
-        }
-
-        return array_filter($values, static function ($value) use ($filterValue) {
-            return (string)$value !== $filterValue;
-        });
+        return urldecode($query !== '' ? "?$query" : $this->request->url());
     }
 
-    protected function filters(): array
+    protected function parameters(): array
     {
-        return $this->request->get('filter', []);
+        $values = $this->values();
+
+        if ($this->isActive() === false) {
+            $values[] = $this->filterValue;
+        } else {
+            $values = array_filter($values, fn ($value) => $value !== $this->filterValue);
+        }
+
+        $parameters = $this->request->all();
+
+        if ($values === []) {
+            unset($parameters['filter'][$this->filterName]);
+
+            return $parameters;
+        }
+
+        return data_set($parameters, 'filter.'.$this->filterName, trim(implode(',', $values), ','));
+    }
+
+    protected function isActive(): bool
+    {
+        return in_array($this->filterValue, $this->values(), true);
+    }
+
+    protected function values(): array
+    {
+        return explode(',', data_get($this->request, 'filter.'.$this->filterName, ''));
     }
 }

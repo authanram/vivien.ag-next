@@ -23,10 +23,6 @@ class Attachment extends Resource
             ID::make()
                 ->showOnPreview()
             ,
-            Text::make(__('UUID'), 'uuid')
-                ->exceptOnForms()
-                ->showOnPreview()
-            ,
             Image::make(__('File'), 'file')
                 ->rules('required')
                 ->showOnPreview()

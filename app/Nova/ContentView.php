@@ -52,8 +52,10 @@ class ContentView extends Resource
             BelongsToMany::make(__('Content Blocks'), 'contentBlocks', ContentBlock::class)
                 ->fields(function () {
                     return [
-                        Text::make(__('Slug'), 'slug'),
-                        Number::make(__('Order Column'), 'order_column'),
+                        Text::make(__('Slug'), 'slug')
+                            ->required(),
+                        Number::make(__('Order Column'), 'order_column')
+                            ->required(),
                     ];
                 })
             ,
