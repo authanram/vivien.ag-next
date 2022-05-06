@@ -2311,17 +2311,17 @@
         },
         {
             "name": "laravel/nova",
-            "version": "4.3.4",
+            "version": "4.4.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel/nova.git",
-                "reference": "8c04530cd0a23eba8f56cedf9ddd939a67fb3f90"
+                "reference": "6a9b945bb6c6031e194ad880fa95581ffa3294f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-8c04530cd0a23eba8f56cedf9ddd939a67fb3f90-zip-2fcd39.zip",
-                "reference": "8c04530cd0a23eba8f56cedf9ddd939a67fb3f90",
-                "shasum": "cf43b2ccc5fd2da59436a832ed6698412981e597"
+                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-6a9b945bb6c6031e194ad880fa95581ffa3294f5-zip-5aa267.zip",
+                "reference": "6a9b945bb6c6031e194ad880fa95581ffa3294f5",
+                "shasum": "72e55cca928a970612d64eec944e11490a410ddf"
             },
             "require": {
                 "brick/money": "^0.5.0",
@@ -2414,9 +2414,9 @@
                 "laravel"
             ],
             "support": {
-                "source": "https://github.com/laravel/nova/tree/v4.3.4"
+                "source": "https://github.com/laravel/nova/tree/v4.4.2"
             },
-            "time": "2022-05-04T17:06:23+00:00"
+            "time": "2022-05-05T20:21:51+00:00"
         },
         {
             "name": "laravel/nova-log-viewer",
@@ -5135,16 +5135,16 @@
         },
         {
             "name": "spatie/laravel-permission",
-            "version": "5.5.2",
+            "version": "5.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-permission.git",
-                "reference": "eb838cd2c539d1c97f8c997e67479cb68c2d0e36"
+                "reference": "4e3ad0aed6e3a8a4b5df9424aa0a721902bc7841"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/eb838cd2c539d1c97f8c997e67479cb68c2d0e36",
-                "reference": "eb838cd2c539d1c97f8c997e67479cb68c2d0e36",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/4e3ad0aed6e3a8a4b5df9424aa0a721902bc7841",
+                "reference": "4e3ad0aed6e3a8a4b5df9424aa0a721902bc7841",
                 "shasum": ""
             },
             "require": {
@@ -5205,7 +5205,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-permission/issues",
-                "source": "https://github.com/spatie/laravel-permission/tree/5.5.2"
+                "source": "https://github.com/spatie/laravel-permission/tree/5.5.3"
             },
             "funding": [
                 {
@@ -5213,7 +5213,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-03-09T10:21:20+00:00"
+            "time": "2022-05-05T21:50:47+00:00"
         },
         {
             "name": "spatie/laravel-query-builder",
