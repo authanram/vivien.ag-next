@@ -2,20 +2,29 @@
 
 namespace App\Contracts;
 
+use App\CookieConsent;
+use App\ImageCoords;
 use App\Renderers;
 use App\Repositories;
+use App\Text;
 use App\Theme;
 use App\Url;
 
 interface SiteServiceContract
 {
+    public function cookieConsent(): CookieConsent;
+
     public function content(string $slug): ?string;
+
+    public function imageCoords(): ImageCoords;
 
     public function renderers(): Renderers;
 
     public function repositories(): Repositories;
 
     public function theme(): Theme;
+
+    public function text(): Text;
 
     public function url(): Url;
 }

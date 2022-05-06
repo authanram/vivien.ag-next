@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Concerns;
+namespace App;
 
 use App\Models\Content as Model;
 use Exception;
@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Log;
 use JsonException;
 use stdClass;
 
-trait HasCookieConsent
+class CookieConsent
 {
-    public function cookieConsent(string $key = null): mixed
+    public static function cookieConsent(string $key = null): mixed
     {
         $cookie = Cookie::get(config('cookie-consent.cookie_name'));
 
@@ -26,7 +26,7 @@ trait HasCookieConsent
         return $key ? ($subject[$key] ?? false) : $subject;
     }
 
-    public function content(string $slug, bool $markdown = false, array $replace = []): stdClass
+    public static function content(string $slug, bool $markdown = false, array $replace = []): stdClass
     {
         try {
             /** @noinspection PhpStaticAsDynamicMethodCallInspection */

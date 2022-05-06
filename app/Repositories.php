@@ -2,9 +2,11 @@
 
 namespace App;
 
+use App\Repositories\Colors;
 use App\Repositories\Contents;
-use App\Repositories\Events;
 use App\Repositories\EventTemplates;
+use App\Repositories\Events;
+use App\Repositories\ImageCoords;
 use App\Repositories\MenuItems;
 use App\Repositories\Menus;
 use App\Repositories\Repository;
@@ -19,9 +21,10 @@ final class Repositories
     public function __construct()
     {
         $this->repositories = collect([
+            Colors::class => new Colors(),
             Contents::class => new Contents(),
-            Events::class => new Events(),
             EventTemplates::class => new EventTemplates(),
+            Events::class => new Events(),
             MenuItems::class => new MenuItems(),
             Menus::class => new Menus(),
             Routes::class => new Routes(),
@@ -31,6 +34,13 @@ final class Repositories
     public function all(): Collection
     {
         return $this->repositories;
+    }
+
+    public function colors(Builder $builder = null): Repository|Colors
+    {
+        $repository = $this->repositories->get(Colors::class);
+
+        return $builder ? $repository->setBuilder($builder) : $repository;
     }
 
     public function contents(Builder $builder = null): Repository|Contents
@@ -50,6 +60,13 @@ final class Repositories
     public function eventsTemplates(Builder $builder = null): Repository|EventTemplates
     {
         $repository = $this->repositories->get(EventTemplates::class);
+
+        return $builder ? $repository->setBuilder($builder) : $repository;
+    }
+
+    public function imageCoords(Builder $builder = null): Repository|ImageCoords
+    {
+        $repository = $this->repositories->get(ImageCoords::class);
 
         return $builder ? $repository->setBuilder($builder) : $repository;
     }

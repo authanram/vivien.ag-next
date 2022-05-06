@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Concerns;
+namespace App;
 
-trait HasTextHelpers
+class Text
 {
     public function timeToRead(string $text): string
     {

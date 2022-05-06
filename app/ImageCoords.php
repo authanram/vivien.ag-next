@@ -1,23 +1,23 @@
 <?php
 
-namespace App\Concerns;
+namespace App;
 
-use App\Models\ImageCoords;
+use App\Models\ImageCoords as Model;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-trait HasImageCoords
+class ImageCoords
 {
     protected ?Collection $imageCoords = null;
 
-    public function imageCoords(): array
+    public function __construct(protected Repositories\ImageCoords $repository)
     {
-        $this->imageCoords ??= $this->util->remember(
-            ImageCoords::class.'@'.__METHOD__,
-            static fn () => static::fetchImageCoords(),
-        );
+    }
 
-        $this->imageCoords->each(static function (ImageCoords $coord) {
+    public function all(): array
+    {
+        $this->imageCoords ??= $this->repository::all();
+
+        $this->imageCoords->each(static function (Model $coord) {
             $coord->setAttribute('coordsParsed', static::imageCoordsInlineStyleFloatingImage($coord));
             $coord->getAttribute('image')->setAttribute('path', $coord->image->path);
         });
@@ -28,7 +28,7 @@ trait HasImageCoords
         ];
     }
 
-    private static function imageCoordsInlineStyleFloatingImage(ImageCoords $imageCoords): string
+    private static function imageCoordsInlineStyleFloatingImage(Model $imageCoords): string
     {
         $coords = (object)$imageCoords->coords;
 
@@ -43,23 +43,5 @@ trait HasImageCoords
             $coords->rotate_x ?? 0,
             $coords->zindex,
         );
-    }
-
-    private static function fetchImageCoords(): Collection
-    {
-        $with = [
-            'image' => static fn (BelongsTo $query) => $query->select([
-                'id',
-                'file',
-                'name',
-                'description',
-                'price',
-                'order_column',
-            ]),
-        ];
-
-        return ImageCoords::with($with)
-            ->orderBy('order_column')
-            ->get(['id', 'coords', 'image_id']);
     }
 }
