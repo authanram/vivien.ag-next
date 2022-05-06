@@ -1,4 +1,4 @@
-@php /** @var \App\FilterUrl $filterUrl */ @endphp
+@php /** @var \App\FilterUrlGenerator $filterUrl */ @endphp
 
 @foreach ($tags as $tag)
     <div>

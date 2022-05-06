@@ -5,8 +5,9 @@ namespace App\Services;
 use App\Contracts\SiteServiceContract;
 use App\Renderers;
 use App\Repositories;
+use App\Theme;
+use App\Url;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 
 final class SiteService implements SiteServiceContract
 {
@@ -35,8 +36,13 @@ final class SiteService implements SiteServiceContract
         return $this->repositories;
     }
 
-    public function url(string $route, mixed $default = '#'): mixed
+    public function theme(): Theme
     {
-        return Route::has($route) ? route($route) : $default;
+        return new Theme();
+    }
+
+    public function url(): Url
+    {
+        return new Url();
     }
 }

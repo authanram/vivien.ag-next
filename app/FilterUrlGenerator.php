@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Http\Request;
 
-final class FilterUrl
+final class FilterUrlGenerator
 {
     public function __construct(protected Request $request, protected array $filters)
     {

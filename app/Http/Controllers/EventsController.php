@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Site;
-use App\FilterUrl;
+use App\FilterUrlGenerator;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -16,7 +16,7 @@ final class EventsController extends Controller
         $filters = $eventRepository->getBuilder()->getModel()::filters();
 
         return view('events.index', [
-            'filterUrl' => new FilterUrl($request, $filters),
+            'filterUrl' => new FilterUrlGenerator($request, $filters),
             'events' => Site::repositories()->events()->upcoming()->queryBuilder($filters),
             'eventTemplates' => $eventRepository->upcomingEventTemplates()->unique(),
             'tags' => $eventRepository->upcomingTags()->unique(),

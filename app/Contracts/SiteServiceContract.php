@@ -4,6 +4,8 @@ namespace App\Contracts;
 
 use App\Renderers;
 use App\Repositories;
+use App\Theme;
+use App\Url;
 
 interface SiteServiceContract
 {
@@ -13,5 +15,7 @@ interface SiteServiceContract
 
     public function repositories(): Repositories;
 
-    public function url(string $route): mixed;
+    public function theme(): Theme;
+
+    public function url(): Url;
 }

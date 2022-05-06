@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Concerns;
+namespace App\Concerns;
 
 use App\Models\Route;
 use Illuminate\Database\Eloquent\Collection;
