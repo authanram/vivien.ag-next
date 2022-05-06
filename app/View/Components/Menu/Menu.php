@@ -15,7 +15,8 @@ final class Menu extends Component
 
     public function __construct(protected SiteServiceContract $siteService, string $type = 'main')
     {
-        $this->items = collect(); //$this->siteService->menus()->{$type}();
+        $this->items = $this->siteService->repositories()->menus()->{$type}();
+
         $this->itemComponent = "$type:menu-item";
     }
 }

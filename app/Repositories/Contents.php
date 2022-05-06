@@ -2,15 +2,12 @@
 
 namespace App\Repositories;
 
-use App\Models\Content as Model;
-use Illuminate\Database\Eloquent\Builder;
+use App\Models\Content;
+use Illuminate\Database\Eloquent\Model;
 
 final class Contents extends Repository
 {
-    public static function model(): Builder|Model
-    {
-        return Model::query();
-    }
+    protected static Model|string $model = Content::class;
 
     public function findBySlug(string $slug): ?string
     {

@@ -2,11 +2,14 @@
 
 namespace App\Repositories;
 
-use App\Models\MenuItem as Model;
+use App\Models\MenuItem;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 final class MenuItems extends Repository
 {
+    protected static Model|string $model = MenuItem::class;
+
     public static array $columns = [
         'color_id',
         'label',
@@ -14,9 +17,9 @@ final class MenuItems extends Repository
         'route_id',
     ];
 
-    protected static function model(): Builder|Model
+    public static function builder(): Builder
     {
-        return Model::with(['color:id,color', 'route'])
+        return self::model()::with(['color:id,color', 'route'])
             ->select(self::$columns)
             ->where('published', true);
     }

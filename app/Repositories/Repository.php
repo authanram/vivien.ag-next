@@ -8,17 +8,25 @@ use Illuminate\Support\Collection;
 
 abstract class Repository
 {
+    protected static Model|string $model;
     protected Collection $collections;
+    protected Builder $builder;
 
-    protected Builder|Model $builder;
+    public static function builder(): Builder
+    {
+        return self::model()::query();
+    }
 
-    abstract protected static function model(): Builder|Model;
+    public static function model(): \App\Models\Model|string
+    {
+        return static::$model;
+    }
 
     public function __construct()
     {
         $this->collections = collect();
 
-        $this->builder = static::model();
+        $this->builder = static::builder();
     }
 
     public function getBuilder(): Builder|Model

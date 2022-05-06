@@ -2,13 +2,10 @@
 
 namespace App\Repositories;
 
-use App\Models\EventTemplate as Model;
-use Illuminate\Database\Eloquent\Builder;
+use App\Models\EventTemplate;
+use Illuminate\Database\Eloquent\Model;
 
 final class EventTemplates extends Repository
 {
-    protected static function model(): Builder|Model
-    {
-        return new Model();
-    }
+    protected static Model|string $model = EventTemplate::class;
 }

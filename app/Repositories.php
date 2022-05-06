@@ -8,6 +8,7 @@ use App\Repositories\EventTemplates;
 use App\Repositories\MenuItems;
 use App\Repositories\Menus;
 use App\Repositories\Repository;
+use App\Repositories\Routes;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 
@@ -23,6 +24,7 @@ final class Repositories
             EventTemplates::class => new EventTemplates(),
             MenuItems::class => new MenuItems(),
             Menus::class => new Menus(),
+            Routes::class => new Routes(),
         ]);
     }
 
@@ -62,6 +64,13 @@ final class Repositories
     public function menus(Builder $builder = null): Repository|Menus
     {
         $repository = $this->repositories->get(Menus::class);
+
+        return $builder ? $repository->setBuilder($builder) : $repository;
+    }
+
+    public function routes(Builder $builder = null): Repository|Routes
+    {
+        $repository = $this->repositories->get(Routes::class);
 
         return $builder ? $repository->setBuilder($builder) : $repository;
     }

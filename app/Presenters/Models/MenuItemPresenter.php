@@ -12,7 +12,7 @@ class MenuItemPresenter extends Presenter
 {
     public function isActive(): bool
     {
-        return request()->route()?->getName() === $this->route();
+        return request()?->route()?->getName() === $this->route();
     }
 
     public function href(): string

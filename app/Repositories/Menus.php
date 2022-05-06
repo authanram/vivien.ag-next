@@ -2,13 +2,16 @@
 
 namespace App\Repositories;
 
-use App\Models\Menu as Model;
+use App\Models\Menu;
 use App\Models\MenuItem;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
 final class Menus extends Repository
 {
+    protected static Model|string $model = Menu::class;
+
     protected static array $columns = [
         'color_id',
         'label',
@@ -18,9 +21,9 @@ final class Menus extends Repository
         'route_id',
     ];
 
-    protected static function model(): Builder|Model
+    public static function builder(): Builder
     {
-        return Model::with([
+        return self::model()::with([
             'menuItems' => fn ($query) => $query
                 ->select(self::$columns)
                 ->where('published', true)
@@ -50,18 +53,9 @@ final class Menus extends Repository
 
     protected function findBySlug(string $slug): ?Collection
     {
-        $callback = static fn (Model $menu) => $menu
-            ->menuItems
-            ->sortBy('order_column')
-            ->values()
-            ->mapWithKeys(fn (MenuItem $menuItem, $key) => [
-                $menuItem->route?->route ?? $key => $menuItem,
-            ]);
-
-        $menu = $this->getBuilder()
+        return $this->getBuilder()
             ->where('slug', $slug)
-            ->first();
-
-        return optional($menu, $callback);
+            ->first()
+            ->menuItems;
     }
 }

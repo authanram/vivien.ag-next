@@ -2,17 +2,15 @@
 
 namespace App\Repositories;
 
-use App\Models\Event as Model;
+use App\Models\Event;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Spatie\QueryBuilder\QueryBuilder;
 
 final class Events extends Repository
 {
-    protected static function model(): Builder|Model
-    {
-        return new Model();
-    }
+    protected static Model|string $model = Event::class;
 
     public function upcoming(): self
     {
@@ -20,6 +18,7 @@ final class Events extends Repository
             ->where('date_to', '>', now())
             ->where('published', true);
 
+        /** @noinspection StaticInvocationViaThisInspection */
         $this->collections->put(__FUNCTION__, $this->builder->get());
 
         return $this;
