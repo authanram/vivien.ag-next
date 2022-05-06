@@ -24,12 +24,6 @@ class Route extends Model
             ->withPivot('section', 'published', 'order_column');
     }
 
-    public function contents(): BelongsToMany
-    {
-        return $this->belongsToMany(Content::class, 'route_contents')
-            ->using(RouteContent::class);
-    }
-
     public function menuItems(): HasMany
     {
         return $this->hasMany(MenuItem::class);

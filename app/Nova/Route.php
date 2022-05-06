@@ -37,14 +37,14 @@ class Route extends Resource
                 ->sortable()
                 ->showOnPreview()
             ,
-            Text::make(__('Route'), 'route')
-                ->creationRules('unique:routes,route')
-                ->updateRules('unique:routes,route,{{resourceId}}')
+            Text::make(__('Action'), 'action')
                 ->rules('required')
                 ->sortable()
                 ->showOnPreview()
             ,
-            Text::make(__('Action'), 'action')
+            Text::make(__('Route'), 'route')
+                ->creationRules('unique:routes,route')
+                ->updateRules('unique:routes,route,{{resourceId}}')
                 ->rules('required')
                 ->sortable()
                 ->showOnPreview()
@@ -55,7 +55,6 @@ class Route extends Resource
                 ->showOnPreview()
             ,
             Boolean::make(__('Published'), 'published')
-                ->rules('required')
                 ->sortable()
                 ->showOnPreview()
             ,
@@ -77,8 +76,6 @@ class Route extends Resource
                         ,
                     ];
                 })
-            ,
-            BelongsToMany::make(__('Contents'), 'contents', Content::class)
             ,
         ];
     }

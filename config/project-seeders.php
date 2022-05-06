@@ -3,7 +3,6 @@
 return [
     'users',
     'colors',
-    'contents',
     'posts',
     'static_attributes',
     'images',
@@ -12,7 +11,6 @@ return [
     'quotes',
 
     'routes',
-    'route_contents',
 
     'content_blocks',
     'content_views',
