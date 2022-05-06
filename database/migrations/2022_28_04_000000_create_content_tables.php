@@ -9,7 +9,8 @@ class CreateContentTables extends Migration
     {
         Schema::create('content_blocks', static function (Blueprint $table) {
             $table->id();
-            $table->string('slug');
+            $table->string('name');
+            $table->text('title')->nullable();
             $table->text('body')->nullable();
             $table->timestamps();
             $table->softDeletes();

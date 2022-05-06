@@ -10,15 +10,17 @@ use Laravel\Nova\Fields\Text;
 
 class ContentBlock extends Resource
 {
+    use HasViewBlocksPivotFields;
+
     public static string $model = \App\Models\ContentBlock::class;
 
-    public static $title = 'slug';
+    public static $title = 'name';
 
     public static $search = [
-        'slug',
+        'name',
     ];
 
-    protected static array $orderBy = ['slug' => 'asc'];
+    protected static array $orderBy = ['name' => 'asc'];
 
     public static function label(): string
     {
@@ -36,19 +38,30 @@ class ContentBlock extends Resource
             ID::make()
                 ->showOnPreview()
             ,
-            Text::make(__('Slug'), 'slug')
+
+            Text::make(__('Name'), 'name')
                 ->rules('required')
                 ->sortable()
                 ->showOnPreview()
             ,
+
+            Markdown::make(__('Title'), 'title')
+                ->alwaysShow()
+                ->hideFromIndex()
+                ->showOnPreview()
+            ,
+
             Markdown::make(__('Body'), 'body')
                 ->required()
                 ->alwaysShow()
                 ->hideFromIndex()
                 ->showOnPreview()
             ,
+
             BelongsToMany::make(__('Content Views'), 'contentViews', ContentView::class)
+                ->fields(fn () => $this->getViewBlocksPivotFields())
             ,
+
         ];
     }
 }
