@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Menu\Menu;
 use Laravel\Nova\Menu\MenuItem;
 use Laravel\Nova\Menu\MenuSection;
+use Vyuldashev\NovaPermission;
 
 return [
 
@@ -38,6 +39,8 @@ return [
         MenuSection::make(__('Access Control'), [
             MenuItem::resource(Resources\User::class),
             MenuItem::resource(Resources\Session::class),
+            MenuItem::resource(NovaPermission\Permission::class),
+            MenuItem::resource(NovaPermission\Role::class),
         ])->collapsable()->icon('shield-exclamation'),
 
         MenuSection::make(__('Cookie Consent'), [
