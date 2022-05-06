@@ -31,7 +31,8 @@ class Theme
         }
 
         $this->accent = $this->repositories->colors()
-            ->all()
+            ->getBuilder()
+            ->get()
             ->filter(fn ($color) => $color->id === $route->menuItems->first()->color_id)
             ->first()
             ?->color;

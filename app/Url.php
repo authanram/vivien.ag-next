@@ -12,7 +12,7 @@ class Url
         return new FilterUrlGenerator($request, $filters);
     }
 
-    public static function url(string $route, mixed $default = '#'): mixed
+    public static function fromRoute(string $route, mixed $default = '#'): mixed
     {
         return Route::has($route) ? route($route) : $default;
     }

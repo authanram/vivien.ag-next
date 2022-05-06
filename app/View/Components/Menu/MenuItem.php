@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Menu;
 
+use App\Facades\Site;
 use App\Models\MenuItem as Model;
 use App\Presenters\Models\MenuItemPresenter;
 use App\View\Components\Component;
@@ -28,7 +29,7 @@ abstract class MenuItem extends Component
         string $href = null,
     ) {
         $this->isActive = $active ?? $this->model->present()->isActive() ?? 'false';
-        $this->color = $color ?? $this->model->present()->color() ?? util()->accent();
+        $this->color = $color ?? $this->model->present()->color() ?? Site::theme()->accent(request());
         $this->href = $href ?? $this->present()->href() ?? '#';
     }
 
@@ -71,7 +72,6 @@ abstract class MenuItem extends Component
 
     protected function present(): Optional|MenuItemPresenter
     {
-        /** @noinspection PhpUnhandledExceptionInspection */
         return $this->model->present();
     }
 }

@@ -3,7 +3,7 @@
     <div class="absolute border-gray-200 left-0 right-0 z-20 -bottom-px border-b-[5px]"></div>
     <x-layout.container class="flex h-16 items-center relative z-20">
         <nav class="flex grow h-full items-center">
-            <x-main:menu-item :href="Site::url('welcome')">
+            <x-main:menu-item :href="Site::url()::fromRoute('welcome')">
                 <x-brand />
             </x-main:menu-item>
             <x-menu />

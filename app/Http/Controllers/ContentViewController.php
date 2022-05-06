@@ -15,12 +15,12 @@ final class ContentViewController extends Controller
 
         $title = $collection
             ->filter($filter('title'))
-            ->map(fn ($item) => $item->present()->render())
+            ->map(fn ($item) => $item->present()->render($request))
             ->implode('');
 
         $content = $collection
             ->filter($filter('content'))
-            ->map(fn ($item) => $item->present()->render())
+            ->map(fn ($item) => $item->present()->render($request))
             ->implode('');
 
         return view('content-view', compact('routeId', 'title', 'content'));

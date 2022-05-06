@@ -11,9 +11,8 @@ class Content extends Component
 
     public function __construct(SiteServiceContract $siteService, string $slug)
     {
-        $this->html = $siteService->renderers()::contentRenderer()->render(
-            $siteService->content($slug),
-        );
+        $this->html = $siteService->renderers()::contentRenderer()
+            ->render(request(), $siteService->content($slug));
     }
 
     public function render(): callable

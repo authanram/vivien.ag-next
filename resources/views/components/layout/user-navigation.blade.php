@@ -1,4 +1,4 @@
-@php($classList = 'flex hover:underline items-center text-'.util()->accent().'-600 hover:text-'.util()->accent().'-500')
+@php($classList = 'flex hover:underline items-center text-'.$accent.'-600 hover:text-'.$accent.'-500')
 
 <a {{ $attributes->merge(['class' => $classList]) }} href="/backend" target="_blank">
     @auth

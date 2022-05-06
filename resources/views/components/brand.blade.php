@@ -13,7 +13,7 @@
             </g>
         </svg>
         <span class="-ml-6 block leading-snug pl-0.5 text-[10px] tracking-wide w-[150px] whitespace-nowrap">
-            {{ util()->staticAttribute('slogan') }}
+            {{ Site::repositories()->staticAttributes()::findBySlug('slogan')->value }}
         </span>
     </span>
 </span>

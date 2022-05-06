@@ -3,13 +3,14 @@
 namespace App\Parsers;
 
 use App\Contracts\MarkdownParserContract;
+use Illuminate\Http\Request;
 use Parsedown;
 
 final class MarkdownParser extends Parsedown implements MarkdownParserContract
 {
-    protected static function replace(string $subject, array $replace): string
+    protected static function replace(Request $request, string $subject, array $replace): string
     {
-        $replace = array_merge(config('project.markdown.replace')(), $replace);
+        $replace = array_merge(config('project.markdown.replace')($request), $replace);
 
         return str_replace(array_keys($replace), array_values($replace), $subject);
     }
@@ -21,11 +22,11 @@ final class MarkdownParser extends Parsedown implements MarkdownParserContract
         $this->inlineMarkerList .= '{';
     }
 
-    public function parse($text, array $replace = []): string
+    public function parseAndReplace(Request $request, string $text, array $replace = []): string
     {
-        $text = parent::parse($text);
+        $text = $this->parse($text);
 
-        return self::replace($text, $replace);
+        return self::replace($request, $text, $replace);
     }
 
     public function inlineSpan(array $excerpt): ?array

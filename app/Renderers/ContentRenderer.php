@@ -3,17 +3,18 @@
 namespace App\Renderers;
 
 use App\Contracts\ContentRendererContract;
+use Illuminate\Http\Request;
 
 final class ContentRenderer implements ContentRendererContract
 {
-    public function render(string $subject, array $replace = []): string
+    public function render(Request $request, string $subject, array $replace = []): string
     {
-        return self::replace($subject, $replace);
+        return self::replace($request, $subject, $replace);
     }
 
-    protected static function replace(string $subject, array $replace): string
+    protected static function replace(Request $request, string $subject, array $replace): string
     {
-        $replace = array_merge(config('project.content.replace')(), $replace);
+        $replace = array_merge(config('project.content.replace')($request), $replace);
 
         return str_replace(array_keys($replace), array_values($replace), $subject);
     }

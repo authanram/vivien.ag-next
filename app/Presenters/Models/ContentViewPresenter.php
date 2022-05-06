@@ -2,18 +2,15 @@
 
 namespace App\Presenters\Models;
 
-use App\Models\ContentView;
 use App\Presenters\Presenter;
+use Illuminate\Http\Request;
 
-/**
- * @property ContentView $entity
- */
 class ContentViewPresenter extends Presenter
 {
-    public function render(): string
+    public function render(Request $request): string
     {
         $body = $this->get('body');
-        $searchAndReplace = config('project.content.replace')();
+        $searchAndReplace = config('project.content.replace')($request);
         $search = array_keys($searchAndReplace);
         $replace = array_values($searchAndReplace);
 

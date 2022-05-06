@@ -14,7 +14,7 @@
     </span>
     <span>and
         <a
-            class="text-{{ util()->accent() }}-600 hover:text-{{ util()->accent() }}-500 hover:underline"
+            class="text-{{ $accent }}-600 hover:text-{{ $accent }}-500 hover:underline"
             href="https://laravel.com"
             title="https://laravel.com"
         >Laravel</a>

@@ -1,7 +1,9 @@
 <?php
 
+use App\Facades\Site;
 use App\Models\EventTemplate;
 use App\Models\Tag;
+use Illuminate\Http\Request;
 
 return [
 
@@ -15,8 +17,8 @@ return [
     ],
 
     'content' => [
-        'replace' => static fn () => [
-            '%accent%' => util()->accent(),
+        'replace' => static fn (Request $request) => [
+            '%accent%' => Site::theme()->accent($request),
             '%avatar%' => asset('images/sybille-seuffer.jpg'),
             '%year%' => now()->year,
             '%year-last%' => now()->subYear()->year,
@@ -24,7 +26,7 @@ return [
     ],
 
     'markdown' => [
-        'replace' => static fn () => [
+        'replace' => static fn (Request $request) => [
             '<strong>' => '<span class="font-medium">',
             '</strong>' => '</span>',
             '<a ' => '<a class="hover:underline text-accent-600" ',
@@ -38,7 +40,7 @@ return [
             '{highlight}' => '<span class="font-medium text-accent-600">',
             '{/highlight}' => '</span>',
             '-accent-' => '-{{accent}}-',
-            '{{accent}}' => util()->accent(),
+            '{{accent}}' => Site::theme()->accent($request),
         ],
     ],
 

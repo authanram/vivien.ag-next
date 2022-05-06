@@ -2,7 +2,9 @@
 
 namespace App\Contracts;
 
+use Illuminate\Http\Request;
+
 interface MarkdownParserContract
 {
-    public function parse(string $text, array $replace = []): string;
+    public function parseAndReplace(Request $request, string $text, array $replace = []): string;
 }
