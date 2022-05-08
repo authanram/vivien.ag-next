@@ -39,7 +39,7 @@ class Route extends Resource
                 ->showOnPreview()
             ,
             Slug::make(__('Uri'), 'uri')
-                ->from('title')
+                ->from('name')
                 ->creationRules('unique:routes,uri')
                 ->updateRules('unique:routes,uri,{{resourceId}}')
                 ->rules('required')

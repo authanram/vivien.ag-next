@@ -30,6 +30,7 @@ class ViewServiceProvider extends ServiceProvider
     {
         Blade::component('content', Components\Content::class);
         Blade::component('icon', Components\Icon::class);
+        Blade::component('layout', Components\Layout::class);
         Blade::component('markdown', Components\Markdown::class);
 
         // Menus
