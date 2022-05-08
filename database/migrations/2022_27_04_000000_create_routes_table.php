@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateRoutesTable extends Migration
 {
@@ -9,10 +9,9 @@ class CreateRoutesTable extends Migration
     {
         Schema::create('routes', static function (Blueprint $table) {
             $table->id();
-            $table->string('path');
-            $table->string('route');
-            $table->string('action');
-            $table->string('title');
+            $table->string('uri');
+            $table->string('name');
+            $table->json('middlewares')->nullable();
             $table->boolean('published');
             $table->timestamps();
             $table->softDeletes();

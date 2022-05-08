@@ -18,12 +18,12 @@ class ViewServiceProvider extends ServiceProvider
 
     protected function bootSharedData(): void
     {
-        $siteService = $this->app[SiteServiceContract::class];
+//        $siteService = $this->app[SiteServiceContract::class];
 
-        View::share('accent', $siteService->theme()->accent(request()));
-        View::share('site', $siteService);
-        View::share('text', $siteService->text());
-        View::share('theme', $siteService->theme());
+//        View::share('accent', $siteService->theme()->accent(request()));
+//        View::share('site', $siteService);
+//        View::share('text', $siteService->text());
+//        View::share('theme', $siteService->theme());
     }
 
     protected function bootBladeComponents(): void

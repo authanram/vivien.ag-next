@@ -9,7 +9,7 @@ class AddContentViewIdToRoutesTable extends Migration
     {
         Schema::table('routes', static function (Blueprint $table) {
             $table->foreignId('content_view_id')
-                ->after('path')
+                ->after('id')
                 ->nullable()
                 ->constrained('content_views')
                 ->cascadeOnUpdate();

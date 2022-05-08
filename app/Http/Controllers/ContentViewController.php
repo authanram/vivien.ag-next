@@ -9,20 +9,12 @@ final class ContentViewController extends Controller
 {
     public function index(Request $request, int $routeId): View
     {
-        $filter = static fn ($section) => static fn ($item) => $item->pivot->section === $section;
+        $cacheKey = "route:$routeId";
 
-        $collection = $this->route($routeId)->contentViews;
+        $views = $this->route($routeId)->contentViews;
 
-        $title = $collection
-            ->filter($filter('title'))
-            ->map(fn ($item) => $item->present()->render($request))
-            ->implode('');
+        dd($views);
 
-        $content = $collection
-            ->filter($filter('content'))
-            ->map(fn ($item) => $item->present()->render($request))
-            ->implode('');
-
-        return view('content-view', compact('routeId', 'title', 'content'));
+        return view('content-view', compact('cacheKey', 'title', 'content'));
     }
 }

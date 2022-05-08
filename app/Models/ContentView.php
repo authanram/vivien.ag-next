@@ -32,6 +32,6 @@ class ContentView extends Model
     public function contentBlocks(): BelongsToMany
     {
         return $this->belongsToMany(ContentBlock::class, 'content_view_blocks')
-            ->withPivot('slug', 'order_column', 'published');
+            ->withPivot('order_column', 'published');
     }
 }

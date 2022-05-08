@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\RenderController;
+use App\Models\Route as Model;
 use Illuminate\Support\Facades\Route;
 
-/** @var \App\Models\Route $route */
-foreach (Site::repositories()->routes()->all() as $route) {
-    Route::get($route->path, $route->action)
-        ->defaults('routeId', $route->id)
-        ->name($route->route);
-}
+try {
+    Model::published()->get()->each(static function (Model $route) {
+        Route::get($route->uri, [RenderController::class, 'index'])
+            ->defaults('route', $route)
+            ->middleware($route->middlewares ?? ['web'])
+            ->name($route->name);
+    });
+} catch (Exception) {}

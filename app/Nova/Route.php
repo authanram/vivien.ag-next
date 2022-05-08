@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
@@ -30,9 +31,17 @@ class Route extends Resource
             ID::make(__('ID'), 'id')
                 ->showOnPreview()
             ,
-            Text::make(__('Path'), 'path')
-                ->creationRules('unique:routes,path')
-                ->updateRules('unique:routes,path,{{resourceId}}')
+            Text::make(__('Name'), 'name')
+                ->creationRules('unique:name,uri')
+                ->updateRules('unique:routes,name,{{resourceId}}')
+                ->rules('required')
+                ->sortable()
+                ->showOnPreview()
+            ,
+            Slug::make(__('Uri'), 'uri')
+                ->from('title')
+                ->creationRules('unique:routes,uri')
+                ->updateRules('unique:routes,uri,{{resourceId}}')
                 ->rules('required')
                 ->sortable()
                 ->showOnPreview()
@@ -42,24 +51,13 @@ class Route extends Resource
                 ->sortable()
                 ->showOnPreview()
             ,
-            Text::make(__('Route'), 'route')
-                ->creationRules('unique:routes,route')
-                ->updateRules('unique:routes,route,{{resourceId}}')
-                ->rules('required')
-                ->sortable()
-                ->showOnPreview()
-            ,
-            Text::make(__('Title'), 'title')
-                ->rules('required')
-                ->sortable()
-                ->showOnPreview()
-            ,
             Boolean::make(__('Published'), 'published')
                 ->sortable()
                 ->showOnPreview()
             ,
-            HasMany::make(__('Menu Items'), 'menuItems', MenuItem::class)
-            ,
+
+            //HasMany::make(__('Menu Items'), 'menuItems', MenuItem::class),
+
             BelongsToMany::make(__('Content Views'), 'contentViews', ContentView::class)
                 ->fields(function () {
                     return [

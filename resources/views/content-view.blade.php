@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @push('title')
-    @cache("route:$routeId:title")
+    @cache("$cacheKey:title")
         <div class="x-parsedown view">
             {!! $title !!}
         </div>
@@ -9,7 +9,7 @@
 @endpush
 
 @push('content')
-    @cache("route:$routeId:content")
+    @cache("$cacheKey:content")
         <div class="x-parsedown view">
             {!! $content !!}
         </div>

@@ -2,8 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Route extends Model
@@ -11,21 +10,19 @@ class Route extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'path',
-        'route',
-        'action',
-        'title',
+        'uri',
+        'name',
+        'middlewares',
         'published',
     ];
 
-    public function contentViews(): BelongsToMany
-    {
-        return $this->belongsToMany(ContentView::class, 'route_content_views')
-            ->withPivot('published', 'order_column');
-    }
+    protected $casts = [
+        'middlewares' => 'array',
+        'published' => 'boolean',
+    ];
 
-    public function menuItems(): HasMany
+    public function scopePublished(Builder $query): Builder
     {
-        return $this->hasMany(MenuItem::class);
+        return $query->where('published', true);
     }
 }

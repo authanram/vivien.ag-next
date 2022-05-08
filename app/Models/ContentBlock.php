@@ -18,9 +18,9 @@ class ContentBlock extends Model
         'body',
     ];
 
-    public function titleContentBlock(): HasOne
+    public function contentTitle(): HasOne
     {
-        return $this->hasOne(__CLASS__, 'id', 'title_content_block_id');
+        return $this->hasOne(ContentTitle::class, 'id', 'content_title_id');
     }
 
     public function contentViews(): BelongsToMany

@@ -6,7 +6,6 @@ use App\Contracts;
 use App\Parsers;
 use App\Renderers;
 use App\Services;
-use App\Util;
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 
@@ -21,9 +20,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(Contracts\MarkdownParserContract::class, Parsers\MarkdownParser::class);
         $this->app->bind(Contracts\SiteServiceContract::class, Services\SiteService::class);
 
-        $this->app->bind(Contracts\EventServiceContract::class, Services\EventService::class);
-        $this->app->singleton(Contracts\DataServiceContract::class, Services\DataService::class);
-        $this->app->singleton(Util::class, Util::class);
+        if ($this->app->runningInConsole()) {
+            return;
+        }
+
+        $this->app->register(ViewServiceProvider::class);
     }
 
     public function boot(): void
