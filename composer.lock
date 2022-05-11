@@ -58,7 +58,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/authanram/markdown",
-                "reference": "5683fd49efd8aa68c98aa426bef5592b886ac4bb"
+                "reference": "66aee4a01cd7c48ce0edfc57c73d569238eace1f"
             },
             "require": {
                 "illuminate/support": "^9.0",
@@ -90,7 +90,7 @@
                 "MIT"
             ],
             "description": "...",
-            "time": "2022-02-11T18:16:48+00:00"
+            "time": "2022-05-08T18:03:57+00:00"
         },
         {
             "name": "box/spout",

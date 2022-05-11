@@ -3,7 +3,6 @@
 return [
     [
         'id' => 1,
-        'content_view_id' => 1,
         'slug' => 'Slot',
         'body' => '%slot%',
         'created_at' => '2022-05-06 06:05:30',
@@ -12,7 +11,6 @@ return [
     ],
     [
         'id' => 2,
-        'content_view_id' => 1,
         'slug' => 'Card',
         'body' => '%slot%',
         'created_at' => '2022-05-06 06:05:30',
@@ -21,7 +19,6 @@ return [
     ],
     [
         'id' => 3,
-        'content_view_id' => 2,
         'slug' => 'Willkommen',
         'body' => '%slot%',
         'created_at' => '2022-05-06 06:05:30',
@@ -30,7 +27,6 @@ return [
     ],
     [
         'id' => 4,
-        'content_view_id' => 2,
         'slug' => "Vortr\xc3\xa4ge",
         'body' => '%slot%',
         'created_at' => '2022-05-06 06:05:30',
@@ -39,7 +35,6 @@ return [
     ],
     [
         'id' => 5,
-        'content_view_id' => 2,
         'slug' => 'Beratung',
         'body' => '%block:consulting%',
         'created_at' => '2022-05-06 06:05:38',
@@ -48,7 +43,6 @@ return [
     ],
     [
         'id' => 6,
-        'content_view_id' => 2,
         'slug' => 'Lerntraining',
         'body' => '%slot%',
         'created_at' => '2022-05-06 06:05:30',
@@ -57,7 +51,6 @@ return [
     ],
     [
         'id' => 7,
-        'content_view_id' => 2,
         'slug' => 'Kontakt',
         'body' => '%slot%',
         'created_at' => '2022-05-06 06:05:30',
@@ -66,7 +59,6 @@ return [
     ],
     [
         'id' => 8,
-        'content_view_id' => 1,
         'slug' => 'Impressum',
         'body' => '%slot%',
         'created_at' => '2022-05-06 06:05:30',
@@ -75,7 +67,6 @@ return [
     ],
     [
         'id' => 9,
-        'content_view_id' => 2,
         'slug' => "Datenschutzerkl\xc3\xa4rung",
         'body' => '%slot%',
         'created_at' => '2022-05-06 06:05:30',
@@ -84,7 +75,6 @@ return [
     ],
     [
         'id' => 10,
-        'content_view_id' => 2,
         'slug' => 'Cookie Vereinbarung',
         'body' => '%slot%',
         'created_at' => '2022-05-06 06:05:30',
@@ -93,7 +83,6 @@ return [
     ],
     [
         'id' => 11,
-        'content_view_id' => 2,
         'slug' => 'Portrait',
         'body' => null,
         'created_at' => '2022-05-06 17:12:33',

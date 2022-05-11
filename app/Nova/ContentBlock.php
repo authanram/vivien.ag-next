@@ -4,7 +4,6 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Text;
@@ -50,10 +49,6 @@ class ContentBlock extends Resource
                 ->required()
                 ->alwaysShow()
                 ->hideFromIndex()
-                ->showOnPreview()
-            ,
-
-            HasOne::make(__('Content Title'), 'contentTitle')
                 ->showOnPreview()
             ,
 

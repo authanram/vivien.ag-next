@@ -7,16 +7,8 @@ class CreateContentTables extends Migration
 {
     public function up(): void
     {
-        Schema::create('content_titles', static function (Blueprint $table) {
-            $table->id();
-            $table->text('body')->nullable();
-            $table->timestamps();
-            $table->softDeletes();
-        });
-
         Schema::create('content_blocks', static function (Blueprint $table) {
             $table->id();
-            $table->foreignId('content_title_id')->nullable()->constrained('content_titles')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('name');
             $table->text('title')->nullable();
             $table->text('body')->nullable();
@@ -26,7 +18,6 @@ class CreateContentTables extends Migration
 
         Schema::create('content_views', static function (Blueprint $table) {
             $table->id();
-            $table->foreignId('content_view_id')->nullable();
             $table->string('slug');
             $table->text('body')->nullable();
             $table->timestamps();
@@ -53,7 +44,6 @@ class CreateContentTables extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('content_views');
         Schema::dropIfExists('route_content_views');
         Schema::dropIfExists('content_view_blocks');
         Schema::dropIfExists('content_views');

@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Presenters\Models\ContentBlockPresenter as Presenter;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ContentBlock extends Model
@@ -17,11 +16,6 @@ class ContentBlock extends Model
         'name',
         'body',
     ];
-
-    public function contentTitle(): HasOne
-    {
-        return $this->hasOne(ContentTitle::class, 'id', 'content_title_id');
-    }
 
     public function contentViews(): BelongsToMany
     {
