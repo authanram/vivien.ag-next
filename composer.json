@@ -33,7 +33,8 @@
         "spatie/nova-tags-field": "^4.0",
         "tightenco/nova-google-analytics": "^2.0",
         "titasgailius/search-relations": "^2.0",
-        "tonysm/tailwindcss-laravel": "^0.4.0"
+        "tonysm/tailwindcss-laravel": "^0.4.0",
+        "whitecube/nova-flexible-content": "dev-feature"
     },
     "require-dev": {
         "authanram/laravel-query-monitor": "^1.0",
@@ -104,6 +105,10 @@
         "authanram/markdown": {
             "type": "git",
             "url": "https://github.com/authanram/markdown"
+        },
+        "whitecube/nova-flexible-content": {
+            "type": "path",
+            "url": "/Volumes/TEST/open-source/nova-flexible-content"
         },
         "gijsg/system-resources": {
             "type": "git",

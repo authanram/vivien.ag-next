@@ -2,9 +2,13 @@
 
 namespace App\Presenters\Models;
 
+use App\Facades\Site;
 use App\Presenters\Presenter;
 
-abstract class ContentBlockPresenter extends Presenter
+class ContentBlockPresenter extends Presenter
 {
-    abstract public function render(): string;
+    public function render(): string
+    {
+        return Site::parsers()::markdownParser()->parse($this->entity->value);
+    }
 }

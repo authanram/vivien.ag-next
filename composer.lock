@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "056b6d0614717320662e132a18ba6c17",
+    "content-hash": "2089884699e89093709725855f7e7e4f",
     "packages": [
         {
             "name": "ajcastro/eager-load-pivot-relations",
@@ -8491,6 +8491,68 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.10.0"
             },
             "time": "2021-03-09T10:59:23+00:00"
+        },
+        {
+            "name": "whitecube/nova-flexible-content",
+            "version": "dev-feature",
+            "dist": {
+                "type": "path",
+                "url": "/Volumes/TEST/open-source/nova-flexible-content",
+                "reference": "5d565ac249fe06c93e1db96f1d238e976bb43858"
+            },
+            "require": {
+                "laravel/framework": "^8.0|^9.0",
+                "laravel/nova": "^4.0",
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Whitecube\\NovaFlexibleContent\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Whitecube\\NovaFlexibleContent\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit --colors=always tests"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Toon Van den Bos",
+                    "email": "toon@whitecube.be"
+                }
+            ],
+            "description": "Flexible Content & Repeater Fields for Laravel Nova.",
+            "keywords": [
+                "field",
+                "flexible",
+                "group",
+                "laravel",
+                "layout",
+                "nova",
+                "repeat"
+            ],
+            "transport-options": {
+                "relative": false
+            }
         }
     ],
     "packages-dev": [
@@ -14534,6 +14596,7 @@
     "stability-flags": {
         "authanram/markdown": 20,
         "gijsg/system-resources": 20,
+        "whitecube/nova-flexible-content": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": true,
