@@ -12,7 +12,6 @@ final class Routes extends Repository
 
     public function all(): Collection
     {
-        return self::model()::where('published', true)
-            ->get(['id', 'uri', 'name', 'action']);
+        return self::model()::where('published', true)->get();
     }
 }

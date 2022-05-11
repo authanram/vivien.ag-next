@@ -23,7 +23,7 @@ class Theme
 
         $route = $this->repositories->routes()
             ->all()
-            ->filter(fn (Route $route) => $route->route === $request->route()?->getName())
+            ->filter(fn (Route $route) => $route->name === $request->route()?->getName())
             ->first();
 
         if (is_null($route)) {

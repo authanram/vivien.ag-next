@@ -4,6 +4,7 @@ namespace App\Parsers;
 
 use App\Contracts\MarkdownParserContract;
 use App\Facades\Site;
+use App\Markdown\Plugins\Renderables;
 use Authanram\Markdown\Converter;
 use Illuminate\Http\Request;
 
@@ -18,9 +19,12 @@ final class MarkdownParser implements MarkdownParserContract
             config('project.markdown.replace')($request),
         );
 
-        $text = (new Converter(['base_url' => config('app.url')]))
-            ->withMarkdown($text)
-            ->toHtml();
+        $text = (new Converter([
+            'base_url' => config('app.url'),
+            'plugins' => [
+                Renderables::class,
+            ],
+        ]))->withMarkdown($text)->toHtml();
 
         $text = Site::renderers()::contentRenderer()
             ->render($request, $text);
