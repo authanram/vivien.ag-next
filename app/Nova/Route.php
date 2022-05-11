@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Slug;
@@ -46,10 +47,7 @@ class Route extends Resource
                 ->sortable()
                 ->showOnPreview()
             ,
-            Text::make(__('Action'), 'action')
-                ->rules('required')
-                ->sortable()
-                ->showOnPreview()
+            BelongsTo::make(__('Content Block'), 'contentBlock', ContentBlock::class)
             ,
             Boolean::make(__('Published'), 'published')
                 ->sortable()
@@ -57,18 +55,6 @@ class Route extends Resource
             ,
 
             //HasMany::make(__('Menu Items'), 'menuItems', MenuItem::class),
-
-            BelongsToMany::make(__('Content Views'), 'contentViews', ContentView::class)
-                ->fields(function () {
-                    return [
-                        Number::make(__('Order Column'), 'order_column')
-                            ->rules('required')
-                        ,
-                        Boolean::make(__('Published'), 'published')
-                        ,
-                    ];
-                })
-            ,
         ];
     }
 

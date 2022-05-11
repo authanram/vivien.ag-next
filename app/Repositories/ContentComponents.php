@@ -2,12 +2,12 @@
 
 namespace App\Repositories;
 
-use App\Models\ContentView;
+use App\Models\ContentComponent;
 use Illuminate\Database\Eloquent\Model;
 
-final class ContentViews extends Repository
+final class ContentComponents extends Repository
 {
-    protected static Model|string $model = ContentView::class;
+    protected static Model|string $model = ContentComponent::class;
 
     public function findBySlug(string $slug): ?string
     {

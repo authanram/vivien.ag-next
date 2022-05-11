@@ -3,15 +3,15 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddContentViewIdToRoutesTable extends Migration
+class AddContentBlockIdToRoutesTable extends Migration
 {
     public function up(): void
     {
         Schema::table('routes', static function (Blueprint $table) {
-            $table->foreignId('content_view_id')
+            $table->foreignId('content_block_id')
                 ->after('id')
                 ->nullable()
-                ->constrained('content_views')
+                ->constrained('content_blocks')
                 ->cascadeOnUpdate();
         });
     }

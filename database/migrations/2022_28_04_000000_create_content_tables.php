@@ -16,37 +16,20 @@ class CreateContentTables extends Migration
             $table->softDeletes();
         });
 
-        Schema::create('content_views', static function (Blueprint $table) {
+        Schema::create('content_components', static function (Blueprint $table) {
             $table->id();
-            $table->string('slug');
-            $table->text('body')->nullable();
+            $table->string('name');
+            $table->string('model');
+            $table->string('columns');
+            $table->text('view')->nullable();
             $table->timestamps();
             $table->softDeletes();
-        });
-
-        Schema::create('content_view_blocks', static function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('content_view_id')->nullable()->index()->constrained('content_views')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('content_block_id')->nullable()->index()->constrained('content_blocks')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->string('slug');
-            $table->boolean('published');
-            $table->smallInteger('order_column')->nullable();
-        });
-
-        Schema::create('route_content_views', static function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('route_id')->constrained('routes')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('content_view_id')->constrained('content_views')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->boolean('published');
-            $table->smallInteger('order_column');
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('route_content_views');
-        Schema::dropIfExists('content_view_blocks');
-        Schema::dropIfExists('content_views');
+        Schema::dropIfExists('content_components');
         Schema::dropIfExists('content_blocks');
     }
 }

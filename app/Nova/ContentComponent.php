@@ -3,16 +3,15 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 
-class ContentView extends Resource
+class ContentComponent extends Resource
 {
     use HasViewBlocksPivotFields;
 
-    public static string $model = \App\Models\ContentView::class;
+    public static string $model = \App\Models\ContentComponent::class;
 
     public static $title = 'slug';
 
@@ -38,20 +37,27 @@ class ContentView extends Resource
             ID::make()
                 ->showOnPreview()
             ,
-            Text::make(__('Slug'), 'slug')
+            Text::make(__('Name'), 'name')
                 ->rules('required')
                 ->sortable()
                 ->showOnPreview()
             ,
-            Code::make(__('Body'), 'body')
+            Text::make(__('Model'), 'model')
                 ->rules('required')
-                ->language('xml')
-                ->autoHeight()
-                ->hideFromIndex()
+                ->sortable()
                 ->showOnPreview()
             ,
-            BelongsToMany::make(__('Content Blocks'), 'contentBlocks', ContentBlock::class)
-                ->fields(fn () => $this->getViewBlocksPivotFields())
+            Text::make(__('Columns'), 'columns')
+                ->rules('required')
+                ->sortable()
+                ->showOnPreview()
+            ,
+            Code::make(__('View'), 'view')
+                ->language('htmlmixed')
+                ->autoHeight()
+                ->rules('required')
+                ->hideFromIndex()
+                ->showOnPreview()
             ,
         ];
     }
