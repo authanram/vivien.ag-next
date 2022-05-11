@@ -27,7 +27,7 @@ class StaffProfile extends Resource
                 ->showOnPreview()
             ,
             Text::make(__('Name'), 'name')
-                ->required()
+                ->rules('required')
                 ->showOnPreview()
             ,
             Text::make(__('Occupation'), 'occupation')

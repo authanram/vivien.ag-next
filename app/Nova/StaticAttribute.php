@@ -46,9 +46,8 @@ class StaticAttribute extends Resource
             ,
             Slug::make(__('Slug'), 'slug')
                 ->from('title')
-                ->creationRules("unique:$table,slug")
-                ->updateRules("unique:$table,slug,{{resourceId}}")
-                ->required()
+                ->creationRules('required', "unique:$table,slug")
+                ->updateRules('required', "unique:$table,slug,{{resourceId}}")
                 ->sortable()
                 ->showOnPreview()
             ,

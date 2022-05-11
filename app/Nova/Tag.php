@@ -58,7 +58,7 @@ class Tag extends Resource
                     'image' => 'image',
                     'post' => 'post',
                 ])
-                ->required()
+                ->rules('required')
                 ->sortable()
                 ->showOnPreview()
             ,

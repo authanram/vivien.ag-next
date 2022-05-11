@@ -11,7 +11,7 @@ trait HasViewBlocksPivotFields
     {
         return [
             Number::make(__('Order Column'), 'order_column')
-                ->required(),
+                ->rules('required'),
             Boolean::make(__('Published'), 'published')
                 ->sortable()
                 ->showOnPreview()

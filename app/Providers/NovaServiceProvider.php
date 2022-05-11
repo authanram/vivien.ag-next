@@ -31,6 +31,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         if (config('nova-menu.user')) {
             Nova::userMenu(config('nova-menu.user'));
         }
+
+        Nova::footer(static fn ($request) => null);
     }
 
     final protected function routes(): void

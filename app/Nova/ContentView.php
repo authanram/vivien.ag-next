@@ -44,7 +44,7 @@ class ContentView extends Resource
                 ->showOnPreview()
             ,
             Code::make(__('Body'), 'body')
-                ->required()
+                ->rules('required')
                 ->language('xml')
                 ->autoHeight()
                 ->hideFromIndex()

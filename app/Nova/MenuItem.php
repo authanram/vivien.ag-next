@@ -47,19 +47,19 @@ class MenuItem extends Resource
                 ->showOnPreview()
             ,
             BelongsTo::make(__('Menus'), 'menu', Menu::class)
-                ->required()
+                ->rules('required')
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()
             ,
             BelongsTo::make(__('Route'), 'route', Route::class)
-                ->required()
+                ->rules('required')
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()
             ,
             BelongsTo::make(__('Color'), 'color', Color::class)
-                ->required()
+                ->rules('required')
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()

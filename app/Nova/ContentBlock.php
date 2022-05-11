@@ -2,11 +2,11 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class ContentBlock extends Resource
 {
@@ -32,7 +32,7 @@ class ContentBlock extends Resource
         return __('Block');
     }
 
-    public function fields(Request $request): array
+    public function fields(NovaRequest $request): array
     {
         return [
             ID::make()
@@ -46,7 +46,7 @@ class ContentBlock extends Resource
             ,
 
             Markdown::make(__('Body'), 'body')
-                ->required()
+                ->rules('required')
                 ->alwaysShow()
                 ->hideFromIndex()
                 ->showOnPreview()

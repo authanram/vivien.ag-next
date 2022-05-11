@@ -39,25 +39,25 @@ class CookieConsentCookie extends Resource
                 ->showOnPreview()
             ,
             BelongsTo::make(__('Cookie Provider'), 'cookieProvider', CookieConsentProvider::class)
-                ->required()
+                ->rules('required')
                 ->showCreateRelationButton()
             ,
             Code::make(__('Cookie Purpose'), 'cookie_purpose')
-                ->required()
+                ->rules('required')
                 ->height('auto')
                 ->hideFromIndex()
                 ->showOnPreview()
             ,
             Text::make(__('Cookie Category'), 'cookie_category')
-                ->required()
+                ->rules('required')
                 ->showOnPreview()
             ,
             Text::make(__('Cookie Type'), 'cookie_type')
-                ->required()
+                ->rules('required')
                 ->showOnPreview()
             ,
             Number::make(__('Cookie Lifetime'), 'cookie_lifetime')
-                ->required()
+                ->rules('required')
                 ->help('In days.')
                 ->showOnPreview()
             ,
