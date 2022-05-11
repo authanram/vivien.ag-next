@@ -16,6 +16,8 @@ class Route extends Resource
 
     public static $title = 'name';
 
+    public static $with = ['contentView'];
+
     public static $search = [
         'name',
         'uri',

@@ -14,7 +14,7 @@ class ContentView extends ContentBlock
 
     public static function indexQuery(NovaRequest $request, $query): Builder
     {
-        return parent::indexQuery($request, $query)->where('type', Model::class);
+        return $query->where('type', Model::class);
     }
 
     public static function label(): string
