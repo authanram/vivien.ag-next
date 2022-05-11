@@ -2,6 +2,8 @@
 
 namespace App\Presenters\Models;
 
-class ContentViewPresenter extends ContentBlockPresenter
+use App\Presenters\Presenter;
+
+class ContentViewPresenter extends Presenter
 {
 }

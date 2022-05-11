@@ -3,19 +3,22 @@
 namespace App\Nova;
 
 use App\Models\ContentView as Model;
-use Illuminate\Database\Eloquent\Builder;
-use Laravel\Nova\Fields\Code;
-use Laravel\Nova\Fields\Field;
+use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class ContentView extends ContentBlock
+class ContentView extends Resource
 {
     public static string $model = Model::class;
 
-    public static function indexQuery(NovaRequest $request, $query): Builder
-    {
-        return $query->where('type', Model::class);
-    }
+    public static $title = 'name';
+
+    public static $search = [
+        'name',
+        'sections',
+    ];
+
+    protected static array $orderBy = ['name' => 'asc'];
 
     public static function label(): string
     {
@@ -27,13 +30,15 @@ class ContentView extends ContentBlock
         return __('Content View');
     }
 
-    protected function fieldBody(NovaRequest $request): Field
+    public function fields(NovaRequest $request): array
     {
-        return Code::make(__('Html'), 'body', static fn ($value) => $value ?? '')
-            ->autoHeight()
-            ->language('htmlmixed')
-            ->rules('required')
-            ->hideFromIndex()
-            ->showOnPreview();
+        return [
+            ID::make()->sortable()->showOnPreview(),
+
+            Text::make(__('Name'), 'name')
+                ->rules('required')
+                ->sortable()
+                ->showOnPreview(),
+        ];
     }
 }

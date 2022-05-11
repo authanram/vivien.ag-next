@@ -55,7 +55,7 @@ return [
         ])->collapsable()->icon('switch-horizontal'),
 
         MenuSection::make(__('Contents'), [
-            MenuItem::resource(Resources\ContentBlock::class),
+            MenuItem::resource(Resources\ContentBlockMarkdown::class),
             MenuItem::resource(Resources\ContentView::class),
         ])->collapsable()->icon('template'),
 

@@ -7,11 +7,9 @@ use App\Models\Route;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
-final class RenderController extends Controller
+final class ContentViewController extends Controller
 {
-    /**
-     * @throws PresenterException
-     */
+    /** @throws PresenterException */
     public function index(Request $request, Route $route): View|string
     {
         return view('render', [

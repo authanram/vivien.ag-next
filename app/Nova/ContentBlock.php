@@ -2,20 +2,14 @@
 
 namespace App\Nova;
 
-use App\Models\ContentBlock as Model;
-use Illuminate\Database\Eloquent\Builder;
-use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Fields\Hidden;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class ContentBlock extends Resource
+abstract class ContentBlock extends Resource
 {
-    public static string $model = Model::class;
-
     public static $title = 'name';
 
     public static $search = [
@@ -25,10 +19,7 @@ class ContentBlock extends Resource
 
     protected static array $orderBy = ['name' => 'asc'];
 
-    public static function indexQuery(NovaRequest $request, $query): Builder
-    {
-        return parent::indexQuery($request, $query)->whereNull('type');
-    }
+    abstract protected static function blockFields(NovaRequest $request);
 
     public static function label(): string
     {
@@ -45,6 +36,9 @@ class ContentBlock extends Resource
         return [
             ID::make()->sortable()->showOnPreview(),
 
+            Hidden::make(__('Type'), 'type')
+                ->default(static fn () => static::class),
+
             Text::make(__('Name'), 'name')
                 ->rules('required')
                 ->sortable()
@@ -56,20 +50,7 @@ class ContentBlock extends Resource
                 ->sortable()
                 ->showOnPreview(),
 
-            $this->fieldBody($request),
-
-            Hidden::make(__('Type'), 'type')
-                ->default(fn () => null),
-
+            ...static::blockFields($request),
         ];
-    }
-
-    protected function fieldBody(NovaRequest $request): Field
-    {
-        return Markdown::make(__('Body'), 'body')
-            ->alwaysShow()
-            ->rules('required')
-            ->hideFromIndex()
-            ->showOnPreview();
     }
 }
