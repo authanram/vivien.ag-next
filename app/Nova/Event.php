@@ -3,11 +3,11 @@
 namespace App\Nova;
 
 //use App\Nova\Metrics\PartitionEventTemplate;
-//use Laravel\Nova\Fields\BelongsToMany;
 use App\Models\Catering as CateringModel;
+use App\Models\Event as Model;
 use App\Models\StaffProfile as StaffProfileModel;
 use App\Nova\Filters\EventsTimeFilter;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model as BaseModel;
 use Illuminate\Support\Facades\Cache;
 use JsonException;
 use Laravel\Nova\Fields\BelongsTo;
@@ -27,7 +27,8 @@ use Spatie\TagsField\Tags;
 
 class Event extends Resource
 {
-    public static string $model = \App\Models\Event::class;
+    public static string $model = Model::class;
+
 
     public static $search = [
         'date_from',
@@ -60,12 +61,12 @@ class Event extends Resource
         }
     }
 
-    public static function afterCreate(NovaRequest $request, Model $model): void
+    public static function afterCreate(NovaRequest $request, BaseModel $model): void
     {
         static::syncStaffEvents($request->get('staff'), $model);
     }
 
-    public static function afterUpdate(NovaRequest $request, Model $model): void
+    public static function afterUpdate(NovaRequest $request, BaseModel $model): void
     {
         static::syncStaffEvents($request->get('staff'), $model);
     }
@@ -74,7 +75,7 @@ class Event extends Resource
      * @param self $model
      * @noinspection PhpDocSignatureInspection
      */
-    protected static function syncStaffEvents(string $staff, Model $model): void
+    protected static function syncStaffEvents(string $staff, BaseModel $model): void
     {
         /** @noinspection JsonEncodingApiUsageInspection */
         $names = collect(json_decode($staff, true))
@@ -94,64 +95,64 @@ class Event extends Resource
 
     public static function singularLabel(): string
     {
-        return __('Events');
+        return __('Event');
     }
 
     public function fields(NovaRequest $request, bool $published = true): array
     {
         return [
-            ID::make()
-            ,
+            ID::make()->sortable()->showOnPreview(),
+
             Text::make(__('UUID'), 'uuid')
-                ->onlyOnDetail()
-            ,
+                ->onlyOnDetail(),
+
             BelongsTo::make(__('Event Template'), 'eventTemplate', EventTemplate::class)
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()
-                ->showOnPreview()
-            ,
+                ->showOnPreview(),
+
             Textarea::make(__('Description'), 'description')
                 ->rows(2)
                 ->hideFromIndex()
-                ->showOnPreview()
-            ,
+                ->showOnPreview(),
+
             BelongsTo::make(__('Location'), 'location', Location::class)
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()
-                ->showOnPreview()
-            ,
+                ->showOnPreview(),
+
             DateTime::make(__('Date From'), 'date_from')
                 ->rules('required')
                 ->sortable()
                 ->onlyOnForms()
-                ->showOnPreview()
-            ,
+                ->showOnPreview(),
+
             DateTime::make(__('Date To'), 'date_to')
                 ->rules('required')
                 ->sortable()
                 ->onlyOnForms()
-                ->showOnPreview()
-            ,
+                ->showOnPreview(),
+
             Stack::make(__('Date From/To'), [
                 Line::make(null, fn () => $this->resource->present()->dateFrom())
-                    ->extraClasses('font-bold text-sm')
-                ,
+                    ->extraClasses('font-bold text-sm'),
+
                 Line::make(null, fn () => $this->resource->present()->dateTo())
                     ->asSmall(),
-            ])->exceptOnForms()
-            ,
+            ])->exceptOnForms(),
+
             Stack::make(__('Event Registrations'), [
                 Line::make(null, fn () => $this->resource->present()->registrationsCurrent())
                     ->showOnPreview()
                     ->extraClasses('font-bold text-sm')
-                    ->exceptOnForms()
-                ,
+                    ->exceptOnForms(),
+
                 Line::make(null, fn () => $this->resource->present()->registrationsPreview())
-                    ->asSmall()
-                ,
+                    ->asSmall(),
             ]),
+
             Number::make(__('Maximum Registrations'), 'registrations_maximum')
                 ->default(10)
                 ->rules('required', 'numeric', 'min:1', 'gte:registrations_reserved')
@@ -159,67 +160,66 @@ class Event extends Resource
                 ->min(1)
                 ->help(__('Maximum Registrations (excluding staff).'))
                 ->onlyOnForms()
-                ->showOnPreview()
-            ,
+                ->showOnPreview(),
+
             Number::make(__('Reserved Registrations'), 'registrations_reserved')
                 ->withMeta(['value' => $this->resource->registrations_reserved ?? 0])
                 ->rules('required', 'numeric', 'min:0')
                 ->default(0)
                 ->sortable()
                 ->hideFromIndex()
-                ->showOnPreview()
-            ,
+                ->showOnPreview(),
+
             Currency::make(__('Price'), 'price')
                 ->currency('EUR')
                 ->rules('nullable', 'numeric')
                 ->showOnPreview()
-                ->onlyOnForms()
-            ,
+                ->onlyOnForms(),
+
             Stack::make(__('Price'), [
                 Line::make(null, fn () => $this->resource->price.' €')
-                    ->extraClasses('font-bold text-sm')
-                ,
+                    ->extraClasses('font-bold text-sm'),
+
                 Line::make(null, fn () => $this->resource->present()->profitPreview())
-                    ->asSmall()
-                ,
+                    ->asSmall(),
             ]),
+
             Text::make(__('Price Note'), 'price_note')
                 ->hideFromIndex()
-                ->showOnPreview()
-            ,
+                ->showOnPreview(),
+
             BelongsTo::make(__('Catering'), 'catering', Catering::class)
                 ->default(fn () => CateringModel::$presenter::default()?->id)
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable()
                 ->hideFromIndex()
-                ->showOnPreview()
-            ,
+                ->showOnPreview(),
+
             Tags::make('Tags')
                 ->type('event')
                 ->withLinkToTagResource()
                 ->hideFromIndex()
-                ->showOnPreview()
-            ,
+                ->showOnPreview(),
+
             BooleanGroup::make(__('Lead'), 'staff', fn () => $this->staffProfiles()->values)
                 ->options($this->staffProfiles()->options)
-                ->hideFromIndex()
-            ,
+                ->hideFromIndex(),
+
             Boolean::make(__('Published'), 'published')
                 ->default($published)
                 ->rules('boolean')
                 ->sortable()
                 ->trueValue(true)
                 ->falseValue(false)
-                ->showOnPreview()
-            ,
+                ->showOnPreview(),
+
             /*BelongsToMany::make(__('Lead'), 'staffProfiles', StaffProfile::class)
                 ->hideFromIndex()
-                ->showOnPreview()
-            ,*/
+                ->showOnPreview(),*/
+
             HasMany::make(__('Event Registrations'), 'eventRegistrations', EventRegistration::class)
-                ->showOnPreview()
-            ,
+                ->showOnPreview(),
         ];
     }
 

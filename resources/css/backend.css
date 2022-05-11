@@ -9,9 +9,12 @@ a.no-underline:hover,
     box-shadow: none;
 }
 
-.form-input:focus,
-.form-select:focus {
-    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+a.focus\:ring-2:focus {
+    box-shadow: none;
+}
+
+button.focus\:ring-offset-4:focus {
+    box-shadow: none;
 }
 
 .v-popper--has-tooltip > svg {

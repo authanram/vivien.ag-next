@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Presenters\Models\ContentBlockPresenter as Presenter;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ContentBlock extends Model
@@ -14,11 +13,8 @@ class ContentBlock extends Model
 
     protected $fillable = [
         'name',
+        'slug',
         'body',
+        'type',
     ];
-
-    public function contentViews(): BelongsToMany
-    {
-        return $this->belongsToMany(ContentView::class, 'content_view_blocks');
-    }
 }

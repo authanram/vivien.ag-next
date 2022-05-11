@@ -3,7 +3,7 @@
 return [
     [
         'id' => 1,
-        'content_block_id' => null,
+        'content_view_id' => null,
         'uri' => '/',
         'name' => 'welcome',
         'middlewares' => '["web"]',
@@ -14,7 +14,7 @@ return [
     ],
     [
         'id' => 2,
-        'content_block_id' => null,
+        'content_view_id' => null,
         'uri' => 'seminare',
         'name' => 'events',
         'middlewares' => '["web"]',
@@ -25,7 +25,7 @@ return [
     ],
     [
         'id' => 3,
-        'content_block_id' => null,
+        'content_view_id' => null,
         'uri' => 'vortraege',
         'name' => 'lectures',
         'middlewares' => '["web"]',
@@ -36,7 +36,7 @@ return [
     ],
     [
         'id' => 4,
-        'content_block_id' => null,
+        'content_view_id' => null,
         'uri' => 'beratung',
         'name' => 'consulting',
         'middlewares' => '["web"]',
@@ -47,7 +47,7 @@ return [
     ],
     [
         'id' => 5,
-        'content_block_id' => null,
+        'content_view_id' => null,
         'uri' => 'lerntraining',
         'name' => 'learning',
         'middlewares' => '["web"]',
@@ -58,7 +58,7 @@ return [
     ],
     [
         'id' => 6,
-        'content_block_id' => null,
+        'content_view_id' => null,
         'uri' => 'portrait',
         'name' => 'portrait',
         'middlewares' => '["web"]',
@@ -69,7 +69,7 @@ return [
     ],
     [
         'id' => 7,
-        'content_block_id' => null,
+        'content_view_id' => null,
         'uri' => 'blog/{slug?}',
         'name' => 'blog',
         'middlewares' => '["web"]',
@@ -80,7 +80,7 @@ return [
     ],
     [
         'id' => 8,
-        'content_block_id' => null,
+        'content_view_id' => null,
         'uri' => 'buchtipps',
         'name' => 'books',
         'middlewares' => '["web"]',
@@ -91,7 +91,7 @@ return [
     ],
     [
         'id' => 9,
-        'content_block_id' => null,
+        'content_view_id' => null,
         'uri' => 'kontakt',
         'name' => 'contact',
         'middlewares' => '["web"]',
@@ -102,7 +102,7 @@ return [
     ],
     [
         'id' => 10,
-        'content_block_id' => null,
+        'content_view_id' => null,
         'uri' => 'impressum',
         'name' => 'imprint',
         'middlewares' => '["web"]',
@@ -113,7 +113,7 @@ return [
     ],
     [
         'id' => 11,
-        'content_block_id' => null,
+        'content_view_id' => null,
         'uri' => 'datenschutzerklaerung',
         'name' => 'privacy-policy',
         'middlewares' => '["web"]',
@@ -124,7 +124,7 @@ return [
     ],
     [
         'id' => 12,
-        'content_block_id' => null,
+        'content_view_id' => null,
         'uri' => 'cookie-vereinbarung',
         'name' => 'cookie-policy',
         'middlewares' => '["web"]',
@@ -135,7 +135,7 @@ return [
     ],
     [
         'id' => 13,
-        'content_block_id' => null,
+        'content_view_id' => null,
         'uri' => 'galerie',
         'name' => 'gallery',
         'middlewares' => '["web"]',
@@ -146,7 +146,7 @@ return [
     ],
     [
         'id' => 14,
-        'content_block_id' => null,
+        'content_view_id' => null,
         'uri' => 'seminare',
         'name' => 'events-static',
         'middlewares' => '["web"]',

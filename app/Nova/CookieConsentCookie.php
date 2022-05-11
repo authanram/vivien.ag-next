@@ -2,6 +2,8 @@
 
 namespace App\Nova;
 
+
+use App\Models\CookieConsentCookie as Model;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
@@ -12,7 +14,7 @@ use Laravel\Nova\Fields\Text;
 
 class CookieConsentCookie extends Resource
 {
-    public static string $model = \App\Models\CookieConsentCookie::class;
+    public static string $model = Model::class;
 
     public static $title = 'cookie_name';
 
@@ -20,60 +22,66 @@ class CookieConsentCookie extends Resource
         'cookie_name',
         'cookie_purpose',
         'cookie_type',
+        'cookie_category',
+        'cookie_type',
     ];
 
     public static $with = ['cookieProvider'];
 
+    public static function label(): string
+    {
+        return __('Cookies');
+    }
+
+    public static function singularLabel(): string
+    {
+        return __('Cookie');
+    }
+
     public function fields(Request $request): array
     {
         return [
-            ID::make(__('ID'), 'id')
-                ->showOnPreview()
-            ,
+            ID::make()->sortable()->showOnPreview(),
+
             Text::make(__('Cookie Name'), 'cookie_name')
-                ->rules('required')
-                ->creationRules('unique:cookie_consent_cookies,cookie_name')
-                ->updateRules('unique:cookie_consent_cookies,cookie_name,{{resourceId}}')
+                ->creationRules('required', 'unique:cookie_consent_cookies,cookie_name')
+                ->updateRules('required', 'unique:cookie_consent_cookies,cookie_name,{{resourceId}}')
                 ->help('Must be unique.')
                 ->sortable()
-                ->showOnPreview()
-            ,
+                ->showOnPreview(),
+
             BelongsTo::make(__('Cookie Provider'), 'cookieProvider', CookieConsentProvider::class)
                 ->rules('required')
-                ->showCreateRelationButton()
-            ,
+                ->withoutTrashed()
+                ->showCreateRelationButton(),
+
             Code::make(__('Cookie Purpose'), 'cookie_purpose')
                 ->rules('required')
                 ->height('auto')
                 ->hideFromIndex()
-                ->showOnPreview()
-            ,
+                ->showOnPreview(),
+
             Text::make(__('Cookie Category'), 'cookie_category')
                 ->rules('required')
-                ->showOnPreview()
-            ,
+                ->showOnPreview(),
+
             Text::make(__('Cookie Type'), 'cookie_type')
                 ->rules('required')
-                ->showOnPreview()
-            ,
+                ->showOnPreview(),
+
             Number::make(__('Cookie Lifetime'), 'cookie_lifetime')
                 ->rules('required')
                 ->help('In days.')
-                ->showOnPreview()
-            ,
+                ->showOnPreview(),
+
             Boolean::make(__('Encrypted'), 'encrypted')
                 ->sortable()
-                ->showOnPreview()
-            ,
+                ->showOnPreview(),
+
             Boolean::make(__('Required'), 'required')
                 ->sortable()
-                ->showOnPreview()
-            ,
-        ];
-    }
+                ->showOnPreview(),
 
-    public static function label(): string
-    {
-        return __('Cookies');
+        ];
     }
 }

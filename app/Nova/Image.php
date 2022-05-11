@@ -22,43 +22,6 @@ class Image extends Resource
         'description',
     ];
 
-    public function fields(Request $request): array
-    {
-        return [
-            ID::make(__('ID'), 'id')
-                ->showOnPreview()
-            ,
-            FieldImage::make(__('File'), 'file')
-                ->disk('public')
-                ->path('image')
-                ->storeOriginalName('file_original')
-                ->rules('required')
-                ->hideWhenUpdating()
-                ->showOnPreview()
-            ,
-            Text::make(__('Name'), 'name')
-                ->rules('required')
-                ->sortable()
-                ->showOnPreview()
-            ,
-            Textarea::make(__('Description'), 'description')
-                ->rows(2)
-                ->showOnPreview()
-            ,
-            Currency::make(__('Price'), 'price')
-                ->currency('EUR')
-                ->sortable()
-                ->showOnPreview()
-            ,
-            Boolean::make(__('Published'), 'published')
-                ->sortable()
-                ->showOnPreview()
-            ,
-            HasOne::make(__('Image Coords'), 'imageCoords', ImageCoords::class)
-            ,
-        ];
-    }
-
     public static function label(): string
     {
         return __('Images');
@@ -67,5 +30,41 @@ class Image extends Resource
     public static function singularLabel(): string
     {
         return __('Image');
+    }
+
+    public function fields(Request $request): array
+    {
+        return [
+            ID::make()->sortable()->showOnPreview(),
+
+            FieldImage::make(__('File'), 'file')
+                ->disk('public')
+                ->path('image')
+                ->storeOriginalName('file_original')
+                ->rules('required')
+                ->hideWhenUpdating()
+                ->showOnPreview(),
+
+            Text::make(__('Name'), 'name')
+                ->rules('required')
+                ->sortable()
+                ->showOnPreview(),
+
+            Textarea::make(__('Description'), 'description')
+                ->rows(2)
+                ->showOnPreview(),
+
+            Currency::make(__('Price'), 'price')
+                ->currency('EUR')
+                ->sortable()
+                ->showOnPreview(),
+
+            Boolean::make(__('Published'), 'published')
+                ->sortable()
+                ->showOnPreview(),
+
+            HasOne::make(__('Image Coords'), 'imageCoords', ImageCoords::class),
+
+        ];
     }
 }

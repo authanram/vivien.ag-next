@@ -2,61 +2,24 @@
 
 namespace App\Nova;
 
+use App\Models\Route as Model;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Select;
-use Laravel\Nova\Fields\Slug;
-use Laravel\Nova\Http\Requests\NovaRequest as Request;
-use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest as Request;
 
 class Route extends Resource
 {
-    public static string $model = \App\Models\Route::class;
+    public static string $model = Model::class;
 
-    public static $title = 'title';
+    public static $title = 'name';
 
     public static $search = [
-        'path',
-        'route',
-        'action',
-        'title',
+        'name',
+        'uri',
     ];
-
-    public function fields(Request $request): array
-    {
-        return [
-            ID::make(__('ID'), 'id')
-                ->showOnPreview()
-            ,
-            Text::make(__('Name'), 'name')
-                ->creationRules('unique:name,uri')
-                ->updateRules('unique:routes,name,{{resourceId}}')
-                ->rules('required')
-                ->sortable()
-                ->showOnPreview()
-            ,
-            Slug::make(__('Uri'), 'uri')
-                ->from('name')
-                ->creationRules('unique:routes,uri')
-                ->updateRules('unique:routes,uri,{{resourceId}}')
-                ->rules('required')
-                ->sortable()
-                ->showOnPreview()
-            ,
-            BelongsTo::make(__('Content Block'), 'contentBlock', ContentBlock::class)
-            ,
-            Boolean::make(__('Published'), 'published')
-                ->sortable()
-                ->showOnPreview()
-            ,
-
-            //HasMany::make(__('Menu Items'), 'menuItems', MenuItem::class),
-        ];
-    }
 
     public static function label(): string
     {
@@ -66,5 +29,34 @@ class Route extends Resource
     public static function singularLabel(): string
     {
         return __('Route');
+    }
+
+    public function fields(Request $request): array
+    {
+        return [
+            ID::make()
+                ->showOnPreview(),
+
+            Text::make(__('Name'), 'name')
+                ->creationRules('required', 'unique:name,uri')
+                ->updateRules('required', 'unique:routes,name,{{resourceId}}')
+                ->sortable()
+                ->showOnPreview(),
+
+            Slug::make(__('Uri'), 'uri')
+                ->from('name')
+                ->creationRules('required', 'unique:routes,uri')
+                ->updateRules('required', 'unique:routes,uri,{{resourceId}}')
+                ->sortable()
+                ->showOnPreview(),
+
+            BelongsTo::make(__('Content View'), 'contentView', ContentView::class)
+                ->showCreateRelationButton()
+                ->withoutTrashed(),
+
+            Boolean::make(__('Published'), 'published')
+                ->sortable()
+                ->showOnPreview(),
+        ];
     }
 }

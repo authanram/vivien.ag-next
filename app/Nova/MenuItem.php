@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Models\MenuItem as Model;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
@@ -10,18 +11,12 @@ use Laravel\Nova\Fields\Text;
 
 class MenuItem extends Resource
 {
-    public static string $model = \App\Models\MenuItem::class;
+    public static string $model = Model::class;
 
     public static $title = 'label';
 
     public static $search = [
         'label',
-    ];
-
-    public static array $searchRelations = [
-        'menu' => ['slug'],
-        'route' => ['route'],
-        'color' => ['color'],
     ];
 
     protected static array $orderBy = [
@@ -35,40 +30,49 @@ class MenuItem extends Resource
         'route',
     ];
 
+    public static function label(): string
+    {
+        return __('Menu Items');
+    }
+
+    public static function singularLabel(): string
+    {
+        return __('Menu Item');
+    }
+
     public function fields(Request $request): array
     {
         return [
-            ID::make(__('ID'), 'id')
-                ->showOnPreview()
-            ,
+            ID::make()->sortable()->showOnPreview(),
+
             Text::make(__('Label'), 'label')
                 ->rules('required')
                 ->sortable()
-                ->showOnPreview()
-            ,
+                ->showOnPreview(),
+
             BelongsTo::make(__('Menus'), 'menu', Menu::class)
                 ->rules('required')
                 ->withoutTrashed()
                 ->showCreateRelationButton()
-                ->sortable()
-            ,
+                ->sortable(),
+
             BelongsTo::make(__('Route'), 'route', Route::class)
                 ->rules('required')
                 ->withoutTrashed()
                 ->showCreateRelationButton()
-                ->sortable()
-            ,
+                ->sortable(),
+
             BelongsTo::make(__('Color'), 'color', Color::class)
                 ->rules('required')
                 ->withoutTrashed()
                 ->showCreateRelationButton()
-                ->sortable()
-            ,
+                ->sortable(),
+
             Boolean::make(__('Published'), 'published')
                 ->rules('required')
                 ->sortable()
-                ->showOnPreview()
-            ,
+                ->showOnPreview(),
+
         ];
     }
 
@@ -82,15 +86,5 @@ class MenuItem extends Resource
             'lg' => '>= 1024px (lg)',
             'xl' => '>= 1280px (xl)',
         ];
-    }
-
-    public static function label(): string
-    {
-        return __('Menu Items');
-    }
-
-    public static function singularLabel(): string
-    {
-        return __('Menu Item');
     }
 }

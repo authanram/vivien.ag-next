@@ -10,18 +10,9 @@ class CreateContentTables extends Migration
         Schema::create('content_blocks', static function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('title')->nullable();
+            $table->string('slug');
             $table->text('body')->nullable();
-            $table->timestamps();
-            $table->softDeletes();
-        });
-
-        Schema::create('content_components', static function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('model');
-            $table->string('columns');
-            $table->text('view')->nullable();
+            $table->string('type')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,7 +20,6 @@ class CreateContentTables extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('content_components');
         Schema::dropIfExists('content_blocks');
     }
 }

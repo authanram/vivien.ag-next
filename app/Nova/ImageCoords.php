@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Models\ImageCoords as Model;
 use Laravel\Nova\Fields\Line;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\BelongsTo;
@@ -10,37 +11,13 @@ use Laravel\Nova\Fields\ID;
 
 class ImageCoords extends Resource
 {
-    public static string $model = \App\Models\ImageCoords::class;
+    public static string $model = Model::class;
 
     public static $search = [
         'coords',
     ];
 
-    public static array $searchRelations = [
-        'image' => ['name'],
-    ];
-
     public static $with = ['image'];
-
-    public function fields(Request $request): array
-    {
-        return [
-            ID::make(__('ID'), 'id')
-                ->showOnPreview()
-            ,
-            BelongsTo::make(__('Image'), 'image', Image::class)
-            ,
-            Code::make(__('Coords'), 'coords')
-                ->showOnIndex()
-                ->json()
-                ->height('auto')
-                ->showOnPreview()
-            ,
-            Line::make(__('Created At'), function () {
-                return (string)$this->resource->created_at;
-            })->showOnPreview(),
-        ];
-    }
 
     public static function label(): string
     {
@@ -50,5 +27,25 @@ class ImageCoords extends Resource
     public static function singularLabel(): string
     {
         return __('Image Coord');
+    }
+
+    public function fields(Request $request): array
+    {
+        return [
+            ID::make()->sortable()->showOnPreview(),
+
+            BelongsTo::make(__('Image'), 'image', Image::class)
+                ->withoutTrashed(),
+
+            Code::make(__('Coords'), 'coords')
+                ->showOnIndex()
+                ->json()
+                ->height('auto')
+                ->showOnPreview(),
+
+            Line::make(__('Created At'), function () {
+                return (string)$this->resource->created_at;
+            })->showOnPreview(),
+        ];
     }
 }

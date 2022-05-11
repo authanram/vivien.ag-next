@@ -14,7 +14,7 @@ return [
         MenuSection::dashboard(Dashboards\Main::class)
             ->icon('chart-bar'),
 
-        MenuSection::make(__('Events'), [
+        MenuSection::make(__('Seminars'), [
             MenuItem::resource(Resources\Event::class),
             MenuItem::resource(Resources\EventTemplate::class),
             MenuItem::resource(Resources\EventRegistration::class),
@@ -22,10 +22,10 @@ return [
 
         MenuSection::make(__('Resources'), [
             MenuItem::resource(Resources\StaticAttribute::class),
+            MenuItem::resource(Resources\StaffProfile::class),
             MenuItem::resource(Resources\Catering::class),
             MenuItem::resource(Resources\Image::class),
             MenuItem::resource(Resources\Post::class),
-            MenuItem::resource(Resources\StaffProfile::class),
             MenuItem::resource(Resources\Tag::class),
             MenuItem::resource(Resources\Location::class),
         ])->collapsable()->icon('document-text'),

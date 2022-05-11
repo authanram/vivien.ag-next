@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Models\Tag as Model;
 use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\BelongsTo;
@@ -13,7 +14,7 @@ use Laravel\Nova\Fields\Number;
 
 class Tag extends Resource
 {
-    public static string $model = \App\Models\Tag::class;
+    public static string $model = Model::class;
 
     public static $title = 'name';
 
@@ -31,26 +32,35 @@ class Tag extends Resource
         'color',
     ];
 
+    public static function label(): string
+    {
+        return __('Tags');
+    }
+
+    public static function singularLabel(): string
+    {
+        return __('Tag');
+    }
+
     public function fields(Request $request): array
     {
         $table = $this->model()?->getTable();
 
         return [
-            ID::make(__('ID'), 'id')
-                ->showOnPreview()
-            ,
+            ID::make()->sortable()->showOnPreview(),
+
             Text::make(__('Name'), 'name')
                 ->sortable()
-                ->showOnPreview()
-            ,
+                ->showOnPreview(),
+
             Slug::make(__('Slug'), 'slug')
                 ->from('name')
-                ->creationRules("unique:$table,slug")
-                ->updateRules("unique:$table,slug,{{resourceId}}")
+                ->creationRules('required', "unique:$table,slug")
+                ->updateRules('required', "unique:$table,slug,{{resourceId}}")
                 ->sortable()
                 ->exceptOnForms()
-                ->showOnPreview()
-            ,
+                ->showOnPreview(),
+
             Select::make(__('Type'), 'type')
                 ->options([
                     'attachment' => 'attachment',
@@ -60,22 +70,25 @@ class Tag extends Resource
                 ])
                 ->rules('required')
                 ->sortable()
-                ->showOnPreview()
-            ,
+                ->showOnPreview(),
+
             BelongsTo::make(__('Color'), 'color', Color::class)
                 ->nullable()
                 ->withoutTrashed()
-                ->showCreateRelationButton()
-            ,
+                ->showCreateRelationButton(),
+
             Number::make(__('Order'), 'order_column')
                 ->min(1)
                 ->showOnCreating(false)
                 ->sortable()
-                ->showOnPreview()
-            ,
+                ->showOnPreview(),
+
             MorphedByMany::make(__('Attachments'), 'attachments', Attachment::class),
+
             MorphedByMany::make(__('Events'), 'events', Event::class),
+
             MorphedByMany::make(__('Images'), 'images', Image::class),
+
             MorphedByMany::make(__('Posts'), 'posts', Post::class),
         ];
     }
