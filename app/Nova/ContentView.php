@@ -6,10 +6,12 @@ use App\Models\ContentView as Model;
 use Exception;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Code;
+use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Str;
 use Whitecube\NovaFlexibleContent\Flexible;
 
 class ContentView extends Resource
@@ -40,6 +42,14 @@ class ContentView extends Resource
      */
     public function fields(NovaRequest $request): array
     {
+        $detailFields = collect($this->resource->sections)->map(function (array $section) use ($request) {
+            return self::fieldsCustom($request, $section['layout'])
+                ->resolveUsing(fn () => $section['attributes']['value'])
+                ->withMeta(['name' => __(Str::of($section['attributes']['name'])->title()->toString())])
+                ->onlyOnDetail()
+                ->showOnPreview();
+        })->toArray();
+
         return [
             ID::make()->sortable()->showOnPreview(),
 
@@ -51,35 +61,57 @@ class ContentView extends Resource
             Flexible::make(__('Section'), 'sections')
                 ->button(__('Add Section'))
                 ->confirmRemove()
-                ->addLayout(__('Layout'), 'layout', self::fieldsLayout())
-                ->addLayout(__('Markdown'), 'markdown', self::fieldsMarkdown()),
+                ->addLayout(__('Layout'), 'layout', self::fieldsLayout($request))
+                ->addLayout(__('Markdown'), 'markdown', self::fieldsMarkdown($request))
+                ->hideFromDetail(),
+
+            ...self::fieldsDetail($request, $this->resource),
 
             BelongsToMany::make(__('Content Blocks'), 'contentBlocks', ContentBlock::class),
         ];
     }
 
-    private static function fieldsLayout(): array
+    private static function fieldsDetail(NovaRequest $request, Model $resource): array
+    {
+        return collect($resource->sections)
+            ->map(fn (array $section) => self::fieldsCustom($request, $section['layout'])
+                ->resolveUsing(fn () => $section['attributes']['value'])
+                ->withMeta(['name' => __(Str::of($section['attributes']['name'])->title()->toString())])
+                ->onlyOnDetail()
+                ->showOnPreview()
+            )->toArray();
+    }
+
+    private static function fieldsLayout(NovaRequest $request): array
     {
         return [
-            Text::make(__('Name'), 'name')
-                ->rules('required'),
-
-            Code::make(__('Value'), 'value', fn ($value) => $value ?? '%blocks%')
-                ->language('htmlmixed')
-                ->autoHeight()
-                ->rules('required'),
+            self::fieldsCustom($request, 'name'),
+            self::fieldsCustom($request, 'layout'),
         ];
     }
 
-    private static function fieldsMarkdown(): array
+    private static function fieldsMarkdown(NovaRequest $request): array
     {
         return [
-            Text::make(__('Name'), 'name')
+            self::fieldsCustom($request, 'name'),
+            self::fieldsCustom($request, 'markdown'),
+        ];
+    }
+
+    private static function fieldsCustom(NovaRequest $request, string $name): Field
+    {
+        return [
+            'name' => Text::make(__('Name'), 'name')
                 ->rules('required'),
 
-            Markdown::make('Value', 'value')
+            'layout' => Code::make(__('Value'), 'value', fn ($value) => $value ?? '%blocks%')
+                ->language('htmlmixed')
+                ->autoHeight()
+                ->rules('required'),
+
+            'markdown' => Markdown::make('Value', 'value')
                 ->rules('required')
                 ->alwaysShow(),
-        ];
+        ][$name];
     }
 }

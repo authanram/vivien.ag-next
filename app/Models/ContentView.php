@@ -17,6 +17,10 @@ class ContentView extends Model
         'sections',
     ];
 
+    protected $casts = [
+        'sections' => 'array',
+    ];
+
     public function contentBlocks(): BelongsToMany
     {
         return $this->belongsToMany(
