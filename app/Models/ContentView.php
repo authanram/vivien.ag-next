@@ -21,22 +21,17 @@ class ContentView extends Model
         'sections' => 'array',
     ];
 
-    protected static function booted()
+    protected static function booted(): void
     {
-        static::saving(function ($model) {
-            $attributes = [];
-
+        static::saving(static function ($model) {
             foreach ($model->contentLayoutSections as $contentLayoutSection) {
-                $attribute = $contentLayoutSection->pivot;
-
-                $attribute->value = $model->{$contentLayoutSection->name};
-
-                $attributes[] = $attribute->toArray();
+                $model->contentLayoutSections()->updateExistingPivot(
+                    $contentLayoutSection->id,
+                    ['value' => $model->{$contentLayoutSection->name}],
+                );
 
                 unset($model->{$contentLayoutSection->name});
             }
-
-            $model->contentLayoutSections()->syncWithoutDetaching($attributes);
         });
     }
 

@@ -3,7 +3,6 @@
 namespace App\Nova;
 
 use App\ClassFinder;
-use App\Exceptions\PresenterException;
 use App\Http\Controllers\ContentViewController;
 use App\Http\Controllers\Controller;
 use App\Models\ContentView;
@@ -13,15 +12,15 @@ use Exception;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
 use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\Hidden;
+use Laravel\Nova\Fields\FormData;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Line;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Nova;
-use Whitecube\NovaFlexibleContent\Flexible;
 
 class Route extends Resource
 {
@@ -79,7 +78,9 @@ class Route extends Resource
     public function fieldsForCreate(Request $request): array
     {
         $fields = $this->fields($request);
+
         $contentViews = self::contentViews();
+
         $controllers = self::controllers();
 
         return [
@@ -87,24 +88,20 @@ class Route extends Resource
 
             $fields['uri'],
 
-            Flexible::make(__('Action'), 'action')
-                ->button('Add Action')
-                ->confirmRemove()
-                ->limit()
-                ->addLayout(__('Controller').' ('.count($controllers).')', 'controller', [
-                    Select::make(__('Value'), 'value')
-                        ->options($controllers)
-                        ->displayUsingLabels(),
+            Select::make(__('Type'), 'type', fn ($value) => $value ?? 'content_view')
+                ->options([
+                    'content_view' => __('Content View'),
+                    'controller' => __('Controller')
+                ])->displayUsingLabels(),
 
-                    Hidden::make(__('Subject'), 'subject', fn () => 'index'),
-                ])
-                ->addLayout(__('Content View').' ('.count($contentViews).')', ContentViewController::class, [
-                    Hidden::make(__('Value'), 'value', fn () => ContentViewController::class),
-
-                    Select::make(__('Value'), 'subject')
-                        ->options($contentViews)
-                        ->displayUsingLabels(),
-                ]),
+            Select::make(__('Value'), 'value')
+                ->options($contentViews)
+                ->dependsOn(
+                    ['type'],
+                    function ($field, NovaRequest $request, FormData $formData) use ($contentViews, $controllers) {
+                        $field->options($formData->type === 'content_view' ? $contentViews : $controllers);
+                    }
+                ),
 
             $fields['published'],
         ];
@@ -169,9 +166,6 @@ class Route extends Resource
             ->toArray();
     }
 
-    /**
-     * @throws PresenterException
-     */
     private static function resolveRouteAction(Model $model): ?RouteActionResolver
     {
         try {

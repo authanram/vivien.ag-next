@@ -33,8 +33,7 @@
         "spatie/nova-tags-field": "^4.0",
         "tightenco/nova-google-analytics": "^2.0",
         "titasgailius/search-relations": "^2.0",
-        "tonysm/tailwindcss-laravel": "^0.4.0",
-        "whitecube/nova-flexible-content": "dev-feature"
+        "tonysm/tailwindcss-laravel": "^0.4.0"
     },
     "require-dev": {
         "authanram/laravel-query-monitor": "^1.0",

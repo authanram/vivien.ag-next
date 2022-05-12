@@ -12,6 +12,7 @@ class CreateRoutesTable extends Migration
             $table->string('uri');
             $table->string('name');
             $table->json('middlewares')->nullable();
+            $table->string('type')->nullable();
             $table->json('action')->nullable();
             $table->boolean('published');
             $table->timestamps();
