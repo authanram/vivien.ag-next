@@ -13,8 +13,11 @@ return [
     'routes',
 
     'content_blocks',
-    'content_views',
+    'content_layout_sections',
+    'content_layouts',
     'content_view_blocks',
+    'content_view_layout_sections',
+    'content_views',
 
     'menus',
     'menu_items',
