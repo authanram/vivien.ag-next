@@ -2,8 +2,9 @@
 
 namespace App\Nova;
 
-use App\Models\ContentLayout as Model;
+use App\Models\ContentLayoutSection as Model;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -41,6 +42,8 @@ class ContentLayoutSection extends Resource
                 ->rules('required')
                 ->sortable()
                 ->showOnPreview(),
+
+            BelongsToMany::make(__('Content Views'), 'contentViews', ContentView::class),
         ];
     }
 }

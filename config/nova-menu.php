@@ -2,6 +2,7 @@
 
 use App\Nova as Resources;
 use App\Nova\Dashboards;
+use App\Nova\User;
 use Illuminate\Http\Request;
 use Laravel\Nova\Menu\Menu;
 use Laravel\Nova\Menu\MenuItem;
@@ -66,16 +67,14 @@ return [
             MenuItem::resource(Resources\Color::class),
             MenuItem::link(__('Logs'), '/logs'),
         ])->collapsable()->icon('collection'),
-
-        //MenuItem::link(__('Fieldsets'), '/nova-fieldsets'),
     ],
 
     'user' => static function (Request $request, Menu $menu) {
         return $menu->prepend(
             MenuItem::make(
                 __('Account'),
-                sprintf('/resources/users/%s', $request->user()->getKey()),
-            )
+                sprintf('/resources/%s/%s', User::uriKey(), $request->user()->getKey()),
+            ),
         );
     },
 

@@ -52,6 +52,8 @@ class ContentView extends Resource
                 ->sortable()
                 ->showOnPreview(),
 
+            BelongsToMany::make(__('Content Layout Sections'), 'contentLayoutSections', ContentLayoutSection::class),
+
             BelongsToMany::make(__('Content Blocks'), 'contentBlocks', ContentBlock::class)
                 ->fields(fn ($request, $model) => [
                     Select::make(__('Section'), 'section')
@@ -61,7 +63,6 @@ class ContentView extends Resource
                 ]),
         ];
     }
-
 
     private static function configuration(): ViewContent
     {
