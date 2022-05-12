@@ -45,7 +45,7 @@ class CreateContentTables extends Migration
             $table->id();
             $table->foreignId('content_view_id')->constrained('content_views')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('content_layout_section_id')->constrained('content_layout_sections')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->json('field')->nullable();
+            $table->string('field')->nullable();
             $table->text('value')->nullable();
             $table->timestamps();
             $table->softDeletes();

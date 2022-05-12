@@ -52,7 +52,12 @@ class ContentView extends Resource
                 ->sortable()
                 ->showOnPreview(),
 
-            BelongsToMany::make(__('Content Layout Sections'), 'contentLayoutSections', ContentLayoutSection::class),
+            //...ContentLayoutSectionFieldsCreator::make($this->resource),
+
+            BelongsToMany::make(__('Content Layout Sections'), 'contentLayoutSections', ContentLayoutSection::class)
+                ->fields(fn ($request, $model) => [
+                    ContentLayoutSectionFieldsCreator::makeFieldSelection('', '', ''),
+                ]),
 
             BelongsToMany::make(__('Content Blocks'), 'contentBlocks', ContentBlock::class)
                 ->fields(fn ($request, $model) => [
@@ -66,17 +71,6 @@ class ContentView extends Resource
 
     private static function configuration(): ViewContent
     {
-        $x = [
-            Code::make(__('Value'), 'value', fn ($value) => $value ?? '%blocks%')
-                ->language('htmlmixed')
-                ->autoHeight()
-                ->rules('required'),
-
-            Markdown::make('Value', 'value')
-                ->rules('required')
-                ->alwaysShow(),
-        ];
-
         return Site::configuration()->viewContent();
     }
 }
