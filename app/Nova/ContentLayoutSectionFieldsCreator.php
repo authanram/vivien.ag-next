@@ -16,43 +16,43 @@ class ContentLayoutSectionFieldsCreator
     public static function make(ContentView $contentView): array
     {
         return $contentView->load('contentLayoutSections')->contentLayoutSections
-            ->map(static fn (ContentLayoutSection $section) => self::makeSection($section))
-            ->toArray();
+            ->map(static fn ($section) => Panel::make(
+                Str::of($section->name)->title(),
+                [self::makeField($section)]
+            ))->toArray();
     }
 
-    //$section->pivot->field
-    public static function makeFieldSelection(string $name, string $attribute, ?string $value): Select
+    public static function makeFieldSelection(string $value): Select
     {
-        $options = collect(self::availableFields($name, $attribute))
-            ->mapWithKeys(fn (Field $field, string $key) => [
-                $key => Str::of($key)->title()->toString(),
-            ])->toArray();
+        $options = collect(self::fields())
+            ->keys()
+            ->mapWithKeys(fn (string $key) => [$key => Str::of($key)->title()->toString()])
+            ->toArray();
 
-        return Select::make(__('Field'), 'field', fn () => $value)
+        return Select::make(__('Field'), 'field')
             ->options($options)
             ->displayUsingLabels()
             ->rules('required');
     }
 
-    private static function makeSection(ContentLayoutSection $section): array
+    private static function makeField(ContentLayoutSection $section): Field
     {
-        $attribute = $section->name;
-
-        return [
-            Panel::make(Str::of($attribute)->title()->toString(), [
-            ]),
-        ];
+        return self::fields()[$section->pivot->field](
+            Str::of($section->name)->title()->toString(),
+            $section->name,
+            $section->pivot->value,
+        );
     }
 
-    private static function availableFields(string $name, string $attribute): array
+    private static function fields(): array
     {
         return [
-            'html' => Code::make(__($name), $attribute, fn ($value) => $value ?? '%blocks%')
+            'html' => fn ($name, $attribute, $value) => Code::make(__($name), $attribute, fn () => $value ?? '%blocks%')
                 ->language('htmlmixed')
                 ->autoHeight()
                 ->rules('required'),
 
-            'markdown' => Markdown::make(__($name), $attribute)
+            'markdown' => fn ($name, $attribute, $value) => Markdown::make(__($name), $attribute, fn () => $value ?? '')
                 ->rules('required')
                 ->alwaysShow()
         ];

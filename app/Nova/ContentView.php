@@ -52,9 +52,9 @@ class ContentView extends Resource
                 ->sortable()
                 ->showOnPreview(),
 
-            //...ContentLayoutSectionFieldsCreator::make($this->resource),
+            ...ContentLayoutSectionFieldsCreator::make($this->resource),
 
-            BelongsToMany::make(__('Content Layout Sections'), 'contentLayoutSections', ContentLayoutSection::class)
+            BelongsToMany::make(__('Content Layout Section'), 'contentLayoutSections', ContentLayoutSection::class)
                 ->fields(fn ($request, $model) => [
                     ContentLayoutSectionFieldsCreator::makeFieldSelection('', '', ''),
                 ]),

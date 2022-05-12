@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-//use Authanram\NovaFieldsets\NovaFieldsets;
 use App\Nova\Dashboards\Main;
 use App\Policies\PermissionPolicy;
 use App\Policies\RolePolicy;
@@ -61,7 +60,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function tools(): array
     {
         return array_merge(parent::tools(), [
-            //NovaFieldsets::make(),
             NovaPermissionTool::make()
                 ->rolePolicy(RolePolicy::class)
                 ->permissionPolicy(PermissionPolicy::class),

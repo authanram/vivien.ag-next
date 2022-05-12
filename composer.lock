@@ -2161,17 +2161,17 @@
         },
         {
             "name": "laravel/nova",
-            "version": "4.5.2",
+            "version": "4.5.4",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel/nova.git",
-                "reference": "5f94c78eb2aeda15ca34464cedb9d9771eab3409"
+                "reference": "23a2001aeb28cdce4dbb84f638477fd87c1067e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-5f94c78eb2aeda15ca34464cedb9d9771eab3409-zip-05f2f6.zip",
-                "reference": "5f94c78eb2aeda15ca34464cedb9d9771eab3409",
-                "shasum": "36e670077479fe7b638c7b00927c8a9acf6f4a6d"
+                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-23a2001aeb28cdce4dbb84f638477fd87c1067e4-zip-512dac.zip",
+                "reference": "23a2001aeb28cdce4dbb84f638477fd87c1067e4",
+                "shasum": "9f10a19383ab876a0b66f72923a737c356b37bb0"
             },
             "require": {
                 "brick/money": "^0.5.0",
@@ -2264,9 +2264,9 @@
                 "laravel"
             ],
             "support": {
-                "source": "https://github.com/laravel/nova/tree/v4.5.2"
+                "source": "https://github.com/laravel/nova/tree/v4.5.4"
             },
-            "time": "2022-05-11T20:32:18+00:00"
+            "time": "2022-05-12T18:43:40+00:00"
         },
         {
             "name": "laravel/nova-log-viewer",

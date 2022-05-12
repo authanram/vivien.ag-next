@@ -36,7 +36,8 @@ class ContentLayoutSection extends Resource
         return [
             ID::make()->sortable()->showOnPreview(),
 
-            BelongsTo::make(__('Content Layout'), 'contentLayout', ContentLayout::class),
+            BelongsTo::make(__('Content Layout'), 'contentLayout', ContentLayout::class)
+                ->hideFromIndex(),
 
             Text::make(__('Name'), 'name')
                 ->rules('required')

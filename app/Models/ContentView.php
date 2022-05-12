@@ -21,6 +21,25 @@ class ContentView extends Model
         'sections' => 'array',
     ];
 
+    protected static function booted()
+    {
+        static::saving(function ($model) {
+            $attributes = [];
+
+            foreach ($model->contentLayoutSections as $contentLayoutSection) {
+                $attribute = $contentLayoutSection->pivot;
+
+                $attribute->value = $model->{$contentLayoutSection->name};
+
+                $attributes[] = $attribute->toArray();
+
+                unset($model->{$contentLayoutSection->name});
+            }
+
+            $model->contentLayoutSections()->syncWithoutDetaching($attributes);
+        });
+    }
+
     public function contentBlocks(): BelongsToMany
     {
         return $this->belongsToMany(

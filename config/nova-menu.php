@@ -67,6 +67,7 @@ return [
             MenuItem::resource(Resources\Color::class),
             MenuItem::link(__('Logs'), '/logs'),
         ])->collapsable()->icon('collection'),
+
     ],
 
     'user' => static function (Request $request, Menu $menu) {
