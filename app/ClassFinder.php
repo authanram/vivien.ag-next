@@ -2,29 +2,26 @@
 
 namespace App;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 use SplFileInfo;
 
 class ClassFinder
 {
-    public static function resolve(string $path, string $namespace = ''): Collection
+    public static function resolve(string $path, string $namespace = '', callable $authorize = null): Collection
     {
-        return self::controllers($path, $namespace);
+        return self::controllers($path, $namespace, $authorize);
     }
 
-    private static function controllers(string $path, string $namespace): Collection
+    private static function controllers(string $path, string $namespace, callable $authorize = null): Collection
     {
-        return static::map($path, static function (SplFileInfo $fileInfo) use ($namespace) {
+        return static::map($path, static function (SplFileInfo $fileInfo) use ($authorize, $namespace) {
             $subject = static::classname(
                 $fileInfo->getFilename(),
                 $namespace,
             );
 
-            return is_subclass_of($subject, Controller::class)
-                ? $subject
-                : null;
+            return ($authorize ?? static fn () => $subject)($subject) ? $subject : null;
         });
     }
 

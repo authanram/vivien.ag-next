@@ -15,11 +15,13 @@ class Route extends Model
         'uri',
         'name',
         'middlewares',
+        'action',
         'published',
     ];
 
     protected $casts = [
         'middlewares' => 'array',
+        'action' => 'array',
         'published' => 'boolean',
     ];
 

@@ -18,7 +18,12 @@ div.content > div.content {
 /* Flexible Content */
 
 div#nova .w-full.shrink .text-80.grow.px-4 {
-    color: transparent;
+    padding-left: 0.77rem !important;
+    padding-right: 0.77rem !important;
+}
+
+div#nova .w-full.shrink .text-80.grow.px-4 > span {
+    display: none;
 }
 
 div#nova [dusk="collapse-group"],
