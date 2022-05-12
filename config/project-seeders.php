@@ -12,12 +12,12 @@ return [
 
     'routes',
 
-    'content_blocks',
-    'content_layout_sections',
     'content_layouts',
-    'content_view_blocks',
-    'content_view_layout_sections',
+    'content_layout_sections',
+    'content_blocks',
     'content_views',
+    'content_view_layout_sections',
+    'content_view_blocks',
 
     'menus',
     'menu_items',
