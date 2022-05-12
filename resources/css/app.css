@@ -87,8 +87,16 @@ select {
     @apply md:text-xl;
 }
 
+.x-parsedown hr {
+    @apply my-5;
+}
+
 .x-parsedown ul {
-    @apply mt-3 px-5;
+    @apply my-2.5 px-5;
+}
+
+.x-parsedown ul:last-child {
+    @apply mb-0;
 }
 
 .x-parsedown:not(:last-child) {

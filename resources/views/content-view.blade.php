@@ -2,12 +2,16 @@
 
 @push('title')
     @cache("$cacheKey:title")
-        {!! $title !!}
+        <div class="view x-parsedown">
+            {!! $title !!}
+        </div>
     @endcache
 @endpush
 
 @push('content')
     @cache("$cacheKey:content")
-        {!! $content !!}
+        <div class="view x-parsedown">
+            {!! $content !!}
+        </div>
     @endcache
 @endpush
