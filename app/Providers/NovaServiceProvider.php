@@ -21,8 +21,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             Nova::translations(base_path('lang/de.json'));
         });
 
-        Nova::style('backend', public_path('css/backend.css'));
-        Nova::script('backend', public_path('js/backend.js'));
+        Nova::style('backend', public_path('vendor/nova-custom/backend.css'));
+        Nova::script('backend', public_path('vendor/nova-custom/backend.js'));
 
         if (config('nova-menu.main')) {
             Nova::mainMenu(config('nova-menu.main'));

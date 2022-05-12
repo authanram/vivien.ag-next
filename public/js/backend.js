@@ -1,1 +1,0 @@
-../../resources/js/backend.js
