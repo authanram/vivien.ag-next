@@ -10,6 +10,7 @@ use App\Models\Route as Model;
 use Exception;
 use Illuminate\Support\Str;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Hidden;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Line;
 use Laravel\Nova\Fields\Select;
@@ -24,8 +25,6 @@ class Route extends Resource
     public static string $model = Model::class;
 
     public static $title = 'name';
-
-    public static $with = ['contentView'];
 
     public static $search = [
         'name',
@@ -93,9 +92,13 @@ class Route extends Resource
                     Select::make(__('Value'), 'value')
                         ->options($controllers)
                         ->displayUsingLabels(),
+
+                    Hidden::make(__('Subject'), 'subject', fn () => 'index'),
                 ])
-                ->addLayout(__('Content View').' ('.count($contentViews).')', ContentViewController::class, [
-                    Select::make(__('Value'), 'value')
+                ->addLayout(__('Content View').' ('.count($contentViews).')', 'controller', [
+                    Hidden::make(__('Value'), 'value', fn () => ContentViewController::class),
+
+                    Select::make(__('Value'), 'subject')
                         ->options($contentViews)
                         ->displayUsingLabels(),
                 ]),

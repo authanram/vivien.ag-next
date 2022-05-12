@@ -12,8 +12,10 @@ final class ContentViewController extends Controller
     /** @throws PresenterException */
     public function index(Request $request, Route $route): View|string
     {
+        //dd($route->present()->render());
+
         return view('render', [
-            'content' => $route->load('contentView')->contentView->present()->render(),
+            'content' => '',
         ]);
     }
 }
