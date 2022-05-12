@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use App\Models\ContentView as Model;
 use Exception;
+use Illuminate\Support\Str;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\Field;
@@ -12,7 +13,6 @@ use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Str;
 use Whitecube\NovaFlexibleContent\Flexible;
 
 class ContentView extends Resource
@@ -69,17 +69,6 @@ class ContentView extends Resource
         ];
     }
 
-    private static function fieldsDetail(NovaRequest $request, Model $resource): array
-    {
-        return collect($resource->sections)
-            ->map(fn (array $section) => self::fieldsCustom($request, $section['layout'])
-                ->resolveUsing(fn () => $section['attributes']['value'])
-                ->withMeta(['name' => self::sectionName($section)])
-                ->onlyOnDetail()
-                ->showOnPreview()
-            )->toArray();
-    }
-
     private static function fieldsLayout(NovaRequest $request): array
     {
         return [
@@ -113,9 +102,15 @@ class ContentView extends Resource
         ][$name];
     }
 
-    private static function sectionName(array $section): string
+    private static function fieldsDetail(NovaRequest $request, Model $resource): array
     {
-        return __(Str::of($section['attributes']['name'])->title()->toString());
+        return collect($resource->sections)
+            ->map(fn (array $section) => self::fieldsCustom($request, $section['layout'])
+                ->resolveUsing(fn () => $section['attributes']['value'])
+                ->withMeta(['name' => self::sectionName($section)])
+                ->onlyOnDetail()
+                ->showOnPreview()
+            )->toArray();
     }
 
     private static function sections(Model $resource): array
@@ -123,5 +118,10 @@ class ContentView extends Resource
         return collect($resource->sections)->mapWithKeys(function (array $section) {
             return [$section['attributes']['name'] => self::sectionName($section)];
         })->toArray();
+    }
+
+    private static function sectionName(array $section): string
+    {
+        return __(Str::of($section['attributes']['name'])->title()->toString());
     }
 }
