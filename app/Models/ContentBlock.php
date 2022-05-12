@@ -12,8 +12,6 @@ class ContentBlock extends Model
 
     public static string $presenter = Presenter::class;
 
-    protected $table = 'content_blocks';
-
     protected $fillable = [
         'name',
         'slug',
