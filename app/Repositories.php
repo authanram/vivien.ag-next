@@ -4,8 +4,8 @@ namespace App;
 
 use App\Repositories\Colors;
 use App\Repositories\ContentBlocks;
-use App\Repositories\EventTemplates;
 use App\Repositories\Events;
+use App\Repositories\EventTemplates;
 use App\Repositories\ImageCoords;
 use App\Repositories\MenuItems;
 use App\Repositories\Menus;

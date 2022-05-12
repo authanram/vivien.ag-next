@@ -2,11 +2,14 @@
 
 namespace App\Nova;
 
+use App\Configuration\ViewContent;
+use App\Facades\Site;
 use App\Models\ContentView as Model;
 use Exception;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\Field;
+use Laravel\Nova\Fields\FormData;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Select;
@@ -52,7 +55,14 @@ class ContentView extends Resource
                 ->sortable()
                 ->showOnPreview(),
 
-            Flexible::make(__('Section'), 'sections')
+//            Select::make(__('Layout'), 'layout')
+//                ->options(self::configuration()->layouts()->keys()->toArray())
+//                ->displayUsingLabels()
+//                ->sortable()
+//                ->rules('required')
+//                ->showOnPreview(),
+
+            Flexible::make(__('Sections'), 'sections')
                 ->button(__('Add Section'))
                 ->confirmRemove()
                 ->addLayout(__('Layout'), 'layout', self::fieldsLayout($request))
@@ -90,6 +100,11 @@ class ContentView extends Resource
     private static function fieldsCustom(NovaRequest $request, string $name): Field
     {
         return [
+//            'name' => Select::make(__('Name'), 'name')
+//                ->options(self::configuration()->layouts('sections')->get('default'))
+//                ->displayUsingLabels()
+//                ->rules('required'),
+
             'name' => Text::make(__('Name'), 'name')
                 ->rules('required'),
 
@@ -113,5 +128,10 @@ class ContentView extends Resource
                 ->onlyOnDetail()
                 ->showOnPreview()
             )->toArray();
+    }
+
+    private static function configuration(): ViewContent
+    {
+        return Site::configuration()->viewContent();
     }
 }
