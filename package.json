@@ -9,7 +9,9 @@
         "prod": "npm run production",
         "production": "mix --production && php artisan tailwindcss:build --prod",
         "build-system-resources": "cd nova-components/SystemResources && npm run dev",
-        "build-system-resources-prod": "cd nova-components/SystemResources && npm run prod"
+        "build-system-resources-prod": "cd nova-components/SystemResources && npm run prod",
+        "build-nova-fieldsets": "cd nova-components/NovaFieldsets && npm run dev",
+        "build-nova-fieldsets-prod": "cd nova-components/NovaFieldsets && npm run prod"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.0",

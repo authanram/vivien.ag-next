@@ -7,6 +7,22 @@ class CreateContentTables extends Migration
 {
     public function up(): void
     {
+        Schema::create('content_layouts', static function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->unique();
+            $table->string('view_alias');
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
+        Schema::create('content_layout_sections', static function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('content_layout_id')->constrained('content_layouts')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->string('name');
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
         Schema::create('content_blocks', static function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -21,6 +37,16 @@ class CreateContentTables extends Migration
             $table->string('name')->unique();
             $table->string('layout')->nullable();
             $table->json('sections');
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
+        Schema::create('content_view_layout_sections', static function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('content_view_id')->constrained('content_views')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('content_layout_section_id')->constrained('content_layout_sections')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->json('field')->nullable();
+            $table->text('value')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

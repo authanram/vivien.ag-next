@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Nova\ContentLayout;
 use App\Presenters\Models\ContentViewPresenter as Presenter;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -29,5 +30,15 @@ class ContentView extends Model
             'content_view_id',
             'content_block_id',
         )->withPivot(['section']);
+    }
+
+    public function contentLayouts(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            ContentLayout::class,
+            'content_view_layout_sections',
+            'content_view_id',
+            'content_layout_section_id',
+        )->withPivot(['field', 'value']);
     }
 }

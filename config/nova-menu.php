@@ -55,6 +55,7 @@ return [
         ])->collapsable()->icon('switch-horizontal'),
 
         MenuSection::make(__('Contents'), [
+            MenuItem::resource(Resources\ContentLayout::class),
             MenuItem::resource(Resources\ContentBlock::class),
             MenuItem::resource(Resources\ContentView::class),
         ])->collapsable()->icon('template'),
@@ -65,6 +66,8 @@ return [
             MenuItem::resource(Resources\Color::class),
             MenuItem::link(__('Logs'), '/logs'),
         ])->collapsable()->icon('collection'),
+
+        //MenuItem::link(__('Fieldsets'), '/nova-fieldsets'),
     ],
 
     'user' => static function (Request $request, Menu $menu) {
