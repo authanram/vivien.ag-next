@@ -4,6 +4,7 @@ namespace App\Presenters\Models;
 
 use App\Models\MenuItem;
 use App\Presenters\Presenter;
+use Illuminate\Support\Facades\Route;
 
 /**
  * @property MenuItem $entity
@@ -17,7 +18,9 @@ class MenuItemPresenter extends Presenter
 
     public function href(): string
     {
-        return $this->route() ? route($this->route()) : '#';
+        return Route::has($this->route())
+            ? route($this->route())
+            : '#';
     }
 
     public function color(): ?string
@@ -27,6 +30,6 @@ class MenuItemPresenter extends Presenter
 
     protected function route(): ?string
     {
-        return $this->entity->route?->route;
+        return $this->entity->route?->name;
     }
 }
