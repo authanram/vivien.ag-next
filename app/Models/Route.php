@@ -4,10 +4,12 @@ namespace App\Models;
 
 use App\Presenters\Models\RoutePresenter as Presenter;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * @method Presenter present()
+ */
 class Route extends Model
 {
     use SoftDeletes;

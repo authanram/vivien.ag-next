@@ -3,12 +3,15 @@
 namespace App\Nova;
 
 use App\ClassFinder;
+use App\Exceptions\PresenterException;
 use App\Http\Controllers\ContentViewController;
 use App\Http\Controllers\Controller;
 use App\Models\ContentView;
 use App\Models\Route as Model;
+use App\RouteActionResolver;
 use Exception;
 use Illuminate\Support\Str;
+use InvalidArgumentException;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Hidden;
 use Laravel\Nova\Fields\ID;
@@ -95,7 +98,7 @@ class Route extends Resource
 
                     Hidden::make(__('Subject'), 'subject', fn () => 'index'),
                 ])
-                ->addLayout(__('Content View').' ('.count($contentViews).')', 'controller', [
+                ->addLayout(__('Content View').' ('.count($contentViews).')', ContentViewController::class, [
                     Hidden::make(__('Value'), 'value', fn () => ContentViewController::class),
 
                     Select::make(__('Value'), 'subject')
@@ -120,28 +123,28 @@ class Route extends Resource
      */
     private static function indexFieldAction(): Text
     {
-        return Line::make(__('Action'), static function ($model) {
-            $action = data_get($model->action, '0');
+        return Line::make(__('Action'), static function (Model $model) {
+            $routeActionResolver = self::resolveRouteAction($model);
 
-            if (is_null($action)) {
+            if (is_null($routeActionResolver)) {
                 return null;
             }
 
-            if ($action['layout'] === 'controller') {
-                return $action['attributes']['value'];
+            if ($routeActionResolver->isContentViewControllerAction() === false) {
+                return $routeActionResolver->controller();
             }
 
             $url = Nova::path()
                 .'/resources/'
                 .\App\Nova\ContentView::uriKey()
                 .'/'
-                .$action['attributes']['value'];
+                .$routeActionResolver->subject();
 
             return Str::of(\App\Nova\ContentView::class)
                 ->append(': ')
                 ->append('<strong>')
                 ->append('<a href="'.$url.'" class="link-default">')
-                ->append(ContentView::find($action['attributes']['value'])->name)
+                ->append(ContentView::find($routeActionResolver->subject())->name)
                 ->append('</a>')
                 ->append('</strong>')
                 ->toString();
@@ -164,5 +167,19 @@ class Route extends Resource
         return ContentView::all()
             ->pluck('name', 'id')
             ->toArray();
+    }
+
+    /**
+     * @throws PresenterException
+     */
+    private static function resolveRouteAction(Model $model): ?RouteActionResolver
+    {
+        try {
+            return $model->present()->resolveAction();
+        } catch (InvalidArgumentException $exception) {
+            return $exception->getMessage() !== 'Empty route action.'
+                ? throw $exception
+                : null;
+        }
     }
 }

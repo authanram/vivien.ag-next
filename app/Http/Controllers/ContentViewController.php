@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Exceptions\PresenterException;
 use App\Models\Route;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 final class ContentViewController extends Controller
 {
-    /** @throws PresenterException */
     public function index(Request $request, Route $route): View|string
     {
-        //dd($route->present()->render());
+        $contentView = $route->present()->resolveAction()->resolveContentViewControllerAction();
 
-        return view('render', [
-            'content' => '',
+        dd($contentView->sections);
+
+        return view('content-view', [
+            'cacheKey' => __CLASS__.'@'.$contentView->id,
+            'title' => 'foo',
+            'content' => 'bar',
         ]);
     }
 }

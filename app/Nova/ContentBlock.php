@@ -6,12 +6,15 @@ use App\Models\ContentBlock as Model;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class ContentBlock extends Resource
 {
+    use HasPivotAttributeSection;
+
     public static string $model = Model::class;
 
     public static $title = 'name';
@@ -56,7 +59,19 @@ class ContentBlock extends Resource
                 ->hideFromIndex()
                 ->showOnPreview(),
 
-            BelongsToMany::make(__('Content Views'), 'contentViews', ContentView::class),
+            BelongsToMany::make(__('Content Views'), 'contentViews', ContentView::class)
+                ->fields(function (NovaRequest $request, $model) {
+                    $relatedModel = $request->isUpdateOrUpdateAttachedRequest()
+                        ? ContentView::$model::find($request->relatedResourceId)
+                        : $model;
+
+                    return [
+                        Select::make(__('Section'), 'section')
+                            ->options(self::sections($relatedModel))
+                            ->displayUsingLabels()
+                            ->rules('required'),
+                    ];
+                }),
         ];
     }
 }

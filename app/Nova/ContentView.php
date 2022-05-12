@@ -4,7 +4,6 @@ namespace App\Nova;
 
 use App\Models\ContentView as Model;
 use Exception;
-use Illuminate\Support\Str;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\Field;
@@ -17,6 +16,8 @@ use Whitecube\NovaFlexibleContent\Flexible;
 
 class ContentView extends Resource
 {
+    use HasPivotAttributeSection;
+
     public static string $model = Model::class;
 
     public static $title = 'name';
@@ -64,7 +65,8 @@ class ContentView extends Resource
                 ->fields(fn ($request, $model) => [
                     Select::make(__('Section'), 'section')
                         ->options(self::sections($this->resource))
-                        ->displayUsingLabels(),
+                        ->displayUsingLabels()
+                        ->rules('required'),
                 ]),
         ];
     }
@@ -111,17 +113,5 @@ class ContentView extends Resource
                 ->onlyOnDetail()
                 ->showOnPreview()
             )->toArray();
-    }
-
-    private static function sections(Model $resource): array
-    {
-        return collect($resource->sections)->mapWithKeys(function (array $section) {
-            return [$section['attributes']['name'] => self::sectionName($section)];
-        })->toArray();
-    }
-
-    private static function sectionName(array $section): string
-    {
-        return __(Str::of($section['attributes']['name'])->title()->toString());
     }
 }

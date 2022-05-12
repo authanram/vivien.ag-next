@@ -26,8 +26,8 @@ class ContentView extends Model
         return $this->belongsToMany(
             ContentBlock::class,
             'content_view_blocks',
-            'content_block_id',
             'content_view_id',
-        );
+            'content_block_id',
+        )->withPivot(['section']);
     }
 }
