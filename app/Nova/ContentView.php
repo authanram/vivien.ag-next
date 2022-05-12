@@ -9,6 +9,7 @@ use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Str;
@@ -42,14 +43,6 @@ class ContentView extends Resource
      */
     public function fields(NovaRequest $request): array
     {
-        $detailFields = collect($this->resource->sections)->map(function (array $section) use ($request) {
-            return self::fieldsCustom($request, $section['layout'])
-                ->resolveUsing(fn () => $section['attributes']['value'])
-                ->withMeta(['name' => __(Str::of($section['attributes']['name'])->title()->toString())])
-                ->onlyOnDetail()
-                ->showOnPreview();
-        })->toArray();
-
         return [
             ID::make()->sortable()->showOnPreview(),
 
@@ -67,7 +60,12 @@ class ContentView extends Resource
 
             ...self::fieldsDetail($request, $this->resource),
 
-            BelongsToMany::make(__('Content Blocks'), 'contentBlocks', ContentBlock::class),
+            BelongsToMany::make(__('Content Blocks'), 'contentBlocks', ContentBlock::class)
+                ->fields(fn ($request, $model) => [
+                    Select::make(__('Section'), 'section')
+                        ->options(self::sections($this->resource))
+                        ->displayUsingLabels(),
+                ]),
         ];
     }
 
@@ -76,7 +74,7 @@ class ContentView extends Resource
         return collect($resource->sections)
             ->map(fn (array $section) => self::fieldsCustom($request, $section['layout'])
                 ->resolveUsing(fn () => $section['attributes']['value'])
-                ->withMeta(['name' => __(Str::of($section['attributes']['name'])->title()->toString())])
+                ->withMeta(['name' => self::sectionName($section)])
                 ->onlyOnDetail()
                 ->showOnPreview()
             )->toArray();
@@ -113,5 +111,17 @@ class ContentView extends Resource
                 ->rules('required')
                 ->alwaysShow(),
         ][$name];
+    }
+
+    private static function sectionName(array $section): string
+    {
+        return __(Str::of($section['attributes']['name'])->title()->toString());
+    }
+
+    private static function sections(Model $resource): array
+    {
+        return collect($resource->sections)->mapWithKeys(function (array $section) {
+            return [$section['attributes']['name'] => self::sectionName($section)];
+        })->toArray();
     }
 }
