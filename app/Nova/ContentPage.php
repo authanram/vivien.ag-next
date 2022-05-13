@@ -27,7 +27,7 @@ class ContentPage extends Resource
 
     public static function label(): string
     {
-        return __('Content Page');
+        return __('Content Pages');
     }
 
     public static function singularLabel(): string

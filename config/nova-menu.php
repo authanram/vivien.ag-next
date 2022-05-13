@@ -41,7 +41,7 @@ return [
             MenuItem::resource(Resources\ContentBlock::class),
             MenuItem::resource(Resources\ContentLayout::class),
             MenuItem::resource(Resources\Controller::class),
-            MenuItem::resource(Resources\ContentView::class),
+            MenuItem::resource(Resources\ContentPage::class),
             MenuItem::link(__('Controller'), '/resources/controllers'),
         ])->collapsable()->icon('switch-horizontal'),
 

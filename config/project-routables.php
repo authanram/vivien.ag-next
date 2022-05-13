@@ -8,7 +8,7 @@ return [
     'resources' => [
         //Resources\Author::class,
         Resources\Controller::class,
-        Resources\ContentView::class,
+        Resources\ContentPage::class,
         //Resources\Event::class,
         //Resources\Location::class,
         //Resources\Post::class,
