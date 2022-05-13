@@ -9,11 +9,8 @@ class CreateRoutesTable extends Migration
     {
         Schema::create('routes', static function (Blueprint $table) {
             $table->id();
-            $table->string('uri');
             $table->string('name');
-            $table->json('middlewares')->nullable();
-            $table->string('type')->nullable();
-            $table->json('action')->nullable();
+            $table->json('uri');
             $table->boolean('published');
             $table->timestamps();
             $table->softDeletes();

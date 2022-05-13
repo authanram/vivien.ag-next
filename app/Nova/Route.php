@@ -98,8 +98,18 @@ class Route extends Resource
                 ->options($contentViews)
                 ->dependsOn(
                     ['type'],
-                    function ($field, NovaRequest $request, FormData $formData) use ($contentViews, $controllers) {
-                        $field->options($formData->type === 'content_view' ? $contentViews : $controllers);
+                    function (Select $field, NovaRequest $request, FormData $formData) use ($contentViews, $controllers) {
+                        $attributes = $formData->get('type') === 'content_view'
+                            ? [
+                                'name' => __('Content View'),
+                                'options' => $contentViews,
+                            ] : [
+                                'name' => __('Controllers'),
+                                'options' => $controllers,
+                            ];
+
+                        $field->withMeta($attributes);
+                        $field->options($attributes['options']);
                     }
                 ),
 

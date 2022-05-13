@@ -12,21 +12,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Route extends Model
 {
+    use HasTranslation;
     use SoftDeletes;
 
     public static string $presenter = Presenter::class;
 
     protected $fillable = [
-        'uri',
         'name',
-        'middlewares',
-        'action',
+        'uri',
         'published',
     ];
 
     protected $casts = [
-        'middlewares' => 'array',
-        'action' => 'array',
+        'uri' => 'array',
         'published' => 'boolean',
     ];
 
