@@ -6,7 +6,6 @@ use App\Models\Controller as Model;
 use Exception;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphOne;
-use Laravel\Nova\Fields\MorphTo;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
 

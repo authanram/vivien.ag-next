@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Http\Controllers\EventsController;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Sushi\Sushi;
 
@@ -12,11 +11,13 @@ class Controller extends Model
 
     public bool $readonly = true;
 
-    protected array $rows = [
-        [
-            'name' => EventsController::class,
-        ]
-    ];
+    public function getRows(): array
+    {
+        return collect(config('project-routables.controllers'))
+            ->map(fn (string $controller) => [
+                'name' => $controller,
+            ])->toArray();
+    }
 
     public function route(): MorphOne
     {

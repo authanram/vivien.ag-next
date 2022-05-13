@@ -53,7 +53,7 @@ class Route extends Resource
                 ->sortable()
                 ->showOnPreview(),
 
-            MorphTo::make('Routable')->types(config('project-routables'))
+            MorphTo::make('Routable')->types(config('project-routables.resources'))
                 ->nullable(),
 
             Boolean::make(__('Published'), 'published')
