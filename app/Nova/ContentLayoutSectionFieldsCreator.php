@@ -3,7 +3,7 @@
 namespace App\Nova;
 
 use App\Models\ContentLayoutSection;
-use App\Models\ContentView;
+use App\Models\ContentPage;
 use Illuminate\Support\Str;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\Field;
@@ -13,7 +13,7 @@ use Laravel\Nova\Panel;
 
 class ContentLayoutSectionFieldsCreator
 {
-    public static function make(ContentView $contentView): array
+    public static function make(ContentPage $contentView): array
     {
         return $contentView->load('contentLayoutSections')->contentLayoutSections
             ->map(static fn ($section) => Panel::make(

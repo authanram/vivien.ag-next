@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-class ContentViewPolicy extends BasePolicy
+class ContentPagePolicy extends BasePolicy
 {
     //
 }

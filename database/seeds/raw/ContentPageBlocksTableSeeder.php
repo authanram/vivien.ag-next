@@ -3,7 +3,7 @@
 return [
     [
         'id' => 1,
-        'content_view_id' => 1,
+        'content_page_id' => 1,
         'content_block_id' => 1,
         'section' => 'content',
         'created_at' => null,

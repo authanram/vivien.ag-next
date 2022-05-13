@@ -2,9 +2,7 @@
 
 namespace App\Nova;
 
-use App\Configuration\ViewContent;
-use App\Facades\Site;
-use App\Models\ContentView as Model;
+use App\Models\ContentPage as Model;
 use Exception;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
@@ -12,7 +10,7 @@ use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class ContentView extends Resource
+class ContentPage extends Resource
 {
     use HasPivotAttributeSection;
 
@@ -29,12 +27,12 @@ class ContentView extends Resource
 
     public static function label(): string
     {
-        return __('Content Views');
+        return __('Content Page');
     }
 
     public static function singularLabel(): string
     {
-        return __('Content View');
+        return __('Content Page');
     }
 
     /**
@@ -65,10 +63,5 @@ class ContentView extends Resource
                         ->rules('required'),
                 ]),
         ];
-    }
-
-    private static function configuration(): ViewContent
-    {
-        return Site::configuration()->viewContent();
     }
 }

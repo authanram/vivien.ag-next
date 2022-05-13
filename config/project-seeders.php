@@ -15,9 +15,9 @@ return [
     'content_layouts',
     'content_layout_sections',
     'content_blocks',
-    'content_views',
-    'content_view_layout_sections',
-    'content_view_blocks',
+    'content_pages',
+    'content_page_layout_sections',
+    'content_page_blocks',
 
     'menus',
     'menu_items',

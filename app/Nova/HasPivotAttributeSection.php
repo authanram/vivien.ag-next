@@ -2,12 +2,12 @@
 
 namespace App\Nova;
 
-use App\Models\ContentView;
+use App\Models\ContentPage;
 use Illuminate\Support\Str;
 
 trait HasPivotAttributeSection
 {
-    private static function sections(ContentView $resource): array
+    private static function sections(ContentPage $resource): array
     {
         return collect($resource->sections)->mapWithKeys(function (array $section) {
             return [$section['attributes']['name'] => self::sectionName($section)];

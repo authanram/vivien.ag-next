@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Configuration;
 use App\Contracts\SiteServiceContract;
 use App\CookieConsent;
 use App\ImageCoords;
@@ -16,7 +15,6 @@ use Illuminate\Http\Request;
 
 final class SiteService implements SiteServiceContract
 {
-    protected Configuration $configuration;
     protected CookieConsent $cookieConsent;
     protected ImageCoords $imageCoords;
     protected Parsers $parsers;
@@ -28,13 +26,6 @@ final class SiteService implements SiteServiceContract
 
     public function __construct(protected Request $request)
     {
-    }
-
-    public function configuration(): Configuration
-    {
-        $this->configuration ??= new Configuration();
-
-        return $this->configuration;
     }
 
     public function cookieConsent(): CookieConsent

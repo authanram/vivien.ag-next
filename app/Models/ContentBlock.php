@@ -18,13 +18,13 @@ class ContentBlock extends Model
         'value',
     ];
 
-    public function contentViews(): BelongsToMany
+    public function contentPages(): BelongsToMany
     {
         return $this->belongsToMany(
-            ContentView::class,
-            'content_view_blocks',
+            ContentPage::class,
+            'content_page_blocks',
             'content_block_id',
-            'content_view_id',
+            'content_page_id',
         )->withPivot(['section']);
     }
 }

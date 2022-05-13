@@ -10,7 +10,6 @@ use Laravel\Nova\Menu\MenuSection;
 use Vyuldashev\NovaPermission;
 
 return [
-
     'main' => static fn (Request $request) => [
         MenuSection::dashboard(Dashboards\Main::class)
             ->icon('chart-bar'),
@@ -21,27 +20,37 @@ return [
             MenuItem::resource(Resources\EventRegistration::class),
         ])->collapsable()->icon('calendar'),
 
-        MenuSection::make(__('Resources'), [
-            MenuItem::resource(Resources\StaticAttribute::class),
-            MenuItem::resource(Resources\StaffProfile::class),
-            MenuItem::resource(Resources\Catering::class),
+        MenuSection::make(__('Contents'), [
             MenuItem::resource(Resources\Image::class),
             MenuItem::resource(Resources\Post::class),
-            MenuItem::resource(Resources\Tag::class),
-            MenuItem::resource(Resources\Location::class),
+            MenuItem::resource(Resources\Quote::class),
         ])->collapsable()->icon('document-text'),
 
-        MenuSection::make(__('Quotes'), [
+        MenuSection::make(__('Resources'), [
             MenuItem::resource(Resources\Author::class),
-            MenuItem::resource(Resources\Quote::class),
-        ])->collapsable()->icon('chat-alt'),
+            MenuItem::resource(Resources\StaffProfile::class),
+            MenuItem::resource(Resources\Catering::class),
+            MenuItem::resource(Resources\Location::class),
+            MenuItem::resource(Resources\Tag::class),
+        ])->collapsable()->icon('database'),
+
+        MenuSection::make(__('Routing'), [
+            MenuItem::resource(Resources\MenuItem::class),
+            MenuItem::resource(Resources\Menu::class),
+            MenuItem::resource(Resources\Route::class),
+            MenuItem::resource(Resources\ContentBlock::class),
+            MenuItem::resource(Resources\ContentLayout::class),
+            MenuItem::resource(Resources\Controller::class),
+            MenuItem::resource(Resources\ContentView::class),
+            MenuItem::link(__('Controller'), '/resources/controllers'),
+        ])->collapsable()->icon('switch-horizontal'),
 
         MenuSection::make(__('Access Control'), [
             MenuItem::resource(Resources\User::class),
             MenuItem::resource(Resources\Session::class),
             MenuItem::resource(NovaPermission\Permission::class),
             MenuItem::resource(NovaPermission\Role::class),
-        ])->collapsable()->icon('shield-exclamation'),
+        ])->collapsable()->icon('users'),
 
         MenuSection::make(__('Cookie Consent'), [
             MenuItem::resource(Resources\CookieConsentProvider::class),
@@ -49,26 +58,14 @@ return [
             MenuItem::resource(Resources\CookieConsentSettings::class),
         ])->collapsable()->icon('badge-check'),
 
-        MenuSection::make(__('Routing'), [
-            MenuItem::resource(Resources\MenuItem::class),
-            MenuItem::resource(Resources\Menu::class),
-            MenuItem::resource(Resources\Route::class),
-            MenuItem::resource(Resources\Controller::class),
-            MenuItem::link(__('Controller'), '/resources/controllers'),
-        ])->collapsable()->icon('switch-horizontal'),
-
-        MenuSection::make(__('Contents'), [
-            MenuItem::resource(Resources\ContentLayout::class),
-            MenuItem::resource(Resources\ContentBlock::class),
-            MenuItem::resource(Resources\ContentView::class),
-        ])->collapsable()->icon('template'),
-
         MenuSection::make(__('Misc'), [
             MenuItem::resource(Resources\Attachment::class),
+            MenuItem::resource(Resources\StaticAttribute::class),
             MenuItem::resource(Resources\ImageCoords::class),
             MenuItem::resource(Resources\Color::class),
             MenuItem::link(__('Logs'), '/logs'),
         ])->collapsable()->icon('collection'),
+
 
     ],
 

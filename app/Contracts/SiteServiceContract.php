@@ -2,7 +2,6 @@
 
 namespace App\Contracts;
 
-use App\Configuration;
 use App\CookieConsent;
 use App\ImageCoords;
 use App\Parsers;
@@ -14,8 +13,6 @@ use App\Url;
 
 interface SiteServiceContract
 {
-    public function configuration(): Configuration;
-
     public function cookieConsent(): CookieConsent;
 
     public function imageCoords(): ImageCoords;

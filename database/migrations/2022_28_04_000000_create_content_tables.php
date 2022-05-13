@@ -32,18 +32,17 @@ class CreateContentTables extends Migration
             $table->softDeletes();
         });
 
-        Schema::create('content_views', static function (Blueprint $table) {
+        Schema::create('content_pages', static function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
             $table->string('layout')->nullable();
-            $table->json('sections');
             $table->timestamps();
             $table->softDeletes();
         });
 
-        Schema::create('content_view_layout_sections', static function (Blueprint $table) {
+        Schema::create('content_page_layout_sections', static function (Blueprint $table) {
             $table->id();
-            $table->foreignId('content_view_id')->constrained('content_views')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('content_page_id')->constrained('content_pages')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('content_layout_section_id')->constrained('content_layout_sections')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('field')->nullable();
             $table->text('value')->nullable();
@@ -51,9 +50,9 @@ class CreateContentTables extends Migration
             $table->softDeletes();
         });
 
-        Schema::create('content_view_blocks', static function (Blueprint $table) {
+        Schema::create('content_page_blocks', static function (Blueprint $table) {
             $table->id();
-            $table->foreignId('content_view_id')->constrained('content_views')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('content_page_id')->constrained('content_pages')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('content_block_id')->constrained('content_blocks')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('section');
             $table->timestamps();
@@ -64,7 +63,10 @@ class CreateContentTables extends Migration
     public function down(): void
     {
         Schema::dropIfExists('content_view_blocks');
-        Schema::dropIfExists('content_views');
+        Schema::dropIfExists('content_page_layout_sections');
+        Schema::dropIfExists('content_pages');
         Schema::dropIfExists('content_blocks');
+        Schema::dropIfExists('content_layout_sections');
+        Schema::dropIfExists('content_layouts');
     }
 }

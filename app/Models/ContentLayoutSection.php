@@ -19,13 +19,13 @@ class ContentLayoutSection extends Model
         return $this->belongsTo(ContentLayout::class);
     }
 
-    public function contentViews(): BelongsToMany
+    public function contentPages(): BelongsToMany
     {
         return $this->belongsToMany(
-            ContentView::class,
-            'content_view_layout_sections',
+            ContentPage::class,
+            'content_page_layout_sections',
             'content_layout_section_id',
-            'content_view_id',
+            'content_page_id',
         )->withPivot(['field', 'value']);
     }
 }

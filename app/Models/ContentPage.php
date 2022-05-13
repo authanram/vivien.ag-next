@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Presenters\Models\ContentViewPresenter as Presenter;
+use App\Presenters\Models\ContentPagePresenter as Presenter;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ContentView extends Model
+class ContentPage extends Model
 {
     use SoftDeletes;
 
@@ -39,8 +39,8 @@ class ContentView extends Model
     {
         return $this->belongsToMany(
             ContentBlock::class,
-            'content_view_blocks',
-            'content_view_id',
+            'content_page_blocks',
+            'content_page_id',
             'content_block_id',
         )->withPivot(['section']);
     }
@@ -49,8 +49,8 @@ class ContentView extends Model
     {
         return $this->belongsToMany(
             ContentLayoutSection::class,
-            'content_view_layout_sections',
-            'content_view_id',
+            'content_page_layout_sections',
+            'content_page_id',
             'content_layout_section_id',
         )->withPivot(['field', 'value']);
     }
