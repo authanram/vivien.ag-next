@@ -22,7 +22,7 @@ class ContentLayoutSectionFieldsCreator
             ))->toArray();
     }
 
-    public static function makeFieldSelection(string $value): Select
+    public static function makeFieldSelection(string $value = null): Select
     {
         $options = collect(self::fields())
             ->keys()

@@ -4,7 +4,7 @@ return [
     [
         'id' => 1,
         'name' => 'welcome',
-        'uri' => '{"de": "/"}',
+        'uri' => '/',
         'published' => 1,
         'created_at' => '2020-05-15 03:20:33',
         'updated_at' => '2022-05-12 05:09:56',
@@ -13,7 +13,7 @@ return [
     [
         'id' => 2,
         'name' => 'events',
-        'uri' => '{"de": "seminare"}',
+        'uri' => 'seminare',
         'published' => 1,
         'created_at' => '2020-05-15 03:23:40',
         'updated_at' => '2022-05-12 05:45:17',
@@ -22,7 +22,7 @@ return [
     [
         'id' => 3,
         'name' => 'lectures',
-        'uri' => '{"de": "vortraege"}',
+        'uri' => 'vortraege',
         'published' => 1,
         'created_at' => '2020-05-15 03:24:05',
         'updated_at' => '2022-05-06 16:32:19',
@@ -31,7 +31,7 @@ return [
     [
         'id' => 4,
         'name' => 'consulting',
-        'uri' => '{"de": "beratung"}',
+        'uri' => 'beratung',
         'published' => 1,
         'created_at' => '2020-05-15 03:24:34',
         'updated_at' => '2022-05-12 07:20:13',
@@ -40,7 +40,7 @@ return [
     [
         'id' => 5,
         'name' => 'learning',
-        'uri' => '{"de": "lerntraining"}',
+        'uri' => 'lerntraining',
         'published' => 1,
         'created_at' => '2020-05-15 03:25:03',
         'updated_at' => '2020-06-26 03:21:29',
@@ -49,7 +49,7 @@ return [
     [
         'id' => 6,
         'name' => 'portrait',
-        'uri' => '{"de": "portrait"}',
+        'uri' => 'portrait',
         'published' => 1,
         'created_at' => '2020-05-15 03:25:24',
         'updated_at' => '2020-05-15 03:25:24',
@@ -58,7 +58,7 @@ return [
     [
         'id' => 7,
         'name' => 'blog',
-        'uri' => '{"de": "blog/{slug?}"}',
+        'uri' => 'blog/{slug?}',
         'published' => 1,
         'created_at' => '2020-05-15 03:25:36',
         'updated_at' => '2022-05-12 05:11:35',
@@ -67,7 +67,7 @@ return [
     [
         'id' => 8,
         'name' => 'books',
-        'uri' => '{"de": "buchtipps"}',
+        'uri' => 'buchtipps',
         'published' => 0,
         'created_at' => '2020-05-15 03:25:55',
         'updated_at' => '2022-05-12 05:11:47',
@@ -76,7 +76,7 @@ return [
     [
         'id' => 9,
         'name' => 'contact',
-        'uri' => '{"de": "kontakt"}',
+        'uri' => 'kontakt',
         'published' => 1,
         'created_at' => '2020-05-15 03:26:40',
         'updated_at' => '2020-05-15 03:26:40',
@@ -85,7 +85,7 @@ return [
     [
         'id' => 10,
         'name' => 'imprint',
-        'uri' => '{"de": "impressum"}',
+        'uri' => 'impressum',
         'published' => 1,
         'created_at' => '2020-05-20 21:38:09',
         'updated_at' => '2022-05-06 16:32:16',
@@ -94,7 +94,7 @@ return [
     [
         'id' => 11,
         'name' => 'privacy-policy',
-        'uri' => '{"de": "datenschutzerklaerung"}',
+        'uri' => 'datenschutzerklaerung',
         'published' => 1,
         'created_at' => '2020-05-20 21:38:48',
         'updated_at' => '2022-05-06 15:18:37',
@@ -103,7 +103,7 @@ return [
     [
         'id' => 12,
         'name' => 'cookie-policy',
-        'uri' => '{"de": "cookie-vereinbarung"}',
+        'uri' => 'cookie-vereinbarung',
         'published' => 1,
         'created_at' => '2020-05-20 21:39:12',
         'updated_at' => '2022-05-12 05:13:54',
@@ -112,7 +112,7 @@ return [
     [
         'id' => 13,
         'name' => 'gallery',
-        'uri' => '{"de": "galerie"}',
+        'uri' => 'galerie',
         'published' => 0,
         'created_at' => '2020-06-28 01:39:38',
         'updated_at' => '2022-05-12 05:12:00',

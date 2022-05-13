@@ -7,9 +7,7 @@ use App\Facades\Site;
 use App\Models\ContentView as Model;
 use Exception;
 use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -56,7 +54,7 @@ class ContentView extends Resource
 
             BelongsToMany::make(__('Content Layout Section'), 'contentLayoutSections', ContentLayoutSection::class)
                 ->fields(fn ($request, $model) => [
-                    ContentLayoutSectionFieldsCreator::makeFieldSelection('', '', ''),
+                    ContentLayoutSectionFieldsCreator::makeFieldSelection(),
                 ]),
 
             BelongsToMany::make(__('Content Blocks'), 'contentBlocks', ContentBlock::class)

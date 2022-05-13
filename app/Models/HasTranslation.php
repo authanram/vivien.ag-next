@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\App;
+
 trait HasTranslation
 {
     public function getLocale(): string
     {
-        return app()->getLocale();
+        return App::currentLocale();
     }
 
     public function getTranslation(string $attribute): mixed
