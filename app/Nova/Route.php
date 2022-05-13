@@ -40,6 +40,11 @@ class Route extends Resource
         return [
             ID::make()->showOnPreview(),
 
+            Text::make(__('Uri'), 'uri')
+                ->sortable()
+                ->showOnPreview()
+                ->exceptOnForms(),
+
             Text::make(__('Name'), 'name')
                 ->creationRules('required', 'unique:routes,uri')
                 ->updateRules('required', 'unique:routes,uri,{{resourceId}}')
@@ -51,10 +56,12 @@ class Route extends Resource
                 ->creationRules('required', 'unique:routes,uri')
                 ->updateRules('required', 'unique:routes,uri,{{resourceId}}')
                 ->sortable()
-                ->showOnPreview(),
+                ->showOnPreview()
+                ->onlyOnForms(),
 
             MorphTo::make('Routable')->types(config('project-routables.resources'))
-                ->nullable(),
+                ->nullable()
+                ->withoutTrashed(),
 
             Boolean::make(__('Published'), 'published')
                 ->sortable()
