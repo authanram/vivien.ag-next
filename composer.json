@@ -12,6 +12,7 @@
         "ext-json": "*",
         "ajcastro/eager-load-pivot-relations": "^0.2.2",
         "authanram/markdown": "dev-develop",
+        "calebporzio/sushi": "^2.4",
         "coderello/laravel-nova-lang": "^1.8",
         "fruitcake/laravel-cors": "^3.0",
         "gijsg/system-resources": "dev-fix-deprecation-warning",

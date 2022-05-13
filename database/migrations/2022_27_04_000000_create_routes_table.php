@@ -11,6 +11,7 @@ class CreateRoutesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('uri');
+            $table->morphs('routable');
             $table->boolean('published');
             $table->timestamps();
             $table->softDeletes();

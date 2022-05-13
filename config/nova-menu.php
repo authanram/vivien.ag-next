@@ -53,6 +53,8 @@ return [
             MenuItem::resource(Resources\MenuItem::class),
             MenuItem::resource(Resources\Menu::class),
             MenuItem::resource(Resources\Route::class),
+            MenuItem::resource(Resources\Controller::class),
+            MenuItem::link(__('Controller'), '/resources/controllers'),
         ])->collapsable()->icon('switch-horizontal'),
 
         MenuSection::make(__('Contents'), [

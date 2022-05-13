@@ -1,19 +1,12 @@
 <?php
 
 use App\Facades\Site;
-use App\Models\EventTemplate;
-use App\Models\Tag;
 use Illuminate\Http\Request;
 
 return [
 
     'paths' => [
         'icons' => '/vendor/icons',
-    ],
-
-    'filterable' => [
-        EventTemplate::class,
-        Tag::class,
     ],
 
     'content' => [

@@ -15,6 +15,8 @@ class Post extends Resource
 {
     public static string $model = Model::class;
 
+    public static $title = 'title';
+
     public static $search = [
         'title',
         'slug',

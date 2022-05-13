@@ -14,6 +14,10 @@ class Model extends \Illuminate\Database\Eloquent\Model
     {
         parent::__construct($attributes);
 
+        if (isset($this->attributes) === false) {
+            parent::__construct();
+        }
+
         if (in_array('uuid', $this->fillable) === false) {
             return;
         }
