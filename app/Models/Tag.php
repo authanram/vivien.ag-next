@@ -29,11 +29,6 @@ class Tag extends \Spatie\Tags\Tag
         return $this->belongsTo(Color::class);
     }
 
-    public function attachments(): MorphToMany
-    {
-        return $this->morphedByMany(Attachment::class, 'taggable');
-    }
-
     public function events(): MorphToMany
     {
         return $this->morphedByMany(Event::class, 'taggable');

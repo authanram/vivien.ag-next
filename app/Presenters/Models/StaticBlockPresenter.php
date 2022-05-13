@@ -5,7 +5,7 @@ namespace App\Presenters\Models;
 use App\Facades\Site;
 use App\Presenters\Presenter;
 
-class ContentBlockPresenter extends Presenter
+class StaticBlockPresenter extends Presenter
 {
     public function render(): string
     {

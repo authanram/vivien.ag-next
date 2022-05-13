@@ -3,7 +3,10 @@
 namespace App\Models;
 
 use App\Contracts\Filterable;
+use App\Contracts\Renderable;
+use App\Contracts\Renderer;
 use App\Presenters\Models\EventPresenter as Presenter;
+use App\Renderers\EventRenderer;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -16,7 +19,7 @@ use Spatie\Tags\HasTags;
  * @property Presenter $presenter
  * @method Presenter present()
  */
-class Event extends Model implements Filterable
+class Event extends Model implements Filterable, Renderable
 {
     use HasTags;
     use SoftDeletes;
@@ -31,6 +34,11 @@ class Event extends Model implements Filterable
         ];
     }
 
+    public static function renderer(): Renderer|string
+    {
+        return EventRenderer::class;
+    }
+
     public array $staff;
 
     protected $fillable = [
@@ -39,7 +47,7 @@ class Event extends Model implements Filterable
         'event_template_id',
         'location_id',
         'catering_id',
-        'staff_profile_id',
+        'staff_id',
         'description',
         'date_from',
         'date_to',
@@ -102,9 +110,9 @@ class Event extends Model implements Filterable
         return $this->belongsTo(Location::class);
     }
 
-    public function staffProfiles(): BelongsToMany
+    public function staff(): BelongsToMany
     {
-        return $this->belongsToMany(StaffProfile::class, 'staff_events');
+        return $this->belongsToMany(Staff::class, 'staff_events');
     }
 
     public function user(): BelongsTo

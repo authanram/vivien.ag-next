@@ -2,14 +2,13 @@
 
 namespace App\Nova;
 
-use App\Models\ContentLayoutSection as Model;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\BelongsToMany;
+use App\Models\Layout as Model;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class ContentLayoutSection extends Resource
+class Layout extends Resource
 {
     public static string $model = Model::class;
 
@@ -17,18 +16,19 @@ class ContentLayoutSection extends Resource
 
     public static $search = [
         'name',
+        'view_alias',
     ];
 
     protected static array $orderBy = ['name' => 'asc'];
 
     public static function label(): string
     {
-        return __('Content Layout Sections');
+        return __('Content Layouts');
     }
 
     public static function singularLabel(): string
     {
-        return __('Content Layout Section');
+        return __('Content Layout');
     }
 
     public function fields(NovaRequest $request): array
@@ -36,15 +36,15 @@ class ContentLayoutSection extends Resource
         return [
             ID::make()->sortable()->showOnPreview(),
 
-            BelongsTo::make(__('Content Layout'), 'contentLayout', ContentLayout::class)
-                ->hideFromIndex(),
-
             Text::make(__('Name'), 'name')
-                ->rules('required')
                 ->sortable()
                 ->showOnPreview(),
 
-            BelongsToMany::make(__('Content Pages'), 'contentPages', ContentPage::class),
+            Text::make(__('View Alias'), 'view_alias')
+                ->sortable()
+                ->showOnPreview(),
+
+            HasMany::make(__('Content Layout Sections'), 'contentLayoutSections', ContentLayoutSection::class),
         ];
     }
 }

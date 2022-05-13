@@ -1,16 +1,20 @@
 <?php
 
-namespace App\Parsers;
+namespace App\Renderers;
 
-use App\Contracts\MarkdownParserContract;
+use App\Contracts\Renderer;
 use App\Facades\Site;
 use App\Markdown\Plugins\Renderables;
 use Authanram\Markdown\Converter;
 use Illuminate\Http\Request;
 
-final class MarkdownParser implements MarkdownParserContract
+final class MarkdownRenderer implements Renderer
 {
-    public function parse(string $text, Request $request = null): string
+    public function __construct(protected string $value)
+    {
+    }
+
+    public function render(Request $request = null): string
     {
         $request ??= request();
 
@@ -24,7 +28,7 @@ final class MarkdownParser implements MarkdownParserContract
             'plugins' => [
                 Renderables::class,
             ],
-        ]))->withMarkdown($text)->toHtml();
+        ]))->withMarkdown($this->value)->toHtml();
 
         $text = Site::renderers()::contentRenderer()
             ->render($request, $text);

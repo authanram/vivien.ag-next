@@ -23,11 +23,11 @@ class DatabaseSeeder extends Seeder
 
             $values = require $path;
 
+            print "\033[32mSeeding:\033[0m $table [".count($values)." items]\n";
+
             DB::table($table)->delete();
 
             DB::table($table)->insert($values);
-
-            print "\033[32mSeeded:\033[0m $table [".count($values)." items]\n";
         }
     }
 }

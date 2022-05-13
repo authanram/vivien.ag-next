@@ -2,8 +2,11 @@
 
 namespace App\Nova;
 
+use App\ClassFinder;
+use App\Contracts\Renderable;
 use App\Models\Route as Model;
 use Exception;
+use Illuminate\Support\Str;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphTo;
@@ -59,7 +62,7 @@ class Route extends Resource
                 ->showOnPreview()
                 ->onlyOnForms(),
 
-            MorphTo::make('Routable')->types(config('project-routables.resources'))
+            MorphTo::make('Routable')->types(self::renderables())
                 ->nullable()
                 ->withoutTrashed(),
 
@@ -67,5 +70,14 @@ class Route extends Resource
                 ->sortable()
                 ->showOnPreview(),
         ];
+    }
+
+    public static function renderables(): array
+    {
+        return ClassFinder::resolve(app_path('Nova'), 'App\\Nova\\', static function (Resource|string $resource) {
+            return property_exists($resource, 'model') && is_subclass_of($resource::$model, Renderable::class);
+        })->mapWithKeys(fn (string $classname) => [
+            $classname => Str::of($classname)->afterLast('\\')->after('Content')->toString(),
+        ])->toArray();
     }
 }

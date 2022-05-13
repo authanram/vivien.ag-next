@@ -2,16 +2,24 @@
 
 namespace App\Models;
 
+use App\Contracts\Renderable;
+use App\Contracts\Renderer;
+use App\Renderers\ControllerRenderer;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Support\Str;
 use Sushi\Sushi;
 
-class Controller extends Model
+class Controller extends Model implements Renderable
 {
     use Sushi;
 
     public bool $readonly = true;
+
+    public static function renderer(): Renderer|string
+    {
+        return ControllerRenderer::class;
+    }
 
     public function getRows(): array
     {

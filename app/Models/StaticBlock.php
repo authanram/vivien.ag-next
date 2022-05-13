@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Presenters\Models\ContentBlockPresenter as Presenter;
+use App\Presenters\Models\StaticBlockPresenter as Presenter;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ContentBlock extends Model
+class StaticBlock extends Model
 {
     use SoftDeletes;
 
@@ -18,13 +18,13 @@ class ContentBlock extends Model
         'value',
     ];
 
-    public function contentPages(): BelongsToMany
+    public function pages(): BelongsToMany
     {
         return $this->belongsToMany(
-            ContentPage::class,
-            'content_page_blocks',
-            'content_block_id',
-            'content_page_id',
+            Page::class,
+            'page_static_blocks',
+            'static_block_id',
+            'page_id',
         )->withPivot(['section']);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Presenters\Models\StaffProfilePresenter as Presenter;
+use App\Presenters\Models\StaffPresenter as Presenter;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Presenter $presenter
  * @method Presenter present()
  */
-class StaffProfile extends Model
+class Staff extends Model
 {
     use SoftDeletes;
 

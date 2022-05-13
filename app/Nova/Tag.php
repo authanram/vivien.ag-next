@@ -63,7 +63,6 @@ class Tag extends Resource
 
             Select::make(__('Type'), 'type')
                 ->options([
-                    'attachment' => 'attachment',
                     'event' => 'event',
                     'image' => 'image',
                     'post' => 'post',
@@ -82,8 +81,6 @@ class Tag extends Resource
                 ->showOnCreating(false)
                 ->sortable()
                 ->showOnPreview(),
-
-            MorphedByMany::make(__('Attachments'), 'attachments', Attachment::class),
 
             MorphedByMany::make(__('Events'), 'events', Event::class),
 

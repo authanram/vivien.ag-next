@@ -28,20 +28,20 @@ return [
 
         MenuSection::make(__('Resources'), [
             MenuItem::resource(Resources\Author::class),
-            MenuItem::resource(Resources\StaffProfile::class),
+            MenuItem::resource(Resources\Staff::class),
             MenuItem::resource(Resources\Catering::class),
             MenuItem::resource(Resources\Location::class),
             MenuItem::resource(Resources\Tag::class),
         ])->collapsable()->icon('database'),
 
         MenuSection::make(__('Page'), [
-            MenuItem::resource(Resources\ContentBlock::class),
             MenuItem::link(__('Controller'), '/resources/controllers'),
-            MenuItem::resource(Resources\ContentLayout::class),
+            MenuItem::resource(Resources\Layout::class),
             MenuItem::resource(Resources\MenuItem::class),
             MenuItem::resource(Resources\Menu::class),
+            MenuItem::resource(Resources\Page::class),
             MenuItem::resource(Resources\Route::class),
-            MenuItem::resource(Resources\ContentPage::class),
+            MenuItem::resource(Resources\StaticBlock::class),
         ])->collapsable()->icon('globe-alt'),
 
         MenuSection::make(__('Access Control'), [
@@ -58,7 +58,6 @@ return [
         ])->collapsable()->icon('badge-check'),
 
         MenuSection::make(__('Misc'), [
-            MenuItem::resource(Resources\Attachment::class),
             MenuItem::resource(Resources\StaticAttribute::class),
             MenuItem::resource(Resources\ImageCoords::class),
             MenuItem::resource(Resources\Color::class),

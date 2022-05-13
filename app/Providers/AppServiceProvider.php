@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Contracts;
-use App\Parsers;
 use App\Renderers;
 use App\Services;
 use Carbon\Carbon;
@@ -17,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(Contracts\ContentRendererContract::class, Renderers\ContentRenderer::class);
         $this->app->bind(Contracts\IconRendererContract::class, Renderers\IconRenderer::class);
-        $this->app->bind(Contracts\MarkdownParserContract::class, Parsers\MarkdownParser::class);
+        $this->app->bind(Contracts\MarkdownParserContract::class, Renderers\MarkdownParser::class);
         $this->app->bind(Contracts\SiteServiceContract::class, Services\SiteService::class);
 
         if ($this->app->runningInConsole()) {

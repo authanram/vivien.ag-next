@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use App\Models\ContentPage as Model;
+use App\Models\Page as Model;
 use Exception;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
@@ -10,7 +10,7 @@ use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class ContentPage extends Resource
+class Page extends Resource
 {
     use HasPivotAttributeSection;
 
@@ -27,12 +27,12 @@ class ContentPage extends Resource
 
     public static function label(): string
     {
-        return __('Content Pages');
+        return __('Pages');
     }
 
     public static function singularLabel(): string
     {
-        return __('Content Page');
+        return __('Page');
     }
 
     /**
@@ -48,14 +48,14 @@ class ContentPage extends Resource
                 ->sortable()
                 ->showOnPreview(),
 
-            ...ContentLayoutSectionFieldsCreator::make($this->resource),
+            //...ContentLayoutSectionFieldsCreator::make($this->resource),
 
-            BelongsToMany::make(__('Content Layout Section'), 'contentLayoutSections', ContentLayoutSection::class)
-                ->fields(fn ($request, $model) => [
-                    ContentLayoutSectionFieldsCreator::makeFieldSelection(),
-                ]),
+//            BelongsToMany::make(__('Layout Section'), 'layoutSections', ContentLayoutSection::class)
+//                ->fields(fn ($request, $model) => [
+//                    ContentLayoutSectionFieldsCreator::makeFieldSelection(),
+//                ]),
 
-            BelongsToMany::make(__('Content Blocks'), 'contentBlocks', ContentBlock::class)
+            BelongsToMany::make(__('Static Blocks'), 'staticBlocks', StaticBlock::class)
                 ->fields(fn ($request, $model) => [
                     Select::make(__('Section'), 'section')
                         ->options([])

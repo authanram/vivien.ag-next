@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use App\Models\ContentBlock as Model;
+use App\Models\StaticBlock as Model;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
@@ -11,7 +11,7 @@ use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class ContentBlock extends Resource
+class StaticBlock extends Resource
 {
     use HasPivotAttributeSection;
 
@@ -29,12 +29,12 @@ class ContentBlock extends Resource
 
     public static function label(): string
     {
-        return __('Content Blocks');
+        return __('Static Blocks');
     }
 
     public static function singularLabel(): string
     {
-        return __('Content Block');
+        return __('Static Block');
     }
 
     public function fields(NovaRequest $request): array
@@ -59,7 +59,7 @@ class ContentBlock extends Resource
                 ->hideFromIndex()
                 ->showOnPreview(),
 
-            BelongsToMany::make(__('Content Pages'), 'contentPages', ContentPage::class)
+            BelongsToMany::make(__('Pages'), 'pages', Page::class)
                 ->fields(function (NovaRequest $request, $model) {
                     $relatedModel = $request->isUpdateOrUpdateAttachedRequest()
                         ? ContentPage::$model::find($request->relatedResourceId)

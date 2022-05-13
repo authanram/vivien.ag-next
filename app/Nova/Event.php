@@ -29,7 +29,6 @@ class Event extends Resource
 {
     public static string $model = Model::class;
 
-
     public static $search = [
         'date_from',
         'date_to',

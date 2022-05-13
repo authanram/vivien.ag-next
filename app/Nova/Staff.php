@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use App\Models\StaffProfile as Model;
+use App\Models\Staff as Model;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\DateTime;
@@ -10,7 +10,7 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Line;
 use Laravel\Nova\Fields\Text;
 
-class StaffProfile extends Resource
+class Staff extends Resource
 {
     public static string $model = Model::class;
 

@@ -27,11 +27,6 @@ class Route extends Model
         'published' => 'boolean',
     ];
 
-    public function routable(): MorphTo
-    {
-        return $this->morphTo();
-    }
-
     public function scopePublished(Builder $query): Builder
     {
         return $query->where('published', true);
@@ -40,5 +35,10 @@ class Route extends Model
     public function menuItems(): HasMany
     {
         return $this->hasMany(MenuItem::class);
+    }
+
+    public function routable(): MorphTo
+    {
+        return $this->morphTo();
     }
 }
