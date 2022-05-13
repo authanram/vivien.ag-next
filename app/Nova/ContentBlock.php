@@ -59,10 +59,10 @@ class ContentBlock extends Resource
                 ->hideFromIndex()
                 ->showOnPreview(),
 
-            BelongsToMany::make(__('Content Views'), 'contentViews', ContentView::class)
+            BelongsToMany::make(__('Content Pages'), 'contentPages', ContentPage::class)
                 ->fields(function (NovaRequest $request, $model) {
                     $relatedModel = $request->isUpdateOrUpdateAttachedRequest()
-                        ? ContentView::$model::find($request->relatedResourceId)
+                        ? ContentPage::$model::find($request->relatedResourceId)
                         : $model;
 
                     return [

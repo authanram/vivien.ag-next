@@ -44,7 +44,7 @@ class ContentLayoutSection extends Resource
                 ->sortable()
                 ->showOnPreview(),
 
-            BelongsToMany::make(__('Content Views'), 'contentViews', ContentView::class),
+            BelongsToMany::make(__('Content Pages'), 'contentPages', ContentPage::class),
         ];
     }
 }

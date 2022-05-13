@@ -62,7 +62,7 @@ class CreateContentTables extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('content_view_blocks');
+        Schema::dropIfExists('content_page_blocks');
         Schema::dropIfExists('content_page_layout_sections');
         Schema::dropIfExists('content_pages');
         Schema::dropIfExists('content_blocks');

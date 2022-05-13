@@ -34,16 +34,15 @@ return [
             MenuItem::resource(Resources\Tag::class),
         ])->collapsable()->icon('database'),
 
-        MenuSection::make(__('Routing'), [
+        MenuSection::make(__('Page'), [
+            MenuItem::resource(Resources\ContentBlock::class),
+            MenuItem::link(__('Controller'), '/resources/controllers'),
+            MenuItem::resource(Resources\ContentLayout::class),
             MenuItem::resource(Resources\MenuItem::class),
             MenuItem::resource(Resources\Menu::class),
             MenuItem::resource(Resources\Route::class),
-            MenuItem::resource(Resources\ContentBlock::class),
-            MenuItem::resource(Resources\ContentLayout::class),
-            MenuItem::resource(Resources\Controller::class),
             MenuItem::resource(Resources\ContentPage::class),
-            MenuItem::link(__('Controller'), '/resources/controllers'),
-        ])->collapsable()->icon('switch-horizontal'),
+        ])->collapsable()->icon('globe-alt'),
 
         MenuSection::make(__('Access Control'), [
             MenuItem::resource(Resources\User::class),

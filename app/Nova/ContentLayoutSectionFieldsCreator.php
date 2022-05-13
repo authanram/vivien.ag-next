@@ -13,9 +13,9 @@ use Laravel\Nova\Panel;
 
 class ContentLayoutSectionFieldsCreator
 {
-    public static function make(ContentPage $contentView): array
+    public static function make(ContentPage $contentPage): array
     {
-        return $contentView->load('contentLayoutSections')->contentLayoutSections
+        return $contentPage->load('contentLayoutSections')->contentLayoutSections
             ->map(static fn ($section) => Panel::make(
                 Str::of($section->name)->title(),
                 [self::makeField($section)]
