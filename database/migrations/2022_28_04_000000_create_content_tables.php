@@ -35,7 +35,6 @@ class CreateContentTables extends Migration
         Schema::create('content_pages', static function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('layout')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
