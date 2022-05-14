@@ -7,7 +7,7 @@ return [
         'body' => 'Liebe das Leben %s und es wird dich ebenso lieben.',
         'published' => 1,
         'created_at' => '2020-05-14 17:48:08',
-        'updated_at' => '2020-05-16 20:32:53',
+        'updated_at' => '2022-05-14 02:15:36',
         'deleted_at' => null,
     ],
     [

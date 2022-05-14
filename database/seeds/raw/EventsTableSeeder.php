@@ -1982,7 +1982,7 @@ return [
         'uuid' => '96391fb3-1cf4-44f2-a2d7-7c7447875822',
         'creator_id' => 1,
         'event_template_id' => 26,
-        'catering_id' => null,
+        'catering_id' => 1,
         'location_id' => 4,
         'description' => "Du bekommst jede volle Stunde eine interessante Schreibeinheit.\r\nDein Ergebnis schickst du per Mail an die Gruppe und bekommst eine R\xc3\xbcckmeldung!",
         'date_from' => '2022-05-14 18:00:00',
@@ -1993,7 +1993,7 @@ return [
         'price_note' => null,
         'published' => 1,
         'created_at' => '2021-12-27 19:39:23',
-        'updated_at' => '2022-04-27 06:34:22',
+        'updated_at' => '2022-05-14 02:09:01',
         'deleted_at' => null,
     ],
     [

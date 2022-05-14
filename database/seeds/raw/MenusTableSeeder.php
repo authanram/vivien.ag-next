@@ -6,7 +6,7 @@ return [
         'slug' => 'main',
         'published' => 1,
         'created_at' => '2020-05-15 03:20:47',
-        'updated_at' => '2020-05-15 03:20:47',
+        'updated_at' => '2022-05-14 02:16:36',
         'deleted_at' => null,
     ],
     [

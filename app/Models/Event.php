@@ -26,6 +26,8 @@ class Event extends Model implements Filterable, Renderable
 
     public static string $presenter = Presenter::class;
 
+    public array $staff = [];
+
     public static function filters(): array
     {
         return [
@@ -38,8 +40,6 @@ class Event extends Model implements Filterable, Renderable
     {
         return EventRenderer::class;
     }
-
-    public array $staff;
 
     protected $fillable = [
         'uuid',

@@ -5,7 +5,7 @@ namespace App\Nova;
 //use App\Nova\Metrics\PartitionEventTemplate;
 use App\Models\Catering as CateringModel;
 use App\Models\Event as Model;
-use App\Models\StaffProfile as StaffProfileModel;
+use App\Models\Staff as StaffModel;
 use App\Nova\Filters\EventsTimeFilter;
 use Illuminate\Database\Eloquent\Model as BaseModel;
 use Illuminate\Support\Facades\Cache;
@@ -42,7 +42,7 @@ class Event extends Resource
         'eventRegistrations',
         'eventTemplate',
         'location',
-        'staffProfiles',
+        'staff',
     ];
 
     protected static array $orderBy = [
@@ -82,9 +82,9 @@ class Event extends Resource
             ->keys()
             ->toArray();
 
-        $ids = StaffProfileModel::whereIn('name', $names)->pluck('id')->toArray();
+        $ids = StaffModel::whereIn('name', $names)->pluck('id')->toArray();
 
-        $model->staffProfiles()->sync($ids);
+        $model->staff()->sync($ids);
     }
 
     public static function label(): string
@@ -201,8 +201,8 @@ class Event extends Resource
                 ->hideFromIndex()
                 ->showOnPreview(),
 
-            BooleanGroup::make(__('Lead'), 'staff', fn () => $this->staffProfiles()->values)
-                ->options($this->staffProfiles()->options)
+            BooleanGroup::make(__('Lead'), 'staff', fn () => $this->staff()->values)
+                ->options($this->staff()->options)
                 ->hideFromIndex(),
 
             Boolean::make(__('Published'), 'published')
@@ -212,10 +212,6 @@ class Event extends Resource
                 ->trueValue(true)
                 ->falseValue(false)
                 ->showOnPreview(),
-
-            /*BelongsToMany::make(__('Lead'), 'staffProfiles', StaffProfile::class)
-                ->hideFromIndex()
-                ->showOnPreview(),*/
 
             HasMany::make(__('Event Registrations'), 'eventRegistrations', EventRegistration::class)
                 ->showOnPreview(),
@@ -244,13 +240,11 @@ class Event extends Resource
         ];
     }
 
-    protected function staffProfiles(): object
+    protected function staff(): object
     {
-        return Cache::remember(__FUNCTION__, null, function () {
-            return (object)[
-                'values' => StaffProfileModel::$presenter::toOptionArrayValues($this->resource->staffProfiles),
-                'options' => StaffProfileModel::$presenter::toOptionArrayOptions(),
-            ];
-        });
+        return (object)[
+            'values' => StaffModel::$presenter::toOptionArrayValues($this->resource->staff()->get()),
+            'options' => StaffModel::$presenter::toOptionArrayOptions(),
+        ];
     }
 }

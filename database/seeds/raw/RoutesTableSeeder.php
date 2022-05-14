@@ -9,7 +9,7 @@ return [
         'routable_id' => 6,
         'published' => 1,
         'created_at' => '2020-05-15 03:20:33',
-        'updated_at' => '2022-05-13 22:26:07',
+        'updated_at' => '2022-05-14 02:17:05',
         'deleted_at' => null,
     ],
     [
