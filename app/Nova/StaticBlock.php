@@ -56,8 +56,7 @@ class StaticBlock extends Resource
                 ->hideFromIndex()
                 ->showOnPreview(),
 
-            BelongsToMany::make(__('Page'), 'pages', Page::class)
-                ->fields(new PageStaticBlockFields()),
+            BelongsToMany::make(__('Page'), 'pages', Page::class),
         ];
     }
 }
