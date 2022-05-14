@@ -4,7 +4,7 @@ namespace App\View\Components\Menu;
 
 use App\Facades\Site;
 use App\Models\MenuItem as Model;
-use App\Presenters\Models\MenuItemPresenter;
+use App\Presenters\MenuItemPresenter;
 use App\View\Components\Component;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Optional;

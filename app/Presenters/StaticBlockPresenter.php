@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Presenters\Models;
+namespace App\Presenters;
 
 use App\Facades\Site;
-use App\Presenters\Presenter;
 
 class StaticBlockPresenter extends Presenter
 {

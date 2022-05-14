@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Presenters\Models\StaffPresenter as Presenter;
+use App\Presenters\StaffPresenter as Presenter;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;

@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Presenters\Models;
+namespace App\Presenters;
 
 use App\Models\MenuItem;
-use App\Presenters\Presenter;
 use Illuminate\Support\Facades\Route;
 
 /**

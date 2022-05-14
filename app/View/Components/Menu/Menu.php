@@ -2,7 +2,7 @@
 
 namespace App\View\Components\Menu;
 
-use App\Contracts\SiteServiceContract;
+use App\Contracts\SiteService;
 use App\View\Components\Component;
 use Illuminate\Support\Collection;
 
@@ -13,7 +13,7 @@ final class Menu extends Component
     public Collection $items;
     public string $itemComponent;
 
-    public function __construct(protected SiteServiceContract $siteService, string $type = 'main')
+    public function __construct(protected SiteService $siteService, string $type = 'main')
     {
         $this->items = $this->siteService->repositories()->menus()->{$type}();
 

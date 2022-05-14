@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Presenters\Models;
+namespace App\Presenters;
 
 use App\Models\Catering;
-use App\Presenters\Presenter;
 
 /**
  * @property Catering $entity

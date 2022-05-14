@@ -3,10 +3,9 @@
 namespace App\Models;
 
 use App\Contracts\Filterable;
-use App\Contracts\Renderable;
-use App\Contracts\Renderer;
-use App\Presenters\Models\EventPresenter as Presenter;
-use App\Renderers\EventRenderer;
+use App\Contracts\Routable;
+use App\Presenters\EventPresenter as Presenter;
+use App\Routables\EventRoutable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -19,7 +18,7 @@ use Spatie\Tags\HasTags;
  * @property Presenter $presenter
  * @method Presenter present()
  */
-class Event extends Model implements Filterable, Renderable
+class Event extends Model implements Filterable, Routable
 {
     use HasTags;
     use SoftDeletes;
@@ -36,9 +35,9 @@ class Event extends Model implements Filterable, Renderable
         ];
     }
 
-    public static function renderer(): Renderer|string
+    public function routable(): EventRoutable
     {
-        return EventRenderer::class;
+        return new EventRoutable($this);
     }
 
     protected $fillable = [

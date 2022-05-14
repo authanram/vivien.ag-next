@@ -2,14 +2,14 @@
 
 namespace App\View\Components;
 
-use App\Contracts\IconRendererContract;
+use App\Contracts\IconRenderer;
 use Illuminate\View\Component;
 
 class Icon extends Component
 {
     public ?string $html = null;
 
-    public function __construct(IconRendererContract $renderer, string $icon)
+    public function __construct(IconRenderer $renderer, string $icon)
     {
         $this->html = $renderer->render($icon);
     }

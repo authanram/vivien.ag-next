@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
-use App\Presenters\Models\RoutePresenter as Presenter;
+use App\Contracts\Routable;
+use App\Presenters\RoutePresenter as Presenter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
+ * @property Routable $routable
  * @method Presenter present()
  */
 class Route extends Model
@@ -20,10 +22,12 @@ class Route extends Model
     protected $fillable = [
         'name',
         'uri',
+        'middlewares',
         'published',
     ];
 
     protected $casts = [
+        'middlewares' => 'array',
         'published' => 'boolean',
     ];
 

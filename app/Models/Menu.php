@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Presenters\Models\MenuPresenter as Presenter;
+use App\Presenters\MenuPresenter as Presenter;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 

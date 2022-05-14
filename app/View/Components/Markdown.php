@@ -2,13 +2,12 @@
 
 namespace App\View\Components;
 
-use App\Contracts\SiteServiceContract;
-use Exception;
+use App\Contracts\SiteService;
 use Illuminate\View\Component;
 
 class Markdown extends Component
 {
-    public function __construct(protected SiteServiceContract $siteService, protected array $replace = [])
+    public function __construct(protected SiteService $site, protected array $replace = [])
     {
     }
 
@@ -26,17 +25,8 @@ class Markdown extends Component
             return sprintf(
                 '<div%s>%s</div>',
                 $attributes,
-                $this->parse($data['slot']),
+                $this->site->renderers()::markdown()->render($data['slot']),
             );
         };
-    }
-
-    protected function parse(string $subject): string
-    {
-        try {
-            return $this->siteService->parsers()::markdownParser()->parse($subject);
-        } catch (Exception $exception) {
-            abort(505, $exception->getMessage());
-        }
     }
 }

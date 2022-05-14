@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\View;
+
 final class CookiePolicyController extends Controller
 {
-    protected const VIEW = 'cookie-policy';
+    public function index(): View
+    {
+        return view('cookie-policy');
+    }
 }

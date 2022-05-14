@@ -2,18 +2,19 @@
 
 namespace App;
 
-use App\Contracts\ContentRendererContract;
-use App\Contracts\IconRendererContract;
+use App\Contracts\IconRenderer;
+use App\Contracts\MarkdownRenderer;
+use App\Contracts\Renderer;
 
 class Renderers
 {
-    public static function contentRenderer(): ContentRendererContract
+    public static function icon(): Renderer
     {
-        return resolve(ContentRendererContract::class);
+        return resolve(IconRenderer::class);
     }
 
-    public static function iconRenderer(): IconRendererContract
+    public static function markdown(): Renderer
     {
-        return resolve(IconRendererContract::class);
+        return resolve(MarkdownRenderer::class);
     }
 }

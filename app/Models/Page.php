@@ -2,15 +2,14 @@
 
 namespace App\Models;
 
-use App\Contracts\Renderable;
-use App\Contracts\Renderer;
-use App\Presenters\Models\PagePresenter as Presenter;
-use App\Renderers\PageRenderer;
+use App\Contracts\Routable;
+use App\Presenters\PagePresenter as Presenter;
+use App\Routables\PageRoutable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Page extends Model implements Renderable
+class Page extends Model implements Routable
 {
     use SoftDeletes;
 
@@ -25,9 +24,9 @@ class Page extends Model implements Renderable
         'sections' => 'array',
     ];
 
-    public static function renderer(): Renderer|string
+    public function routable(): PageRoutable
     {
-        return PageRenderer::class;
+        return new PageRoutable($this);
     }
 
     public function staticBlocks(): BelongsToMany

@@ -2,19 +2,14 @@
 
 namespace App\Renderers;
 
-use App\Contracts\Renderer;
-use App\Facades\Site;
+use App\Contracts\MarkdownRenderer as Contract;
 use App\Markdown\Plugins\Renderables;
 use Authanram\Markdown\Converter;
 use Illuminate\Http\Request;
 
-final class MarkdownRenderer implements Renderer
+final class MarkdownRenderer implements Contract
 {
-    public function __construct(protected string $value)
-    {
-    }
-
-    public function render(Request $request = null): string
+    public function render(mixed $value = null, Request $request = null): string
     {
         $request ??= request();
 
@@ -23,15 +18,16 @@ final class MarkdownRenderer implements Renderer
             config('project.markdown.replace')($request),
         );
 
-        $text = (new Converter([
+        $parameters = [
             'base_url' => config('app.url'),
             'plugins' => [
                 Renderables::class,
             ],
-        ]))->withMarkdown($this->value)->toHtml();
+        ];
 
-        $text = Site::renderers()::contentRenderer()
-            ->render($request, $text);
+        $text = (new Converter($parameters))
+            ->withMarkdown($value)
+            ->toHtml();
 
         return str_replace(
             array_keys($searchAndReplace),

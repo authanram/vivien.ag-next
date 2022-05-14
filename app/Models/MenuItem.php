@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Presenters\Models\MenuItemPresenter as Presenter;
+use App\Presenters\MenuItemPresenter as Presenter;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;

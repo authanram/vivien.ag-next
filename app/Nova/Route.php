@@ -3,11 +3,12 @@
 namespace App\Nova;
 
 use App\ClassFinder;
-use App\Contracts\Renderable;
+use App\Contracts\Routable;
 use App\Models\Route as Model;
 use Exception;
 use Illuminate\Support\Str;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphTo;
 use Laravel\Nova\Fields\Slug;
@@ -62,6 +63,13 @@ class Route extends Resource
                 ->showOnPreview()
                 ->onlyOnForms(),
 
+            Code::make(__('Middlewares'), 'middlewares', fn ($value) => '["web"]')
+                ->autoHeight()
+                ->language('json')
+                ->rules('required', 'json')
+                ->hideFromIndex()
+                ->showOnPreview(),
+
             MorphTo::make('Routable')->types(self::renderables())
                 ->nullable()
                 ->withoutTrashed(),
@@ -75,7 +83,7 @@ class Route extends Resource
     public static function renderables(): array
     {
         return ClassFinder::resolve(app_path('Nova'), 'App\\Nova\\', static function (Resource|string $resource) {
-            return property_exists($resource, 'model') && is_subclass_of($resource::$model, Renderable::class);
+            return property_exists($resource, 'model') && is_subclass_of($resource::$model, Routable::class);
         })->mapWithKeys(fn (string $classname) => [
             $classname => Str::of($classname)->afterLast('\\')->after('Content')->toString(),
         ])->toArray();

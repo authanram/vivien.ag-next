@@ -2,26 +2,16 @@
 
 namespace App\Renderers;
 
-use App\Contracts\Renderer;
+use App\Contracts\IconRenderer as Contract;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 
-final class IconRenderer implements Renderer
+final class IconRenderer implements Contract
 {
-    public function __construct(protected string $icon)
+    public function render(string $icon = null): string
     {
-    }
-
-    public function render(): string
-    {
-        return Cache::get('icon.'.$this->icon, function () {
-            $html = self::readFromFile($this->icon);
-
-            Cache::put('icon.'.$this->icon, $html);
-
-            return $html;
-        });
+        return Cache::rememberForever("icon.$icon", static fn () => self::fileContents($icon));
     }
 
     protected static function path(): string
@@ -32,7 +22,7 @@ final class IconRenderer implements Renderer
     /**
      * @throws FileNotFoundException
      */
-    protected static function readFromFile(string $icon): string
+    protected static function fileContents(string $icon): string
     {
         return File::get(public_path(self::path().'/'.$icon.'.svg'));
     }

@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Contracts\SiteServiceContract;
+use App\Contracts\SiteService as Contract;
 use App\CookieConsent;
 use App\ImageCoords;
 use App\Parsers;
@@ -13,7 +13,7 @@ use App\Theme;
 use App\Url;
 use Illuminate\Http\Request;
 
-final class SiteService implements SiteServiceContract
+final class SiteService implements Contract
 {
     protected CookieConsent $cookieConsent;
     protected ImageCoords $imageCoords;

@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Presenters\Models;
+namespace App\Presenters;
 
 use App\Models\Event;
-use App\Presenters\Presenter;
 use Illuminate\Support\Str;
 
 /**

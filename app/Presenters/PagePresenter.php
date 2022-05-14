@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Presenters\Models;
+namespace App\Presenters;
 
-use App\Presenters\Presenter;
 
 class PagePresenter extends Presenter
 {

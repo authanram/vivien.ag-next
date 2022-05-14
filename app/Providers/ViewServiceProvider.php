@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Contracts\SiteServiceContract;
+use App\Contracts\SiteService;
 use App\View\Components;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
@@ -18,7 +18,7 @@ class ViewServiceProvider extends ServiceProvider
 
     protected function bootSharedData(): void
     {
-        $siteService = $this->app[SiteServiceContract::class];
+        $siteService = $this->app[SiteService::class];
 
         View::share('accent', $siteService->theme()->accent(request()));
         View::share('site', $siteService);

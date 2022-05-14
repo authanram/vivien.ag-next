@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Facades\Site;
 use App\FilterUrlGenerator;
+use App\Models\Route;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 
 final class EventsController extends Controller
 {
-    public function index(Request $request, int $routeId): View
+    public function index(Request $request, Route $route): View
     {
         $eventRepository = Site::repositories()->events();
 

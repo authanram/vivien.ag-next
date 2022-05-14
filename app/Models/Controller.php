@@ -2,23 +2,20 @@
 
 namespace App\Models;
 
-use App\Contracts\Renderable;
-use App\Contracts\Renderer;
-use App\Renderers\ControllerRenderer;
+use App\Contracts\Routable;
+use App\Routables\ControllerRoutable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Support\Str;
 use Sushi\Sushi;
 
-class Controller extends Model implements Renderable
+class Controller extends Model implements Routable
 {
     use Sushi;
 
-    public bool $readonly = true;
-
-    public static function renderer(): Renderer|string
+    public function routable(): ControllerRoutable
     {
-        return ControllerRenderer::class;
+        return new ControllerRoutable($this);
     }
 
     public function getRows(): array

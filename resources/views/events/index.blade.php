@@ -1,5 +1,9 @@
 @extends('layouts.default')
 
+@push('title')
+    {{ __('Seminars') }}
+@endpush
+
 @push('content')
     <div class="flex">
         <div class="w-full xl:w-7/12">

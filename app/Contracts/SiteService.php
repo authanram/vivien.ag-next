@@ -11,7 +11,7 @@ use App\Text;
 use App\Theme;
 use App\Url;
 
-interface SiteServiceContract
+interface SiteService
 {
     public function cookieConsent(): CookieConsent;
 

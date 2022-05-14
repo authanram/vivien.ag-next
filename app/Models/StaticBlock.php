@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Presenters\Models\StaticBlockPresenter as Presenter;
+use App\Presenters\StaticBlockPresenter as Presenter;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 

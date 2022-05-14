@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\SiteServiceContract;
+use App\Contracts\SiteService;
 use App\Models\Route;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
@@ -10,9 +10,14 @@ use Illuminate\Http\Request;
 
 final class PageController extends Controller
 {
-    public function index(SiteServiceContract $service, Request $request, Route $route): View|string
+    public function index(SiteService $service, Request $request, Route $route): View|string
     {
-        return __CLASS__;
+        $this->route = $route;
+
+        $mergeData = ['title' => $this->route->routable->name, 'content' => '%content%'];
+
+        return view('page', ['cacheKey' => $this->cacheKey()], $mergeData);
+
 //        $contentView = $route->present()
 //            ->resolveAction()
 //            ->resolveContentViewControllerAction()
@@ -26,13 +31,12 @@ final class PageController extends Controller
 //                : self::handleLayout($section['attributes']['value'], $contentView->contentBlocks);
 //        }
 //
-//        $data = ['cacheKey' => __CLASS__.'@'.$contentView->id];
 //
 //        $mergeData = collect($sections)
 //            ->mapWithKeys(fn (array $section, string $key) => [$key => implode('', $section)])
 //            ->toArray();
 //
-//        return view('content-view', $data, $mergeData);
+//        return view('page', $data, $mergeData);
     }
 
     private static function handleLayout(string $layout, Collection $contentBlocks): string
