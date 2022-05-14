@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-class AuthorPolicy extends BasePolicy
+class AuthorPolicy extends Policy
 {
     //
 }

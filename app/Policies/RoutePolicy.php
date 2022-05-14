@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-class RoutePolicy extends BasePolicy
+class RoutePolicy extends Policy
 {
     //
 }

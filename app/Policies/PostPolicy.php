@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-class PostPolicy extends BasePolicy
+class PostPolicy extends Policy
 {
     //
 }

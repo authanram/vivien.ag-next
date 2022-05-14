@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-class LocationPolicy extends BasePolicy
+class LocationPolicy extends Policy
 {
     //
 }

@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-class PermissionPolicy extends BasePolicy
+class PermissionPolicy extends Policy
 {
     //
 }

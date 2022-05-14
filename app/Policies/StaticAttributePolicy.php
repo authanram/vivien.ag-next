@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-class StaticAttributePolicy extends BasePolicy
+class StaticAttributePolicy extends Policy
 {
     //
 }

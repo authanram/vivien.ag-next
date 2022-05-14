@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-class ColorPolicy extends BasePolicy
+class ColorPolicy extends Policy
 {
     //
 }

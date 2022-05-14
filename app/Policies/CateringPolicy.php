@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-class CateringPolicy extends BasePolicy
+class CateringPolicy extends Policy
 {
     //
 }

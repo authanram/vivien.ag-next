@@ -3,21 +3,13 @@
 namespace App\Policies;
 
 use App\Models\User;
-use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Str;
 
-class BasePolicy
+abstract class Policy extends SushiPolicy
 {
-    use HandlesAuthorization;
-
     public function before(User $user): ?bool
     {
         return empty(static::$authorizeBefore) && $user->isAdministrator() ? true : null;
-    }
-
-    public function novaBrowse(User $user): bool
-    {
-        return static::authorize($user, __FUNCTION__);
     }
 
     public function create(User $user): bool

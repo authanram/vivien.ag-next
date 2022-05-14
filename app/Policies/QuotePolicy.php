@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-class QuotePolicy extends BasePolicy
+class QuotePolicy extends Policy
 {
     //
 }

@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-class RolePolicy extends BasePolicy
+class RolePolicy extends Policy
 {
     //
 }

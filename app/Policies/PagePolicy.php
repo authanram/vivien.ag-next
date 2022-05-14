@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-class AttachmentPolicy extends BasePolicy
+class PagePolicy extends Policy
 {
     //
 }

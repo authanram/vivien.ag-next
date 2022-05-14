@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-class MenuPolicy extends BasePolicy
+class MenuPolicy extends Policy
 {
     //
 }

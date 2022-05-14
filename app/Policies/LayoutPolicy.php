@@ -2,9 +2,6 @@
 
 namespace App\Policies;
 
-use Illuminate\Auth\Access\HandlesAuthorization;
-
-class LayoutPolicy
+class LayoutPolicy extends SushiPolicy
 {
-    use HandlesAuthorization;
 }

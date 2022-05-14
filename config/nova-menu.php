@@ -35,7 +35,7 @@ return [
         ])->collapsable()->icon('database'),
 
         MenuSection::make(__('Page'), [
-            MenuItem::link(__('Controller'), '/resources/controllers'),
+            MenuItem::resource(Resources\Controller::class),
             MenuItem::resource(Resources\Layout::class),
             MenuItem::resource(Resources\MenuItem::class),
             MenuItem::resource(Resources\Menu::class),
@@ -61,7 +61,7 @@ return [
             MenuItem::resource(Resources\StaticAttribute::class),
             MenuItem::resource(Resources\ImageCoords::class),
             MenuItem::resource(Resources\Color::class),
-            MenuItem::link(__('Logs'), '/logs'),
+            MenuItem::make(__('Logs'), 'logs'),
         ])->collapsable()->icon('collection'),
 
 

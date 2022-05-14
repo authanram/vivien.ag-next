@@ -4,7 +4,7 @@ namespace App\Policies;
 
 use App\Models\User;
 
-class SessionPolicy extends BasePolicy
+class SessionPolicy extends Policy
 {
     protected static $authorizeBefore = [
         'delete',

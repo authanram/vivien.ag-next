@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-class ImageCoordsPolicy extends BasePolicy
+class ImageCoordsPolicy extends Policy
 {
     //
 }

@@ -3,7 +3,6 @@
 namespace App\Nova;
 
 use App\Models\Layout as Model;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -23,12 +22,12 @@ class Layout extends Resource
 
     public static function label(): string
     {
-        return __('Content Layouts');
+        return __('Layouts');
     }
 
     public static function singularLabel(): string
     {
-        return __('Content Layout');
+        return __('Layout');
     }
 
     public function fields(NovaRequest $request): array
@@ -43,8 +42,6 @@ class Layout extends Resource
             Text::make(__('View Alias'), 'view_alias')
                 ->sortable()
                 ->showOnPreview(),
-
-            HasMany::make(__('Content Layout Sections'), 'contentLayoutSections', ContentLayoutSection::class),
         ];
     }
 }

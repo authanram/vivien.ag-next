@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-class EventPolicy extends BasePolicy
+class EventPolicy extends Policy
 {
     //
 }

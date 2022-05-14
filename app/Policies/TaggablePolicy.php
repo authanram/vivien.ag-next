@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-class TaggablePolicy extends BasePolicy
+class TaggablePolicy extends Policy
 {
     //
 }

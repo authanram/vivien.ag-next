@@ -4,7 +4,7 @@ namespace App\Policies;
 
 use App\Models\User;
 
-class UserPolicy extends BasePolicy
+class UserPolicy extends Policy
 {
     public function uploadFiles(User $user): bool
     {

@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-class CookieConsentCookiePolicy extends BasePolicy
+class CookieConsentCookiePolicy extends Policy
 {
     //
 }

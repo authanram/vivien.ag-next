@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-class ImagePolicy extends BasePolicy
+class ImagePolicy extends Policy
 {
     //
 }
