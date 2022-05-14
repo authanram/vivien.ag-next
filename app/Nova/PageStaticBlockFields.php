@@ -12,13 +12,11 @@ class PageStaticBlockFields
 {
     public function __invoke(NovaRequest $request, Model $relatedModel): array
     {
-        if ($request->isUpdateOrUpdateAttachedRequest() === false
-            && $request->isCreateOrAttachRequest() === false
-        ) {
+        if (self::authorize($request) === false) {
             return [];
         }
 
-        $sections = [];
+        $sections = $relatedModel->getAttribute('sections') ?? [];
 
         $pivot = $relatedModel->getAttribute('pivot');
 
@@ -71,5 +69,11 @@ class PageStaticBlockFields
         return collect($sections)
             ->mapWithKeys(fn ($section) => [$section => $section])
             ->toArray();
+    }
+
+    private static function authorize(NovaRequest $request): bool
+    {
+        return $request->isUpdateOrUpdateAttachedRequest()
+            || $request->isCreateOrAttachRequest();
     }
 }
