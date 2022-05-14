@@ -25,17 +25,12 @@ class Layout extends Model
             [
                 'name' => 'Blank',
                 'view_alias' => 'layouts.blank',
-                'sections' => [
-                    'body',
-                ],
+                'sections' => '["body"]',
             ],
             [
                 'name' => 'Default',
                 'view_alias' => 'layouts.default',
-                'sections' => [
-                    'title',
-                    'content',
-                ],
+                'sections' => '["title", "content"]',
             ],
         ];
     }
