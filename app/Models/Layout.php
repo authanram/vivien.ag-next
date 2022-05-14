@@ -2,37 +2,28 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Sushi\Sushi;
 
 class Layout extends Model
 {
-    use Sushi;
-
     protected $fillable = [
         'name',
         'view_alias',
         'sections',
     ];
 
-    protected $casts = [
-        'sections' => 'array',
-    ];
-
-    public function getRows(): array
+    public function sections(): Attribute
     {
-        return [
-            [
-                'name' => 'Blank',
-                'view_alias' => 'layouts.blank',
-                'sections' => '["body"]',
-            ],
-            [
-                'name' => 'Default',
-                'view_alias' => 'layouts.default',
-                'sections' => '["title", "content"]',
-            ],
-        ];
+        return Attribute::make(
+            get: static fn ($value) => json_decode($value, true, 512, JSON_THROW_ON_ERROR),
+            set: static fn ($value) => json_encode(
+                array_map(
+                    static fn ($item) => trim($item),
+                    explode(',', $value),
+                ), JSON_THROW_ON_ERROR,
+            ),
+        );
     }
 
     public function pages(): HasMany

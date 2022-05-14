@@ -47,7 +47,7 @@ abstract class Policy extends SushiPolicy
         return static::authorize($user, __FUNCTION__, $model);
     }
 
-    private static function authorize(User $user, string $function, $model = null): bool
+    protected static function authorize(User $user, string $function, $model = null): bool
     {
         return isset(static::$authorizeBefore)
         && is_array(static::$authorizeBefore)
@@ -56,7 +56,7 @@ abstract class Policy extends SushiPolicy
             : $user->can($function.':'.static::makeSlug($model));
     }
 
-    private static function makeSlug($model = null): string
+    protected static function makeSlug($model = null): string
     {
         $subjectBasename = class_basename($model ? get_class($model) : static::class);
 

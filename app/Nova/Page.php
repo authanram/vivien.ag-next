@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use App\Models\Page as Model;
 use Exception;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Select;
@@ -20,7 +21,7 @@ class Page extends Resource
 
     public static $search = [
         'name',
-        'sections',
+        'layout',
     ];
 
     protected static array $orderBy = ['name' => 'asc'];
@@ -44,6 +45,11 @@ class Page extends Resource
             ID::make()->sortable()->showOnPreview(),
 
             Text::make(__('Name'), 'name')
+                ->rules('required')
+                ->sortable()
+                ->showOnPreview(),
+
+            BelongsTo::make(__('Layout'), 'layout')
                 ->rules('required')
                 ->sortable()
                 ->showOnPreview(),

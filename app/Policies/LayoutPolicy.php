@@ -2,6 +2,6 @@
 
 namespace App\Policies;
 
-class LayoutPolicy extends SushiPolicy
+class LayoutPolicy extends Policy
 {
 }

@@ -29,6 +29,11 @@ class Page extends Model implements Routable
         return new PageRoutable($this);
     }
 
+    public function layout(): BelongsTo
+    {
+        return $this->belongsTo(Layout::class);
+    }
+
     public function staticBlocks(): BelongsToMany
     {
         return $this->belongsToMany(
@@ -37,10 +42,5 @@ class Page extends Model implements Routable
             'page_id',
             'static_block_id',
         )->withPivot(['section']);
-    }
-
-    public function layout(): BelongsTo
-    {
-        return $this->belongsTo(Layout::class);
     }
 }

@@ -13,4 +13,9 @@ abstract class SushiPolicy
     {
         return true;
     }
+
+    public function view(User $user, $model): bool
+    {
+        return true;
+    }
 }

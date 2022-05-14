@@ -11,6 +11,7 @@ class CreatePageTables extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('view_alias');
+            $table->json('sections');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -26,6 +27,7 @@ class CreatePageTables extends Migration
 
         Schema::create('pages', static function (Blueprint $table) {
             $table->id();
+            $table->foreignId('layout_id')->constrained('layouts')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('name')->unique();
             $table->timestamps();
             $table->softDeletes();

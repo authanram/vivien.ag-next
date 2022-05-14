@@ -12,7 +12,6 @@ class Model extends \Illuminate\Database\Eloquent\Model
 
     public function __construct(array $attributes = [])
     {
-        ray(static::class);
         parent::__construct($attributes);
 
         if (isset($this->attributes) === false) {
