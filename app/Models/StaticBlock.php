@@ -25,6 +25,7 @@ class StaticBlock extends Model
             'page_static_blocks',
             'static_block_id',
             'page_id',
-        )->withPivot(['section']);
+        )->withPivot('id', 'section')
+            ->withTimestamps();
     }
 }

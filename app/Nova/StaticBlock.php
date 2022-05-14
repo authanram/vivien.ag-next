@@ -6,15 +6,12 @@ use App\Models\StaticBlock as Model;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
-use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class StaticBlock extends Resource
 {
-    use HasPivotAttributeSection;
-
     public static string $model = Model::class;
 
     public static $title = 'name';
@@ -59,19 +56,8 @@ class StaticBlock extends Resource
                 ->hideFromIndex()
                 ->showOnPreview(),
 
-            BelongsToMany::make(__('Pages'), 'pages', Page::class)
-                ->fields(function (NovaRequest $request, $model) {
-                    $relatedModel = $request->isUpdateOrUpdateAttachedRequest()
-                        ? ContentPage::$model::find($request->relatedResourceId)
-                        : $model;
-
-                    return [
-                        Select::make(__('Section'), 'section')
-                            ->options(self::sections($relatedModel))
-                            ->displayUsingLabels()
-                            ->rules('required'),
-                    ];
-                }),
+            BelongsToMany::make(__('Page'), 'pages', Page::class)
+                ->fields(new PageStaticBlockFields()),
         ];
     }
 }

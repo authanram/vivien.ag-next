@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use App\Models\Layout as Model;
+use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
@@ -46,20 +47,17 @@ class Layout extends Resource
                 ->sortable()
                 ->showOnPreview(),
 
-            Text::make(__('Sections'), 'sections', self::sectionsValue($request))
+            Code::make(__('Sections'), 'sections', static fn ($value) => $value ?? '[]')
+                ->autoHeight()
+                ->json()
                 ->rules('required')
-                ->sortable()
                 ->showOnPreview(),
+
+            Text::make(__('Sections'), 'sections')
+                ->sortable()
+                ->onlyOnIndex(),
 
             HasMany::make(__('Pages'), 'pages', Page::class),
         ];
-    }
-
-    private static function sectionsValue(NovaRequest $request): callable
-    {
-        return static fn ($value) => implode(
-            ($request->isResourceIndexRequest() ? ', ' : ','),
-            $value,
-        );
     }
 }

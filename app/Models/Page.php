@@ -41,6 +41,7 @@ class Page extends Model implements Routable
             'page_static_blocks',
             'page_id',
             'static_block_id',
-        )->withPivot(['section']);
+        )->withPivot('id', 'section')
+            ->withTimestamps();
     }
 }
