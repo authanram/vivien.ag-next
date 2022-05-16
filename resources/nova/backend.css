@@ -11,6 +11,10 @@ button.focus\:ring-offset-4:focus {
     box-shadow: none;
 }
 
+.help-text.help-text-error:first-letter {
+    text-transform: capitalize;
+}
+
 div.content > div.content {
     overflow-y: auto;
 }

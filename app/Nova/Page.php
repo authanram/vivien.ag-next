@@ -60,7 +60,12 @@ class Page extends Resource
 //                    ContentLayoutSectionFieldsCreator::makeFieldSelection(),
 //                ]),
 
-            BelongsToMany::make(__('Static Blocks'), 'staticBlocks', StaticBlock::class),
+            BelongsToMany::make(__('Static Blocks'), 'staticBlocks', StaticBlock::class)
+                ->fields(fn () => [
+                    Text::make(__('Slug'), 'slug')
+                        ->rules('required', 'alpha_dash')
+                        ->showOnPreview(),
+                ]),
         ];
     }
 }

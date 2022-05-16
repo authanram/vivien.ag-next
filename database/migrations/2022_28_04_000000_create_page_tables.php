@@ -38,7 +38,6 @@ class CreatePageTables extends Migration
             $table->foreignId('page_id')->constrained('pages')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('static_block_id')->constrained('static_blocks')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('slug')->nullable();
-            $table->string('section')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

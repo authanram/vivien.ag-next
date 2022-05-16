@@ -48,6 +48,7 @@ class StaticBlock extends Resource
                 ->from('name')
                 ->rules('required')
                 ->sortable()
+                ->hideFromIndex(fn () => $request->get('viaResource') === 'pages')
                 ->showOnPreview(),
 
             Markdown::make(__('Value'), 'value')
@@ -56,7 +57,12 @@ class StaticBlock extends Resource
                 ->hideFromIndex()
                 ->showOnPreview(),
 
-            BelongsToMany::make(__('Page'), 'pages', Page::class),
+            BelongsToMany::make(__('Page'), 'pages', Page::class)
+                ->fields(fn () => [
+                    Text::make(__('Slug'), 'slug')
+                        ->rules('required', 'alpha_dash')
+                        ->showOnPreview(),
+                ]),
         ];
     }
 }
