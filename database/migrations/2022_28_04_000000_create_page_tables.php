@@ -29,6 +29,7 @@ class CreatePageTables extends Migration
             $table->id();
             $table->foreignId('layout_id')->constrained('layouts')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('name')->unique();
+            $table->json('sections')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

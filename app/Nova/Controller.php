@@ -35,7 +35,7 @@ class Controller extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make()->showOnPreview(),
+            ID::make()->sortable()->showOnPreview(),
 
             Text::make(__('Name'), 'name')
                 ->sortable()

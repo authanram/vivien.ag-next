@@ -15,6 +15,10 @@ button.focus\:ring-offset-4:focus {
     text-transform: capitalize;
 }
 
+.CodeMirror {
+    border-radius: 0.25rem;
+}
+
 div.content > div.content {
     overflow-y: auto;
 }
