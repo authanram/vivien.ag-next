@@ -38,9 +38,9 @@ return [
             MenuItem::resource(Resources\Layout::class),
             MenuItem::resource(Resources\MenuItem::class),
             MenuItem::resource(Resources\Menu::class),
-            MenuItem::resource(Resources\Page::class),
             MenuItem::resource(Resources\Route::class),
             MenuItem::resource(Resources\StaticBlock::class),
+            MenuItem::resource(Resources\Page::class),
         ])->collapsable()->icon('globe-alt'),
 
         MenuSection::make(__('Access Control'), [

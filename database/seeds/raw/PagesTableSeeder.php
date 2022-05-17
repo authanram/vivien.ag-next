@@ -3,7 +3,6 @@
 return [
     [
         'id' => 1,
-        'layout_id' => 2,
         'name' => 'Welcome',
         'sections' => null,
         'created_at' => '2022-05-12 00:36:10',
@@ -12,7 +11,6 @@ return [
     ],
     [
         'id' => 2,
-        'layout_id' => 2,
         'name' => "Vortr\xc3\xa4ge",
         'sections' => null,
         'created_at' => '2022-05-12 00:36:10',
@@ -21,7 +19,6 @@ return [
     ],
     [
         'id' => 3,
-        'layout_id' => 2,
         'name' => 'Beratung',
         'sections' => null,
         'created_at' => '2022-05-12 00:36:10',
@@ -30,7 +27,6 @@ return [
     ],
     [
         'id' => 4,
-        'layout_id' => 2,
         'name' => 'Lerntraining',
         'sections' => null,
         'created_at' => '2022-05-12 00:36:10',
@@ -39,7 +35,6 @@ return [
     ],
     [
         'id' => 5,
-        'layout_id' => 2,
         'name' => 'Portrait',
         'sections' => null,
         'created_at' => '2022-05-12 00:36:10',
@@ -48,7 +43,6 @@ return [
     ],
     [
         'id' => 6,
-        'layout_id' => 2,
         'name' => 'Kontakt',
         'sections' => null,
         'created_at' => '2022-05-12 00:36:10',
@@ -57,7 +51,6 @@ return [
     ],
     [
         'id' => 7,
-        'layout_id' => 2,
         'name' => 'Impressum',
         'sections' => null,
         'created_at' => '2022-05-12 00:36:10',
@@ -66,7 +59,6 @@ return [
     ],
     [
         'id' => 8,
-        'layout_id' => 2,
         'name' => "Datenschutzerkl\xc3\xa4rung",
         'sections' => null,
         'created_at' => '2022-05-12 00:36:10',

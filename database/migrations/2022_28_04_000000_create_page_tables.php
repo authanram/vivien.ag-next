@@ -27,7 +27,6 @@ class CreatePageTables extends Migration
 
         Schema::create('pages', static function (Blueprint $table) {
             $table->id();
-            $table->foreignId('layout_id')->constrained('layouts')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('name')->unique();
             $table->json('sections')->nullable();
             $table->timestamps();
