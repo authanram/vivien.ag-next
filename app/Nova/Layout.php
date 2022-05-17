@@ -4,7 +4,6 @@ namespace App\Nova;
 
 use App\Models\Layout as Model;
 use Laravel\Nova\Fields\Code;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -56,8 +55,6 @@ class Layout extends Resource
             Text::make(__('Sections'), 'sections')
                 ->sortable()
                 ->onlyOnIndex(),
-
-            HasMany::make(__('Pages'), 'pages', Page::class),
         ];
     }
 }

@@ -18,7 +18,7 @@ use Spatie\Tags\HasTags;
  * @property Presenter $presenter
  * @method Presenter present()
  */
-class Event extends Model implements Filterable, Routable
+class Event extends Model implements Filterable//, Routable
 {
     use HasTags;
     use SoftDeletes;
