@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use App\Models\Layout;
 use App\Models\Page as Model;
+use Closure;
 use Exception;
 use Illuminate\Support\Str;
 use Laravel\Nova\Fields\BelongsTo;
@@ -31,8 +32,6 @@ class Page extends Resource
     ];
 
     protected static array $orderBy = ['name' => 'asc'];
-
-    protected ?array $f = null;
 
     public static function label(): string
     {
@@ -62,7 +61,7 @@ class Page extends Resource
                 ->sortable()
                 ->showOnPreview(),
 
-            ...$this->sectionFields($request),
+            //$this->sectionFields($this->resource),
 
             BelongsToMany::make(__('Static Blocks'), 'staticBlocks', StaticBlock::class)
                 ->fields(fn () => [
@@ -73,48 +72,37 @@ class Page extends Resource
         ];
     }
 
-    private function sectionFields($request): array
+    private function sectionFields($r)
     {
-        return collect($this->sections($request))
-            ->map(fn (string $section) => Panel::make(
-                Str::of($section)->title()->prepend('Section: ')->toString(),
-                [
-                    Select::make(__('Field Type'), 'sections->'.$section.'->type')
-                        ->options(['html' => 'HTML', 'markdown' => 'Markdown']),
+        return Panel::make('Fff', [
+            Text::make('foo'),
+        ]);
 
-                    Code::make(__('Value'), 'sections->'.$section.'->value')
-                        ->autoHeight()
-                        ->language('htmlmixed')
-                        ->hide()
-                        ->dependsOn(
-                            ['layout', 'sections->'.$section.'->type'],
-                            function (Code $field, NovaRequest $request) use ($section) {
-                                if ($request->get('sections->'.$section.'->type') === 'html') {
-                                    $field->show();
-                                }
-                            }
-                        ),
+        return [];
 
-                    Markdown::make(__('Value'), 'sections->'.$section.'->value')
-                        ->hide()
-                        ->dependsOn(
-                            ['layout', 'sections->'.$section.'->type'],
-                            function (Markdown $field, NovaRequest $request) use ($section) {
-                                if ($request->get('sections->'.$section.'->type') === 'markdown') {
-                                    $field->show();
-                                }
-                            }
-                        ),
-                ]),
-            )->toArray();
-    }
-
-    private function sections(NovaRequest $request): array
-    {
-        $layoutId = $this->resource->layout_id
-            ?? $request->get('current')
-            ?? $request->json('layout');
-
-        return Layout::find($layoutId)->sections ?? [];
+//        Panel::make('Sections', [
+//            Select::make(__('Section'), 'section')
+//                ->displayUsingLabels()
+//                ->dependsOn(
+//                    ['layout'],
+//                    function (Select $field, NovaRequest $request, FormData $formData) {
+//                        $sections = Layout::find($formData->layout)->sections;
+//                        $field->options(array_combine($sections, $sections));
+//                    }
+//                ),
+//
+//            Select::make(__('Type'), 'type')
+//                ->options(['html' => 'html', 'markdown' => 'markdown'])
+//                ->hide()
+//                ->dependsOn(
+//                    ['section'],
+//                    function (Select $field, NovaRequest $request, FormData $formData) {
+//                        if ($formData->section !== null) {
+//                            $field->show();
+//                        }
+//                    }
+//                ),
+//
+//        ]);
     }
 }
