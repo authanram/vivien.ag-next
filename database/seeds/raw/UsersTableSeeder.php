@@ -7,7 +7,7 @@ return [
         'email' => 'authanram@gmail.com',
         'email_verified_at' => null,
         'password' => '$2y$10$kuv7EdXAKFBhn84jLrS5guTSP2EspJI0n6RyiiBCYCrXpPQUDnYCO',
-        'remember_token' => 'kqEyADkulR5HqaHsvwrVzW6vvTbm5CjFRKljJ2H6UunkiRiQ9sDcO09MJs7w',
+        'remember_token' => 'S9r3NmjLJOAmy2hMjhvSINwUDSbyyfGUJsjvAl1KPSaXCpyhCXAE9clm7p5m',
         'created_at' => '2022-04-29 02:35:55',
         'updated_at' => '2022-04-29 02:35:55',
     ],

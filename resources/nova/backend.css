@@ -2,10 +2,6 @@ body {
     overflow-y: scroll !important;
 }
 
-.brand-logo {
-    color: rgba(var(--colors-primary-500));
-}
-
 .brand-logo:hover {
     opacity: .9;
 }
