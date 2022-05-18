@@ -9,7 +9,7 @@ return [
         'body' => "Sofort fiel mir meine selbst geh\xc3\xa4kelte lange Jacke aus Wollresten ein.  \r\nKunterbunt in St\xc3\xa4bchen geh\xc3\xa4kelt nach einer eigenen Idee.  \r\nT\xc3\xa4glich sa\xc3\x9f ich an dieser H\xc3\xa4kelarbeit weil ich es kaum erwarten konnte  \r\ndiese Jacke zu tragen. Dann war sie endlich fertig \xe2\x80\x93 rote Cordhosen  \r\nund braune Indianerstiefel aus weichem Leder trug ich dazu.  \r\nDamals hatte ich schon 3 Kinder \xe2\x80\x93 Ben trug ich im Tragetuch und in diesem  \r\nAufzug sah ich ganz sch\xc3\xb6n verwegen aus \xe2\x80\x93 die Haare lang und offen.  \r\nIm Dorf in dem wir wohnten war ich die Hippie Mutter, die ihr Kind  \r\nmit dem  gelben Mofa in den Kindergarten brachte. Ich sa\xc3\x9f auf dem Sitz  \r\nund Anika stand vor mir und hielt sich am Lenker fest!  \r\nWir genossen unsere gemeinsamen Fahrten und die anderen  \r\nM\xc3\xbctter starrten uns an!  \r\nAnika war ihr Leben lang ein Mensch, der sich was traute.  \r\nAls sie durch die Chemo Haarausfall bekam, hat sie sich eine Glatze, bei Yvonne ihrer  \r\nLieblingsfriseurin, rasieren lassen und sie ging dann ohne Kopfbedeckung in Hildesheim  \r\nspazieren mit voller Glatze \xe2\x80\x93 ich war dabei und habe sie echt bewundert f\xc3\xbcr ihre  \r\nChuzpe!  \r\nDie Leute haben schon geguckt \xe2\x80\x93 ihr war das mehr oder weniger egal, sie l\xc3\xa4chelte die Leute an!  \r\n  \r\nMeine selbst geh\xc3\xa4kelte Jacke war mein Symbol f\xc3\xbcr Unabh\xc3\xa4ngigkeit, Lebensfreude, lasst mich in Ruhe  \r\nmit eurer Spie\xc3\x9fb\xc3\xbcrgerlichkeit, ich lebe so mit meinen Kindern und meinem Mann wie ich will und es f\xc3\xbcr richtig halte.  \r\nRobert hatte ein rotes Mofa. Wir waren gl\xc3\xbccklich!  \r\n2020 Schreibnacht",
         'published_at' => '2022-02-05 05:30:18',
         'created_at' => '2022-02-05 08:32:32',
-        'updated_at' => '2022-05-18 15:56:51',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -20,7 +20,7 @@ return [
         'body' => "Kunst Glaubensbekenntnis:  \r\nIch glaube an die Fantasie die in jedem Menschen schlummert, der evolution\xc3\xa4re Funke,  \r\nder uns mitgegeben wird von Anfang an.  \r\nDer daf\xc3\xbcr Sorge tr\xc3\xa4gt, da\xc3\x9f wir gestalten, erfinden, l\xc3\xb6sen, weiterentwickeln  \r\nUns selbst und was um uns lebt und ist.  \r\n  \r\nIch glaube an das Freie Spiel dem der Fantasiefunke  \r\nZu Grunde liegt. Im Spiel erprobt sich die Fantasie,  \r\nschl\xc3\xa4gt Purzelb\xc3\xa4ume macht Feuerwerk mit Farben, singt, tanzt,  \r\nbaut, gestaltet sich in Form, Wort und Ausdruck.  \r\nIch glaube an die Kunst in ihrer vielf\xc3\xa4ltigen Weise.  \r\nSie verbindet das Gestern mit dem Heute, das Heute mit dem Morgen.  \r\nSo wird sie Teil der irdischen Ewigkeit, der Geschichte. Kunst \xc3\xbcberdauert.  \r\nIch glaube an das k\xc3\xbcnstlerische Schaffen, das aus dem Allt\xc3\xa4glichen herausragt, die Seele n\xc3\xa4hrt,  \r\nden Geist befl\xc3\xbcgelt, den K\xc3\xb6rper erfrischt.  \r\nIch glaube da wo Menschen Kunst als Teil ihres Lebens w\xc3\xa4hlen .  \r\nlebt die Hoffnung!  \r\nSybille Schreibreise Weimar 2019",
         'published_at' => '2020-10-03 20:35:10',
         'created_at' => '2020-10-04 00:35:27',
-        'updated_at' => '2022-05-18 15:56:28',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -42,7 +42,7 @@ return [
         'body' => "Wenn Stille aus der Landschaft spricht und sich das Licht in Schneekristallen bricht.  \r\nDas tiefe Wei\xc3\x9f mich staunend macht weil es erhellt die dunkle Nacht.  \r\nWenn Kinder Freiheit sp\xc3\xbcren weil sie sich in der Geschwindigkeit auf ihrem Schlitten verlieren.  \r\nWenn Klein und Gro\xc3\x9f im wei\xc3\x9fen Lebensraum sich finden, versuchen diesen Wintertraum  \r\nMiteinander zu ergr\xc3\xbcnden. Dann eint die Jahreszeit uns alle und das ist Lebensgl\xc3\xbcck  \r\nim besten Falle.  \r\nSybille Januar 2021",
         'published_at' => '2021-01-18 16:58:46',
         'created_at' => '2021-01-18 16:59:01',
-        'updated_at' => '2022-05-18 15:56:28',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -50,10 +50,10 @@ return [
         'uuid' => '9638f0a9-8c35-4907-8880-aa91aa5d0818',
         'slug' => 'schlanker-werden',
         'title' => 'Schlanker werden',
-        'body' => "Schlanker werden wir sp\xc3\xa4ter   \r\nNein! Es ist nun mal an der Zeit es in Angriff zu nehmen  \r\ndenn die Gesundheit leidet und das ist ein Zeichen da  \r\nkannst du nicht mehr ausweichen!  \r\nVerschenk die Schokolade, steck die Gummib\xc3\xa4rchen den  \r\nNachbarsjungen zu, bring deiner Freundin die Pralinen  \r\nund das Eis mit den N\xc3\xbcssen sowie die Schachtel mit den Negerk\xc3\xbcssen  \r\nd\xc3\xbcrfen die Enkel in einem Rutsch essen.  \r\nDann bist du frei von aller Versuchung und kannst den S\xc3\xbc\xc3\x9fkram vergessen.  \r\nSchlanker werden wir sp\xc3\xa4ter  \r\nNein! Dein Arzt hat dir gesagt: So geht es nicht weiter!  \r\nZum Trost l\xc3\xa4chelte er noch heiter! Sagte dir die Kilogramm, die du erreichen musst, damit dich nicht  \r\nHerzinfarkt, Diabetes und Hirnschlag hinterr\xc3\xbccks erdr\xc3\xbccken und deine Kinder,  \r\nf\xc3\xbcr dein Grab bald schon Blumen pfl\xc3\xbccken!  \r\nVon wegen, schlanker werde ich sp\xc3\xa4ter!  \r\nJetzt lebst du nach GLYX, Atkins, Kohlsuppe und Trennkost und kaufst dein Gem\xc3\xbcse bei BoFrost!  \r\nF\xc3\xa4hrst Rad, machst Seniorengymnastik und meditierst in der Hoffnung dass du satte  \r\n20 Kilo verlierst!  \r\nBleib dran \xe2\x80\x93 sagt dir dein Verstand und dein Mann! Der hat gut reden!  \r\nEr hat nicht deine Hormone! Die fiesen Dinger, die nichts loslassen wollen,  \r\ndie dich dazu bringen, dass Du lieber stirbst als auf Schokolade zu verzichten!  \r\nWie war das mit dem menschlichen Trachten und Dichten? Oder war das  \r\nder Geist der willig ist, das Fleisch aber schwach?  \r\nAch Schlanker werde ich sp\xc3\xa4ter, denn ich schaffe es nur in meiner Zeit!  \r\nDas nehme ich jetzt f\xc3\xbcr mich in Anspruch denn ich bin es leid!  \r\nKonsequent sein geht eine Weile, denn die Krise kommt bestimmt!  \r\nIn Form von Geburtstag, Frust, Libidoverlust dem du allem nicht entrinnst!  \r\nKein Mensch kann das, was Schokolade, Gummib\xc3\xa4rchen, Pralinen k\xc3\xb6nnen  \r\nDir f\xc3\xbcr kurze Momente, Entlastung g\xc3\xb6nnen!",
+        'body' => "**Schlanker werden wir sp\xc3\xa4ter**   \r\nNein! Es ist nun mal an der Zeit es in Angriff zu nehmen  \r\ndenn die Gesundheit leidet und das ist ein Zeichen da  \r\nkannst du nicht mehr ausweichen!  \r\nVerschenk die Schokolade, steck die Gummib\xc3\xa4rchen den  \r\nNachbarsjungen zu, bring deiner Freundin die Pralinen  \r\nund das Eis mit den N\xc3\xbcssen sowie die Schachtel mit den Negerk\xc3\xbcssen  \r\nd\xc3\xbcrfen die Enkel in einem Rutsch essen.  \r\nDann bist du frei von aller Versuchung und kannst den S\xc3\xbc\xc3\x9fkram vergessen.  \r\n  \r\n**Schlanker werden wir sp\xc3\xa4ter**  \r\nNein! Dein Arzt hat dir gesagt: So geht es nicht weiter!  \r\nZum Trost l\xc3\xa4chelte er noch heiter! Sagte dir die Kilogramm, die du erreichen musst, damit dich nicht  \r\nHerzinfarkt, Diabetes und Hirnschlag hinterr\xc3\xbccks erdr\xc3\xbccken und deine Kinder,  \r\nf\xc3\xbcr dein Grab bald schon Blumen pfl\xc3\xbccken!  \r\nVon wegen, schlanker werde ich sp\xc3\xa4ter!  \r\nJetzt lebst du nach GLYX, Atkins, Kohlsuppe und Trennkost und kaufst dein Gem\xc3\xbcse bei BoFrost!  \r\nF\xc3\xa4hrst Rad, machst Seniorengymnastik und meditierst in der Hoffnung dass du satte 20 Kilo verlierst!  \r\nBleib dran \xe2\x80\x93 sagt dir dein Verstand und dein Mann! Der hat gut reden!  \r\nEr hat nicht deine Hormone! Die fiesen Dinger, die nichts loslassen wollen,  \r\ndie dich dazu bringen, dass Du lieber stirbst als auf Schokolade zu verzichten!  \r\nWie war das mit dem menschlichen Trachten und Dichten? Oder war das  \r\nder Geist der willig ist, das Fleisch aber schwach?  \r\nAch Schlanker werde ich sp\xc3\xa4ter, denn ich schaffe es nur in meiner Zeit!  \r\nDas nehme ich jetzt f\xc3\xbcr mich in Anspruch denn ich bin es leid!  \r\nKonsequent sein geht eine Weile, denn die Krise kommt bestimmt!  \r\nIn Form von Geburtstag, Frust, Libidoverlust dem du allem nicht entrinnst!  \r\nKein Mensch kann das, was Schokolade, Gummib\xc3\xa4rchen, Pralinen k\xc3\xb6nnen  \r\nDir f\xc3\xbcr kurze Momente, Entlastung g\xc3\xb6nnen!",
         'published_at' => '2022-04-21 22:13:15',
         'created_at' => '2022-04-22 00:13:41',
-        'updated_at' => '2022-05-18 15:56:51',
+        'updated_at' => '2022-05-18 16:10:13',
         'deleted_at' => null,
     ],
     [
@@ -64,7 +64,7 @@ return [
         'body' => "Wer nicht will, findet Gr\xc3\xbcnde. Wer will findet Wege!  \r\nSagt sie und blickte ihm direkt in die Augen!  \r\nEr spielt mit der Zunge an seinem  Oberlippenpiercing,  \r\ndas kurze Flackern in seinem Blick sagt ihr, dass er verstanden hat.  \r\nSchluss mit Ausreden, Schluss mit T\xc3\xa4uschung und Selbstt\xc3\xa4uschung.  \r\nWenn er jetzt nicht zu sich kommt und Ernst macht, dann wird  \r\ndas nichts mehr, denkt sie und h\xc3\xa4lt die Stille zwischen ihnen aus.  \r\nJa, was ist dann der n\xc3\xa4chste Schritt, fragt er mehr sich selbst  \r\naber doch so laut, dass es auch ihr gilt.  \r\nDu musst dein \xc3\x84ndern leben \xe2\x80\x93 sagt sie!  \r\nH\xc3\xa4??? Was soll das hei\xc3\x9fen? Na ja den Weg finden -  \r\nbedeutet Ver\xc3\xa4nderung, den ersten Schritt gehen, bedeutet Ver\xc3\xa4nderung!  \r\nUnd das war bisher nicht dein Ding! Jetzt ist dein Wille gefragt und  \r\ndein Verstand, der Wege findet oder sagen wir mal den n\xc3\xa4chsten Schritt.  \r\nWas willst du \xc3\xbcberhaupt nicht? fragt sie.  \r\nMorgens aufstehen, war seine prompte Antwort.  \r\nDann finde einen halbtags Job der nachmittags anf\xc3\xa4ngt!  \r\nEcht jetzt? Fragt er ungl\xc3\xa4ubig. Ja klar wenn du morgens nicht  \r\nrauskommst dann ist das deine Suchanfrage.  \r\nEr tippt in den Laptop Halbtagsjob am Nachmittag ein und  \r\nWartet mit ihr zusammen was sich zeigt.  \r\nTats\xc3\xa4chlich! Sagt er! Eine Tankstelle sucht jemanden f\xc3\xbcr nachmittags  \r\nin Baiersbronn. Jetzt bin ich gespannt auf deine Gr\xc3\xbcnde! Sagt sie s\xc3\xbcffisant.  \r\nMh macht er, ich mach die online Bewerbung, wenn sie mir helfen.  \r\nKlar daf\xc3\xbcr bin ich da! Du willst also diesen Job? Warum willst du diesen Job?  \r\nIrgendwie muss es ja mal weitergehen bei mir! Ja das sehe ich auch so, sagt sie.  \r\nDas reicht als Grund! Also schreib: Sehr geehrte Damen und Herren kannst auch  \r\nSchreiben Hallo Leute \xe2\x80\xa6.. ihr braucht mich! Er grinst, sie l\xc3\xa4chelt!  \r\nEr schreibt, sie liest, macht Vorschl\xc3\xa4ge, er verbessert.  \r\nAls n\xc3\xa4chstes \xc3\xbcben wir dann das Vorstellungsgespr\xc3\xa4ch!",
         'published_at' => '2022-04-15 16:58:41',
         'created_at' => '2022-04-15 19:00:23',
-        'updated_at' => '2022-05-18 15:56:51',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -75,7 +75,7 @@ return [
         'body' => "Der perfekte Tag  \r\nPlane ihn! Erlebe ihn  \r\nMein Beispiel:  \r\n  \r\nAufstehen ohne Wecker  \r\nLesen im Bett bis ich hungrig bin  \r\nFr\xc3\xbchst\xc3\xbcck mit Leberwurst und Himbeer Joghurt  \r\nSchwimmen oder Radeln oder Wandern  \r\nAlleine oder mit Andern  \r\nMittagschlaf  \r\nKaffee mit Windbeutel  \r\nVerabredung mit einem lieben Menschen  \r\nGute Gespr\xc3\xa4che  \r\nMalen Schreiben oder Lesen bis es ganz dunkel ist  \r\nFilm  \r\nBaden in der Badewanne  \r\nRilke Projekt h\xc3\xb6ren im Bett  \r\nIrgendwann dabei einschlafen  \r\n  \r\nDen perfekten Tag auch als Geburtstagsgeschenk f\xc3\xbcr den Partner planen oder f\xc3\xbcr eine beste Freundin  \r\nDas wird ein unvergessliches Erlebnis!",
         'published_at' => '2021-03-03 09:16:01',
         'created_at' => '2021-03-03 09:16:18',
-        'updated_at' => '2022-05-18 15:56:28',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -86,7 +86,7 @@ return [
         'body' => "Zupf von den roten Beeren dir einen Mundvoll  \r\ngenie\xc3\x9fe die saure S\xc3\xbc\xc3\x9fe  \r\nSchm\xc3\xbccke den Tisch mit Sonnenblumen und Lilien  \r\nFaul beginnt dein Tag  \r\nSpiel mit deinen Fantasien  \r\nVergiss die Pflicht \xe2\x80\x93 den Streit \xe2\x80\x93 die Weltkrise  \r\ndenke wie ein Kind im Augenblick  \r\nGrashupfer  -  Seifenblasen  -  Purzelbaum  \r\nsind jetzt das Wichtigste der Welt  \r\nsei gl\xc3\xbccklich  \r\ntrotz allem",
         'published_at' => '2021-08-13 02:44:36',
         'created_at' => '2021-08-13 06:45:01',
-        'updated_at' => '2022-05-18 15:56:28',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -97,7 +97,7 @@ return [
         'body' => "Es wird Zeit zu leben  \r\nUnd die Liebe sagt leise jetzt und hier  \r\n  \r\nWas bleibt ist der Moment an dem ich dir, im vor\xc3\xbcbergehen ein L\xc3\xa4cheln schenk.  \r\nEs w\xc3\xa4rmt dich und auch mich, du tr\xc3\xa4gst es weiter und bist dir gut, dadurch w\xc3\xa4chst in dir ein klein bisschen Mut.  \r\nDenn die Liebe sagt leise jetzt und hier  -  zu Dir und zu mir.  \r\n  \r\nWas bleibt ist die Stunde in der du mir zuh\xc3\xb6rst, mich siehst und versuchst mich zu verstehen.  \r\nMeine Fragen innerlich mitzutragen, zu sp\xc3\xbcren was macht Sinn und zu erkennen wer ich gerade bin.  \r\nDenn die Liebe sagt leise jetzt und hier -  zu Dir und zu mir.  \r\n  \r\nWas bleibt ist der Tag an dem ich mit dir die Welt entdecke, im Wald mich hinter B\xc3\xa4umen verstecke.  \r\nWir die Wolken betrachten, den V\xc3\xb6geln lauschen, dem Bach zu h\xc3\xb6ren bei seinem Rauschen.  \r\nDenn die Liebe sagt leise jetzt und hier \xe2\x80\x93 zu Dir und zu mir.  \r\n  \r\nWas bleibt ist die Zeit die wir uns schenken ohne an die Arbeit, das Geld. Politik  und die Sorgen zu denken.  \r\nDie Zeit in der die Seelen miteinander verbunden und wir dadurch an Leib und Seele gesunden.  \r\nDenn die Liebe sagt leise jetzt und hier \xe2\x80\x93 zu Dir und zu mir.",
         'published_at' => '2021-01-03 17:09:18',
         'created_at' => '2021-01-03 18:10:17',
-        'updated_at' => '2022-05-18 15:56:28',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -108,7 +108,7 @@ return [
         'body' => "In jedem Menschen ist ES angelegt.  \r\nJeder Mensch k\xc3\xb6nnte die Verwirklichung eines wunderbaren Traumes sein, einer Geschichte, eines Kunstwerks.  \r\nJeder Mensch k\xc3\xb6nnte eine tiefe wahrhafte Bereicherung sein,  \r\nein Ph\xc3\xa4nomen, eine lebendige Sinfonie.  \r\nJeder Mensch ein Stern, der leuchtet.  \r\nJeder Mensch ein wunderbares Wesen.",
         'published_at' => '2021-09-08 10:37:27',
         'created_at' => '2021-09-08 10:37:55',
-        'updated_at' => '2022-05-18 15:56:28',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -119,7 +119,7 @@ return [
         'body' => "Reise mit Freude  \r\ndanach sehnt sich mein Wesen  \r\n einmal wieder sein \xe2\x80\x93  \r\n im  \r\nnie Dagewesen.  \r\nUnterwegs sein mit offenen Sinnen,  \r\nden Morgen in einer fremden Stadt beginnen.  \r\nGer\xc3\xbcche die mich locken, Sprache die mich verzaubert,  \r\nGesichter die  ich einmal im Leben nur sehe -  weil ich ja weitergehe.  \r\n  \r\nPl\xc3\xa4tze und Kirchen, Cafes und Museen will ich so gerne besuchen,  \r\nund sehen. Dasein im Jetzt mit Stift und Papier, mit Frauen die schreiben  \r\nim Hintergrund spielt ein Klavier.  \r\nReden und h\xc3\xb6ren, Geschichten die bet\xc3\xb6ren, Gedichte die tiefe Gef\xc3\xbchle  \r\nerwecken, Neues in Dir und mir entdecken!  \r\nWasser und Sand, Sonne und Strand, Wind und Wellen das sind die Quellen  \r\ndie niemals versiegen. Die Sinne erwecken, mich und dich mit Leben anstecken!  \r\nReise mit Freude  - du und ich - die Welt entdecken!!!  \r\nSchreibnacht im August Sybille",
         'published_at' => '2020-09-12 14:28:52',
         'created_at' => '2020-09-12 16:30:07',
-        'updated_at' => '2022-05-18 15:56:28',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -141,7 +141,7 @@ return [
         'body' => "Dar\xc3\xbcber \xc3\xa4rgere ich mich nicht mehr \xe2\x80\x93 ich bleibe gelassen  \r\nSchlechtes Wetter, nicht auffindbarer Schl\xc3\xbcssel, kein Kleingeld f\xc3\xbcr die Parkuhr, eine zerbrochene Sch\xc3\xbcssel!  \r\nEin Loch im Pulli, ein Klecks auf der Hose, meine windschiefe Frisur, eine abgelaufene Konservendose!  \r\nRasenm\xc3\xa4her am Samstag, Schlange an der Kasse, Werbeanruf am Telefon, eine kl\xc3\xa4ffende Hunderasse  \r\nSaure Milch, Wartezeit beim Arzt, \xc3\x96ffnungszeiten der Post, im Stau stehen auf einer langen Fahrt!  \r\nEs liegt bei mir wie ich mich f\xc3\xbchle ob ich mich in jedes kleine Problemchen reinw\xc3\xbchle oder mir  \r\nSage: Vieles ist  einfach normal und ist mir deshalb Sch\xe2\x80\xa6 egal!!!",
         'published_at' => '2021-01-03 18:05:58',
         'created_at' => '2021-01-03 18:08:38',
-        'updated_at' => '2022-05-18 15:56:28',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -152,7 +152,7 @@ return [
         'body' => "Es war einmal ein kleines, unschuldiges M\xc3\xa4dchen, dass mit gro\xc3\x9fen Augen die Welt betrachtete.  \r\nWo kommen die Schneeflocken her? Fragte sie in einer  verschneiten Winternacht.  \r\nWoher wissen die V\xc3\xb6gel wo S\xc3\xbcden ist? Fragte sie im Herbst  \r\nWie finden die Bienen auf den Blumenwiesen zu ihrem Bienenstock zur\xc3\xbcck? Fragte sie im Sommer  \r\nWie schaffen es die Fr\xc3\xb6sche ihren Teich zu finden in dem sie geboren wurden?  Fragte sie im Fr\xc3\xbchling  \r\nNie h\xc3\xb6rten ihre Fragen auf! Die Erwachsenen waren es m\xc3\xbcde ihr st\xc3\xa4ndig etwas Erkl\xc3\xa4ren zu m\xc3\xbcssen.  \r\nUnd sie fand es seltsam, dass Erwachsene kein Interesse hatten an all diesen Besonderheiten.  \r\nSo erz\xc3\xa4hlte sie ihrem Kater Mikesch was sie wusste und was sie wissen wollte.  \r\nDabei kraulte sie ihn und er h\xc3\xb6rte ihr meist geduldig zu.  \r\nEines Tages war sie wieder unterwegs in den W\xc3\xa4ldern da h\xc3\xb6rte sie pl\xc3\xb6tzlich wunderbare Fl\xc3\xb6tenmusik.  \r\nSie blieb stehen und lauschte. Woher kam die Musik? Sie lief weiter am Bach entlang bis zu einer uralten Holz Br\xc3\xbccke.  \r\nDort sa\xc3\x9f ein kleines M\xc3\xa4nnchen das spielte selbstvergessen auf seiner Fl\xc3\xb6te.  \r\nDas M\xc3\xa4dchen lauschte solange bis das M\xc3\xa4nnchen sein Lied beendet hatte.  \r\nDann trat es herzu! Wie wundersch\xc3\xb6n du spielst! Oh danke sagte es. Wie hast du das gelernt?  \r\nwollte das M\xc3\xa4dchen wissen! Wei\xc3\x9ft du ich habe es gelernt weil ich mich sehr allein gef\xc3\xbchlt habe in dieser Welt.  \r\nEs gab niemand, der sich f\xc3\xbcr mich interessiert hat und da blieb mir nichts anderes \xc3\xbcbrig als mit mir selbst  \r\ngut Freund zu werden und mir die Zeit mit Sch\xc3\xb6nem zu vertreiben! So habe ich das Fl\xc3\xb6ten spielen gelernt  \r\nund ich erfreue mich jeden Tag daran. Ach sagte das M\xc3\xa4dchen: Ich m\xc3\xb6chte auch etwas Lernen das mir Freude macht!  \r\nNur zu finde heraus was es sein soll! Riet ihr das M\xc3\xa4nnchen. Wie mache ich das? Fragte sie interessiert!  \r\nProbiere viel aus und da wo dein Herz zu singen anf\xc3\xa4ngt und du dich selbst ganz vergisst \xe2\x80\x93 das ist es!!!  \r\nDas lerne und vertiefe dann!  Das klingt gut!  antwortete sie. Ausprobieren ist spannend das tue ich gerne!  \r\nAlso so wirst du deinen Schatz finden! Glaube mir!  \r\nDas M\xc3\xa4dchen bedankte sich und bat das M\xc3\xa4nnchen noch einmal etwas zu spielen.  \r\nSie lauschte und dachte begl\xc3\xbcckt: Ich werde das finden was mich gl\xc3\xbccklich macht!!!",
         'published_at' => '2020-06-28 18:32:41',
         'created_at' => '2020-06-28 22:33:56',
-        'updated_at' => '2022-05-18 15:56:28',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -163,7 +163,7 @@ return [
         'body' => "Lass alles los am Abend sei nur m\xc3\xbcde und bereit f\xc3\xbcr  \r\ndie Nacht mit ihren Gaben tr\xc3\xa4ume, tr\xc3\xa4ume weit!  \r\nLerne Lebe Lache Weine sei dir gut und komm mit dir ins Reine  \r\nPflanze wilden Mut und verwegene Hoffnung in die Herzen  \r\nVergiss niemals besonders mit den Kindern immer wieder auch zu scherzen  \r\nMache dir das Leben leicht denn du musst es leben  \r\nWerde wie ein K\xc3\xa4tzchen das nur tut was es wirklich will - das wird dir das Gef\xc3\xbchl von Freiheit geben  \r\nFreue dich mit am Gl\xc3\xbcck der Andern  \r\nWeine f\xc3\xbcr dich leis und still  \r\nSchlafe ein mit Musik sie ber\xc3\xbchrt die Seele wei\xc3\x9f was ist und werden will  \r\nPflege deine K\xc3\xbcnste bei Tag und auch bei Nacht  \r\nWeigere dich -  zu denken was alle denken sondern  \r\nTr\xc3\xa4ume du am k\xc3\xbchnsten  \r\nStell dir vor ALLES  nimmt f\xc3\xbcr dich ein gutes Ende  \r\nH\xc3\xb6re auf dein Seelenlied  \r\n\xc3\x96ffne t\xc3\xa4glich deine H\xc3\xa4nde ganz egal was auch geschieht  \r\nBaue Br\xc3\xbccken wo du kannst denn du kannst  klar denken und so auf deine Art die Geschicke dieser  \r\nErde ein klein bisschen lenken  \r\nUmarme Freud und Leid im Leben denn alles geh\xc3\xb6rt dazu umarme auch die Menschen denn sie sind wie ich und du  \r\nSchreibe so oft es dir danach ist,  denk nicht das bringt doch nichts denn du hast es oft erfahren das was zu Wort kommt birgt letztlich keine Gefahren!  \r\nOnline Schreibnacht November 2020",
         'published_at' => '2022-02-05 07:37:00',
         'created_at' => '2022-02-05 08:39:09',
-        'updated_at' => '2022-05-18 15:56:51',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -174,7 +174,7 @@ return [
         'body' => "Es trennt den Herbst vom Sommer blo\xc3\x9f ein zarter Schleier.*  \r\nSo sanft und mild der \xc3\x9cbergang  \r\nKaum merklich geht das Licht ins Gold  auch sp\xc3\xbcrst  \r\ndu  jetzt  den neuen Wind.  \r\nDie Bl\xc3\xa4tter sind noch an den B\xc3\xa4umen, manch Eines rot  \r\nund Herbstzeitlose schm\xc3\xbccken Wiesen.  \r\nDas Feld ist nur noch braune Scholle.  \r\nDie Luft riecht erdig und ist feucht.  \r\nDer Winterraps w\xc3\xa4chst dir entgegen du gr\xc3\xbc\xc3\x9ft  \r\nIhn freudig im Vorbei  \r\nEr wird die n\xc3\xa4chsten Wochen auf dich warten!  \r\nDein Herz tr\xc3\xa4gt gr\xc3\xbcn und gelb und rot  \r\nEs liebt die Jahreszeiten es wei\xc3\x9f dass alles  \r\ngehen muss und doch ist da ein Bleiben.  \r\n  \r\nSchreibnacht September Sybille  \r\n* Giannina Wedde Anfangssatz",
         'published_at' => '2020-09-26 00:30:12',
         'created_at' => '2020-09-26 00:33:47',
-        'updated_at' => '2022-05-18 15:56:28',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -185,7 +185,7 @@ return [
         'body' => "Morgensonne, die mich begr\xc3\xbc\xc3\x9ft,  \r\nein L\xc3\xa4cheln in meiner Seele wird wach.  \r\nVogelgezwitscher, Gespr\xc3\xa4ch der Natur, gerne w\xc3\xbcrde ich verstehen.  \r\nLauschend halte ich still, ber\xc3\xbchrt von \xe2\x80\x93 Etwas -  \r\nUralte Welt, schon lange vor mir dagewesen, wird sein wenn ich vergehe.  \r\nAm Meer wogt mir entgegen \xe2\x80\x93 Vergangenheit \xe2\x80\x93 Gegenwart und Zukunft.  \r\nAuch in der Sternendichte, blinkt und glitzert, das was war und ist.  \r\nPinienw\xc3\xa4lder, die meine Tr\xc3\xa4ume s\xc3\xa4umen, bewachen.  \r\nGl\xc3\xbchw\xc3\xbcrmchen erhellt das Dunkel und l\xc3\xa4sst mich lachen.  \r\nDer Sch\xc3\xb6pfer hat Humor.",
         'published_at' => '2020-05-21 14:29:41',
         'created_at' => '2020-05-21 14:30:25',
-        'updated_at' => '2022-05-18 15:56:28',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -207,7 +207,7 @@ return [
         'body' => "Jenseits von richtig und falsch da liegt ein Land  \r\nda treffen wir uns. Rumi  \r\n  \r\nDu siehst es durch deine Brille  \r\nIch sehe es durch meine  \r\nDeine Sicht und meine Sicht erkl\xc3\xa4ren sich uns  \r\noberfl\xc3\xa4chlich gesehen erst mal nicht  \r\nDein Ego und mein Ego beide Egos wollen recht behalten  \r\nBei jungen Egos noch verst\xc3\xa4ndlich  \r\nl\xc3\xa4cherlich wirkt es dann bei den Alten  \r\nDu und ich kommen aus unterschiedlichen St\xc3\xa4mmen  \r\ndie Gleiches unterschiedlich beurteilen und benennen  \r\noder  \r\nDu bist vom Mars und ich komme von der Venus  \r\nDu bist Wasser ich bin Licht  \r\nDu bist Flamme ich bin Erde  \r\nWas muss geschehen damit zwischen uns die  \r\nWeisheit w\xc3\xa4chst  \r\nund Friede werde?  \r\n  \r\nFebruar 2021",
         'published_at' => '2021-03-02 01:23:13',
         'created_at' => '2021-03-02 01:23:57',
-        'updated_at' => '2022-05-18 15:56:28',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -240,7 +240,7 @@ return [
         'body' => "Die V\xc3\xb6gel ziehen fort in weite Ferne  \r\nDu sp\xc3\xbcrst das Kalt am morgen  \r\nTr\xc3\xa4gst die warmen Schuhe  \r\nDas Hagebuttenrot ist nun dein Trost  \r\nUnd die letzten Rosen auch.  \r\nNoch einmal sp\xc3\xbcrst du Sommer denn  \r\nDie sp\xc3\xa4ten Sonnenblumen bl\xc3\xbchen noch  \r\nUnd du denkst: Ach wie sch\xc3\xb6n war das doch!  \r\nNimmst Abschied l\xc3\xa4sst die V\xc3\xb6gel ziehen  \r\nUnd bist dankbar, dass die Sonnenblumen bl\xc3\xbchen!  \r\n  \r\nOnline Schreibnacht Sybille",
         'published_at' => '2020-10-23 06:58:37',
         'created_at' => '2020-10-23 08:59:05',
-        'updated_at' => '2022-05-18 15:56:28',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -251,7 +251,7 @@ return [
         'body' => "Die Stille liegt in allem  \r\nIn Frau im Mann im Kinde  \r\nIn Blume Baum Gew\xc3\xa4sser Rinde  \r\nSie spricht mit stiller Stimme vom Dasein und vom Sinn  \r\nSie gibt mir Antwort wer ich bin  \r\n  \r\n  \r\nDie Stille wirkt in allem  \r\nIm Kerzenlicht in Mondesnacht und wenn du lachst  \r\nauch im Gedicht  \r\nIn Tr\xc3\xa4nen und in Heiterkeit und jedem Angesicht  \r\nSie spricht mit stiller Stimme vom Abend- und vom Morgenlicht  \r\nZeigt dir den Weg  \r\nund  \r\nFl\xc3\xbcstert  \r\nf\xc3\xbcrcht dich nicht  \r\n  \r\n  \r\nDie Stille ruht in allem  \r\nIm Blatt im Traum im Wolken ziehen  \r\nSie ruht im Vogelnest  im Immergr\xc3\xbcn und auch in jeder Sprache  \r\nspricht in der Musik vom  Leben und Danache  \r\nDie Stille will dich finden  \r\nDamit du selbst dich findest und aus der Stille dann heraus  \r\ndein Leben neu ergr\xc3\xbcndest und erfindest",
         'published_at' => '2021-01-30 01:11:01',
         'created_at' => '2021-01-30 01:11:24',
-        'updated_at' => '2022-05-18 15:56:28',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -262,7 +262,7 @@ return [
         'body' => "Wir treiben auf dem Flo\xc3\x9f der Zeit  \r\ndurch ruhige Wasser und durch wilde St\xc3\xbcrme  \r\nWir halten durch und sind bereit  \r\ndenn das was uns erwartet ist das Ende unserer Zeit  \r\nWas gibt uns Mut und Kraft und Halt  \r\nEs ist der Wille zu \xc3\xbcberleben  \r\nDie Hoffnung wurde als Segel uns allen mitgegeben  \r\nWir treiben auf dem Flo\xc3\x9f der Zeit dem Horizont  \r\nentgegen  \r\nGenie\xc3\x9fen wir die kurze Fahrt denn das ist unser Leben  \r\nSchreibnacht im Juli Sybille",
         'published_at' => '2022-02-05 08:05:27',
         'created_at' => '2022-02-05 09:06:59',
-        'updated_at' => '2022-05-18 15:56:51',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -284,7 +284,7 @@ return [
         'body' => "Bauch Beine Po  \r\nWenn ich daran denke werde ich nicht froh  \r\nBauch Beine Po  \r\nwerden sich nur dann ver\xc3\xa4ndern  \r\nwenn ich es schaffe an allem S\xc3\xbc\xc3\x9fen gelassen vorbei zu schlendern  \r\nBauch Beine Po  \r\nNehm ich mit ins Grab und hab mein Leben dann genossen  \r\nmit Sekt und ohne Sprossen mit Schmalzgeb\xc3\xa4ck und Himbeereis  \r\nmir doch egal ich mag den Schei\xc3\x9f!  \r\nStatt  \r\nBauch Beine Po  \r\nSteh ich auf  \r\nHerz G\xc3\xbcte Flow  \r\nUnd das ist besser so  \r\nDenn  \r\nHerz G\xc3\xbcte Flow  \r\nMacht mich und andere froh!",
         'published_at' => '2022-04-15 16:52:01',
         'created_at' => '2022-04-15 18:52:20',
-        'updated_at' => '2022-05-18 15:56:51',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -317,7 +317,7 @@ return [
         'body' => "Dein Ich hat viele Gesichter  \r\nWelches magst du am liebsten?  \r\nDas Gelassene, das Neugierige,  \r\ndas Konzentrierte?  \r\nWelches magst du am wenigsten?  \r\nDas Traurige, das Entt\xc3\xa4uschte,  \r\ndas \xc3\x84ngstliche, das Verletzte  \r\noder das Besch\xc3\xa4mte?  \r\n  \r\nStimmungen kommen und gehen  \r\nDeine Gesichter kommen und gehen  \r\nNimm sie so an, wie sie kommen dann gehen  \r\nSie auch wieder und kommen dann wieder wenn deine Gef\xc3\xbchle  \r\nSie rufen  \r\nVerdr\xc3\xa4ngst du sie, deine Gef\xc3\xbchle und damit deine Gesichter  \r\nDann wirst du unecht, unecht gelassen, unecht neugierig,  \r\nunecht konzentriert,  \r\nunecht fr\xc3\xb6hlich einfach  \r\nunecht!  \r\nSei echt!",
         'published_at' => '2020-10-13 09:27:34',
         'created_at' => '2020-10-13 09:27:55',
-        'updated_at' => '2022-05-18 15:56:28',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -328,7 +328,7 @@ return [
         'body' => "Schneegl\xc3\xb6ckchen sein  \r\nso wei\xc3\x9f so klein so fein  \r\nBotin f\xc3\xbcr diesen einen Fr\xc3\xbchlingsbeginn  \r\nDasein in Allem was ist  \r\ndas ist der Sinn  \r\nso bescheiden so einfach so sch\xc3\xb6n  \r\nauf seinem Platze zu stehen  \r\nvon der Sonne beschienen vom Wind gewiegt  \r\nvom Gras umschmeichelt  \r\ndabei sp\xc3\xbcren  \r\nDas Leben siegt  \r\nSich nicht sorgen \xc3\xa4rgern und hetzen  \r\nalles wird gut  \r\nwenn du es gut sein l\xc3\xa4sst  \r\ndich nicht widersetzen  \r\ndich umschauen freuen genie\xc3\x9fen  \r\nSchneegl\xc3\xb6ckchen sein  \r\ndas kann ich f\xc3\xbcr mich selbst beschlie\xc3\x9fen!  \r\n Online Schreibnacht M\xc3\xa4rz Sybille",
         'published_at' => '2021-03-17 21:39:10',
         'created_at' => '2021-03-17 21:40:03',
-        'updated_at' => '2022-05-18 15:56:28',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -339,7 +339,7 @@ return [
         'body' => "Ich bin die Fr\xc3\xbchaufsteherin, die Morgens Musikh\xc3\xb6rerin, die Wolkenschauerin, die Luftschl\xc3\xb6sser Bauerin, die aus dem Bettspringerin,  \r\nKleider Farbkartenw\xc3\xa4hlerin aber keine Erbsenz\xc3\xa4hlerin!  \r\nIch bin die 6 Minuten Tagebuchschreiberin, die sich mit Weledacreme Einreiberin, die Kaffee ohne Koffein Trinkerin, die Morgenmuffel Alleinsein Wollerin,  \r\ndie im Morgengrauen Fahrradfahrerin, die Naturfanatikerin, die Kilometermacherin, die durchs Leben Stramplerin.  \r\nIch bin die Windbraut, die Helmtr\xc3\xa4gerin, die Buckelrunterraserin, die Waldfee und die Kranichbeobachterin, die Kinderliebhaberin und die Freiheitsk\xc3\xa4mpferin,  \r\ndie Feministin auch war ich mal Gitarristin!  \r\nIch bin halt was ich bin  \r\nDie Frohnatur, die Arbeitsame, die Kollegin, die heimliche Flamme, die Ratgeberin, die B\xc3\xbccherfresserin, die Antipasti Esserin.  \r\nDie Gartenfee, die Malerin, die Zitatensammlerin, die Blumenfreundin, die Vogelkennerin, die Beerensammlerin, die Schneckenhaussucherin  \r\nDie Pf\xc3\xbctzenspringerin, die M\xc3\xbctzentr\xc3\xa4gerin, die Gruppenleiterin, die Suppenk\xc3\xb6chin, die Schnittlauchbrote Liebhaberin, die Brillensucherin,  \r\ndie Himbeers\xc3\xbcchtige, die Reiseleiterin, die Dichterfrau, die Rampensau, die Autoschl\xc3\xbcsselverlegerin, die immer P\xc3\xbcnktliche, die Delegiererin,  \r\ndie Applauskassiererin.  \r\nUnd das bin ich auch!  \r\nDie Fr\xc3\xbchschlafengeherin, die Kuscheldeckenliebhaberin, die Nachtmusikh\xc3\xb6rerin, die Schnelleinschl\xc3\xa4ferin!  \r\nDie bei offenem Fensterschlafende, die Gebeteaufsagende.  \r\nSchreibnacht September",
         'published_at' => '2022-02-05 06:43:36',
         'created_at' => '2022-02-05 08:57:06',
-        'updated_at' => '2022-05-18 15:56:51',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -350,7 +350,7 @@ return [
         'body' => "Das Meer in mir  \r\nEs wogt, es gischtet, es bricht an den Strand  \r\nIst salzige K\xc3\xbchle und wei\xc3\x9fer Schaumkronenrand  \r\nEs tr\xc3\xa4gt mich hinaus den Horizont als Ziel  \r\nEs tr\xc3\xa4gt mich hinein im Wellenspiel  \r\nMuscheln, Seetang, M\xc3\xb6wenschrei geh\xc3\xb6ren  \r\nzusammen und sagen mir:  \r\nDu bist frei!  \r\nDein Sein ist wie das Kommen und Gehen der Wellen  \r\nWie Morgen und Abend! Wie Ebbe und Flut!  \r\nDer ewige Zyklus schenkt Ruhe und Mut.  \r\nDem Himmel so nah, dem Meer so weit  \r\nDoch alles in mir  - meine kleine Ewigkeit!",
         'published_at' => '2022-04-15 14:56:56',
         'created_at' => '2022-04-15 18:58:41',
-        'updated_at' => '2022-05-18 15:56:51',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -361,7 +361,7 @@ return [
         'body' => "Ein Text von mir, der ver\xc3\xb6ffentlicht wurde in der Zeitschrift vom  \r\nW\xc3\xb6rnersberger Anker  M\xc3\xa4rz 2022  \r\n  \r\nMein Herz sagt: Kunst  \r\n  \r\nKunst und Resilienz  \r\n  \r\nIn jedem Menschen ist ES angelegt.  \r\nJeder Mensch k\xc3\xb6nnte die Verwirklichung eines wunderbaren Traumes sein, einer Geschichte, eines Kunstwerks.  \r\nJeder Mensch k\xc3\xb6nnte eine tiefe wahrhafte Bereicherung sein,  \r\nein Ph\xc3\xa4nomen, eine lebendige Sinfonie.  \r\nJeder Mensch ein Stern, der leuchtet.  \r\nJeder Mensch ein wunderbares Wesen.  \r\nSybille Seuffer  \r\n  \r\nEiner meiner Lieblingstexte, der zum Ausdruck bringt um was es mir in meinem Leben und auch in meiner Arbeit geht.  \r\nSeit 25 Jahren bin ich kreativ unterwegs. In uns allen sprudelt eine unersch\xc3\xb6pfliche Quelle die uns dr\xc3\xa4ngt, dass in die Welt zu bringen was unser Eigenes ist. Malen, Zeichnen, Schreiben, Musizieren, Tanzen, Singen, Fotografieren, Basteln, N\xc3\xa4hen, Kochen, Handarbeiten, Handwerkern  \r\nund vieles mehr \xe2\x80\xa6.  \r\nalles M\xc3\xb6glichkeiten um unsere Kreativit\xc3\xa4t zu leben. Und doch h\xc3\xb6re ich immer wieder: \xe2\x80\x9eJa stimmt, es tut mir gut zu malen, aber alleine  \r\ntue ich es nicht, nur hier bei dir in der Malwerkstatt.\xe2\x80\x9c oder \xe2\x80\x9eJa stimmt, das kreative Schreiben macht mich zufrieden und schenkt mir wunderbare  \r\nMomente wenn ich euch meine Texte vorlesen kann und eine Resonanz bekomme, aber allein schreiben zu Hause nein, das krieg ich nicht hin.\xe2\x80\x9c  \r\nEs scheint ein l\xc3\xa4ngerer Weg zu sein, den wir gehen m\xc3\xbcssen bis wir innerlich entflammt sind und gar nicht mehr anders k\xc3\xb6nnen als sch\xc3\xb6pferisch t\xc3\xa4tig zu sein.  \r\nMein Anliegen geht dahin, auf diesem Weg zu begleiten  - f\xc3\xbcr Menschen, die gerne zeichnen, malen und kreativ Schreiben wollen, die in diesen  \r\nBereichen immer wieder neue Herausforderungen suchen und ihre Eigenwirksamkeit sp\xc3\xbcren wollen.  \r\nDabei beobachte ich, dass Menschen zur Ruhe kommen, sich entspannen, die Waschmaschine im Kopf still steht, Freude sich einstellt,  \r\ndas Gef\xc3\xbchl \xc3\xbcber sich hinauszuwachsen aus den Augen strahlt. Und diese Erfahrungen wirken nach, bis in den Alltag hinein.  \r\nDas best\xc3\xa4tigen mir  auch meine Teilnehmerinnen und ein Teilnehmer in der Malwerkstatt einer psychosozialen Einrichtung. Diese Malwerkstatt leite ich seit 8 Jahren.  \r\nMenschen, die Schweres erlebt haben,  \r\ndie seelisch belastet sind, die in der Klinik waren, die nicht mehr ihren Beruf aus\xc3\xbcben k\xc3\xb6nnen oder die vor\xc3\xbcbergehend pausieren um wieder Boden unter den F\xc3\xbcssen  \r\nzu bekommen, besuchen diese Malwerkstatt, einmal in der Woche f\xc3\xbcr 4 Stunden. Kreativsein st\xc3\xa4rkt den Menschen, schenkt die Erfahrung, dass jeder Mensch mehr ist  \r\nals sein Problem, seine Schw\xc3\xa4che, sein Unverm\xc3\xb6gen, seine Krankheit. Sch\xc3\xb6nes schaffen ist zutiefst befriedigend und ist ein Geschenk an die Welt. Jeder hat etwas zu geben.  \r\nIn Gemeinschaft kreativ sein hat etwas sehr friedliches. Das strahlt auch  \r\nauf Besucher der Malwerkstatt aus, die gar nicht selbst malen sondern einfach dabei sitzen, ihren Kaffee trinken, ein bisschen zuschauen und die Zeitung lesen.  \r\nKunst kommt von K\xc3\xb6nnen.  \r\nK\xc3\xb6nnen stellt sich durch regelm\xc3\xa4\xc3\x9figes Tun ein. Inzwischen sind meine Teilnehmerinnen und mein Teilnehmer in der Malwerkstatt l\xc3\xa4ngst an dem Punkt angelangt, dass  \r\nsie mit ihren Bildern an die \xc3\x96ffentlichkeit gehen k\xc3\xb6nnen. Drei Vernissagen haben wir schon veranstaltet. Das war nat\xc3\xbcrlich jedes Mal ein Highlight und eine wunderbare  \r\nErfahrung f\xc3\xbcr die Gruppe. Bilder wurden bestaunt, hochgelobt und verkauft. Noch Wochen sp\xc3\xa4ter schlugen unsere Herzen h\xc3\xb6her wenn wir \xc3\xbcber unsere letzte Vernissage sprachen.  \r\nAls Gruppe konnten wir etwas schaffen, was dem Einzelnen nicht m\xc3\xb6glich gewesen w\xc3\xa4re. Das st\xc3\xa4rkt das Wir Gef\xc3\xbchl und vertieft die Zugeh\xc3\xb6rigkeit.  \r\nUnter   https://svr.zz-zeile.de/treppe-malwerkstatt/   \r\nk\xc3\xb6nnt ihr die Kunstwerke anschauen!  \r\nZeichnen, Malen und kreativ Schreiben macht gl\xc3\xbccklich, sage ich aus eigener Erfahrung und m\xc3\xb6chte das an keinem Tag mehr missen. Eine Tankstelle f\xc3\xbcr Leib und Seele  \r\nerlebt jeder, der sich regelm\xc3\xa4\xc3\x9fig Zeit nimmt um kreativ zu sein. Alles was uns st\xc3\xa4rkt, uns erf\xc3\xbcllt, macht uns auch resilient. Weil wir sp\xc3\xbcren, wir k\xc3\xb6nnen trotzallem, was schwer ist, unsere Zeit gestalten, sch\xc3\xb6pferisch t\xc3\xa4tig sein.  \r\nGott, der Sch\xc3\xb6pfer, ist die Quelle allen Lebens, aus ihm sch\xc3\xb6pfe ich jeden Tag und diese Quelle versiegt nie!  \r\n  \r\nMein Bekenntnis zur Kunst  \r\nIch glaube an die Fantasie die in jedem Menschen schlummert, an den sch\xc3\xb6pferischen  Funken,  \r\nder uns mitgegeben ward von Anfang an.  \r\nDer daf\xc3\xbcr Sorge tr\xc3\xa4gt, dass wir gestalten, erfinden, l\xc3\xb6sen, weiterentwickeln -  \r\nUns selbst und was um uns lebt und ist.  \r\n  \r\nIch glaube an das freie Spiel dem die Fantasie  \r\nzu Grunde liegt. Im Spiel erprobt sich die Fantasie,  \r\nschl\xc3\xa4gt Purzelb\xc3\xa4ume macht Feuerwerk mit Farben, singt, tanzt,  \r\nbaut, gestaltet sich in Form, Wort und Ausdruck.  \r\n  \r\nIch glaube an die Kunst in ihrer vielf\xc3\xa4ltigen Weise.  \r\nSie verbindet das Gestern mit dem Heute, das Heute mit dem Morgen.  \r\nSo wird sie Teil der irdischen \xe2\x80\x9eEwigkeit\xe2\x80\x9c der Geschichte, Kunst \xc3\xbcberdauert.  \r\n  \r\nIch glaube an das k\xc3\xbcnstlerische Schaffen, das aus dem Allt\xc3\xa4glichen herausragt, die Seele n\xc3\xa4hrt,  \r\nden Geist befl\xc3\xbcgelt, den K\xc3\xb6rper erfrischt.  \r\nIch glaube da wo Menschen Kunst als Teil ihres Lebens w\xc3\xa4hlen  \r\nlebt die Hoffnung!  \r\nSybille Seuffer Weimar 2019",
         'published_at' => '2022-04-15 16:52:20',
         'created_at' => '2022-04-15 18:56:56',
-        'updated_at' => '2022-05-18 15:56:51',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -372,7 +372,7 @@ return [
         'body' => "Wie hei\xc3\x9ft die Wand  \r\nan die man eine Ehe f\xc3\xa4hrt?  \r\nIchbezogenheit und Kleinlichkeit machen das was sch\xc3\xb6n sein k\xc3\xb6nnte  \r\nunm\xc3\xb6glich! Perfektionismus und Sturheit sind die Pforten zum Ungl\xc3\xbcck!  \r\nAnreden wie Papa und Mama t\xc3\xb6ten den Sex!  \r\nL\xc3\xbcgen und Ausreden verderben das Vertrauen!  \r\nGeiz und Konkurrenz zerst\xc3\xb6ren den Genuss!  \r\n  \r\nWie hei\xc3\x9ft die Wand  \r\nAn die man eine Freundschaft f\xc3\xa4hrt?  \r\nGeschw\xc3\xa4tzigkeit und \xc3\x9cbertreiben l\xc3\xb6sen R\xc3\xbcckzug aus!  \r\nTratsch und Knatsch f\xc3\xbchren zu Langeweile!  \r\nJammern und Meckern am laufenden Meter verursachen  \r\nFreundschaftsmigr\xc3\xa4ne!  \r\nSelbstmitleid und Neid f\xc3\xbchren in die Oberfl\xc3\xa4chlichkeit.  \r\n  \r\n  \r\nWie hei\xc3\x9ft die Wand  \r\nAn die man eine Firma f\xc3\xa4hrt?  \r\nOmnipotenz und Narzissmus machen Mitarbeiter krank!  \r\nSpekulationen und Geld mit Geld verdienen f\xc3\xbchrt  \r\nzum Bankrott!  \r\nAbwertung und Arroganz verringern die Leistungsbereitschaft!  \r\nBossing f\xc3\xbchrt zu Gegenreaktionen  Voodoo!  \r\n  \r\n  \r\nWie hei\xc3\x9ft die Wand  \r\nAn die man eine Kinderseele f\xc3\xa4hrt?  \r\nSchreien und Schlagen s\xc3\xa4t Angst!  \r\nVerw\xc3\xb6hnen und Vernachl\xc3\xa4ssigen f\xc3\xbchrt zu Randale!  \r\n\xc3\x9cberbeh\xc3\xbcten und alles abnehmen f\xc3\xbchrt  \r\nZu Hilflosigkeit!  \r\nStundenlanger Medienkonsum f\xc3\xbchrt in die Denkfaulheit!  \r\n  \r\nWie hei\xc3\x9ft die Wand  \r\nAn die man das Vertrauen eines Volkes f\xc3\xa4hrt?  \r\nPolemik und Fakenews f\xc3\xbchrt in die Verunsicherung!  \r\nWahlversprechen die gebrochen werden f\xc3\xbchrt zu Politikverdrossenheit!  \r\nSoziale Ungerechtigkeit f\xc3\xbchrt in die Kriminalit\xc3\xa4t!  \r\nArrogante Politiker l\xc3\xb6sen Hass aus!  \r\nPolitische Korrektheit im Denken und Reden wird zur Ersatzreligion!  \r\n  \r\nEs gibt viele unsichtbare W\xc3\xa4nde!  \r\n  \r\nOnline Schreibnacht Sybille",
         'published_at' => '2020-10-25 04:47:54',
         'created_at' => '2020-10-25 08:48:44',
-        'updated_at' => '2022-05-18 15:56:28',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -394,7 +394,7 @@ return [
         'body' => "An guten Tagen  \r\nschl\xc3\xa4gt mein kleines Freiheitsherz  \r\ndem Licht, der Sonne, den Wolken, dem Himmel entgegen!  \r\nIch mache mit mir selbst einen Scherz, zieh eine Farbkarte und  \r\nlass mir die Kleider legen.  \r\nH\xc3\xbclle mich ein in ungewohnte Kleiderkombinationen finde das sch\xc3\xb6n  \r\nlache und freue mich und m\xc3\xb6chte am liebsten sofort in die Natur  \r\nraus gehen.  \r\n  \r\nAn guten Tagen  \r\nschl\xc3\xa4gt mein kleines Freiheitsherz  \r\nein Buch auf, liest voller Interesse sammelt neue Gedanken, staunt lange  \r\nund glaubt die Welt hat keine Schranken.  \r\nIch schenke mir selbst ein vertrautes Nicken kann mich gut leiden  \r\nm\xc3\xb6chte am liebsten alle Menschen umarmen und sagen  \r\nihr sollt nicht das Leben vermeiden!  \r\nVergesst eure \xc3\x84ngste f\xc3\xbchlt euch frei, f\xc3\xbchlt euch wert  \r\ndenn jeder Tag ist ein Tag eures Lebens der nie wiederkehrt.  \r\n  \r\n  \r\nAn guten Tagen  \r\nschl\xc3\xa4gt mein kleines Freiheitsherz  \r\nganz schnell und wild weil es Hunger hat nach Leben  \r\nerfahren will die Welt und was es alles gibt zu erleben.  \r\nIch gehe auf alles offen zu erlebe das Sch\xc3\xb6ne  \r\nIm Ich und Du teile was ich bin und kann freue mich  \r\nan Dir und dem Mensch von nebenan.  \r\nGehe abends zufrieden erf\xc3\xbcllt in mein Bett denke  \r\nder Tag war heute zu mir nett.  \r\nDanke und hoffe dass es vielen so geht denn f\xc3\xbcr  \r\nGute Tage ist es hoffentlich nie zu sp\xc3\xa4t.  \r\nSchreibnacht im Oktober 2020",
         'published_at' => '2020-10-31 08:31:15',
         'created_at' => '2020-10-31 09:31:43',
-        'updated_at' => '2022-05-18 15:56:28',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
     [
@@ -402,10 +402,10 @@ return [
         'uuid' => '9638f0a9-8c8b-446f-a62a-d59df1b86ff4',
         'slug' => 'poetin',
         'title' => 'Poetin',
-        'body' => "Ich bin eine  stille Poetin  \r\ndie sp\xc3\xbcrt, dass Leben mehr ist,  als spontanes Denken und Reden.  \r\nDie sp\xc3\xbcrt, dass in der Tiefe Sch\xc3\xa4tze liegen, die es gilt zu heben  \r\ndurch schreibendes Denken in Ruhe und Zeit. Es schlie\xc3\x9fen sich Kreise,  \r\ndas wirkt sich aus auf meine Lebensweise.    \r\n  \r\nIch bin eine f\xc3\xbchlende Poetin  \r\ndie sp\xc3\xbcrt, wann es Zeit ist, sich Zeit zu nehmen.  \r\nGef\xc3\xbchle  zu sp\xc3\xbcren, zu benennen und schriftlich sich zu ihnen zu bekennen.  \r\nDas was benannt wird kommt zum Leben.  \r\nFreude und \xc3\x84ngste, Liebe und Wut, Sorge und Klage, Trost und Verlangen,  \r\nSehnsucht und Bangen werden dann sichtbar in Worte und Zeilen,  \r\ndie den Weg weisen, helfen mein Innerstes heilen.  \r\n  \r\nIch bin eine sichtbare Poetin  \r\ndie sp\xc3\xbcrt, dass Menschen nach Tiefgang sich sehnen, die nicht wissen,  \r\nnicht ahnen - was stillt dieses Fehlen. Beim Schreiben entdecken sie,  \r\nsich selbst ganz neu, sp\xc3\xbcren ihre innere Tiefe und werden von sich selber frei.  \r\nLeben bewusster, einf\xc3\xbchlsamer, weiser und leichter \xe2\x80\x93 erkennen das Gl\xc3\xbcck  \r\nin ihrem Leben, werden dankbar und k\xc3\xb6nnen von sich selbst mehr geben.  \r\n  \r\nIch bin sooo gerne eine  Poetin  \r\ndas werde ich auch bleiben, solange mein Geist in der Lage ist zu denken  \r\nund zu schreiben.  \r\nSchreibnacht August 2020",
+        'body' => "Ich bin eine  stille Poetin  \r\ndie sp\xc3\xbcrt, dass Leben mehr ist,  als spontanes Denken und Reden.  \r\nDie sp\xc3\xbcrt, dass in der Tiefe Sch\xc3\xa4tze liegen, die es gilt zu heben  \r\ndurch schreibendes Denken in Ruhe und Zeit. Es schlie\xc3\x9fen sich Kreise,  \r\ndas wirkt sich aus auf meine Lebensweise.  \r\n  \r\nIch bin eine f\xc3\xbchlende Poetin  \r\ndie sp\xc3\xbcrt, wann es Zeit ist, sich Zeit zu nehmen.  \r\nGef\xc3\xbchle  zu sp\xc3\xbcren, zu benennen und schriftlich sich zu ihnen zu bekennen.  \r\nDas was benannt wird kommt zum Leben.  \r\nFreude und \xc3\x84ngste, Liebe und Wut, Sorge und Klage, Trost und Verlangen,  \r\nSehnsucht und Bangen werden dann sichtbar in Worte und Zeilen,  \r\ndie den Weg weisen, helfen mein Innerstes heilen.  \r\n  \r\nIch bin eine sichtbare Poetin  \r\ndie sp\xc3\xbcrt, dass Menschen nach Tiefgang sich sehnen, die nicht wissen,  \r\nnicht ahnen - was stillt dieses Fehlen. Beim Schreiben entdecken sie,  \r\nsich selbst ganz neu, sp\xc3\xbcren ihre innere Tiefe und werden von sich selber frei.  \r\nLeben bewusster, einf\xc3\xbchlsamer, weiser und leichter \xe2\x80\x93 erkennen das Gl\xc3\xbcck  \r\nin ihrem Leben, werden dankbar und k\xc3\xb6nnen von sich selbst mehr geben.  \r\n  \r\nIch bin sooo gerne eine  Poetin  \r\ndas werde ich auch bleiben, solange mein Geist in der Lage ist zu denken  \r\nund zu schreiben.  \r\nSchreibnacht August 2020",
         'published_at' => '2020-09-20 01:29:09',
         'created_at' => '2020-09-20 17:29:33',
-        'updated_at' => '2022-05-18 15:56:28',
+        'updated_at' => '2022-05-18 16:09:05',
         'deleted_at' => null,
     ],
 ];

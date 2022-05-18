@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Presenters\PostPresenter as Presenter;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Tags\HasTags;
@@ -36,6 +37,17 @@ class Post extends Model
     protected $dates = [
         'published_at',
     ];
+
+    public function body(): Attribute
+    {
+        return Attribute::make(
+            set: static fn ($value) => str_replace(
+                ["  \r\n", "\r\n"],
+                ["\r\n", "  \r\n"],
+                $value,
+            ),
+        );
+    }
 
     public function getPublishedAtReadableAttribute(): string
     {
