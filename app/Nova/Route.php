@@ -11,6 +11,7 @@ use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphTo;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
@@ -46,6 +47,11 @@ class Route extends Resource
                 ->sortable()
                 ->showOnPreview(),
 
+            Select::make(__('Method'), 'method')
+                ->options(['get' => 'GET', 'post' => 'POST'])
+                ->displayUsingLabels()
+                ->showOnPreview(),
+
             Text::make(__('Uri'), 'uri')
                 ->sortable()
                 ->exceptOnForms()
@@ -71,11 +77,14 @@ class Route extends Resource
                 ->hideFromIndex()
                 ->showOnPreview(),
 
-            MorphTo::make('Routable')->types(self::renderables())
-                ->nullable()
+            MorphTo::make('Routable', 'routable')
+                ->types(self::renderables())
                 ->withoutTrashed()
+                ->rules('required')
                 ->sortable()
                 ->showOnPreview(),
+
+            ...Controller::fieldsControllerAction('meta->controller_action', 'routable'),
 
             Boolean::make(__('Published'), 'published')
                 ->sortable()

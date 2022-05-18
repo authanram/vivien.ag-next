@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Contracts\Routable;
 use App\Presenters\RoutePresenter as Presenter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -17,16 +16,26 @@ class Route extends Model
     public static string $presenter = Presenter::class;
 
     protected $fillable = [
+        'method',
         'name',
         'uri',
         'middlewares',
+        'meta',
         'published',
     ];
 
     protected $casts = [
         'middlewares' => 'array',
+        'meta' => 'array',
         'published' => 'boolean',
     ];
+
+    public static function booted(): void
+    {
+        static::saving(static function ($data) {
+            ray($data);
+        });
+    }
 
     public function scopePublished(Builder $query): Builder
     {

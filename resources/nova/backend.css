@@ -26,6 +26,10 @@ input[type="search"]::-webkit-search-results-decoration {
     -webkit-appearance:none;
 }
 
+.space-y-4>:not([hidden])~:not([hidden]) {
+    margin-top: calc(2rem*(1 - var(--tw-space-y-reverse)));
+}
+
 .help-text.help-text-error:first-letter {
     text-transform: capitalize;
 }

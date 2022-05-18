@@ -67,8 +67,6 @@ class Page extends Resource
                     })->implode(', ');
             })->asHtml()->showOnPreview(),
 
-            HasMany::make('Sections', 'pageSections', PageSection::class),
-
             BelongsToMany::make(__('Static Blocks'), 'staticBlocks', StaticBlock::class)
                 ->fields(fn () => [
                     Text::make(__('Slug'), 'slug')
@@ -76,6 +74,8 @@ class Page extends Resource
                         ->sortable()
                         ->showOnPreview(),
                 ]),
+
+            HasMany::make(__('Page Sections'), 'pageSections', PageSection::class),
         ];
     }
 }
