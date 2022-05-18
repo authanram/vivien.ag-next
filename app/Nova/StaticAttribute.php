@@ -2,10 +2,9 @@
 
 namespace App\Nova;
 
-//use Laravel\Nova\Fields\Code;
 use App\Models\StaticAttribute as Model;
+use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
@@ -18,8 +17,6 @@ class StaticAttribute extends Resource
 
     public static $search = [
         'name',
-        'slug',
-        'value',
         'data'
     ];
 
@@ -48,28 +45,20 @@ class StaticAttribute extends Resource
                 ->sortable()
                 ->showOnPreview(),
 
-            Slug::make(__('Slug'), 'slug')
-                ->from('title')
-                ->creationRules('required', "unique:$table,slug")
-                ->updateRules('required', "unique:$table,slug,{{resourceId}}")
+            Slug::make(__('Slug'), 'data.slug')
+                ->from('name')
                 ->sortable()
                 ->showOnPreview(),
 
-            Select::make(__('Type'), 'type')->options([
-                0 => 'Simple (Text)',
-                1 => 'Complex (JSON)',
-            ])->displayUsingLabels()
-                ->sortable()
-                ->showOnPreview(),
+            Code::make(__('Value'), 'data.value')
+                ->height('auto')
+                ->rules('json')
+                ->json()
+                ->onlyOnForms(),
 
-//            Text::make(__('Value'), 'value')
-//                ->sortable(),
-//
-//            Code::make(__('Value'), 'data')
-//                ->json()
-//                ->height('auto')
-//                ->rules('json')
-//                ->hideFromIndex(),
+            Text::make(__('Value'), fn () => data_get($this->resource, 'data.value'))
+                ->exceptOnForms()
+                ->showOnPreview(),
         ];
     }
 }

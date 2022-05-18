@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a5e2877a871335420e458c66c86d8d5b",
+    "content-hash": "1a61ea58018e48c6adf241867dc19644",
     "packages": [
         {
             "name": "ajcastro/eager-load-pivot-relations",
@@ -91,6 +91,42 @@
             ],
             "description": "...",
             "time": "2022-05-08T18:03:57+00:00"
+        },
+        {
+            "name": "authanram/nova-fieldsets",
+            "version": "dev-laravel-9",
+            "dist": {
+                "type": "path",
+                "url": "./nova-components/NovaFieldsets",
+                "reference": "6b399ada7f3bb5167460adfee87856097792898c"
+            },
+            "require": {
+                "php": "^7.3|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Authanram\\NovaFieldsets\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Authanram\\NovaFieldsets\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova field.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "box/spout",
@@ -1989,16 +2025,16 @@
         },
         {
             "name": "kiritokatklian/nova-permission",
-            "version": "v4.0.2",
+            "version": "v4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kiritokatklian/nova-permission.git",
-                "reference": "8ecfe541cba4da57ffe7f8d16d79807f5c5a8f95"
+                "reference": "3cdfd6dfa3ee90eefcececa623c52ac01d902616"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kiritokatklian/nova-permission/zipball/8ecfe541cba4da57ffe7f8d16d79807f5c5a8f95",
-                "reference": "8ecfe541cba4da57ffe7f8d16d79807f5c5a8f95",
+                "url": "https://api.github.com/repos/kiritokatklian/nova-permission/zipball/3cdfd6dfa3ee90eefcececa623c52ac01d902616",
+                "reference": "3cdfd6dfa3ee90eefcececa623c52ac01d902616",
                 "shasum": ""
             },
             "require": {
@@ -2034,22 +2070,22 @@
             ],
             "support": {
                 "issues": "https://github.com/kiritokatklian/nova-permission/issues",
-                "source": "https://github.com/kiritokatklian/nova-permission/tree/v4.0.2"
+                "source": "https://github.com/kiritokatklian/nova-permission/tree/v4.0.3"
             },
-            "time": "2022-05-16T09:33:49+00:00"
+            "time": "2022-05-17T08:54:35+00:00"
         },
         {
             "name": "laravel/framework",
-            "version": "v9.12.2",
+            "version": "v9.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "b5b5c635f1a93f277b5248725a1f7ffc97e20810"
+                "reference": "87b6cc8bc41d1cf85c7c1401cddde8570a3b95bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/b5b5c635f1a93f277b5248725a1f7ffc97e20810",
-                "reference": "b5b5c635f1a93f277b5248725a1f7ffc97e20810",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/87b6cc8bc41d1cf85c7c1401cddde8570a3b95bb",
+                "reference": "87b6cc8bc41d1cf85c7c1401cddde8570a3b95bb",
                 "shasum": ""
             },
             "require": {
@@ -2215,21 +2251,21 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-05-11T13:38:26+00:00"
+            "time": "2022-05-17T14:07:43+00:00"
         },
         {
             "name": "laravel/nova",
-            "version": "4.5.4",
+            "version": "4.6.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel/nova.git",
-                "reference": "23a2001aeb28cdce4dbb84f638477fd87c1067e4"
+                "reference": "ab68e07d3b8078f60b6196a489b7e1c2a76ac50a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-23a2001aeb28cdce4dbb84f638477fd87c1067e4-zip-512dac.zip",
-                "reference": "23a2001aeb28cdce4dbb84f638477fd87c1067e4",
-                "shasum": "9f10a19383ab876a0b66f72923a737c356b37bb0"
+                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-ab68e07d3b8078f60b6196a489b7e1c2a76ac50a-zip-6a0a2b.zip",
+                "reference": "ab68e07d3b8078f60b6196a489b7e1c2a76ac50a",
+                "shasum": "758aabbd94e2f700c6deab1379c50571a50359ab"
             },
             "require": {
                 "brick/money": "^0.5.0",
@@ -2322,9 +2358,9 @@
                 "laravel"
             ],
             "support": {
-                "source": "https://github.com/laravel/nova/tree/v4.5.4"
+                "source": "https://github.com/laravel/nova/tree/v4.6.0"
             },
-            "time": "2022-05-12T18:43:40+00:00"
+            "time": "2022-05-17T20:11:37+00:00"
         },
         {
             "name": "laravel/nova-log-viewer",
@@ -2372,16 +2408,16 @@
         },
         {
             "name": "laravel/serializable-closure",
-            "version": "v1.1.1",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/serializable-closure.git",
-                "reference": "9e4b005daa20b0c161f3845040046dc9ddc1d74e"
+                "reference": "09f0e9fb61829f628205b7c94906c28740ff9540"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/9e4b005daa20b0c161f3845040046dc9ddc1d74e",
-                "reference": "9e4b005daa20b0c161f3845040046dc9ddc1d74e",
+                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/09f0e9fb61829f628205b7c94906c28740ff9540",
+                "reference": "09f0e9fb61829f628205b7c94906c28740ff9540",
                 "shasum": ""
             },
             "require": {
@@ -2427,7 +2463,7 @@
                 "issues": "https://github.com/laravel/serializable-closure/issues",
                 "source": "https://github.com/laravel/serializable-closure"
             },
-            "time": "2022-02-11T19:23:53+00:00"
+            "time": "2022-05-16T17:09:47+00:00"
         },
         {
             "name": "laravel/tinker",

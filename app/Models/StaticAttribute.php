@@ -10,13 +10,7 @@ class StaticAttribute extends Model
 
     protected $fillable = [
         'name',
-        'slug',
-        'value',
         'data',
-    ];
-
-    protected $attributes = [
-        'data' => '{}',
     ];
 
     protected $casts = [

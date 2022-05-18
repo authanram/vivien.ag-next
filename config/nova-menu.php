@@ -27,6 +27,7 @@ return [
         ])->collapsable()->icon('document-text'),
 
         MenuSection::make(__('Resources'), [
+            MenuItem::resource(Resources\StaticAttribute::class),
             MenuItem::resource(Resources\Author::class),
             MenuItem::resource(Resources\Staff::class),
             MenuItem::resource(Resources\Catering::class),
@@ -36,7 +37,7 @@ return [
 
         MenuSection::make(__('Page'), [
             MenuItem::resource(Resources\Layout::class),
-            MenuItem::resource(Resources\MenuItem::class),
+            //MenuItem::resource(Resources\MenuItem::class),
             MenuItem::resource(Resources\Menu::class),
             MenuItem::resource(Resources\Route::class),
             MenuItem::resource(Resources\StaticBlock::class),
@@ -57,7 +58,6 @@ return [
         ])->collapsable()->icon('badge-check'),
 
         MenuSection::make(__('Misc'), [
-            MenuItem::resource(Resources\StaticAttribute::class),
             MenuItem::resource(Resources\ImageCoords::class),
             MenuItem::resource(Resources\Color::class),
             MenuItem::make(__('Logs'), 'logs'),
