@@ -11,6 +11,13 @@ button.focus\:ring-offset-4:focus {
     box-shadow: none;
 }
 
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance:none;
+}
+
 .help-text.help-text-error:first-letter {
     text-transform: capitalize;
 }
@@ -21,22 +28,6 @@ button.focus\:ring-offset-4:focus {
 
 div.content > div.content {
     overflow-y: auto;
-}
-
-/* Flexible Content */
-
-div#nova .w-full.shrink .text-80.grow.px-4 {
-    padding-left: 0.77rem !important;
-    padding-right: 0.77rem !important;
-}
-
-div#nova .w-full.shrink .text-80.grow.px-4 > span {
-    display: none;
-}
-
-div#nova [dusk="collapse-group"],
-div#nova [dusk^="detail-attributes-"] > div > span:first-of-type {
-    display: none;
 }
 
 /* Popper */
