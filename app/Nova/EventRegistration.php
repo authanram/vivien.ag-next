@@ -73,12 +73,14 @@ class EventRegistration extends Resource
 
             Text::make(__('Firstname'), 'firstname')
                 ->rules('required')
-                ->sortable()
-                ->showOnPreview(),
+                ->onlyOnForms(),
 
             Text::make(__('Surname'), 'surname')
                 ->rules('required')
-                ->sortable()
+                ->onlyOnForms(),
+
+            Text::make(__('Name'), 'full_name')
+                ->exceptOnForms()
                 ->showOnPreview(),
 
             Text::make(__('Phone'), 'phone')
