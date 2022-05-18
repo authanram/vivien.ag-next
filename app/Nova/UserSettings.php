@@ -2,10 +2,12 @@
 
 namespace App\Nova;
 
+use App\Colors;
 use App\Models\Color;
 use App\Models\UserSettings as Model;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Color as ColorField;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Select;
 
@@ -42,7 +44,12 @@ class UserSettings extends Resource
 
             Select::make(__('Accent Color'), 'data->color')
                 ->options($this->colors)
-                ->displayUsingLabels(),
+                ->displayUsingLabels()
+                ->onlyOnForms(),
+
+            ColorField::make('Accent Color', 'data->color')
+                ->exceptOnForms()
+                ->showOnPreview(),
 
             BelongsTo::make(__('User'), 'user', User::class),
         ];

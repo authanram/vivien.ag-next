@@ -6,16 +6,30 @@ use Illuminate\Support\Facades\Blade;
 
 class Colors
 {
-    public static function brandColors(?string $rgb): array
+    private static string $template = '#%02x%02x%02x';
+
+    public static function hexToRgb(string $value): string
     {
-        $rgb ??= '208, 18, 87';
+        [$r, $g, $b] = sscanf($value, self::$template);
+
+        return "$r,$g,$b";
+    }
+
+    public static function rgbToHex(string $value): string
+    {
+        return sprintf(self::$template, ...explode(',', $value));
+    }
+
+    public static function brandColors(?string $hex): array
+    {
+        $rgb = static::hexToRgb($hex ?? '#d01257');
 
         return collect(self::shades())
             ->mapWithKeys(static fn (string $value, string $key) => [$key => "$rgb, $value"])
             ->toArray();
     }
 
-    public static function brandColorsCSS(?string $rgb): string
+    public static function brandColorsCSS(?string $hex): string
     {
         return Blade::render('
 :root {
@@ -23,7 +37,7 @@ class Colors
     --colors-primary-{{ $key }}: {{ $value }};
 @endforeach
 }', [
-            'colors' => static::brandColors($rgb),
+            'colors' => static::brandColors($hex),
         ]);
     }
 
