@@ -14,6 +14,7 @@ use Outl1ne\NovaSortable\Traits\HasSortableRows;
 
 class Image extends Resource
 {
+    use HasFieldOrderColumn;
     use HasSortableRows;
 
     public static string $model = \App\Models\Image::class;
@@ -23,6 +24,11 @@ class Image extends Resource
     public static $search = [
         'name',
         'description',
+    ];
+
+    protected static array $orderBy = [
+        'order_column' => 'asc',
+        'name' => 'asc',
     ];
 
     public static function label(): string
@@ -62,11 +68,11 @@ class Image extends Resource
                 ->sortable()
                 ->showOnPreview(),
 
+            $this->orderColumn(),
+
             Boolean::make(__('Published'), 'published')
                 ->sortable()
                 ->showOnPreview(),
-
-            HasOne::make(__('Image Coordinates'), 'imageCoordinates', ImageCoordinate::class),
 
         ];
     }

@@ -3,15 +3,16 @@
 namespace App\Nova;
 
 use App\Models\MenuItem as Model;
-use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Outl1ne\NovaSortable\Traits\HasSortableRows;
 
 class MenuItem extends Resource
 {
+    use HasFieldOrderColumn;
     use HasSortableRows;
 
     public static string $model = Model::class;
@@ -70,6 +71,8 @@ class MenuItem extends Resource
                 ->withoutTrashed()
                 ->showCreateRelationButton()
                 ->sortable(),
+
+            $this->orderColumn(),
 
             Boolean::make(__('Published'), 'published')
                 ->rules('required')

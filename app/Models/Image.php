@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
@@ -33,11 +32,6 @@ class Image extends Model implements Sortable
 
     public function getPathAttribute(): string
     {
-        return "/storage/$this->file";
-    }
-
-    public function imageCoordinates(): HasOne
-    {
-        return $this->hasOne(ImageCoordinate::class);
+        return storage_path($this->file);
     }
 }

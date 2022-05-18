@@ -7,7 +7,7 @@ return [
         'data' => '{"top": 7, "left": -180, "active": true, "height": 277.7, "rotate": 0, "zindex": 1, "position": "left", "rotate_x": 7, "rotate_y": 15, "perspective": 500, "order_column": 1}',
         'order_column' => 1,
         'created_at' => '2022-05-18 12:53:09',
-        'updated_at' => '2022-05-18 12:57:29',
+        'updated_at' => '2022-05-18 13:15:57',
         'deleted_at' => null,
     ],
     [
@@ -16,7 +16,7 @@ return [
         'data' => '{"top": 280, "left": -119, "active": true, "height": 177.7, "rotate": 0, "zindex": 2, "position": "left", "rotate_x": 7, "rotate_y": 17, "perspective": 1000, "order_column": 2}',
         'order_column' => 2,
         'created_at' => '2022-05-18 12:53:09',
-        'updated_at' => '2022-05-18 12:53:09',
+        'updated_at' => '2022-05-18 13:15:57',
         'deleted_at' => null,
     ],
     [
@@ -25,7 +25,7 @@ return [
         'data' => '{"top": 307, "left": -214, "active": true, "height": 147.77, "rotate": 3, "zindex": 3, "position": "left", "rotate_x": 7, "rotate_y": -27, "perspective": 400, "order_column": 3}',
         'order_column' => 3,
         'created_at' => '2022-05-18 12:53:09',
-        'updated_at' => '2022-05-18 12:53:09',
+        'updated_at' => '2022-05-18 13:15:57',
         'deleted_at' => null,
     ],
     [
@@ -34,7 +34,7 @@ return [
         'data' => '{"top": 459, "left": -150, "active": true, "height": 217, "rotate": 7, "zindex": 2, "position": "left", "rotate_x": null, "rotate_y": null, "perspective": null, "order_column": 4}',
         'order_column' => 4,
         'created_at' => '2022-05-18 12:53:09',
-        'updated_at' => '2022-05-18 12:53:09',
+        'updated_at' => '2022-05-18 13:15:57',
         'deleted_at' => null,
     ],
     [
@@ -43,7 +43,7 @@ return [
         'data' => '{"top": 659, "left": -77, "active": true, "height": 117, "rotate": -7, "zindex": 3, "position": "left", "rotate_x": null, "rotate_y": 20, "perspective": 1000, "order_column": 5}',
         'order_column' => 5,
         'created_at' => '2022-05-18 12:53:09',
-        'updated_at' => '2022-05-18 12:53:09',
+        'updated_at' => '2022-05-18 13:15:57',
         'deleted_at' => null,
     ],
     [
@@ -52,7 +52,7 @@ return [
         'data' => '{"top": 672, "left": -152, "active": true, "height": 97, "rotate": 3, "zindex": 3, "position": "left", "rotate_x": 0, "rotate_y": -23, "perspective": 700, "order_column": 6}',
         'order_column' => 6,
         'created_at' => '2022-05-18 12:53:09',
-        'updated_at' => '2022-05-18 12:53:09',
+        'updated_at' => '2022-05-18 13:15:57',
         'deleted_at' => null,
     ],
     [
@@ -61,7 +61,7 @@ return [
         'data' => '{"top": 772, "left": -119, "active": true, "height": 177.7, "rotate": 0, "zindex": 4, "position": "left", "rotate_x": 7, "rotate_y": 17, "perspective": 500, "order_column": 2}',
         'order_column' => 7,
         'created_at' => '2022-05-18 12:53:09',
-        'updated_at' => '2022-05-18 12:53:09',
+        'updated_at' => '2022-05-18 13:15:57',
         'deleted_at' => null,
     ],
 ];

@@ -3,7 +3,6 @@
 namespace App\Nova;
 
 use App\Models\ImageCoordinate as Model;
-use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
@@ -12,6 +11,7 @@ use Outl1ne\NovaSortable\Traits\HasSortableRows;
 
 class ImageCoordinate extends Resource
 {
+    use HasFieldOrderColumn;
     use HasSortableRows;
 
     public static string $model = Model::class;
@@ -20,7 +20,9 @@ class ImageCoordinate extends Resource
         'data',
     ];
 
-    public static $with = ['image'];
+    protected static array $orderBy = [
+        'order_column' => 'asc',
+    ];
 
     public static function label(): string
     {
@@ -37,13 +39,12 @@ class ImageCoordinate extends Resource
         return [
             ID::make()->sortable()->showOnPreview(),
 
-            BelongsTo::make(__('Image'), 'image', Image::class)
-                ->withoutTrashed(),
-
             Code::make(__('Data'), 'data')
                 ->json()
                 ->height('auto')
                 ->showOnPreview(),
+
+            $this->orderColumn(),
 
             Text::make(__('Created At'), function () {
                 return (string)$this->resource->created_at;

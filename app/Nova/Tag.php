@@ -3,17 +3,20 @@
 namespace App\Nova;
 
 use App\Models\Tag as Model;
-use Laravel\Nova\Fields\Slug;
-use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphedByMany;
 use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Http\Requests\NovaRequest as Request;
+use Outl1ne\NovaSortable\Traits\HasSortableRows;
 
 class Tag extends Resource
 {
+    use HasFieldOrderColumn;
+    use HasSortableRows;
+
     public static string $model = Model::class;
 
     public static $title = 'name';
@@ -76,11 +79,7 @@ class Tag extends Resource
                 ->withoutTrashed()
                 ->showCreateRelationButton(),
 
-            Number::make(__('Order'), 'order_column')
-                ->min(1)
-                ->showOnCreating(false)
-                ->sortable()
-                ->showOnPreview(),
+            $this->orderColumn(),
 
             MorphedByMany::make(__('Events'), 'events', Event::class),
 

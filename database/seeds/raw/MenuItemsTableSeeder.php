@@ -10,7 +10,7 @@ return [
         'order_column' => 1,
         'published' => 1,
         'created_at' => '2020-05-20 21:33:17',
-        'updated_at' => '2020-05-21 00:08:14',
+        'updated_at' => '2022-05-18 13:17:18',
     ],
     [
         'id' => 2,
@@ -21,7 +21,7 @@ return [
         'order_column' => 2,
         'published' => 1,
         'created_at' => '2020-05-20 21:33:17',
-        'updated_at' => '2020-12-27 05:18:08',
+        'updated_at' => '2022-05-18 13:17:18',
     ],
     [
         'id' => 3,
@@ -32,7 +32,7 @@ return [
         'order_column' => 3,
         'published' => 1,
         'created_at' => '2020-05-20 21:33:17',
-        'updated_at' => '2020-05-21 00:08:14',
+        'updated_at' => '2022-05-18 13:17:18',
     ],
     [
         'id' => 4,
@@ -43,7 +43,7 @@ return [
         'order_column' => 4,
         'published' => 1,
         'created_at' => '2020-05-20 21:33:17',
-        'updated_at' => '2020-05-21 00:08:14',
+        'updated_at' => '2022-05-18 13:17:18',
     ],
     [
         'id' => 5,
@@ -54,7 +54,7 @@ return [
         'order_column' => 5,
         'published' => 1,
         'created_at' => '2020-05-20 21:33:17',
-        'updated_at' => '2020-05-21 00:08:14',
+        'updated_at' => '2022-05-18 13:17:18',
     ],
     [
         'id' => 6,
