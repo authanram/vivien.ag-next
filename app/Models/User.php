@@ -3,17 +3,25 @@
 namespace App\Models;
 
 //use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Presenters\UserPresenter as Presenter;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Nova\Auth\Impersonatable;
 use Spatie\Permission\Traits\HasRoles;
 
+/**
+ * @property Presenter $presenter
+ * @method Presenter present()
+ */
 class User extends Authenticatable //MustVerifyEmail
 {
     use HasRoles;
     use Impersonatable;
     use Notifiable;
+
+    public static string $presenter = Presenter::class;
 
     protected $fillable = [
         'name',
@@ -30,18 +38,13 @@ class User extends Authenticatable //MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function isAdministrator(): bool
-    {
-        return $this->hasRole('administrator');
-    }
-
-    public function isModerator(): bool
-    {
-        return $this->hasRole('moderator');
-    }
-
     public function sessions(): HasMany
     {
         return $this->hasMany(Session::class);
+    }
+
+    public function settings(): HasOne
+    {
+        return $this->hasOne(UserSettings::class);
     }
 }

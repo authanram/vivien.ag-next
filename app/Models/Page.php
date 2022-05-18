@@ -8,6 +8,10 @@ use App\Routables\PageRoutable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * @property Presenter $presenter
+ * @method Presenter present()
+ */
 class Page extends Model implements Routable
 {
     use SoftDeletes;

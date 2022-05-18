@@ -6,6 +6,10 @@ use App\Presenters\StaticBlockPresenter as Presenter;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * @property Presenter $presenter
+ * @method Presenter present()
+ */
 class StaticBlock extends Model
 {
     use SoftDeletes;

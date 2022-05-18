@@ -2,15 +2,22 @@
 
 namespace App\Models;
 
+use App\Presenters\PostPresenter as Presenter;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Tags\HasTags;
 
+/**
+ * @property Presenter $presenter
+ * @method Presenter present()
+ */
 class Post extends Model
 {
     use HasTags;
     use SoftDeletes;
+
+    public static string $presenter = Presenter::class;
 
     protected $fillable = [
         'uuid',

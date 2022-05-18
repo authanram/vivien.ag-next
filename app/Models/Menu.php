@@ -6,6 +6,10 @@ use App\Presenters\MenuPresenter as Presenter;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * @property Presenter $presenter
+ * @method Presenter present()
+ */
 class Menu extends Model
 {
     use SoftDeletes;

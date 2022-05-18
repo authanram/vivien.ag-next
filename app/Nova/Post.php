@@ -3,12 +3,12 @@
 namespace App\Nova;
 
 use App\Models\Post as Model;
+use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\Textarea;
 use Spatie\TagsField\Tags;
 
 class Post extends Resource
@@ -56,13 +56,17 @@ class Post extends Resource
                 ->sortable()
                 ->showOnPreview(),
 
-            Textarea::make(__('Body'), 'body')
+            Markdown::make(__('Body'), 'body')
                 ->rules('required')
                 ->showOnPreview(),
 
-            DateTime::make(__('Published At'), 'published_at', static function ($value) {
-                return $value ?? now()->format('Y-m-d H:i:s');
+            DateTime::make(__('Published At'), 'published_at')
+                ->onlyOnForms(),
+
+            Text::make(__('Published At'), 'published_at', static function ($value) {
+                return $value->format('d.m.Y, H:i');
             })->rules('required')
+                ->exceptOnForms()
                 ->sortable()
                 ->showOnPreview(),
 
