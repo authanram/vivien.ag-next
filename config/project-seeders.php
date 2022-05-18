@@ -9,6 +9,7 @@ return [
     'layouts',
     'static_blocks',
     'pages',
+    'page_sections',
     'page_static_blocks',
 
     // acl
@@ -24,6 +25,7 @@ return [
     'colors',
     'locations',
     'staff',
+    'staff_events',
     'static_attributes',
 
     // menus
