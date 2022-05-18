@@ -27,6 +27,7 @@
         "livewire/livewire": "^2.10",
         "optimistdigital/nova-sortable": "^3.0",
         "ryangjchandler/blade-cache-directive": "^0.3.0",
+        "sentry/sentry-laravel": "^2.12",
         "spatie/laravel-activitylog": "^4.5.2",
         "spatie/laravel-backup": "^8.1.2",
         "spatie/laravel-cookie-consent": "^3.2.1",

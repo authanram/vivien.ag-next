@@ -18,6 +18,4 @@ return [
     'GTM_ID' => env('GTM_ID'),
     'ANALYTICS_VIEW_ID' => env('ANALYTICS_VIEW_ID'),
 
-    'TOOLS_ENABLED' => env('TOOLS_ENABLED', false),
-
 ];
