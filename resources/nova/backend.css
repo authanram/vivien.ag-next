@@ -38,6 +38,10 @@ div.content > div.content {
     overflow-y: auto;
 }
 
+.max-h-search {
+    height: calc(100vh - 80px);
+}
+
 /* Popper */
 
 .v-popper--has-tooltip > svg {
