@@ -20,7 +20,7 @@ return [
     [
         'id' => 3,
         'name' => 'Profession (long)',
-        'data' => '{"slug": "profession-long", "value": "Familientherapeutin, Pädagogin und Lerntrainerin"}',
+        'data' => "{\"slug\": \"profession-long\", \"value\": \"Familientherapeutin, P\xc3\xa4dagogin und Lerntrainerin\"}",
         'created_at' => '2020-06-29 06:41:03',
         'updated_at' => '2020-06-29 06:41:03',
         'deleted_at' => null,
