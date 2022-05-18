@@ -61,6 +61,7 @@ class StaticBlock extends Resource
                 ->fields(fn () => [
                     Text::make(__('Slug'), 'slug')
                         ->rules('required', 'alpha_dash')
+                        ->sortable()
                         ->showOnPreview(),
                 ]),
         ];

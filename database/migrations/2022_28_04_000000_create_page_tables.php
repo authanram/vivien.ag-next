@@ -27,8 +27,17 @@ class CreatePageTables extends Migration
 
         Schema::create('pages', static function (Blueprint $table) {
             $table->id();
+            $table->foreignId('layout_id')->constrained('layouts')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('name')->unique();
-            $table->json('sections')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
+        Schema::create('page_sections', static function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('page_id')->constrained('pages')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->string('name');
+            $table->string('layout_section');
             $table->timestamps();
             $table->softDeletes();
         });

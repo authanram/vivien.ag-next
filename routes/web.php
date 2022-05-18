@@ -6,7 +6,10 @@ use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Route;
 
 try {
-    $collection = Model::published()->with('routable')->get();
+    $collection = Model::published()
+        ->with('routable')
+        ->whereNotNull('routable')
+        ->get();
 } catch (QueryException) {}
 
 if (isset($collection) && is_object($collection) && $collection::class === Collection::class) {
