@@ -34,7 +34,9 @@ class Catering extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make()->sortable()->showOnPreview(),
+            ID::make()
+                ->sortable()
+                ->showOnPreview(),
 
             Text::make(__('Name'), 'name')
                 ->creationRules('required', 'unique:caterings,name')
@@ -47,7 +49,6 @@ class Catering extends Resource
                 ->showOnPreview(),
 
             HasMany::make(__('Events'), 'events', Event::class),
-
         ];
     }
 }

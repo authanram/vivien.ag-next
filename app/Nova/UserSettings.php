@@ -40,7 +40,9 @@ class UserSettings extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make()->sortable()->showOnPreview(),
+            ID::make()
+                ->sortable()
+                ->showOnPreview(),
 
             Select::make(__('Accent Color'), 'data->color')
                 ->options($this->colors)
@@ -51,7 +53,8 @@ class UserSettings extends Resource
                 ->exceptOnForms()
                 ->showOnPreview(),
 
-            BelongsTo::make(__('User'), 'user', User::class),
+            BelongsTo::make(__('User'), 'user', User::class)
+                ->showOnPreview(),
         ];
     }
 }

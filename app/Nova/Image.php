@@ -44,7 +44,9 @@ class Image extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make()->sortable()->showOnPreview(),
+            ID::make()
+                ->sortable()
+                ->showOnPreview(),
 
             FieldImage::make(__('File'), 'file')
                 ->disk('public')
@@ -52,6 +54,7 @@ class Image extends Resource
                 ->storeOriginalName('file_original')
                 ->rules('required')
                 ->hideWhenUpdating()
+                ->sortable()
                 ->showOnPreview(),
 
             Text::make(__('Name'), 'name')
@@ -73,7 +76,6 @@ class Image extends Resource
             Boolean::make(__('Published'), 'published')
                 ->sortable()
                 ->showOnPreview(),
-
         ];
     }
 }

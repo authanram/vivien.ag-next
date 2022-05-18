@@ -35,7 +35,9 @@ class Layout extends Resource
     public function fields(NovaRequest $request): array
     {
         return [
-            ID::make()->sortable()->showOnPreview(),
+            ID::make()
+                ->sortable()
+                ->showOnPreview(),
 
             Text::make(__('Name'), 'name')
                 ->rules('required')

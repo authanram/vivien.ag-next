@@ -39,7 +39,9 @@ class EventTemplate extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make()->sortable()->showOnPreview(),
+            ID::make()
+                ->sortable()
+                ->showOnPreview(),
 
             Text::make(__('Name'), 'name')
                 ->creationRules('required', 'unique:event_templates,name')
@@ -53,7 +55,8 @@ class EventTemplate extends Resource
                 ->showOnPreview(),
 
             BelongsTo::make(__('Color'), 'color', Color::class)
-                ->withoutTrashed(),
+                ->withoutTrashed()
+                ->showOnPreview(),
 
             HasMany::make(__('Events'), 'events', Event::class),
 

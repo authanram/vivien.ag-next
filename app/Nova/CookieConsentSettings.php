@@ -37,20 +37,21 @@ class CookieConsentSettings extends Resource
     {
         return [
             ID::make()
-                ->exceptOnForms()
                 ->sortable()
                 ->showOnPreview(),
 
             Code::make(__('Cookie Data'), 'cookie_data')
                 ->default('{}')
+                ->autoHeight()
                 ->json()
-                ->height('auto')
+                ->rules('json')
                 ->showOnPreview(),
 
             Code::make(__('Session Data'), 'session_data')
                 ->default('{}')
+                ->autoHeight()
                 ->json()
-                ->height('auto')
+                ->rules('json')
                 ->showOnPreview(),
 
             Line::make(__('Cookies'), function () {
@@ -69,7 +70,6 @@ class CookieConsentSettings extends Resource
             Line::make(__('Date of Consent'), function () {
                 return (string)$this->resource->created_at;
             })->showOnPreview(),
-
         ];
     }
 }

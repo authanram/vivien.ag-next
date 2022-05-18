@@ -41,7 +41,9 @@ class CookieConsentCookie extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make()->sortable()->showOnPreview(),
+            ID::make()
+                ->sortable()
+                ->showOnPreview(),
 
             Text::make(__('Cookie Name'), 'cookie_name')
                 ->creationRules('required', 'unique:cookie_consent_cookies,cookie_name')
@@ -53,25 +55,28 @@ class CookieConsentCookie extends Resource
             BelongsTo::make(__('Cookie Provider'), 'cookieProvider', CookieConsentProvider::class)
                 ->rules('required')
                 ->withoutTrashed()
-                ->showCreateRelationButton(),
+                ->showCreateRelationButton()
+                ->showOnPreview(),
 
             Code::make(__('Cookie Purpose'), 'cookie_purpose')
                 ->rules('required')
                 ->height('auto')
-                ->hideFromIndex()
                 ->showOnPreview(),
 
             Text::make(__('Cookie Category'), 'cookie_category')
                 ->rules('required')
+                ->sortable()
                 ->showOnPreview(),
 
             Text::make(__('Cookie Type'), 'cookie_type')
                 ->rules('required')
+                ->sortable()
                 ->showOnPreview(),
 
             Number::make(__('Cookie Lifetime'), 'cookie_lifetime')
                 ->rules('required')
                 ->help('In days.')
+                ->sortable()
                 ->showOnPreview(),
 
             Boolean::make(__('Encrypted'), 'encrypted')
@@ -81,7 +86,6 @@ class CookieConsentCookie extends Resource
             Boolean::make(__('Required'), 'required')
                 ->sortable()
                 ->showOnPreview(),
-
         ];
     }
 }

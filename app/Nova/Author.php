@@ -37,7 +37,9 @@ class Author extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make()->sortable()->showOnPreview(),
+            ID::make()
+                ->sortable()
+                ->showOnPreview(),
 
             Text::make(__('Name'), 'name')
                 ->creationRules('required', 'unique:authors,name')
@@ -66,7 +68,6 @@ class Author extends Resource
                 ->showOnPreview(),
 
             HasMany::make(__('Quotes'), 'quotes', Quote::class),
-
         ];
     }
 }

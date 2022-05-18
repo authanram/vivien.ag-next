@@ -34,7 +34,9 @@ class Menu extends Resource
         $table = $this->model()?->getTable();
 
         return [
-            ID::make()->sortable()->showOnPreview(),
+            ID::make()
+                ->sortable()
+                ->showOnPreview(),
 
             Text::make(__('Slug'), 'slug')
                 ->creationRules('required', "unique:$table,slug")
@@ -48,7 +50,6 @@ class Menu extends Resource
                 ->showOnPreview(),
 
             HasMany::make(__('Menu Items'), 'menuItems', MenuItem::class),
-
         ];
     }
 }

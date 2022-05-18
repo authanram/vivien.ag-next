@@ -37,7 +37,9 @@ class StaticAttribute extends Resource
         $table = $this->model()?->getTable();
 
         return [
-            ID::make()->sortable()->showOnPreview(),
+            ID::make()
+                ->sortable()
+                ->showOnPreview(),
 
             Text::make(__('Name'), 'name')
                 ->creationRules('required', "unique:$table,name")
@@ -51,13 +53,14 @@ class StaticAttribute extends Resource
                 ->showOnPreview(),
 
             Code::make(__('Value'), 'data.value')
-                ->height('auto')
-                ->rules('json')
+                ->autoHeight()
                 ->json()
+                ->rules('json')
                 ->onlyOnForms(),
 
             Text::make(__('Value'), fn () => data_get($this->resource, 'data.value'))
                 ->exceptOnForms()
+                ->sortable()
                 ->showOnPreview(),
         ];
     }

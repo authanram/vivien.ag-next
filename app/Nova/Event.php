@@ -100,14 +100,16 @@ class Event extends Resource
     public function fields(NovaRequest $request, bool $published = true): array
     {
         return [
-            ID::make()->sortable()->showOnPreview(),
+            ID::make()
+                ->sortable()
+                ->showOnPreview(),
 
             Text::make(__('UUID'), 'uuid')
                 ->onlyOnDetail(),
 
             BelongsTo::make(__('Event Template'), 'eventTemplate', EventTemplate::class)
-                ->withoutTrashed()
                 ->showCreateRelationButton()
+                ->withoutTrashed()
                 ->sortable()
                 ->showOnPreview(),
 
@@ -124,56 +126,50 @@ class Event extends Resource
 
             DateTime::make(__('Date From'), 'date_from')
                 ->rules('required')
-                ->sortable()
                 ->onlyOnForms()
                 ->showOnPreview(),
 
             DateTime::make(__('Date To'), 'date_to')
                 ->rules('required')
-                ->sortable()
                 ->onlyOnForms()
                 ->showOnPreview(),
 
             Stack::make(__('Date From/To'), [
                 Line::make(null, fn () => $this->resource->dateFrom())
                     ->extraClasses('font-bold text-sm'),
-
                 Line::make(null, fn () => $this->resource->dateTo())
                     ->asSmall(),
-            ])->exceptOnForms(),
+            ])->exceptOnForms()->showOnPreview(),
 
             Stack::make(__('Event Registrations'), [
                 Line::make(null, fn () => $this->resource->registrationsCurrent())
                     ->showOnPreview()
                     ->extraClasses('font-bold text-sm')
                     ->exceptOnForms(),
-
                 Line::make(null, fn () => $this->resource->registrationsPreview())
                     ->asSmall(),
-            ]),
+            ])->showOnPreview(),
 
             Number::make(__('Maximum Registrations'), 'registrations_maximum')
                 ->default(10)
-                ->rules('required', 'numeric', 'min:1', 'gte:registrations_reserved')
-                ->sortable()
                 ->min(1)
                 ->help(__('Maximum Registrations (excluding staff).'))
+                ->rules('required', 'numeric', 'min:1', 'gte:registrations_reserved')
                 ->onlyOnForms()
                 ->showOnPreview(),
 
             Number::make(__('Reserved Registrations'), 'registrations_reserved')
+                ->default(0)
                 ->withMeta(['value' => $this->resource->registrations_reserved ?? 0])
                 ->rules('required', 'numeric', 'min:0')
-                ->default(0)
-                ->sortable()
                 ->hideFromIndex()
                 ->showOnPreview(),
 
             Currency::make(__('Price'), 'price')
                 ->currency('EUR')
                 ->rules('nullable', 'numeric')
-                ->showOnPreview()
-                ->onlyOnForms(),
+                ->onlyOnForms()
+                ->showOnPreview(),
 
             Stack::make(__('Price'), [
                 Line::make(null, fn () => $this->resource->price.' €')
@@ -189,9 +185,8 @@ class Event extends Resource
 
             BelongsTo::make(__('Catering'), 'catering', Catering::class)
                 ->default(fn () => CateringModel::$presenter::default()?->id)
-                ->withoutTrashed()
                 ->showCreateRelationButton()
-                ->sortable()
+                ->withoutTrashed()
                 ->hideFromIndex()
                 ->showOnPreview(),
 
@@ -203,14 +198,15 @@ class Event extends Resource
 
             BooleanGroup::make(__('Lead'), 'staff', fn () => $this->staff()->values)
                 ->options($this->staff()->options)
-                ->hideFromIndex(),
+                ->hideFromIndex()
+                ->showOnPreview(),
 
             Boolean::make(__('Published'), 'published')
                 ->default($published)
-                ->rules('boolean')
-                ->sortable()
                 ->trueValue(true)
                 ->falseValue(false)
+                ->rules('boolean')
+                ->sortable()
                 ->showOnPreview(),
 
             HasMany::make(__('Event Registrations'), 'eventRegistrations', EventRegistration::class)

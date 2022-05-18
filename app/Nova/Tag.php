@@ -50,7 +50,9 @@ class Tag extends Resource
         $table = $this->model()?->getTable();
 
         return [
-            ID::make()->sortable()->showOnPreview(),
+            ID::make()
+                ->sortable()
+                ->showOnPreview(),
 
             Text::make(__('Name'), 'name')
                 ->sortable()
@@ -76,8 +78,9 @@ class Tag extends Resource
 
             BelongsTo::make(__('Color'), 'color', Color::class)
                 ->nullable()
+                ->showCreateRelationButton()
                 ->withoutTrashed()
-                ->showCreateRelationButton(),
+                ->showOnPreview(),
 
             $this->orderColumn(),
 

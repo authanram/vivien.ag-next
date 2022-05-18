@@ -45,18 +45,15 @@ class Session extends Resource
 
             Text::make(__('User Agent'), 'user_agent')
                 ->onlyOnDetail()
-                ->sortable()
                 ->showOnPreview(),
 
             Text::make(__('Payload'), 'payload')
-                ->sortable()
                 ->onlyOnDetail()
                 ->showOnPreview(),
 
             Number::make(__('Last Activity'), 'last_activity')
                 ->sortable()
                 ->showOnPreview(),
-
         ];
     }
 }

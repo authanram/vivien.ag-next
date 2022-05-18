@@ -37,27 +37,29 @@ class User extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make()->sortable()->showOnPreview(),
+            ID::make()
+                ->sortable()
+                ->showOnPreview(),
 
             Gravatar::make()
                 ->maxWidth(50)
                 ->showOnPreview(),
 
             Text::make(__('Name'), 'name')
-                ->sortable()
                 ->rules('required', 'max:255')
+                ->sortable()
                 ->showOnPreview(),
 
             Text::make(__('Email'), 'email')
-                ->sortable()
                 ->creationRules('required', 'email', 'max:254', 'unique:users,email')
                 ->updateRules('required', 'email', 'max:254', 'unique:users,email,{{resourceId}}')
+                ->sortable()
                 ->showOnPreview(),
 
             Password::make(__('Password'), 'password')
-                ->onlyOnForms()
                 ->creationRules('required', 'string', 'min:8')
-                ->updateRules('nullable', 'string', 'min:8'),
+                ->updateRules('nullable', 'string', 'min:8')
+                ->onlyOnForms(),
 
             HasMany::make(__('Sessions'), 'sessions', Session::class),
 
@@ -69,7 +71,8 @@ class User extends Resource
                 ->hideFromIndex()
                 ->showOnPreview(),
 
-            HasOne::make(__('Settings'), 'userSettings', UserSettings::class),
+            HasOne::make(__('Settings'), 'userSettings', UserSettings::class)
+                ->showOnPreview(),
         ];
     }
 }

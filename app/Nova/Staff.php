@@ -34,16 +34,21 @@ class Staff extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make()->sortable()->showOnPreview(),
+            ID::make()
+                ->sortable()
+                ->showOnPreview(),
 
             Text::make(__('Name'), 'name')
                 ->rules('required')
+                ->sortable()
                 ->showOnPreview(),
 
             Text::make(__('Occupation'), 'occupation')
+                ->sortable()
                 ->showOnPreview(),
 
             Text::make(__('ImageUrl'), 'image_url')
+                ->sortable()
                 ->showOnPreview(),
 
             DateTime::make(__('Disabled At'), 'disabled_at')
@@ -54,7 +59,6 @@ class Staff extends Resource
                 ->showOnPreview(),
 
             BelongsToMany::make(__('Events'), 'events', Event::class),
-
         ];
     }
 }

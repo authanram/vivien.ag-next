@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use App\Models\EventRegistration as Model;
+use Exception;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\Text;
@@ -35,11 +36,14 @@ class EventRegistration extends Resource
         return __('Event Registration');
     }
 
+    /**
+     * @throws Exception
+     */
     public function fields(Request $request): array
     {
         return [
             Text::make(__('ID'), 'id')
-                ->onlyOnDetail()
+                ->sortable()
                 ->showOnPreview(),
 
             Text::make(__('UUID'), 'uuid')
@@ -47,21 +51,18 @@ class EventRegistration extends Resource
                 ->showOnPreview(),
 
             BelongsTo::make(__('Events'), 'event', Event::class)
-                ->rules('required')
-                ->searchable()
                 ->withoutTrashed()
+                ->rules('required')
                 ->sortable()
                 ->showOnPreview(),
 
             Text::make(__('Hash'), 'hash')
                 ->onlyOnDetail()
-                ->sortable()
                 ->showOnPreview(),
 
             Select::make(__('Salutation'), 'salutation')
                 ->options([0 => 'Frau', 1 => 'Herr'])
                 ->onlyOnForms()
-                ->sortable()
                 ->showOnPreview(),
 
             Text::make(__('Salutation'), 'salutation', static fn ($value) => $value === 0
@@ -73,10 +74,12 @@ class EventRegistration extends Resource
 
             Text::make(__('Firstname'), 'firstname')
                 ->rules('required')
+                ->sortable()
                 ->onlyOnForms(),
 
             Text::make(__('Surname'), 'surname')
                 ->rules('required')
+                ->sortable()
                 ->onlyOnForms(),
 
             Text::make(__('Name'), 'full_name')
@@ -91,15 +94,14 @@ class EventRegistration extends Resource
             Text::make(__('Email'), 'email')
                 ->rules('required')
                 ->onlyOnForms()
-                ->sortable()
                 ->showOnPreview(),
 
             Text::make(__('Email'), 'email', static function ($value) {
                 return "<a href=\"mailto:".$value."\" class=\"link-default\">".$value."</a>";
             })->rules('required')
                 ->asHtml()
-                ->exceptOnForms()
                 ->sortable()
+                ->exceptOnForms()
                 ->showOnPreview(),
 
             Number::make(__('Seats'), 'seats')
@@ -119,7 +121,6 @@ class EventRegistration extends Resource
             Text::make(__('User Agent'), 'user_agent')
                 ->onlyOnDetail()
                 ->showOnPreview(),
-
         ];
     }
 }

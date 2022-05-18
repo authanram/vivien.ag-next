@@ -35,13 +35,17 @@ class Controller extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make()->sortable()->showOnPreview(),
+            ID::make()
+                ->sortable()
+                ->showOnPreview(),
 
             Text::make(__('Name'), 'name')
                 ->sortable()
                 ->showOnPreview(),
 
-            MorphOne::make(__('Route'), 'route', Route::class),
+            MorphOne::make(__('Route'), 'route', Route::class)
+                ->sortable()
+                ->showOnPreview(),
         ];
     }
 }

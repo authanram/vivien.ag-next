@@ -42,12 +42,14 @@ class Route extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make()->showOnPreview(),
+            ID::make()
+                ->sortable()
+                ->showOnPreview(),
 
             Text::make(__('Uri'), 'uri')
                 ->sortable()
-                ->showOnPreview()
-                ->exceptOnForms(),
+                ->exceptOnForms()
+                ->showOnPreview(),
 
             Text::make(__('Name'), 'name')
                 ->creationRules('required', 'unique:routes,uri')
@@ -59,20 +61,21 @@ class Route extends Resource
                 ->from('name')
                 ->creationRules('required', 'unique:routes,uri')
                 ->updateRules('required', 'unique:routes,uri,{{resourceId}}')
-                ->sortable()
-                ->showOnPreview()
-                ->onlyOnForms(),
+                ->onlyOnForms()
+                ->showOnPreview(),
 
-            Code::make(__('Middlewares'), 'middlewares', fn ($value) => '["web"]')
+            Code::make(__('Middlewares'), 'middlewares', static fn ($value) => '["web"]')
                 ->autoHeight()
-                ->language('json')
+                ->json()
                 ->rules('required', 'json')
                 ->hideFromIndex()
                 ->showOnPreview(),
 
             MorphTo::make('Routable')->types(self::renderables())
                 ->nullable()
-                ->withoutTrashed(),
+                ->withoutTrashed()
+                ->sortable()
+                ->showOnPreview(),
 
             Boolean::make(__('Published'), 'published')
                 ->sortable()

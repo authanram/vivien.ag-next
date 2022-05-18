@@ -33,13 +33,15 @@ class Color extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make()->sortable()->showOnPreview(),
+            ID::make()
+                ->sortable()
+                ->showOnPreview(),
 
             Text::make(__('Color'), 'color')
                 ->creationRules('required', 'unique:colors,color')
                 ->updateRules('required', 'unique:colors,color,{{resourceId}}')
-                ->sortable()
                 ->help(static::getColorInputHelpText())
+                ->sortable()
                 ->showOnPreview(),
 
             ColorField::make('RGB', 'rgb')
@@ -51,7 +53,6 @@ class Color extends Resource
             HasMany::make(__('Menu Items'), 'menuItems', MenuItem::class),
 
             HasMany::make(__('Tags'), 'tags', Tag::class),
-
         ];
     }
 

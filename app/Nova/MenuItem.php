@@ -47,7 +47,9 @@ class MenuItem extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make()->sortable()->showOnPreview(),
+            ID::make()
+                ->sortable()
+                ->showOnPreview(),
 
             Text::make(__('Label'), 'label')
                 ->rules('required')
@@ -55,21 +57,21 @@ class MenuItem extends Resource
                 ->showOnPreview(),
 
             BelongsTo::make(__('Menus'), 'menu', Menu::class)
-                ->rules('required')
-                ->withoutTrashed()
                 ->showCreateRelationButton()
+                ->withoutTrashed()
+                ->rules('required')
                 ->sortable(),
 
             BelongsTo::make(__('Route'), 'route', Route::class)
-                ->rules('required')
-                ->withoutTrashed()
                 ->showCreateRelationButton()
+                ->withoutTrashed()
+                ->rules('required')
                 ->sortable(),
 
             BelongsTo::make(__('Color'), 'color', Color::class)
-                ->rules('required')
-                ->withoutTrashed()
                 ->showCreateRelationButton()
+                ->withoutTrashed()
+                ->rules('required')
                 ->sortable(),
 
             $this->orderColumn(),
@@ -78,19 +80,6 @@ class MenuItem extends Resource
                 ->rules('required')
                 ->sortable()
                 ->showOnPreview(),
-
-        ];
-    }
-
-    private static function getVisibility(): array
-    {
-        return [
-            null => '--',
-            'xs' => '>= 340px (xs)',
-            'sm' => '>= 640px (sm)',
-            'md' => '>= 768px (md)',
-            'lg' => '>= 1024px (lg)',
-            'xl' => '>= 1280px (xl)',
         ];
     }
 }

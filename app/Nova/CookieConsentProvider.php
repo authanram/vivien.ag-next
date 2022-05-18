@@ -32,7 +32,9 @@ class CookieConsentProvider extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make()->sortable()->showOnPreview(),
+            ID::make()
+                ->sortable()
+                ->showOnPreview(),
 
             Text::make(__('Name'), 'name')
                 ->creationRules('required', 'unique:cookie_consent_providers,name')
@@ -43,10 +45,10 @@ class CookieConsentProvider extends Resource
 
             Text::make(__('Url'), 'url')
                 ->rules('required', 'url')
+                ->sortable()
                 ->showOnPreview(),
 
             HasMany::make(__('Cookies'), 'cookies', CookieConsentCookie::class),
-
         ];
     }
 }

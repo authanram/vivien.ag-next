@@ -37,22 +37,25 @@ class ImageCoordinate extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make()->sortable()->showOnPreview(),
+            ID::make()
+                ->sortable()
+                ->showOnPreview(),
 
             Code::make(__('Data'), 'data')
+                ->autoHeight()
                 ->json()
-                ->height('auto')
+                ->rules('json')
                 ->showOnPreview(),
 
             $this->orderColumn(),
 
             Text::make(__('Created At'), function () {
                 return (string)$this->resource->created_at;
-            })->showOnPreview(),
+            })->sortable()->showOnPreview(),
 
             Text::make(__('Updated At'), function () {
                 return (string)$this->resource->updated_at;
-            })->showOnPreview(),
+            })->sortable()->showOnPreview(),
         ];
     }
 }

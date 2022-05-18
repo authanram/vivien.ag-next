@@ -37,7 +37,9 @@ class Location extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make()->sortable()->showOnPreview(),
+            ID::make()
+                ->sortable()
+                ->showOnPreview(),
 
             Text::make(__('Name'), 'name')
                 ->rules('required')
@@ -45,8 +47,8 @@ class Location extends Resource
                 ->showOnPreview(),
 
             Text::make(__('Address'), 'address')
-                ->sortable()
                 ->help('Postal address.')
+                ->sortable()
                 ->showOnPreview(),
 
             Textarea::make(__('Description'), 'description')
@@ -55,13 +57,12 @@ class Location extends Resource
                 ->showOnPreview(),
 
             Text::make(__('Url'), 'url')
+                ->help('<strong>Location website</strong> or <strong>Google Maps Url</strong>.')
                 ->rules('nullable', 'url')
                 ->sortable()
-                ->help('<strong>Location website</strong> or <strong>Google Maps Url</strong>.')
                 ->showOnPreview(),
 
             HasMany::make(__('Events'), 'events', Event::class),
-
         ];
     }
 }

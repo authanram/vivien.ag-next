@@ -33,23 +33,25 @@ class Quote extends Resource
     public function fields(Request $request): array
     {
         return [
-            ID::make()->sortable()->showOnPreview(),
+            ID::make()
+                ->sortable()
+                ->showOnPreview(),
 
             Text::make(__('Body'), 'body')
+                ->help('Use <strong>%s</strong> as line break.')
                 ->rules('required')
                 ->sortable()
-                ->help('Use <strong>%s</strong> as line break.')
                 ->showOnPreview(),
 
             BelongsTo::make(__('Author'), 'author', Author::class)
                 ->showCreateRelationButton()
                 ->withoutTrashed()
-                ->sortable(),
+                ->sortable()
+                ->showOnPreview(),
 
             Boolean::make(__('Published'), 'published')
                 ->sortable()
                 ->showOnPreview(),
-
         ];
     }
 }

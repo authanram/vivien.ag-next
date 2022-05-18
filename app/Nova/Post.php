@@ -42,7 +42,9 @@ class Post extends Resource
         $table = $this->model()?->getTable();
 
         return [
-            ID::make()->sortable()->showOnPreview(),
+            ID::make()
+                ->sortable()
+                ->showOnPreview(),
 
             Text::make(__('Title'), 'title')
                 ->rules('required', 'min:3')
@@ -73,7 +75,6 @@ class Post extends Resource
             Tags::make('Tags')
                 ->type('post')
                 ->showOnPreview(),
-
         ];
     }
 }

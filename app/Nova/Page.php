@@ -58,8 +58,6 @@ class Page extends Resource
                 ->sortable()
                 ->showOnPreview(),
 
-            HasMany::make('Sections', 'pageSections', PageSection::class),
-
             Line::make('Sections', 'pageSections', static function (Collection $value) {
                 return $value
                     ->sortBy('name')
@@ -68,6 +66,8 @@ class Page extends Resource
                         return '<a href="'.$resourceUrl.'" class="link-default">'.$pageSection->name.'</a>';
                     })->implode(', ');
             })->asHtml()->showOnPreview(),
+
+            HasMany::make('Sections', 'pageSections', PageSection::class),
 
             BelongsToMany::make(__('Static Blocks'), 'staticBlocks', StaticBlock::class)
                 ->fields(fn () => [
