@@ -10,6 +10,7 @@ class CreateColorsTable extends Migration
         Schema::create('colors', static function (Blueprint $table) {
             $table->id();
             $table->string('color');
+            $table->string('rgb')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

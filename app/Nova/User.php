@@ -5,6 +5,7 @@ namespace App\Nova;
 use App\Models\User as Model;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
@@ -67,6 +68,8 @@ class User extends Resource
             PermissionBooleanGroup::make('Permissions')
                 ->hideFromIndex()
                 ->showOnPreview(),
+
+            HasOne::make(__('Settings'), 'userSettings', UserSettings::class),
         ];
     }
 }

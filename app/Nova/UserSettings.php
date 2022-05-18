@@ -2,14 +2,28 @@
 
 namespace App\Nova;
 
+use App\Models\Color;
 use App\Models\UserSettings as Model;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Code;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Select;
 
 class UserSettings extends Resource
 {
     public static string $model = Model::class;
+
+    protected array $colors = [];
+
+    public function __construct($resource)
+    {
+        parent::__construct($resource);
+
+        $this->colors = Color::all()->sortBy('color')
+            ->mapWithKeys(static function (Color $color) {
+                return [$color->rgb => $color->color];
+            })->toArray();
+    }
 
     public static function label(): string
     {
@@ -26,10 +40,11 @@ class UserSettings extends Resource
         return [
             ID::make()->sortable()->showOnPreview(),
 
-            Code::make(__('Data'), 'data', fn ($value) => $value ?? '{}')
-                ->rules('required', 'json')
-                ->json()
-                ->showOnPreview(),
+            Select::make(__('Accent Color'), 'data->color')
+                ->options($this->colors)
+                ->displayUsingLabels(),
+
+            BelongsTo::make(__('User'), 'user', User::class),
         ];
     }
 }

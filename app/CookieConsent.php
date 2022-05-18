@@ -2,8 +2,8 @@
 
 namespace App;
 
-use App\Models\Content as Model;
-use Exception;
+//use App\Models\Content as Model;
+//use Exception;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Log;
 use JsonException;
@@ -28,28 +28,30 @@ class CookieConsent
 
     public static function content(string $slug, bool $markdown = false, array $replace = []): stdClass
     {
-        try {
-            /** @noinspection PhpStaticAsDynamicMethodCallInspection */
-            $content = Model::where('slug', $slug)->firstOrFail();
-        } catch (Exception $e) {
-            abort(500, $e->getMessage());
-        }
+        return (object)[];
 
+//        try {
+//            /** @noinspection PhpStaticAsDynamicMethodCallInspection */
+//            $content = Model::where('slug', $slug)->firstOrFail();
+//        } catch (Exception $e) {
+//            abort(500, $e->getMessage());
+//        }
+//
 //        $body = $markdown
 //            ? $this->markdown($content->body, $replace)
 //            : $content->body;
-
-        $body = $content->body;
-
-        $map = config('project.content.replace')();
-
-        foreach ($map as $key => $value) {
-            $body = str_replace($key, $value, $body);
-        }
-
-        return (object) [
-            'body' => $body,
-            'slug' => $content->getAttribute('slug'),
-        ];
+//
+//        $body = $content->body;
+//
+//        $map = config('project.content.replace')();
+//
+//        foreach ($map as $key => $value) {
+//            $body = str_replace($key, $value, $body);
+//        }
+//
+//        return (object) [
+//            'body' => $body,
+//            'slug' => $content->getAttribute('slug'),
+//        ];
     }
 }

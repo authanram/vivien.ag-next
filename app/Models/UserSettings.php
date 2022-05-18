@@ -14,6 +14,10 @@ class UserSettings extends Model
         'data' => 'array',
     ];
 
+    public $attributes = [
+        'data' => '{"accent": "pink"}',
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

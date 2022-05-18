@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Colors;
 use App\Nova\Dashboards\Main;
 use App\Policies\PermissionPolicy;
 use App\Policies\RolePolicy;
+use Auth;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\LogViewer\LogViewer;
 use Laravel\Nova\Nova;
@@ -19,6 +21,13 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
         Nova::serving(static function () {
             Nova::translations(base_path('lang/de.json'));
+
+            $color = Auth::user()
+                    ?->load('userSettings')
+                    ->userSettings
+                    ?->data['color'] ?? null;
+
+            Nova::$jsonVariables['brandColorsCSS'] = Colors::brandColorsCSS($color);
         });
 
         Nova::style('backend', public_path('vendor/nova-custom/backend.css'));

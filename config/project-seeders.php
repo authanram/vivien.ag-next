@@ -2,6 +2,7 @@
 
 return [
     'users',
+    'user_settings',
 
     // site
     'routes',

@@ -2,10 +2,11 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Http\Requests\NovaRequest as Request;
+use Laravel\Nova\Fields\Color as ColorField;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest as Request;
 
 class Color extends Resource
 {
@@ -39,6 +40,10 @@ class Color extends Resource
                 ->updateRules('required', 'unique:colors,color,{{resourceId}}')
                 ->sortable()
                 ->help(static::getColorInputHelpText())
+                ->showOnPreview(),
+
+            ColorField::make('RGB', 'rgb')
+                ->rules('required', 'string')
                 ->showOnPreview(),
 
             HasMany::make(__('Event Templates'), 'eventTemplates', EventTemplate::class),
