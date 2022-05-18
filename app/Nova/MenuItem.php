@@ -8,9 +8,12 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use Outl1ne\NovaSortable\Traits\HasSortableRows;
 
 class MenuItem extends Resource
 {
+    use HasSortableRows;
+
     public static string $model = Model::class;
 
     public static $title = 'label';

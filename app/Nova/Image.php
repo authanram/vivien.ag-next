@@ -10,9 +10,12 @@ use Laravel\Nova\Fields\Image as FieldImage;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
+use Outl1ne\NovaSortable\Traits\HasSortableRows;
 
 class Image extends Resource
 {
+    use HasSortableRows;
+
     public static string $model = \App\Models\Image::class;
 
     public static $title = 'name';

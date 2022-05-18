@@ -3,14 +3,17 @@
 namespace App\Nova;
 
 use App\Models\ImageCoordinate as Model;
-use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest as Request;
+use Outl1ne\NovaSortable\Traits\HasSortableRows;
 
 class ImageCoordinate extends Resource
 {
+    use HasSortableRows;
+
     public static string $model = Model::class;
 
     public static $search = [
