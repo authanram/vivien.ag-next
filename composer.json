@@ -43,6 +43,7 @@
         "authanram/laravel-query-monitor": "^1.0",
         "barryvdh/laravel-ide-helper": "^2.12",
         "fakerphp/faker": "^1.9.1",
+        "laravel/telescope": "^4.9",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
         "nunomaduro/phpinsights": "^2.2",
@@ -63,7 +64,9 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "dont-discover": [
+                "laravel/telescope"
+            ]
         }
     },
     "autoload": {
@@ -83,6 +86,9 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "post-update-cmd": [
+            "@php artisan telescope:publish --ansi"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
@@ -109,17 +115,13 @@
             "type": "git",
             "url": "https://github.com/authanram/markdown"
         },
-        "whitecube/nova-flexible-content": {
+        "authanram/nova-fieldsets": {
             "type": "path",
-            "url": "/Volumes/TEST/open-source/nova-flexible-content"
+            "url": "./nova-components/NovaFieldsets"
         },
         "gijsg/system-resources": {
             "type": "git",
             "url": "https://github.com/authanram/nova-system-resources"
-        },
-        "0": {
-            "type": "path",
-            "url": "./nova-components/NovaFieldsets"
         }
     }
 }

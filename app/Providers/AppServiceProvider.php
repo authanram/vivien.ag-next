@@ -38,8 +38,7 @@ class AppServiceProvider extends ServiceProvider
             return;
         }
 
-        if (class_exists('\Laracasts\Generators\GeneratorsServiceProvider')) {
-            $this->app->register('\Laracasts\Generators\GeneratorsServiceProvider');
-        }
+        $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
+        $this->app->register(TelescopeServiceProvider::class);
     }
 }
