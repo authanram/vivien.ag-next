@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Contracts\SiteService as Contract;
 use App\CookieConsent;
-use App\ImageCoords;
+use App\ImageCoordinates;
 use App\Parsers;
 use App\Renderers;
 use App\Repositories;
@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 final class SiteService implements Contract
 {
     protected CookieConsent $cookieConsent;
-    protected ImageCoords $imageCoords;
+    protected ImageCoordinates $imageCoordinates;
     protected Parsers $parsers;
     protected Renderers $renderers;
     protected Repositories $repositories;
@@ -35,11 +35,11 @@ final class SiteService implements Contract
         return $this->cookieConsent;
     }
 
-    public function imageCoords(): ImageCoords
+    public function imageCoordinates(): ImageCoordinates
     {
-        $this->imageCoords ??= new ImageCoords($this->repositories->imageCoords());
+        $this->imageCoordinates ??= new ImageCoordinates($this->repositories->imageCoordinates());
 
-        return $this->imageCoords;
+        return $this->imageCoordinates;
     }
 
     public function parsers(): Parsers

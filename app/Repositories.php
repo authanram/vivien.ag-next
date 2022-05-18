@@ -6,7 +6,7 @@ use App\Repositories\Colors;
 use App\Repositories\ContentBlocks;
 use App\Repositories\Events;
 use App\Repositories\EventTemplates;
-use App\Repositories\ImageCoords;
+use App\Repositories\ImageCoordinates;
 use App\Repositories\MenuItems;
 use App\Repositories\Menus;
 use App\Repositories\Repository;
@@ -44,9 +44,9 @@ final class Repositories
         return $this->withBuilder(EventTemplates::class, $builder);
     }
 
-    public function imageCoords(Builder $builder = null): Repository|ImageCoords
+    public function imageCoordinates(Builder $builder = null): Repository|ImageCoordinates
     {
-        return $this->withBuilder(ImageCoords::class, $builder);
+        return $this->withBuilder(ImageCoordinates::class, $builder);
     }
 
     public function menuItems(Builder $builder = null): Repository|MenuItems

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-final class ImageCoords extends Repository
+final class ImageCoordinates extends Repository
 {
     public static function builder(): Builder
     {
@@ -26,7 +26,7 @@ final class ImageCoords extends Repository
     {
         return self::builder()->get([
             'id',
-            'coords',
+            'data',
             'image_id',
         ]);
     }

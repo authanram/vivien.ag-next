@@ -36,8 +36,8 @@ class Image extends Model implements Sortable
         return "/storage/$this->file";
     }
 
-    public function imageCoords(): HasOne
+    public function imageCoordinates(): HasOne
     {
-        return $this->hasOne(ImageCoords::class);
+        return $this->hasOne(ImageCoordinate::class);
     }
 }

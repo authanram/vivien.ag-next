@@ -40,7 +40,7 @@ return [
 
     // contents
     'images',
-    'image_coords',
+    'image_coordinates',
     'posts',
     'quotes',
 

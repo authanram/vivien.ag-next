@@ -12,6 +12,7 @@
         "ext-json": "*",
         "ajcastro/eager-load-pivot-relations": "^0.2.2",
         "authanram/markdown": "dev-develop",
+        "authanram/nova-fieldsets": "*",
         "calebporzio/sushi": "^2.4",
         "coderello/laravel-nova-lang": "^1.8",
         "fruitcake/laravel-cors": "^3.0",
@@ -24,6 +25,7 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4.5",
         "livewire/livewire": "^2.10",
+        "optimistdigital/nova-sortable": "^3.0",
         "ryangjchandler/blade-cache-directive": "^0.3.0",
         "spatie/laravel-activitylog": "^4.5.2",
         "spatie/laravel-backup": "^8.1.2",
@@ -34,8 +36,7 @@
         "spatie/nova-tags-field": "^4.0",
         "tightenco/nova-google-analytics": "^2.0",
         "titasgailius/search-relations": "^2.0",
-        "tonysm/tailwindcss-laravel": "^0.4.0",
-        "authanram/nova-fieldsets": "*"
+        "tonysm/tailwindcss-laravel": "^0.4.0"
     },
     "require-dev": {
         "authanram/laravel-query-monitor": "^1.0",

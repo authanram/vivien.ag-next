@@ -2,31 +2,31 @@
 
 namespace App\Nova;
 
-use App\Models\ImageCoords as Model;
-use Laravel\Nova\Fields\Line;
+use App\Models\ImageCoordinate as Model;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
 
-class ImageCoords extends Resource
+class ImageCoordinate extends Resource
 {
     public static string $model = Model::class;
 
     public static $search = [
-        'coords',
+        'data',
     ];
 
     public static $with = ['image'];
 
     public static function label(): string
     {
-        return __('Image Coords');
+        return __('Image Coordinates');
     }
 
     public static function singularLabel(): string
     {
-        return __('Image Coord');
+        return __('Image Coordinate');
     }
 
     public function fields(Request $request): array
@@ -37,14 +37,17 @@ class ImageCoords extends Resource
             BelongsTo::make(__('Image'), 'image', Image::class)
                 ->withoutTrashed(),
 
-            Code::make(__('Coords'), 'coords')
-                ->showOnIndex()
+            Code::make(__('Data'), 'data')
                 ->json()
                 ->height('auto')
                 ->showOnPreview(),
 
-            Line::make(__('Created At'), function () {
+            Text::make(__('Created At'), function () {
                 return (string)$this->resource->created_at;
+            })->showOnPreview(),
+
+            Text::make(__('Updated At'), function () {
+                return (string)$this->resource->updated_at;
             })->showOnPreview(),
         ];
     }

@@ -63,7 +63,7 @@ class Image extends Resource
                 ->sortable()
                 ->showOnPreview(),
 
-            HasOne::make(__('Image Coords'), 'imageCoords', ImageCoords::class),
+            HasOne::make(__('Image Coordinates'), 'imageCoordinates', ImageCoordinate::class),
 
         ];
     }

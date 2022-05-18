@@ -58,7 +58,7 @@ return [
         ])->collapsable()->icon('badge-check'),
 
         MenuSection::make(__('Misc'), [
-            MenuItem::resource(Resources\ImageCoords::class),
+            MenuItem::resource(Resources\ImageCoordinate::class),
             MenuItem::resource(Resources\Color::class),
             MenuItem::make(__('Logs'), 'logs'),
         ])->collapsable()->icon('collection'),

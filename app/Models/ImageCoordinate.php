@@ -7,23 +7,23 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 
-class ImageCoords extends Model implements Sortable
+class ImageCoordinate extends Model implements Sortable
 {
     use SoftDeletes;
     use SortableTrait;
 
     protected $fillable = [
         'image_id',
-        'coords',
+        'data',
         'order_column',
     ];
 
     protected $casts = [
-        'coords' => 'array',
+        'data' => 'array',
     ];
 
     protected $attributes = [
-        'coords' => '{}',
+        'data' => '{}',
     ];
 
     public array $sortable = [

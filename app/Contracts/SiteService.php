@@ -3,7 +3,7 @@
 namespace App\Contracts;
 
 use App\CookieConsent;
-use App\ImageCoords;
+use App\ImageCoordinates;
 use App\Parsers;
 use App\Renderers;
 use App\Repositories;
@@ -15,7 +15,7 @@ interface SiteService
 {
     public function cookieConsent(): CookieConsent;
 
-    public function imageCoords(): ImageCoords;
+    public function imageCoordinates(): ImageCoordinates;
 
     public function parsers(): Parsers;
 

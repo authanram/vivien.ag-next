@@ -20,10 +20,10 @@ class CreateImagesTable extends Migration
             $table->softDeletes();
         });
 
-        Schema::create('image_coords', static function (Blueprint $table) {
+        Schema::create('image_coordinates', static function (Blueprint $table) {
             $table->id();
             $table->foreignId('image_id')->nullable()->constrained('images')->cascadeOnUpdate();
-            $table->json('coords')->nullable();
+            $table->json('data')->nullable();
             $table->smallInteger('order_column');
             $table->timestamps();
             $table->softDeletes();
@@ -32,7 +32,7 @@ class CreateImagesTable extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('image_coords');
+        Schema::dropIfExists('image_coordinates');
         Schema::dropIfExists('images');
     }
 }
