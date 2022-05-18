@@ -1,3 +1,7 @@
+body {
+    overflow-y: scroll !important;
+}
+
 a.no-underline:hover,
 .link-default:hover {
     text-decoration: underline;
