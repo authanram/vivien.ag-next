@@ -22,7 +22,7 @@ class MenuItemPresenter extends Presenter
             : '#';
     }
 
-    public function color(): ?string
+    public function colorCode(): ?string
     {
         return $this->entity->color?->color;
     }

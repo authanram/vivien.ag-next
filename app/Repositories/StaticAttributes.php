@@ -12,6 +12,6 @@ final class StaticAttributes extends Repository
 
     public static function findBySlug(string $slug): Builder|StaticAttribute|null
     {
-        return self::builder()->firstWhere('slug', $slug);
+        return self::builder()->firstWhere('data->slug', $slug);
     }
 }

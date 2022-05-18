@@ -9,12 +9,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-/**
- * @property Routable $routable
- * @method Presenter present()
- */
 class Route extends Model
 {
+    use HasPresenter;
     use SoftDeletes;
 
     public static string $presenter = Presenter::class;

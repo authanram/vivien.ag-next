@@ -50,7 +50,7 @@ class Staff extends Resource
                 ->onlyOnForms()
                 ->showOnPreview(),
 
-            Line::make(__('Disabled At'), fn () => $this->resource->present()->disabledAt())
+            Line::make(__('Disabled At'), fn () => $this->resource->disabledAt())
                 ->showOnPreview(),
 
             BelongsToMany::make(__('Events'), 'events', Event::class),

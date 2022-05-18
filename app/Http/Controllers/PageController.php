@@ -18,7 +18,7 @@ final class PageController extends Controller
 
         return view('page', ['cacheKey' => $this->cacheKey()], $mergeData);
 
-//        $contentView = $route->present()
+//        $contentView = $route
 //            ->resolveAction()
 //            ->resolveContentViewControllerAction()
 //            ->load('contentBlocks');
@@ -44,7 +44,7 @@ final class PageController extends Controller
         $blocks = [];
 
         foreach ($contentBlocks as $contentBlock) {
-            $blocks[] = $contentBlock->present()->render();
+            $blocks[] = $contentBlock->render();
 
             $layout = str_replace("%$contentBlock->slug%", end($blocks), $layout);
         }

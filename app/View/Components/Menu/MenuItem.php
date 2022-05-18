@@ -4,10 +4,8 @@ namespace App\View\Components\Menu;
 
 use App\Facades\Site;
 use App\Models\MenuItem as Model;
-use App\Presenters\MenuItemPresenter;
 use App\View\Components\Component;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Optional;
 use InvalidArgumentException;
 
 /**
@@ -28,9 +26,9 @@ abstract class MenuItem extends Component
         string $color = null,
         string $href = null,
     ) {
-        $this->isActive = $active ?? $this->model->present()->isActive() ?? 'false';
-        $this->color = $color ?? $this->model->present()->color() ?? Site::theme()->accent(request());
-        $this->href = $href ?? $this->present()->href() ?? '#';
+        $this->isActive = $active ?? $this->model->isActive() ?? 'false';
+        $this->color = $color ?? $this->model->colorCode() ?? Site::theme()->accent(request());
+        $this->href = $href ?? $this->model->href() ?? '#';
     }
 
     protected function getExtraAttributes(): array
@@ -68,11 +66,6 @@ abstract class MenuItem extends Component
         $classListString = implode(' ', $classList);
 
         return str_replace('COLOR', $this->color, $classListString);
-    }
-
-    protected function present(): Optional|MenuItemPresenter
-    {
-        return $this->model->present();
     }
 }
 

@@ -6,12 +6,10 @@ use App\Presenters\TagPresenter as Presenter;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
-/**
- * @property Presenter $presenter
- * @method Presenter present()
- */
 class Tag extends \Spatie\Tags\Tag
 {
+    use HasPresenter;
+
     public static string $presenter = Presenter::class;
 
     public $fillable = [

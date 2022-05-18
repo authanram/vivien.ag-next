@@ -135,20 +135,20 @@ class Event extends Resource
                 ->showOnPreview(),
 
             Stack::make(__('Date From/To'), [
-                Line::make(null, fn () => $this->resource->present()->dateFrom())
+                Line::make(null, fn () => $this->resource->dateFrom())
                     ->extraClasses('font-bold text-sm'),
 
-                Line::make(null, fn () => $this->resource->present()->dateTo())
+                Line::make(null, fn () => $this->resource->dateTo())
                     ->asSmall(),
             ])->exceptOnForms(),
 
             Stack::make(__('Event Registrations'), [
-                Line::make(null, fn () => $this->resource->present()->registrationsCurrent())
+                Line::make(null, fn () => $this->resource->registrationsCurrent())
                     ->showOnPreview()
                     ->extraClasses('font-bold text-sm')
                     ->exceptOnForms(),
 
-                Line::make(null, fn () => $this->resource->present()->registrationsPreview())
+                Line::make(null, fn () => $this->resource->registrationsPreview())
                     ->asSmall(),
             ]),
 
@@ -179,7 +179,7 @@ class Event extends Resource
                 Line::make(null, fn () => $this->resource->price.' €')
                     ->extraClasses('font-bold text-sm'),
 
-                Line::make(null, fn () => $this->resource->present()->profitPreview())
+                Line::make(null, fn () => $this->resource->profitPreview())
                     ->asSmall(),
             ]),
 

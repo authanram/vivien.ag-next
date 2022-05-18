@@ -8,12 +8,9 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Tags\HasTags;
 
-/**
- * @property Presenter $presenter
- * @method Presenter present()
- */
 class Post extends Model
 {
+    use HasPresenter;
     use HasTags;
     use SoftDeletes;
 
@@ -40,16 +37,12 @@ class Post extends Model
         'published_at',
     ];
 
-    // accessors
-
     public function getPublishedAtReadableAttribute(): string
     {
         $date = $this->attributes['published_at'];
 
         return Carbon::createFromTimeString($date);
     }
-
-    // relations
 
     public function activity(): MorphOne
     {

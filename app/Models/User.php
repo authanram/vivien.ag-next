@@ -12,11 +12,12 @@ use Laravel\Nova\Auth\Impersonatable;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
- * @property Presenter $presenter
- * @method Presenter present()
+ * @method bool isAdministrator()
+ * @method bool isModerator()
  */
 class User extends Authenticatable //MustVerifyEmail
 {
+    use HasPresenter;
     use HasRoles;
     use Impersonatable;
     use Notifiable;

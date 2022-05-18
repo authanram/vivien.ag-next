@@ -7,12 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 
-/**
- * @property Presenter $presenter
- * @method Presenter present()
- */
 class ImageCoordinate extends Model implements Sortable
 {
+    use HasPresenter;
     use SoftDeletes;
     use SortableTrait;
 

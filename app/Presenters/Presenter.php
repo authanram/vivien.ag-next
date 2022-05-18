@@ -3,13 +3,14 @@
 namespace App\Presenters;
 
 use App\Models\Model;
+use App\Models\User as Authenticatable;
 
 /**
  * @property Model $entity
  */
 abstract class Presenter
 {
-    public function __construct(protected Model $entity)
+    public function __construct(protected Authenticatable|Model $entity)
     {
     }
 

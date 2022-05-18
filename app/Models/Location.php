@@ -6,12 +6,9 @@ use App\Presenters\LocationPresenter as Presenter;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-/**
- * @property Presenter $presenter
- * @method Presenter present()
- */
 class Location extends Model
 {
+    use HasPresenter;
     use SoftDeletes;
 
     public static string $presenter = Presenter::class;

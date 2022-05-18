@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Contracts\Filterable;
-use App\Contracts\Routable;
 use App\Presenters\EventPresenter as Presenter;
 use App\Routables\EventRoutable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -14,12 +13,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\Tags\HasTags;
 
-/**
- * @property Presenter $presenter
- * @method Presenter present()
- */
 class Event extends Model implements Filterable//, Routable
 {
+    use HasPresenter;
     use HasTags;
     use SoftDeletes;
 

@@ -8,11 +8,13 @@ use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 
 /**
- * @property Presenter $presenter
- * @method Presenter present()
+ * @method bool isActive()
+ * @method string colorCode()
+ * @method string href()
  */
 class MenuItem extends Model implements Sortable
 {
+    use HasPresenter;
     use SortableTrait;
 
     public static string $presenter = Presenter::class;
