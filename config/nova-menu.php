@@ -23,6 +23,7 @@ return [
         MenuSection::make(__('Contents'), [
             MenuItem::resource(Resources\Image::class),
             MenuItem::resource(Resources\Post::class),
+            MenuItem::resource(Resources\StaticBlock::class),
             MenuItem::resource(Resources\Quote::class),
         ])->collapsable()->icon('document-text'),
 
@@ -40,9 +41,8 @@ return [
             //MenuItem::resource(Resources\MenuItem::class),
             MenuItem::resource(Resources\Menu::class),
             MenuItem::resource(Resources\Route::class),
-            MenuItem::resource(Resources\StaticBlock::class),
             MenuItem::resource(Resources\Page::class),
-        ])->collapsable()->icon('globe-alt'),
+        ])->collapsable()->icon('template'),
 
         MenuSection::make(__('Access Control'), [
             MenuItem::resource(Resources\User::class),
