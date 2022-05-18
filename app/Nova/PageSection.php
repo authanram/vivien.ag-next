@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use App\Models\Page;
+use App\Models\Page as PageModel;
 use App\Models\PageSection as Model;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
@@ -31,7 +31,7 @@ class PageSection extends Resource
     public function fields(NovaRequest $request): array
     {
         $sections = is_null($request->get('viaResourceId')) === false
-            ? Page::with('layout')
+            ? PageModel::with('layout')
                 ->find($request->get('viaResourceId'))
                 ?->getRelation('layout')
                 ?->getAttribute('sections')
