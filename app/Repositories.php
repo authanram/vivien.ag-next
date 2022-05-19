@@ -3,7 +3,6 @@
 namespace App;
 
 use App\Repositories\Colors;
-use App\Repositories\ContentBlocks;
 use App\Repositories\Events;
 use App\Repositories\EventTemplates;
 use App\Repositories\ImageCoordinates;
@@ -27,11 +26,6 @@ final class Repositories
     public function colors(Builder $builder = null): Repository|Colors
     {
         return $this->withBuilder(Colors::class, $builder);
-    }
-
-    public function contentBlocks(Builder $builder = null): Repository|ContentBlocks
-    {
-        return $this->withBuilder(ContentBlocks::class, $builder);
     }
 
     public function events(Builder $builder = null): Repository|Events

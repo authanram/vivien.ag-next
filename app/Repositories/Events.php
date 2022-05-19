@@ -18,7 +18,6 @@ final class Events extends Repository
             ->where('date_to', '>', now())
             ->where('published', true);
 
-        /** @noinspection StaticInvocationViaThisInspection */
         $this->collections->put(__FUNCTION__, $this->builder->get());
 
         return $this;

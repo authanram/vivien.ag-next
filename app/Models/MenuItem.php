@@ -3,7 +3,6 @@
 namespace App\Models;
 
 //use App\Presenters\MenuItemPresenter as Presenter;
-use App\Contracts\Presentable;
 use Eloquent;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\EloquentSortable\Sortable;
@@ -14,9 +13,8 @@ use Spatie\EloquentSortable\SortableTrait;
  * @method string colorCode()
  * @method string href()
  */
-class MenuItem extends Eloquent implements Presentable, Sortable
+class MenuItem extends Eloquent implements Sortable
 {
-    use PresentableTrait;
     //use HasPresenter;
     use SortableTrait;
 
