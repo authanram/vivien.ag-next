@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Route;
 try {
     $collection = Model::published()
         ->with('routable')
-        ->whereNotNull('routable')
         ->get();
 } catch (QueryException) {}
 

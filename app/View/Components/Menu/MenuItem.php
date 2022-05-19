@@ -27,7 +27,7 @@ abstract class MenuItem extends Component
         string $href = null,
     ) {
         $this->isActive = $active ?? $this->model->isActive() ?? 'false';
-        $this->color = $color ?? $this->model->colorCode() ?? Site::theme()->accent(request());
+        $this->color = $color ?? $this->model->color->color ?? Site::theme()->accent(request());
         $this->href = $href ?? $this->model->href() ?? '#';
     }
 

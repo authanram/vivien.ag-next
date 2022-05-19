@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
@@ -17,7 +18,7 @@ abstract class Repository
         return self::model()::query();
     }
 
-    public static function model(): \App\Models\Model|string
+    public static function model(): Eloquent|string
     {
         return static::$model;
     }

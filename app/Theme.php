@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Models\Route;
+use App\Models\Color;
 use Illuminate\Http\Request;
 
 class Theme
@@ -22,9 +22,7 @@ class Theme
         }
 
         $route = $this->repositories->routes()
-            ->all()
-            ->filter(fn (Route $route) => $route->name === $request->route()?->getName())
-            ->first();
+            ->firstWhere('name', $request->route()?->getName());
 
         if (is_null($route)) {
             return static::$accentDefault;
@@ -33,7 +31,7 @@ class Theme
         $this->accent = $this->repositories->colors()
             ->getBuilder()
             ->get()
-            ->filter(fn ($color) => $color->id === $route->menuItems->first()->color_id)
+            ->filter(fn (Color $color) => $color->id === $route->menuItems->first()->color_id)
             ->first()
             ?->color;
 

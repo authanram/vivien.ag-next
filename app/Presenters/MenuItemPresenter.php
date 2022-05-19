@@ -22,11 +22,6 @@ class MenuItemPresenter extends Presenter
             : '#';
     }
 
-    public function colorCode(): ?string
-    {
-        return $this->entity->color?->color;
-    }
-
     protected function route(): ?string
     {
         return $this->entity->route?->name;
