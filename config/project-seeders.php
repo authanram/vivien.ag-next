@@ -2,7 +2,6 @@
 
 return [
     'users',
-    'user_settings',
 
     // site
     'routes',
@@ -50,4 +49,7 @@ return [
     // cookie consent
     'cookie_consent_providers',
     'cookie_consent_cookies',
+
+    // user settings
+    'user_settings',
 ];

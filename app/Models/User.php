@@ -44,7 +44,7 @@ class User extends Authenticatable //MustVerifyEmail
         return $this->hasMany(Session::class);
     }
 
-    public function userSettings(): HasOne
+    public function settings(): HasOne
     {
         return $this->hasOne(UserSettings::class);
     }

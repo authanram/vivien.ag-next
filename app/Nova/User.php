@@ -17,6 +17,8 @@ class User extends Resource
 {
     public static string $model = Model::class;
 
+    public static $with = ['settings'];
+
     public static $title = 'name';
 
     public static $search = [
@@ -61,6 +63,9 @@ class User extends Resource
                 ->updateRules('nullable', 'string', 'min:8')
                 ->onlyOnForms(),
 
+            HasOne::make(__('User Settings'), 'settings', UserSettings::class)
+                ->showOnPreview(),
+
             HasMany::make(__('Sessions'), 'sessions', Session::class),
 
             RoleBooleanGroup::make('Roles')
@@ -69,9 +74,6 @@ class User extends Resource
 
             PermissionBooleanGroup::make('Permissions')
                 ->hideFromIndex()
-                ->showOnPreview(),
-
-            HasOne::make(__('Settings'), 'userSettings', UserSettings::class)
                 ->showOnPreview(),
         ];
     }

@@ -2,21 +2,19 @@
 
 namespace App\Models;
 
+use App\Presenters\UserSettingsPresenter as Presenter;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class UserSettings extends Model
 {
-    protected $fillable = [
-        'data',
-    ];
+    use HasPresenter;
 
-    protected $casts = [
-        'data' => 'array',
-    ];
+    public static string $presenter = Presenter::class;
 
-    public $attributes = [
-        'data' => '{"accent": "pink"}',
-    ];
+    public function color(): BelongsTo
+    {
+        return $this->belongsTo(Color::class);
+    }
 
     public function user(): BelongsTo
     {

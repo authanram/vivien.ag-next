@@ -14,6 +14,7 @@ trait HasPresenter
 
     /**
      * @throws PresenterException
+     * @noinspection PhpMultipleClassDeclarationsInspection
      */
     public function __call($method, $parameters)
     {
@@ -21,8 +22,21 @@ trait HasPresenter
             return $this->present()->{$method}($parameters);
         }
 
-        /** @noinspection PhpMultipleClassDeclarationsInspection */
         return parent::__call($method, $parameters);
+    }
+
+    /**
+     * @throws PresenterException
+     * @noinspection MagicMethodsValidityInspection
+     * @noinspection PhpMultipleClassDeclarationsInspection
+     */
+    public function __get($key)
+    {
+        if (property_exists(static::$presenter, $key)) {
+            return $this->present()->{$key};
+        }
+
+        return parent::__get($key);
     }
 
     public function present(): Presenter

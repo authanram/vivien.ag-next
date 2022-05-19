@@ -2,27 +2,24 @@
 
 namespace App\Models;
 
-use App\Colors;
-use Illuminate\Database\Eloquent\Casts\Attribute;
+use App\Presenters\ColorPresenter as Presenter;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * @property string $hex
+ */
 class Color extends Model
 {
+    use HasPresenter;
     use SoftDeletes;
+
+    public static string $presenter = Presenter::class;
 
     protected $fillable = [
         'color',
         'rgb',
     ];
-
-    public function rgb(): Attribute
-    {
-        return Attribute::make(
-            get: static fn ($value) => Colors::rgbToHex($value),
-            set: static fn ($value) => Colors::hexToRgb($value),
-        );
-    }
 
     public function eventTemplates(): HasMany
     {
@@ -37,5 +34,10 @@ class Color extends Model
     public function tags(): HasMany
     {
         return $this->hasMany(Tag::class);
+    }
+
+    public function userSettings(): HasMany
+    {
+        return $this->hasMany(UserSettings::class);
     }
 }
