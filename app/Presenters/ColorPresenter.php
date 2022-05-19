@@ -12,12 +12,12 @@ use App\Models\User as Authenticatable;
  */
 class ColorPresenter extends Presenter
 {
-    public string $hex;
+    public string $rgb;
 
     public function __construct(Authenticatable|Model $entity)
     {
         parent::__construct($entity);
 
-        $this->hex = Util::rgbToHex($this->entity->rgb);
+        $this->rgb = Util::hexToRgb($this->entity->hex);
     }
 }

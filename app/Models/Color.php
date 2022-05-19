@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * @property string $hex
+ * @property string $rgb
  */
 class Color extends Model
 {
@@ -18,7 +18,7 @@ class Color extends Model
 
     protected $fillable = [
         'color',
-        'rgb',
+        'hex',
     ];
 
     public function eventTemplates(): HasMany
