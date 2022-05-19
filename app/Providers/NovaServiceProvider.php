@@ -21,12 +21,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         Nova::serving(static function () {
             Nova::translations(base_path('lang/de.json'));
 
-            $color = Auth::user()
-                    ?->load('settings')
-                    ?->settings
-                    ?->color;
-
-            Nova::$jsonVariables['brandColorsCSS'] = \App\Nova::brandColorsCSS($color->rgb);
+            Nova::$jsonVariables['brandColorsCSS'] = \App\Nova::brandColorsCSS(
+                Auth::user()?->load('settings')?->settings?->color?->rgb,
+            );
         });
 
         Nova::style('backend', public_path('vendor/nova-custom/backend.css'));

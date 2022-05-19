@@ -44,7 +44,6 @@ class User extends Resource
                 ->showOnPreview(),
 
             Gravatar::make()
-                ->maxWidth(50)
                 ->showOnPreview(),
 
             Text::make(__('Name'), 'name')

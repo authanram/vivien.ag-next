@@ -26,6 +26,11 @@ input[type="search"]::-webkit-search-results-decoration {
     -webkit-appearance:none;
 }
 
+.table-default tbody tr .td-fit + td {
+    white-space: nowrap;
+    width: 3.5%;
+}
+
 .space-y-4>:not([hidden])~:not([hidden]) {
     margin-top: calc(2rem*(1 - var(--tw-space-y-reverse)));
 }
