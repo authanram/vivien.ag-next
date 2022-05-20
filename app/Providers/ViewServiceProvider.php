@@ -20,10 +20,10 @@ class ViewServiceProvider extends ServiceProvider
     {
         $siteService = $this->app[SiteService::class];
 
-        View::share('accent', $siteService->theme()->accent(request()));
-        View::share('site', $siteService);
-        View::share('text', $siteService->text());
-        View::share('theme', $siteService->theme());
+//        View::share('accent', $siteService->theme()->accent(request()));
+//        View::share('site', $siteService);
+//        View::share('text', $siteService->text());
+//        View::share('theme', $siteService->theme());
     }
 
     protected function bootBladeComponents(): void
