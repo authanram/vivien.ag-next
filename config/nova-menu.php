@@ -10,6 +10,7 @@ use Laravel\Nova\Menu\MenuSection;
 use Vyuldashev\NovaPermission;
 
 return [
+
     'main' => static fn (Request $request) => [
         MenuSection::dashboard(Dashboards\Main::class)
             ->icon('chart-bar'),

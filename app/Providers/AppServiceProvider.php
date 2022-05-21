@@ -16,11 +16,9 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(Contracts\IconRenderer::class, Renderers\IconRenderer::class);
         $this->app->bind(Contracts\MarkdownRenderer::class, Renderers\MarkdownRenderer::class);
-        $this->app->bind(Contracts\SiteService::class, Services\SiteService::class);
-        //
-        $this->app->bind(Contracts\StaticAttributeServiceContract::class, Services\StaticAttributeService::class);
 
-        $this->app->register(RepositoryServiceProvider::class);
+        $this->app->bind(Contracts\SiteService::class, Services\SiteService::class);
+        $this->app->bind(Contracts\Services\RouteServiceContract::class, Services\RouteService::class);
 
         if ($this->app->runningInConsole()) {
             return;
@@ -38,6 +36,8 @@ class AppServiceProvider extends ServiceProvider
 
     private function registerServiceProviders(): void
     {
+        $this->app->register(RepositoryServiceProvider::class);
+
         if ($this->app->environment('local') === false) {
             return;
         }

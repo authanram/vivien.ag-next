@@ -2,6 +2,8 @@
 
 namespace App\RepositoriesNew;
 
-final class RouteRepository extends BaseRepository
+use App\Contracts\Repositories\RouteRepositoryContract;
+
+final class RouteRepository extends BaseRepository implements RouteRepositoryContract
 {
 }

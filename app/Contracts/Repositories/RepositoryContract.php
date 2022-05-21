@@ -4,8 +4,9 @@ namespace App\Contracts\Repositories;
 
 use App\Contracts\CriteriaContract;
 use App\Models\Model;
+use Prettus\Repository\Contracts\RepositoryInterface;
 
-interface RepositoryContract
+interface RepositoryContract extends RepositoryInterface
 {
     public function model(): string;
 

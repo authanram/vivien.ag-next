@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+use Eloquent;
 use Illuminate\Support\Str;
 
-abstract class Model extends \Illuminate\Database\Eloquent\Model
+abstract class Model extends Eloquent
 {
     public function __construct(array $attributes = [])
     {

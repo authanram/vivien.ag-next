@@ -23,4 +23,9 @@ final class EventsController extends Controller
             'tags' => $eventRepository->upcomingTags()->unique(),
         ]);
     }
+
+    public function detail(): string
+    {
+        return __METHOD__;
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     'users',
 
     // site
@@ -52,4 +53,5 @@ return [
 
     // user settings
     'user_settings',
+
 ];
