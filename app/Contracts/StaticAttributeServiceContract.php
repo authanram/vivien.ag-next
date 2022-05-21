@@ -2,7 +2,9 @@
 
 namespace App\Contracts;
 
+use App\Contracts\Support\StaticAttributeSupportContract;
+
 interface StaticAttributeServiceContract
 {
-    public function slogan(): string;
+    public function getBySlug(string $slug): StaticAttributeSupportContract;
 }
