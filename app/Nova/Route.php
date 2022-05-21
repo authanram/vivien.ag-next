@@ -3,18 +3,22 @@
 namespace App\Nova;
 
 use App\ClassFinder;
-use App\Contracts\Routable;
+use App\ClassMethodsResolver;
+use App\Contracts\Support\RoutableContract;
 use App\Models\Route as Model;
+use App\Routables\Routable;
 use Exception;
 use Illuminate\Support\Str;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Code;
+use Laravel\Nova\Fields\Hidden;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\MorphTo;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
+use ReflectionException;
 
 class Route extends Resource
 {
@@ -77,14 +81,7 @@ class Route extends Resource
                 ->hideFromIndex()
                 ->showOnPreview(),
 
-            MorphTo::make('Routable', 'routable')
-                ->types(self::renderables())
-                ->withoutTrashed()
-                ->rules('required')
-                ->sortable()
-                ->showOnPreview(),
-
-            ...Controller::fieldsControllerAction('meta->controller_action', 'routable'),
+            ...self::routableFields($request, $this->resource),
 
             Boolean::make(__('Published'), 'published')
                 ->sortable()
@@ -92,12 +89,54 @@ class Route extends Resource
         ];
     }
 
-    public static function renderables(): array
+    private static function routableFields(NovaRequest $request, Model $resource): array
     {
-        return ClassFinder::resolve(app_path('Nova'), 'App\\Nova\\', static function (Resource|string $resource) {
-            return property_exists($resource, 'model') && is_subclass_of($resource::$model, Routable::class);
-        })->mapWithKeys(fn (string $classname) => [
-            $classname => Str::of($classname)->afterLast('\\')->after('Content')->toString(),
-        ])->toArray();
+        return [
+            Select::make('Routable', 'routable')
+                ->options(self::routableOptions($request, $resource))
+                ->rules('required')
+                ->sortable()
+                ->showOnPreview(),
+
+            Hidden::make('Action', 'action', static fn () => 'index'),
+
+            Select::make('Action', 'action')
+                ->hide()
+                ->dependsOn('routable', static function (Select $field, $request, $formData) {
+                    /** @var Routable|null $routable */
+                    $routable = $formData->routable;
+
+                    if (is_null($routable)) {
+                        return;
+                    }
+
+                    /** @var RoutableContract $result */
+                    $result = $routable::routable($field->value);
+
+                    $field->withMeta([
+                        'name' => $result->getName(),
+                        'attribute' => $result->getAttribute(),
+                        'value' => $result->getValue(),
+                    ])->options($result->getOptions())->show();
+                }),
+        ];
+    }
+
+    private static function routableOptions(NovaRequest $request, Model $resource): array
+    {
+        return ClassFinder::resolve(app_path('Routables'), '\\App\\Routables\\')
+            ->filter(static fn (string $classname) => self::routableFilter($classname))
+            ->mapWithKeys(static fn (string $classname) => [$classname => self::routableName($classname)])
+            ->toArray();
+    }
+
+    private static function routableFilter(string $classname): bool
+    {
+        return is_subclass_of($classname, Routable::class);
+    }
+
+    private static function routableName(string $classname): string
+    {
+        return Str::of($classname)->afterLast('\\')->before('Routable')->toString();
     }
 }

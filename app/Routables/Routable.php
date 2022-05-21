@@ -2,19 +2,48 @@
 
 namespace App\Routables;
 
+use App\ClassMethodsResolver;
+use App\Contracts\Support\RoutableContract;
 use App\Http\Controllers\Controller;
+use App\Models\Model;
 
 abstract class Routable
 {
-    abstract public function controller(): Controller|string;
+    abstract public static function controller(): Controller|string;
 
-    public function action(): string
+    public static function model(): Model|string|null
     {
-        return 'index';
+        return null;
     }
 
-    public function toArray(): array
+    public static function routable(?string $action): ?RoutableContract
     {
-        return [$this->controller(), $this->action()];
+        return self::{(($action ?? 'selection').'Action')}($action);
+    }
+
+    private static function selectionAction(?string $action): RoutableContract
+    {
+        ray($action);
+
+        return new \App\Support\Routable(
+            'index',
+            'action',
+            'Action',
+            [],
+        );
+    }
+
+    private static function indexAction(): RoutableContract
+    {
+        ray(__METHOD__);
+
+        //return new \App\Support\Routable();
+    }
+
+    private static function detailAction(): RoutableContract
+    {
+        ray(__METHOD__);
+
+        //return new \App\Support\Routable();
     }
 }

@@ -8,21 +8,17 @@ use SplFileInfo;
 
 class ClassFinder
 {
-    public static function resolve(string $path, string $namespace = '', callable $authorize = null): Collection
+    public static function resolve(string $path, string $namespace = ''): Collection
     {
-        return self::controllers($path, $namespace, $authorize);
+        return self::controllers($path, $namespace);
     }
 
-    private static function controllers(string $path, string $namespace, callable $authorize = null): Collection
+    private static function controllers(string $path, string $namespace): Collection
     {
-        return static::map($path, static function (SplFileInfo $fileInfo) use ($authorize, $namespace) {
-            $subject = static::classname(
-                $fileInfo->getFilename(),
-                $namespace,
-            );
-
-            return ($authorize ?? static fn () => $subject)($subject) ? $subject : null;
-        });
+        return static::map($path, static fn (SplFileInfo $fileInfo) => static::classname(
+            $fileInfo->getFilename(),
+            $namespace,
+        ));
     }
 
     private static function map(string $path, callable $mapper): Collection

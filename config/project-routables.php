@@ -1,27 +1,16 @@
 <?php
 
-use App\Nova as Resources;
 use App\Http\Controllers;
 
 return [
 
-    'resources' => [
-        //Resources\Author::class,
-        Resources\Controller::class,
-        Resources\Page::class,
-        //Resources\Event::class,
-        //Resources\Location::class,
-        //Resources\Post::class,
-        //Resources\Quote::class,
-        //Resources\Tag::class,
-    ],
-
     'controllers' => [
         Controllers\BlogController::class,
-        Controllers\BooksController::class,
+        Controllers\BookController::class,
         Controllers\CookiePolicyController::class,
-        Controllers\EventsController::class,
+        Controllers\EventController::class,
         Controllers\GalleryController::class,
+        Controllers\PageController::class,
         Controllers\WelcomeController::class,
     ]
 

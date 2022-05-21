@@ -2,18 +2,19 @@
 
 namespace App\Routables;
 
-use App\Http\Controllers\Controller;
-use App\Http\Controllers\PageController;
+use App\Contracts\Support\RoutableContract;
+use App\Http\Controllers\PageController as Controller;
 use App\Models\Page as Model;
 
 final class PageRoutable extends Routable
 {
-    public function __construct(protected Model $entity)
+    public static function controller(): Controller|string
     {
+        return Controller::class;
     }
 
-    public function controller(): Controller|string
+    public static function model(): Model|string|null
     {
-        return PageController::class;
+        return Model::class;
     }
 }

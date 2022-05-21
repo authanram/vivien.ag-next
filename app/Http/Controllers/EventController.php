@@ -8,7 +8,7 @@ use App\Models\Route;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
-final class EventsController extends Controller
+final class EventController extends Controller
 {
     public function index(Request $request, Route $route): View
     {

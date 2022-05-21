@@ -2,15 +2,13 @@
 
 namespace App\Models;
 
-use App\Contracts\Routable;
 use App\Presenters\PagePresenter as Presenter;
-use App\Routables\PageRoutable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Page extends Model implements Routable
+class Page extends Model
 {
     use HasPresenter;
     use SoftDeletes;
@@ -29,11 +27,6 @@ class Page extends Model implements Routable
     public function pageSections(): HasMany
     {
         return $this->hasMany(PageSection::class);
-    }
-
-    public function routable(): PageRoutable
-    {
-        return new PageRoutable($this);
     }
 
     public function staticBlocks(): BelongsToMany

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\SiteService;
+use App\Models\Page;
 use App\Models\Route;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
@@ -10,13 +11,13 @@ use Illuminate\Http\Request;
 
 final class PageController extends Controller
 {
-    public function index(SiteService $service, Request $request, Route $route): View|string
+    public function show(Page $page): View|string
     {
-        $this->route = $route;
+        //$this->route = $route;
 
-        $mergeData = ['title' => $this->route->routable->name, 'content' => '%content%'];
+        //$mergeData = ['title' => $this->route->routable->name, 'content' => '%content%'];
 
-        return view('page', ['cacheKey' => $this->cacheKey()], $mergeData);
+        return view('page', ['cacheKey' => $this->cacheKey()], []);
 
 //        $contentView = $route
 //            ->resolveAction()

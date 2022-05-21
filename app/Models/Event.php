@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Contracts\Filterable;
 use App\Presenters\EventPresenter as Presenter;
-use App\Routables\EventRoutable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -13,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\Tags\HasTags;
 
-class Event extends Model implements Filterable//, Routable
+class Event extends Model implements Filterable
 {
     use HasPresenter;
     use HasTags;
@@ -29,11 +28,6 @@ class Event extends Model implements Filterable//, Routable
             AllowedFilter::exact('category', 'eventTemplate.id'),
             AllowedFilter::exact('tag', 'tags.id'),
         ];
-    }
-
-    public function routable(): EventRoutable
-    {
-        return new EventRoutable($this);
     }
 
     protected $fillable = [

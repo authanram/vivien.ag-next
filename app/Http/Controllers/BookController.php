@@ -6,7 +6,7 @@ use App\Models\Route;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
-final class BooksController extends Controller
+final class BookController extends Controller
 {
     public function index(Request $request, Route $route = null): View
     {
