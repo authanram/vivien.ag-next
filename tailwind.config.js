@@ -5,10 +5,11 @@ module.exports = {
     mode: 'jit',
 
     content: [
-        './safelist.txt',
-        './app/**/*.php',
-        './resources/views/**/*.blade.php',
-        './storage/framework/views/**/*.php',
+        'app/**/*.php',
+        'resources/css/**/*.pcss',
+        'resources/views/**/*.blade.php',
+        'safelist.txt',
+        'storage/framework/views/**/*.php',
     ],
 
     theme: {
@@ -18,17 +19,16 @@ module.exports = {
                 gray: colors.slate,
                 green: colors.emerald,
             },
-            fontFamily: {
-                display: ['Poppins', ...defaultTheme.fontFamily.sans],
-            },
             fontSize: {
-                'base': '17px',
+                base: '0.9777rem',
             },
-        }
+        },
+        fontFamily: {
+            display: ['Poppins', ...defaultTheme.fontFamily.sans],
+        },
     },
 
     plugins: [
-        require('@tailwindcss/forms'),
-        require('@tailwindcss/typography'),
+        require('tailwind-children'),
     ],
 };

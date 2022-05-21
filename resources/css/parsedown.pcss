@@ -1,0 +1,51 @@
+.x-parsedown p:not(:last-child):not([class^="mb-"]) {
+    @apply mb-6;
+}
+
+.x-parsedown p[class*="mb-4"]:last-child {
+    @apply !mb-0;
+}
+
+.x-parsedown p:last-of-type {
+    @apply !mb-0;
+}
+
+.x-parsedown h1, h2, h3, h4, h5, h6, .headline {
+    @apply font-semibold leading-tight mb-4 tracking-tight;
+}
+
+.x-parsedown h1, h2, h3, .headline {
+    @apply text-xl md:text-2xl;
+}
+
+.x-parsedown h4, h5, h6 {
+    @apply md:text-xl;
+}
+
+.x-parsedown hr {
+    @apply my-5;
+}
+
+.x-parsedown ul {
+    @apply my-2.5 px-5;
+}
+
+.x-parsedown ul:last-child {
+    @apply mb-0;
+}
+
+.x-parsedown:not(:last-child) {
+    @apply mb-6;
+}
+
+.x-parsedown:not(:last-child) ul {
+    @apply px-5;
+}
+
+.x-parsedown ul li {
+    @apply pt-2 list-disc;
+}
+
+.x-parsedown ul li:not(:last-of-type):not(.pt-*) {
+    @apply pb-2;
+}

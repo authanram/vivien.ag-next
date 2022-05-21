@@ -1,7 +1,8 @@
 @php($assets = (object)[
+    'alpinejsFocus' => 'https://unpkg.com/@alpinejs/focus@3.10.2/dist/cdn.min.js',
     'alpinejs' => 'https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js',
     'font' => 'https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,900&display=swap',
-    'css' => tailwindcss('/css/app.css'),
+    'css' => mix('/dist/css/app.css'),
     'js' => mix('/dist/js/app.js'),
 ])
 <!DOCTYPE html>
@@ -15,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preload" href="{{ $assets->font }}" as="style">
     <link rel="preload" href="{{ $assets->css }}" as="style">
+    <link rel="preload" href="{{ $assets->alpinejsFocus }}" as="script">
     <link rel="preload" href="{{ $assets->alpinejs }}" as="script">
     <link rel="preload" href="{{ $assets->js }}" as="script">
     <link rel="stylesheet" href="{{ $assets->font }}">
@@ -22,6 +24,7 @@
     @livewireStyles
     @stack('styles')
     <x-layout.google-tagmanager scripts />
+    <script defer src="{{ $assets->alpinejsFocus }}"></script>
     <script defer src="{{ $assets->alpinejs }}"></script>
     <script defer src="{{ $assets->js }}"></script>
 </head>
