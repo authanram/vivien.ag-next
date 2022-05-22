@@ -54,4 +54,7 @@ return [
     // user settings
     'user_settings',
 
+    'components',
+    'component_components',
+
 ];
