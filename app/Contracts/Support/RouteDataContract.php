@@ -4,7 +4,7 @@ namespace App\Contracts\Support;
 
 use App\Http\Controllers\Controller;
 
-interface RouteContract
+interface RouteDataContract
 {
     public function getController(): Controller|string;
 

@@ -2,8 +2,12 @@
 
 namespace App\Contracts\Support;
 
-interface RoutableContract
+use App\Routables\Routable;
+
+interface RoutableDataContract
 {
+    public function getType(): Routable|string;
+
     public function getValue(): int|string;
 
     public function getAttribute(): string;

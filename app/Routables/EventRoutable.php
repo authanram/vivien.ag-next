@@ -2,18 +2,26 @@
 
 namespace App\Routables;
 
-use App\Http\Controllers\EventController as Controller;
-use App\Models\Event as Model;
+use App\Models\Route;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 final class EventRoutable extends Routable
 {
-    public static function controller(): Controller|string
+    public static function getName(): string
     {
-        return Controller::class;
+        return __('Events');
     }
 
-    public static function model(): Model|string|null
+    public static function getValueFieldOptions(NovaRequest $request, Route $resource): array
     {
-        return Model::class;
+        return [
+            'index' => 'index',
+            'detail' => 'detail',
+        ];
+    }
+
+    public static function getFieldsForNova(NovaRequest $request, Route $resource): array
+    {
+        return [];
     }
 }

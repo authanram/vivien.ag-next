@@ -2,19 +2,24 @@
 
 namespace App\Routables;
 
-use App\Contracts\Support\RoutableContract;
-use App\Http\Controllers\PageController as Controller;
-use App\Models\Page as Model;
+use App\Models\Page;
+use App\Models\Route;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 final class PageRoutable extends Routable
 {
-    public static function controller(): Controller|string
+    public static function getName(): string
     {
-        return Controller::class;
+        return __('Page');
     }
 
-    public static function model(): Model|string|null
+    public static function getValueFieldOptions(NovaRequest $request, Route $resource): array
     {
-        return Model::class;
+        return Page::all()->pluck('name', 'id')->sort()->toArray();
+    }
+
+    public static function getFieldsForNova(NovaRequest $request, Route $resource): array
+    {
+        return [];
     }
 }

@@ -2,6 +2,6 @@
 
 namespace App\Contracts\Support;
 
-interface PageContract
+interface PageDataContract
 {
 }

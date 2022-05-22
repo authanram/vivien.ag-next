@@ -17,8 +17,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(Contracts\IconRenderer::class, Renderers\IconRenderer::class);
         $this->app->bind(Contracts\MarkdownRenderer::class, Renderers\MarkdownRenderer::class);
 
-        $this->app->bind(Contracts\SiteService::class, Services\SiteService::class);
+        $this->app->bind(Contracts\Services\RoutableServiceContract::class, Services\RoutableService::class);
         $this->app->bind(Contracts\Services\RouteServiceContract::class, Services\RouteService::class);
+        $this->app->bind(Contracts\SiteService::class, Services\SiteService::class);
 
         if ($this->app->runningInConsole()) {
             return;

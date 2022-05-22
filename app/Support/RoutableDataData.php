@@ -2,16 +2,23 @@
 
 namespace App\Support;
 
-use App\Contracts\Support\RoutableContract;
+use App\Contracts\Support\RoutableDataContract;
+use App\Routables\Routable;
 
-class Routable extends ValueObject implements RoutableContract
+class RoutableDataData extends ValueObject implements RoutableDataContract
 {
     public function __construct(
+        private Routable|string $type,
         private string $value,
         private string $attribute,
         private string $name,
         private array $options,
     ){}
+
+    public function getType(): Routable|string
+    {
+        return $this->type;
+    }
 
     public function getValue(): int|string
     {

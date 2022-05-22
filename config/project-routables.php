@@ -1,17 +1,9 @@
 <?php
 
-use App\Http\Controllers;
+use App\Routables\EventRoutable;
+use App\Routables\PageRoutable;
 
 return [
-
-    'controllers' => [
-        Controllers\BlogController::class,
-        Controllers\BookController::class,
-        Controllers\CookiePolicyController::class,
-        Controllers\EventController::class,
-        Controllers\GalleryController::class,
-        Controllers\PageController::class,
-        Controllers\WelcomeController::class,
-    ]
-
+    EventRoutable::class,
+    PageRoutable::class,
 ];

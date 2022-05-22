@@ -2,10 +2,10 @@
 
 namespace App\Support;
 
-use App\Contracts\Support\RouteContract;
+use App\Contracts\Support\RouteDataContract;
 use App\Http\Controllers\Controller;
 
-class Route extends ValueObject implements RouteContract
+class RouteDataData extends ValueObject implements RouteDataContract
 {
     public function getController(): Controller|string
     {

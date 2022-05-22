@@ -2,13 +2,13 @@
 
 namespace App\Contracts\Services;
 
-use App\Support\Route;
+use App\Support\RouteDataData;
 use Illuminate\Support\Collection;
 
 interface RouteServiceContract
 {
     /**
-     * @return Collection<int, Route>
+     * @return Collection<int, RouteDataData>
      */
     public function getRoutes(): Collection;
 }
