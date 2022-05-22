@@ -4,10 +4,10 @@ namespace App\Nova;
 
 use App\Models\UserSettings as Model;
 use App\Nova;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Color as ColorField;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class UserSettings extends Resource
 {
@@ -30,9 +30,9 @@ class UserSettings extends Resource
         return $this->resource->user->name;
     }
 
-    public function fields(Request $request): array
+    public function fields(NovaRequest $request): array
     {
-        return [
+        $fields = [
             ID::make()
                 ->sortable()
                 ->showOnPreview(),
@@ -45,13 +45,16 @@ class UserSettings extends Resource
                 ->withoutTrashed()
                 ->rules('required')
                 ->showOnPreview(),
+        ];
 
-            ColorField::make(__('Accent Color'), 'color', static function ($value) {
-                ray($value?->hex);
+        if ($request->isResourceDetailRequest()) {
+            $fields[] = ColorField::make(__('Accent Color'), 'color', static function ($value) {
                 return is_null($value?->hex)
                     ? \App\Color::rgbToHex(Nova::$brandColorDefaultRgb)
                     : $value?->hex;
-            })->exceptOnForms()->showOnPreview(),
-        ];
+            })->exceptOnForms()->showOnPreview();
+        }
+
+        return $fields;
     }
 }

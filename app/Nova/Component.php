@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use App\Contracts\Services\ComponentServiceContract;
 use App\Models\Component as Model;
+use App\Nova\Filters\ComponentTypeFilter;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
@@ -15,7 +16,9 @@ class Component extends Resource
     public static $title = 'name';
 
     public static $search = [
+        'type',
         'name',
+        'data',
     ];
 
     public static $with = ['children'];
@@ -41,6 +44,13 @@ class Component extends Resource
                 ->getFieldsForNova($request, $this->resource),
 
             BelongsToMany::make(__('Children'), 'children', static::class),
+        ];
+    }
+
+    public function filters(Request $request): array
+    {
+        return [
+            new ComponentTypeFilter(),
         ];
     }
 }
