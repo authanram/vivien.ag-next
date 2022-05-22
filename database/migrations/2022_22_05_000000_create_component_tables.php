@@ -9,9 +9,11 @@ class CreateComponentTables extends Migration
     {
         Schema::create('components', static function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('type');
             $table->json('data');
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::create('component_components', static function (Blueprint $table) {

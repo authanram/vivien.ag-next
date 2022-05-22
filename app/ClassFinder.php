@@ -10,6 +10,8 @@ class ClassFinder
 {
     public static function resolve(string $path, string $namespace = ''): Collection
     {
+        $namespace = rtrim($namespace, '\\').'\\';
+
         return self::controllers($path, $namespace);
     }
 
