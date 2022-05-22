@@ -41,7 +41,7 @@ class Component extends Resource
                 ->showOnPreview(),
 
             ...resolve(ComponentServiceContract::class)
-                ->getFieldsForNova($request, $this->resource),
+                ->getComponentFieldsForNova($request, $this->resource),
 
             BelongsToMany::make(__('Children'), 'children', static::class),
         ];
