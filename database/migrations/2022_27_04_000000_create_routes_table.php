@@ -13,7 +13,7 @@ class CreateRoutesTable extends Migration
             $table->string('name');
             $table->string('uri');
             $table->json('middlewares');
-            $table->string('routable')->default('{}');
+            $table->json('routable');
             $table->boolean('published');
             $table->timestamps();
             $table->softDeletes();

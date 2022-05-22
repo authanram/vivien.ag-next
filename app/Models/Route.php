@@ -29,13 +29,6 @@ class Route extends Model
         'routable' => 'array',
     ];
 
-    public static function booted(): void
-    {
-        static::saving(static function ($data) {
-            ray($data);
-        });
-    }
-
     public function scopePublished(Builder $query): Builder
     {
         return $query->where('published', true);

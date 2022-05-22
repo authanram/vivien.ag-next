@@ -2,19 +2,20 @@
 
 namespace App\Routables;
 
-use App\Models\Page;
 use App\Models\Route;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-final class PageRoutable extends Routable
+final class GalleryRoutable extends Routable
 {
     public static function getName(): string
     {
-        return __('Page');
+        return __('Gallery');
     }
 
     public static function getValueFieldOptions(NovaRequest $request, Route $resource): array
     {
-        return Page::all()->pluck('name', 'id')->sort()->toArray();
+        return [
+            'index' => 'index',
+        ];
     }
 }

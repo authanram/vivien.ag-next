@@ -5,7 +5,7 @@ namespace App\Support;
 use App\Contracts\Support\RoutableDataContract;
 use App\Routables\Routable;
 
-class RoutableDataData extends ValueObject implements RoutableDataContract
+class RoutableData extends DataObject implements RoutableDataContract
 {
     public function __construct(
         private Routable|string $type,

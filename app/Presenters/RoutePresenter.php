@@ -9,10 +9,4 @@ use App\Models\Route;
  */
 class RoutePresenter extends Presenter
 {
-    public function getController(): string
-    {
-        dd($this->entity);
-
-        return '';
-    }
 }
