@@ -3,10 +3,13 @@
 namespace App\Policies;
 
 use App\Models\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Str;
 
-abstract class Policy extends SushiPolicy
+abstract class Policy
 {
+    use HandlesAuthorization;
+
     public function before(User $user): ?bool
     {
         return empty(static::$authorizeBefore) && $user->isAdministrator() ? true : null;

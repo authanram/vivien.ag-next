@@ -6,6 +6,6 @@ return [
     \App\Routables\EventRoutable::class,
     \App\Routables\GalleryRoutable::class,
     \App\Routables\PageRoutable::class,
-    \App\Routables\BlogRoutable::class,
+    \App\Routables\PostRoutable::class,
     \App\Routables\WelcomeRoutable::class,
 ];

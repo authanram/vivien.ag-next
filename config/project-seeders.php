@@ -9,8 +9,6 @@ return [
     'layouts',
     'static_blocks',
     'pages',
-    'page_sections',
-    'page_static_blocks',
 
     // acl
     'permissions',
@@ -26,7 +24,6 @@ return [
     'locations',
     'staff',
     'staff_events',
-    'static_attributes',
 
     // menus
     'menus',
@@ -53,8 +50,5 @@ return [
 
     // user settings
     'user_settings',
-
-    'components',
-    'component_components',
 
 ];

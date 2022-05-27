@@ -3,7 +3,6 @@
 namespace App\Renderers;
 
 use App\Contracts\MarkdownRenderer as Contract;
-use App\Markdown\Plugins\Renderables;
 use Authanram\Markdown\Converter;
 use Illuminate\Http\Request;
 
@@ -20,9 +19,6 @@ final class MarkdownRenderer implements Contract
 
         $parameters = [
             'base_url' => config('app.url'),
-            'plugins' => [
-                Renderables::class,
-            ],
         ];
 
         $text = (new Converter($parameters))

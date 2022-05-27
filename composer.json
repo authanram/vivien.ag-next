@@ -9,26 +9,21 @@
     "license": "MIT",
     "require": {
         "php": "^8.0",
-        "ext-json": "*",
         "ajcastro/eager-load-pivot-relations": "^0.2.2",
         "authanram/markdown": "dev-develop",
-        "authanram/nova-fieldsets": "*",
-        "calebporzio/sushi": "^2.4",
         "coderello/laravel-nova-lang": "^1.8",
         "fruitcake/laravel-cors": "^3.0",
         "gijsg/system-resources": "dev-fix-deprecation-warning",
         "guzzlehttp/guzzle": "^7.4",
         "kiritokatklian/nova-permission": "^4.0",
-        "laravel/framework": "^9.9.0",
-        "laravel/nova": "^4.2.7",
+        "laravel/framework": "^9.14",
+        "laravel/nova": "^4.7",
         "laravel/nova-log-viewer": "^0.1.1",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4.5",
         "livewire/livewire": "^2.10",
-        "optimistdigital/nova-sortable": "^3.0",
         "prettus/l5-repository": "^2.8",
         "ryangjchandler/blade-cache-directive": "^0.3.0",
-        "sentry/sentry-laravel": "^2.12",
         "spatie/laravel-activitylog": "^4.5.2",
         "spatie/laravel-backup": "^8.1.2",
         "spatie/laravel-cookie-consent": "^3.2.1",
@@ -115,10 +110,6 @@
         "authanram/markdown": {
             "type": "git",
             "url": "https://github.com/authanram/markdown"
-        },
-        "authanram/nova-fieldsets": {
-            "type": "path",
-            "url": "./nova-components/NovaFieldsets"
         },
         "gijsg/system-resources": {
             "type": "git",

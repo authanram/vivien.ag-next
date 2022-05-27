@@ -13,7 +13,7 @@ class Markdown extends Component
 
     public function render(): callable
     {
-        return function (array $data) {
+        return static function (array $data) {
             $attributes = $data['attributes']
                 ->merge(['class' => 'x-parsedown'])
                 ->toHtml();
@@ -25,7 +25,8 @@ class Markdown extends Component
             return sprintf(
                 '<div%s>%s</div>',
                 $attributes,
-                $this->site->renderers()::markdown()->render($data['slot']),
+                'quux',
+                //$this->site->renderers()::markdown()->render($data['slot']),
             );
         };
     }

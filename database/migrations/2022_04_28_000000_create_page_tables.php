@@ -32,29 +32,10 @@ class CreatePageTables extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-
-        Schema::create('page_sections', static function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('page_id')->constrained('pages')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->string('name');
-            $table->string('layout_section');
-            $table->timestamps();
-            $table->softDeletes();
-        });
-
-        Schema::create('page_static_blocks', static function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('page_id')->constrained('pages')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('static_block_id')->constrained('static_blocks')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->string('slug')->nullable();
-            $table->timestamps();
-            $table->softDeletes();
-        });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('page_static_blocks');
         Schema::dropIfExists('pages');
         Schema::dropIfExists('static_blocks');
         Schema::dropIfExists('layouts');

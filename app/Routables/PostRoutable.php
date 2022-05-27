@@ -5,11 +5,11 @@ namespace App\Routables;
 use App\Models\Route;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-final class BlogRoutable extends Routable
+final class PostRoutable extends Routable
 {
     public static function getName(): string
     {
-        return __('Blog');
+        return __('Posts');
     }
 
     public static function getValueFieldOptions(NovaRequest $request, Route $resource): array

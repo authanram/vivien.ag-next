@@ -13,7 +13,7 @@ use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
 
-class Route extends Resource
+class oute extends Resource
 {
     public static string $model = Model::class;
 

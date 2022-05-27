@@ -2,14 +2,13 @@
 
 namespace App\Contracts;
 
-use App\CookieConsent;
-use App\ImageCoordinates;
-use App\Parsers;
-use App\Renderers;
-use App\Repositories;
-use App\Text;
-use App\Theme;
-use App\Url;
+//use App\CookieConsent;
+//use App\ImageCoordinates;
+//use App\Renderers;
+//use App\Repositories;
+//use App\Text;
+//use App\Theme;
+//use App\Url;
 
 interface SiteService
 {

@@ -17,7 +17,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(Contracts\IconRenderer::class, Renderers\IconRenderer::class);
         $this->app->bind(Contracts\MarkdownRenderer::class, Renderers\MarkdownRenderer::class);
 
-        $this->app->bind(Contracts\Services\ComponentServiceContract::class, Services\ComponentService::class);
         $this->app->bind(Contracts\Services\NovaFieldServiceContract::class, Services\NovaFieldService::class);
         $this->app->bind(Contracts\Services\RoutableServiceContract::class, Services\RoutableService::class);
         $this->app->bind(Contracts\Services\RouteServiceContract::class, Services\RouteService::class);

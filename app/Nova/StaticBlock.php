@@ -3,7 +3,6 @@
 namespace App\Nova;
 
 use App\Models\StaticBlock as Model;
-use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Slug;
@@ -58,14 +57,6 @@ class StaticBlock extends Resource
                 ->rules('required')
                 ->hideFromIndex()
                 ->showOnPreview(),
-
-            BelongsToMany::make(__('Page'), 'pages', Page::class)
-                ->fields(fn () => [
-                    Text::make(__('Slug'), 'slug')
-                        ->rules('required', 'alpha_dash')
-                        ->sortable()
-                        ->showOnPreview(),
-                ]),
         ];
     }
 }

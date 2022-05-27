@@ -3,7 +3,6 @@
 namespace App\Nova;
 
 use App\Models\Layout as Model;
-use Authanram\NovaFieldsets\NovaFieldsets;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
@@ -58,8 +57,6 @@ class Layout extends Resource
             Text::make(__('Sections'), 'sections')
                 ->sortable()
                 ->onlyOnIndex(),
-
-            //NovaFieldsets::make('foo'),
         ];
     }
 }
