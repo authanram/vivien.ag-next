@@ -4,7 +4,6 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Currency;
-use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image as FieldImage;
 use Laravel\Nova\Fields\Text;

@@ -10,7 +10,6 @@ use App\Repositories\MenuItems;
 use App\Repositories\Menus;
 use App\Repositories\Repository;
 use App\Repositories\Routes;
-use App\Repositories\StaticAttributes;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 
@@ -56,11 +55,6 @@ final class Repositories
     public function routes(Builder $builder = null): Repository|Routes
     {
         return $this->withBuilder(Routes::class, $builder);
-    }
-
-    public function staticAttributes(Builder $builder = null): Repository|StaticAttributes
-    {
-        return $this->withBuilder(StaticAttributes::class, $builder);
     }
 
     protected function withBuilder(Repository|string $repository, ?Builder $builder): Repository

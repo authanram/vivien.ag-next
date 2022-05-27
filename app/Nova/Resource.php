@@ -2,7 +2,6 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Resource as NovaResource;
 
@@ -68,8 +67,8 @@ abstract class Resource extends NovaResource
         return static::$group !== 'Other' ? static::$group : __('Contents');
     }
 
-    public static function availableForNavigation(Request $request): bool
+    public static function authorizable(): bool
     {
-        return $request->user()->can('novaBrowse', [static::$model]);
+        return false;
     }
 }

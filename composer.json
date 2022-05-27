@@ -22,6 +22,7 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4.5",
         "livewire/livewire": "^2.10",
+        "outl1ne/nova-sortable": "^3.0",
         "prettus/l5-repository": "^2.8",
         "ryangjchandler/blade-cache-directive": "^0.3.0",
         "spatie/laravel-activitylog": "^4.5.2",
