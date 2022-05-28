@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use App\Models\Page as Model;
+use Authanram\NovaMorphable\Nova\MorphMany;
 use Exception;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
@@ -15,7 +16,7 @@ class Page extends Resource
 
     public static $title = 'name';
 
-    public static $with = ['layout'];
+    public static $with = ['views'];
 
     public static $search = [
         'name',
@@ -48,9 +49,11 @@ class Page extends Resource
                 ->sortable()
                 ->showOnPreview(),
 
-            BelongsTo::make(__('Layout'), 'layout')
+            BelongsTo::make(__('View'), 'view')
                 ->sortable()
                 ->showOnPreview(),
+
+            MorphMany::make(__('Morphables'), __CLASS__),
         ];
     }
 }

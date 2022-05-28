@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use App\Models\Post as Model;
+use Authanram\NovaMorphable\Nova\MorphMany;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
@@ -75,6 +76,8 @@ class Post extends Resource
             Tags::make('Tags')
                 ->type('post')
                 ->showOnPreview(),
+
+            MorphMany::make(__('Targetables'), __CLASS__),
         ];
     }
 }

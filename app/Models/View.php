@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use App\Presenters\LayoutPresenter as Presenter;
+use App\Presenters\ViewPresenter as Presenter;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Layout extends Model
+class View extends Model
 {
     use HasPresenter;
 

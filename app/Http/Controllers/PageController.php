@@ -29,7 +29,7 @@ final class PageController extends Controller
 //        foreach ($contentView->sections as $section) {
 //            $sections[$section['attributes']['name']][] = $section['layout'] === 'markdown'
 //                ? $service->parsers()::markdownParser()->parse($section['attributes']['value'], $request)
-//                : self::handleLayout($section['attributes']['value'], $contentView->contentBlocks);
+//                : self::handleView($section['attributes']['value'], $contentView->contentBlocks);
 //        }
 //
 //
@@ -40,16 +40,16 @@ final class PageController extends Controller
 //        return view('page', $data, $mergeData);
     }
 
-    private static function handleLayout(string $layout, Collection $contentBlocks): string
+    private static function handleView(string $view, Collection $contentBlocks): string
     {
         $blocks = [];
 
         foreach ($contentBlocks as $contentBlock) {
             $blocks[] = $contentBlock->render();
 
-            $layout = str_replace("%$contentBlock->slug%", end($blocks), $layout);
+            $view = str_replace("%$contentBlock->slug%", end($blocks), $view);
         }
 
-        return str_replace('%blocks%', implode('', $blocks), $layout);
+        return str_replace('%blocks%', implode('', $blocks), $view);
     }
 }

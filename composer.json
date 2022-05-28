@@ -11,6 +11,7 @@
         "php": "^8.0",
         "ajcastro/eager-load-pivot-relations": "^0.2.2",
         "authanram/markdown": "dev-develop",
+        "authanram/nova-morphable": "dev-develop",
         "coderello/laravel-nova-lang": "^1.8",
         "fruitcake/laravel-cors": "^3.0",
         "gijsg/system-resources": "dev-fix-deprecation-warning",
@@ -111,6 +112,10 @@
         "authanram/markdown": {
             "type": "git",
             "url": "https://github.com/authanram/markdown"
+        },
+        "authanram/nova-morphable": {
+            "type": "path",
+            "url": "/Volumes/TEST/tinker/packages/nova-morphable"
         },
         "gijsg/system-resources": {
             "type": "git",

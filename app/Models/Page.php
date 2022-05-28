@@ -17,8 +17,8 @@ class Page extends Model
         'name',
     ];
 
-    public function layout(): BelongsTo
+    public function view(): BelongsTo
     {
-        return $this->belongsTo(Layout::class);
+        return $this->belongsTo(View::class);
     }
 }

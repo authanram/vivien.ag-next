@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCookieConsentTables extends Migration
+return new class extends Migration
 {
     public function up(): void
     {
@@ -42,4 +42,4 @@ class CreateCookieConsentTables extends Migration
         Schema::dropIfExists('cookie_consent_cookies');
         Schema::dropIfExists('cookie_consent_providers');
     }
-}
+};

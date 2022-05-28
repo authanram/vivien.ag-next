@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateStaffTables extends Migration
+return new class extends Migration
 {
     public function up(): void
     {
@@ -29,4 +30,4 @@ class CreateStaffTables extends Migration
         Schema::dropIfExists('staff_events');
         Schema::dropIfExists('staff');
     }
-}
+};

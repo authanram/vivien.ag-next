@@ -8,15 +8,15 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('cache', static function (Blueprint $table) {
-            $table->string('key')->unique();
-            $table->mediumText('value');
-            $table->integer('expiration');
+        Schema::table('morphables', function (Blueprint $table) {
+            $table->string('section')->nullable()->after('order_column');
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('cache');
+        Schema::table('morphables', function (Blueprint $table) {
+            $table->dropColumn('section');
+        });
     }
 };

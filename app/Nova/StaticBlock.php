@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use App\Models\StaticBlock as Model;
+use Authanram\NovaMorphable\Nova\MorphMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Slug;
@@ -57,6 +58,8 @@ class StaticBlock extends Resource
                 ->rules('required')
                 ->hideFromIndex()
                 ->showOnPreview(),
+
+            MorphMany::make(__('Targetables'), __CLASS__),
         ];
     }
 }

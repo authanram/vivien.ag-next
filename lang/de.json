@@ -79,6 +79,11 @@
     "User": "Benutzer",
     "Users": "Benutzer",
 
+    "Morphables": "Ressourcen",
+    "Morphable": "Ressource",
+    "Targetables": "Verknüpfungen",
+    "Targetable": "Verknüpfung",
+
     "Accent Color": "Akzent",
     "Access Control": "Zugangskontrolle",
     "Add tag...": "Tag hinzufügen...",

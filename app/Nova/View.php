@@ -2,13 +2,13 @@
 
 namespace App\Nova;
 
-use App\Models\Layout as Model;
+use App\Models\View as Model;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Layout extends Resource
+class View extends Resource
 {
     public static string $model = Model::class;
 
@@ -23,12 +23,12 @@ class Layout extends Resource
 
     public static function label(): string
     {
-        return __('Layouts');
+        return __('Views');
     }
 
     public static function singularLabel(): string
     {
-        return __('Layout');
+        return __('View');
     }
 
     public function fields(NovaRequest $request): array

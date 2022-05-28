@@ -6,7 +6,7 @@ return [
 
     // site
     'routes',
-    'layouts',
+    'views',
     'static_blocks',
     'pages',
 
@@ -50,5 +50,7 @@ return [
 
     // user settings
     'user_settings',
+
+    'morphables',
 
 ];

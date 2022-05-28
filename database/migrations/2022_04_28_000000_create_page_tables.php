@@ -1,13 +1,14 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreatePageTables extends Migration
+return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('layouts', static function (Blueprint $table) {
+        Schema::create('views', static function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
             $table->string('view_alias');
@@ -27,7 +28,7 @@ class CreatePageTables extends Migration
 
         Schema::create('pages', static function (Blueprint $table) {
             $table->id();
-            $table->foreignId('layout_id')->constrained('layouts')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('view_id')->constrained('views')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('name')->unique();
             $table->timestamps();
             $table->softDeletes();
@@ -38,6 +39,6 @@ class CreatePageTables extends Migration
     {
         Schema::dropIfExists('pages');
         Schema::dropIfExists('static_blocks');
-        Schema::dropIfExists('layouts');
+        Schema::dropIfExists('views');
     }
-}
+};

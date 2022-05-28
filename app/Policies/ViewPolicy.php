@@ -2,6 +2,6 @@
 
 namespace App\Policies;
 
-class LayoutPolicy extends Policy
+class ViewPolicy extends Policy
 {
 }

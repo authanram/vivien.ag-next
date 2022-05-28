@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c694024e5fdfe52b5d84de9574e9087d",
+    "content-hash": "6b793a626057ba785a645b5293c0aa76",
     "packages": [
         {
             "name": "ajcastro/eager-load-pivot-relations",
@@ -91,6 +91,47 @@
             ],
             "description": "...",
             "time": "2022-05-20T20:07:17+00:00"
+        },
+        {
+            "name": "authanram/nova-morphable",
+            "version": "dev-develop",
+            "dist": {
+                "type": "path",
+                "url": "/Volumes/TEST/tinker/packages/nova-morphable",
+                "reference": "12bacb6ae32fcb356ad614fec91edf74111095a3"
+            },
+            "require": {
+                "laravel/nova": "^4.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "nunomaduro/phpinsights": "^2.0.1",
+                "orchestra/testbench": "^6.23.0",
+                "pestphp/pest": "^1.20.0",
+                "pestphp/pest-plugin-mock": "^1.0.3"
+            },
+            "type": "package",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Authanram\\NovaMorphable\\MorphableServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Authanram\\NovaMorphable\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Authanram\\NovaMorphable\\Tests\\": "tests/"
+                }
+            },
+            "description": "...",
+            "transport-options": {
+                "relative": false
+            }
         },
         {
             "name": "box/spout",
@@ -14857,6 +14898,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "authanram/markdown": 20,
+        "authanram/nova-morphable": 20,
         "gijsg/system-resources": 20,
         "roave/security-advisories": 20
     },
