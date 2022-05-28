@@ -16,7 +16,7 @@ class Page extends Resource
 
     public static $title = 'name';
 
-    public static $with = ['views'];
+    public static $with = ['view'];
 
     public static $search = [
         'name',
@@ -49,7 +49,7 @@ class Page extends Resource
                 ->sortable()
                 ->showOnPreview(),
 
-            BelongsTo::make(__('View'), 'view')
+            BelongsTo::make(__('View'), 'view', View::class)
                 ->sortable()
                 ->showOnPreview(),
 

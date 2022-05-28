@@ -23,12 +23,12 @@ class View extends Resource
 
     public static function label(): string
     {
-        return __('Views');
+        return __('Templates');
     }
 
     public static function singularLabel(): string
     {
-        return __('View');
+        return __('Template');
     }
 
     public function fields(NovaRequest $request): array
