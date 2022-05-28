@@ -1,5 +1,5 @@
 body {
-    overflow-y: scroll !important;
+    overflow-y: scroll;
 }
 
 .brand-logo:hover {
