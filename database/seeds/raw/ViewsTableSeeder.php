@@ -23,7 +23,7 @@ return [
         'id' => 3,
         'name' => 'Welcome',
         'view_alias' => 'welcome',
-        'sections' => '["updates"]',
+        'sections' => '["title", "updates"]',
         'created_at' => '2022-05-12 22:24:45',
         'updated_at' => '2022-05-12 22:24:45',
         'deleted_at' => null,

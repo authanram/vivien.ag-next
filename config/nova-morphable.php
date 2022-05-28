@@ -4,7 +4,9 @@ use App\Nova\Page;
 use App\Nova\Post;
 use App\Nova\StaticBlock;
 use Laravel\Nova\Fields\FormData;
+use Laravel\Nova\Fields\Hidden;
 use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 return [
@@ -23,8 +25,14 @@ return [
             ?->getAttribute('view')
             ?->getAttribute('sections') ?? [];
 
-        if (count($sections) === 0) {
-            return [];
+        if (count($sections) < 2) {
+            return [
+                Hidden::make(__('Section'), 'section', static fn () => end($sections))
+                    ->onlyOnForms(),
+
+                Text::make(__('Section'), 'section')
+                    ->onlyOnIndex(),
+            ];
         }
 
         $dependsOn = in_array($request->findParentModel()::class, config('nova-morphable.morphable'), true)
