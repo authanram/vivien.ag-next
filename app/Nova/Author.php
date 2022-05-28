@@ -7,6 +7,7 @@ use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Line;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\URL;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
 
 class Author extends Resource
@@ -44,7 +45,6 @@ class Author extends Resource
             Text::make(__('Name'), 'name')
                 ->creationRules('required', 'unique:authors,name')
                 ->updateRules('required', 'unique:authors,name,{{resourceId}}')
-                ->help('Must be unique.')
                 ->sortable()
                 ->showOnPreview(),
 
@@ -53,10 +53,11 @@ class Author extends Resource
                 ->sortable()
                 ->showOnPreview(),
 
-            Text::make(__('Url'), 'url')
+            URL::make(__('URL'), 'url')
+                ->displayUsing(fn ($value) => $value)
                 ->creationRules('nullable', 'url', 'unique:authors,url')
                 ->updateRules('nullable', 'url', 'unique:authors,url,{{resourceId}}')
-                ->help('Must be unique.')
+                ->textAlign('left')
                 ->sortable()
                 ->showOnPreview(),
 

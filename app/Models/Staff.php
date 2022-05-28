@@ -17,7 +17,7 @@ class Staff extends Model
     protected $fillable = [
         'name',
         'occupation',
-        'image_url',
+        'image',
         'is_selected',
         'disabled_at',
     ];

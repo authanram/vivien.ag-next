@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use App\Models\Location as Model;
+use Laravel\Nova\Fields\URL;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
@@ -56,9 +57,10 @@ class Location extends Resource
                 ->hideFromIndex()
                 ->showOnPreview(),
 
-            Text::make(__('Url'), 'url')
+            URL::make(__('URL'), 'url')
+                ->displayUsing(fn ($value) => $value)
                 ->help('<strong>Location website</strong> or <strong>Google Maps Url</strong>.')
-                ->rules('nullable', 'url')
+                ->textAlign('left')
                 ->sortable()
                 ->showOnPreview(),
 

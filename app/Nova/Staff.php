@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Line;
 use Laravel\Nova\Fields\Text;
 
@@ -47,7 +48,9 @@ class Staff extends Resource
                 ->sortable()
                 ->showOnPreview(),
 
-            Text::make(__('ImageUrl'), 'image_url')
+            Image::make(__('Image'), 'image')
+                ->disk('public')
+                ->path('staff')
                 ->sortable()
                 ->showOnPreview(),
 
@@ -56,6 +59,7 @@ class Staff extends Resource
                 ->showOnPreview(),
 
             Line::make(__('Disabled At'), fn () => $this->resource->disabledAt())
+                ->extraClasses('text-sm')
                 ->showOnPreview(),
 
             BelongsToMany::make(__('Events'), 'events', Event::class),

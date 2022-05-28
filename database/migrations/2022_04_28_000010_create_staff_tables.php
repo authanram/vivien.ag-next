@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('occupation')->nullable();
-            $table->string('image_url')->nullable();
+            $table->string('image')->nullable();
             $table->boolean('is_selected')->nullable();
             $table->timestamp('disabled_at')->nullable();
             $table->timestamps();

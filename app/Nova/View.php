@@ -5,6 +5,7 @@ namespace App\Nova;
 use App\Models\View as Model;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Line;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -54,8 +55,10 @@ class View extends Resource
                 ->rules('required')
                 ->showOnPreview(),
 
-            Text::make(__('Sections'), 'sections')
+            Line::make(__('Sections'), 'sections')
+                ->displayUsing(fn ($value) => implode(', ', $value))
                 ->sortable()
+                ->extraClasses('text-sm')
                 ->onlyOnIndex(),
         ];
     }
