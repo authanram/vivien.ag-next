@@ -14,7 +14,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('uri');
             $table->json('middlewares');
-            $table->json('routable');
             $table->boolean('published');
             $table->timestamps();
             $table->softDeletes();
