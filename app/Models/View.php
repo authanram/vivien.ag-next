@@ -13,7 +13,9 @@ class View extends Model
 
     protected $fillable = [
         'name',
+        'type',
         'view_alias',
+        'raw',
         'sections',
     ];
 

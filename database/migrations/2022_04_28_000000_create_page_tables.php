@@ -11,8 +11,10 @@ return new class extends Migration
         Schema::create('views', static function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('view_alias');
-            $table->json('sections');
+            $table->string('type');
+            $table->string('view_alias')->nullable();
+            $table->text('raw')->nullable();
+            $table->json('sections')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

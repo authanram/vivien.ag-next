@@ -49,7 +49,7 @@ class Page extends Resource
                 ->sortable()
                 ->showOnPreview(),
 
-            BelongsTo::make(__('View'), 'view', View::class)
+            BelongsTo::make(__('Template'), 'view', View::class)
                 ->sortable()
                 ->showOnPreview(),
 
