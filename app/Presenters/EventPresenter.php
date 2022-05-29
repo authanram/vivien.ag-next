@@ -36,7 +36,7 @@ class EventPresenter extends Presenter
 
     public function profitCurrent(): float
     {
-        return $this->get('price')*$this->get('eventRegistrations')->count();
+        return $this->get('price')*$this->get('eventRegistrations')->sum('seats');
     }
 
     public function profitMaximum(): float
@@ -51,12 +51,12 @@ class EventPresenter extends Presenter
 
     public function registrationsCurrent(): string
     {
-        return $this->get('eventRegistrations')->count().' / '.$this->get('registrations_maximum');
+        return $this->get('eventRegistrations')->sum('seats').' / '.$this->get('registrations_maximum');
     }
 
     public function registrationsPreview(): string
     {
-        $value = ($this->get('eventRegistrations')->count()*100)/$this->get('registrations_maximum');
+        $value = ($this->get('eventRegistrations')->sum('seats')*100)/$this->get('registrations_maximum');
 
         return ($value !== 0 ? number_format($value, 2).'%' : '');
     }

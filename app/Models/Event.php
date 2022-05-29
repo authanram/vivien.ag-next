@@ -20,8 +20,6 @@ class Event extends Model implements Filterable
 
     public static string $presenter = Presenter::class;
 
-    public array $staff = [];
-
     public static function filters(): array
     {
         return [

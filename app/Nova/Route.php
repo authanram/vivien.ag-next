@@ -6,7 +6,6 @@ use App\Models\Route as Model;
 use Exception;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\BooleanGroup;
-use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Line;
 use Laravel\Nova\Fields\MorphTo;
@@ -32,6 +31,7 @@ class Route extends Resource
         'method',
         'name',
         'uri',
+        'middlewares',
     ];
 
     public static $with = ['routable'];

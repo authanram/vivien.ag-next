@@ -39,16 +39,23 @@ input[type="search"]::-webkit-search-results-decoration {
     text-transform: capitalize;
 }
 
-.CodeMirror {
-    border-radius: 0.25rem;
-}
-
 div.content > div.content {
     overflow-y: auto;
 }
 
 .max-h-search {
-    height: calc(100vh - 80px);
+    max-height: calc(100vh - 80px);
+    overscroll-behavior: contain;
+}
+
+#dropdowns > div.absolute {
+    position: fixed;
+}
+
+/* CodeMirror */
+
+.CodeMirror {
+    border-radius: 0.25rem;
 }
 
 /* Popper */

@@ -19,12 +19,12 @@ class EventTemplate extends Resource
 
     public static $with = ['color', 'events'];
 
+    protected static array $orderBy = ['name' => 'asc'];
+
     public static $search = [
         'name',
         'description',
     ];
-
-    protected static array $orderBy = ['name' => 'asc'];
 
     public static function label(): string
     {

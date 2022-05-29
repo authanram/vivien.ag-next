@@ -30,15 +30,6 @@ class EventRegistration extends Model
         'user_agent' => 'local',
     ];
 
-    protected $appends = [
-        'full_name',
-    ];
-
-    public function getFullNameAttribute(): string
-    {
-        return $this->attributes['firstname'].' '.$this->attributes['surname'];
-    }
-
     public function event(): BelongsTo
     {
         return $this->belongsTo(Event::class);

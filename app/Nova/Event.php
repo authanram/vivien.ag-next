@@ -8,7 +8,6 @@ use App\Models\Event as Model;
 use App\Models\Staff as StaffModel;
 use App\Nova\Filters\EventsTimeFilter;
 use Illuminate\Database\Eloquent\Model as BaseModel;
-use Illuminate\Support\Facades\Cache;
 use JsonException;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
@@ -30,6 +29,7 @@ class Event extends Resource
     public static string $model = Model::class;
 
     public static $search = [
+        'id',
         'date_from',
         'date_to',
         'eventTemplate.name',
@@ -38,17 +38,17 @@ class Event extends Resource
     ];
 
     public static $with = [
-        'catering',
-        'eventRegistrations',
-        'eventTemplate',
-        'location',
-        'staff',
+        'eventRegistrations:event_id,seats',
+        'eventTemplate:id,name',
+        'location:id,name',
     ];
 
     protected static array $orderBy = [
         'published' => 'asc',
         'date_from' => 'asc',
     ];
+
+    public static $title = 'eventTemplate.name';
 
     /**
      * @throws JsonException
@@ -84,7 +84,7 @@ class Event extends Resource
 
         $ids = StaffModel::whereIn('name', $names)->pluck('id')->toArray();
 
-        $model->staff()->sync($ids);
+        $model->getAttribute('staff')->sync($ids);
     }
 
     public static function label(): string
@@ -99,6 +99,8 @@ class Event extends Resource
 
     public function fields(NovaRequest $request, bool $published = true): array
     {
+        //ray($this->resource);
+
         return [
             ID::make()
                 ->sortable()
@@ -196,8 +198,8 @@ class Event extends Resource
                 ->hideFromIndex()
                 ->showOnPreview(),
 
-            BooleanGroup::make(__('Lead'), 'staff', fn () => $this->staff()->values)
-                ->options($this->staff()->options)
+            BooleanGroup::make(__('Lead'), 'staff', fn () => [])
+                ->options([])
                 ->hideFromIndex()
                 ->showOnPreview(),
 
@@ -221,26 +223,10 @@ class Event extends Resource
             : [];
     }
 
-    public function title(): string
-    {
-        return $this
-            ->model()
-            ?->getAttribute('eventTemplate')
-            ?->getAttribute('name');
-    }
-
     public function cards(NovaRequest $request): array
     {
         return [
             //new PartitionEventTemplate(),
-        ];
-    }
-
-    protected function staff(): object
-    {
-        return (object)[
-            'values' => StaffModel::$presenter::toOptionArrayValues($this->resource->staff()->get()),
-            'options' => StaffModel::$presenter::toOptionArrayOptions(),
         ];
     }
 }

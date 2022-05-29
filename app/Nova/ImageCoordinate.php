@@ -16,10 +16,6 @@ class ImageCoordinate extends Resource
 
     public static string $model = Model::class;
 
-    public static $search = [
-        'data',
-    ];
-
     protected static array $orderBy = [
         'order_column' => 'asc',
     ];
