@@ -13,7 +13,6 @@ use Outl1ne\NovaSortable\Traits\HasSortableRows;
 
 class Image extends Resource
 {
-    use HasFieldOrderColumn;
     use HasSortableRows;
 
     public static string $model = \App\Models\Image::class;
@@ -69,8 +68,6 @@ class Image extends Resource
                 ->currency('EUR')
                 ->sortable()
                 ->showOnPreview(),
-
-            $this->orderColumn(),
 
             Boolean::make(__('Published'), 'published')
                 ->sortable()

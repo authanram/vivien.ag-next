@@ -43,15 +43,13 @@ class ImageCoordinate extends Resource
                 ->rules('json')
                 ->showOnPreview(),
 
-            $this->orderColumn(),
+            Text::make(__('Created At'), fn () => (string)$this->resource->created_at)
+                ->sortable()
+                ->showOnPreview(),
 
-            Text::make(__('Created At'), function () {
-                return (string)$this->resource->created_at;
-            })->sortable()->showOnPreview(),
-
-            Text::make(__('Updated At'), function () {
-                return (string)$this->resource->updated_at;
-            })->sortable()->showOnPreview(),
+            Text::make(__('Updated At'), fn () => (string)$this->resource->updated_at)
+                ->sortable()
+                ->showOnPreview(),
         ];
     }
 }

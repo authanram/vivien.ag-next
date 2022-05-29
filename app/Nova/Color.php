@@ -15,7 +15,7 @@ class Color extends Resource
     public static $title = 'color';
 
     public static $search = [
-        'color'
+        'color',
     ];
 
     protected static array $orderBy = ['color' => 'asc'];

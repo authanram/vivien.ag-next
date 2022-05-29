@@ -48,6 +48,7 @@ return [
     // cookie consent
     'cookie_consent_providers',
     'cookie_consent_cookies',
+    'cookie_consent_settings',
 
     // user settings
     'user_settings',

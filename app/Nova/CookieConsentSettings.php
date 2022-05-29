@@ -4,8 +4,9 @@ namespace App\Nova;
 
 use App\Models\CookieConsentSettings as Model;
 use Exception;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Line;
-use Laravel\Nova\Http\Requests\NovaRequest as Request;
+use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
 
@@ -33,7 +34,7 @@ class CookieConsentSettings extends Resource
     /**
      * @throws Exception
      */
-    public function fields(Request $request): array
+    public function fields(NovaRequest $request): array
     {
         return [
             ID::make()
@@ -54,22 +55,24 @@ class CookieConsentSettings extends Resource
                 ->rules('json')
                 ->showOnPreview(),
 
-            Line::make(__('Cookies'), function () {
-                return implode(', ', array_keys($this->resource->cookie_data));
-            })->showOnPreview(),
+            Line::make(__('Cookies'), fn () => implode(', ', array_keys($this->resource->cookie_data)))
+                ->extraClasses('text-sm'),
 
-            Line::make(__('Token'), function () {
-                return $this->resource->session_data['_token'];
-            })->showOnPreview(),
+            Line::make(__('Token'), fn () => $this->resource->session_data['_token'])
+                ->extraClasses('text-sm'),
 
             Line::make(__('Referer'), function () {
                 $url = $this->resource->session_data['_previous']['url'];
                 return "<a href=\"$url\" class=\"link-default\">$url</a>";
-            })->asHtml()->showOnPreview(),
+            })->extraClasses('text-sm')->asHtml(),
 
-            Line::make(__('Date of Consent'), function () {
-                return (string)$this->resource->created_at;
-            })->showOnPreview(),
+            Line::make(__('Date of Consent'), fn () => (string)$this->resource->created_at)
+                ->extraClasses('text-sm'),
         ];
+    }
+
+    public function authorizedToDelete(Request $request): bool
+    {
+        return false;
     }
 }

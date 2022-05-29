@@ -22,6 +22,10 @@ class Staff extends Resource
         'occupation',
     ];
 
+    public static $with = [
+        'events',
+    ];
+
     public static function label(): string
     {
         return __('Staff');
@@ -59,8 +63,7 @@ class Staff extends Resource
                 ->showOnPreview(),
 
             Line::make(__('Disabled At'), fn () => $this->resource->disabledAt())
-                ->extraClasses('text-sm')
-                ->showOnPreview(),
+                ->extraClasses('text-sm'),
 
             BelongsToMany::make(__('Events'), 'events', Event::class),
         ];

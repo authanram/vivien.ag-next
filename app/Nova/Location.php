@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use App\Models\Location as Model;
+use Laravel\Nova\Fields\Line;
 use Laravel\Nova\Fields\URL;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
 use Laravel\Nova\Fields\HasMany;
@@ -23,7 +24,13 @@ class Location extends Resource
         'url',
     ];
 
-    protected static array $orderBy = ['name' => 'asc'];
+    protected static array $orderBy = [
+        'name' => 'asc',
+    ];
+
+    public static $with = [
+        'events:location_id',
+    ];
 
     public static function label(): string
     {
@@ -63,6 +70,9 @@ class Location extends Resource
                 ->textAlign('left')
                 ->sortable()
                 ->showOnPreview(),
+
+            Line::make(__('Events'), fn () => $this->resource->events->count())
+                ->extraClasses('text-sm'),
 
             HasMany::make(__('Events'), 'events', Event::class),
         ];

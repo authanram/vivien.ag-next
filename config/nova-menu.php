@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Menu\Menu;
 use Laravel\Nova\Menu\MenuItem;
 use Laravel\Nova\Menu\MenuSection;
-use Vyuldashev\NovaPermission;
 
 return [
 
@@ -37,7 +36,7 @@ return [
         ])->collapsable()->icon('database'),
 
         MenuSection::make(__('Page'), [
-            //MenuItem::resource(Resources\RouteAction::class),
+            MenuItem::resource(Resources\RouteAction::class),
             MenuItem::resource(Resources\View::class),
             //MenuItem::resource(Resources\MenuItem::class),
             MenuItem::resource(Resources\Menu::class),
@@ -48,8 +47,8 @@ return [
         MenuSection::make(__('Access Control'), [
             MenuItem::resource(Resources\User::class),
             MenuItem::resource(Resources\Session::class),
-            MenuItem::resource(NovaPermission\Permission::class),
-            MenuItem::resource(NovaPermission\Role::class),
+            MenuItem::resource(Resources\Permission::class),
+            MenuItem::resource(Resources\Role::class),
         ])->collapsable()->icon('users'),
 
         MenuSection::make(__('Cookie Consent'), [

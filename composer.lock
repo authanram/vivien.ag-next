@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6b793a626057ba785a645b5293c0aa76",
+    "content-hash": "c2c6c35f6052746984b14905ab1db7f9",
     "packages": [
         {
             "name": "ajcastro/eager-load-pivot-relations",
@@ -327,62 +327,6 @@
                 }
             ],
             "time": "2021-10-10T11:59:43+00:00"
-        },
-        {
-            "name": "coderello/laravel-nova-lang",
-            "version": "1.8.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/coderello/laravel-nova-lang.git",
-                "reference": "a55a426a14b0465436f2572fc5bc9d74ca5cfea3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/coderello/laravel-nova-lang/zipball/a55a426a14b0465436f2572fc5bc9d74ca5cfea3",
-                "reference": "a55a426a14b0465436f2572fc5bc9d74ca5cfea3",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.1|^8.0"
-            },
-            "require-dev": {
-                "ext-curl": "*",
-                "illuminate/console": "^8.0",
-                "illuminate/events": "^8.0",
-                "illuminate/filesystem": "^8.0",
-                "laravel/nova": "~3.0",
-                "php": "^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Coderello\\LaravelNovaLang\\Providers\\LaravelNovaLangServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Coderello\\LaravelNovaLang\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Language support for Laravel Nova.",
-            "keywords": [
-                "lang",
-                "language",
-                "laravel",
-                "nova",
-                "support"
-            ],
-            "support": {
-                "issues": "https://github.com/coderello/laravel-nova-lang/issues",
-                "source": "https://github.com/coderello/laravel-nova-lang/tree/1.8.2"
-            },
-            "time": "2022-04-11T15:58:26+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -1030,16 +974,16 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "3.1.2",
+            "version": "3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "ee0db30118f661fb166bcffbf5d82032df484697"
+                "reference": "a5ed8d58ed0c340a7c2109f587951b1c84cf6286"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/ee0db30118f661fb166bcffbf5d82032df484697",
-                "reference": "ee0db30118f661fb166bcffbf5d82032df484697",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/a5ed8d58ed0c340a7c2109f587951b1c84cf6286",
+                "reference": "a5ed8d58ed0c340a7c2109f587951b1c84cf6286",
                 "shasum": ""
             },
             "require": {
@@ -1086,7 +1030,7 @@
             ],
             "support": {
                 "issues": "https://github.com/egulias/EmailValidator/issues",
-                "source": "https://github.com/egulias/EmailValidator/tree/3.1.2"
+                "source": "https://github.com/egulias/EmailValidator/tree/3.2"
             },
             "funding": [
                 {
@@ -1094,7 +1038,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-10-11T09:18:27+00:00"
+            "time": "2022-05-28T22:19:18+00:00"
         },
         {
             "name": "firebase/php-jwt",
@@ -1968,57 +1912,6 @@
                 }
             ],
             "time": "2022-05-25T02:00:06+00:00"
-        },
-        {
-            "name": "kiritokatklian/nova-permission",
-            "version": "v4.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kiritokatklian/nova-permission.git",
-                "reference": "3cdfd6dfa3ee90eefcececa623c52ac01d902616"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kiritokatklian/nova-permission/zipball/3cdfd6dfa3ee90eefcececa623c52ac01d902616",
-                "reference": "3cdfd6dfa3ee90eefcececa623c52ac01d902616",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/nova": "^4.0",
-                "php": "^7.4|^8.0|^8.1",
-                "spatie/laravel-permission": "^3.0|^4.0|^5.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Vyuldashev\\NovaPermission\\ToolServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Vyuldashev\\NovaPermission\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "A Laravel Nova tool for Spatie's Permission library.",
-            "keywords": [
-                "laravel",
-                "nova",
-                "spatie-permission"
-            ],
-            "support": {
-                "issues": "https://github.com/kiritokatklian/nova-permission/issues",
-                "source": "https://github.com/kiritokatklian/nova-permission/tree/v4.0.3"
-            },
-            "time": "2022-05-17T08:54:35+00:00"
         },
         {
             "name": "laravel/framework",
@@ -4959,97 +4852,6 @@
                 }
             ],
             "time": "2022-01-21T08:32:41+00:00"
-        },
-        {
-            "name": "spatie/laravel-activitylog",
-            "version": "4.5.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/laravel-activitylog.git",
-                "reference": "daa1abc8f4c6074b2e1d993c3092461b96cf0f96"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-activitylog/zipball/daa1abc8f4c6074b2e1d993c3092461b96cf0f96",
-                "reference": "daa1abc8f4c6074b2e1d993c3092461b96cf0f96",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/config": "^8.0 || ^9.0",
-                "illuminate/database": "^8.53 || ^9.0",
-                "illuminate/support": "^8.0 || ^9.0",
-                "php": "^8.0",
-                "spatie/laravel-package-tools": "^1.6.3"
-            },
-            "require-dev": {
-                "ext-json": "*",
-                "orchestra/testbench": "^6.23 || ^7.0",
-                "pestphp/pest": "^1.20"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Spatie\\Activitylog\\ActivitylogServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/helpers.php"
-                ],
-                "psr-4": {
-                    "Spatie\\Activitylog\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Sebastian De Deyne",
-                    "email": "sebastian@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Tom Witkowski",
-                    "email": "dev.gummibeer@gmail.com",
-                    "homepage": "https://gummibeer.de",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A very simple activity logger to monitor the users of your website or application",
-            "homepage": "https://github.com/spatie/activitylog",
-            "keywords": [
-                "activity",
-                "laravel",
-                "log",
-                "spatie",
-                "user"
-            ],
-            "support": {
-                "issues": "https://github.com/spatie/laravel-activitylog/issues",
-                "source": "https://github.com/spatie/laravel-activitylog/tree/4.5.2"
-            },
-            "funding": [
-                {
-                    "url": "https://spatie.be/open-source/support-us",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/spatie",
-                    "type": "github"
-                }
-            ],
-            "time": "2022-04-21T09:46:53+00:00"
         },
         {
             "name": "spatie/laravel-analytics",

@@ -11,14 +11,14 @@ abstract class Resource extends NovaResource
 
     protected static array $orderBy = ['id' => 'asc'];
 
-    public static function group(): string
-    {
-        return static::$group !== 'Other' ? static::$group : __('Contents');
-    }
-
     public static function authorizable(): bool
     {
         return false;
+    }
+
+    public static function group(): string
+    {
+        return static::$group !== 'Other' ? static::$group : __('Contents');
     }
 
     protected static function applyOrderings($query, array $orderings): Builder

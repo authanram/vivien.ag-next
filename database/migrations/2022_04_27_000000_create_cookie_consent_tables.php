@@ -29,7 +29,7 @@ return new class extends Migration
         });
 
         Schema::create('cookie_consent_settings', static function (Blueprint $table) {
-            $table->id();
+            $table->string('id');
             $table->json('cookie_data');
             $table->json('session_data');
             $table->timestamps();

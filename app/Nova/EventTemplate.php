@@ -17,13 +17,16 @@ class EventTemplate extends Resource
 
     public static $title = 'name';
 
-    public static $with = ['color', 'events'];
-
     protected static array $orderBy = ['name' => 'asc'];
 
     public static $search = [
         'name',
         'description',
+    ];
+
+    public static $with = [
+        'color:id,color',
+        'events:event_template_id',
     ];
 
     public static function label(): string
@@ -61,8 +64,7 @@ class EventTemplate extends Resource
             HasMany::make(__('Events'), 'events', Event::class),
 
             Line::make(__('Events'), fn () => $this->resource->events->count())
-                ->showOnPreview(),
-
+                ->extraClasses('text-sm'),
         ];
     }
 }

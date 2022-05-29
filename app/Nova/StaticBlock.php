@@ -22,7 +22,9 @@ class StaticBlock extends Resource
         'value',
     ];
 
-    protected static array $orderBy = ['name' => 'asc'];
+    protected static array $orderBy = [
+        'name' => 'asc',
+    ];
 
     public static function label(): string
     {

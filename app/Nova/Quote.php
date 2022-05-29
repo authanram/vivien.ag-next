@@ -13,12 +13,12 @@ class Quote extends Resource
 {
     public static string $model = Model::class;
 
-    public static $title = 'body';
-
     public static $search = [
         'body',
         'author.name',
     ];
+
+    public static $title = 'body';
 
     public static function label(): string
     {

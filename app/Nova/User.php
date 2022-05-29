@@ -10,16 +10,18 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
-use Vyuldashev\NovaPermission\PermissionBooleanGroup;
-use Vyuldashev\NovaPermission\RoleBooleanGroup;
+//use Vyuldashev\NovaPermission\PermissionBooleanGroup;
+//use Vyuldashev\NovaPermission\RoleBooleanGroup;
 
 class User extends Resource
 {
     public static string $model = Model::class;
 
-    public static $with = ['settings'];
-
     public static $title = 'name';
+
+    public static $with = [
+        'settings',
+    ];
 
     public static $search = [
         'name',
@@ -62,18 +64,18 @@ class User extends Resource
                 ->updateRules('nullable', 'string', 'min:8')
                 ->onlyOnForms(),
 
+//            RoleBooleanGroup::make(__('Roles'), 'roles')
+//                ->hideFromIndex()
+//                ->showOnPreview(),
+//
+//            PermissionBooleanGroup::make(__('Permissions'), 'permissions')
+//                ->hideFromIndex()
+//                ->showOnPreview(),
+
             HasOne::make(__('User Settings'), 'settings', UserSettings::class)
                 ->showOnPreview(),
 
             HasMany::make(__('Sessions'), 'sessions', Session::class),
-
-            RoleBooleanGroup::make('Roles')
-                ->hideFromIndex()
-                ->showOnPreview(),
-
-            PermissionBooleanGroup::make('Permissions')
-                ->hideFromIndex()
-                ->showOnPreview(),
         ];
     }
 }

@@ -18,7 +18,7 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable //MustVerifyEmail
 {
     use HasPresenter;
-    use HasRoles;
+    //use HasRoles;
     use Impersonatable;
     use Notifiable;
 

@@ -16,7 +16,9 @@ class Post extends Resource
 {
     public static string $model = Model::class;
 
-    public static $title = 'title';
+    protected static array $orderBy = [
+        'created_at' => 'desc',
+    ];
 
     public static $search = [
         'title',
@@ -24,9 +26,11 @@ class Post extends Resource
         'body',
     ];
 
-    protected static array $orderBy = ['created_at' => 'desc'];
+    public static $title = 'title';
 
-    public static $with = ['tags'];
+    public static $with = [
+        'tags:id,name,type',
+    ];
 
     public static function label(): string
     {
@@ -40,8 +44,6 @@ class Post extends Resource
 
     public function fields(Request $request): array
     {
-        $table = $this->model()?->getTable();
-
         return [
             ID::make()
                 ->sortable()
@@ -54,8 +56,8 @@ class Post extends Resource
 
             Slug::make(__('Slug'), 'slug')
                 ->from('title')
-                ->creationRules('required', "unique:$table,slug")
-                ->updateRules('required', "unique:$table,slug,{{resourceId}}")
+                ->creationRules('required', "unique:posts,slug")
+                ->updateRules('required', "unique:posts,slug,{{resourceId}}")
                 ->sortable()
                 ->showOnPreview(),
 
@@ -64,17 +66,18 @@ class Post extends Resource
                 ->showOnPreview(),
 
             DateTime::make(__('Published At'), 'published_at')
-                ->onlyOnForms(),
+                ->onlyOnForms()
+                ->showOnPreview(),
 
-            Text::make(__('Published At'), 'published_at', static function ($value) {
-                return $value->format('d.m.Y, H:i');
-            })->rules('required')
+            Text::make(__('Published At'), 'published_at', static fn ($value) => $value->format('d.m.Y, H:i'))
+                ->rules('required')
                 ->exceptOnForms()
                 ->sortable()
                 ->showOnPreview(),
 
-            Tags::make('Tags')
+            Tags::make(__('Tags'), 'tags')
                 ->type('post')
+                ->withLinkToTagResource()
                 ->showOnPreview(),
 
             MorphMany::make(__('Targetables'), __CLASS__),

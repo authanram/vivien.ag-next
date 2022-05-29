@@ -13,7 +13,12 @@ class UserSettings extends Resource
 {
     public static string $model = Model::class;
 
-    public static $with = ['color', 'user'];
+    public static $with = [
+        'color:id,color',
+        'user:id,name',
+    ];
+
+    public static $title = 'user.name';
 
     public static function label(): string
     {
@@ -23,11 +28,6 @@ class UserSettings extends Resource
     public static function singularLabel(): string
     {
         return __('User Settings');
-    }
-
-    public function title(): string
-    {
-        return $this->resource->user->name;
     }
 
     public function fields(NovaRequest $request): array

@@ -14,15 +14,19 @@ class Page extends Resource
 {
     public static string $model = Model::class;
 
-    public static $title = 'name';
-
-    public static $with = ['view'];
+    protected static array $orderBy = [
+        'name' => 'asc',
+    ];
 
     public static $search = [
         'name',
     ];
 
-    protected static array $orderBy = ['name' => 'asc'];
+    public static $title = 'name';
+
+    public static $with = [
+        'view:id,name',
+    ];
 
     public static function label(): string
     {

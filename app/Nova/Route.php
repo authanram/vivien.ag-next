@@ -34,7 +34,9 @@ class Route extends Resource
         'middlewares',
     ];
 
-    public static $with = ['routable'];
+    public static $with = [
+        'routable',
+    ];
 
     public static function label(): string
     {
@@ -91,8 +93,7 @@ class Route extends Resource
 
             Line::make(__('Middlewares'), 'middlewares')
                 ->displayUsing(self::displayUsingMiddlewares($this->resource))
-                ->extraClasses('text-sm')
-                ->onlyOnIndex(),
+                ->extraClasses('text-sm'),
 
             Boolean::make(__('Published'), 'published')
                 ->sortable()

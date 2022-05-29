@@ -24,14 +24,12 @@ class MenuItem extends Resource
     ];
 
     protected static array $orderBy = [
-        'menu_id' => 'asc',
         'order_column' => 'asc',
     ];
 
     public static $with = [
-        'color',
-        'menu',
-        'route',
+        'color:id,color',
+        'route:id,name',
     ];
 
     public static function label(): string
@@ -73,8 +71,6 @@ class MenuItem extends Resource
                 ->withoutTrashed()
                 ->rules('required')
                 ->sortable(),
-
-            $this->orderColumn(),
 
             Boolean::make(__('Published'), 'published')
                 ->rules('required')

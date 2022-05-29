@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-class StaffProfilePolicy extends Policy
+class ActionEventPolicy extends Policy
 {
     //
 }

@@ -26,7 +26,7 @@ class CookieConsentCookie extends Resource
         'cookie_type',
     ];
 
-    public static $with = ['cookieProvider'];
+    public static $with = ['cookieProvider:id,name'];
 
     public static function label(): string
     {

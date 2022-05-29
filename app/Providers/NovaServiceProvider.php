@@ -2,15 +2,17 @@
 
 namespace App\Providers;
 
+//use App\Nova\Permission;
+//use App\Nova\Role;
+//use App\Policies\PermissionPolicy;
+//use App\Policies\RolePolicy;
+//use Vyuldashev\NovaPermission\NovaPermissionTool;
 use App\Nova\Dashboards\Main;
-use App\Policies\PermissionPolicy;
-use App\Policies\RolePolicy;
 use Auth;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\LogViewer\LogViewer;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
-use Vyuldashev\NovaPermission\NovaPermissionTool;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -37,7 +39,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             Nova::userMenu(config('nova-menu.user'));
         }
 
-        Nova::footer(static fn ($request) => null);
+        Nova::footer(static fn ($request) => '');
     }
 
     final protected function routes(): void
@@ -65,9 +67,11 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function tools(): array
     {
         return array_merge(parent::tools(), [
-            NovaPermissionTool::make()
-                ->rolePolicy(RolePolicy::class)
-                ->permissionPolicy(PermissionPolicy::class),
+//            NovaPermissionTool::make()
+//                ->roleResource(Role::class)
+//                ->permissionResource(Permission::class)
+//                ->rolePolicy(RolePolicy::class)
+//                ->permissionPolicy(PermissionPolicy::class),
             new LogViewer(),
         ]);
     }

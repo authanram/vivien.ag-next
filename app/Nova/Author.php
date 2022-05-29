@@ -23,7 +23,7 @@ class Author extends Resource
         'quotes.body',
     ];
 
-    public static $with = ['quotes'];
+    public static $with = ['quotes:author_id'];
 
     public static function label(): string
     {
@@ -62,7 +62,7 @@ class Author extends Resource
                 ->showOnPreview(),
 
             Line::make(__('Quotes'), fn () => $this->resource->quotes->count())
-                ->showOnPreview(),
+                ->extraClasses('text-sm'),
 
             Boolean::make(__('Published'), 'published')
                 ->sortable()

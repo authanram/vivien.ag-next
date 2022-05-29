@@ -10,29 +10,25 @@ use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest as Request;
-use Outl1ne\NovaSortable\Traits\HasSortableRows;
 
 class Tag extends Resource
 {
-    use HasFieldOrderColumn;
-    use HasSortableRows;
-
     public static string $model = Model::class;
-
-    public static $title = 'name';
 
     public static $search = [
         'name',
         'slug',
     ];
 
+    public static $title = 'name';
+
+    public static $with = [
+        'color:id,color',
+    ];
+
     protected static array $orderBy = [
         'type' => 'asc',
         'name->de' => 'asc',
-    ];
-
-    public static $with = [
-        'color',
     ];
 
     public static function label(): string
@@ -80,9 +76,8 @@ class Tag extends Resource
                 ->nullable()
                 ->showCreateRelationButton()
                 ->withoutTrashed()
+                ->sortable()
                 ->showOnPreview(),
-
-            $this->orderColumn(),
 
             MorphedByMany::make(__('Events'), 'events', Event::class),
 

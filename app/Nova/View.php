@@ -15,12 +15,12 @@ class View extends Resource
 {
     public static string $model = Model::class;
 
-    public static $title = 'name';
-
     public static $search = [
         'name',
         'view_alias',
     ];
+
+    public static $title = 'name';
 
     public static function label(): string
     {
