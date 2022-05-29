@@ -5,8 +5,10 @@ namespace App\Nova;
 use App\Models\Route as Model;
 use Exception;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\BooleanGroup;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Line;
 use Laravel\Nova\Fields\MorphTo;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Slug;
@@ -70,24 +72,27 @@ class Route extends Resource
                 ->sortable()
                 ->showOnPreview(),
 
-            Slug::make(__('Uri'), 'uri')
+            Slug::make(__('URI'), 'uri')
                 ->from('name')
                 ->creationRules('required', $this->validationRuleUri($request))
                 ->updateRules('required', $this->validationRuleUri($request))
-                ->onlyOnForms()
-                ->showOnPreview(),
+                ->onlyOnForms(),
 
             MorphTo::make(__('Routable'), 'routable')
                 ->types(config('project-routables.routables'))
                 ->showCreateRelationButton()
-                ->withoutTrashed(),
+                ->withoutTrashed()
+                ->showOnPreview(),
 
-            Code::make(__('Middlewares'), 'middlewares', static fn ($value) => '["web"]')
-                ->autoHeight()
-                ->json()
-                ->rules('required', 'json')
+            BooleanGroup::make(__('Middlewares'), 'middlewares')
+                ->options(config('project-routables.middlewares'))
                 ->hideFromIndex()
                 ->showOnPreview(),
+
+            Line::make(__('Middlewares'), 'middlewares')
+                ->displayUsing(self::displayUsingMiddlewares($this->resource))
+                ->extraClasses('text-sm')
+                ->onlyOnIndex(),
 
             Boolean::make(__('Published'), 'published')
                 ->sortable()
@@ -114,5 +119,15 @@ class Route extends Resource
 
             return $fail(__('validation.unique', ['attribute' => $attribute]));
         };
+    }
+
+    private static function displayUsingMiddlewares(Model $resource): callable
+    {
+        return static fn () => is_null($resource->middlewares) === false
+            ? collect($resource->middlewares)
+                ->filter(fn ($value, $key) => $value === true)
+                ->keys()
+                ->implode(', ')
+            : '—';
     }
 }

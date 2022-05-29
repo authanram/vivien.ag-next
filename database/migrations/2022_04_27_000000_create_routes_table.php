@@ -14,7 +14,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('uri');
             $table->nullableMorphs('routable');
-            $table->json('middlewares');
+            $table->json('middlewares')->nullable();
             $table->boolean('published');
             $table->timestamps();
             $table->softDeletes();

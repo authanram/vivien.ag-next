@@ -9,6 +9,11 @@ return [
         //
     ],
 
+    'middlewares' => [
+        'web',
+        'auth',
+    ],
+
     'routables' => [
         RouteAction::class,
         Page::class,
