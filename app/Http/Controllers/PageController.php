@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\SiteService;
 use App\Models\Page;
 use App\Models\Route;
 use Illuminate\Contracts\View\View;
@@ -11,7 +10,12 @@ use Illuminate\Http\Request;
 
 final class PageController extends Controller
 {
-    public function show(Page $page): View|string
+    public static function resolveActions(): array
+    {
+        return Page::all()->pluck('name', 'id')->toArray();
+    }
+
+    public function index(Page $page): View|string
     {
         //$this->route = $route;
 

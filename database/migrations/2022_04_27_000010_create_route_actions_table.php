@@ -8,14 +8,10 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('routes', static function (Blueprint $table) {
+        Schema::create('route_actions', static function (Blueprint $table) {
             $table->id();
-            $table->string('method')->default('get');
-            $table->string('name');
-            $table->string('uri');
-            $table->nullableMorphs('routable');
-            $table->json('middlewares');
-            $table->boolean('published');
+            $table->string('controller');
+            $table->string('action');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -23,6 +19,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('routes');
+        Schema::dropIfExists('route_actions');
     }
 };

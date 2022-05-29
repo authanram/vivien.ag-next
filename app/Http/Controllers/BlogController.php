@@ -34,9 +34,10 @@ final class BlogController extends Controller
         ]);
     }
 
-    public function indexWithSlug(int $routeId): View
+    public function detail(int $routeId): View
     {
         $posts = Post::orderBy('created_at', 'desc')->get();
+
         return view('blog', $this->data($routeId), compact('posts'));
     }
 }

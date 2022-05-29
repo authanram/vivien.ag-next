@@ -14,9 +14,11 @@ class ClassMethodsResolver
      */
     public static function resolve(string $classname): Collection
     {
+        $classname = ltrim($classname, '\\');
+
         return collect((new ReflectionClass($classname))->getMethods())
             ->filter(static fn (ReflectionMethod $method) => $method->isPublic())
-            ->filter(static fn (ReflectionMethod $method) => $method->class === $classname)
+            ->filter(static fn (ReflectionMethod $method) => ltrim($method->class, '\\') === $classname)
             ->map(static fn (ReflectionMethod $method) => $method->getName());
     }
 }

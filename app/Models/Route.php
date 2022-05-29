@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Presenters\RoutePresenter as Presenter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Route extends Model
@@ -19,14 +20,12 @@ class Route extends Model
         'name',
         'uri',
         'middlewares',
-        'routable',
         'published',
     ];
 
     protected $casts = [
         'middlewares' => 'array',
         'published' => 'boolean',
-        'routable' => 'array',
     ];
 
     public function scopePublished(Builder $query): Builder
@@ -37,5 +36,10 @@ class Route extends Model
     public function menuItems(): HasMany
     {
         return $this->hasMany(MenuItem::class);
+    }
+
+    public function routable(): MorphTo
+    {
+        return $this->morphTo();
     }
 }

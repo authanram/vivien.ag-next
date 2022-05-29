@@ -29,7 +29,7 @@ return [
         'type' => 'template',
         'view_alias' => 'welcome',
         'raw' => null,
-        'sections' => '["title", "updates"]',
+        'sections' => '["title", "col-left", "col-right"]',
         'created_at' => '2022-05-12 22:24:45',
         'updated_at' => '2022-05-12 22:24:45',
         'deleted_at' => null,

@@ -65,4 +65,12 @@ return [
         'updated_at' => '2022-05-12 00:38:05',
         'deleted_at' => null,
     ],
+    [
+        'id' => 9,
+        'view_id' => 2,
+        'name' => 'Cookie-Vereinbarung',
+        'created_at' => '2022-05-29 03:04:22',
+        'updated_at' => '2022-05-29 03:04:22',
+        'deleted_at' => null,
+    ],
 ];

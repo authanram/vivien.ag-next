@@ -37,6 +37,7 @@ return [
         ])->collapsable()->icon('database'),
 
         MenuSection::make(__('Page'), [
+            //MenuItem::resource(Resources\RouteAction::class),
             MenuItem::resource(Resources\View::class),
             //MenuItem::resource(Resources\MenuItem::class),
             MenuItem::resource(Resources\Menu::class),

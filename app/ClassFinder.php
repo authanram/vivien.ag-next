@@ -4,32 +4,95 @@ namespace App;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+use InvalidArgumentException;
 use SplFileInfo;
 
 class ClassFinder
 {
-    public static function resolve(string $path, string $namespace = ''): Collection
-    {
-        $namespace = rtrim($namespace, '\\').'\\';
+    protected bool $recursive = false;
 
-        return self::controllers($path, $namespace);
+    protected array $reject = [];
+
+    private function __construct(protected string $namespace, protected ?string $path = null)
+    {
+        $this->namespace = self::namespace($this->namespace);
+
+        $this->path ??= static::namespaceToPath($this->namespace);
+
+        if (File::exists($this->path) === false) {
+            throw new InvalidArgumentException("Invalid path: $this->path");
+        }
     }
 
-    private static function controllers(string $path, string $namespace): Collection
+    public static function make(string $namespace = '', string $path = null): static
     {
-        return static::map($path, static fn (SplFileInfo $fileInfo) => static::classname(
-            $fileInfo->getFilename(),
-            $namespace,
-        ));
+        return new static($namespace, $path);
     }
 
-    private static function map(string $path, callable $mapper): Collection
+    public function recursive(): static
     {
-        return collect(File::files($path))->map($mapper)->filter()->values();
+        $this->recursive = true;
+
+        return $this;
     }
 
-    private static function classname(string $filename, string $namespace): string
+    public function reject(array|string $reject): static
     {
-        return $namespace.str_replace('.php', '', $filename);
+        $this->reject = is_string($reject) ? [$reject] : $reject;
+
+        return $this;
+    }
+
+    public function resolve(): Collection
+    {
+        $reject = collect($this->reject)
+            ->map(fn ($subject) => '\\'.trim($subject, '\\'))
+            ->toArray();
+
+        return collect($this->files($this->path))
+            ->map(fn (SplFileInfo $fileInfo) => static::classname($fileInfo))
+            ->filter(fn (string $classname) => in_array($classname, $reject, true) === false)
+            ->values();
+    }
+
+    private function files(string $path): array
+    {
+        return $this->recursive
+            ? File::allFiles($path)
+            : File::files($path);
+    }
+
+    private static function classname(SplFileInfo $fileInfo): string
+    {
+        $path = str_replace(base_path(), '', $fileInfo->getPath());
+
+        return Str::of(self::pathToNamespace($path))
+            ->append('\\')
+            ->append($fileInfo->getFilename())
+            ->before('.php')
+            ->toString();
+    }
+
+    private static function pathToNamespace(string $path): string
+    {
+        return collect(explode('/', $path))
+            ->map(fn (string $subject) => ucfirst($subject))
+            ->implode('\\');
+    }
+
+    private static function namespaceToPath(string $namespace): string
+    {
+        $path = Str::of($namespace)
+            ->replace('App\\', 'app\\')
+            ->replace('\\', '/')
+            ->toString();
+
+        return base_path($path);
+    }
+
+    private static function namespace(string $namespace): string
+    {
+        return trim($namespace, '\\').'\\';
     }
 }

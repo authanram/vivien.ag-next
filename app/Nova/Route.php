@@ -7,6 +7,7 @@ use Exception;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\MorphTo;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Fields\Text;
@@ -15,14 +16,23 @@ use Laravel\Nova\Http\Requests\NovaRequest as Request;
 
 class Route extends Resource
 {
+    use HasFieldsRoutable;
+
     public static string $model = Model::class;
 
     public static $title = 'name';
 
+    protected static array $orderBy = [
+        'uri' => 'asc',
+    ];
+
     public static $search = [
+        'method',
         'name',
         'uri',
     ];
+
+    public static $with = ['routable'];
 
     public static function label(): string
     {
@@ -66,6 +76,11 @@ class Route extends Resource
                 ->updateRules('required', $this->validationRuleUri($request))
                 ->onlyOnForms()
                 ->showOnPreview(),
+
+            MorphTo::make(__('Routable'), 'routable')
+                ->types(config('project-routables.routables'))
+                ->showCreateRelationButton()
+                ->withoutTrashed(),
 
             Code::make(__('Middlewares'), 'middlewares', static fn ($value) => '["web"]')
                 ->autoHeight()

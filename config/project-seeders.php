@@ -6,6 +6,7 @@ return [
 
     // site
     'routes',
+    'route_actions',
     'views',
     'static_blocks',
     'pages',
