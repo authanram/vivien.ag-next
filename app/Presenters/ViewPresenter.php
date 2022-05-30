@@ -9,4 +9,5 @@ use App\Models\View;
  */
 class ViewPresenter extends Presenter
 {
+    //
 }

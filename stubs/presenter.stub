@@ -1,0 +1,13 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Models\{{ model }};
+
+/**
+ * @property {{ model }} $entity
+ */
+class {{ class }} extends Presenter
+{
+    //
+}

@@ -1,0 +1,19 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Contracts\View;
+use Illuminate\View\Component;
+
+class {{ class }} extends Component
+{
+    public function __construct()
+    {
+        //
+    }
+
+    public function render(): View|string|callable
+    {
+        return {{ view }};
+    }
+}

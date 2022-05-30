@@ -1,0 +1,51 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Models\{{ class }} as Model;
+use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Line;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest as Request;
+
+class {{ class }} extends Resource
+{
+    public static string $model = Model::class;
+
+    public static $title = 'name';
+
+    public static $search = [
+        'name',
+    ];
+
+    public static function label(): string
+    {
+        return __('{{ label }}');
+    }
+
+    public static function singularLabel(): string
+    {
+        return __('{{ singularLabel }}');
+    }
+
+    public function fields(Request $request): array
+    {
+        $table = $this->model()?->getTable();
+
+        return [
+            ID::make()
+                ->sortable()
+                ->showOnPreview(),
+
+            Text::make(__('Name'), 'name')
+                ->creationRules('required', "unique:$table,name")
+                ->updateRules('required', "unique:$table,name,{{resourceId}}")
+                ->sortable()
+                ->hideFromIndex()
+                ->showOnPreview(),
+
+            Line::make(__('Name'), static fn ($value) => $value)
+                ->extraClasses('text-sm'),
+        ];
+    }
+}

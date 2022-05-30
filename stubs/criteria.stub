@@ -10,6 +10,7 @@ class {{ class }} implements CriteriaContract
 {
     public function __construct(protected {{ attributeType }} ${{ attribute }} = {{ attributeValue }})
     {
+        //
     }
 
     public function apply($model, RepositoryInterface $repository): Builder

@@ -9,4 +9,5 @@ use App\Models\UserSettings;
  */
 class UserSettingsPresenter extends Presenter
 {
+    //
 }

@@ -9,4 +9,5 @@ use App\Models\Route;
  */
 class RoutePresenter extends Presenter
 {
+    //
 }

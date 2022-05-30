@@ -9,4 +9,5 @@ use App\Models\Post;
  */
 class PostPresenter extends Presenter
 {
+    //
 }

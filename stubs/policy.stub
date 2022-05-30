@@ -1,0 +1,52 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Auth\Access\HandlesAuthorization;
+use {{ namespacedModel }};
+use {{ namespacedUserModel }};
+
+class {{ class }}
+{
+    use HandlesAuthorization;
+
+    public function before({{ user }} $user): ?bool
+    {
+        return $user->isAdministrator() ? true : null;
+    }
+
+    public function viewAny({{ user }} $user): bool
+    {
+        return false;
+    }
+
+    public function view({{ user }} $user, {{ model }} ${{ modelVariable }}): bool
+    {
+        return false;
+    }
+
+    public function create({{ user }} $user): bool
+    {
+        return false;
+    }
+
+    public function update({{ user }} $user, {{ model }} ${{ modelVariable }}): bool
+    {
+        return false;
+    }
+
+    public function delete({{ user }} $user, {{ model }} ${{ modelVariable }}): bool
+    {
+        return false;
+    }
+
+    public function restore({{ user }} $user, {{ model }} ${{ modelVariable }}): bool
+    {
+        return false;
+    }
+
+    public function forceDelete({{ user }} $user, {{ model }} ${{ modelVariable }}): bool
+    {
+        return false;
+    }
+}

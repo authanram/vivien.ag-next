@@ -3,10 +3,11 @@
 namespace App\Console\Commands\Generators;
 
 use Illuminate\Console\GeneratorCommand;
-use Symfony\Component\Console\Input\InputOption;
 
 abstract class BaseMakeCommand extends GeneratorCommand
 {
+    use HasCommandOptions;
+
     protected $suffix;
     protected $stub;
     protected $path;
@@ -48,12 +49,5 @@ abstract class BaseMakeCommand extends GeneratorCommand
         return method_exists($this, 'replace')
             ? $this->replace($stub)
             : $stub;
-    }
-
-    protected function getOptions(): array
-    {
-        return [
-            ['force', 'f', InputOption::VALUE_NONE, 'Force creation'],
-        ];
     }
 }

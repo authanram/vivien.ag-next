@@ -9,4 +9,5 @@ use App\Models\Image;
  */
 class ImagePresenter extends Presenter
 {
+    //
 }
