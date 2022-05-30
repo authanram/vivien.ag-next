@@ -38,10 +38,13 @@
         "authanram/laravel-query-monitor": "^1.0",
         "barryvdh/laravel-ide-helper": "^2.12",
         "fakerphp/faker": "^1.9.1",
+        "laravel/dusk": "^6.24",
         "laravel/telescope": "^4.9",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
         "nunomaduro/phpinsights": "^2.2",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-mock": "^1.0",
         "phpunit/phpunit": "^9.5.10",
         "riimu/kit-phpencoder": "^2.4",
         "roave/security-advisories": "dev-latest",
@@ -54,7 +57,8 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "pestphp/pest-plugin": true
         }
     },
     "extra": {
