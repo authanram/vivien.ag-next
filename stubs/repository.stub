@@ -1,0 +1,9 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Contracts\Repositories\{{ class }}Contract;
+
+class {{ class }} extends BaseRepository implements {{ class }}Contract
+{
+}

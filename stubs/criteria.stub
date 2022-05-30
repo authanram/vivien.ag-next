@@ -1,0 +1,19 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Contracts\CriteriaContract;
+use Illuminate\Database\Eloquent\Builder;
+use Prettus\Repository\Contracts\RepositoryInterface;
+
+class {{ class }} implements CriteriaContract
+{
+    public function __construct(protected {{ attributeType }} ${{ attribute }} = {{ attributeValue }})
+    {
+    }
+
+    public function apply($model, RepositoryInterface $repository): Builder
+    {
+        return $model->where('{{ attribute }}', $this->{{ attribute }});
+    }
+}

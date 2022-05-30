@@ -4,7 +4,7 @@ namespace App\Contracts\Support;
 
 use App\Http\Controllers\Controller;
 
-interface RouteDataContract
+interface RouteDataContract extends DataContract
 {
     public function getController(): Controller|string;
 
@@ -14,7 +14,6 @@ interface RouteDataContract
 
     /**
      * @return array<object|string>
-     * @noinspection PhpDocSignatureInspection
      */
     public function getMiddlewares(): array;
 

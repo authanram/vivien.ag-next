@@ -4,7 +4,7 @@ namespace App\Contracts\Support;
 
 use App\Routables\Routable;
 
-interface RoutableDataContract
+interface RoutableDataContract extends DataContract
 {
     public function getType(): Routable|string;
 

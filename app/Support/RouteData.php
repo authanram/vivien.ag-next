@@ -5,7 +5,7 @@ namespace App\Support;
 use App\Contracts\Support\RouteDataContract;
 use App\Http\Controllers\Controller;
 
-class RouteData extends DataObject implements RouteDataContract
+class RouteData extends Data implements RouteDataContract
 {
     public function getController(): Controller|string
     {

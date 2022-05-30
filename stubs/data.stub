@@ -1,0 +1,27 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Contracts\Support\{{ class }}Contract;
+use App\Models\{{ modelClass }} as Model;
+
+class {{ class }} extends Data implements {{ class }}Contract
+{
+    public static function fromModel(Model ${{ model }}): self
+    {
+        return new self(
+            ${{ model }}->attribute,
+        );
+    }
+
+    public function __construct(
+        public string $attribute,
+    ) {
+        //
+    }
+
+    public function getAttribute(): string
+    {
+        return $this->attribute;
+    }
+}

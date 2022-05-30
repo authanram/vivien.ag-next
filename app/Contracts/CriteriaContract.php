@@ -2,6 +2,7 @@
 
 namespace App\Contracts;
 
+use App\Contracts\Repositories\RepositoryContract;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Prettus\Repository\Contracts\CriteriaInterface;

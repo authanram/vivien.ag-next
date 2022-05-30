@@ -4,6 +4,6 @@ namespace App\Support;
 
 use App\Contracts\Support\PageDataContract;
 
-class PageData extends DataObject implements PageDataContract
+class PageData extends Data implements PageDataContract
 {
 }
