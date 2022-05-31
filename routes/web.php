@@ -1,9 +1,9 @@
 <?php
 
-//use App\Models\Route as Model;
-//use Illuminate\Database\Eloquent\Collection;
-//use Illuminate\Database\QueryException;
-//use Illuminate\Support\Facades\Route;
+use App\Models\Route as Model;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Route;
 
 //try {
 //    $collection = Model::published()
@@ -19,4 +19,4 @@
 //            ->name($route->name);
 //    });
 //}
-
+//

@@ -19,14 +19,10 @@ class Main extends Dashboard
 
     public function cards(): array
     {
-        if (request()->user()->isAdministrator() === false) {
-            return [];
-        }
-
         return [
-            //(new TrendSystemResourcesCpu())->width('1/3'),
-            (new ProgressSystemResourcesRam())->width('1/2'),
+            //(new TrendSystemResourcesCpu())->width('1/2'),
             (new ProgressSystemResourcesCpu())->width('1/2'),
+            (new ProgressSystemResourcesRam())->width('1/2'),
             new ValueActiveSessions(),
             new AnalyticsVisitors(),
             new AnalyticsPageViews(),

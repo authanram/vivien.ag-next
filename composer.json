@@ -35,6 +35,7 @@
         "titasgailius/search-relations": "^2.0"
     },
     "require-dev": {
+        "authanram/laravel-stubs": "dev-develop",
         "authanram/laravel-query-monitor": "^1.0",
         "barryvdh/laravel-ide-helper": "^2.12",
         "fakerphp/faker": "^1.9.1",
@@ -113,6 +114,10 @@
         "authanram/markdown": {
             "type": "git",
             "url": "https://github.com/authanram/markdown"
+        },
+        "authanram/laravel-stubs": {
+            "type": "path",
+            "url": "/Volumes/TEST/authanram-packages/laravel-stubs"
         },
         "authanram/nova-morphable": {
             "type": "path",
