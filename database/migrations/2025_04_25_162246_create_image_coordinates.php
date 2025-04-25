@@ -1,0 +1,26 @@
+<?php
+
+use App\Models\Image;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('image_coordinates', function (Blueprint $table) {
+            $table->id();
+            $table->uuid();
+            $table->foreignIdFor(Image::class);
+            $table->json('coordinates');
+            $table->timestamps();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->unsignedBigInteger('deleted_by')->nullable();
+        });
+    }
+};
