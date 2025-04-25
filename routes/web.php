@@ -1,27 +1,22 @@
 <?php
 
-use App\Contracts\DataServiceContract;
 use Illuminate\Support\Facades\Route;
+use Livewire\Volt\Volt;
 
-require __DIR__ . '/local.php';
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
 
-try {
+Route::view('dashboard', 'dashboard')
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
-    $routes = resolve(DataServiceContract::class)->getRoutes();
+Route::middleware(['auth'])->group(function () {
+    Route::redirect('settings', 'settings/profile');
 
-} catch (\Exception $e) {
+    Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
+    Volt::route('settings/password', 'settings.password')->name('settings.password');
+    Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
+});
 
-    $routes = [];
-
-}
-
-/** @var \App\Models\Route $route */
-foreach ($routes as $route) {
-
-    Route::get($route->getAttribute('path'), $route->getAttribute('action'))
-
-        ->defaults('routeId', $route->getAttribute('id'))
-
-        ->name($route->getAttribute('route'));
-
-}
+require __DIR__.'/auth.php';
