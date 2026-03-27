@@ -7,7 +7,7 @@ use App\Enums\Color;
 use App\Enums\EventLocation;
 use App\Enums\Weekday;
 use App\Models\EventType;
-use Filament\Forms\Components\CheckboxList;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -91,13 +91,17 @@ class EventForm
                     TextInput::make('lead')
                         ->label(__('Lead'))
                         ->default('Sybille Seuffer'),
-                    CheckboxList::make('catering')
-                        ->label(__('Catering'))
-                        ->options(Catering::toOptions())
-                        ->columnSpanFull(),
+                    ...collect(Catering::cases())
+                        ->map(fn (Catering $case) => Checkbox::make("catering_{$case->value}")
+                            ->label($case->label())
+                            ->columnSpanFull()
+                            ->afterStateHydrated(fn ($set, $record) => $set("catering_{$case->value}", in_array($case->value, $record?->catering ?? [])))
+                        )
+                        ->all(),
                     Textarea::make('price_note')
                         ->label(__('Price Note'))
-                        ->columnSpanFull(),
+                        ->columnSpanFull()
+                        ->placeholder(__('e.g. Flight oder Ticket included')),
                     Toggle::make('published')
                         ->label(__('Published'))
                         ->required(),

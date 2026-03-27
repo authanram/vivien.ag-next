@@ -17,7 +17,6 @@ return new class extends Migration
             $table->text('name')->nullable();
             $table->text('occupation')->nullable();
             $table->text('url')->nullable();
-            $table->boolean('published');
             $table->timestamps();
             $table->softDeletes();
             $table->unsignedBigInteger('created_by')->nullable();

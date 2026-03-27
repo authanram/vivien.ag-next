@@ -7,7 +7,6 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreBulkAction;
-use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
@@ -22,9 +21,6 @@ class QuotesTable
                     ->label(__('Author'))
                     ->numeric()
                     ->sortable(),
-                IconColumn::make('published')
-                    ->label(__('Published'))
-                    ->boolean(),
                 TextColumn::make('created_at')
                     ->label(__('Created At'))
                     ->dateTime()

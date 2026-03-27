@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\QuoteAuthors\Schemas;
 
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
@@ -23,9 +22,6 @@ class QuoteAuthorForm
                         ->label(__('URL'))
                         ->url()
                         ->columnSpanFull(),
-                    Toggle::make('published')
-                        ->label(__('Published'))
-                        ->required(),
                 ]),
             ]);
     }

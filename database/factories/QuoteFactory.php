@@ -2,12 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Quote;
 use App\Models\QuoteAuthor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Quote>
+ * @extends Factory<Quote>
  */
 class QuoteFactory extends Factory
 {
@@ -22,7 +23,6 @@ class QuoteFactory extends Factory
             'uuid' => Str::uuid(),
             'quote_author_id' => QuoteAuthor::factory(),
             'body' => $this->faker->text,
-            'published' => true,
         ];
     }
 }

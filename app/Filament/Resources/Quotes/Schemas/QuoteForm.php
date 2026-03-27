@@ -4,7 +4,6 @@ namespace App\Filament\Resources\Quotes\Schemas;
 
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
@@ -23,9 +22,6 @@ class QuoteForm
                         ->label(__('Quote'))
                         ->required()
                         ->columnSpanFull(),
-                    Toggle::make('published')
-                        ->label(__('Published'))
-                        ->required(),
                 ]),
             ]);
     }

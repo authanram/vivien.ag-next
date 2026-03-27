@@ -5,17 +5,22 @@ namespace App\Filament\Resources\Events\Tables;
 use App\Enums\Catering;
 use App\Enums\EventLocation;
 use App\Enums\Weekday;
+use App\Filament\Resources\Events\EventResource;
 use App\Models\Event;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ForceDeleteBulkAction;
+use Filament\Actions\ReplicateAction;
 use Filament\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\HtmlString;
 
 class EventsTable
 {
@@ -60,7 +65,7 @@ class EventsTable
                     ->description(fn (Event $record): string => $record->date_to->format('H:i').' Uhr')
                     ->sortable(),
                 TextColumn::make('reserved_seats')
-                    ->label(__('Registrations'))
+                    ->label(__('Participants'))
                     ->default(0)
                     ->formatStateUsing(fn ($state, Event $record): string => "{$state}/{$record->maximum_attendees}")
                     ->sortable(),
@@ -108,10 +113,40 @@ class EventsTable
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
+            ->defaultSort('date_from', 'asc')
             ->filters([
+                SelectFilter::make('event_type_id')
+                    ->label(__('Event Type'))
+                    ->relationship('eventType', 'name')
+                    ->searchable()
+                    ->preload(),
+                SelectFilter::make('event_location')
+                    ->label(__('Event Location'))
+                    ->options(EventLocation::toOptions()),
+                SelectFilter::make('event_day')
+                    ->label(__('Event Day'))
+                    ->options(Weekday::toOptions()),
+                SelectFilter::make('catering')
+                    ->label(__('Catering'))
+                    ->options(Catering::toOptions())
+                    ->query(fn (Builder $query, array $data): Builder => filled($data['value'])
+                        ? $query->whereJsonContains('catering', $data['value'])
+                        : $query,
+                    ),
+                TernaryFilter::make('published')
+                    ->label(__('Online')),
                 TrashedFilter::make(),
             ])
             ->recordActions([
+                ReplicateAction::make()
+                    ->excludeAttributes(['uuid'])
+                    ->modalHeading(__('Seminar duplizieren'))
+                    ->modalDescription(fn (Event $record): HtmlString => new HtmlString(implode('<br>', [
+                        '<strong>'.e($record->display_name).'</strong>',
+                        e($record->custom_event_location ?? $record->event_location->label()),
+                        e($record->date_from->format('d.m.Y')).' – '.e($record->date_to->format('d.m.Y')),
+                    ])))
+                    ->successRedirectUrl(fn (Event $replica): string => EventResource::getUrl('edit', ['record' => $replica])),
                 EditAction::make(),
             ])
             ->toolbarActions([

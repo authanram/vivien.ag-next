@@ -2,11 +2,12 @@
 
 namespace Database\Factories;
 
+use App\Models\QuoteAuthor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\QuoteAuthor>
+ * @extends Factory<QuoteAuthor>
  */
 class QuoteAuthorFactory extends Factory
 {
@@ -22,7 +23,6 @@ class QuoteAuthorFactory extends Factory
             'name' => $this->faker->name,
             'occupation' => $this->faker->randomElement(['Author', 'Writer', 'Scientist', 'Philosopher']),
             'url' => $this->faker->url,
-            'published' => true,
         ];
     }
 }

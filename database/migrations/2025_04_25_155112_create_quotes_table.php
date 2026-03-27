@@ -1,9 +1,9 @@
 <?php
 
+use App\Models\QuoteAuthor;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\QuoteAuthor;
 
 return new class extends Migration
 {
@@ -17,7 +17,6 @@ return new class extends Migration
             $table->uuid();
             $table->foreignIdFor(QuoteAuthor::class);
             $table->text('body');
-            $table->boolean('published');
             $table->timestamps();
             $table->softDeletes();
             $table->unsignedBigInteger('created_by')->nullable();

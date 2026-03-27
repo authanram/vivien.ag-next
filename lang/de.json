@@ -12,8 +12,8 @@
     "Event": "Seminar",
     "Events": "Seminare",
     "Attendee": "Teilnehmer",
-    "Attendees": "Teilnehmer",
-    "Registrations": "Anmeldungen",
+    "Attendees": "Anmeldungen",
+    "Participants": "Teilnehmer",
     "Event Location": "Seminarort",
     "Event Locations": "Seminarorte",
     "Event Type": "Seminarart",
@@ -68,7 +68,7 @@
     "Jägerstraße 26, Spielberg": "Jägerstraße 26, Spielberg",
     "Other": "Andere",
     "Auf Nebenstrecken": "Auf Nebenstrecken",
-    "At home": "Bei mir Zuhause",
+    "At home": "At home",
     "Other location": "Anderer Ort",
     "Including Food": "Inkl. Verpflegung",
     "Including Drinks": "Inkl. Getränke",
@@ -107,5 +107,6 @@
     "Purple": "Lila",
     "Fuchsia": "Fuchsia",
     "Pink": "Pink",
-    "Rose": "Rosa"
+    "Rose": "Rosa",
+    "e.g. Flight oder Ticket included": "z.B. Flug oder Ticket enthalten"
 }
