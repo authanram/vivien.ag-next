@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\HasUuids;
+use Database\Factories\QuoteFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -11,14 +12,15 @@ use Mattiverse\Userstamps\Traits\Userstamps;
 
 class Quote extends Model
 {
-    /** @use HasFactory<\Database\Factories\QuoteFactory> */
+    /** @use HasFactory<QuoteFactory> */
     use HasFactory;
+
     use HasUuids;
     use SoftDeletes;
     use Userstamps;
 
-    final public function author(): BelongsTo
+    final public function quoteAuthor(): BelongsTo
     {
-        return $this->belongsTo(Author::class);
+        return $this->belongsTo(QuoteAuthor::class);
     }
 }

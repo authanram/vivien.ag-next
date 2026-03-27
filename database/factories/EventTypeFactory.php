@@ -3,12 +3,12 @@
 namespace Database\Factories;
 
 use App\Enums\Color;
-use App\Models\Tag;
+use App\Models\EventType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\EventType>
+ * @extends Factory<EventType>
  */
 class EventTypeFactory extends Factory
 {
@@ -24,11 +24,6 @@ class EventTypeFactory extends Factory
             'color' => $this->faker->randomElement(array_column(Color::cases(), 'value')),
             'name' => $this->faker->randomElement(['Schreibwerkstatt', 'Malwerkstatt', 'Paargruppe', 'Frauengruppe', 'Schreibreise']),
             'description' => $this->faker->text,
-//            'tags' => [
-//                Tag::factory()->create()->id,
-//                Tag::factory()->create()->id,
-//                Tag::factory()->create()->id,
-//            ],
         ];
     }
 }

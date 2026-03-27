@@ -218,3 +218,41 @@ Vue components must have a single root element.
 - IMPORTANT: Activate `inertia-vue-development` when working with Inertia Vue client-side patterns.
 
 </laravel-boost-guidelines>
+
+# Project-Specific Conventions
+
+## Language & Localization
+
+- APP_LOCALE is `de` (German). All user-facing strings must use `__()` and have a German translation in `lang/de.json`.
+- When adding new labels/options, always add the corresponding translation to `lang/de.json`.
+
+## Domain Terminology
+
+- "Events" are called **Seminare** in the UI (not Veranstaltungen).
+- Navigation group for events: "Seminare"
+- Event Location → Seminarort, Event Type → Seminarart, Event Day → Seminartag, Attendee → Teilnehmer
+
+## Enums
+
+- Enums live in `app/Enums/` and use the `HasEnumOptions` trait (`app/Traits/HasEnumOptions.php`) which provides `toOptions()` returning a Collection of `value => label` pairs.
+- Enum cases use TitleCase, values are snake_case strings.
+- Available enums: `Catering`, `Color`, `EventLocation`, `Weekday`, `Salutation`
+- `Color` enum mirrors all Filament `Color` constants (Slate through Rose) and has `hex()` (returns oklch 500-shade) and `toHtmlOptions()` (returns colored circle + label for Select with `allowHtml()`).
+
+## Models
+
+- All models use `HasUuids`, `SoftDeletes`, and `Userstamps` traits.
+- `Event` model: casts `date_from`/`date_to` as datetime, `event_location` as `EventLocation` enum, `event_day` as `Weekday` enum, `catering` as array (jsonb). Has `display_name` accessor → "Seminarart, Wochentag".
+- `EventLocation` model was removed — replaced by `EventLocation` enum with conditional `custom_event_location` text field.
+
+## Filament Resources
+
+- Resources are in `app/Filament/Resources/{PluralName}/` with subdirectories: `Schemas/`, `Tables/`, `Pages/`.
+- Forms use `Section::make()->columnSpanFull()->columns(2)->schema([...])` for 2-column layouts.
+- Group related fields side-by-side: dates, name pairs, price+related fields.
+- Use `->columnSpanFull()` on Textarea and fields that need full width.
+
+## Seeding
+
+- `EventsSeeder` creates realistic German seminar data with fixed dates, descriptions, and proper enum values. Called from `DatabaseSeeder`.
+- Seminar lead is always "Sybille Seuffer".

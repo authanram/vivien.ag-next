@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\EventType;
-use App\Models\EventLocation;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->uuid();
             $table->foreignIdFor(EventType::class);
-            $table->foreignIdFor(EventLocation::class);
+            $table->foreignId('event_location_id');
             $table->text('description')->nullable();
             $table->timestamp('date_from');
             $table->timestamp('date_to');

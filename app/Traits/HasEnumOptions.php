@@ -9,8 +9,7 @@ trait HasEnumOptions
     public static function toOptions(): Collection
     {
         return collect(self::cases())
-            ->mapWithKeys(fn (self $case) => [$case->value => $case->label()])
-            ->sort();
+            ->mapWithKeys(fn (self $case) => [$case->value => $case->label()]);
     }
 
     abstract public function label(): string;

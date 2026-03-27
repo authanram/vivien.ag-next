@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\EventTypes\Tables;
 
+use App\Enums\Color;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -17,8 +18,14 @@ class EventTypesTable
     {
         return $table
             ->columns([
+                TextColumn::make('name')
+                    ->label(__('Name'))
+                    ->sortable()
+                    ->searchable(),
                 TextColumn::make('color')
                     ->label(__('Color'))
+                    ->formatStateUsing(fn (string $state): string => Color::tryFrom($state)?->htmlLabel() ?? e($state))
+                    ->html()
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->label(__('Created At'))

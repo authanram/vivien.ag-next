@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources\QuoteAuthors\Schemas;
 
-use Filament\Schemas\Components\Section;
-use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class QuoteAuthorForm
@@ -13,15 +13,15 @@ class QuoteAuthorForm
     {
         return $schema
             ->components([
-                Section::make()->columnSpanFull()->schema([
-                    Textarea::make('name')
+                Section::make()->columnSpanFull()->columns(2)->schema([
+                    TextInput::make('name')
                         ->label(__('Name'))
-                        ->columnSpanFull(),
-                    Textarea::make('occupation')
-                        ->label(__('Occupation'))
-                        ->columnSpanFull(),
-                    Textarea::make('url')
+                        ->required(),
+                    TextInput::make('occupation')
+                        ->label(__('Occupation')),
+                    TextInput::make('url')
                         ->label(__('URL'))
+                        ->url()
                         ->columnSpanFull(),
                     Toggle::make('published')
                         ->label(__('Published'))

@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources\Images\Schemas;
 
-use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class ImageForm
@@ -13,7 +13,7 @@ class ImageForm
     {
         return $schema
             ->components([
-                Section::make()->columnSpanFull()->schema([
+                Section::make()->columnSpanFull()->columns(2)->schema([
                     TextInput::make('name')
                         ->label(__('Name')),
                     TextInput::make('description')
@@ -21,7 +21,7 @@ class ImageForm
                     TextInput::make('price')
                         ->label(__('Price'))
                         ->numeric()
-                        ->prefix('\u20ac'),
+                        ->prefix('€'),
                     TextInput::make('order_column')
                         ->label(__('Order'))
                         ->required()

@@ -2,9 +2,11 @@
 
 namespace App\Filament\Resources\EventTypes\Schemas;
 
-use Filament\Schemas\Components\Section;
-use Filament\Forms\Components\TextInput;
+use App\Enums\Color;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class EventTypeForm
@@ -13,19 +15,18 @@ class EventTypeForm
     {
         return $schema
             ->components([
-                Section::make()->columnSpanFull()->schema([
-                    TextInput::make('color')
-                        ->label(__('Color'))
-                        ->required(),
-                    Textarea::make('name')
+                Section::make()->columnSpanFull()->columns(2)->schema([
+                    TextInput::make('name')
                         ->label(__('Name'))
-                        ->required()
-                        ->columnSpanFull(),
+                        ->required(),
+                    Select::make('color')
+                        ->label(__('Color'))
+                        ->options(Color::toHtmlOptions())
+                        ->allowHtml()
+                        ->searchable()
+                        ->required(),
                     Textarea::make('description')
                         ->label(__('Description'))
-                        ->columnSpanFull(),
-                    Textarea::make('tags')
-                        ->label(__('Tags'))
                         ->columnSpanFull(),
                 ]),
             ]);

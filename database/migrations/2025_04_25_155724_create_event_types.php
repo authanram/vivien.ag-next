@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('color');
             $table->text('name');
             $table->text('description')->nullable();
-            $table->jsonb('tags')->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->unsignedBigInteger('created_by')->nullable();

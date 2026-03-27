@@ -2,9 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Event;
-use App\Models\EventLocation;
-use App\Models\EventType;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
@@ -21,10 +18,6 @@ class DatabaseSeeder extends Seeder
         User::factory(['name' => 'Test Super Admin', 'email' => 'dev@vivien.ag'])
             ->create();
 
-        Event::factory()
-            ->count(10)
-            ->for(EventLocation::factory())
-            ->for(EventType::factory())
-            ->create();
+        $this->call(EventsSeeder::class);
     }
 }
