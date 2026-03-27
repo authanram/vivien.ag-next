@@ -22,6 +22,21 @@ class EventLocationResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
+    public static function getModelLabel(): string
+    {
+        return __('Event Location');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('Event Locations');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Events');
+    }
+
     public static function form(Schema $schema): Schema
     {
         return EventLocationForm::configure($schema);

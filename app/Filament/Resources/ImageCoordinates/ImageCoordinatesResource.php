@@ -22,6 +22,21 @@ class ImageCoordinatesResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
+    public static function getModelLabel(): string
+    {
+        return __('Image Coordinate');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('Image Coordinates');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Media');
+    }
+
     public static function form(Schema $schema): Schema
     {
         return ImageCoordinatesForm::configure($schema);

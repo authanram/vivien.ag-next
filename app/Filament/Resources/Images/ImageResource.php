@@ -22,6 +22,21 @@ class ImageResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
+    public static function getModelLabel(): string
+    {
+        return __('Image');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('Images');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Media');
+    }
+
     public static function form(Schema $schema): Schema
     {
         return ImageForm::configure($schema);

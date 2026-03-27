@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\EventTypes\Schemas;
 
+use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
@@ -12,24 +13,21 @@ class EventTypeForm
     {
         return $schema
             ->components([
-                TextInput::make('uuid')
-                    ->label('UUID')
-                    ->required(),
-                TextInput::make('color')
-                    ->required(),
-                Textarea::make('name')
-                    ->required()
-                    ->columnSpanFull(),
-                Textarea::make('description')
-                    ->columnSpanFull(),
-                Textarea::make('tags')
-                    ->columnSpanFull(),
-                TextInput::make('created_by')
-                    ->numeric(),
-                TextInput::make('updated_by')
-                    ->numeric(),
-                TextInput::make('deleted_by')
-                    ->numeric(),
+                Section::make()->columnSpanFull()->schema([
+                    TextInput::make('color')
+                        ->label(__('Color'))
+                        ->required(),
+                    Textarea::make('name')
+                        ->label(__('Name'))
+                        ->required()
+                        ->columnSpanFull(),
+                    Textarea::make('description')
+                        ->label(__('Description'))
+                        ->columnSpanFull(),
+                    Textarea::make('tags')
+                        ->label(__('Tags'))
+                        ->columnSpanFull(),
+                ]),
             ]);
     }
 }

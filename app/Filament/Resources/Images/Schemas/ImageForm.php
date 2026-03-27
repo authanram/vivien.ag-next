@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Images\Schemas;
 
+use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
@@ -12,25 +13,23 @@ class ImageForm
     {
         return $schema
             ->components([
-                TextInput::make('uuid')
-                    ->label('UUID')
-                    ->required(),
-                TextInput::make('name'),
-                TextInput::make('description'),
-                TextInput::make('price')
-                    ->numeric()
-                    ->prefix('$'),
-                TextInput::make('order_column')
-                    ->required()
-                    ->numeric(),
-                Toggle::make('published')
-                    ->required(),
-                TextInput::make('created_by')
-                    ->numeric(),
-                TextInput::make('updated_by')
-                    ->numeric(),
-                TextInput::make('deleted_by')
-                    ->numeric(),
+                Section::make()->columnSpanFull()->schema([
+                    TextInput::make('name')
+                        ->label(__('Name')),
+                    TextInput::make('description')
+                        ->label(__('Description')),
+                    TextInput::make('price')
+                        ->label(__('Price'))
+                        ->numeric()
+                        ->prefix('\u20ac'),
+                    TextInput::make('order_column')
+                        ->label(__('Order'))
+                        ->required()
+                        ->numeric(),
+                    Toggle::make('published')
+                        ->label(__('Published'))
+                        ->required(),
+                ]),
             ]);
     }
 }

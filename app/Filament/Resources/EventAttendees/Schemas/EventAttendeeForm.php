@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\EventAttendees\Schemas;
 
+use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
@@ -13,40 +14,40 @@ class EventAttendeeForm
     {
         return $schema
             ->components([
-                TextInput::make('uuid')
-                    ->label('UUID')
-                    ->required(),
-                Select::make('event_id')
-                    ->relationship('event', 'id')
-                    ->required(),
-                TextInput::make('salutation')
-                    ->required()
-                    ->numeric(),
-                Textarea::make('firstname')
-                    ->required()
-                    ->columnSpanFull(),
-                Textarea::make('surname')
-                    ->required()
-                    ->columnSpanFull(),
-                Textarea::make('phone')
-                    ->required()
-                    ->columnSpanFull(),
-                Textarea::make('email')
-                    ->label('Email address')
-                    ->required()
-                    ->columnSpanFull(),
-                TextInput::make('attendance')
-                    ->required()
-                    ->numeric()
-                    ->default(1),
-                Textarea::make('message')
-                    ->columnSpanFull(),
-                TextInput::make('created_by')
-                    ->numeric(),
-                TextInput::make('updated_by')
-                    ->numeric(),
-                TextInput::make('deleted_by')
-                    ->numeric(),
+                Section::make()->columnSpanFull()->schema([
+                    Select::make('event_id')
+                        ->label(__('Event'))
+                        ->relationship('event', 'id')
+                        ->required(),
+                    TextInput::make('salutation')
+                        ->label(__('Salutation'))
+                        ->required()
+                        ->numeric(),
+                    Textarea::make('firstname')
+                        ->label(__('First Name'))
+                        ->required()
+                        ->columnSpanFull(),
+                    Textarea::make('surname')
+                        ->label(__('Last Name'))
+                        ->required()
+                        ->columnSpanFull(),
+                    Textarea::make('phone')
+                        ->label(__('Phone'))
+                        ->required()
+                        ->columnSpanFull(),
+                    Textarea::make('email')
+                        ->label(__('Email Address'))
+                        ->required()
+                        ->columnSpanFull(),
+                    TextInput::make('attendance')
+                        ->label(__('Attendance'))
+                        ->required()
+                        ->numeric()
+                        ->default(1),
+                    Textarea::make('message')
+                        ->label(__('Message'))
+                        ->columnSpanFull(),
+                ]),
             ]);
     }
 }

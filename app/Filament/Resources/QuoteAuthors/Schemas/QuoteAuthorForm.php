@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources\QuoteAuthors\Schemas;
 
-use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
@@ -13,23 +13,20 @@ class QuoteAuthorForm
     {
         return $schema
             ->components([
-                TextInput::make('uuid')
-                    ->label('UUID')
-                    ->required(),
-                Textarea::make('name')
-                    ->columnSpanFull(),
-                Textarea::make('occupation')
-                    ->columnSpanFull(),
-                Textarea::make('url')
-                    ->columnSpanFull(),
-                Toggle::make('published')
-                    ->required(),
-                TextInput::make('created_by')
-                    ->numeric(),
-                TextInput::make('updated_by')
-                    ->numeric(),
-                TextInput::make('deleted_by')
-                    ->numeric(),
+                Section::make()->columnSpanFull()->schema([
+                    Textarea::make('name')
+                        ->label(__('Name'))
+                        ->columnSpanFull(),
+                    Textarea::make('occupation')
+                        ->label(__('Occupation'))
+                        ->columnSpanFull(),
+                    Textarea::make('url')
+                        ->label(__('URL'))
+                        ->columnSpanFull(),
+                    Toggle::make('published')
+                        ->label(__('Published'))
+                        ->required(),
+                ]),
             ]);
     }
 }

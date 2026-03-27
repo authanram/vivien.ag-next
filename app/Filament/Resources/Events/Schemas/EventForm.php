@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Events\Schemas;
 
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
@@ -15,43 +16,48 @@ class EventForm
     {
         return $schema
             ->components([
-                TextInput::make('uuid')
-                    ->label('UUID')
-                    ->required(),
-                Select::make('event_type_id')
-                    ->relationship('eventType', 'name')
-                    ->required(),
-                Select::make('event_location_id')
-                    ->relationship('eventLocation', 'name')
-                    ->required(),
-                Textarea::make('description')
-                    ->columnSpanFull(),
-                DateTimePicker::make('date_from')
-                    ->required(),
-                DateTimePicker::make('date_to')
-                    ->required(),
-                TextInput::make('maximum_attendees')
-                    ->required()
-                    ->numeric()
-                    ->default(10),
-                TextInput::make('reserved_seats')
-                    ->numeric(),
-                TextInput::make('price')
-                    ->numeric()
-                    ->prefix('$'),
-                Textarea::make('price_note')
-                    ->columnSpanFull(),
-                TextInput::make('catering'),
-                Textarea::make('lead')
-                    ->columnSpanFull(),
-                Toggle::make('published')
-                    ->required(),
-                TextInput::make('created_by')
-                    ->numeric(),
-                TextInput::make('updated_by')
-                    ->numeric(),
-                TextInput::make('deleted_by')
-                    ->numeric(),
+                Section::make()->columnSpanFull()->schema([
+                    Select::make('event_type_id')
+                        ->label(__('Event Type'))
+                        ->relationship('eventType', 'name')
+                        ->required(),
+                    Select::make('event_location_id')
+                        ->label(__('Event Location'))
+                        ->relationship('eventLocation', 'name')
+                        ->required(),
+                    Textarea::make('description')
+                        ->label(__('Description'))
+                        ->columnSpanFull(),
+                    DateTimePicker::make('date_from')
+                        ->label(__('Date From'))
+                        ->required(),
+                    DateTimePicker::make('date_to')
+                        ->label(__('Date To'))
+                        ->required(),
+                    TextInput::make('maximum_attendees')
+                        ->label(__('Max. Attendees'))
+                        ->required()
+                        ->numeric()
+                        ->default(10),
+                    TextInput::make('reserved_seats')
+                        ->label(__('Reserved Seats'))
+                        ->numeric(),
+                    TextInput::make('price')
+                        ->label(__('Price'))
+                        ->numeric()
+                        ->prefix('\u20ac'),
+                    Textarea::make('price_note')
+                        ->label(__('Price Note'))
+                        ->columnSpanFull(),
+                    TextInput::make('catering')
+                        ->label(__('Catering')),
+                    Textarea::make('lead')
+                        ->label(__('Introduction'))
+                        ->columnSpanFull(),
+                    Toggle::make('published')
+                        ->label(__('Published'))
+                        ->required(),
+                ]),
             ]);
     }
 }

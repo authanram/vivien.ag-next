@@ -22,6 +22,21 @@ class EventTypeResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
+    public static function getModelLabel(): string
+    {
+        return __('Event Type');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('Event Types');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Events');
+    }
+
     public static function form(Schema $schema): Schema
     {
         return EventTypeForm::configure($schema);

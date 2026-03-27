@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources\EventLocations\Schemas;
 
-use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
 
@@ -12,24 +12,21 @@ class EventLocationForm
     {
         return $schema
             ->components([
-                TextInput::make('uuid')
-                    ->label('UUID')
-                    ->required(),
-                Textarea::make('name')
-                    ->required()
-                    ->columnSpanFull(),
-                Textarea::make('description')
-                    ->columnSpanFull(),
-                Textarea::make('address')
-                    ->columnSpanFull(),
-                Textarea::make('url')
-                    ->columnSpanFull(),
-                TextInput::make('created_by')
-                    ->numeric(),
-                TextInput::make('updated_by')
-                    ->numeric(),
-                TextInput::make('deleted_by')
-                    ->numeric(),
+                Section::make()->columnSpanFull()->schema([
+                    Textarea::make('name')
+                        ->label(__('Name'))
+                        ->required()
+                        ->columnSpanFull(),
+                    Textarea::make('description')
+                        ->label(__('Description'))
+                        ->columnSpanFull(),
+                    Textarea::make('address')
+                        ->label(__('Address'))
+                        ->columnSpanFull(),
+                    Textarea::make('url')
+                        ->label(__('URL'))
+                        ->columnSpanFull(),
+                ]),
             ]);
     }
 }

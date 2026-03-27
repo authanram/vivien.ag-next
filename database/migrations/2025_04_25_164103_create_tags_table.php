@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('value')->unique();
             $table->string('color');
             $table->timestamps();
+            $table->softDeletes();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->unsignedBigInteger('deleted_by')->nullable();

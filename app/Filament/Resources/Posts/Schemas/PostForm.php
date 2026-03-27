@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources\Posts\Schemas;
 
-use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
 
@@ -12,24 +12,20 @@ class PostForm
     {
         return $schema
             ->components([
-                TextInput::make('uuid')
-                    ->label('UUID')
-                    ->required(),
-                Textarea::make('title')
-                    ->required()
-                    ->columnSpanFull(),
-                Textarea::make('slug')
-                    ->required()
-                    ->columnSpanFull(),
-                Textarea::make('body')
-                    ->required()
-                    ->columnSpanFull(),
-                TextInput::make('created_by')
-                    ->numeric(),
-                TextInput::make('updated_by')
-                    ->numeric(),
-                TextInput::make('deleted_by')
-                    ->numeric(),
+                Section::make()->columnSpanFull()->schema([
+                    Textarea::make('title')
+                        ->label(__('Title'))
+                        ->required()
+                        ->columnSpanFull(),
+                    Textarea::make('slug')
+                        ->label(__('Slug'))
+                        ->required()
+                        ->columnSpanFull(),
+                    Textarea::make('body')
+                        ->label(__('Body'))
+                        ->required()
+                        ->columnSpanFull(),
+                ]),
             ]);
     }
 }

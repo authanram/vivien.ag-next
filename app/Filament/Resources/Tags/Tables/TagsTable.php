@@ -17,30 +17,37 @@ class TagsTable
     {
         return $table
             ->columns([
-                TextColumn::make('uuid')
-                    ->label('UUID')
-                    ->searchable(),
                 TextColumn::make('value')
+                    ->label(__('Value'))
                     ->searchable(),
                 TextColumn::make('color')
+                    ->label(__('Color'))
                     ->searchable(),
                 TextColumn::make('created_at')
+                    ->label(__('Created At'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
+                    ->label(__('Updated At'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('created_by')
+                    ->label(__('Created By'))
                     ->numeric()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_by')
+                    ->label(__('Updated By'))
                     ->numeric()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('deleted_by')
+                    ->label(__('Deleted By'))
                     ->numeric()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 TrashedFilter::make(),

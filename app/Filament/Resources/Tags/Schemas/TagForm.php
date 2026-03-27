@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Tags\Schemas;
 
+use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -11,19 +12,14 @@ class TagForm
     {
         return $schema
             ->components([
-                TextInput::make('uuid')
-                    ->label('UUID')
-                    ->required(),
-                TextInput::make('value')
-                    ->required(),
-                TextInput::make('color')
-                    ->required(),
-                TextInput::make('created_by')
-                    ->numeric(),
-                TextInput::make('updated_by')
-                    ->numeric(),
-                TextInput::make('deleted_by')
-                    ->numeric(),
+                Section::make()->columnSpanFull()->schema([
+                    TextInput::make('value')
+                        ->label(__('Value'))
+                        ->required(),
+                    TextInput::make('color')
+                        ->label(__('Color'))
+                        ->required(),
+                ]),
             ]);
     }
 }

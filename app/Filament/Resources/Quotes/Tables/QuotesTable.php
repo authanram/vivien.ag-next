@@ -18,35 +18,43 @@ class QuotesTable
     {
         return $table
             ->columns([
-                TextColumn::make('uuid')
-                    ->label('UUID')
-                    ->searchable(),
                 TextColumn::make('quote_author_id')
+                    ->label(__('Author'))
                     ->numeric()
                     ->sortable(),
                 IconColumn::make('published')
+                    ->label(__('Published'))
                     ->boolean(),
                 TextColumn::make('created_at')
+                    ->label(__('Created At'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
+                    ->label(__('Updated At'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('deleted_at')
+                    ->label(__('Deleted At'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('created_by')
+                    ->label(__('Created By'))
                     ->numeric()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_by')
+                    ->label(__('Updated By'))
                     ->numeric()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('deleted_by')
+                    ->label(__('Deleted By'))
                     ->numeric()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 TrashedFilter::make(),

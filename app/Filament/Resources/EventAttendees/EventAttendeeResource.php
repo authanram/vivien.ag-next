@@ -22,6 +22,21 @@ class EventAttendeeResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
+    public static function getModelLabel(): string
+    {
+        return __('Attendee');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('Attendees');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Events');
+    }
+
     public static function form(Schema $schema): Schema
     {
         return EventAttendeeForm::configure($schema);
