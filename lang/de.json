@@ -108,5 +108,17 @@
     "Fuchsia": "Fuchsia",
     "Pink": "Pink",
     "Rose": "Rosa",
-    "e.g. Flight oder Ticket included": "z.B. Flug oder Ticket enthalten"
+    "e.g. Flight oder Ticket included": "z.B. Flug oder Ticket enthalten",
+    "Seminare gesamt": "Seminare gesamt",
+    "Geplante Einnahmen": "Geplante Einnahmen",
+    "Anmeldungen": "Anmeldungen",
+    ":upcoming kommend, :past vergangen": ":upcoming kommend, :past vergangen",
+    "Bei voller Auslastung": "Bei voller Auslastung",
+    "Eingebuchte Einnahmen": "Eingebuchte Einnahmen",
+    "Confirmed": "Eingebucht",
+    "Aus :count Anmeldungen": "Aus :count Anmeldungen",
+    "Für kommende Seminare": "Für kommende Seminare",
+    "Seminare nach Wochentag": "Seminare nach Wochentag",
+    "Anzahl Seminare": "Anzahl Seminare",
+    "Beliebteste Seminararten": "Beliebteste Seminararten"
 }

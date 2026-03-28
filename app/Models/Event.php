@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Enums\Color;
 use App\Enums\EventLocation;
 use App\Enums\Weekday;
 use App\Traits\HasUuids;
@@ -34,15 +33,9 @@ class Event extends Model
 
     final public function displayName(): Attribute
     {
-        return Attribute::get(function () {
-            $color = Color::tryFrom($this->eventType->color);
-            $circle = $color ? '<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:'.$color->hex().';margin-right:6px;"></span>' : '';
-            $name = $this->event_day
-                ? "{$this->eventType->name}, {$this->event_day->label()}"
-                : $this->eventType->name;
-
-            return $circle.$name;
-        });
+        return Attribute::get(fn () => $this->event_day
+            ? "{$this->eventType->name}, {$this->event_day->label()}"
+            : $this->eventType->name);
     }
 
     final public function eventType(): BelongsTo

@@ -47,6 +47,15 @@ class EventAttendeeResource extends Resource
         return EventAttendeesTable::configure($table);
     }
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->with('event.eventType')
+            ->withoutGlobalScopes([
+                SoftDeletingScope::class,
+            ]);
+    }
+
     public static function getRelations(): array
     {
         return [

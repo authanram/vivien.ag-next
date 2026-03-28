@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Events\Tables;
 
 use App\Enums\Catering;
+use App\Enums\Color;
 use App\Enums\EventLocation;
 use App\Enums\Weekday;
 use App\Filament\Resources\Events\EventResource;
@@ -31,6 +32,12 @@ class EventsTable
                 TextColumn::make('display_name')
                     ->label(__('Seminar'))
                     ->html()
+                    ->formatStateUsing(function (Event $record): string {
+                        $color = Color::tryFrom($record->eventType->color);
+                        $circle = $color ? '<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:'.$color->hex().';margin-right:6px;"></span>' : '';
+
+                        return $circle.e($record->display_name);
+                    })
                     ->searchable(query: function (Builder $query, string $search): Builder {
                         $matchingDays = collect(Weekday::cases())
                             ->filter(fn (Weekday $day) => str($day->label())->lower()->contains(str($search)->lower()))

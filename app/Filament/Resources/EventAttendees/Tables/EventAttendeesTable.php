@@ -7,6 +7,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreBulkAction;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
@@ -17,17 +18,27 @@ class EventAttendeesTable
     {
         return $table
             ->columns([
+                TextColumn::make('display_name')
+                    ->label(__('Name'))
+                    ->sortable(query: fn ($query, string $direction) => $query
+                        ->orderBy('surname', $direction)
+                        ->orderBy('firstname', $direction)
+                    )
+                    ->searchable(query: fn ($query, string $search) => $query
+                        ->where('firstname', 'ilike', "%{$search}%")
+                        ->orWhere('surname', 'ilike', "%{$search}%")
+                    ),
                 TextColumn::make('event.id')
                     ->label(__('Event'))
-                    ->searchable(),
-                TextColumn::make('salutation')
-                    ->label(__('Salutation'))
-                    ->numeric()
+                    ->formatStateUsing(fn ($record): string => $record->event->display_name)
                     ->sortable(),
                 TextColumn::make('attendance')
                     ->label(__('Attendance'))
                     ->numeric()
                     ->sortable(),
+                IconColumn::make('confirmed')
+                    ->label(__('Confirmed'))
+                    ->boolean(),
                 TextColumn::make('created_at')
                     ->label(__('Created At'))
                     ->dateTime()

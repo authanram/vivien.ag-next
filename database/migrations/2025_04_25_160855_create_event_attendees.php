@@ -16,12 +16,13 @@ return new class extends Migration
             $table->id();
             $table->uuid();
             $table->foreignIdFor(Event::class);
-            $table->integer('salutation');
+            $table->string('salutation');
             $table->text('firstname');
             $table->text('surname');
             $table->text('phone');
             $table->text('email');
             $table->smallInteger('attendance')->default(1);
+            $table->boolean('confirmed')->default(true);
             $table->text('message')->nullable();
             $table->timestamps();
             $table->softDeletes();

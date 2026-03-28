@@ -7,6 +7,7 @@ use App\Enums\Color;
 use App\Enums\EventLocation;
 use App\Enums\Weekday;
 use App\Models\Event;
+use App\Models\EventAttendee;
 use App\Models\EventType;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -211,10 +212,16 @@ class EventsSeeder extends Seeder
         ];
 
         foreach ($seminars as $seminar) {
-            Event::create([
+            $event = Event::create([
                 'uuid' => Str::uuid(),
                 ...$seminar,
             ]);
+
+            $attendeeCount = rand(0, $event->maximum_attendees);
+
+            EventAttendee::factory()
+                ->count($attendeeCount)
+                ->create(['event_id' => $event->id]);
         }
     }
 }
