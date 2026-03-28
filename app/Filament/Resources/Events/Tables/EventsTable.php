@@ -146,7 +146,7 @@ class EventsTable
                     ->excludeAttributes(['uuid'])
                     ->modalHeading(__('Seminar duplizieren'))
                     ->modalDescription(fn (Event $record): HtmlString => new HtmlString(implode('<br>', [
-                        '<strong>'.e($record->display_name).'</strong>',
+                        '<strong>'.e($record->event_day ? "{$record->eventType->name}, {$record->event_day->label()}" : $record->eventType->name).'</strong>',
                         e($record->event_location === EventLocation::Other ? $record->custom_event_location : $record->event_location->label()),
                         e($record->date_from->format('d.m.Y')).' – '.e($record->date_to->format('d.m.Y')),
                     ])))
