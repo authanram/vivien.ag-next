@@ -76,12 +76,14 @@ class EventsTable
                     ->sortable(),
                 TextColumn::make('price')
                     ->label(__('Price'))
-                    ->formatStateUsing(fn ($state): string => $state ? number_format($state / 100, 2, ',', '.').' €' : '—')
+                    ->money('EUR', divideBy: 100)
+                    ->default(0)
                     ->sortable(),
                 TextColumn::make('catering')
                     ->label(__('Catering'))
                     ->badge()
                     ->listWithLineBreaks()
+                    ->placeholder('—')
                     ->formatStateUsing(fn (string $state): string => Catering::tryFrom($state)?->label() ?? $state),
                 IconColumn::make('published')
                     ->label(__('Online'))
