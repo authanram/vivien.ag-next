@@ -67,6 +67,7 @@ class EventResource extends Resource
     {
         return parent::getEloquentQuery()
             ->with('eventType')
+            ->withSum('attendees', 'attendance')
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
             ]);

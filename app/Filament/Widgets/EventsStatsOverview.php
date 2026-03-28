@@ -23,29 +23,35 @@ class EventsStatsOverview extends BaseWidget
             ->selectRaw('sum(price * maximum_attendees) as total')
             ->value('total') ?? 0;
 
-        $confirmedAttendees = EventAttendee::where('confirmed', true)
-            ->whereHas('event', fn ($q) => $q->where('date_from', '>=', now()));
-
-        $confirmedRevenue = (clone $confirmedAttendees)
+        $confirmedAttendanceRevenue = EventAttendee::where('confirmed', true)
+            ->whereHas('event', fn ($q) => $q->where('date_from', '>=', now()))
             ->join('events', 'events.id', '=', 'event_attendees.event_id')
             ->whereNull('event_attendees.deleted_at')
-            ->sum('events.price');
+            ->selectRaw('sum(events.price * event_attendees.attendance) as total')
+            ->value('total') ?? 0;
 
-        $confirmedCount = $confirmedAttendees->count();
-        $totalAttendees = EventAttendee::whereHas('event', fn ($q) => $q->where('date_from', '>=', now()))->count();
+        $reservedRevenue = Event::where('date_from', '>=', now())
+            ->whereNotNull('reserved_seats')
+            ->selectRaw('sum(price * reserved_seats) as total')
+            ->value('total') ?? 0;
+
+        $confirmedRevenue = $confirmedAttendanceRevenue + $reservedRevenue;
+
+        $totalAttendance = EventAttendee::whereHas('event', fn ($q) => $q->where('date_from', '>=', now()))
+            ->sum('attendance');
 
         return [
             Stat::make(__('Seminare gesamt'), $total)
                 ->description(__(':upcoming kommend, :past vergangen', ['upcoming' => $upcoming, 'past' => $past]))
                 ->color('primary'),
-            Stat::make(__('Anmeldungen'), $totalAttendees)
+            Stat::make(__('Anmeldungen'), $totalAttendance)
                 ->description(__('Für kommende Seminare'))
                 ->color('warning'),
             Stat::make(__('Geplante Einnahmen'), number_format($plannedRevenue / 100, 2, ',', '.').' €')
                 ->description(__('Bei voller Auslastung'))
                 ->color('success'),
             Stat::make(__('Eingebuchte Einnahmen'), number_format($confirmedRevenue / 100, 2, ',', '.').' €')
-                ->description(__('Aus :count Anmeldungen', ['count' => $confirmedCount]))
+                ->description(__('Aus :count Teilnehmern + Reservierungen', ['count' => $totalAttendance]))
                 ->color('info'),
         ];
     }

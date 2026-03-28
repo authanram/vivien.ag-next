@@ -217,11 +217,17 @@ class EventsSeeder extends Seeder
                 ...$seminar,
             ]);
 
-            $attendeeCount = rand(0, $event->maximum_attendees);
+            $availableSlots = $event->maximum_attendees - ($event->reserved_seats ?? 0);
+            $filledSlots = 0;
 
-            EventAttendee::factory()
-                ->count($attendeeCount)
-                ->create(['event_id' => $event->id]);
+            while ($filledSlots < $availableSlots && rand(0, 3) > 0) {
+                $attendance = min(rand(1, 3), $availableSlots - $filledSlots);
+                EventAttendee::factory()->create([
+                    'event_id' => $event->id,
+                    'attendance' => $attendance,
+                ]);
+                $filledSlots += $attendance;
+            }
         }
     }
 }

@@ -79,7 +79,7 @@ class EventsTable
                 TextColumn::make('reserved_seats')
                     ->label(__('Participants'))
                     ->default(0)
-                    ->formatStateUsing(fn ($state, Event $record): string => "{$state}/{$record->maximum_attendees}")
+                    ->formatStateUsing(fn ($state, Event $record): string => (($record->attendees_sum_attendance ?? 0) + ($state ?? 0)).'/'.$record->maximum_attendees)
                     ->sortable(),
                 TextColumn::make('price')
                     ->label(__('Price'))
@@ -152,7 +152,7 @@ class EventsTable
             ])
             ->recordActions([
                 ReplicateAction::make()
-                    ->excludeAttributes(['uuid'])
+                    ->excludeAttributes(['uuid', 'attendees_sum_attendance'])
                     ->modalHeading(__('Seminar duplizieren'))
                     ->modalDescription(fn (Event $record): HtmlString => new HtmlString(implode('<br>', [
                         '<strong>'.e($record->event_day ? "{$record->eventType->name}, {$record->event_day->label()}" : $record->eventType->name).'</strong>',
