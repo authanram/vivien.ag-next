@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\HasUuids;
+use Database\Factories\ImageCoordinatesFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -11,14 +12,15 @@ use Mattiverse\Userstamps\Traits\Userstamps;
 
 class ImageCoordinates extends Model
 {
-    /** @use HasFactory<\Database\Factories\ImageCoordinatesFactory> */
+    /** @use HasFactory<ImageCoordinatesFactory> */
     use HasFactory;
+
     use HasUuids;
     use SoftDeletes;
     use Userstamps;
 
     protected $casts = [
-        'coords' => 'array',
+        'coordinates' => 'array',
     ];
 
     final public function image(): BelongsTo

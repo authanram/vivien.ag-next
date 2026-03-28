@@ -2,11 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Image;
+use App\Models\ImageCoordinates;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ImageCoordinates>
+ * @extends Factory<ImageCoordinates>
  */
 class ImageCoordinatesFactory extends Factory
 {
@@ -19,6 +21,7 @@ class ImageCoordinatesFactory extends Factory
     {
         return [
             'uuid' => Str::uuid(),
+            'image_id' => Image::factory(),
             'coordinates' => ['x' => $this->faker->randomFloat(), 'y' => $this->faker->randomFloat()],
         ];
     }

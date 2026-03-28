@@ -4,7 +4,9 @@ namespace Database\Factories;
 
 use App\Enums\Catering;
 use App\Enums\EventLocation;
+use App\Enums\Weekday;
 use App\Models\Event;
+use App\Models\EventType;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -25,6 +27,8 @@ class EventFactory extends Factory
 
         return [
             'uuid' => Str::uuid(),
+            'event_type_id' => EventType::factory(),
+            'event_day' => $this->faker->randomElement(Weekday::cases()),
             'description' => $this->faker->text,
             'date_from' => $dateFrom,
             'date_to' => $dateFrom->copy()->addHours($this->faker->randomElement([2, 4, 6])),
