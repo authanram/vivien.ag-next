@@ -30,6 +30,7 @@ class EventsTable
             ->columns([
                 TextColumn::make('display_name')
                     ->label(__('Seminar'))
+                    ->html()
                     ->searchable(query: function (Builder $query, string $search): Builder {
                         $matchingDays = collect(Weekday::cases())
                             ->filter(fn (Weekday $day) => str($day->label())->lower()->contains(str($search)->lower()))
@@ -53,7 +54,11 @@ class EventsTable
                             $q->orWhere('custom_event_location', 'ilike', "%{$search}%");
                         });
                     })
-                    ->description(fn (Event $record): string => str($record->custom_event_location ?? $record->event_location->label())->limit(25)),
+                    ->description(fn (Event $record): string => str(
+                        $record->event_location === EventLocation::Other
+                            ? $record->custom_event_location
+                            : $record->event_location->label()
+                    )->limit(25)),
                 TextColumn::make('date_from')
                     ->label(__('Start'))
                     ->date('d.m.Y')
@@ -71,8 +76,7 @@ class EventsTable
                     ->sortable(),
                 TextColumn::make('price')
                     ->label(__('Price'))
-                    ->money('EUR', divideBy: 100)
-                    ->placeholder('—')
+                    ->formatStateUsing(fn ($state): string => $state ? number_format($state / 100, 2, ',', '.').' €' : '—')
                     ->sortable(),
                 TextColumn::make('catering')
                     ->label(__('Catering'))
@@ -143,7 +147,7 @@ class EventsTable
                     ->modalHeading(__('Seminar duplizieren'))
                     ->modalDescription(fn (Event $record): HtmlString => new HtmlString(implode('<br>', [
                         '<strong>'.e($record->display_name).'</strong>',
-                        e($record->custom_event_location ?? $record->event_location->label()),
+                        e($record->event_location === EventLocation::Other ? $record->custom_event_location : $record->event_location->label()),
                         e($record->date_from->format('d.m.Y')).' – '.e($record->date_to->format('d.m.Y')),
                     ])))
                     ->successRedirectUrl(fn (Event $replica): string => EventResource::getUrl('edit', ['record' => $replica])),

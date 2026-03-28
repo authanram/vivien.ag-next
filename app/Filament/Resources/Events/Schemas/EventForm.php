@@ -45,6 +45,7 @@ class EventForm
                         ->createOptionUsing(function (array $data): string {
                             return EventType::firstOrCreate(
                                 ['name' => $data['name']],
+                                ['color' => $data['color'], 'description' => $data['description'] ?? null],
                             )->getKey();
                         })
                         ->required()
@@ -54,8 +55,7 @@ class EventForm
                         }),
                     Select::make('event_day')
                         ->label(__('Event Day'))
-                        ->options(Weekday::toOptions())
-                        ->required(),
+                        ->options(Weekday::toOptions()),
                     Select::make('event_location')
                         ->label(__('Event Location'))
                         ->options(EventLocation::toOptions())
@@ -72,10 +72,13 @@ class EventForm
                         ->columnSpanFull(),
                     DateTimePicker::make('date_from')
                         ->label(__('Date From'))
-                        ->required(),
+                        ->required()
+                        ->afterOrEqual('today')
+                        ->live(),
                     DateTimePicker::make('date_to')
                         ->label(__('Date To'))
-                        ->required(),
+                        ->required()
+                        ->afterOrEqual('date_from'),
                     TextInput::make('maximum_attendees')
                         ->label(__('Max. Attendees'))
                         ->required()
@@ -104,7 +107,8 @@ class EventForm
                         ->placeholder(__('e.g. Flight oder Ticket included')),
                     Toggle::make('published')
                         ->label(__('Published'))
-                        ->required(),
+                        ->required()
+                        ->default(true),
                 ]),
             ]);
     }
