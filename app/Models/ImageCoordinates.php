@@ -20,7 +20,7 @@ class ImageCoordinates extends Model
     use Userstamps;
 
     protected $casts = [
-        'coordinates' => 'array',
+        'active' => 'boolean',
     ];
 
     final public function image(): BelongsTo

@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->uuid();
-            $table->string('name')->nullable();
+            $table->string('title')->nullable();
             $table->string('description')->nullable();
             $table->integer('price')->nullable();
-            $table->integer('order_column');
+            $table->string('artist')->default('sybille_seuffer');
+            $table->string('artist_custom')->nullable();
             $table->boolean('published');
             $table->timestamps();
             $table->softDeletes();

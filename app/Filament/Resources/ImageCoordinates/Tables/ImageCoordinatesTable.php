@@ -16,8 +16,10 @@ class ImageCoordinatesTable
     public static function configure(Table $table): Table
     {
         return $table
+            ->reorderable('order_column')
+            ->defaultSort('order_column')
             ->columns([
-                TextColumn::make('image.name')
+                TextColumn::make('image.title')
                     ->label(__('Image'))
                     ->searchable(),
                 TextColumn::make('created_at')

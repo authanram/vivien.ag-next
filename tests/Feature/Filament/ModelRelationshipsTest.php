@@ -28,3 +28,25 @@ it('image has one image coordinates', function () {
     expect($image->imageCoordinates)->not->toBeNull();
     expect($image->imageCoordinates)->toBeInstanceOf(ImageCoordinates::class);
 });
+
+it('image registers media collection', function () {
+    $image = Image::factory()->create();
+    $collections = $image->getRegisteredMediaCollections();
+
+    expect($collections)->toHaveCount(1);
+    $collection = $collections->first();
+    expect($collection->name)->toBe('image');
+    expect($collection->diskName)->toBe('public');
+    expect($collection->singleFile)->toBeTrue();
+});
+
+it('image registers thumb media conversion', function () {
+    $image = Image::factory()->create();
+    $image->registerMediaConversions();
+
+    $conversions = $image->mediaConversions;
+
+    expect($conversions)->toHaveCount(1);
+    expect($conversions[0]->getName())->toBe('thumb');
+    expect($conversions[0]->shouldBeQueued())->toBeTrue();
+});

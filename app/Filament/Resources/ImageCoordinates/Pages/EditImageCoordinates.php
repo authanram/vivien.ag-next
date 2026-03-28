@@ -12,6 +12,8 @@ class EditImageCoordinates extends EditRecord
 {
     protected static string $resource = ImageCoordinatesResource::class;
 
+    protected string $view = 'filament.resources.image-coordinates.pages.edit-image-coordinates';
+
     protected function getHeaderActions(): array
     {
         return [

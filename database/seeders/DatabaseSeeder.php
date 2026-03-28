@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
             ->create();
 
         $this->call(EventsSeeder::class);
+        $this->call(ImagesSeeder::class);
     }
 }

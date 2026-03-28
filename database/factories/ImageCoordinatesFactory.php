@@ -22,7 +22,17 @@ class ImageCoordinatesFactory extends Factory
         return [
             'uuid' => Str::uuid(),
             'image_id' => Image::factory(),
-            'coordinates' => ['x' => $this->faker->randomFloat(), 'y' => $this->faker->randomFloat()],
+            'active' => $this->faker->boolean(80),
+            'position' => $this->faker->randomElement(['left', 'right']),
+            'top' => $this->faker->numberBetween(0, 1000),
+            'left' => $this->faker->numberBetween(-250, 0),
+            'height' => $this->faker->randomFloat(1, 50, 300),
+            'rotate' => $this->faker->numberBetween(-10, 10),
+            'rotate_x' => $this->faker->numberBetween(-30, 30),
+            'rotate_y' => $this->faker->numberBetween(-30, 30),
+            'perspective' => $this->faker->numberBetween(0, 1000),
+            'zindex' => $this->faker->numberBetween(1, 25),
+            'order_column' => $this->faker->numberBetween(1, 25),
         ];
     }
 }

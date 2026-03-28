@@ -24,12 +24,12 @@ class ImageCoordinatesResource extends Resource
 
     public static function getModelLabel(): string
     {
-        return __('Image Coordinate');
+        return __('Image Strip Entry');
     }
 
     public static function getPluralModelLabel(): string
     {
-        return __('Image Coordinates');
+        return __('Image Strip');
     }
 
     public static function getNavigationGroup(): ?string

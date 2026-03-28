@@ -1,12 +1,15 @@
 <?php
 
 use App\Enums\Weekday;
+use App\Filament\Resources\Images\Widgets\ImageStripPreview;
 use App\Filament\Widgets\EventsByDayChart;
 use App\Filament\Widgets\EventsStatsOverview;
 use App\Filament\Widgets\PopularEventTypesChart;
 use App\Models\Event;
 use App\Models\EventAttendee;
 use App\Models\EventType;
+use App\Models\Image;
+use App\Models\ImageCoordinates;
 use Livewire\Livewire;
 
 beforeEach(function () {
@@ -70,4 +73,41 @@ it('can render the events by day chart without data', function () {
 
 it('can render the popular event types chart without data', function () {
     Livewire::test(PopularEventTypesChart::class)->assertSuccessful();
+});
+
+it('can render the image strip preview widget', function () {
+    Livewire::test(ImageStripPreview::class)
+        ->assertSuccessful();
+});
+
+it('can render the image strip preview with images', function () {
+    $image = Image::factory()->create();
+    ImageCoordinates::factory()->create([
+        'image_id' => $image->id,
+        'active' => true,
+    ]);
+
+    Livewire::test(ImageStripPreview::class)
+        ->assertSuccessful();
+});
+
+it('can update image strip preview with live data', function () {
+    $image = Image::factory()->create();
+    ImageCoordinates::factory()->create([
+        'image_id' => $image->id,
+        'active' => true,
+    ]);
+
+    Livewire::test(ImageStripPreview::class, ['currentImageId' => $image->id])
+        ->dispatch('preview-updated', data: [
+            'top' => 50,
+            'left' => -100,
+            'height' => 150,
+            'rotate' => 5,
+            'rotate_x' => 10,
+            'rotate_y' => -10,
+            'perspective' => 800,
+            'zindex' => 3,
+        ])
+        ->assertSuccessful();
 });

@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\ImageArtist;
 use App\Filament\Resources\Images\Pages\CreateImage;
 use App\Filament\Resources\Images\Pages\EditImage;
 use App\Filament\Resources\Images\Pages\ListImages;
@@ -38,14 +39,12 @@ it('can list images', function () {
 it('can create an image with required fields only', function () {
     Livewire::test(CreateImage::class)
         ->fillForm([
-            'order_column' => 1,
             'published' => true,
         ])
         ->call('create')
         ->assertHasNoFormErrors();
 
     $this->assertDatabaseHas(Image::class, [
-        'order_column' => 1,
         'published' => true,
     ]);
 });
@@ -53,16 +52,15 @@ it('can create an image with required fields only', function () {
 it('can create an image with all fields', function () {
     Livewire::test(CreateImage::class)
         ->fillForm([
-            'name' => 'Testbild',
+            'title' => 'Testbild',
             'description' => 'Ein Testbild',
             'price' => 150,
-            'order_column' => 2,
             'published' => false,
         ])
         ->call('create')
         ->assertHasNoFormErrors();
 
-    $this->assertDatabaseHas(Image::class, ['name' => 'Testbild']);
+    $this->assertDatabaseHas(Image::class, ['title' => 'Testbild']);
 });
 
 it('can retrieve an image for editing', function () {
@@ -70,9 +68,8 @@ it('can retrieve an image for editing', function () {
 
     Livewire::test(EditImage::class, ['record' => $image->uuid])
         ->assertSchemaStateSet([
-            'name' => $image->name,
+            'title' => $image->title,
             'description' => $image->description,
-            'order_column' => $image->order_column,
         ]);
 });
 
@@ -80,11 +77,11 @@ it('can update an image', function () {
     $image = Image::factory()->create();
 
     Livewire::test(EditImage::class, ['record' => $image->uuid])
-        ->fillForm(['name' => 'Updated Image', 'order_column' => 5])
+        ->fillForm(['title' => 'Updated Image'])
         ->call('save')
         ->assertHasNoFormErrors();
 
-    $this->assertDatabaseHas(Image::class, ['id' => $image->id, 'name' => 'Updated Image']);
+    $this->assertDatabaseHas(Image::class, ['id' => $image->id, 'title' => 'Updated Image']);
 });
 
 it('can delete an image', function () {
@@ -117,8 +114,8 @@ it('can restore an image', function () {
 });
 
 it('can search images by name', function () {
-    $target = Image::factory()->create(['name' => 'Sonnenuntergang']);
-    $other = Image::factory()->create(['name' => 'Berge']);
+    $target = Image::factory()->create(['title' => 'Sonnenuntergang']);
+    $other = Image::factory()->create(['title' => 'Berge']);
 
     Livewire::test(ListImages::class)
         ->searchTable('Sonnenuntergang')
@@ -136,16 +133,42 @@ it('can search images by description', function () {
         ->assertCanNotSeeTableRecords([$other]);
 });
 
-it('validates order_column is required', function () {
+it('can create an image with artist', function () {
     Livewire::test(CreateImage::class)
-        ->fillForm(['order_column' => null, 'published' => true])
+        ->fillForm([
+            'artist' => ImageArtist::RobertSeuffer->value,
+            'published' => true,
+        ])
         ->call('create')
-        ->assertHasFormErrors(['order_column' => 'required']);
+        ->assertHasNoFormErrors();
+
+    $this->assertDatabaseHas(Image::class, [
+        'artist' => 'robert_seuffer',
+    ]);
 });
 
-it('validates price must be numeric', function () {
+it('can create an image with custom artist', function () {
     Livewire::test(CreateImage::class)
-        ->fillForm(['price' => 'abc', 'order_column' => 1, 'published' => true])
+        ->fillForm([
+            'artist' => ImageArtist::Other->value,
+            'artist_custom' => 'Pablo Picasso',
+            'published' => true,
+        ])
         ->call('create')
-        ->assertHasFormErrors(['price']);
+        ->assertHasNoFormErrors();
+
+    $this->assertDatabaseHas(Image::class, [
+        'artist' => 'other',
+        'artist_custom' => 'Pablo Picasso',
+    ]);
+});
+
+it('displays custom artist in table', function () {
+    $image = Image::factory()->create([
+        'artist' => ImageArtist::Other->value,
+        'artist_custom' => 'Pablo Picasso',
+    ]);
+
+    Livewire::test(ListImages::class)
+        ->assertCanSeeTableRecords([$image]);
 });

@@ -20,10 +20,9 @@ class ImageFactory extends Factory
     {
         return [
             'uuid' => Str::uuid(),
-            'name' => $this->faker->randomElement([$this->faker->word, implode(' ', $this->faker->words(2)), implode(' ', $this->faker->words())]),
+            'title' => $this->faker->randomElement([$this->faker->word, implode(' ', $this->faker->words(2)), implode(' ', $this->faker->words())]),
             'description' => $this->faker->text,
             'price' => $this->faker->randomElement([10000, 17700, 7700, 25000, 45000, 190000]),
-            'order_column' => 1,
             'published' => $this->faker->boolean,
         ];
     }

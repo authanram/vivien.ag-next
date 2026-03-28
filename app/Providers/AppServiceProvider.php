@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Image;
 use App\Models\User;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
@@ -29,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
         $this->configureDefaults();
 
         Relation::enforceMorphMap([
+            'image' => Image::class,
             'user' => User::class,
         ]);
 

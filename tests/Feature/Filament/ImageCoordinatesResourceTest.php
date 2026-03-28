@@ -42,12 +42,26 @@ it('can create image coordinates', function () {
     Livewire::test(CreateImageCoordinates::class)
         ->fillForm([
             'image_id' => $image->id,
-            'coordinates' => '{"x": 0.5, "y": 0.3}',
+            'active' => true,
+            'position' => 'left',
+            'top' => 100,
+            'left' => -50,
+            'height' => 200,
+            'rotate' => 5,
+            'rotate_x' => 10,
+            'rotate_y' => -5,
+            'perspective' => 500,
+            'zindex' => 3,
+            'order_column' => 1,
         ])
         ->call('create')
         ->assertHasNoFormErrors();
 
-    $this->assertDatabaseHas(ImageCoordinates::class, ['image_id' => $image->id]);
+    $this->assertDatabaseHas(ImageCoordinates::class, [
+        'image_id' => $image->id,
+        'top' => 100,
+        'left' => -50,
+    ]);
 });
 
 it('can retrieve image coordinates for editing', function () {
@@ -56,19 +70,20 @@ it('can retrieve image coordinates for editing', function () {
     Livewire::test(EditImageCoordinates::class, ['record' => $coords->uuid])
         ->assertSchemaStateSet([
             'image_id' => $coords->image_id,
+            'top' => $coords->top,
+            'position' => $coords->position,
         ]);
 });
 
 it('can update image coordinates', function () {
     $coords = ImageCoordinates::factory()->create();
-    $newImage = Image::factory()->create();
 
     Livewire::test(EditImageCoordinates::class, ['record' => $coords->uuid])
-        ->fillForm(['image_id' => $newImage->id])
+        ->fillForm(['top' => 50, 'rotate' => -3])
         ->call('save')
         ->assertHasNoFormErrors();
 
-    $this->assertDatabaseHas(ImageCoordinates::class, ['id' => $coords->id, 'image_id' => $newImage->id]);
+    $this->assertDatabaseHas(ImageCoordinates::class, ['id' => $coords->id, 'top' => 50, 'rotate' => -3]);
 });
 
 it('can delete image coordinates', function () {
@@ -102,16 +117,7 @@ it('can restore image coordinates', function () {
 
 it('validates image_id is required', function () {
     Livewire::test(CreateImageCoordinates::class)
-        ->fillForm(['image_id' => null, 'coordinates' => '{"x": 1}'])
+        ->fillForm(['image_id' => null])
         ->call('create')
         ->assertHasFormErrors(['image_id' => 'required']);
-});
-
-it('validates coordinates is required', function () {
-    $image = Image::factory()->create();
-
-    Livewire::test(CreateImageCoordinates::class)
-        ->fillForm(['image_id' => $image->id, 'coordinates' => ''])
-        ->call('create')
-        ->assertHasFormErrors(['coordinates' => 'required']);
 });
