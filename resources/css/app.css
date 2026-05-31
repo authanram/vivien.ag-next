@@ -83,9 +83,57 @@
     body,
     html {
         --font-sans:
-            'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
+            'Poppins', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
             'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
             'Noto Color Emoji';
+    }
+
+    /* Public-Seiten: Poppins als Body-Font */
+    .public-layout,
+    .public-layout * {
+        font-family: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    }
+
+    /* Public site accent color system — one class per route */
+    .accent-teal {
+        --color-nav-accent: var(--color-teal-600);
+        --color-nav-accent-light: var(--color-teal-50);
+        --color-nav-accent-mid: var(--color-teal-100);
+    }
+    .accent-pink {
+        --color-nav-accent: var(--color-pink-600);
+        --color-nav-accent-light: var(--color-pink-50);
+        --color-nav-accent-mid: var(--color-pink-100);
+    }
+    .accent-red {
+        --color-nav-accent: var(--color-red-600);
+        --color-nav-accent-light: var(--color-red-50);
+        --color-nav-accent-mid: var(--color-red-100);
+    }
+    .accent-blue {
+        --color-nav-accent: var(--color-blue-600);
+        --color-nav-accent-light: var(--color-blue-50);
+        --color-nav-accent-mid: var(--color-blue-100);
+    }
+    .accent-purple {
+        --color-nav-accent: var(--color-purple-600);
+        --color-nav-accent-light: var(--color-purple-50);
+        --color-nav-accent-mid: var(--color-purple-100);
+    }
+    .accent-orange {
+        --color-nav-accent: var(--color-orange-600);
+        --color-nav-accent-light: var(--color-orange-50);
+        --color-nav-accent-mid: var(--color-orange-100);
+    }
+    .accent-gray {
+        --color-nav-accent: var(--color-gray-600);
+        --color-nav-accent-light: var(--color-gray-50);
+        --color-nav-accent-mid: var(--color-gray-100);
+    }
+    .accent-slate {
+        --color-nav-accent: var(--color-slate-600);
+        --color-nav-accent-light: var(--color-slate-50);
+        --color-nav-accent-mid: var(--color-slate-100);
     }
 }
 

@@ -6,6 +6,7 @@ use App\Enums\EventLocation;
 use App\Enums\Weekday;
 use App\Traits\HasUuids;
 use Database\Factories\EventFactory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -36,6 +37,25 @@ class Event extends Model
         return Attribute::get(fn () => $this->event_day
             ? "{$this->eventType->name}, {$this->event_day->label()}"
             : $this->eventType->name);
+    }
+
+    final public function availableSeats(): Attribute
+    {
+        return Attribute::get(function () {
+            $booked = $this->attendees_sum_attendance ?? $this->attendees()->sum('attendance');
+
+            return max(0, $this->maximum_attendees - ($this->reserved_seats ?? 0) - (int) $booked);
+        });
+    }
+
+    public function scopePublished(Builder $query): void
+    {
+        $query->where('published', true);
+    }
+
+    public function scopeUpcoming(Builder $query): void
+    {
+        $query->where('date_from', '>=', now());
     }
 
     final public function eventType(): BelongsTo

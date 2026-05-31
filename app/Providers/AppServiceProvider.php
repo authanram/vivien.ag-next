@@ -3,7 +3,10 @@
 namespace App\Providers;
 
 use App\Models\Image;
+use App\Models\ImageCoordinates;
 use App\Models\User;
+use App\Observers\ImageCoordinatesObserver;
+use App\Observers\ImageObserver;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -28,6 +31,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->configureDefaults();
+
+        Image::observe(ImageObserver::class);
+        ImageCoordinates::observe(ImageCoordinatesObserver::class);
 
         Relation::enforceMorphMap([
             'image' => Image::class,
