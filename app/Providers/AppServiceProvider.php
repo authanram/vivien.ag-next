@@ -2,71 +2,67 @@
 
 namespace App\Providers;
 
-use App\Contracts\DataServiceContract;
-use App\Contracts\EventServiceContract;
-use App\Contracts\StaticAttributesServiceContract;
-use App\Services\DataService;
-use App\Services\EventService;
-use App\Services\ParsedownService;
-use App\Services\StateService;
-use App\Services\StaticAttributesService;
-use Carbon\Carbon;
+use App\Models\Image;
+use App\Models\ImageCoordinates;
+use App\Models\User;
+use App\Observers\ImageCoordinatesObserver;
+use App\Observers\ImageObserver;
+use Carbon\CarbonImmutable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
-use Systems\Seed\Providers\ServiceProvider as SeedServiceProvider;
+use Illuminate\Validation\Rules\Password;
 
 class AppServiceProvider extends ServiceProvider
 {
-    final public function boot(): void
+    /**
+     * Register any application services.
+     */
+    public function register(): void
     {
-        date_default_timezone_set('Europe/Berlin');
-        setlocale(LC_TIME, 'de_DE');
-        Carbon::setLocale(config('app.locale'));
+        //
     }
 
-    final public function register(): void
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot(): void
     {
-        $this->registerSingletons();
-        $this->registerServiceProviders();
-        $this->registerServices();
+        $this->configureDefaults();
+
+        Image::observe(ImageObserver::class);
+        ImageCoordinates::observe(ImageCoordinatesObserver::class);
+
+        Relation::enforceMorphMap([
+            'image' => Image::class,
+            'user' => User::class,
+        ]);
+
+        Model::unguard();
+        Model::shouldBeStrict($this->app->isLocal());
     }
 
-    private function registerSingletons(): void
+    /**
+     * Configure default behaviors for production-ready applications.
+     */
+    protected function configureDefaults(): void
     {
-        $this->app->singleton(StaticAttributesServiceContract::class, static function () {
-            return new StaticAttributesService;
-        });
+        Date::use(CarbonImmutable::class);
 
-        $this->app->singleton(DataServiceContract::class, static function () {
-            return new DataService;
-        });
+        DB::prohibitDestructiveCommands(
+            app()->isProduction(),
+        );
 
-        $this->app->singleton(StateService::class, static function () {
-            return new StateService;
-        });
-    }
-
-    /** @noinspection ClassConstantCanBeUsedInspection */
-    private function registerServiceProviders(): void
-    {
-        if ($this->app->environment('local')) {
-            if (\class_exists('\Laracasts\Generators\GeneratorsServiceProvider')) {
-                $this->app->register('\Laracasts\Generators\GeneratorsServiceProvider');
-            }
-
-            $this->app->register(SeedServiceProvider::class);
-        }
-
-        $this->app->register(ViewServiceProvider::class);
-
-        $this->app->bind(ParsedownService::class, static function () {
-            return new ParsedownService();
-        });
-    }
-
-    private function registerServices(): void
-    {
-        $this->app->bind(EventServiceContract::class, static function () {
-            return new EventService;
-        });
+        Password::defaults(fn (): ?Password => app()->isProduction()
+            ? Password::min(12)
+                ->mixedCase()
+                ->letters()
+                ->numbers()
+                ->symbols()
+                ->uncompromised()
+            : null,
+        );
     }
 }

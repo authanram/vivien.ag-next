@@ -1,134 +1,124 @@
 {
-    "name": "laravel/laravel",
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "laravel/vue-starter-kit",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "The skeleton application for the Laravel framework.",
     "keywords": [
-        "framework",
-        "laravel"
+        "laravel",
+        "framework"
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.0",
-        "ext-json": "*",
-        "ajcastro/eager-load-pivot-relations": "0.*",
-        "alfredo-ramos/parsedown-extra-laravel": "3.*",
-        "coderello/laravel-nova-lang": "1.*",
-        "drobee/nova-sluggable": "dev-master",
-        "epartment/nova-dependency-container": "1.*",
-        "erusev/parsedown-extra": "0.*",
-        "fideloper/proxy": "4.*",
-        "fruitcake/laravel-cors": "2.*",
-        "gijsg/system-resources": "1.*",
-        "guzzlehttp/guzzle": "7.*",
-        "kabbouchi/nova-impersonate": "1.*",
-        "kabbouchi/nova-logs-tool": "0.*",
-        "laravel/framework": "8.*",
-        "laravel/nova": "3.*",
-        "laravel/ui": "3.*",
-        "manogi/nova-tiptap": "2.*",
-        "optimistdigital/nova-sortable": "2.*",
-        "saumini/count": "1.*",
-        "sbine/route-viewer": "0.*",
-        "spatie/laravel-activitylog": "4.*",
-        "spatie/laravel-backup": "6.*",
-        "spatie/laravel-cookie-consent": "3.*",
-        "spatie/laravel-permission": "4.*",
-        "spatie/laravel-query-builder": "4.*",
-        "spatie/laravel-tags": "3.*",
-        "spatie/nova-backup-tool": "4.*",
-        "spatie/nova-tags-field": "3.*",
-        "spatie/nova-tail-tool": "3.*",
-        "symfony/var-exporter": "5.*",
-        "tightenco/nova-google-analytics": "0.*",
-        "titasgailius/search-relations": "2.*",
-        "vyuldashev/nova-money-field": "1.*",
-        "vyuldashev/nova-permission": "3.*",
-        "acme/duplicate-field": "*",
-        "acme/theme": "*"
+        "php": "^8.3",
+        "akaunting/laravel-money": "^6.0",
+        "filament/filament": "^5.4",
+        "filament/spatie-laravel-media-library-plugin": "^5.4",
+        "inertiajs/inertia-laravel": "^3.0",
+        "laravel/fortify": "^1.34",
+        "laravel/framework": "^13.0",
+        "laravel/horizon": "^5.45",
+        "laravel/pail": "^1.2",
+        "laravel/tinker": "^3.0",
+        "laravel/wayfinder": "^0.1.14",
+        "spatie/eloquent-sortable": "^4.4|^5.0",
+        "spatie/laravel-login-link": "^1.6",
+        "spatie/laravel-medialibrary": "^11.21",
+        "spatie/laravel-ray": "^1.40",
+        "wildside/userstamps": "^4.0"
     },
     "require-dev": {
-        "barryvdh/laravel-ide-helper": "2.*",
-        "cloudstudio/resource-generator": "1.*",
-        "facade/ignition": "2.*",
-        "fakerphp/faker": "1.*",
-        "laracasts/generators": "2.*",
-        "laravel/tinker": "2.*",
-        "mockery/mockery": "1.*",
-        "nunomaduro/collision": "^5.0",
-        "nunomaduro/phpinsights": "2.*",
-        "phpunit/phpunit": "9.*",
-        "spatie/laravel-ray": "1.29.*"
+        "driftingly/rector-laravel": "^2.1",
+        "fakerphp/faker": "^1.24",
+        "fruitcake/laravel-debugbar": "^4.0",
+        "larastan/larastan": "^3.8",
+        "laravel/boost": "^2.0",
+        "laravel/pint": "^1.27",
+        "laravel/sail": "^1.53",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.9",
+        "pestphp/pest": "^4.4",
+        "pestphp/pest-plugin-browser": "^4.0",
+        "pestphp/pest-plugin-laravel": "^4.1",
+        "phpstan/phpstan": "^2.1",
+        "spatie/laravel-horizon-watcher": "^1.1"
     },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "setup": [
+            "composer install",
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "@php artisan key:generate",
+            "@php artisan migrate --force",
+            "npm install",
+            "npm run build"
+        ],
+        "dev": [
+            "Composer\\Config::disableProcessTimeout",
+            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1 --timeout=0\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite --kill-others"
+        ],
+        "lint": [
+            "pint --parallel"
+        ],
+        "lint:check": [
+            "pint --parallel --test"
+        ],
+        "ci:check": [
+            "Composer\\Config::disableProcessTimeout",
+            "npm run lint:check",
+            "npm run format:check",
+            "npm run types:check",
+            "@test"
+        ],
+        "test": [
+            "@php artisan config:clear --ansi",
+            "@lint:check",
+            "@php artisan test"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi",
+            "@php artisan filament:upgrade"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan boost:update --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi",
+            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
+            "@php artisan migrate --graceful --ansi"
+        ],
+        "pre-package-uninstall": [
+            "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
+        ]
     },
     "extra": {
         "laravel": {
             "dont-discover": []
         }
     },
-    "autoload": {
-        "psr-4": {
-            "App\\": "app/",
-            "Systems\\Seed\\": "app/Systems/Seed/src/"
-        },
-        "classmap": [
-            "database/seeds",
-            "database/factories"
-        ]
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        },
-        "files": [
-            "app/helpers.php"
-        ]
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "scripts": {
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
-        ],
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
-        ],
-        "post-update-cmd": [
-            "if [ $COMPOSER_DEV_MODE -eq 1 ]; then php artisan ide-helper:generate; fi",
-            "if [ $COMPOSER_DEV_MODE -eq 1 ]; then php artisan ide-helper:meta; fi",
-            "if [ $COMPOSER_DEV_MODE -eq 1 ]; then php artisan ide-helper:models -W; fi"
-        ]
-    },
-    "repositories": {
-        "laravel/nova": {
-            "type": "composer",
-            "url": "https://nova.laravel.com"
-        },
-        "drobee/nova-sluggable": {
-            "type": "vcs",
-            "url": "https://github.com/authanram/nova-sluggable.git"
-        },
-        "acme/duplicate-field": {
-            "type": "path",
-            "url": "./nova-components/DuplicateField"
-        },
-        "0": {
-            "type": "path",
-            "url": "./nova-components/Theme"
-        },
-        "1": {
-            "type": "path",
-            "url": "./nova-components/Theme"
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
         }
-    }
+    },
+    "minimum-stability": "stable"
 }
