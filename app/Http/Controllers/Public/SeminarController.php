@@ -19,6 +19,7 @@ class SeminarController extends Controller
     public function index(): Response
     {
         $events = Event::published()
+            ->upcoming()
             ->with('eventType')
             ->withSum('attendees', 'attendance')
             ->orderBy('date_from')
@@ -31,7 +32,7 @@ class SeminarController extends Controller
 
     public function show(Event $event): Response
     {
-        abort_if(! $event->published, 404);
+        abort_if(! $event->published || $event->date_from->isPast(), 404);
 
         $event->load('eventType')->loadSum('attendees', 'attendance');
 
@@ -42,7 +43,7 @@ class SeminarController extends Controller
 
     public function register(StoreAttendeeRequest $request, Event $event): RedirectResponse
     {
-        abort_if(! $event->published, 404);
+        abort_if(! $event->published || $event->date_from->isPast(), 404);
 
         $attendee = EventAttendee::create([
             'uuid' => Str::uuid(),
@@ -63,8 +64,6 @@ class SeminarController extends Controller
             Mail::to($adminMail)->queue(new AttendeeRegisteredMail($attendee));
         }
 
-        return redirect()
-            ->route('seminare.show', $event->uuid)
-            ->with('success', __('Anmeldung erfolgreich! Wir freuen uns auf Sie.'));
+        return back()->with('success', __('Anmeldung erfolgreich! Wir freuen uns auf Sie.'));
     }
 }

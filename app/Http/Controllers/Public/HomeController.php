@@ -20,16 +20,8 @@ class HomeController extends Controller
             ->limit(3)
             ->get();
 
-        $recentEvents = Event::published()
-            ->with('eventType')
-            ->withSum('attendees', 'attendance')
-            ->orderByDesc('created_at')
-            ->limit(3)
-            ->get();
-
         return Inertia::render('public/Home', [
             'upcomingEvents' => EventResource::collection($upcomingEvents),
-            'recentEvents' => EventResource::collection($recentEvents),
         ]);
     }
 }

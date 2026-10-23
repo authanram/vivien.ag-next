@@ -37,7 +37,7 @@ test('besucher kann seminar-detailseite aufrufen', function () {
 });
 
 test('besucher kann sich für ein seminar anmelden', function () {
-    $response = $this->post("/seminare/{$this->event->uuid}/anmelden", [
+    $response = $this->from("/seminare/{$this->event->uuid}")->post("/seminare/{$this->event->uuid}/anmelden", [
         'salutation' => 'Mrs',
         'firstname' => 'Anna',
         'surname' => 'Muster',
@@ -59,6 +59,23 @@ test('besucher kann sich für ein seminar anmelden', function () {
     Mail::assertQueued(AttendeeRegisteredMail::class, function ($mail) {
         return $mail->attendee->email === 'anna@example.com';
     });
+});
+
+test('anmeldung aus der seminarliste leitet zurück zur liste', function () {
+    $this->from('/seminare')->post("/seminare/{$this->event->uuid}/anmelden", [
+        'salutation' => 'mr',
+        'firstname' => 'Max',
+        'surname' => 'Muster',
+        'email' => 'max@example.com',
+        'attendance' => 1,
+    ])
+        ->assertRedirect('/seminare')
+        ->assertSessionHas('success');
+
+    $this->assertDatabaseHas('event_attendees', [
+        'event_id' => $this->event->id,
+        'email' => 'max@example.com',
+    ]);
 });
 
 test('anmeldung ohne pflichtfelder schlägt fehl', function () {

@@ -14,7 +14,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        $middleware->encryptCookies(except: ['appearance', 'sidebar_state']);
+        // Config isn't loaded yet when this runs, so the consent cookie name mirrors config('cookie-consent.cookie_name').
+        $middleware->encryptCookies(except: ['appearance', 'sidebar_state', 'vivienag_cookie_consent']);
 
         $middleware->web(append: [
             HandleAppearance::class,

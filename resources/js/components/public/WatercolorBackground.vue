@@ -2,41 +2,39 @@
 import { usePage } from '@inertiajs/vue3';
 import { onMounted, ref, watch } from 'vue';
 
-type BgState = {
-    width: string;
-    height: string;
-    left: string;
-    top: string;
+type Background = {
+    src: string;
+    width: number;
+    height: number;
+    naturalHeight: number;
     rotation: number;
     scaleX: number;
-    src: string;
-    naturalHeight: number;
 };
 
-const state = ref<BgState | null>(null);
+const background = ref<Background | null>(null);
 
-function generate() {
-    const n = Math.floor(Math.random() * 15) + 1;
-    const scalePercent = 77 + Math.random() * 20;
-    const naturalWidth = 2390;
-    const naturalHeight = 1594;
-    const width = Math.round(naturalWidth * scalePercent / 100);
-    const height = Math.round(naturalHeight * scalePercent / 100);
-    const leftVw = -10 + Math.random() * 40;
-    const topPx = 60 + Math.random() * 100;
-    const rotation = Math.floor(Math.random() * 360);
-    const scaleX = Math.random() > 0.5 ? -1 : 1;
+function randomInt(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-    state.value = {
-        width: `${width}px`,
-        height: `${height}px`,
-        left: `${leftVw}vw`,
-        top: `${topPx}px`,
-        rotation,
-        scaleX,
-        src: `/images/watercolor/watercolor-${n}.jpg`,
-        naturalHeight,
+function generate(): void {
+    const src = `/images/watercolor/watercolor-${randomInt(1, 15)}.jpg`;
+    const image = new Image();
+
+    image.onload = () => {
+        const scale = randomInt(77, 97);
+
+        background.value = {
+            src,
+            width: Math.round((image.naturalWidth / 100) * scale),
+            height: Math.round((image.naturalHeight / 100) * scale),
+            naturalHeight: image.naturalHeight,
+            rotation: randomInt(0, 360),
+            scaleX: Math.random() < 0.5 ? -1 : 1,
+        };
     };
+
+    image.src = src;
 }
 
 onMounted(generate);
@@ -46,35 +44,27 @@ watch(() => page.url, generate);
 </script>
 
 <template>
-    <div class="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+    <div class="absolute top-0 right-0 bottom-0 left-0 z-0 overflow-hidden">
         <div
-            v-if="state"
-            class="absolute"
+            v-if="background"
             :style="{
-                width: state.width,
-                height: state.height,
-                left: state.left,
-                top: state.top,
-                transform: `rotate(${state.rotation}deg)`,
+                width: `${background.width}px`,
+                height: `${background.height}px`,
+                transform: `rotate(${background.rotation}deg)`,
                 transformOrigin: 'center center',
             }"
         >
             <div
+                class="absolute top-0 right-0 left-0"
                 :style="{
-                    content: '',
-                    position: 'absolute',
-                    transform: `scaleX(${state.scaleX})`,
-                    backgroundImage: `url(${state.src})`,
+                    height: `${background.naturalHeight}px`,
+                    transform: `scaleX(${background.scaleX})`,
+                    transformOrigin: 'center center',
+                    backgroundImage: `url(${background.src})`,
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: 'center top',
                     backgroundSize: 'contain',
-                    height: `${state.naturalHeight}px`,
-                    left: 0,
-                    right: 0,
-                    top: 0,
-                    transformOrigin: 'center center',
                 }"
-                class="absolute inset-x-0 top-0"
             />
         </div>
     </div>

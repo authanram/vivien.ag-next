@@ -7,7 +7,7 @@
 
             <div style="position: sticky; top: 5rem;">
                 @livewire(\App\Filament\Resources\Images\Widgets\ImageStripPreview::class, [
-                    'currentImageId' => $this->record->image_id,
+                    'currentCoordinatesId' => $this->record?->id,
                 ])
             </div>
         </div>

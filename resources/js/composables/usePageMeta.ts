@@ -1,17 +1,9 @@
-import { ref } from 'vue';
-
-const _title = ref('');
-const _caption = ref('');
+import { setLayoutProps } from '@inertiajs/vue3';
 
 export function usePageMeta() {
     function setMeta(title: string, caption = '') {
-        _title.value = title;
-        _caption.value = caption;
+        setLayoutProps({ title, caption });
     }
 
-    return {
-        title: _title,
-        caption: _caption,
-        setMeta,
-    };
+    return { setMeta };
 }
