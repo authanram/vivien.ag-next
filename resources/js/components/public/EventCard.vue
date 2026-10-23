@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Link } from '@inertiajs/vue3';
 import {
     Clock,
     Coffee,
@@ -9,13 +8,17 @@ import {
     Users,
 } from 'lucide-vue-next';
 import { computed } from 'vue';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
 import { eventTime as time, formatEventDate } from '@/lib/event-dates';
 import type { EventResource } from '@/types/public';
 
 const props = defineProps<{
     event: EventResource;
-    href?: string;
 }>();
+
+defineEmits<{ register: [] }>();
 
 const color = computed(() => props.event.event_type.color);
 const hasSeats = computed(() => props.event.available_seats > 0);
@@ -39,13 +42,20 @@ function date(iso: string): string {
         year: 'numeric',
     });
 }
+
+function price(cents: number): string {
+    return new Intl.NumberFormat('de-DE', {
+        style: 'currency',
+        currency: 'EUR',
+    }).format(cents / 100);
+}
 </script>
 
 <template>
     <div
-        class="relative mx-auto w-full self-stretch rounded-lg bg-white shadow-md"
+        class="relative mx-auto w-full self-stretch rounded-xl bg-white shadow-card"
     >
-        <div class="relative overflow-hidden rounded-lg p-8 text-gray-800">
+        <div class="relative overflow-hidden rounded-xl p-8 text-gray-800">
             <div
                 class="absolute inset-0 opacity-25"
                 :class="`bg-${color}-100`"
@@ -97,8 +107,8 @@ function date(iso: string): string {
                             </template>
                         </div>
                         <div class="mt-2 md:mt-0 md:text-right">
-                            <div
-                                class="inline-block rounded-sm p-1 px-2 text-sm text-white"
+                            <Badge
+                                class="rounded-sm border-transparent p-1 px-2 text-sm font-normal text-white"
                                 :class="`bg-${color}-600`"
                             >
                                 {{
@@ -106,7 +116,7 @@ function date(iso: string): string {
                                         ? `${event.duration_days} Tage`
                                         : `${event.duration_hours} Std`
                                 }}
-                            </div>
+                            </Badge>
                         </div>
                     </div>
                 </div>
@@ -141,8 +151,7 @@ function date(iso: string): string {
 
                 <div
                     v-if="event.description"
-                    class="pb-6 text-lg leading-tight"
-                    :class="`text-${color}-600`"
+                    class="pb-6 text-base leading-relaxed text-gray-700"
                 >
                     {{ event.description }}
                 </div>
@@ -202,7 +211,7 @@ function date(iso: string): string {
                             {{
                                 event.price === null
                                     ? 'Auf Anfrage'
-                                    : `${(event.price / 100).toFixed(2)} €`
+                                    : price(event.price)
                             }}
                         </div>
                         <div
@@ -214,9 +223,9 @@ function date(iso: string): string {
                     </div>
                 </div>
 
-                <hr class="mb-7 border-t-2" />
+                <Separator class="mb-7 data-[orientation=horizontal]:h-0.5" />
 
-                <div :class="href && hasSeats ? 'mb-20' : 'mb-8'">
+                <div :class="hasSeats ? 'mb-20' : 'mb-8'">
                     <div
                         v-for="(lead, index) in leads"
                         :key="lead"
@@ -285,13 +294,14 @@ function date(iso: string): string {
                 </div>
             </div>
         </div>
-        <Link
-            v-if="href && hasSeats"
-            :href="href"
-            class="absolute right-0 bottom-0 left-0 flex h-14 w-full items-center justify-center rounded-b-lg text-2xl font-medium text-white focus:outline-hidden"
+        <Button
+            v-if="hasSeats"
+            type="button"
+            class="absolute right-0 bottom-0 left-0 h-14 w-full rounded-none rounded-b-xl text-xl font-semibold tracking-wide text-white transition-colors duration-150"
             :class="`bg-${color}-500 hover:bg-${color}-600 active:bg-${color}-500`"
+            @click="$emit('register')"
         >
             Teilnehmen
-        </Link>
+        </Button>
     </div>
 </template>

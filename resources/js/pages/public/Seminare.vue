@@ -2,9 +2,9 @@
 import { Head } from '@inertiajs/vue3';
 import { Circle, CircleCheckBig } from 'lucide-vue-next';
 import { computed, ref } from 'vue';
-import * as SeminarController from '@/actions/App/Http/Controllers/Public/SeminarController';
 import EventCard from '@/components/public/EventCard.vue';
 import PageCard from '@/components/public/PageCard.vue';
+import SeminarRegistrationDialog from '@/components/public/SeminarRegistrationDialog.vue';
 import { usePageColor } from '@/composables/usePageColor';
 import { usePageMeta } from '@/composables/usePageMeta';
 import { formatEventDate as timeline } from '@/lib/event-dates';
@@ -22,6 +22,13 @@ setMeta('Seminare');
 const { color } = usePageColor();
 
 const selectedTypes = ref<string[]>([]);
+const registrationEvent = ref<EventResource | null>(null);
+const isRegistrationOpen = ref(false);
+
+function register(event: EventResource): void {
+    registrationEvent.value = event;
+    isRegistrationOpen.value = true;
+}
 
 function toggleType(uuid: string): void {
     selectedTypes.value = selectedTypes.value.includes(uuid)
@@ -77,6 +84,37 @@ const categories = computed(
 
     <div class="w-full lg:flex">
         <div class="w-full xl:w-7/12">
+            <div
+                v-if="types.length > 1"
+                class="-mx-5 mb-5 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] lg:hidden"
+            >
+                <button
+                    v-for="type in types"
+                    :key="type.uuid"
+                    type="button"
+                    :aria-pressed="selectedTypes.includes(type.uuid)"
+                    class="inline-flex shrink-0 items-center gap-2 rounded-full border bg-white px-3.5 py-1.5 text-sm font-medium shadow-card transition-colors duration-150"
+                    :class="[
+                        `text-${type.color}-600`,
+                        selectedTypes.includes(type.uuid)
+                            ? `border-${type.color}-500 bg-${type.color}-50`
+                            : 'border-white',
+                    ]"
+                    @click="toggleType(type.uuid)"
+                >
+                    <component
+                        :is="
+                            selectedTypes.includes(type.uuid)
+                                ? CircleCheckBig
+                                : Circle
+                        "
+                        class="size-4"
+                    />
+                    {{ type.name }}
+                    <span class="text-xs text-gray-500">{{ type.count }}</span>
+                </button>
+            </div>
+
             <div
                 v-for="(event, index) in filteredEvents"
                 :key="event.uuid"
@@ -137,10 +175,7 @@ const categories = computed(
                     </div>
                 </div>
                 <div class="w-full xl:w-3/4">
-                    <EventCard
-                        :event="event"
-                        :href="SeminarController.show.url(event.uuid)"
-                    />
+                    <EventCard :event="event" @register="register(event)" />
                 </div>
             </div>
 
@@ -150,7 +185,7 @@ const categories = computed(
         </div>
 
         <div class="hidden w-full lg:block lg:pl-6 xl:w-5/12 xl:pl-12">
-            <div v-if="types.length" class="relative">
+            <div v-if="types.length" class="relative lg:sticky lg:top-24">
                 <PageCard
                     nopadding
                     class="p-6 pt-8"
@@ -177,8 +212,17 @@ const categories = computed(
                     <button
                         v-for="type in types"
                         :key="type.uuid"
-                        class="flex w-full items-center rounded-lg p-2 text-left leading-none focus:outline-hidden"
-                        :class="`hover:bg-${type.color}-100`"
+                        type="button"
+                        :aria-pressed="selectedTypes.includes(type.uuid)"
+                        class="flex w-full items-center rounded-lg p-2 text-left leading-none transition-colors duration-150"
+                        :class="[
+                            `hover:bg-${type.color}-100`,
+                            {
+                                [`bg-${type.color}-50`]: selectedTypes.includes(
+                                    type.uuid,
+                                ),
+                            },
+                        ]"
                         @click="toggleType(type.uuid)"
                     >
                         <component
@@ -199,10 +243,12 @@ const categories = computed(
                                 {{ type.name }}
                             </span>
                             {{ ' ' }}
-                            <span class="text-xs">({{ type.count }})</span>
+                            <span class="text-xs text-gray-500"
+                                >({{ type.count }})</span
+                            >
                             <span
                                 v-if="type.days.size"
-                                class="mt-1 block text-xs"
+                                class="mt-1 block text-xs text-gray-600"
                             >
                                 {{ [...type.days].join(', ') }}
                             </span>
@@ -211,12 +257,19 @@ const categories = computed(
                 </PageCard>
                 <button
                     v-if="selectedTypes.length"
-                    class="absolute right-0 bottom-0 left-0 w-full rounded-b-lg bg-gray-100 p-3 text-sm font-medium text-gray-600 hover:bg-gray-200 active:bg-gray-100"
+                    type="button"
+                    class="absolute right-0 bottom-0 left-0 w-full rounded-b-xl bg-gray-100 p-3 text-sm font-medium text-gray-600 transition-colors duration-150 hover:bg-gray-200 active:bg-gray-100"
                     @click="selectedTypes = []"
                 >
                     Auswahl zurücksetzen
                 </button>
             </div>
         </div>
+
+        <SeminarRegistrationDialog
+            v-if="registrationEvent"
+            v-model:open="isRegistrationOpen"
+            :event="registrationEvent"
+        />
     </div>
 </template>

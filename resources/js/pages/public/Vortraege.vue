@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3';
 import PageCard from '@/components/public/PageCard.vue';
+import { Separator } from '@/components/ui/separator';
 import { usePageColor } from '@/composables/usePageColor';
 import { usePageMeta } from '@/composables/usePageMeta';
 
@@ -69,7 +70,7 @@ const erwachsenenThemen = [
             <ul>
                 <li v-for="thema in kinderThemen" :key="thema">{{ thema }}</li>
             </ul>
-            <hr />
+            <Separator />
             <ul>
                 <li v-for="thema in erwachsenenThemen" :key="thema">
                     {{ thema }}

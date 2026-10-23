@@ -122,23 +122,23 @@ function fromNow(iso: string): string {
             </PageCard>
         </div>
 
-        <div class="lg:flex lg:w-1/2 lg:self-stretch lg:pl-10">
-            <PageCard nopadding>
+        <div class="lg:w-1/2 lg:pl-10">
+            <PageCard nopadding class="overflow-hidden">
                 <div class="px-5 pt-9 pb-7 md:px-10">
-                    <h1
+                    <h2
                         class="py-1 text-xl font-semibold tracking-tight md:text-2xl"
                         :class="`text-${color}-600`"
                     >
                         Nächste Seminare
-                    </h1>
+                    </h2>
                 </div>
-                <div class="text-gray-500">
+                <div class="text-gray-600">
                     <div class="border-b border-gray-200">
                         <Link
                             v-for="event in upcomingEvents.data"
                             :key="event.uuid"
-                            :href="SeminarController.index.url()"
-                            class="relative block rounded-sm border-t border-gray-200 bg-gray-50 px-10 py-4 leading-tight lg:rounded-none"
+                            :href="SeminarController.show.url(event.uuid)"
+                            class="relative block border-t border-gray-200 bg-gray-50 px-5 py-4 leading-tight transition-colors duration-150 md:px-10"
                             :class="`hover:bg-${event.event_type.color}-50`"
                         >
                             <span
@@ -163,14 +163,14 @@ function fromNow(iso: string): string {
                         </Link>
                         <p
                             v-if="!upcomingEvents.data.length"
-                            class="border-t border-gray-200 bg-gray-50 px-10 py-4 text-sm leading-tight"
+                            class="border-t border-gray-200 bg-gray-50 px-5 py-4 text-sm leading-snug md:px-10"
                         >
                             Aktuell sind keine weiteren Seminare geplant.
                         </p>
                     </div>
                     <Link
                         :href="SeminarController.index.url()"
-                        class="relative block rounded-sm px-6 py-3 text-right hover:underline md:text-sm lg:rounded-none"
+                        class="relative block px-6 py-3 text-right font-medium hover:underline md:text-sm"
                         :class="`text-${color}-600`"
                     >
                         Alle Seminare ›

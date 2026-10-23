@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
 import { ref } from 'vue';
+import { Button } from '@/components/ui/button';
 import { useCookieConsent } from '@/composables/useCookieConsent';
 import { usePageColor } from '@/composables/usePageColor';
 import { cookieVereinbarung } from '@/routes';
@@ -45,14 +46,14 @@ function accept(): void {
                         </span>
                     </div>
 
-                    <button
-                        type="button"
-                        class="mt-2 h-8 rounded-sm bg-white px-2 text-sm font-light whitespace-nowrap hover:text-white md:mt-0 md:mr-1"
+                    <Button
+                        size="sm"
+                        class="mt-2 rounded-sm bg-white px-2 text-sm font-light hover:text-white md:mt-0 md:mr-1"
                         :class="[`text-${color}-600`, `hover:bg-${color}-600`]"
                         @click="accept"
                     >
                         Akzeptieren
-                    </button>
+                    </Button>
 
                     <Link
                         :href="cookieVereinbarung.url()"

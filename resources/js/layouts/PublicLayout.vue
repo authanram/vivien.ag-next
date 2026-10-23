@@ -10,7 +10,7 @@ import WatercolorBackground from '@/components/public/WatercolorBackground.vue';
 import { usePageColor } from '@/composables/usePageColor';
 import type { ImageStripItem } from '@/types/public';
 
-const { color } = usePageColor();
+const { color, sectionStyle } = usePageColor();
 withDefaults(defineProps<{ title?: string; caption?: string }>(), {
     title: '',
     caption: '',
@@ -19,6 +19,16 @@ withDefaults(defineProps<{ title?: string; caption?: string }>(), {
 const page = usePage();
 const imageStrip = computed(
     () => (page.props.imageStrip as ImageStripItem[]) ?? [],
+);
+// The strip is absolutely positioned, so short pages must be at least as tall as it (nav offset, frame padding, bottom bar).
+const imageStripBottom = computed(
+    () =>
+        Math.max(
+            0,
+            ...imageStrip.value.map(
+                (image) => image.top + Number(image.height),
+            ),
+        ) + 144,
 );
 const flash = computed(
     () =>
@@ -30,7 +40,10 @@ const flash = computed(
 </script>
 
 <template>
-    <div class="public-layout relative min-h-screen overflow-x-clip bg-white">
+    <div
+        class="public-layout relative min-h-screen overflow-x-clip bg-white"
+        :style="sectionStyle"
+    >
         <Head>
             <link rel="preconnect" href="https://fonts.gstatic.com" />
             <link
@@ -41,7 +54,10 @@ const flash = computed(
 
         <CookieConsentBanner />
 
-        <div class="relative z-0 min-h-full">
+        <div
+            class="relative z-0 min-h-full md:min-h-(--image-strip-bottom)"
+            :style="{ '--image-strip-bottom': `${imageStripBottom}px` }"
+        >
             <WatercolorBackground />
 
             <div class="sticky top-0 z-10 h-16 w-full shadow-lg"></div>
@@ -56,24 +72,24 @@ const flash = computed(
 
             <div
                 v-if="title"
-                class="relative z-20 mx-auto mb-5 w-full self-stretch bg-white/95 pt-2 md:mb-10 md:border-b-2 md:border-gray-100 md:pb-1"
+                class="relative z-20 mx-auto mb-6 w-full self-stretch bg-white/95 pt-5 pb-4 md:mb-10 md:border-b-2 md:pt-7 md:pb-6"
+                :class="`md:border-${color}-100`"
             >
                 <div class="relative">
                     <div
                         class="mx-auto px-5 lg:max-w-5xl xl:max-w-screen-xl xl:px-10"
-                        :class="caption ? 'pb-2' : 'pb-1'"
                     >
                         <div class="md:pl-40 lg:pl-32 xl:pl-36">
                             <div class="md:pl-10">
                                 <h1
-                                    class="pt-1 text-2xl leading-tight font-semibold tracking-tight"
+                                    class="text-3xl leading-tight font-semibold tracking-tight md:text-4xl"
                                     :class="`text-${color}-600`"
                                 >
                                     {{ title }}
                                 </h1>
                                 <div
                                     v-if="caption"
-                                    class="mt-1 text-sm text-gray-500"
+                                    class="mt-2 max-w-3xl text-[0.9375rem] leading-relaxed text-gray-600"
                                     v-html="caption"
                                 />
                             </div>
@@ -90,7 +106,7 @@ const flash = computed(
                 <div class="relative">
                     <div
                         v-if="flash?.success"
-                        class="mb-5 rounded-lg border border-green-200 bg-green-50 p-4 text-sm font-medium text-green-800 md:mb-10"
+                        class="mb-5 rounded-xl border border-green-200 bg-green-50 p-4 text-sm font-medium text-green-800 md:mb-10"
                     >
                         {{ flash.success }}
                     </div>

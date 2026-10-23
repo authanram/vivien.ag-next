@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
+import { Switch } from '@/components/ui/switch';
 import { useCookieConsent } from '@/composables/useCookieConsent';
 import type { CookieConsent } from '@/composables/useCookieConsent';
 import type { CookieConsentCookieResource } from '@/types/public';
@@ -72,33 +73,19 @@ function toggle(category: { name: string; required: boolean }): void {
                 </div>
                 <div class="mr-[3px] pr-1">
                     <span class="inline-block pt-[3px]">
-                        <button
-                            type="button"
-                            role="checkbox"
-                            :aria-checked="isAllowed(category)"
+                        <!-- The ported toggle is wider than the shadcn default, so its thumb travel is overridden too. -->
+                        <Switch
+                            :model-value="isAllowed(category)"
                             :aria-label="category.name"
                             :disabled="category.required"
-                            class="relative inline-flex h-5 w-10 shrink-0 rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-hidden disabled:pointer-events-none disabled:opacity-50"
-                            :class="
-                                isAllowed(category)
-                                    ? 'bg-green-600'
-                                    : 'bg-gray-200'
-                            "
-                            @click="toggle(category)"
+                            class="h-5 w-10 border-2 shadow-none duration-200 ease-in-out *:relative *:shadow-sm *:duration-200 *:ease-in-out data-[state=checked]:bg-green-600 *:data-[state=checked]:translate-x-5! data-[state=unchecked]:bg-gray-200"
+                            @update:model-value="toggle(category)"
                         >
-                            <span
-                                aria-hidden="true"
-                                class="relative inline-block h-4 w-4 transform rounded-full bg-white shadow-sm transition duration-200 ease-in-out"
-                                :class="
-                                    isAllowed(category)
-                                        ? 'translate-x-5'
-                                        : 'translate-x-0'
-                                "
-                            >
+                            <template #thumb="{ checked }">
                                 <span
                                     class="absolute inset-0 flex h-full w-full items-center justify-center transition-opacity"
                                     :class="
-                                        isAllowed(category)
+                                        checked
                                             ? 'opacity-0 duration-100 ease-out'
                                             : 'opacity-100 duration-200 ease-in'
                                     "
@@ -120,7 +107,7 @@ function toggle(category: { name: string; required: boolean }): void {
                                 <span
                                     class="absolute inset-0 flex h-full w-full items-center justify-center transition-opacity"
                                     :class="
-                                        isAllowed(category)
+                                        checked
                                             ? 'opacity-100 duration-200 ease-in'
                                             : 'opacity-0 duration-100 ease-out'
                                     "
@@ -135,8 +122,8 @@ function toggle(category: { name: string; required: boolean }): void {
                                         />
                                     </svg>
                                 </span>
-                            </span>
-                        </button>
+                            </template>
+                        </Switch>
                     </span>
                 </div>
             </div>

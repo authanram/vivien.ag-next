@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import { Link, usePage } from '@inertiajs/vue3';
-import { onClickOutside } from '@vueuse/core';
-import { computed, ref, useTemplateRef } from 'vue';
+import { computed, ref } from 'vue';
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { usePageColor } from '@/composables/usePageColor';
 import { menuClassAttribute } from '@/lib/public-menu';
 
 export type MenuBreakpoint = 'sm' | 'md' | 'lg' | 'xl' | null;
@@ -41,9 +47,8 @@ const BREAKPOINT_ORDER = ['sm', 'md', 'lg', 'xl'];
 const page = usePage();
 const currentPath = computed(() => new URL(page.url, 'http://x').pathname);
 
+const { sectionStyle } = usePageColor();
 const dropdownOpen = ref(false);
-const dropdown = useTemplateRef('dropdown');
-onClickOutside(dropdown, () => (dropdownOpen.value = false));
 
 const dropdownItems = computed(() =>
     props.items.filter((item) => item.breakpoint !== null),
@@ -108,17 +113,13 @@ function classAttribute(
 
                     <div
                         v-if="dropdownItems.length"
-                        ref="dropdown"
                         class="flex items-center"
                         :class="dropdownToggleClass"
                     >
-                        <div class="relative z-10">
-                            <button
-                                type="button"
-                                :aria-expanded="dropdownOpen"
+                        <DropdownMenu v-model:open="dropdownOpen">
+                            <DropdownMenuTrigger
                                 aria-label="dropdown"
-                                class="justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 focus:outline-hidden"
-                                @click="dropdownOpen = !dropdownOpen"
+                                class="justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 focus:outline-hidden data-[state=open]:bg-gray-100 data-[state=open]:text-gray-500"
                             >
                                 <svg
                                     class="h-6 w-6"
@@ -137,38 +138,39 @@ function classAttribute(
                                         "
                                     />
                                 </svg>
-                            </button>
-                            <div
-                                v-if="dropdownOpen"
-                                class="absolute right-0 z-10 mt-1 w-48 origin-top-right rounded-md border border-gray-100 shadow-lg"
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent
+                                align="end"
+                                class="public-layout w-48 rounded-md border-gray-100 p-0 shadow-lg"
+                                :style="sectionStyle"
                             >
-                                <div
-                                    aria-orientation="vertical"
-                                    class="overflow-hidden rounded-md bg-white"
-                                    role="menu"
+                                <DropdownMenuItem
+                                    v-for="item in dropdownItems"
+                                    :key="item.href"
+                                    as-child
+                                    :class="[
+                                        DROPDOWN_CLASS[
+                                            item.breakpoint as string
+                                        ],
+                                        classAttribute(
+                                            item.color,
+                                            'dropdown',
+                                            isActive(item.href),
+                                        ),
+                                        `focus:bg-${item.color}-500/10`,
+                                    ]"
+                                    class="cursor-pointer rounded-none"
                                 >
-                                    <Link
-                                        v-for="item in dropdownItems"
-                                        :key="item.href"
-                                        :href="item.href"
-                                        :class="[
-                                            DROPDOWN_CLASS[
-                                                item.breakpoint as string
-                                            ],
-                                            classAttribute(
-                                                item.color,
-                                                'dropdown',
-                                                isActive(item.href),
-                                            ),
-                                        ]"
-                                        class="relative"
-                                        @click="dropdownOpen = false"
-                                    >
-                                        <span>{{ item.label }}</span>
+                                    <Link :href="item.href">
+                                        <!-- The item recolors its focused text, so the label carries the menu color itself. -->
+                                        <span
+                                            :class="`text-${item.color}-600`"
+                                            >{{ item.label }}</span
+                                        >
                                     </Link>
-                                </div>
-                            </div>
-                        </div>
+                                </DropdownMenuItem>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
                     </div>
                 </div>
             </div>

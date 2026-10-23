@@ -6,6 +6,7 @@ import PublicContainer from '@/components/public/PublicContainer.vue';
 import PublicMenu from '@/components/public/PublicMenu.vue';
 import type { PublicMenuItem } from '@/components/public/PublicMenu.vue';
 import RecentPublications from '@/components/public/RecentPublications.vue';
+import { Separator } from '@/components/ui/separator';
 import { usePageColor } from '@/composables/usePageColor';
 import { cookieVereinbarung, datenschutz, impressum, kontakt } from '@/routes';
 
@@ -54,9 +55,7 @@ const footerItems: PublicMenuItem[] = [
 
 <template>
     <PublicContainer>
-        <PageCard even>
-            <RecentPublications />
-        </PageCard>
+        <RecentPublications />
 
         <PageCard even nopadding>
             <PublicMenu
@@ -132,7 +131,7 @@ const footerItems: PublicMenuItem[] = [
                     </div>
 
                     <div class="py-4">
-                        <hr class="border-gray-300 opacity-75" />
+                        <Separator class="bg-gray-300 opacity-75" />
                     </div>
 
                     <footer class="mt-2">

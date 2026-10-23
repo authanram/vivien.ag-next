@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import PatternDots from '@/components/public/PatternDots.vue';
+import { Card } from '@/components/ui/card';
 
 // Port of the vivien.ag <x-card>: margin and padding can be dropped like its reject: modifier.
 defineProps<{
@@ -11,11 +12,12 @@ defineProps<{
 </script>
 
 <template>
-    <div
-        class="relative mx-auto w-full self-stretch rounded-lg border border-gray-100 shadow-md"
+    <Card
+        class="relative mx-auto block w-full self-stretch rounded-xl border border-white/80 text-inherit shadow-card"
         :class="[
             even ? 'bg-white/90' : 'bg-white',
-            { 'p-5 md:p-10': !nopadding, 'mb-5 md:mb-10': !nomargin },
+            nopadding ? 'p-0' : 'p-5 md:p-10',
+            { 'mb-5 md:mb-10': !nomargin },
             { 'overflow-hidden': pattern },
         ]"
     >
@@ -23,5 +25,5 @@ defineProps<{
         <div class="relative" :class="{ 'lg:flex lg:items-center': pattern }">
             <slot />
         </div>
-    </div>
+    </Card>
 </template>

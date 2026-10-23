@@ -14,6 +14,14 @@ const PAGE_COLORS: Record<string, string> = {
     '/cookie-vereinbarung': 'gray',
 };
 
+// Drives the shadcn primary/ring tokens and focus/selection colors of the public site.
+export function sectionStyle(color: string): Record<string, string> {
+    return {
+        '--section': `var(--color-${color}-600)`,
+        '--section-soft': `var(--color-${color}-100)`,
+    };
+}
+
 export function usePageColor() {
     const page = usePage();
 
@@ -24,7 +32,5 @@ export function usePageColor() {
         return PAGE_COLORS[pathname] ?? PAGE_COLORS[base] ?? 'teal';
     });
 
-    const colorClass = computed(() => `accent-${color.value}`);
-
-    return { color, colorClass };
+    return { color, sectionStyle: computed(() => sectionStyle(color.value)) };
 }

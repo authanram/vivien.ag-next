@@ -41,6 +41,7 @@ class HandleInertiaRequests extends Middleware
             'quote' => $this->getRandomQuote(),
             'recentEvents' => fn () => EventResource::collection(
                 Event::published()
+                    ->upcoming()
                     ->with('eventType')
                     ->withSum('attendees', 'attendance')
                     ->orderByDesc('created_at')
