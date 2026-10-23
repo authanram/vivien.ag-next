@@ -38,7 +38,7 @@ function transform(image: ImageStripItem): string {
                     v-for="(image, index) in images"
                     :key="index"
                     type="button"
-                    class="group absolute rounded-lg border bg-white shadow-md select-none"
+                    class="group absolute rounded-lg border bg-white shadow-md select-none hover:outline-2 hover:outline-offset-2 hover:outline-(--section)"
                     :aria-label="image.title ?? undefined"
                     :style="{
                         height: `${image.height}px`,
