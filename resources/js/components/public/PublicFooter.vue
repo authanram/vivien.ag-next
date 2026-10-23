@@ -178,7 +178,7 @@ const footerItems: PublicMenuItem[] = [
                 >
                     <div class="flex items-center pb-2">
                         <a
-                            href="/backend"
+                            href="/admin"
                             target="_blank"
                             class="inline-block px-1 hover:underline"
                             :class="[
