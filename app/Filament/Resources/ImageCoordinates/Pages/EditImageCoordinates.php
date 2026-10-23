@@ -12,7 +12,7 @@ class EditImageCoordinates extends EditRecord
 {
     protected static string $resource = ImageCoordinatesResource::class;
 
-    protected string $view = 'filament.resources.image-coordinates.pages.edit-image-coordinates';
+    protected string $view = 'filament.resources.image-coordinates.pages.form-with-preview';
 
     protected function getHeaderActions(): array
     {

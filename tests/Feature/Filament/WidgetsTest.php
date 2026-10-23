@@ -10,6 +10,7 @@ use App\Models\EventAttendee;
 use App\Models\EventType;
 use App\Models\Image;
 use App\Models\ImageCoordinates;
+use Illuminate\Support\Str;
 use Livewire\Livewire;
 
 beforeEach(function () {
@@ -91,23 +92,64 @@ it('can render the image strip preview with images', function () {
         ->assertSuccessful();
 });
 
-it('can update image strip preview with live data', function () {
-    $image = Image::factory()->create();
-    ImageCoordinates::factory()->create([
-        'image_id' => $image->id,
-        'active' => true,
+function imageWithMedia(string $title): Image
+{
+    $image = Image::factory()->create(['title' => $title]);
+
+    // A media row is enough for the preview URL; a real upload is too heavy for the suite.
+    $image->media()->create([
+        'uuid' => Str::uuid(),
+        'collection_name' => 'image',
+        'name' => $title,
+        'file_name' => "{$title}.jpg",
+        'mime_type' => 'image/jpeg',
+        'disk' => 'public',
+        'size' => 1,
+        'manipulations' => [],
+        'custom_properties' => [],
+        'generated_conversions' => [],
+        'responsive_images' => [],
     ]);
 
-    Livewire::test(ImageStripPreview::class, ['currentImageId' => $image->id])
+    return $image;
+}
+
+it('updates the edited image strip entry live, including a swapped image', function () {
+    $original = imageWithMedia('Original');
+    $replacement = imageWithMedia('Ersatz');
+    $entry = ImageCoordinates::factory()->create(['image_id' => $original->id, 'active' => true]);
+
+    Livewire::test(ImageStripPreview::class, ['currentCoordinatesId' => $entry->id])
+        ->assertSee('alt="Original"', false)
         ->dispatch('preview-updated', data: [
+            'image_id' => $replacement->id,
             'top' => 50,
             'left' => -100,
             'height' => 150,
-            'rotate' => 5,
-            'rotate_x' => 10,
-            'rotate_y' => -10,
-            'perspective' => 800,
-            'zindex' => 3,
+            'active' => true,
         ])
-        ->assertSuccessful();
+        ->assertSee('alt="Ersatz"', false)
+        ->assertDontSee('alt="Original"', false)
+        ->assertSee('top: 50px', false);
+});
+
+it('hides the edited entry live when it is switched inactive', function () {
+    $image = imageWithMedia('Herzen');
+    $entry = ImageCoordinates::factory()->create(['image_id' => $image->id, 'active' => true]);
+
+    Livewire::test(ImageStripPreview::class, ['currentCoordinatesId' => $entry->id])
+        ->dispatch('preview-updated', data: ['image_id' => $image->id, 'active' => false])
+        ->assertDontSee('alt="Herzen"', false);
+});
+
+it('adds the entry being created to the preview', function () {
+    imageWithMedia('Bestehend');
+    ImageCoordinates::factory()->create(['image_id' => Image::first()->id, 'active' => true]);
+    $new = imageWithMedia('Neu');
+
+    Livewire::test(ImageStripPreview::class)
+        ->assertDontSee('alt="Neu"', false)
+        ->dispatch('preview-updated', data: ['image_id' => $new->id, 'active' => true])
+        ->assertSee('alt="Neu"', false)
+        ->assertSee('alt="Bestehend"', false);
 });

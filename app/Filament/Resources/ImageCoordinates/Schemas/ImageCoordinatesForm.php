@@ -19,6 +19,7 @@ class ImageCoordinatesForm
             $data = $livewire->data;
 
             $livewire->dispatch('preview-updated', data: [
+                'image_id' => $data['image_id'] ?? null,
                 'top' => $data['top'] ?? 0,
                 'left' => $data['left'] ?? 0,
                 'height' => $data['height'] ?? 200,
@@ -39,7 +40,9 @@ class ImageCoordinatesForm
                         ->label(__('Image'))
                         ->relationship('image', 'title')
                         ->required()
-                        ->columnSpanFull(),
+                        ->columnSpanFull()
+                        ->live()
+                        ->afterStateUpdated($dispatchPreview),
                     Select::make('position')
                         ->label(__('Position'))
                         ->options([
