@@ -86,6 +86,17 @@ it('can update image coordinates', function () {
     $this->assertDatabaseHas(ImageCoordinates::class, ['id' => $coords->id, 'top' => 50, 'rotate' => -3]);
 });
 
+it('rounds slider values to the column precision when saving', function () {
+    $coords = ImageCoordinates::factory()->create();
+
+    Livewire::test(EditImageCoordinates::class, ['record' => $coords->uuid])
+        ->fillForm(['rotate_y' => 18.211149825784, 'top' => 50.6, 'height' => 177.66])
+        ->call('save')
+        ->assertHasNoFormErrors();
+
+    $this->assertDatabaseHas(ImageCoordinates::class, ['id' => $coords->id, 'rotate_y' => 18, 'top' => 51, 'height' => 177.7]);
+});
+
 it('can delete image coordinates', function () {
     $coords = ImageCoordinates::factory()->create();
 
