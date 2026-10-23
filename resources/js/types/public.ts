@@ -42,3 +42,24 @@ export type ImageStripItem = {
     url: string;
     thumb_url: string;
 };
+
+export type CookieConsentConfig = {
+    name: string;
+    lifetime: number;
+    consented: boolean;
+    secure: boolean;
+    sameSite: string | null;
+    domain: string | null;
+};
+
+export type CookieConsentCookieResource = {
+    id: number;
+    cookie_name: string;
+    cookie_purpose: string;
+    cookie_category: string;
+    cookie_type: string;
+    cookie_lifetime: number;
+    encrypted: boolean;
+    required: boolean;
+    provider: { name: string; url: string };
+};

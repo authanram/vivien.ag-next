@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Head, usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
+import CookieConsentBanner from '@/components/public/CookieConsentBanner.vue';
 import ImageStrip from '@/components/public/ImageStrip.vue';
 import PublicContainer from '@/components/public/PublicContainer.vue';
 import PublicFooter from '@/components/public/PublicFooter.vue';
@@ -37,6 +38,8 @@ const flash = computed(
                 rel="stylesheet"
             />
         </Head>
+
+        <CookieConsentBanner />
 
         <div class="relative z-0 min-h-full">
             <WatercolorBackground />

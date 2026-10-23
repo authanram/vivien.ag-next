@@ -21,6 +21,20 @@
     "Event Type": "Seminarart",
     "Event Types": "Seminararten",
 
+    "Cookies": "Cookies",
+    "Cookie": "Cookie",
+    "Cookie Provider": "Cookie-Anbieter",
+    "Cookie Providers": "Cookie-Anbieter",
+    "Cookie Name": "Cookie-Name",
+    "Cookie Purpose": "Zweck",
+    "Cookie Category": "Kategorie",
+    "Cookie Type": "Typ",
+    "Cookie Lifetime": "Laufzeit (Tage)",
+    "In days, 0 = session.": "In Tagen, 0 = Sitzung.",
+    "HTML is allowed.": "HTML ist erlaubt.",
+    "Encrypted": "Verschlüsselt",
+    "Required": "Erforderlich",
+
     "Content": "Inhalte",
     "Media": "Medien",
 

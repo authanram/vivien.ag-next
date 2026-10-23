@@ -99,6 +99,9 @@
 @source inline("bg-{red,orange,amber,yellow,lime,green,emerald,teal,cyan,sky,blue,indigo,violet,purple,fuchsia,pink,rose,gray,slate}-{50,100,200,400,500,600} hover:bg-{red,orange,amber,yellow,lime,green,emerald,teal,cyan,sky,blue,indigo,violet,purple,fuchsia,pink,rose,gray,slate}-{50,100,600} active:bg-{red,orange,amber,yellow,lime,green,emerald,teal,cyan,sky,blue,indigo,violet,purple,fuchsia,pink,rose,gray,slate}-500");
 @source inline("border-{red,orange,amber,yellow,lime,green,emerald,teal,cyan,sky,blue,indigo,violet,purple,fuchsia,pink,rose,gray,slate}-{100,200,300,500} md:border-{red,orange,amber,yellow,lime,green,emerald,teal,cyan,sky,blue,indigo,violet,purple,fuchsia,pink,rose,gray,slate}-100");
 
+/* Cookie purposes are admin-authored HTML stored in the database. */
+@source inline("font-medium list-disc ml-6 mt-4 py-1 text-xs");
+
 @utility max-w-screen-xl {
     max-width: 80rem;
 }

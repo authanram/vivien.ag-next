@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(EventsSeeder::class);
         $this->call(ImagesSeeder::class);
+        $this->call(CookieConsentSeeder::class);
     }
 }

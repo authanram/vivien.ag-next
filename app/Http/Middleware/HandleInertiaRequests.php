@@ -28,6 +28,14 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            'cookieConsent' => [
+                'name' => config('cookie-consent.cookie_name'),
+                'lifetime' => config('cookie-consent.cookie_lifetime'),
+                'consented' => $request->hasCookie(config('cookie-consent.cookie_name')),
+                'secure' => (bool) config('session.secure'),
+                'sameSite' => config('session.same_site'),
+                'domain' => config('session.domain'),
+            ],
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
             'imageStrip' => $this->getImageStripData(),
             'quote' => $this->getRandomQuote(),
