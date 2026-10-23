@@ -68,7 +68,7 @@ const footerItems: PublicMenuItem[] = [
             <div class="hidden lg:block lg:shrink-0">
                 <img
                     class="h-64 w-64 rounded-full xl:h-60 xl:w-60"
-                    src="/images/sybille-seuffer.jpg"
+                    src="/images/sybille-seuffer-headshot.jpg"
                     alt="Sybille Seuffer"
                 />
             </div>
@@ -139,7 +139,7 @@ const footerItems: PublicMenuItem[] = [
                             <div class="shrink-0 lg:hidden">
                                 <img
                                     class="h-16 w-16 rounded-full"
-                                    src="/images/sybille-seuffer.jpg"
+                                    src="/images/sybille-seuffer-headshot.jpg"
                                     alt="Sybille Seuffer"
                                 />
                             </div>
