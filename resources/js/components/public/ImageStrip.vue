@@ -76,12 +76,15 @@ function transform(image: ImageStripItem): string {
                 :alt="selected.title ?? ''"
                 class="max-h-[60dvh] w-full rounded-sm object-contain"
             />
-            <DialogHeader class="gap-1 text-left">
+            <DialogHeader
+                class="gap-1 text-left"
+                :class="{ 'sr-only': !selected.title && !selected.description }"
+            >
                 <DialogTitle
                     class="text-lg leading-6 font-medium"
                     :class="`text-${color}-600`"
                 >
-                    {{ selected.title }}
+                    {{ selected.title ?? 'Bild' }}
                 </DialogTitle>
                 <DialogDescription
                     v-if="selected.description"
@@ -90,7 +93,10 @@ function transform(image: ImageStripItem): string {
                     {{ selected.description }}
                 </DialogDescription>
             </DialogHeader>
-            <dl class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
+            <dl
+                v-if="selected.artist || selected.price"
+                class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm"
+            >
                 <template v-if="selected.artist">
                     <dt class="text-gray-500">Künstler</dt>
                     <dd class="text-gray-900">{{ selected.artist }}</dd>
