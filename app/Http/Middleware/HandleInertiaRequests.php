@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use App\Http\Resources\EventResource;
+use App\Models\Event;
 use App\Models\ImageCoordinates;
 use App\Models\Quote;
 use Illuminate\Http\Request;
@@ -29,6 +31,14 @@ class HandleInertiaRequests extends Middleware
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
             'imageStrip' => $this->getImageStripData(),
             'quote' => $this->getRandomQuote(),
+            'recentEvents' => fn () => EventResource::collection(
+                Event::published()
+                    ->with('eventType')
+                    ->withSum('attendees', 'attendance')
+                    ->orderByDesc('created_at')
+                    ->limit(3)
+                    ->get(),
+            ),
             'flash' => [
                 'success' => $request->session()->get('success'),
                 'error' => $request->session()->get('error'),

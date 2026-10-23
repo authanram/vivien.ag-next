@@ -9,9 +9,9 @@ const PAGE_COLORS: Record<string, string> = {
     '/lerntraining': 'purple',
     '/portrait': 'orange',
     '/kontakt': 'gray',
-    '/impressum': 'slate',
-    '/datenschutz': 'slate',
-    '/cookie-vereinbarung': 'slate',
+    '/impressum': 'gray',
+    '/datenschutz': 'gray',
+    '/cookie-vereinbarung': 'gray',
 };
 
 export function usePageColor() {
@@ -20,6 +20,7 @@ export function usePageColor() {
     const color = computed(() => {
         const pathname = new URL(page.url, 'http://x').pathname;
         const base = '/' + pathname.split('/').filter(Boolean)[0];
+
         return PAGE_COLORS[pathname] ?? PAGE_COLORS[base] ?? 'teal';
     });
 

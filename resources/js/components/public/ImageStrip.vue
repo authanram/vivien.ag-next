@@ -5,44 +5,40 @@ defineProps<{
     images: ImageStripItem[];
 }>();
 
-// Transform-String exakt wie Original UiCoordImage
-function buildTransform(img: ImageStripItem): string {
-    const parts: string[] = [];
-    if (img.perspective) parts.push(`perspective(${img.perspective}px)`);
-    if (img.rotate_x) parts.push(`rotateX(${img.rotate_x}deg)`);
-    if (img.rotate_y) parts.push(`rotateY(${img.rotate_y}deg)`);
-    if (img.rotate) parts.push(`rotate(${img.rotate}deg)`);
-    return parts.length ? parts.join(' ') : 'none';
+function transform(image: ImageStripItem): string {
+    return `perspective(${image.perspective}px) rotate(${image.rotate}deg) rotateY(${image.rotate_y}deg) rotateX(${image.rotate_x}deg)`;
 }
 </script>
 
 <template>
-    <!-- Container: kein eigenes Positioning, direkt relativ zum Parent positioniert -->
-    <div style="position: relative; width: 0; height: 0;">
-        <div
-            v-for="(img, i) in images"
-            :key="i"
-            class="absolute"
-            :style="{
-                top: `${img.top}px`,
-                left: `${img.left}px`,
-                zIndex: img.zindex,
-                transform: buildTransform(img),
-            }"
-        >
-            <!-- Exakt wie UiCoordImage.vue: bg-white shadow-md rounded-lg, innen p-2 padding, innen overflow-hidden rounded -->
-            <span class="inline-block bg-white shadow-md rounded-lg">
-                <span class="cursor-pointer h-full inline-block p-2">
-                    <span class="block overflow-hidden rounded" :style="{ height: `${img.height}px` }">
-                        <img
-                            :src="img.thumb_url || img.url"
-                            :alt="''"
-                            class="h-full w-auto"
-                            loading="lazy"
-                        />
+    <div class="absolute top-0 z-30 mt-16 ml-5">
+        <div class="w-full">
+            <div>
+                <span
+                    v-for="(image, index) in images"
+                    :key="index"
+                    class="group absolute rounded-lg border bg-white shadow-md select-none"
+                    :style="{
+                        height: `${image.height}px`,
+                        top: `${image.top}px`,
+                        left: `${image.left}px`,
+                        transform: transform(image),
+                        zIndex: image.zindex,
+                    }"
+                >
+                    <span class="inline-block h-full cursor-pointer p-2">
+                        <span
+                            class="inline-block h-full overflow-hidden rounded-sm"
+                        >
+                            <img
+                                :src="image.thumb_url || image.url"
+                                alt=""
+                                class="h-full"
+                            />
+                        </span>
                     </span>
                 </span>
-            </span>
+            </div>
         </div>
     </div>
 </template>

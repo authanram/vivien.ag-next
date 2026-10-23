@@ -1,23 +1,25 @@
 <script setup lang="ts">
-import { Head, useForm, usePage } from '@inertiajs/vue3';
+import { Head, Link, useForm } from '@inertiajs/vue3';
 import { computed, onMounted, watch } from 'vue';
-import PageCard from '@/components/public/PageCard.vue';
 import * as SeminarController from '@/actions/App/Http/Controllers/Public/SeminarController';
+import EventCard from '@/components/public/EventCard.vue';
+import PageCard from '@/components/public/PageCard.vue';
 import { useAttendeeStorage } from '@/composables/useAttendeeStorage';
 import { usePageMeta } from '@/composables/usePageMeta';
+import { formatEventDate } from '@/lib/event-dates';
 import type { EventResource } from '@/types/public';
-
-const props = defineProps<{
-    event: EventResource;
-}>();
 
 defineOptions({ inheritAttrs: false });
 
-const { setMeta } = usePageMeta();
-setMeta(props.event.event_type.name);
+const props = defineProps<{
+    event: { data: EventResource };
+}>();
 
-const page = usePage();
-const flash = computed(() => page.props.flash as { success: string | null; error: string | null });
+const event = computed(() => props.event.data);
+const color = computed(() => event.value.event_type.color);
+
+const { setMeta } = usePageMeta();
+setMeta(event.value.event_type.name);
 
 const { load, save, clear } = useAttendeeStorage();
 
@@ -34,6 +36,7 @@ const form = useForm({
 
 onMounted(() => {
     const saved = load();
+
     if (saved) {
         form.salutation = saved.salutation;
         form.firstname = saved.firstname;
@@ -44,172 +47,352 @@ onMounted(() => {
     }
 });
 
-watch(() => form.save_data, (should) => { if (!should) clear(); });
+watch(
+    () => form.save_data,
+    (should) => {
+        if (!should) {
+            clear();
+        }
+    },
+);
 
-function submit() {
+function submit(): void {
     if (form.save_data) {
-        save({ salutation: form.salutation, firstname: form.firstname, surname: form.surname, phone: form.phone, email: form.email });
+        save({
+            salutation: form.salutation,
+            firstname: form.firstname,
+            surname: form.surname,
+            phone: form.phone,
+            email: form.email,
+        });
     }
-    form.post(SeminarController.register.url(props.event.uuid));
+
+    form.post(SeminarController.register.url(event.value.uuid));
 }
 
-const COLOR_MAP: Record<string, string> = {
-    rose: '#e11d48', fuchsia: '#c026d3', green: '#16a34a', sky: '#0284c7',
-    amber: '#d97706', emerald: '#059669', teal: '#0d9488', pink: '#db2777',
-    red: '#dc2626', blue: '#2563eb', purple: '#9333ea', orange: '#ea580c',
-    indigo: '#4f46e5', violet: '#7c3aed', gray: '#6b7280', slate: '#64748b',
-};
-const accent = computed(() => COLOR_MAP[props.event.event_type.color] ?? '#6b7280');
+const startsAt = computed(() =>
+    formatEventDate(event.value.date_from, {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+    }),
+);
 
-function formatDate(iso: string): string { return new Date(iso).toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }); }
-function formatTime(iso: string): string { return new Date(iso).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }); }
-function formatPrice(price: number | null, note: string | null): string {
-    if (!price) return 'Auf Anfrage';
-    return new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2 }).format(price / 100) + ' €' + (note ? ` (${note})` : '');
-}
-function getLocation(): string {
-    if (props.event.event_location === 'jaegerstrasse') return 'Jägerstraße 26, 75339 Spielberg';
-    return props.event.custom_event_location ?? props.event.event_location_label ?? '';
-}
-const maxSeats = computed(() => Math.max(1, props.event.available_seats));
+const total = computed(() =>
+    event.value.price === null
+        ? null
+        : (event.value.price / 100) * form.attendance,
+);
+
+const inputClass =
+    'block w-full rounded-md border-2 border-gray-300 p-2 transition duration-150 ease-in-out focus:border-(--accent) focus:shadow-sm focus:outline-hidden sm:leading-5';
 </script>
 
 <template>
     <Head :title="event.event_type.name" />
 
-    <div class="lg:flex">
-        <!-- Details -->
-        <div class="lg:flex lg:w-1/2 lg:self-stretch">
-            <PageCard>
-                <a href="/seminare" class="mb-4 flex items-center gap-1 text-xs text-stone-400 hover:text-stone-600">
-                    ← Alle Seminare
-                </a>
-
-                <div class="mb-2 flex items-center gap-2">
-                    <span class="h-3 w-3 rounded-sm" :style="{ backgroundColor: accent }" />
-                    <span class="font-semibold" :style="{ color: accent }">{{ event.event_type.name }}</span>
-                    <span v-if="event.event_day_label" class="text-sm text-stone-400">{{ event.event_day_label }}</span>
-                </div>
-                <p class="mb-4 text-sm text-stone-400">{{ formatDate(event.date_from) }}</p>
-
-                <div class="space-y-3 text-sm text-stone-600">
-                    <div class="flex items-center justify-between">
-                        <span>{{ formatTime(event.date_from) }} – {{ formatTime(event.date_to) }} Uhr</span>
-                        <span v-if="event.duration_hours" class="rounded px-2 py-0.5 text-xs font-semibold text-white" :style="{ backgroundColor: accent }">{{ event.duration_hours }} Std</span>
-                    </div>
-                    <div>{{ getLocation() }}</div>
-                    <p v-if="event.description" class="italic leading-relaxed" :style="{ color: accent }">{{ event.description }}</p>
-
-                    <div class="space-y-2 border-t border-gray-100 pt-3">
-                        <div>{{ event.maximum_attendees }} Teilnehmer maximal</div>
-                        <div v-if="event.catering.length">{{ event.catering.join(' · ') }}</div>
-                        <div class="font-medium text-stone-700">{{ formatPrice(event.price, event.price_note) }}</div>
-                        <div v-if="event.lead" class="flex items-center gap-2 pt-1">
-                            <div class="flex h-8 w-8 items-center justify-center rounded-full bg-stone-100 text-xs font-bold text-stone-400">SS</div>
-                            <div class="text-xs"><div class="font-medium text-stone-600">{{ event.lead }}</div><div class="text-stone-400">Leitung</div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-4 rounded-full px-3 py-1 text-center text-xs font-medium" :class="event.available_seats > 0 ? 'bg-green-50 text-green-700' : 'bg-stone-100 text-stone-400'">
-                    {{ event.available_seats > 0 ? `${event.available_seats} Plätze verfügbar` : 'Ausgebucht' }}
-                </div>
-            </PageCard>
+    <div class="w-full lg:flex">
+        <div class="mb-5 w-full md:mb-10 lg:w-1/2">
+            <EventCard :event="event" />
         </div>
 
-        <!-- Anmeldeformular -->
-        <div class="lg:flex lg:w-1/2 lg:self-stretch lg:pl-10">
-            <PageCard>
-                <!-- Erfolg -->
-                <div v-if="flash.success" class="mb-6 rounded-lg border border-green-200 bg-green-50 p-4 text-sm font-medium text-green-800">
-                    {{ flash.success }}
-                </div>
-
-                <!-- Ausgebucht -->
-                <div v-if="event.available_seats <= 0" class="text-center text-stone-500">
-                    <p class="mb-2 text-2xl">🎟</p>
-                    <p class="font-semibold text-stone-700">Dieses Seminar ist ausgebucht.</p>
-                    <a href="/seminare" class="mt-3 block text-sm hover:underline" :style="{ color: accent }">Andere Seminare ansehen</a>
-                </div>
-
-                <!-- Formular -->
-                <form v-else @submit.prevent="submit">
-                    <h2 class="mb-5 text-xl font-semibold leading-tight tracking-tight" :style="{ color: accent }">
-                        Anmeldung
-                    </h2>
-
-                    <!-- Anrede -->
-                    <div class="mb-4">
-                        <label class="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-stone-400">Anrede *</label>
-                        <div class="flex gap-5">
-                            <label class="flex cursor-pointer items-center gap-2 text-sm">
-                                <input v-model="form.salutation" type="radio" value="Mrs" class="accent-[var(--color-nav-accent)]" />
-                                Frau
-                            </label>
-                            <label class="flex cursor-pointer items-center gap-2 text-sm">
-                                <input v-model="form.salutation" type="radio" value="mr" class="accent-[var(--color-nav-accent)]" />
-                                Herr
-                            </label>
-                        </div>
-                        <p v-if="form.errors.salutation" class="mt-1 text-xs text-red-500">{{ form.errors.salutation }}</p>
+        <div
+            v-if="event.available_seats > 0"
+            class="w-full lg:w-1/2 lg:pl-6 xl:pl-12"
+        >
+            <PageCard
+                nopadding
+                class="px-4 pt-2 pb-4 shadow-lg md:p-6 md:pt-5"
+                :style="{ '--accent': `var(--color-${color}-500)` }"
+            >
+                <form @submit.prevent="submit">
+                    <div>
+                        <h3
+                            class="leading-6 font-medium"
+                            :class="`text-${color}-600`"
+                        >
+                            {{ event.event_type.name }}
+                        </h3>
+                        <p
+                            v-if="event.description"
+                            class="mt-1 max-w-2xl text-sm leading-5 text-gray-500"
+                        >
+                            {{ event.description }}
+                        </p>
+                        <p
+                            class="mt-1 max-w-2xl text-sm leading-5 font-medium text-gray-500"
+                        >
+                            {{ startsAt }}
+                        </p>
                     </div>
 
-                    <!-- Name -->
-                    <div class="mb-4 grid grid-cols-2 gap-3">
-                        <div>
-                            <label class="mb-1 block text-xs font-semibold uppercase tracking-wider text-stone-400">Vorname *</label>
-                            <input v-model="form.firstname" type="text" autocomplete="given-name" class="w-full rounded border border-gray-200 px-3 py-2 text-sm text-stone-700 outline-none focus:border-stone-400" />
-                            <p v-if="form.errors.firstname" class="mt-1 text-xs text-red-500">{{ form.errors.firstname }}</p>
-                        </div>
-                        <div>
-                            <label class="mb-1 block text-xs font-semibold uppercase tracking-wider text-stone-400">Nachname *</label>
-                            <input v-model="form.surname" type="text" autocomplete="family-name" class="w-full rounded border border-gray-200 px-3 py-2 text-sm text-stone-700 outline-none focus:border-stone-400" />
-                            <p v-if="form.errors.surname" class="mt-1 text-xs text-red-500">{{ form.errors.surname }}</p>
-                        </div>
-                    </div>
-
-                    <!-- E-Mail -->
-                    <div class="mb-4">
-                        <label class="mb-1 block text-xs font-semibold uppercase tracking-wider text-stone-400">E-Mail *</label>
-                        <input v-model="form.email" type="email" autocomplete="email" class="w-full rounded border border-gray-200 px-3 py-2 text-sm text-stone-700 outline-none focus:border-stone-400" />
-                        <p v-if="form.errors.email" class="mt-1 text-xs text-red-500">{{ form.errors.email }}</p>
-                    </div>
-
-                    <!-- Telefon -->
-                    <div class="mb-4">
-                        <label class="mb-1 block text-xs font-semibold uppercase tracking-wider text-stone-400">Telefon (optional)</label>
-                        <input v-model="form.phone" type="tel" autocomplete="tel" class="w-full rounded border border-gray-200 px-3 py-2 text-sm text-stone-700 outline-none focus:border-stone-400" />
-                    </div>
-
-                    <!-- Anzahl -->
-                    <div class="mb-4">
-                        <label class="mb-1 block text-xs font-semibold uppercase tracking-wider text-stone-400">Anzahl Personen *</label>
-                        <select v-model="form.attendance" class="w-full rounded border border-gray-200 px-3 py-2 text-sm text-stone-700 outline-none focus:border-stone-400">
-                            <option v-for="n in maxSeats" :key="n" :value="n">{{ n }} Person{{ n > 1 ? 'en' : '' }}</option>
-                        </select>
-                        <p v-if="form.errors.attendance" class="mt-1 text-xs text-red-500">{{ form.errors.attendance }}</p>
-                    </div>
-
-                    <!-- Nachricht -->
-                    <div class="mb-4">
-                        <label class="mb-1 block text-xs font-semibold uppercase tracking-wider text-stone-400">Nachricht (optional)</label>
-                        <textarea v-model="form.message" rows="3" class="w-full rounded border border-gray-200 px-3 py-2 text-sm text-stone-700 outline-none focus:border-stone-400" />
-                    </div>
-
-                    <!-- Daten speichern -->
-                    <label class="mb-5 flex cursor-pointer items-start gap-2.5 text-xs text-stone-500">
-                        <input v-model="form.save_data" type="checkbox" class="mt-0.5 flex-shrink-0" />
-                        <span><strong class="text-stone-700">Meine Daten speichern</strong> – Kontaktdaten für künftige Anmeldungen vorausfüllen.</span>
-                    </label>
-
-                    <button
-                        type="submit"
-                        :disabled="form.processing"
-                        class="w-full rounded py-2.5 text-sm font-bold text-white transition hover:opacity-90 disabled:opacity-50"
-                        :style="{ backgroundColor: accent }"
+                    <div
+                        class="mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-6"
                     >
-                        {{ form.processing ? 'Wird gesendet…' : 'Teilnehmen' }}
-                    </button>
+                        <span class="mb-1 block text-gray-700 md:mt-2 md:mb-0">
+                            Anrede
+                        </span>
+                        <div class="sm:col-span-2">
+                            <div class="mt-2 flex md:mt-0">
+                                <label
+                                    v-for="option in [
+                                        { value: 'Mrs', label: 'Frau' },
+                                        { value: 'mr', label: 'Herr' },
+                                    ]"
+                                    :key="option.value"
+                                    class="mr-4 flex cursor-pointer items-center"
+                                >
+                                    <input
+                                        v-model="form.salutation"
+                                        type="radio"
+                                        name="salutation"
+                                        :value="option.value"
+                                        class="mr-2 h-4 w-4 cursor-pointer"
+                                    />
+                                    <span class="block leading-5 text-gray-700">
+                                        {{ option.label }}
+                                    </span>
+                                </label>
+                            </div>
+                            <p
+                                v-if="form.errors.salutation"
+                                class="pt-2 text-xs text-red-500 italic"
+                            >
+                                {{ form.errors.salutation }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                        <label
+                            for="firstname"
+                            class="mb-1 block text-gray-700 md:mt-2 md:mb-0"
+                        >
+                            Name
+                        </label>
+                        <div
+                            class="flex max-w-lg items-start sm:col-span-2 sm:max-w-xs"
+                        >
+                            <div class="mr-2 block w-full">
+                                <input
+                                    id="firstname"
+                                    v-model="form.firstname"
+                                    type="text"
+                                    placeholder="Vorname"
+                                    autocomplete="given-name"
+                                    :class="inputClass"
+                                />
+                                <p
+                                    v-if="form.errors.firstname"
+                                    class="pt-2 text-xs text-red-500 italic"
+                                >
+                                    {{ form.errors.firstname }}
+                                </p>
+                            </div>
+                            <div class="ml-2 block w-full">
+                                <input
+                                    v-model="form.surname"
+                                    type="text"
+                                    placeholder="Nachname"
+                                    autocomplete="family-name"
+                                    :class="inputClass"
+                                />
+                                <p
+                                    v-if="form.errors.surname"
+                                    class="pt-2 text-xs text-red-500 italic"
+                                >
+                                    {{ form.errors.surname }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                        <label
+                            for="phone"
+                            class="mb-1 block text-gray-700 md:mt-2 md:mb-0"
+                        >
+                            Telefon
+                        </label>
+                        <div class="sm:col-span-2">
+                            <div class="max-w-lg sm:max-w-xs">
+                                <input
+                                    id="phone"
+                                    v-model="form.phone"
+                                    type="tel"
+                                    autocomplete="tel"
+                                    :class="inputClass"
+                                />
+                            </div>
+                            <p
+                                v-if="form.errors.phone"
+                                class="pt-2 text-xs text-red-500 italic"
+                            >
+                                {{ form.errors.phone }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                        <label
+                            for="email"
+                            class="mb-1 block text-gray-700 md:mt-2 md:mb-0"
+                        >
+                            E-Mailadresse
+                        </label>
+                        <div class="sm:col-span-2">
+                            <div class="max-w-lg sm:max-w-xs">
+                                <input
+                                    id="email"
+                                    v-model="form.email"
+                                    type="email"
+                                    autocomplete="email"
+                                    :class="inputClass"
+                                />
+                            </div>
+                            <p
+                                v-if="form.errors.email"
+                                class="pt-2 text-xs text-red-500 italic"
+                            >
+                                {{ form.errors.email }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                        <label
+                            for="attendance"
+                            class="mb-1 block text-gray-700 md:mt-2 md:mb-0"
+                        >
+                            Teilnehmer
+                        </label>
+                        <div class="sm:col-span-2">
+                            <div class="flex max-w-lg items-start sm:max-w-xs">
+                                <div
+                                    class="mr-3 inline-block rounded-md border border-gray-200"
+                                >
+                                    <select
+                                        id="attendance"
+                                        v-model="form.attendance"
+                                        class="block h-8 w-full rounded-md border-2 border-gray-300 px-2 py-0.5 transition duration-150 ease-in-out focus:border-(--accent) focus:outline-hidden sm:leading-5"
+                                    >
+                                        <option
+                                            v-for="n in event.available_seats"
+                                            :key="n"
+                                            :value="n"
+                                        >
+                                            {{ n }}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div
+                                    v-if="total !== null"
+                                    class="flex items-center self-stretch"
+                                >
+                                    <div>
+                                        {{ total }} &euro;
+                                        <span
+                                            v-if="form.attendance > 1"
+                                            class="ml-1 inline-block text-xs text-gray-500 italic"
+                                        >
+                                            gesamt
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p
+                                v-if="form.errors.attendance"
+                                class="pt-2 text-xs text-red-500 italic"
+                            >
+                                {{ form.errors.attendance }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                        <label
+                            for="message"
+                            class="mb-1 block text-gray-700 md:mt-2 md:mb-0"
+                        >
+                            Nachricht
+                        </label>
+                        <div class="sm:col-span-2">
+                            <div class="max-w-lg sm:max-w-xs">
+                                <textarea
+                                    id="message"
+                                    v-model="form.message"
+                                    :class="inputClass"
+                                />
+                            </div>
+                            <p
+                                v-if="form.errors.message"
+                                class="pt-2 text-xs text-red-500 italic"
+                            >
+                                {{ form.errors.message }}
+                            </p>
+                            <div
+                                class="pt-2 text-xs leading-tight text-gray-500"
+                            >
+                                Solltest du mehrere Personen zu einem Seminar
+                                anmelden, sei doch bitte so nett und hinerlasse
+                                mir Vor- und Nachnamen dieser Personen.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 sm:grid sm:grid-cols-3 sm:gap-4">
+                        <div class="hidden sm:block" />
+                        <label
+                            class="flex cursor-pointer items-center leading-5 text-gray-700 sm:col-span-2"
+                        >
+                            <input
+                                v-model="form.save_data"
+                                type="checkbox"
+                                class="mr-2 h-4 w-4 cursor-pointer"
+                            />
+                            Meine Daten für künftige Anmeldungen speichern
+                        </label>
+                    </div>
+
+                    <div
+                        class="mt-6 flex justify-end sm:border-t sm:border-gray-200 sm:pt-6 md:justify-start"
+                    >
+                        <div
+                            class="order-last inline-block rounded-md shadow-sm md:order-first md:mr-2"
+                        >
+                            <button
+                                type="submit"
+                                :disabled="form.processing"
+                                class="relative z-10 rounded-md border border-transparent px-5 tracking-wide text-white hover:bg-(--accent) focus:outline-hidden"
+                                :class="[
+                                    `bg-${color}-600`,
+                                    { 'opacity-50': form.processing },
+                                ]"
+                            >
+                                <span
+                                    class="inline-flex items-center"
+                                    style="height: 40px; padding-top: 2px"
+                                >
+                                    Anmelden
+                                </span>
+                            </button>
+                        </div>
+                        <div class="mr-2 inline-block rounded-md md:mr-0">
+                            <Link
+                                :href="SeminarController.index.url()"
+                                class="relative z-10 block rounded-md border border-gray-300 bg-white px-5 tracking-wide text-gray-700 hover:bg-gray-100 hover:text-gray-500 focus:outline-hidden"
+                            >
+                                <span
+                                    class="inline-flex items-center"
+                                    style="height: 40px; padding-top: 2px"
+                                >
+                                    Verwerfen
+                                </span>
+                            </Link>
+                        </div>
+                    </div>
                 </form>
             </PageCard>
         </div>
