@@ -61,6 +61,21 @@ test('besucher kann sich für ein seminar anmelden', function () {
     });
 });
 
+test('anmeldebestätigung duzt die teilnehmer', function () {
+    $attendee = EventAttendee::factory()->create([
+        'event_id' => $this->event->id,
+        'firstname' => 'Anna',
+    ]);
+
+    (new AttendeeRegisteredMail($attendee))
+        ->assertSeeInHtml('Hallo Anna,')
+        ->assertSeeInHtml('Deine Anmeldung')
+        ->assertSeeInHtml('stehe ich dir gerne')
+        ->assertSeeInHtml('Ich freue mich auf dich,')
+        ->assertDontSeeInHtml('Ihre')
+        ->assertDontSeeInHtml('Ihnen');
+});
+
 test('anmeldung aus der seminarliste leitet zurück zur liste', function () {
     $this->from('/seminare')->post("/seminare/{$this->event->uuid}/anmelden", [
         'salutation' => 'mr',

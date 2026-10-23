@@ -1,9 +1,9 @@
 <x-mail::message>
 # Anmeldebestätigung
 
-Liebe/r {{ $attendee->salutation->label() }} {{ $attendee->firstname }} {{ $attendee->surname }},
+Hallo {{ $attendee->firstname }},
 
-herzlichen Glückwunsch! Ihre Anmeldung für das folgende Seminar wurde erfolgreich entgegengenommen:
+herzlichen Glückwunsch! Deine Anmeldung für das folgende Seminar wurde erfolgreich entgegengenommen:
 
 <x-mail::panel>
 **{{ $event->eventType->name }}**
@@ -28,9 +28,9 @@ Preis: {{ number_format($event->price / 100, 2, ',', '.') }} €{{ $event->price
 @endif
 </x-mail::panel>
 
-Bei Fragen stehe ich Ihnen gerne zur Verfügung.
+Bei Fragen stehe ich dir gerne zur Verfügung.
 
-Mit freundlichen Grüßen,<br>
+Ich freue mich auf dich,<br>
 **Sybille Seuffer**
 
 Jägerstraße 26 · 75339 Spielberg<br>
