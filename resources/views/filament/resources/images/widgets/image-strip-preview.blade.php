@@ -47,7 +47,7 @@
                             x-on:load="center()"
                             alt="{{ $item['title'] }}"
                             class="rounded-lg shadow-md {{ $item['isCurrent'] ? 'ring-2 ring-pink-500' : '' }}"
-                            style="position: absolute; height: {{ $item['height'] }}px; width: auto; left: calc(50% + {{ $item['left'] }}px); top: {{ $item['top'] }}px; padding: 3px; background: white; transform: perspective({{ $item['perspective'] }}px) rotate({{ $item['rotate'] }}deg) rotateX({{ $item['rotateX'] }}deg) rotateY({{ $item['rotateY'] }}deg); z-index: {{ $item['zindex'] }};"
+                            style="position: absolute; height: {{ $item['height'] }}px; width: auto; max-width: none; left: calc(50% + {{ $item['left'] }}px); top: {{ $item['top'] }}px; padding: 3px; background: white; transform: perspective({{ $item['perspective'] }}px) rotate({{ $item['rotate'] }}deg) rotateX({{ $item['rotateX'] }}deg) rotateY({{ $item['rotateY'] }}deg); z-index: {{ $item['zindex'] }};"
                         >
                     @empty
                         <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('No images with coordinates found.') }}</p>

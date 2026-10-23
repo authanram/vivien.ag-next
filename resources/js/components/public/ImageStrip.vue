@@ -56,7 +56,7 @@ function transform(image: ImageStripItem): string {
                             <img
                                 :src="image.thumb_url || image.url"
                                 alt=""
-                                class="h-full"
+                                class="h-full max-w-none"
                             />
                         </span>
                     </span>
