@@ -68,13 +68,13 @@ function transform(image: ImageStripItem): string {
     <Dialog v-model:open="open">
         <DialogContent
             v-if="selected"
-            class="public-layout max-h-[calc(100dvh-2rem)] overflow-y-auto sm:max-w-md"
+            class="public-layout max-h-[calc(100dvh-2rem)] overflow-y-auto sm:max-w-2xl"
             :style="sectionStyle"
         >
             <img
                 :src="selected.url"
                 :alt="selected.title ?? ''"
-                class="max-h-[60dvh] w-full rounded-sm object-contain"
+                class="max-h-[70dvh] w-full rounded-sm object-contain"
             />
             <DialogHeader
                 class="gap-1 text-left"
