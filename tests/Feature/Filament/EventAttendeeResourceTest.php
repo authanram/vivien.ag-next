@@ -37,6 +37,14 @@ it('can list event attendees', function () {
         ->assertCanSeeTableRecords($attendees);
 });
 
+it('lists the newest attendees first', function () {
+    $older = EventAttendee::factory()->for(Event::factory())->create(['created_at' => now()->subDay()]);
+    $newer = EventAttendee::factory()->for(Event::factory())->create(['created_at' => now()]);
+
+    Livewire::test(ListEventAttendees::class)
+        ->assertCanSeeTableRecords([$newer, $older], inOrder: true);
+});
+
 it('can create an attendee with required fields', function () {
     $event = Event::factory()->create();
 
