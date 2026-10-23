@@ -106,7 +106,7 @@ const flash = computed(
                 <div class="relative">
                     <div
                         v-if="flash?.success"
-                        class="mb-5 rounded-xl border border-green-200 bg-green-50 p-4 text-sm font-medium text-green-800 md:mb-10"
+                        class="mb-5 rounded-xl border-2 border-green-400 bg-green-100 px-6 py-5 text-lg font-bold text-green-900 shadow-lg md:mb-10 md:text-xl"
                     >
                         {{ flash.success }}
                     </div>

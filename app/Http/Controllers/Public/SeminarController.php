@@ -64,6 +64,6 @@ class SeminarController extends Controller
             Mail::to($adminMail)->queue(new AttendeeRegisteredMail($attendee));
         }
 
-        return back()->with('success', __('Anmeldung erfolgreich! Wir freuen uns auf Sie.'));
+        return back()->with('success', __('🎉 Anmeldung erfolgreich! Wir freuen uns auf dich.'));
     }
 }
