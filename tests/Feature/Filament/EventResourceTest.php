@@ -44,6 +44,37 @@ it('can list events', function () {
         ->assertCanSeeTableRecords($events);
 });
 
+it('shows only upcoming events by default', function () {
+    $upcoming = Event::factory()->create(['date_from' => now()->addDay(), 'date_to' => now()->addDay()->addHours(2)]);
+    $past = Event::factory()->create(['date_from' => now()->subDay(), 'date_to' => now()->subDay()->addHours(2)]);
+
+    Livewire::test(ListEvents::class)
+        ->assertCanSeeTableRecords([$upcoming])
+        ->assertCanNotSeeTableRecords([$past]);
+});
+
+it('filters events by tab', function (string $tab, bool $seesUpcoming, bool $seesPast) {
+    $upcoming = Event::factory()->create(['date_from' => now()->addDay(), 'date_to' => now()->addDay()->addHours(2)]);
+    $past = Event::factory()->create(['date_from' => now()->subDay(), 'date_to' => now()->subDay()->addHours(2)]);
+
+    $component = Livewire::test(ListEvents::class)->set('activeTab', $tab);
+
+    $seesUpcoming ? $component->assertCanSeeTableRecords([$upcoming]) : $component->assertCanNotSeeTableRecords([$upcoming]);
+    $seesPast ? $component->assertCanSeeTableRecords([$past]) : $component->assertCanNotSeeTableRecords([$past]);
+})->with([
+    'upcoming' => ['upcoming', true, false],
+    'past' => ['past', false, true],
+    'all' => ['all', true, true],
+]);
+
+it('lists the latest start date first', function () {
+    $earlier = Event::factory()->create(['date_from' => now()->addDays(5), 'date_to' => now()->addDays(5)->addHours(2)]);
+    $later = Event::factory()->create(['date_from' => now()->addDays(10), 'date_to' => now()->addDays(10)->addHours(2)]);
+
+    Livewire::test(ListEvents::class)
+        ->assertCanSeeTableRecords([$later, $earlier], inOrder: true);
+});
+
 it('can create an event with required fields', function () {
     $eventType = EventType::factory()->create();
 

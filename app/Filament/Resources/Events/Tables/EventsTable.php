@@ -126,7 +126,7 @@ class EventsTable
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
-            ->defaultSort('date_from', 'asc')
+            ->defaultSort('date_from', 'desc')
             ->filters([
                 SelectFilter::make('event_type_id')
                     ->label(__('Event Type'))
