@@ -1,6 +1,4 @@
 {
-    "Post": "Beitrag",
-    "Posts": "Beiträge",
     "Quote": "Zitat",
     "Quotes": "Zitate",
     "Quote Author": "Zitatautor",
@@ -35,12 +33,9 @@
     "Encrypted": "Verschlüsselt",
     "Required": "Erforderlich",
 
-    "Content": "Inhalte",
     "Media": "Medien",
 
     "Title": "Titel",
-    "Slug": "Slug",
-    "Body": "Inhalt",
     "Name": "Name",
     "Description": "Beschreibung",
     "Published": "Veröffentlicht",

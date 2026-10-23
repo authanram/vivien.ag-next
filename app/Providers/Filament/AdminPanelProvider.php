@@ -39,7 +39,6 @@ class AdminPanelProvider extends PanelProvider
             ->navigationGroups([
                 __('Events'),
                 __('Media'),
-                __('Content'),
                 __('Quotes'),
                 __('Cookies'),
             ])

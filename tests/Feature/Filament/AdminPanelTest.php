@@ -20,7 +20,6 @@ it('lists the cookie navigation group last', function () {
     $this->get('/admin')->assertSuccessful()->assertSeeInOrder([
         __('Events'),
         __('Media'),
-        __('Content'),
         __('Quotes'),
         __('Cookies'),
     ]);
