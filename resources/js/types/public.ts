@@ -41,6 +41,10 @@ export type ImageStripItem = {
     position: string;
     url: string;
     thumb_url: string;
+    title: string | null;
+    description: string | null;
+    price: number | null;
+    artist: string | null;
 };
 
 export type CookieConsentConfig = {

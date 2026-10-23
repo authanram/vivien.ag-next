@@ -12,6 +12,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { eventTime as time, formatEventDate } from '@/lib/event-dates';
+import { formatPrice } from '@/lib/utils';
 import type { EventResource } from '@/types/public';
 
 const props = defineProps<{
@@ -41,13 +42,6 @@ function date(iso: string): string {
         month: 'long',
         year: 'numeric',
     });
-}
-
-function price(cents: number): string {
-    return new Intl.NumberFormat('de-DE', {
-        style: 'currency',
-        currency: 'EUR',
-    }).format(cents / 100);
 }
 </script>
 
@@ -211,7 +205,7 @@ function price(cents: number): string {
                             {{
                                 event.price === null
                                     ? 'Auf Anfrage'
-                                    : price(event.price)
+                                    : formatPrice(event.price)
                             }}
                         </div>
                         <div

@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Enums\ImageArtist;
 use App\Http\Resources\EventResource;
 use App\Models\Event;
 use App\Models\ImageCoordinates;
@@ -97,6 +98,12 @@ class HandleInertiaRequests extends Middleware
                     'position' => $ic->position,
                     'url' => $ic->image?->getFirstMediaUrl('image') ?? '',
                     'thumb_url' => $ic->image?->getFirstMediaUrl('image', 'thumb') ?: $ic->image?->getFirstMediaUrl('image') ?? '',
+                    'title' => $ic->image?->title,
+                    'description' => $ic->image?->description,
+                    'price' => $ic->image?->price ?: null,
+                    'artist' => $ic->image?->artist === ImageArtist::Other
+                        ? $ic->image->artist_custom
+                        : $ic->image?->artist->label(),
                 ])
                 ->filter(fn (array $item) => $item['url'] !== '')
                 ->values()
