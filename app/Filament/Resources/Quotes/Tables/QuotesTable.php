@@ -17,10 +17,14 @@ class QuotesTable
     {
         return $table
             ->columns([
-                TextColumn::make('quote_author_id')
+                TextColumn::make('body')
+                    ->label(__('Quote'))
+                    ->limit(80)
+                    ->searchable(),
+                TextColumn::make('quoteAuthor.name')
                     ->label(__('Author'))
-                    ->numeric()
-                    ->sortable(),
+                    ->sortable()
+                    ->searchable(),
                 TextColumn::make('created_at')
                     ->label(__('Created At'))
                     ->dateTime()

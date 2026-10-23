@@ -36,6 +36,15 @@ it('can list quotes', function () {
         ->assertCanSeeTableRecords($quotes);
 });
 
+it('shows the quote and author name in the table', function () {
+    $author = QuoteAuthor::factory()->create(['name' => 'Johann Wolfgang von Goethe']);
+    $quote = Quote::factory()->create(['quote_author_id' => $author->id, 'body' => 'Wer immer strebend sich bemüht']);
+
+    Livewire::test(ListQuotes::class)
+        ->assertTableColumnStateSet('body', 'Wer immer strebend sich bemüht', $quote)
+        ->assertTableColumnStateSet('quoteAuthor.name', 'Johann Wolfgang von Goethe', $quote);
+});
+
 it('can create a quote', function () {
     $author = QuoteAuthor::factory()->create();
 

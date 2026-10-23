@@ -17,6 +17,14 @@ class QuoteAuthorsTable
     {
         return $table
             ->columns([
+                TextColumn::make('name')
+                    ->label(__('Name'))
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('occupation')
+                    ->label(__('Occupation'))
+                    ->sortable()
+                    ->searchable(),
                 TextColumn::make('created_at')
                     ->label(__('Created At'))
                     ->dateTime()

@@ -35,6 +35,14 @@ it('can list quote authors', function () {
         ->assertCanSeeTableRecords($authors);
 });
 
+it('shows the name and occupation in the table', function () {
+    $author = QuoteAuthor::factory()->create(['name' => 'Johann Wolfgang von Goethe', 'occupation' => 'Dichter']);
+
+    Livewire::test(ListQuoteAuthors::class)
+        ->assertTableColumnStateSet('name', 'Johann Wolfgang von Goethe', $author)
+        ->assertTableColumnStateSet('occupation', 'Dichter', $author);
+});
+
 it('can create a quote author with required fields only', function () {
     Livewire::test(CreateQuoteAuthor::class)
         ->fillForm(['name' => 'Johann Wolfgang von Goethe'])
