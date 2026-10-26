@@ -1,8 +1,25 @@
 {
-    "phpVersion": "7.4",
-    "printWidth": 100,
-    "tabWidth": 4,
-    "useTabs": false,
+    "semi": true,
     "singleQuote": true,
-    "trailingCommaPHP": true
+    "singleAttributePerLine": false,
+    "htmlWhitespaceSensitivity": "css",
+    "printWidth": 80,
+    "plugins": [
+        "prettier-plugin-tailwindcss"
+    ],
+    "tailwindFunctions": [
+        "clsx",
+        "cn",
+        "cva"
+    ],
+    "tailwindStylesheet": "resources/css/app.css",
+    "tabWidth": 4,
+    "overrides": [
+        {
+            "files": "**/*.yml",
+            "options": {
+                "tabWidth": 2
+            }
+        }
+    ]
 }
